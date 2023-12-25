@@ -1,0 +1,15 @@
+<div x-cloak x-show="menu" class="fixed left-0 top-0 w-full h-full z-50">
+  <a href="javascript:;" 
+    class="block absolute right-0 top-0 z-50"
+    x-on:click="menu = ! menu" 
+    title="Menü schliessen">
+    {{ partial:icons/cross class="w-full h-auto" }}
+  </a>
+  <nav>
+    {{ nav:main }}
+      <ul class="flex flex-col items-center">
+        {{ partial:menu/overlay/item }}
+      </ul>
+    {{ /nav:main }}
+  </nav>
+</div>

@@ -1,0 +1,6 @@
+@font-face {
+  font-family: 'Nantes';
+  src: url('fonts/NantesWeb-SemiBold.woff2') format('woff2'), url('fonts/NantesWeb-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}

@@ -1,0 +1,11 @@
+title: 'Contact Form'
+honeypot: webs1te
+email:
+  -
+    id: lptkqymo
+    to: m@marceli.to
+    from: noreply@mihmfoundation.org
+    reply_to: noreply@mihmfoundation.org
+    subject: 'Kontaktformular mihmfoundation.org'
+    html: templates/email/html/contact
+    text: templates/email/text/contact

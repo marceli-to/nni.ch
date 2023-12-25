@@ -1,0 +1,11 @@
+title: 'Application Form'
+honeypot: webs1te
+email:
+  -
+    id: lptkqymo
+    to: m@marceli.to
+    from: noreply@mihmfoundation.org
+    reply_to: noreply@mihmfoundation.org
+    subject: 'Antragsformular mihmfoundation.org'
+    html: templates/email/html/application
+    text: templates/email/text/application

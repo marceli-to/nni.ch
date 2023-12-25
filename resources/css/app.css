@@ -1,0 +1,21 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@import "typo/webfonts.css";
+@import "components/headings.css";
+@import "utils.css";
+
+* {
+  font-variant-ligatures: none;
+}
+
+html {
+  font-feature-settings: 'kern'; 
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+}

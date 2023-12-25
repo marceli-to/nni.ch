@@ -1,0 +1,43 @@
+{
+  "resources/css/app.css": {
+    "file": "assets/app-1bf80617.css",
+    "isEntry": true,
+    "src": "resources/css/app.css"
+  },
+  "resources/css/fonts/NantesWeb-SemiBold.woff": {
+    "file": "assets/NantesWeb-SemiBold-dc62679a.woff",
+    "src": "resources/css/fonts/NantesWeb-SemiBold.woff"
+  },
+  "resources/css/fonts/NantesWeb-SemiBold.woff2": {
+    "file": "assets/NantesWeb-SemiBold-6ceb85d8.woff2",
+    "src": "resources/css/fonts/NantesWeb-SemiBold.woff2"
+  },
+  "resources/img/bird-2.png": {
+    "file": "assets/bird-2-8665e8cd.png",
+    "src": "resources/img/bird-2.png"
+  },
+  "resources/img/chevron-left.svg": {
+    "file": "assets/chevron-left-d7c83d1e.svg",
+    "src": "resources/img/chevron-left.svg"
+  },
+  "resources/img/chevron-right.svg": {
+    "file": "assets/chevron-right-3316b63f.svg",
+    "src": "resources/img/chevron-right.svg"
+  },
+  "resources/img/cross.svg": {
+    "file": "assets/cross-f7618992.svg",
+    "src": "resources/img/cross.svg"
+  },
+  "resources/js/app.css": {
+    "file": "assets/app-bf74afcd.css",
+    "src": "resources/js/app.css"
+  },
+  "resources/js/app.js": {
+    "css": [
+      "assets/app-bf74afcd.css"
+    ],
+    "file": "assets/app-4e19a9aa.js",
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  }
+}
