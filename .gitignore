@@ -23,6 +23,6 @@ public/.htaccess
 INSTALL.txt
 
 public/assets
-content
+/content
 resources/users
 users
