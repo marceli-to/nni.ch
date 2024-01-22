@@ -1,6 +1,6 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-f60346d0.css",
+    "file": "assets/app-d8228d37.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -12,15 +12,8 @@
     "file": "assets/NantesWeb-SemiBold-6ceb85d8.woff2",
     "src": "resources/css/fonts/NantesWeb-SemiBold.woff2"
   },
-  "resources/js/app.css": {
-    "file": "assets/app-a5f73305.css",
-    "src": "resources/js/app.css"
-  },
   "resources/js/app.js": {
-    "css": [
-      "assets/app-a5f73305.css"
-    ],
-    "file": "assets/app-5bc81a64.js",
+    "file": "assets/app-154cb3de.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }
