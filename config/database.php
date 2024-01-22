@@ -54,7 +54,7 @@ return [
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
-            'prefix' => '',
+            'prefix' => 'wp_',
             'prefix_indexes' => true,
             'strict' => true,
             'engine' => null,
@@ -92,6 +92,24 @@ return [
             // 'encrypt' => env('DB_ENCRYPT', 'yes'),
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
         ],
+
+        // 'wordpress' => [
+        //   'driver' => 'mysql',
+        //   'url' => env('DATABASE_URL'),
+        //   'host' => 'localhost',
+        //   'username' => 'nniblog',
+        //   'password' => 'nniblog',
+        //   'unix_socket' => '/Applications/MAMP/tmp/mysql/mysql.sock',
+        //   'charset' => 'utf8mb4',
+        //   'collation' => 'utf8mb4_unicode_ci',
+        //   'prefix' => '',
+        //   'charset' => 'utf8',
+        //   'collation' => 'utf8_unicode_ci',
+        //   'prefix' => 'wp_',
+        //   'prefix_indexes' => true,
+        //   'strict' => true,
+        //   'engine' => null,
+        // ], 
 
     ],
 

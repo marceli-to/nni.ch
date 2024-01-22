@@ -1,0 +1,99 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+              display: Title
+              instructions_position: above
+              listable: hidden
+              visibility: visible
+              replicator_preview: true
+              input_type: text
+              antlers: false
+              hide_display: false
+          -
+            handle: date
+            field:
+              type: date
+              required: true
+              default: now
+              mode: single
+              inline: false
+              full_width: false
+              columns: 1
+              rows: 1
+              time_enabled: false
+              time_seconds_enabled: false
+              display: Date
+              icon: date
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              validate:
+                - required
+          -
+            handle: content
+            field:
+              type: markdown
+              localizable: true
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: parent
+            field:
+              type: entries
+              collections:
+                - posts
+              max_items: 1
+              listable: false
+              localizable: true
+          -
+            handle: post_categories
+            field:
+              type: terms
+              taxonomies:
+                - post_categories
+              display: Categories
+              mode: select
+          -
+            handle: post_tags
+            field:
+              type: terms
+              taxonomies:
+                - post_tags
+              display: Tags
+              mode: select
+          -
+            handle: author
+            field:
+              default: current
+              max_items: 1
+              mode: select
+              type: users
+              display: Author
+              icon: users
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+title: Post
