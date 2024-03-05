@@ -1,6 +1,24 @@
-<header>
-  {{ partial:layout/inner }}
-    
-  {{ /partial:layout/inner}}
+<header class="fixed left-0 top-0 z-50 w-full py-30">
+
+  {{ partial:blocks/inner class="flex items-center justify-between px-35" }}
+  
+    <a 
+      href="{{ site:url }}" 
+      title="Home">
+      {{ partial:icons/logo class="w-26 h-auto" }}
+    </a>
+
+    <a 
+      href="javascript:;" 
+      x-on:click="menu = ! menu" 
+      title="{{ "Menü anzeigen" | trans }}"
+      :class="{ 'is-active': menu === true }"
+      class="group">
+      {{ partial:icons/burger class="w-28 h-auto" }}
+    </a>
+
+  {{ /partial:blocks/inner }}
+
 </header>
-{{ partial:menu/overlay/wrapper }}
+
+{{ partial:menu/wrapper }}

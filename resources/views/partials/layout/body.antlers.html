@@ -1,8 +1,7 @@
-<body class="flex flex-col min-h-screen x-data="{ menu: false }">
+<body class="font-meta-light text-xxs lg:text-lg antialiased flex flex-col min-h-screen" x-data="{ menu: false }">
+  {{ slot:header }}
   <div class="mx-auto flex-1 w-full">
     {{ slot }}
   </div>
-  {{ partial:layout/footer }}
-  {{ vite src="resources/js/app.js" }}
 </body>
 <!-- made with ❤ by marceli.to -->

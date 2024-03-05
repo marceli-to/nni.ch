@@ -1,0 +1,16 @@
+<div 
+  x-cloak 
+  x-show="menu"
+  x-transition:enter="transition ease-in duration-300"
+  x-transition:enter-start="opacity-0"
+  x-transition:enter-end="opacity-100"
+  x-transition:leave="transition ease-in duration-0"
+  x-transition:leave-start="opacity-100"
+  x-transition:leave-end="opacity-0"
+  class="fixed left-0 top-0 w-full h-full overflow-y-auto z-40 bg-white">
+  <div class="flex justify-between max-w-screen-lg mx-auto px-35 lg:px-0 pt-145 relative">
+    {{ partial:partials/menu/main/wrapper }}
+    {{ partial:partials/menu/meta/wrapper }}
+    {{ partial:partials/menu/language/wrapper }}
+  </div>
+</div>

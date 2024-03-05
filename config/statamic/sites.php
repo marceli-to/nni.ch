@@ -14,10 +14,16 @@ return [
   */
 
   'sites' => [
-    'default' => [
-      'name' => config('app.name'),
+    'de' => [
+      'name' => 'Deutsch',
       'locale' => 'de',
-      'url' => '/',
+      'url' => env('APP_URL').'/'
     ],
+    'en' => [
+      'name' => 'English',
+      'locale' => 'en',
+      'lang' => 'en',
+      'url' => env('APP_URL').'/en/'
+    ]
   ],
 ];

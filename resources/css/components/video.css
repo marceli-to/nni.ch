@@ -1,0 +1,14 @@
+video {
+  
+}
+
+.dim-10 { @apply bg-opacity-10; }
+.dim-20 { @apply bg-opacity-20; }
+.dim-30 { @apply bg-opacity-30; }
+.dim-40 { @apply bg-opacity-40; }
+.dim-50 { @apply bg-opacity-50; }
+.dim-60 { @apply bg-opacity-60; }
+.dim-70 { @apply bg-opacity-70; }
+.dim-80 { @apply bg-opacity-80; }
+.dim-90 { @apply bg-opacity-90; }
+.dim-100 { @apply bg-opacity-100; }

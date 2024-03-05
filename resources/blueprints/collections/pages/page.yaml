@@ -21,6 +21,7 @@ tabs:
               input_type: text
               antlers: false
               hide_display: false
+              localizable: true
           -
             handle: page_elements
             field:
@@ -46,6 +47,7 @@ tabs:
               visibility: visible
               replicator_preview: true
               hide_display: false
+              localizable: true
   seo:
     display: SEO
     sections:
@@ -66,6 +68,7 @@ tabs:
               visibility: visible
               replicator_preview: true
               hide_display: false
+              localizable: false
           -
             handle: open_graph_description
             field:
@@ -79,6 +82,7 @@ tabs:
               replicator_preview: true
               hide_display: false
               instructions: 'One or two descriptive sentences about the content of the page.'
+              localizable: false
           -
             handle: open_graph_image
             field:
@@ -99,6 +103,7 @@ tabs:
               hide_display: false
               folder: images
               instructions: 'Image used for sharing on social media.'
+              localizable: false
   settings:
     display: Settings
     sections:
@@ -124,6 +129,7 @@ tabs:
               visibility: visible
               replicator_preview: true
               hide_display: false
+              localizable: false
   sidebar:
     display: Sidebar
     sections:

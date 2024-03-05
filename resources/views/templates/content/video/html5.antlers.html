@@ -1,11 +1,100 @@
 <section class="relative w-full h-screen overflow-hidden bg-black">
-  <video poster="" class="absolute z-10 left-0 top-0 aspect-video md:hidden" muted autoplay playsinline>
-    <source src="/assets/dummy-video.mp4" type="video/mp4">
-  </video>
-  <video poster="" class="hidden md:block absolute z-10 left-0 top-0 h-full w-full object-cover" muted autoplay playsinline>
-    <source src="/assets/dummy-video.mp4" type="video/mp4">
-  </video>
+
+  <div data-stage class="relative flex items-center aspect-video md:aspect-auto w-full h-auto md:h-full z-40">
+    <header data-stage-header class="absolute top-0 left-0 w-full flex justify-between items-center p-30 opacity-0">
+      <div class="flex-1">
+        {{ partial:icons/logo class="text-white w-[240px] h-auto" }}
+      </div>
+      <div class="flex-1 flex justify-center text-white uppercase">
+        Jetzt&nbsp;<strong>Anfragen</strong>
+      </div>
+      <div class="flex-1 flex justify-end text-white uppercase">
+        Menu
+      </div>
+    </header>
+    <div data-stage-claim class="relative z-50 flex justify-center gap-x-15 mx-auto w-auto max-w-lg text-lg md:text-3xl text-white">
+      <div data-stage-claim-left class="relative inline-block opacity-0 translate-x-0">Lebensräume</div>
+      <div data-stage-claim-right class="relative inline-block opacity-0 translate-x-0"><strong>erleben</strong></div>
+    </div>
+  </div>
+  
+  {{ partial:media/video/video dim="true" }}
 </section>
-<section class="min-h-[500px] bg-red-200">
+
+<section class="min-h-[2500px] bg-red-200">
   Test
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const stage = document.querySelector('[data-stage]');
+  const claim = document.querySelector('[data-stage-claim]');
+  const claimLeft = document.querySelector('[data-stage-claim-left]');
+  const claimRight = document.querySelector('[data-stage-claim-right]');
+  const header = document.querySelector('[data-stage-header]');
+
+  const durations = {
+    slideIn: 500,
+    slideDown: 500,
+    fadeIn: 500,
+    slideDownDelay: 1500,
+    fadeInDelay: 3000,
+  };
+
+  // sleep for 3 seconds
+  const sleep = (ms) => {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  sleep(2000).then(() => {
+    // Step 1: Slide title into the center
+    claimLeft.animate([
+      { transform: 'translateX(-50%)', opacity: 0 },
+      { transform: 'translateX(0)', opacity: 1 },
+    ],
+    {
+      duration: durations.slideIn,
+      fill: 'forwards',
+      easing: 'ease-out'
+    });
+    claimRight.animate([
+      { transform: 'translateX(50%)', opacity: 0 },
+      { transform: 'translateX(0)', opacity: 1 },
+    ],
+    {
+      duration: durations.slideIn,
+      fill: 'forwards',
+      easing: 'ease-out'
+    });
+
+    // Step 2: After 3 seconds, scale down title and move to bottom
+    // get stage height to calculate the offset
+    const stageHeight = stage.offsetHeight / 2 - 50;
+
+    setTimeout(() => {
+      claim.animate([
+          { transform: 'translateX(0) scale(1)' },
+          { transform: `translateY(45vh) scale(0.45)` }
+      ], {
+          duration: durations.slideDown,
+          easing: 'ease-in',
+          fill: 'forwards'
+      });
+    }, durations.slideDownDelay);
+
+    // Step 3: Fade in header during the above animation
+    setTimeout(() => {
+        header.animate([
+          { opacity: 0 },
+          { opacity: 1 }
+        ], {
+          duration: durations.fadeIn,
+          fill: 'forwards'
+        });
+    }, durations.fadeInDelay);
+  });
+
+  
+});
+
+</script>

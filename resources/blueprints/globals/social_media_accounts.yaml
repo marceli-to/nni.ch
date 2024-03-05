@@ -5,18 +5,6 @@ tabs:
       -
         fields:
           -
-            handle: publish
-            field:
-              default: true
-              type: toggle
-              display: Publish
-              icon: toggle
-              listable: hidden
-              instructions_position: above
-              visibility: visible
-              replicator_preview: true
-              hide_display: false
-          -
             handle: instagram
             field:
               input_type: text

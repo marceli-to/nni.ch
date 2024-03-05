@@ -16,12 +16,7 @@
       class="block w-full h-auto {{ imageClass ?? '' }}"
       loading="lazy">
   </picture>
-  <figcaption class="text-tiny sm:text-xxs md:text-xs mt-5 lg:mt-10 flex gap-x-10 lg:gap-x-15">
-    {{ if count }}
-      <div>1 | {{ count }}</div>
-    {{ /if }}
-    {{ if image:alt }}
-      <div>{{ image:alt }}</div>
-    {{ /if }}
+  <figcaption>
+
   </figcaption>
 </figure>

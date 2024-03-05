@@ -1,9 +1,22 @@
 {{ partial:layout/head }}
+
 {{ partial:layout/body }}
-  {{ partial:layout/header }}
+
+  {{ slot:header }}
+
+    {{ partial:layout/header }}
+    
+  {{ /slot:header }}
+
   {{ partial:layout/main }}
+
     {{ template_content }}
+
   {{ /partial:layout/main }}
-{{ /partial:layout/body}}
+
+  {{ partial:layout/footer }}
+
+{{ /partial:layout/body }}
+
 </html>
 

@@ -1,19 +1,43 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-d8228d37.css",
+    "file": "assets/app-39821410.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
-  "resources/css/fonts/NantesWeb-SemiBold.woff": {
-    "file": "assets/NantesWeb-SemiBold-dc62679a.woff",
-    "src": "resources/css/fonts/NantesWeb-SemiBold.woff"
+  "resources/css/fonts/MetaPro-Bold.woff": {
+    "file": "assets/MetaPro-Bold-abd73a82.woff",
+    "src": "resources/css/fonts/MetaPro-Bold.woff"
   },
-  "resources/css/fonts/NantesWeb-SemiBold.woff2": {
-    "file": "assets/NantesWeb-SemiBold-6ceb85d8.woff2",
-    "src": "resources/css/fonts/NantesWeb-SemiBold.woff2"
+  "resources/css/fonts/MetaPro-Bold.woff2": {
+    "file": "assets/MetaPro-Bold-f63ebe16.woff2",
+    "src": "resources/css/fonts/MetaPro-Bold.woff2"
+  },
+  "resources/css/fonts/MetaPro-Light.woff": {
+    "file": "assets/MetaPro-Light-9f915114.woff",
+    "src": "resources/css/fonts/MetaPro-Light.woff"
+  },
+  "resources/css/fonts/MetaPro-Light.woff2": {
+    "file": "assets/MetaPro-Light-ec0b50fb.woff2",
+    "src": "resources/css/fonts/MetaPro-Light.woff2"
+  },
+  "resources/css/fonts/MetaPro-Medium.woff": {
+    "file": "assets/MetaPro-Medium-c2cd8f72.woff",
+    "src": "resources/css/fonts/MetaPro-Medium.woff"
+  },
+  "resources/css/fonts/MetaPro-Medium.woff2": {
+    "file": "assets/MetaPro-Medium-369f6a87.woff2",
+    "src": "resources/css/fonts/MetaPro-Medium.woff2"
+  },
+  "resources/css/fonts/MetaPro.woff": {
+    "file": "assets/MetaPro-52fc29c0.woff",
+    "src": "resources/css/fonts/MetaPro.woff"
+  },
+  "resources/css/fonts/MetaPro.woff2": {
+    "file": "assets/MetaPro-4d6c1560.woff2",
+    "src": "resources/css/fonts/MetaPro.woff2"
   },
   "resources/js/app.js": {
-    "file": "assets/app-154cb3de.js",
+    "file": "assets/app-ad95a615.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }

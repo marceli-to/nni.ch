@@ -3,4 +3,4 @@ import Alpine from 'alpinejs'
 window.Alpine = Alpine
 Alpine.start();
 
-// import './modules/fancybox.js';
+import './modules/video.js';

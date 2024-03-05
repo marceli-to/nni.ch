@@ -16,38 +16,37 @@ export default {
 
       screens: {
         'xs': '414px',
-        // 'lg': '980px',
-        // '3xl': '1680px',
       },
 
       maxWidth: {
-        'outer': '1360px',
-        'inner': '1100px',
+        page: '1200px',
       },
 
       fontFamily: {
-        'nantes': ['Nantes', ...defaultTheme.fontFamily.sans],
+        'meta-medium': ['MetaProMedium', ...defaultTheme.fontFamily.sans],
+        'meta-regular': ['MetaProRegular', ...defaultTheme.fontFamily.sans],
+        'meta-light': ['MetaProLight', ...defaultTheme.fontFamily.sans],
       },
 
       fontSize: {
         'tiny': '0.875rem',  // 14px
-        'xxs': '1rem',       // 16px
-        'xs': '1.125rem',    // 18px
-        'sm': '1.25rem',     // 20px
-        'md': '1.375rem',    // 22px
-        'lg': '1.5rem',      // 24px
+        'xxs': '0.9375rem',  // 15px
+        'xs': '1rem',       // 16px
+        'sm': '1.125rem',    // 18px
+        'md': '1.25rem',     // 20px
+        'lg': '1.375rem',    // 22px
         'xl': '1.5625rem',   // 25px
-        '2xl': '1.875rem',   // 30px
-        '3xl': '2.1875rem',  // 35px
-        '4xl': '2.5rem',     // 40px
-        '5xl': '2.8125rem',  // 45px
-        '6xl': '3.125rem',   // 50px
-        '7xl': '4.5rem',     // 72px
-        '8xl': '6rem',       // 96px
+        '2xl': '1.75rem',    // 28px
+        '3xl': '1.875rem',   // 30px
+        '4xl': '2.1875rem',  // 35px
+        '5xl': '2.375rem',   // 38px
+        '6xl': '3.4375rem',  // 55px
+        '7xl': '4.375rem',   // 70px
       },
 
       colors: {
-
+        'graphite': '#707070',
+        'silver': '#E5E5E5',
       },
       
     },
