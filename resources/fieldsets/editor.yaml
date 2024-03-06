@@ -38,15 +38,5 @@ fields:
       visibility: visible
       replicator_preview: true
       hide_display: false
-      sets:
-        elements:
-          display: Elemente
-          instructions: null
-          icon: programming-module-box-cube
-          sets:
-            neues_set:
-              display: 'Neues Set'
-              instructions: null
-              icon: null
-              fields: {  }
       container: assets
+      localizable: true

@@ -29,16 +29,18 @@ tabs:
               previews: true
               fullscreen: true
               sets:
-                neue_set-gruppe:
-                  display: 'Neue Set-Gruppe'
+                text:
+                  display: Text
                   instructions: null
-                  icon: null
+                  icon: text-formatting-markdown
                   sets:
-                    neues_set:
-                      display: 'Neues Set'
+                    editor:
+                      display: Editor
                       instructions: null
-                      icon: null
-                      fields: {  }
+                      icon: text-formatting-markdown
+                      fields:
+                        -
+                          import: editor
               type: replicator
               display: Inhalte
               icon: replicator

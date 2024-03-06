@@ -22,7 +22,7 @@ body {
 }
 
 strong {
-  @apply font-meta-bold
+  @apply font-meta-medium font-medium
 }
 
 @keyframes fadeOutLeft {

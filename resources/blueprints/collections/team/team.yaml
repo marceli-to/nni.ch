@@ -1,0 +1,209 @@
+tabs:
+  data:
+    display: Data
+    sections:
+      -
+        display: Main
+        instructions: 'Add the member data'
+        fields:
+          -
+            handle: firstname
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: Firstname
+              icon: text
+              localizable: false
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              validate:
+                - required
+          -
+            handle: name
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: Name
+              icon: text
+              localizable: false
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              validate:
+                - required
+          -
+            handle: position
+            field:
+              antlers: false
+              type: textarea
+              display: Position
+              icon: textarea
+              localizable: true
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: email
+            field:
+              input_type: email
+              antlers: false
+              type: text
+              display: Email
+              icon: text
+              localizable: false
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: phone
+            field:
+              input_type: tel
+              antlers: false
+              type: text
+              display: Phone
+              icon: text
+              localizable: false
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: text
+            field:
+              buttons:
+                - bold
+                - unorderedlist
+                - anchor
+              smart_typography: false
+              save_html: false
+              inline: false
+              toolbar_mode: fixed
+              reading_time: false
+              word_count: false
+              fullscreen: true
+              allow_source: true
+              enable_input_rules: true
+              enable_paste_rules: true
+              remove_empty_nodes: false
+              antlers: false
+              link_noopener: false
+              link_noreferrer: false
+              target_blank: false
+              always_show_set_button: false
+              collapse: false
+              previews: true
+              type: bard
+              display: Text
+              icon: bard
+              localizable: true
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+  media:
+    display: Media
+    sections:
+      -
+        display: Media
+        instructions: 'Add a portrait image'
+        fields:
+          -
+            handle: portrait
+            field:
+              max_files: 1
+              mode: list
+              container: assets
+              restrict: true
+              allow_uploads: true
+              show_filename: true
+              show_set_alt: true
+              type: assets
+              display: Portrait
+              icon: assets
+              localizable: false
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              folder: team
+  quote:
+    display: Quote
+    sections:
+      -
+        display: Quote
+        instructions: 'Add a quote'
+        fields:
+          -
+            handle: quote
+            field:
+              buttons:
+                - bold
+                - removeformat
+              smart_typography: false
+              save_html: false
+              inline: false
+              toolbar_mode: fixed
+              reading_time: false
+              word_count: false
+              fullscreen: true
+              allow_source: true
+              enable_input_rules: true
+              enable_paste_rules: true
+              remove_empty_nodes: false
+              antlers: false
+              link_noopener: false
+              link_noreferrer: false
+              target_blank: false
+              always_show_set_button: false
+              collapse: false
+              previews: true
+              type: bard
+              display: Quote
+              icon: bard
+              localizable: true
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: hidden
+              required: false
+              localizable: false
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: parent
+            field:
+              type: entries
+              collections:
+                - team
+              max_items: 1
+              listable: false
+              localizable: true
+title: Team

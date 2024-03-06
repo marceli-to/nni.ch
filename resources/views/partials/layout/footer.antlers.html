@@ -9,7 +9,7 @@
       </div>
       <div class="col-span-8 md:col-span-3 md:order-1 flex flex-col justify-between">
         <div>
-          <strong>{{ contact_info:name }}</strong>
+          <span class="font-meta-bold">{{ contact_info:name }}</span>
         </div>
         <address class="not-italic">
           {{ contact_info:address | nl2br }}
@@ -18,14 +18,16 @@
           <a 
             href="tel:{{ contact_info:phone }}"
             title="{{ "Rufen Sie uns an" | trans }}"
-            target="_blank">
+            target="_blank"
+            class="hover:text-graphite transition-colors">
             {{ contact_info:phone }}
           </a>
           <br>
           <a 
             href="mailto:{{ contact_info:email }}"
             title="{{ "E-Mail senden" | trans }}"
-            target="_blank">
+            target="_blank"
+            class="hover:text-graphite transition-colors">
             {{ contact_info:email }}
           </a>
         </div>
