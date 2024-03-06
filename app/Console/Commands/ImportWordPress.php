@@ -38,7 +38,6 @@ class ImportWordPress extends Command
       ->limit(5)
       ->get();
 
-
     foreach ($posts as $post)
     {
       $user_email = $post->author->user_email;

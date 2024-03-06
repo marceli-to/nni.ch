@@ -1,13 +1,13 @@
 <footer class="bg-white py-80">
   {{ partial:blocks/inner }}
     <div class="grid grid-cols-12 gap-x-20">
-      <div class="col-span-12 xl:col-span-6 xl:order-2 mb-60 xl:mb-0 flex flex-col justify-center">
+      <div class="col-span-12 md:col-span-6 md:order-2 mb-60 md:mb-0 flex flex-col justify-center">
         <div class="flex flex-col items-center gap-y-15">
           <p>{{ "Kommen Sie auf einen Kaffee vorbei." | trans }}</p>
           {{ partial:buttons/contact }}
         </div>
       </div>
-      <div class="col-span-8 xl:col-span-3 xl:order-1 flex flex-col justify-between">
+      <div class="col-span-8 md:col-span-3 md:order-1 flex flex-col justify-between">
         <div>
           <strong>{{ contact_info:name }}</strong>
         </div>
@@ -30,15 +30,15 @@
           </a>
         </div>
       </div>
-      <div class="col-span-4 xl:col-span-3 xl:order-3">
-        {{ partial:components/social-media-channels class="hidden xl:flex justify-end" }}
+      <div class="col-span-4 md:col-span-3 md:order-3">
+        {{ partial:components/social-media-channels class="hidden md:flex justify-end" }}
         {{ partial:menu/footer/wrapper }}
       </div>
     </div>
 
     <div class="grid grid-cols-12 gap-x-20 mt-40">
       <div class="col-span-8 flex flex-col justify-between">
-        {{ partial:components/social-media-channels class="flex xl:hidden" }}
+        {{ partial:components/social-media-channels class="flex md:hidden" }}
         <span class="text-mini xl:text-xs font-meta-medium">
           &copy; Copyright {{ current_date | format('Y') }} Nightnurse
         </span>

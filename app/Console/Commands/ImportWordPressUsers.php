@@ -44,7 +44,6 @@ class ImportWordPressUsers extends Command
       $user->save();
     }
     
-    
-    return 'WordPress tags successfully retrieved';
+    return 'WordPress users successfully retrieved';
   }
 }
