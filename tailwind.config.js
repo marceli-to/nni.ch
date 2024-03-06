@@ -23,12 +23,15 @@ export default {
       },
 
       fontFamily: {
+        'meta-bold': ['MetaProBold', ...defaultTheme.fontFamily.sans],
         'meta-medium': ['MetaProMedium', ...defaultTheme.fontFamily.sans],
         'meta-regular': ['MetaProRegular', ...defaultTheme.fontFamily.sans],
         'meta-light': ['MetaProLight', ...defaultTheme.fontFamily.sans],
       },
 
       fontSize: {
+        // mini, 13px
+        'mini': '0.8125rem', // 13px
         'tiny': '0.875rem',  // 14px
         'xxs': '0.9375rem',  // 15px
         'xs': '1rem',       // 16px

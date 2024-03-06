@@ -21,6 +21,10 @@ html {
 body {
 }
 
+strong {
+  @apply font-meta-bold
+}
+
 @keyframes fadeOutLeft {
   0% {
     opacity: 1;
