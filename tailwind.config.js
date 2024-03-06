@@ -19,7 +19,7 @@ export default {
       },
 
       maxWidth: {
-        page: '1200px',
+        page: '1440px',
       },
 
       fontFamily: {

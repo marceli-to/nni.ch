@@ -1,0 +1,38 @@
+<div class="flex justify-center gap-x-25 mt-100">
+  {{ if social_media_accounts:facebook }}
+    <a 
+      href="{{ social_media_accounts:facebook }}" 
+      target="_blank" 
+      title="{{ "Nightnurse auf Facebook" | trans }}"
+      class="hover:text-graphite transition-colors">
+      {{ partial:icons/facebook }}
+    </a>
+  {{ /if }}
+  {{ if social_media_accounts:pinterest }}
+    <a 
+      href="{{ social_media_accounts:pinterest }}" 
+      target="_blank" 
+      title="{{ "Nightnurse auf Pinterest" | trans }}"
+      class="hover:text-graphite transition-colors">
+      {{ partial:icons/pinterest }}
+    </a>
+  {{ /if }}
+  {{ if social_media_accounts:linkedin }}
+    <a 
+      href="{{ social_media_accounts:linkedin }}" 
+      target="_blank" 
+      title="{{ "Nightnurse auf LinkedIn" | trans }}"
+      class="hover:text-graphite transition-colors">
+      {{ partial:icons/linkedin }}
+    </a>
+  {{ /if }}
+  {{ if social_media_accounts:instagram }}
+    <a 
+      href="{{ social_media_accounts:instagram }}" 
+      target="_blank" 
+      title="{{ "Nightnurse auf Instagram" | trans }}"
+      class="hover:text-graphite transition-colors">
+      {{ partial:icons/instagram }}
+    </a>
+  {{ /if }}
+</div> 

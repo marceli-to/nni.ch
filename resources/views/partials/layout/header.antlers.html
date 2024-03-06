@@ -5,7 +5,7 @@
     <a 
       href="{{ site:url }}" 
       title="Home">
-      {{ partial:icons/logo class="w-26 h-auto" }}
+      {{ partial:icons/logo class="w-26 xl:w-32 h-auto" }}
     </a>
 
     <a 
@@ -14,7 +14,7 @@
       title="{{ "Menü anzeigen" | trans }}"
       :class="{ 'is-active': menu === true }"
       class="group">
-      {{ partial:icons/burger class="w-28 h-auto" }}
+      {{ partial:icons/burger class="w-28 xl:w-32 h-auto" }}
     </a>
 
   {{ /partial:blocks/inner }}

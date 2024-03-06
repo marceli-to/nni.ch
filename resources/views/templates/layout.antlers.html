@@ -3,18 +3,14 @@
 {{ partial:layout/body }}
 
   {{ slot:header }}
-
     {{ partial:layout/header }}
-    
   {{ /slot:header }}
 
   {{ partial:layout/main }}
 
-    {{ template_content }}
-
-  {{ /partial:layout/main }}
-
-  {{ partial:layout/footer }}
+  {{ slot:footer }}
+    {{ partial:layout/footer }}
+  {{ /slot:footer }}
 
 {{ /partial:layout/body }}
 

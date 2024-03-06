@@ -1,13 +1,16 @@
-<nav class="text-md text-right absolute bottom-8 right-35">
+<nav class="text-md xl:text-lg text-right absolute bottom-8 xl:bottom-18 right-0">
   <ul class="font-meta-medium uppercase flex items-center leading-none gap-x-8">
-    <li>
-      <a href="" title="DE">De</a>
-    </li>
-    <li>
-      <span class="block text-sm -mt-2">|</span>
-    </li>
-    <li>
-      <a href="" title="EN">En</a>
-    </li>
+    {{ locales }}
+      <li>
+        <a href="{{ permalink }}" title="{{ locale:locale }}">
+          {{ locale:locale }}
+        </a>
+      </li>
+      {{ if !last }}
+      <li>
+        <span class="block text-sm -mt-2">|</span>
+      </li>
+      {{ /if }}
+    {{ /locales }}
   </ul>
 </nav>

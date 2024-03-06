@@ -17,3 +17,46 @@ tabs:
               visibility: visible
               replicator_preview: true
               hide_display: false
+              localizable: false
+          -
+            handle: facebook
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: Facebook
+              icon: text
+              localizable: false
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: linkedin
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: LinkedIn
+              icon: text
+              localizable: false
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: pinterest
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: Pinterest
+              icon: text
+              localizable: false
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
