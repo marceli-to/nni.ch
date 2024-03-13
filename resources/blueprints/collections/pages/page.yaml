@@ -132,6 +132,19 @@ tabs:
               replicator_preview: true
               hide_display: false
               localizable: false
+          -
+            handle: snap_scroll
+            field:
+              default: false
+              type: toggle
+              display: 'Snap scroll'
+              icon: toggle
+              localizable: false
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
   sidebar:
     display: Sidebar
     sections:
