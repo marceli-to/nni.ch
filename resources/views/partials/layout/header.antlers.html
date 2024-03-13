@@ -1,10 +1,11 @@
-<header class="fixed left-0 top-0 z-50 w-full py-30">
-
+<header class="fixed left-0 top-0 z-50 w-full py-30" data-theme="{{ theme ?? 'light' }}">
   {{ partial:blocks/inner class="flex items-center justify-between" }}
   
     <a 
       href="{{ site:url }}" 
-      title="Home">
+      title="Home"
+      :class="{ 'is-active': menu === true }"
+      class="group">
       {{ partial:icons/logo class="w-26 xl:w-32 h-auto" }}
     </a>
 

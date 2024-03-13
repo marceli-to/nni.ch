@@ -5,36 +5,6 @@ tabs:
       -
         fields:
           -
-            handle: organisation
-            field:
-              input_type: text
-              antlers: false
-              type: text
-              display: Organisation
-              icon: text
-              listable: hidden
-              instructions_position: above
-              visibility: visible
-              replicator_preview: true
-              hide_display: false
-              validate:
-                - required
-          -
-            handle: firstname
-            field:
-              input_type: text
-              antlers: false
-              type: text
-              display: Vorname
-              icon: text
-              listable: hidden
-              instructions_position: above
-              visibility: visible
-              replicator_preview: true
-              hide_display: false
-              validate:
-                - required
-          -
             handle: name
             field:
               input_type: text
@@ -49,6 +19,7 @@ tabs:
               hide_display: false
               validate:
                 - required
+              localizable: false
           -
             handle: email
             field:
@@ -65,28 +36,17 @@ tabs:
               validate:
                 - required
                 - email
+              localizable: false
           -
-            handle: phone
-            field:
-              input_type: tel
-              antlers: false
-              type: text
-              display: Telefon
-              icon: text
-              listable: hidden
-              instructions_position: above
-              visibility: visible
-              replicator_preview: true
-              hide_display: false
-          -
-            handle: remarks
+            handle: message
             field:
               antlers: false
               type: textarea
-              display: Bemerkungen
+              display: Nachricht
               icon: textarea
               listable: hidden
               instructions_position: above
               visibility: visible
               replicator_preview: true
               hide_display: false
+              localizable: false

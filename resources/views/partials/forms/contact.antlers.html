@@ -1,0 +1,38 @@
+{{ form:contact_form class="" }}
+
+  {{ if errors }}
+    {{ partial:forms/elements/errors }}
+  {{ /if }}
+
+  {{ if success }}
+    {{ partial:forms/elements/success }}
+    {{ if form_response:contact_form_response }}
+      {{ form_response:contact_form_response | nl2br }}
+    {{ else }}
+      Vielen Dank für Ihre Anfrage.
+    {{ /if }}
+    {{ /partial:forms/elements/success }}
+  {{ /if }}
+
+  <input type="text" name="webs1te" class="hidden" />
+  <div class="space-y-30 xl:space-y-45">
+    <div class="">
+      <input type="text" name="name" value="" placeholder="{{ "Name" | trans }}">
+    </div>
+    <div class="">
+      <input type="email" name="email" value="" placeholder="{{ "E-Mail" | trans }}"
+    </div>
+    <div class="mt-15 xl:mt-30">
+      <textarea name="message" rows="5" placeholder="{{ "Ihre Nachricht" | trans }}"></textarea>
+    </div>
+        
+    <div class="mt-30">
+      <button class="uppercase font-meta-medium">
+        Abschicken
+      </button>
+    </div>
+
+  </div>
+
+
+{{ /form:contact_form }}

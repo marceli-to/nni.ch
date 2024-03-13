@@ -1,0 +1,14 @@
+{{ partial:layout/head }}
+
+{{ partial:layout/body }}
+
+  {{ slot:header }}
+    {{ partial:layout/header theme="dark" }}
+  {{ /slot:header }}
+
+  {{ partial:layout/main }}
+
+{{ /partial:layout/body }}
+
+</html>
+{{ partial:layout/credits }}

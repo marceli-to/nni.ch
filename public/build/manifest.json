@@ -1,6 +1,6 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-cc53abdd.css",
+    "file": "assets/app-d98b66bd.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -37,8 +37,18 @@
     "src": "resources/css/fonts/MetaPro.woff2"
   },
   "resources/js/app.js": {
-    "file": "assets/app-ad95a615.js",
+    "file": "assets/app-154cb3de.js",
     "isEntry": true,
     "src": "resources/js/app.js"
+  },
+  "resources/js/map.js": {
+    "file": "assets/map-5de5b791.js",
+    "isEntry": true,
+    "src": "resources/js/map.js"
+  },
+  "resources/js/snap.js": {
+    "file": "assets/snap-bd5c3876.js",
+    "isEntry": true,
+    "src": "resources/js/snap.js"
   }
 }

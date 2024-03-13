@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ site:short_locale }}" class="scroll-smooth overflow-y-auto">
+<html lang="{{ site:short_locale }}" class="scroll-smooth overflow-y-hidden">
 <head>
 <meta charset="utf-8">
 {{ if is_homepage }}<title>Nightnurse Images</title>{{ else }}<title>{{ open_graph_title ?? title ?? site:name }} | Nightnurse Images</title>{{ endif }}
@@ -26,4 +26,4 @@
 <meta name="theme-color" content="#ffffff">
 {{ vite src="resources/css/app.css" }}
 </head>
-{{# {{ partial:layout/breakpoints }} #}}
+{{ partial:layout/breakpoints }}

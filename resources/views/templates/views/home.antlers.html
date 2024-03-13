@@ -1,0 +1,56 @@
+<div 
+  class="relative h-screen scroll-smooth overflow-y-auto snap-y snap-mandatory w-full"
+  data-scroll-container>
+  <section data-theme="dark" class="min-h-screen snap-start relative bg-black flex justify-center items-center">
+    {{ partial:media/video/video dim="true" }}
+  </section>
+  <section data-theme="light" class="min-h-screen snap-start bg-yellow-200 text-white flex justify-center items-center">
+    <div class="py-60">
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+    </div>
+  </section>
+  <section data-theme="dark" class="min-h-screen snap-start bg-blue-900 flex justify-center items-center">
+    <h1>Section 3</h1>
+  </section>
+  <section data-theme="dark" class="snap-start">
+    {{ partial:layout/footer }}
+  </section>
+</div>
+
+<script>
+  function changeTheme() {
+    const sections = document.querySelectorAll('section[data-theme]');
+    sections.forEach(section => {
+      if (section.getBoundingClientRect().top < window.innerHeight / 2) {
+        const theme = section.getAttribute('data-theme');
+        const header = document.querySelector('header[data-theme]');
+        header.setAttribute('data-theme', theme);
+      }
+    });
+  }
+  // add a listener to the 'data-scroll-container' element
+  document.querySelector('[data-scroll-container]').addEventListener('scroll', changeTheme);
+
+</script>

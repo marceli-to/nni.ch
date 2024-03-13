@@ -1,0 +1,11 @@
+input[type=text],
+input[type=email],
+input[type=tel],
+textarea,
+select {
+  @apply w-full bg-transparent border-b-2 border-silver pb-10 !ring-0 focus:outline-none focus:!ring-0 !shadow-none placeholder:text-black
+}
+
+textarea {
+  @apply min-h-[150px] py-10
+}

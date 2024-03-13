@@ -4,6 +4,7 @@
 
 @import "typo/webfonts.css";
 @import "components/headings.css";
+@import "components/forms.css";
 @import "components/video.css";
 @import "utils.css";
 
@@ -23,6 +24,15 @@ body {
 
 strong {
   @apply font-meta-medium font-medium
+}
+
+/* Theming */
+[data-theme="light"] [data-theme-item] {
+  @apply text-black transition-colors
+}
+
+[data-theme="dark"] [data-theme-item] {
+  @apply text-white transition-colors
 }
 
 @keyframes fadeOutLeft {

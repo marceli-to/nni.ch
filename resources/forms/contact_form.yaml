@@ -4,8 +4,8 @@ email:
   -
     id: lptkqymo
     to: m@marceli.to
-    from: noreply@mihmfoundation.org
-    reply_to: noreply@mihmfoundation.org
-    subject: 'Kontaktformular mihmfoundation.org'
-    html: templates/email/html/contact
-    text: templates/email/text/contact
+    from: beeper@nightnurse.ch
+    reply_to: beeper@nightnurse.ch
+    subject: 'Kontaktformular nightnurse.ch'
+    html: templates/views/email/html/contact
+    text: templates/views/email/text/contact

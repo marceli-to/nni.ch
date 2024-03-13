@@ -63,6 +63,6 @@
     video.classList.remove('hidden');
   };
 
-  init();
+  // init();
   
 })();
