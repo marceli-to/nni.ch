@@ -27,11 +27,11 @@ strong {
 }
 
 /* Theming */
-[data-theme="light"] [data-theme-item] {
+[data-icon-theme="light"] svg[data-icon-theme] {
   @apply text-black transition-colors
 }
 
-[data-theme="dark"] [data-theme-item] {
+[data-icon-theme="dark"] svg[data-icon-theme] {
   @apply text-white transition-colors
 }
 
