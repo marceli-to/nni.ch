@@ -1,4 +1,54 @@
-<div 
+{{# <div 
+  class="relative min-h-screen w-full"
+  data-section-container>
+  <section 
+    data-snap-panel
+    data-section-theme="dark" 
+    class="min-h-screen relative bg-black flex justify-center items-center">
+    {{ partial:media/video/video dim="true" }}
+  </section>
+  <section 
+    data-section-theme="light" 
+    class="min-h-screen overflow-hidden bg-yellow-200 text-white flex justify-center items-center">
+    <div class="py-60">
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+      <h1>Section 2</h1>
+    </div>
+  </section>
+  <section 
+    data-snap-panel
+    data-section-theme="dark" 
+    class="min-h-screen bg-blue-900 flex justify-center items-center">
+    <h1>Section 3</h1>
+  </section>
+  <section data-section-theme="dark" class="h-auto">
+    {{ partial:layout/footer }}
+  </section>
+</div>
+{{ vite src="resources/js/snap.js" }} #}}
+
+{{# <div 
   class="relative min-h-screen w-full"
   data-section-container>
   <section 
@@ -40,22 +90,23 @@
     class="h-screen bg-blue-900 flex justify-center items-center" data-snap-panel>
     <h1>Section 3</h1>
   </section>
-  {{# <section data-section-theme="dark" class="h-auto">
+  <section data-section-theme="dark" class="h-auto">
     {{ partial:layout/footer }}
-  </section> #}}
+  </section>
 </div>
-{{ vite src="resources/js/snap.js" }}
-{{# <div 
+{{ vite src="resources/js/snap.js" }} #}}
+
+<div 
   class="relative h-screen scroll-smooth overflow-y-auto snap-y snap-mandatory w-full"
   data-section-container>
   <section 
     data-section-theme="dark" 
-    class="h-screen relative bg-black flex justify-center items-center">
+    class="min-h-screen snap-start relative bg-black flex justify-center items-center">
     {{ partial:media/video/video dim="true" }}
   </section>
   <section 
     data-section-theme="light" 
-    class="h-screen bg-yellow-200 text-white flex justify-center items-center">
+    class="min-h-screen snap-start bg-yellow-200 text-white flex justify-center items-center">
     <div class="py-60">
       <h1>Section 2</h1>
       <h1>Section 2</h1>
@@ -84,10 +135,44 @@
   </section>
   <section 
     data-section-theme="dark" 
-    class="h-screen bg-blue-900 flex justify-center items-center">
+    class="min-h-screen snap-start bg-blue-900 flex justify-center items-center">
     <h1>Section 3</h1>
   </section>
   <section data-section-theme="dark" class="snap-start">
     {{ partial:layout/footer }}
   </section>
-</div> #}}
+</div>
+<div class="fixed top-10 right-20 bg-green-100 inline-block w-auto p-5 z-50 text-xxs">
+  Section <span data-section-number>1</span> active
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('section');
+    const container = document.querySelector('[data-section-container]');
+
+    let currentActive = -1; // To keep track of the current active section
+
+    container.addEventListener('scroll', () => {
+        const currentScroll = container.scrollTop + container.offsetHeight / 2; // Middle of the screen
+        sections.forEach((section, index) => {
+          if (section.offsetTop <= currentScroll && section.offsetTop + section.offsetHeight > currentScroll) {
+            if (currentActive !== index) {
+              // Remove active class from all sections
+              sections.forEach(sec => sec.classList.remove('active'));
+              // Add active class to the current section
+              section.classList.add('active');
+
+              // Trigger any animation or style changes here
+              console.log(`Section ${index + 1} is active`);
+
+              currentActive = index;
+
+              // update data-section-number with the current section number
+              document.querySelector('[data-section-number]').textContent = index + 1;
+            }
+          }
+        });
+    });
+});
+
+</script>

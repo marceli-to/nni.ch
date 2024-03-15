@@ -1,47 +1,59 @@
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin';
+(function () {
+  // Selectors
+  const selectors = {
+    panels: '[data-snap-panel]',
+  };
 
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+  // Debounce delay in milliseconds
+  const debounceDelay = 100;
 
-let panels = gsap.utils.toArray("[data-snap-panel]"),
-    observer = ScrollTrigger.normalizeScroll(true),
-    scrollTween;
+  const init = () => {
+    // Get all panels
+    const panels = Array.from(document.querySelectorAll(selectors.panels));
 
-// on touch devices, ignore touchstart events if there's an in-progress tween so that touch-scrolling doesn't interrupt and make it wonky
-document.addEventListener("touchstart", e => {
-  if (scrollTween) {
-    e.preventDefault();
-    e.stopImmediatePropagation();
-  }
-}, {capture: true, passive: false})
+    // Initialize a flag to prevent multiple scrolls to the same panel
+    let isScrollingToPanel = false;
 
-function goToSection(i) {
-  scrollTween = gsap.to(window, {
-    scrollTo: {y: i * innerHeight, autoKill: false},
-    onStart: () => {
-      observer.disable(); // for touch devices, as soon as we start forcing scroll it should stop any current touch-scrolling, so we just disable() and enable() the normalizeScroll observer
-      observer.enable();
-    },
-    duration: 1,
-    onComplete: () => scrollTween = null,
-    overwrite: true
-  });
-}
+    // Listen for scroll events on the window, debounced
+    window.addEventListener('scroll', debounce(() => {
+      if (isScrollingToPanel) return;
 
-panels.forEach((panel, i) => {
-  ScrollTrigger.create({
-    trigger: panel,
-    start: "top bottom",
-    end: "+=199%",
-    onToggle: self => self.isActive && !scrollTween && goToSection(i)
-  });
-});
+      // Check each panel to see if it is entering the viewport from the bottom
+      for (const panel of panels) {
+        if (isEnteringViewportFromBottom(panel)) {
+          isScrollingToPanel = true; // Set the flag to prevent multiple scrolls
 
-// just in case the user forces the scroll to an inbetween spot (like a momentum scroll on a Mac that ends AFTER the scrollTo tween finishes):
-ScrollTrigger.create({
-  start: 0, 
-  end: "max",
-  snap: 1 / (panels.length - 1)
-})
+          // Scroll to the page so the panel is at the top of the viewport 
+          window.scrollTo({
+            top: panel.offsetTop,
+            behavior: 'smooth',
+          });
+          // Reset the flag after the scroll animation completes (assume 1 second for smooth scroll)
+          setTimeout(() => {
+            isScrollingToPanel = false;
+          }, 1000);
+          break; // Stop checking once the first panel entering from bottom is found and scrolled into view
+        }
+      }
+    }, debounceDelay));
+  };
 
+  // Helper function to check if an element is entering the viewport from the bottom
+  const isEnteringViewportFromBottom = (element) => {
+    const rect = element.getBoundingClientRect();
+    return rect.bottom > 0 && rect.top < window.innerHeight && rect.top > 0;
+  };
+
+  // Debounce function to limit the rate at which a function is executed
+  const debounce = (func, wait) => {
+    let timeout;
+    return function executedFunction(...args) {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        func.apply(this, args);
+      }, wait);
+    };
+  };
+
+  //init();
+})();
