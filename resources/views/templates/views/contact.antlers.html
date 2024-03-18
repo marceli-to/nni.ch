@@ -15,7 +15,14 @@
         <strong>{{ contact_info:name }}</strong>
       </div>
       <address class="not-italic mt-15 xl:mt-30">
-        {{ contact_info:address | nl2br }}
+        <a 
+          href="https://maps.app.goo.gl/K69DRCSEf2mpLJia7" 
+          target="_blank" 
+          rel="noopener" 
+          title="{{ "Auf Google Maps anzeigen" | trans }}"
+          class="hover:text-graphite transition-colors">
+          {{ contact_info:address | nl2br }}
+        </a>
       </address>
       <div class="mt-15 xl:mt-30">
         <a 
