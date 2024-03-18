@@ -2,10 +2,9 @@
 <style>
 @media (prefers-color-scheme: dark) {
 .path { fill: #ffffff }
-.rect { fill: #000; }
 }
 </style>
-<rect class="rect" width="430" height="480" fill="#ffffff"/>
+<rect class="rect" width="430" height="480" fill="transparent"/>
 <path class="path" d="M87.2339 0L0 109.149V480L87.2339 370.958V0Z" fill="black"/>
 <path class="path" d="M312.695 463.002L116.419 182.913V17.1047L312.695 297.087V463.002Z" fill="black"/>
 <path class="path" d="M429.114 0L341.88 109.149V480L429.114 370.958V0Z" fill="black"/>
