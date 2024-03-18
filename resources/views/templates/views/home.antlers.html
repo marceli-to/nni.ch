@@ -10,35 +10,37 @@
     class="md:min-h-screen md:snap-start relative">
     <a name="portfolio"></a>
     {{ partial:layout/blocks/inner }}
-    <div class="grid grid-cols-12 gap-20 pt-150">
-      <div class="col-span-4">
 
-        <div class="mb-175">
-          {{ partial:components/headings/h2 class="leading-[1.2]" }}
-            Projekte<br><strong>realisieren</strong>
+    <div class="grid grid-cols-12 gap-x-20 xl:gap-x-50 pt-90 xl:pt-150">
+      <div class="col-span-full md:col-span-4">
+
+        <div class="mb-45 md:mb-60 lg:mb-90 xl:mb-175 xl:max-w-[400px]">
+          {{ partial:components/headings/h2 class="mb-10 xl:mb-30" }}
+            Projekte <strong>realisieren</strong>
           {{ /partial:components/headings/h2 }}
+          {{ partial:components/buttons/more title="Zum Portfolio" }}
         </div>
-        <figure class="relative xl:-translate-x-[50px]">
+
+        <figure class="w-full mb-15 md:mb-0 relative translate-x-[35px] md:-translate-x-[50px]">
           <img src="/assets/projects/nightnurse-images-projekt-3.jpg" class="w-full h-auto" alt="Projekt 1">
         </figure>
 
-        <figure class="mt-30">
+        <figure class="w-full mb-15 md:mb-0 md:mt-20 relative -translate-x-[35px] md:-translate-x-[0px] xl:translate-x-[30px]">
           <img src="/assets/projects/nightnurse-images-projekt-4.jpg" class="w-full h-auto" alt="Projekt 1">
         </figure>
-
       </div>
-      <div class="col-span-8">
-        <figure class="xl:max-w-[90%] xl:-translate-x-[50px]">
+
+      <div class="col-span-full md:col-span-8">
+        <figure class="w-full mb-15 relative pl-30 lg:max-w-[90%] xl:max-w-none md:-translate-x-[50px] xl:-translate-x-[110px]">
           <img src="/assets/projects/nightnurse-images-projekt-1.jpg" class="w-full h-auto " alt="Projekt 1">
         </figure>
-        <figure class="xl:mt-120 xl:ml-50 xl:max-w-[60%]">
+        <figure class="w-full mb-15 relative pr-60 md:mt-45 xl:mt-120 md:ml-50 md:max-w-[80%] lg:max-w-[60%] xl:max-w-[70%]">
           <img src="/assets/projects/nightnurse-images-projekt-2.jpg" class="w-full h-auto " alt="Projekt 1">
         </figure>
       </div>
     </div>
     {{ /partial:layout/blocks/inner }}
   </section>
-
 
   <section data-section-theme="light" class="md:snap-center">
     {{ partial:layout/footer }}
