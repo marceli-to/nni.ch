@@ -1,6 +1,6 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-b825bfe7.css",
+    "file": "assets/app-6d3130a8.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -37,7 +37,7 @@
     "src": "resources/css/fonts/MetaPro.woff2"
   },
   "resources/js/app.js": {
-    "file": "assets/app-9f70fd5c.js",
+    "file": "assets/app-4556f9af.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   },

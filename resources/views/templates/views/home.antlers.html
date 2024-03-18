@@ -1,5 +1,5 @@
 <div 
-  class="relative md:h-screen w-full md:scroll-smooth md:overflow-y-auto md:snap-y md:snap-mandatory"
+  class="relative md:h-screen w-full {{ snap_scroll ? 'md:scroll-smooth md:overflow-y-auto md:snap-y md:snap-mandatory' : '' }}"
   data-section-container>
   {{ page_elements }}
   {{ partial:elements }}
@@ -10,12 +10,32 @@
     class="md:min-h-screen md:snap-start relative">
     {{ partial:layout/blocks/inner }}
     <div class="grid grid-cols-12 gap-20 py-150">
-      <div class="col-span-4 min-h-[calc(100vh_-_300px)] bg-yellow-100">
-        {{ partial:components/headings/h2 class="leading-[1.2]" }}
-          Projekte <strong>realisieren</strong>
-        {{ /partial:components/headings/h2 }}
+      <div class="col-span-4">
+
+        <div class="mb-175">
+          {{ partial:components/headings/h2 class="leading-[1.2]" }}
+            Projekte<br><strong>realisieren</strong>
+          {{ /partial:components/headings/h2 }}
+        </div>
+        <figure class="relative xl:-translate-x-[50px]">
+          <img src="/assets/projects/nightnurse-images-projekt-3.jpg" class="w-full h-auto" alt="Projekt 1">
+        </figure>
+
+        <figure class="mt-30">
+          <img src="/assets/projects/nightnurse-images-projekt-4.jpg" class="w-full h-auto" alt="Projekt 1">
+        </figure>
+
       </div>
-      <div class="col-span-8 min-h-[calc(100vh_-_300px)] bg-yellow-100"></div>
+      <div class="col-span-8">
+        <figure class="xl:max-w-[90%] xl:-translate-x-[50px]">
+          <img src="/assets/projects/nightnurse-images-projekt-1.jpg" class="w-full h-auto " alt="Projekt 1">
+        </figure>
+        <figure class="xl:mt-120 xl:ml-50 xl:max-w-[60%]">
+          <img src="/assets/projects/nightnurse-images-projekt-2.jpg" class="w-full h-auto " alt="Projekt 1">
+        </figure>
+
+
+      </div>
     </div>
     {{ /partial:layout/blocks/inner }}
   </section>
