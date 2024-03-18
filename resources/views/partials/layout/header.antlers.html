@@ -1,12 +1,12 @@
 <header class="fixed left-0 top-0 z-50 w-full py-30" data-icon-theme="{{ theme ?? 'light' }}">
-  {{ partial:blocks/inner class="flex items-center justify-between" }}
+  {{ partial:layout/blocks/inner class="flex items-center justify-between" }}
   
     <a 
       href="{{ site:url }}" 
       title="Home"
       :class="{ 'is-active': menu === true }"
       class="group">
-      {{ partial:icons/logo class="w-26 xl:w-32 h-auto" }}
+      {{ partial:components/icons/logo class="w-26 xl:w-32 h-auto" }}
     </a>
 
     <a 
@@ -15,10 +15,10 @@
       title="{{ "Menü anzeigen" | trans }}"
       :class="{ 'is-active': menu === true }"
       class="group">
-      {{ partial:icons/burger class="w-28 xl:w-32 h-auto" }}
+      {{ partial:components/icons/burger class="w-28 xl:w-32 h-auto" }}
     </a>
 
-  {{ /partial:blocks/inner }}
+  {{ /partial:layout/blocks/inner }}
 
 </header>
 

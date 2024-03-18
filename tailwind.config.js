@@ -19,7 +19,8 @@ export default {
       },
 
       maxWidth: {
-        page: '1440px',
+        page: '1600px',
+        menu: '1080px',
       },
 
       fontFamily: {
@@ -306,6 +307,11 @@ export default {
       '248': '15.5rem',
       '249': '15.5625rem',
       '250': '15.625rem',
+      '260': '16.25rem',
+      '270': '16.875rem',
+      '280': '17.5rem',
+      '290': '18.125rem',
+      '300': '18.75rem',
     }
   },
 

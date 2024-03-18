@@ -1,0 +1,25 @@
+title: 'Section theme'
+fields:
+  -
+    handle: section_theme
+    field:
+      options:
+        light: Light
+        dark: Dark
+      taggable: false
+      push_tags: false
+      multiple: false
+      clearable: false
+      searchable: true
+      cast_booleans: false
+      default: light
+      type: select
+      display: 'Section theme'
+      icon: select
+      instructions: 'Set the sections theme. Light theme sets the icons to a dark color, dark theme to a light color.'
+      localizable: false
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false

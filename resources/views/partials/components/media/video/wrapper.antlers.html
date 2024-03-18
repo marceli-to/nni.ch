@@ -1,0 +1,16 @@
+{{ if video_overlay != 'none' }}
+  {{ partial:components/media/video/dimmer }}
+{{ /if }}
+<video 
+  poster="" 
+  class="relative md:absolute z-10 left-0 top-0 aspect-square md:aspect-video w-full h-full object-cover" 
+  muted 
+  autoplay 
+  playsinline 
+  data-video
+  data-video-source='{
+    "low": "{{ video_low }}",
+    "high": "{{ video_high }}"
+  }'>
+  <source src="{{ video_low }}" type="video/mp4">
+</video>

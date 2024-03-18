@@ -1,0 +1,81 @@
+title: Video
+fields:
+  -
+    handle: video_low
+    field:
+      mode: list
+      container: assets
+      restrict: false
+      allow_uploads: true
+      show_filename: true
+      show_set_alt: true
+      type: assets
+      display: 'Video (low)'
+      icon: assets
+      instructions: 'Add a low resolution video for small devices. The video format needs to be MP4'
+      localizable: false
+      listable: hidden
+      instructions_position: below
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      folder: video
+      width: 50
+      max_files: 1
+      validate:
+        - required
+  -
+    handle: video_high
+    field:
+      mode: list
+      container: assets
+      restrict: false
+      allow_uploads: true
+      show_filename: true
+      show_set_alt: true
+      type: assets
+      display: 'Video (high)'
+      icon: assets
+      instructions: 'Add a low resolution video for medium and large devices. The video format needs to be MP4.'
+      localizable: false
+      listable: hidden
+      instructions_position: below
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      folder: video
+      width: 50
+      max_files: 1
+      validate:
+        - required
+  -
+    handle: video_overlay
+    field:
+      options:
+        none: None
+        dim-10: 10%
+        dim-20: 20%
+        dim-30: 30%
+        dim-40: 40%
+        dim-50: 50%
+        dim-60: 60%
+        dim-70: 70%
+        dim-80: 80%
+        dim-90: 90%
+      taggable: false
+      push_tags: false
+      multiple: false
+      clearable: false
+      searchable: true
+      cast_booleans: false
+      default: dim-0
+      type: select
+      display: 'Video overlay opacity'
+      icon: select
+      instructions: 'Set video overlay opacity. Default is 0.'
+      localizable: false
+      listable: hidden
+      instructions_position: below
+      visibility: visible
+      replicator_preview: true
+      hide_display: false

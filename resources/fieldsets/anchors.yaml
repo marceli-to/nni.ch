@@ -1,0 +1,16 @@
+title: 'Page anchors'
+fields:
+  -
+    handle: anchors
+    field:
+      mode: dynamic
+      type: array
+      display: 'Page anchors'
+      icon: array
+      localizable: true
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      instructions: 'Set the anchors to the sections of the page as key/value pairs. The key must be the anchor set on the section, the value is the displayed link name.'

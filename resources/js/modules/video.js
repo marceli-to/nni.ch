@@ -18,17 +18,16 @@
   const resize = () => {
     // on resize switch the video source depending on the screen size. keep the video playing
     const video = document.querySelector(selectors.video);
-    const current = video.currentTime;
 
     // Only change source if the width crosses a defined threshold
     const width = window.innerWidth;
 
     if ((width < 768 && currentSource !== 'low') || (width >= 768 && currentSource !== 'high')) {
-      load(current);
+      load();
     }
   };
 
-  const load = (current = 0) => {
+  const load = () => {
     // get the video element
     const video = document.querySelector(selectors.video);
 
@@ -54,15 +53,12 @@
       return;
     }
     
-    video.src = `/assets/${source}`;
-
-    // move the video to the currentTime
-    video.currentTime = current;
+    video.src = `${source}`;
 
     // remove class 'hidden' from the video element
     video.classList.remove('hidden');
   };
 
-  // init();
+  init();
   
 })();

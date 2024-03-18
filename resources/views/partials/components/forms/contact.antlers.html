@@ -1,17 +1,17 @@
 {{ form:contact_form class="" }}
 
   {{ if errors }}
-    {{ partial:forms/elements/errors }}
+    {{ partial:components/forms/elements/errors }}
   {{ /if }}
 
   {{ if success }}
-    {{ partial:forms/elements/success }}
+    {{ partial:components/forms/elements/success }}
     {{ if form_response:contact_form_response }}
       {{ form_response:contact_form_response | nl2br }}
     {{ else }}
       Vielen Dank für Ihre Anfrage.
     {{ /if }}
-    {{ /partial:forms/elements/success }}
+    {{ /partial:components/forms/elements/success }}
   {{ /if }}
 
   <input type="text" name="webs1te" class="hidden" />
@@ -28,7 +28,7 @@
         
     <div class="mt-30 flex justify-end">
       <button class="uppercase font-meta-medium text-xs xl:text-md flex items-center leading-none group gap-x-10 xl:gap-x-15">
-        {{ partial:icons/arrow-right-short class="w-16 xl:w-20 h-auto group-hover:translate-x-5 transition-transform" }}
+        {{ partial:components/icons/arrow-right-short class="w-16 xl:w-20 h-auto group-hover:translate-x-5 transition-transform" }}
         <span>Senden</span>
       </button>
     </div>

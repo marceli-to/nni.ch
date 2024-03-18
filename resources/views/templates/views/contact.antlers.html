@@ -1,4 +1,4 @@
-{{ partial:partials/blocks/inner }}
+{{ partial:layout/blocks/inner }}
   <section class="grid grid-cols-12 gap-20 xl:gap-50 mt-100 xl:mt-200">
     <article class="content col-span-full md:col-span-8 xl:col-start-2">
       {{ page_elements }}
@@ -42,14 +42,14 @@
         </a>
       </div>
       <div class="mt-30 xl:mt-60">
-        {{ partial:components/social-media-channels }}
+        {{ partial:components/misc/social-media-channels }}
       </div>
     </div>
     <div class="col-span-full md:col-span-8 xl:col-span-5 order-2 md:order-2 mt-45 md:mt-0">
-      {{ partial:forms/contact }}
+      {{ partial:components/forms/contact }}
     </div>
   </section>
-{{ /partial:partials/blocks/inner }}
+{{ /partial:layout/blocks/inner }}
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCE1Y9Wa3ok7X-l7YUNJ8DMGf-DhAvvg3k&loading=async"></script>
 {{ vite src="resources/js/map.js" }}

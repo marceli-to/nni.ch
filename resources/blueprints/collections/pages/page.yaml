@@ -41,6 +41,13 @@ tabs:
                       fields:
                         -
                           import: editor
+                    intro:
+                      display: Intro
+                      instructions: 'Add an intro (Video/Image, Anchors)'
+                      icon: media-image-picture-orientation
+                      fields:
+                        -
+                          import: intro
               type: replicator
               display: Inhalte
               icon: replicator

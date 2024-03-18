@@ -1,0 +1,16 @@
+title: Fullscreen
+fields:
+  -
+    handle: is_fullscreen
+    field:
+      default: false
+      type: toggle
+      display: Fullscreen
+      icon: toggle
+      instructions: 'Set the section height to fullscreen. If set, the minimum height of the section is set to the current height of the users screen height.'
+      localizable: false
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false

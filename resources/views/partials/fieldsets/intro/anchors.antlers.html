@@ -1,0 +1,15 @@
+<nav class="hidden md:block mt-45 xl:mt-120">
+  <ul class="flex justify-center gap-x-50 xl:gap-x-100">
+  {{ foreach:anchors }}
+    <li>
+      <a 
+        href="#{{ key }}"
+        title="{{ value }}"
+        class="text-white font-meta-medium text-xxs xl:text-sm tracking-wide flex flex-col items-center group">
+        {{ value }}
+        {{ partial:components/icons/chevron-down class="mt-10 xl:mt-15 opacity-0 group-hover:opacity-100 transition-opacity w-16 xl:w-23 h-auto" }}
+      </a>
+    </li>
+  {{ /foreach:anchors}}
+  </ul>
+</nav>

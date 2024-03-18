@@ -1,10 +1,10 @@
 <footer class="bg-white py-80 xl:pt-240">
-  {{ partial:blocks/inner }}
+  {{ partial:layout/blocks/inner }}
     <div class="grid grid-cols-12 gap-x-20">
       <div class="col-span-12 md:col-span-6 md:order-2 mb-60 md:mb-0 flex flex-col justify-center">
         <div class="flex flex-col items-center gap-y-15">
           <p>{{ "Kommen Sie auf einen Kaffee vorbei." | trans }}</p>
-          {{ partial:buttons/contact }}
+          {{ partial:components/buttons/contact }}
         </div>
       </div>
       <div class="col-span-8 md:col-span-3 md:order-1 flex flex-col justify-between">
@@ -33,22 +33,22 @@
         </div>
       </div>
       <div class="col-span-4 md:col-span-3 md:order-3">
-        {{ partial:components/social-media-channels class="hidden md:flex justify-end" }}
+        {{ partial:components/misc/social-media-channels class="hidden md:flex justify-end" }}
         {{ partial:menu/footer/wrapper }}
       </div>
     </div>
 
     <div class="grid grid-cols-12 gap-x-20 mt-40">
       <div class="col-span-8 flex flex-col justify-between">
-        {{ partial:components/social-media-channels class="flex md:hidden" }}
-        <span class="text-mini xl:text-xs font-meta-medium">
-          &copy; Copyright {{ current_date | format('Y') }} {{ config:app:name }}
+        {{ partial:components/misc/social-media-channels class="flex md:hidden" }}
+        <span class="mt-15 md:mt-0 text-mini xl:text-xs font-meta-medium">
+          &copy; {{ current_date | format('Y') }} {{ config:app:name }}
         </span>
       </div>
       <div class="col-span-4">
         {{ partial:menu/privacy/wrapper }}
       </div>
     </div>
-  {{ /partial:blocks/inner }}
+  {{ /partial:layout/blocks/inner }}
 </footer>
 {{ vite src="resources/js/app.js" }}

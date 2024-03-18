@@ -1,0 +1,6 @@
+title: 'Section settings'
+fields:
+  -
+    import: is_fullscreen
+  -
+    import: section_theme
