@@ -11,7 +11,6 @@
     const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          console.log(entry.target.getAttribute('data-section-theme'));
           const theme = entry.target.getAttribute('data-section-theme');
           const header = document.querySelector(selectors.theme.header);
           header.setAttribute('data-icon-theme', theme);
