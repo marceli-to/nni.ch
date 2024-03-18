@@ -21,7 +21,7 @@
           {{ partial:components/buttons/more title="Zum Portfolio" }}
         </div>
 
-        <figure class="w-full mb-15 md:mb-0 relative translate-x-[35px] md:-translate-x-[50px]">
+        <figure class="w-full mb-15 md:mb-0 relative translate-x-[30px] md:-translate-x-[50px]">
           <img src="/assets/projects/nightnurse-images-projekt-3.jpg" class="w-full h-auto" alt="Projekt 1">
         </figure>
 
@@ -32,11 +32,22 @@
 
       <div class="col-span-full md:col-span-8">
         <figure class="w-full mb-15 relative pl-30 lg:max-w-[90%] xl:max-w-none md:-translate-x-[50px] xl:-translate-x-[110px]">
-          <img src="/assets/projects/nightnurse-images-projekt-1.jpg" class="w-full h-auto " alt="Projekt 1">
+          <img src="/assets/projects/nightnurse-images-projekt-1.jpg" class="w-full h-auto" alt="Projekt 1">
         </figure>
-        <figure class="w-full mb-15 relative pr-60 md:mt-45 xl:mt-120 md:ml-50 md:max-w-[80%] lg:max-w-[60%] xl:max-w-[70%]">
-          <img src="/assets/projects/nightnurse-images-projekt-2.jpg" class="w-full h-auto " alt="Projekt 1">
+        <figure class="w-full relative mb-15 md:mb-0 md:mt-45 xl:mt-120 md:ml-50 pr-60 md:max-w-[80%] lg:max-w-[60%] xl:max-w-[70%]">
+          <img src="/assets/projects/nightnurse-images-projekt-2.jpg" class="w-full h-auto" alt="Projekt 1">
         </figure>
+        <div class="ml-35 md:ml-50 mt-60 md:pr-60 max-w-[75%] md:max-w-[80%] lg:max-w-[60%] xl:max-w-[50%]">
+          <hr class="border-graphite opacity-80 mb-15 w-80">
+          <p>Ihre Ideen verdienen es, gesehen zu werden – bringen wir Ihr Projekt ins Rollen!</p>
+          <a 
+            href="{{ url }}"
+            class="text-sm xl:text-xl font-meta-medium uppercase tracking-wide mt-15 xl:mt-30 flex items-center gap-x-10 group"
+            title="{{ "Eigenes Projekt starten" | trans }}">
+            <span>{{ "Eigenes Projekt starten" | trans }}</span>
+            {{ partial:components/icons/arrow-right-long class="w-24 xl:w-32 h-auto group-hover:translate-x-5 transition-transform" }}
+          </a>
+        </div>
       </div>
     </div>
     {{ /partial:layout/blocks/inner }}
