@@ -26,9 +26,10 @@
       <textarea name="message" rows="5" placeholder="{{ "Ihre Nachricht" | trans }}"></textarea>
     </div>
         
-    <div class="mt-30">
-      <button class="uppercase font-meta-medium">
-        Abschicken
+    <div class="mt-30 flex justify-end">
+      <button class="uppercase font-meta-medium text-xs xl:text-md flex items-center leading-none group gap-x-10 xl:gap-x-15">
+        {{ partial:icons/arrow-right-short class="w-16 xl:w-20 h-auto group-hover:translate-x-5 transition-transform" }}
+        <span>Senden</span>
       </button>
     </div>
 
