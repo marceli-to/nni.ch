@@ -48,6 +48,10 @@ export default {
         '7xl': '4.375rem',   // 70px
       },
 
+      letterSpacing: {
+        widest: '.1em',
+      },
+
       colors: {
         'graphite': '#707070',
         'silver': '#E5E5E5',

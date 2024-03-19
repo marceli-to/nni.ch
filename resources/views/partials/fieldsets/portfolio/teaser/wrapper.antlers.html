@@ -1,9 +1,9 @@
+<a name="{{ anchor }}"></a>
 <section 
   data-section-theme="light" 
-  class="md:min-h-screen md:snap-start relative">
-  <a name="{{ anchor }}"></a>
+  class="relative md:min-h-screen {{ snap_scroll ? 'md:snap-start' : '' }}">
   {{ partial:layout/blocks/inner }}
-    <div class="grid grid-cols-12 gap-x-20 xl:gap-x-50 pt-90 xl:pt-150">
+    <div class="grid grid-cols-12 gap-x-20 xl:gap-x-50 pt-90 xl:pt-150 py-90 xl:py-150">
       <div class="col-span-full md:col-span-4">
 
         <div class="mb-45 md:mb-60 lg:mb-90 xl:mb-175 xl:max-w-[400px]">

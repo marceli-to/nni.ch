@@ -1,5 +1,5 @@
 {{ if type == 'editor' }}
-{{ content  }}
+  {{ content  }}
 {{ /if }}
 
 {{ if type == 'intro' }}
@@ -8,4 +8,8 @@
 
 {{ if type == 'teaser_portfolio' }}
   {{ partial:fieldsets/portfolio/teaser/wrapper }}
+{{ /if }}
+
+{{ if type == 'teasers_expertise' }}
+  {{ partial:fieldsets/expertise/teaser/wrapper }}
 {{ /if }}

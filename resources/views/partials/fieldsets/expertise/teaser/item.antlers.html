@@ -1,0 +1,21 @@
+<article class="grid grid-cols-12 gap-20 xl:gap-50">
+  <figure class="col-span-3 col-start-2 md:col-span-7 md:col-start-6 md:order-1 mb-20 md:mb-60 xl:mb-90">
+    <img 
+      src="{{ visual }}" 
+      width="{{ visual:width }}" 
+      height="{{ visual:height }}" 
+      alt="{{ title }}"
+      class="w-full md:max-w-[145px] xl:max-w-[165px] h-auto">
+  </figure>
+  <div class="col-span-12 md:col-span-5 md:order-2">
+    {{ partial:components/headings/h1 class="mb-25 leading-none" }}
+      {{ title }}
+    {{ /partial:components/headings/h1 }}
+  </div>
+  <div class="col-span-10 col-start-2 md:col-span-7 md:order-3">
+    {{ text }}
+    <div class="mt-20 md:mt-45 xl:mt-60">
+      {{ partial:components/buttons/more title="{{ cta_title }}" url="{{ cta_url }}" }}
+    </div>
+  </div>
+</article>

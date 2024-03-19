@@ -49,12 +49,19 @@ tabs:
                         -
                           import: intro
                     teaser_portfolio:
-                      display: 'Portfolio (Teaser)'
+                      display: 'Portfolio Teaser'
                       instructions: 'Add a set of images, a text and a link.'
                       icon: text-formatting-image-left
                       fields:
                         -
                           import: teaser_portfolio
+                    teasers_expertise:
+                      display: 'Expertise Teasers'
+                      instructions: 'Add teasers for expertise'
+                      icon: text-formatting-image-left
+                      fields:
+                        -
+                          import: teasers_expertise
               type: replicator
               display: Inhalte
               icon: replicator

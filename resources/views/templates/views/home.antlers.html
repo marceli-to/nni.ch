@@ -1,11 +1,8 @@
-<div 
-  class="relative md:h-screen w-full {{ snap_scroll ? 'md:scroll-smooth md:overflow-y-auto md:snap-y md:snap-mandatory' : '' }}"
-  data-section-container>
+<div class="relative w-full" data-section-container>
   {{ page_elements }}
-  {{ partial:elements }}
+    {{ partial:elements }}
   {{ /page_elements }}
-
-  <section data-section-theme="light" class="md:snap-center">
+  <section data-section-theme="light" class="{{ snap_scroll ? 'md:snap-center' : '' }}">
     {{ partial:layout/footer }}
   </section>
 </div>
