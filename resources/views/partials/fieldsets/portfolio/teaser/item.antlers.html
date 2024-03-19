@@ -4,21 +4,21 @@
   class="group">
   <figure class="relative">
     <picture>
-      <source media="(min-width: 768px)" srcset="{{ glide:image preset='lg-webp' }}" type="image/webp">
-      <source srcset="{{ glide:image preset='md-webp' }}" type="image/webp">
-      <source media="(min-width: 768px)" srcset="{{ glide:image preset='lg' }}" type="image/jpeg">
+      <source media="(min-width: 768px)" srcset="{{ glide:img preset='lg-webp' }}" type="img/webp">
+      <source srcset="{{ glide:img preset='md-webp' }}" type="img/webp">
+      <source media="(min-width: 768px)" srcset="{{ glide:img preset='lg' }}" type="img/jpeg">
       <img 
-        src="{{ glide:image preset='md' }}" 
-        alt="{{ image:alt }}" 
-        title="{{ image:alt }}" 
-        height="{{ image:height }}" 
-        width="{{ image:width }}"
-        class="block w-full h-auto {{ imageClass ?? '' }}"
+        src="{{ glide:img preset='md' }}" 
+        alt="{{ alt }}" 
+        title="{{ alt }}" 
+        height="{{ height }}" 
+        width="{{ width }}"
+        class="block w-full h-auto {{ imgClass ?? '' }}"
         loading="lazy">
     </picture>
     <figcaption 
       class="absolute top-0 left-0 w-full h-full flex flex-col justify-end items-start text-white pl-30 xl:pl-45 pb-20 xl:pb-60 bg-black bg-opacity-10 group-hover:opacity-0 transition-opacity duration-500">
-      <h3 class="font-meta-medium">
+      <h3 class="font-meta-medium mb-2">
         {{ title }}
       </h3>
       {{ alt }}

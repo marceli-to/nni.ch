@@ -18,7 +18,9 @@
             {{ partial:fieldsets/portfolio/teaser/item 
               url="{{ items:link_top_left:url }}" 
               title="{{ items:link_top_left:title }}" 
-              image="{{ items:image_top_left:url }}" 
+              img="{{ items:image_top_left }}"
+              height="{{ items:image_top_left:height }}" 
+              width="{{ items:image_top_left:width }}" 
               alt="{{ items:image_top_left:alt }}" }}
           </div>
         {{ /if }}
@@ -28,7 +30,9 @@
             {{ partial:fieldsets/portfolio/teaser/item 
               url="{{ items:link_bottom_left:url }}" 
               title="{{ items:link_bottom_left:title }}" 
-              image="{{ items:image_bottom_left:url }}" 
+              img="{{ items:image_bottom_left }}"
+              height="{{ items:image_bottom_left:height }}" 
+              width="{{ items:image_bottom_left:width }}" 
               alt="{{ items:image_bottom_left:alt }}" }}
           </div>
         {{ /if }}
@@ -42,7 +46,9 @@
             {{ partial:fieldsets/portfolio/teaser/item 
               url="{{ items:link_top_right:url }}" 
               title="{{ items:link_top_right:title }}" 
-              image="{{ items:image_top_right:url }}" 
+              img="{{ items:image_top_right }}" 
+              height="{{ items:image_top_right:height }}" 
+              width="{{ items:image_top_right:width }}" 
               alt="{{ items:image_top_right:alt }}" }}
           </div>
         {{ /if }}
@@ -51,9 +57,11 @@
         {{ if items:image_bottom_right }}
           <div class="w-full relative mb-15 md:mb-0 md:mt-45 xl:mt-120 md:ml-50 pr-60 md:max-w-[80%] lg:max-w-[60%] xl:max-w-[70%]">
             {{ partial:fieldsets/portfolio/teaser/item 
-              url="{{ items:link_top_right:url }}" 
-              title="{{ items:link_top_right:title }}" 
-              image="{{ items:image_bottom_right:url }}" 
+              url="{{ items:link_bottom_right:url }}" 
+              title="{{ items:link_bottom_right:title }}" 
+              img="{{ items:image_bottom_right }}" 
+              height="{{ items:image_bottom_right:height }}" 
+              width="{{ items:image_bottom_right:width }}" 
               alt="{{ items:image_bottom_right:alt }}" }}
           </div>
         {{ /if }}
