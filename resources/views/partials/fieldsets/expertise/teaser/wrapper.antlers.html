@@ -1,6 +1,6 @@
 <section 
   data-section-theme="light" 
-  class="relative border-t-2 border-silver md:min-h-screen {{ snap_scroll ? 'md:snap-start' : '' }}">
+  class="relative border-t-2 border-silver xl:min-h-screen {{ snap_scroll ? 'md:snap-start' : '' }}">
   <a name="{{ anchor }}"></a>
   <div class="py-90 xl:pt-240">
     {{ partial:layout/blocks/inner }}
@@ -9,6 +9,7 @@
           {{ partial:fieldsets/expertise/teaser/item }}
         {{ /if }}
       {{ /teaser_items }}
+      {{ partial:fieldsets/expertise/teaser/nav }}
     {{ /partial:layout/blocks/inner }}
   </div>
 </section>
