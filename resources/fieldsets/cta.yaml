@@ -1,0 +1,37 @@
+title: CTA
+fields:
+  -
+    handle: cta_url
+    field:
+      collections:
+        - pages
+        - posts
+        - team
+      container: assets
+      type: link
+      display: CTA URL
+      icon: link
+      instructions: 'Add a link to a page or an asset.'
+      localizable: true
+      listable: hidden
+      instructions_position: below
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      width: 50
+  -
+    handle: cta_title
+    field:
+      input_type: text
+      antlers: false
+      type: text
+      display: CTA Button text
+      icon: text
+      instructions: 'Add a button text'
+      localizable: true
+      listable: hidden
+      instructions_position: below
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      width: 50

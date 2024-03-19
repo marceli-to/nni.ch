@@ -16,7 +16,7 @@
           header.setAttribute('data-icon-theme', theme);
         }
       });
-    }, {threshold: .5}); // Configure to trigger when 25% of the section is visible
+    }, {threshold: 0.1, rootMargin: "50px 0px 50px 0px"}); // Configure to trigger when 50% of the section is visible
 
     // Observe all sections
     document.querySelectorAll(selectors.theme.section).forEach(section => {

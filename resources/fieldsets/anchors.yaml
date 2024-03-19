@@ -1,11 +1,11 @@
-title: 'Page anchors'
+title: Anchors
 fields:
   -
     handle: anchors
     field:
       mode: dynamic
       type: array
-      display: 'Page anchors'
+      display: Anchors
       icon: array
       localizable: true
       listable: hidden

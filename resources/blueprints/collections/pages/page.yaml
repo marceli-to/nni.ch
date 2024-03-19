@@ -48,6 +48,13 @@ tabs:
                       fields:
                         -
                           import: intro
+                    teaser_portfolio:
+                      display: 'Portfolio (Teaser)'
+                      instructions: 'Add a set of images, a text and a link.'
+                      icon: text-formatting-image-left
+                      fields:
+                        -
+                          import: teaser_portfolio
               type: replicator
               display: Inhalte
               icon: replicator

@@ -1,0 +1,17 @@
+title: Anchor
+fields:
+  -
+    handle: anchor
+    field:
+      input_type: text
+      antlers: false
+      type: text
+      display: Anchor
+      icon: text
+      instructions: 'Set the name of the anchor. [a-z,0-9]'
+      localizable: false
+      listable: hidden
+      instructions_position: below
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
