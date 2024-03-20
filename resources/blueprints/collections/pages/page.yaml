@@ -29,6 +29,18 @@ tabs:
               previews: true
               fullscreen: true
               sets:
+                text:
+                  display: Text
+                  instructions: null
+                  icon: text-formatting-markdown
+                  sets:
+                    editor:
+                      display: Editor
+                      instructions: null
+                      icon: text-formatting-markdown
+                      fields:
+                        -
+                          import: editor
                 teasers:
                   display: Teasers
                   instructions: 'Various teasers (Video, Image/Text, Porfolio, Expertise etc.)'
@@ -63,31 +75,19 @@ tabs:
                         -
                           import: teaser_video
                     teaser_image_text:
-                      display: 'Image/Text Teaser'
+                      display: 'Image/Text'
                       instructions: 'Add a teaser with an image, a text and a call to action.'
                       icon: text-formatting-wrap-image-margin-left
                       fields:
                         -
                           import: teaser_image_text
                     teaser_blog:
-                      display: 'Blog Teaser'
+                      display: 'Blog'
                       instructions: 'Add the latest 3 blog entries.'
                       icon: layout-three-columns
                       fields:
                         -
                           import: teaser_blog
-                text:
-                  display: Text
-                  instructions: null
-                  icon: text-formatting-markdown
-                  sets:
-                    editor:
-                      display: Editor
-                      instructions: null
-                      icon: text-formatting-markdown
-                      fields:
-                        -
-                          import: editor
                 miscellaneous:
                   display: Miscellaneous
                   instructions: null
@@ -100,6 +100,13 @@ tabs:
                       fields:
                         -
                           import: horizontal_ruler
+                    slideshow_team:
+                      display: 'Team Slideshow'
+                      instructions: 'Add the team as a slideshow.'
+                      icon: layout-carousel-horizontal
+                      fields:
+                        -
+                          import: slideshow_team
               type: replicator
               display: Inhalte
               icon: replicator

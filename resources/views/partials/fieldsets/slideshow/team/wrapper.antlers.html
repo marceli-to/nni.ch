@@ -1,0 +1,12 @@
+<section data-section-theme="light" class="relative pt-60 xl:pt-150 {{ snap_scroll ? 'md:snap-center' : '' }}">
+  {{ partial:components/misc/anchor anchor="{{ anchor }}" }}
+  {{ partial:components/swiper/wrapper class="pl-35 md:px-35 max-w-page mx-auto" }}
+    {{ partial:components/swiper/container class="js-swiper-team" }}
+      {{ collection from="team" }}
+        {{ partial:components/swiper/slide class="max-w-[calc(100%_-_55px)]" }}
+          {{ partial:components/cards/team_member link="true" }}
+        {{ /partial:components/swiper/slide }}
+      {{ /collection }}
+    {{ /partial:components/swiper/container }}
+  {{ /partial:components/swiper/wrapper }}
+</section>

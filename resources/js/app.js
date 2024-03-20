@@ -21,7 +21,13 @@ import './modules/theme.js';
 import './modules/video.js';
 
 /**
- * Import and initialize swiper module
+ * Import and initialize swiper module for blog posts
  */
 
 import './modules/swiper/posts.js';
+
+/**
+ * Import and initialize swiper module for team members
+ */
+
+import './modules/swiper/team.js';

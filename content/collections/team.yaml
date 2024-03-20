@@ -7,6 +7,9 @@ template: default
 layout: layout
 revisions: false
 title_format: '{firstname} {name}'
+route:
+  de: '/unternehmen/team/{slug}'
+  en: '/company/team/{slug}'
 sort_dir: asc
 date_behavior:
   past: public

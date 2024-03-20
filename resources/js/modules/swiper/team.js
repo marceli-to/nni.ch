@@ -7,7 +7,7 @@ import 'swiper/css';
   let swiper;
 
   const selectors = {
-    swiper: '.js-swiper-posts',
+    swiper: '.js-swiper-team',
   };
 
   const opts = {
@@ -24,7 +24,7 @@ import 'swiper/css';
     },
     breakpoints: {
       768: {
-        slidesPerView: 2,
+        slidesPerView: 3,
         spaceBetween: 20,
       },
     }
@@ -33,21 +33,9 @@ import 'swiper/css';
   const maxScreenWidth = 768;
 
   const init = () => {
-    if (window.innerWidth < maxScreenWidth) {
-      initSwiper();
-    }
-
-    window.addEventListener('resize', debounce(handleResize, 50), { passive: true });
+    initSwiper();
   };
 
-  const handleResize = () => {
-    if (window.innerWidth < maxScreenWidth) {
-      initSwiper();
-    } 
-    else if (window.innerWidth >= maxScreenWidth) {
-      destroySwiper();
-    }
-  };
 
   const initSwiper = () => {
     if (document.querySelector(selectors.swiper)) {
