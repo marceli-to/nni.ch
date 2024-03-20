@@ -1,4 +1,4 @@
-import debounce from './_debounce.js';
+import debounce from './debounce.js';
 
 (function () {
   const selectors = {

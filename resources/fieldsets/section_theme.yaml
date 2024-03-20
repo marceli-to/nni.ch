@@ -1,4 +1,4 @@
-title: 'Section theme'
+title: Theme
 fields:
   -
     handle: section_theme
@@ -14,12 +14,12 @@ fields:
       cast_booleans: false
       default: light
       type: select
-      display: 'Section theme'
+      display: Theme
       icon: select
-      instructions: 'Set the sections theme. Light theme sets the icons to a dark color, dark theme to a light color.'
+      instructions: 'Set the icon theme. A light theme sets the icons to a dark color, a dark theme to a light color.'
       localizable: false
       listable: hidden
-      instructions_position: above
+      instructions_position: below
       visibility: visible
       replicator_preview: true
       hide_display: false

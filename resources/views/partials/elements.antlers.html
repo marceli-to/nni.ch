@@ -19,9 +19,13 @@
 {{ /if }}
 
 {{ if type == 'teaser_video' }}
-{{ partial:fieldsets/teaser/video/wrapper }}
+  {{ partial:fieldsets/teaser/video/wrapper }}
 {{ /if }}
 
 {{ if type == 'teaser_image_text' }}
-{{ partial:fieldsets/teaser/image_text/wrapper }}
+  {{ partial:fieldsets/teaser/image_text/wrapper }}
+{{ /if }}
+
+{{ if type == 'teaser_blog' }}
+  {{ partial:fieldsets/teaser/blog/wrapper }}
 {{ /if }}

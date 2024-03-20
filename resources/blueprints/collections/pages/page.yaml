@@ -69,6 +69,13 @@ tabs:
                       fields:
                         -
                           import: teaser_image_text
+                    teaser_blog:
+                      display: 'Blog Teaser'
+                      instructions: 'Add the latest 3 blog entries.'
+                      icon: layout-three-columns
+                      fields:
+                        -
+                          import: teaser_blog
                 text:
                   display: Text
                   instructions: null
@@ -156,7 +163,7 @@ tabs:
               replicator_preview: true
               hide_display: false
               folder: images
-              instructions: 'Image used for sharing on social media.'
+              instructions: 'Open Graph Image used for sharing on social media.'
               localizable: false
   settings:
     display: Settings
@@ -164,6 +171,22 @@ tabs:
       -
         display: Settings
         fields:
+          -
+            handle: snap_scroll
+            field:
+              default: false
+              type: toggle
+              display: 'Snap scroll'
+              icon: toggle
+              localizable: false
+              listable: hidden
+              instructions_position: below
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              instructions: 'Define whether or not snap scrolling is activated.'
+          -
+            import: section_theme
           -
             handle: template
             field:
@@ -184,19 +207,6 @@ tabs:
               replicator_preview: true
               hide_display: false
               localizable: false
-          -
-            handle: snap_scroll
-            field:
-              default: false
-              type: toggle
-              display: 'Snap scroll'
-              icon: toggle
-              localizable: false
-              listable: hidden
-              instructions_position: above
-              visibility: visible
-              replicator_preview: true
-              hide_display: false
   sidebar:
     display: Sidebar
     sections:

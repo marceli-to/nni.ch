@@ -1,4 +1,4 @@
-import debounce from './_debounce.js';
+import debounce from '../debounce.js';
 import Swiper from 'swiper';
 import 'swiper/css';
 
@@ -7,7 +7,7 @@ import 'swiper/css';
   let swiper;
 
   const selectors = {
-    swiper: '.swiper',
+    swiper: '[data-swiper-posts]',
   };
 
   const opts = {
@@ -33,7 +33,7 @@ import 'swiper/css';
   const maxScreenWidth = 768;
 
   const init = () => {
-    if (document.querySelector(selectors.swiper) && window.innerWidth < maxScreenWidth) {
+    if (window.innerWidth < maxScreenWidth) {
       initSwiper();
     }
 
@@ -50,7 +50,9 @@ import 'swiper/css';
   };
 
   const initSwiper = () => {
-    swiper = new Swiper(selectors.swiper, opts);
+    if (document.querySelector(selectors.swiper)) {
+      swiper = new Swiper(selectors.swiper, opts);
+    }
   };
 
   const destroySwiper = () => {
