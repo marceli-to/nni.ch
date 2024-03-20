@@ -20,13 +20,78 @@ fields:
       hide_display: false
       fields:
         -
-          import: teaser_item_top_left
+          handle: item_top_left
+          field:
+            type: section
+            display: 'Item (top, left)'
+            icon: section
+            localizable: false
+            listable: hidden
+            instructions_position: above
+            visibility: visible
+            replicator_preview: true
+            hide_display: false
         -
-          import: teaser_item_top_right
+          import: teaser_portfolio_item
+          prefix: tl_
         -
-          import: teaser_item_bottom_left
+          handle: item_top_right
+          field:
+            type: section
+            display: 'Item (top, right)'
+            icon: section
+            localizable: false
+            listable: hidden
+            instructions_position: above
+            visibility: visible
+            replicator_preview: true
+            hide_display: false
         -
-          import: teaser_item_bottom_right
+          import: teaser_portfolio_item
+          prefix: tr_
+        -
+          handle: item_bottom_left
+          field:
+            type: section
+            display: 'Item (bottom, left)'
+            icon: section
+            localizable: false
+            listable: hidden
+            instructions_position: above
+            visibility: visible
+            replicator_preview: true
+            hide_display: false
+        -
+          import: teaser_portfolio_item
+          prefix: bl_
+        -
+          handle: item_bottom_right
+          field:
+            type: section
+            display: 'Item (bottom, right)'
+            icon: section
+            localizable: false
+            listable: hidden
+            instructions_position: above
+            visibility: visible
+            replicator_preview: true
+            hide_display: false
+        -
+          import: teaser_portfolio_item
+          prefix: br_
+  -
+    handle: call_to_action
+    field:
+      type: section
+      display: 'Call to action'
+      icon: section
+      instructions: 'Add a text and a button in the call to action section.'
+      localizable: false
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
   -
     handle: cta_text
     field:
@@ -54,7 +119,7 @@ fields:
       collapse: false
       previews: true
       type: bard
-      display: 'CTA Text'
+      display: Text
       icon: bard
       localizable: true
       listable: hidden

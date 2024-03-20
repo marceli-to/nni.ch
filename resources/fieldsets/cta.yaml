@@ -1,7 +1,7 @@
 title: CTA
 fields:
   -
-    handle: cta_url
+    handle: cta_link
     field:
       collections:
         - pages
@@ -9,7 +9,7 @@ fields:
         - team
       container: assets
       type: link
-      display: CTA URL
+      display: Link
       icon: link
       instructions: 'Add a link to a page or an asset.'
       localizable: true
@@ -20,12 +20,12 @@ fields:
       hide_display: false
       width: 50
   -
-    handle: cta_title
+    handle: cta_button_text
     field:
       input_type: text
       antlers: false
       type: text
-      display: CTA Button text
+      display: 'Button text'
       icon: text
       instructions: 'Add a button text'
       localizable: true

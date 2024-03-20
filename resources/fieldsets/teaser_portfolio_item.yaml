@@ -1,7 +1,7 @@
-title: 'Portfolio Teaser Item (top, right)'
+title: 'Portfolio Teaser Item'
 fields:
   -
-    handle: image_top_right
+    handle: image
     field:
       max_files: 1
       mode: list
@@ -11,7 +11,7 @@ fields:
       show_filename: true
       show_set_alt: true
       type: assets
-      display: 'Image (top, right)'
+      display: Image
       icon: assets
       localizable: false
       listable: hidden
@@ -21,7 +21,7 @@ fields:
       hide_display: false
       width: 50
   -
-    handle: link_top_right
+    handle: link
     field:
       type: link
       display: Link
@@ -32,9 +32,9 @@ fields:
       visibility: visible
       replicator_preview: true
       hide_display: false
-      width: 50
       collections:
         - pages
         - projects
         - posts
         - team
+      width: 50
