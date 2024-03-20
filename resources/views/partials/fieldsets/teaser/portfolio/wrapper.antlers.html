@@ -1,0 +1,87 @@
+{{ partial:components/misc/anchor anchor="{{ anchor }}" }}
+<section 
+  data-section-theme="light" 
+  class="relative md:min-h-screen {{ snap_scroll ? 'md:snap-start' : '' }}">
+  {{ partial:layout/blocks/inner }}
+    <div class="grid grid-cols-12 gap-x-20 xl:gap-x-50 pt-90 xl:pt-150 py-90 xl:py-150">
+      <div class="col-span-full md:col-span-4">
+
+        <div class="mb-45 md:mb-60 lg:mb-90 xl:mb-175 xl:max-w-[400px]">
+          {{ partial:components/headings/h2 class="mb-10 xl:mb-30" }}
+            {{ teaser_portfolio_title }}
+          {{ /partial:components/headings/h2 }}
+          {{ partial:components/buttons/more title="{{ "Zum Portfolio" | trans }}" url="{{ link id="6dc5a5ba-4450-45c6-9684-53b3a8bb4261" }}" }}
+        </div>
+
+        {{ if items:tl_image }}
+          <div class="w-full mb-15 md:mb-0 relative translate-x-[30px] md:-translate-x-[50px]">
+            {{ partial:fieldsets/teaser/portfolio/item 
+              url="{{ items:tl_link:url }}" 
+              title="{{ items:tl_link:title }}" 
+              img="{{ items:tl_image }}"
+              height="{{ items:tl_image:height }}" 
+              width="{{ items:tl_image:width }}" 
+              alt="{{ items:tl_image:alt }}" }}
+          </div>
+        {{ /if }}
+
+
+        {{ if items:bl_image }}
+          <div class="w-full mb-15 md:mb-0 md:mt-20 relative -translate-x-[35px] md:-translate-x-[0px] xl:translate-x-[30px]">
+            {{ partial:fieldsets/teaser/portfolio/item 
+              url="{{ items:bl_link:url }}" 
+              title="{{ items:bl_link:title }}" 
+              img="{{ items:bl_image }}"
+              height="{{ items:bl_image:height }}" 
+              width="{{ items:bl_image:width }}" 
+              alt="{{ items:bl_image:alt }}" }}
+          </div>
+        {{ /if }}
+
+      </div>
+
+      <div class="col-span-full md:col-span-8">
+
+        {{ if items:tr_image }}
+          <div class="w-full mb-15 relative pl-30 lg:max-w-[90%] xl:max-w-none md:-translate-x-[50px] xl:-translate-x-[110px]">
+            {{ partial:fieldsets/teaser/portfolio/item 
+              url="{{ items:tr_link:url }}" 
+              title="{{ items:tr_link:title }}" 
+              img="{{ items:tr_image }}" 
+              height="{{ items:tr_image:height }}" 
+              width="{{ items:tr_image:width }}" 
+              alt="{{ items:tr_image:alt }}" }}
+          </div>
+        {{ /if }}
+
+
+        {{ if items:br_image }}
+          <div class="w-full relative mb-15 md:mb-0 md:mt-45 xl:mt-120 md:ml-50 pr-60 md:max-w-[80%] lg:max-w-[60%] xl:max-w-[70%]">
+            {{ partial:fieldsets/teaser/portfolio/item 
+              url="{{ items:br_link:url }}" 
+              title="{{ items:br_link:title }}" 
+              img="{{ items:br_image }}" 
+              height="{{ items:br_image:height }}" 
+              width="{{ items:br_image:width }}" 
+              alt="{{ items:br_image:alt }}" }}
+          </div>
+        {{ /if }}
+
+
+        <div class="ml-35 md:ml-50 mt-60 md:pr-60 max-w-[75%] md:max-w-[80%] lg:max-w-[60%]">
+          <hr class="border-graphite opacity-80 mb-15 w-80">
+          <div class="text-xxs xl:text-2xl">
+            {{ cta_text}}
+          </div>
+          <a 
+            href="{{ cta_link }}"
+            class="text-sm xl:text-xl font-meta-medium uppercase tracking-wide mt-15 xl:mt-30 flex items-center gap-x-10 group"
+            title="{{ cta_button_text }}">
+            <span>{{ cta_button_text }}</span>
+            {{ partial:components/icons/arrow-right-long class="w-24 xl:w-32 h-auto group-hover:translate-x-5 transition-transform" }}
+          </a>
+        </div>
+      </div>
+    </div>
+  {{ /partial:layout/blocks/inner }}
+</section>

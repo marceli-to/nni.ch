@@ -1,0 +1,15 @@
+title: 'Video Teaser'
+fields:
+  -
+    import: anchor
+  -
+    import: video
+  -
+    import: title
+    prefix: teaser_video_
+  -
+    import: cta_section_header
+  -
+    import: cta_text
+  -
+    import: cta

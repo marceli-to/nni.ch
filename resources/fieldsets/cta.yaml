@@ -11,7 +11,6 @@ fields:
       type: link
       display: Link
       icon: link
-      instructions: 'Add a link to a page or an asset.'
       localizable: true
       listable: hidden
       instructions_position: below
@@ -27,7 +26,6 @@ fields:
       type: text
       display: 'Button text'
       icon: text
-      instructions: 'Add a button text'
       localizable: true
       listable: hidden
       instructions_position: below

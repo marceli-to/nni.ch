@@ -1,0 +1,13 @@
+<section data-section-theme="light" class="relative border-t-2 border-silver xl:min-h-screen {{ snap_scroll ? 'md:snap-start' : '' }}">
+  {{ partial:components/misc/anchor anchor="{{ anchor }}" }}
+  <div class="py-90 xl:pt-240">
+    {{ partial:layout/blocks/inner }}
+      {{ teaser_items }}
+        {{ if index == 0 }}
+          {{ partial:fieldsets/teaser/expertise/item }}
+        {{ /if }}
+      {{ /teaser_items }}
+      {{ partial:fieldsets/teaser/expertise/nav }}
+    {{ /partial:layout/blocks/inner }}
+  </div>
+</section>

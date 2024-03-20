@@ -1,0 +1,20 @@
+title: Team
+sites:
+  - de
+  - en
+propagate: false
+template: default
+layout: layout
+revisions: false
+title_format: '{firstname} {name}'
+sort_dir: asc
+date_behavior:
+  past: public
+  future: private
+preview_targets:
+  -
+    label: Entry
+    url: '{permalink}'
+    refresh: true
+structure:
+  root: false

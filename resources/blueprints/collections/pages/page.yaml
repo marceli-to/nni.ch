@@ -62,6 +62,13 @@ tabs:
                       fields:
                         -
                           import: teasers_expertise
+                    teaser_video:
+                      display: 'Video Teaser'
+                      instructions: 'Add a teaser with a video, text and call to action.'
+                      icon: media-webcam-video
+                      fields:
+                        -
+                          import: teaser_video
               type: replicator
               display: Inhalte
               icon: replicator

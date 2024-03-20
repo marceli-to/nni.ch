@@ -1,0 +1,22 @@
+title: Projects
+sites:
+  - de
+  - en
+propagate: false
+template: default
+layout: layout
+revisions: false
+route:
+  de: '/projekt/{slug}'
+  en: '/project/{slug}'
+sort_dir: asc
+date_behavior:
+  past: public
+  future: private
+preview_targets:
+  -
+    label: Entry
+    url: '{permalink}'
+    refresh: true
+structure:
+  root: false

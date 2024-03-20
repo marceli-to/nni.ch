@@ -1,0 +1,15 @@
+title: 'CTA Section Header'
+fields:
+  -
+    handle: call_to_action
+    field:
+      type: section
+      display: 'Call to action'
+      icon: section
+      instructions: 'Add a text and a button for the call to action section.'
+      localizable: false
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false

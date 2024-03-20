@@ -1,0 +1,13 @@
+{{ partial:layout/blocks/inner class="absolute md:relative left-0 top-90 xl:top-240 z-40 " }}
+  <article class="text-white">
+    {{ partial:components/headings/h2 class="mb-10 xl:mb-90" }}
+      {{ teaser_video_title }}
+    {{ /partial:components/headings/h2 }}
+    <div class="hidden md:block md:text-3xl max-w-md">
+      {{ cta_text }}
+    </div>
+    <div class="mt-15 md:mt-45">
+      {{ partial:components/buttons/more title="{{ cta_button_text }}" url="{{ cta_link }}" }}
+    </div>
+  </article>
+{{ /partial:layout/blocks/inner }}

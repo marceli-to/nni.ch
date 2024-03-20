@@ -7,9 +7,13 @@
 {{ /if }}
 
 {{ if type == 'teaser_portfolio' }}
-  {{ partial:fieldsets/portfolio/teaser/wrapper }}
+  {{ partial:fieldsets/teaser/portfolio/wrapper }}
 {{ /if }}
 
 {{ if type == 'teasers_expertise' }}
-  {{ partial:fieldsets/expertise/teaser/wrapper }}
+  {{ partial:fieldsets/teaser/expertise/wrapper }}
+{{ /if }}
+
+{{ if type == 'teaser_video' }}
+{{ partial:fieldsets/teaser/video/wrapper }}
 {{ /if }}
