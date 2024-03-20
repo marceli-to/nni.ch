@@ -1,3 +1,5 @@
+import debounce from './_debounce.js';
+
 (function () {
   const selectors = {
     theme: {
@@ -7,7 +9,6 @@
   };
 
   let lastScrollY = window.scrollY;
-  let debounceTimer;
 
   const checkAndUpdateTheme = () => {
     const currentScrollY = window.scrollY;
@@ -38,16 +39,6 @@
     }
 
     lastScrollY = currentScrollY;
-  };
-
-  // Debounce function to limit how often checkAndUpdateTheme is called
-  const debounce = (func, delay) => {
-    return function() {
-      clearTimeout(debounceTimer);
-      debounceTimer = setTimeout(() => {
-        func();
-      }, delay);
-    };
   };
 
   window.addEventListener('scroll', debounce(checkAndUpdateTheme, 10), { passive: true });
