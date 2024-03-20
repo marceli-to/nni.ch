@@ -1,0 +1,15 @@
+title: 'Image/Text Teaser'
+fields:
+  -
+    import: anchor
+  -
+    import: image
+  -
+    import: title
+    prefix: teaser_image_text_
+  -
+    import: cta_section_header
+  -
+    import: cta_text
+  -
+    import: cta

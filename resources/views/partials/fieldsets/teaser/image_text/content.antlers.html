@@ -1,0 +1,20 @@
+<div class="grid grid-cols-12 gap-x-20 xl:gap-x-50">
+  <figure class="col-span-full md:col-span-6">
+    {{ partial:components/media/image class="block w-full h-full aspect-square object-cover" }}
+  </figure>
+  <div class="col-span-full md:col-span-6 mt-45 md:flex md:flex-col md:items-start md:justify-center">
+    <div class="grid grid-cols-12 gap-x-20 ">
+      <div class="col-span-10 col-start-2 md:col-span-full md:-translate-x-120">
+        {{ partial:components/headings/h2 class="mb-15 xl:mb-60" }}
+          {{ teaser_image_text_title }}
+        {{ /partial:components/headings/h2 }}
+      </div>
+      <div class="col-span-full">
+        {{ cta_text }}
+        <div class="mt-15 md:mt-45">
+          {{ partial:components/buttons/more title="{{ cta_button_text }}" url="{{ cta_link }}" }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

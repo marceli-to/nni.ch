@@ -2,6 +2,10 @@
   {{ content  }}
 {{ /if }}
 
+{{ if type == 'horizontal_ruler' }}
+  {{ partial:components/misc/hr }}
+{{ /if }}
+
 {{ if type == 'intro' }}
   {{ partial:fieldsets/intro/wrapper }}
 {{ /if }}
@@ -16,4 +20,8 @@
 
 {{ if type == 'teaser_video' }}
 {{ partial:fieldsets/teaser/video/wrapper }}
+{{ /if }}
+
+{{ if type == 'teaser_image_text' }}
+{{ partial:fieldsets/teaser/image_text/wrapper }}
 {{ /if }}

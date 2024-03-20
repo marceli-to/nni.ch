@@ -29,6 +29,46 @@ tabs:
               previews: true
               fullscreen: true
               sets:
+                teasers:
+                  display: Teasers
+                  instructions: 'Various teasers (Video, Image/Text, Porfolio, Expertise etc.)'
+                  icon: text-formatting-image-top
+                  sets:
+                    intro:
+                      display: Intro
+                      instructions: 'Add an intro (Video/Image, Anchors)'
+                      icon: media-image-picture-orientation
+                      fields:
+                        -
+                          import: intro
+                    teaser_portfolio:
+                      display: Portfolio
+                      instructions: 'Add a set of images, a text and a link.'
+                      icon: text-formatting-image-left
+                      fields:
+                        -
+                          import: teaser_portfolio
+                    teasers_expertise:
+                      display: Expertise
+                      instructions: 'Add teasers for expertise'
+                      icon: text-formatting-image-left
+                      fields:
+                        -
+                          import: teasers_expertise
+                    teaser_video:
+                      display: Video
+                      instructions: 'Add a teaser with a video, text and call to action.'
+                      icon: media-webcam-video
+                      fields:
+                        -
+                          import: teaser_video
+                    teaser_image_text:
+                      display: 'Image/Text Teaser'
+                      instructions: 'Add a teaser with an image, a text and a call to action.'
+                      icon: text-formatting-wrap-image-margin-left
+                      fields:
+                        -
+                          import: teaser_image_text
                 text:
                   display: Text
                   instructions: null
@@ -41,34 +81,18 @@ tabs:
                       fields:
                         -
                           import: editor
-                    intro:
-                      display: Intro
-                      instructions: 'Add an intro (Video/Image, Anchors)'
-                      icon: media-image-picture-orientation
+                miscellaneous:
+                  display: Miscellaneous
+                  instructions: null
+                  icon: programming-module-box-cube
+                  sets:
+                    horizontal_ruler:
+                      display: 'Horizontal Ruler'
+                      instructions: null
+                      icon: align-object-bottom
                       fields:
                         -
-                          import: intro
-                    teaser_portfolio:
-                      display: 'Portfolio Teaser'
-                      instructions: 'Add a set of images, a text and a link.'
-                      icon: text-formatting-image-left
-                      fields:
-                        -
-                          import: teaser_portfolio
-                    teasers_expertise:
-                      display: 'Expertise Teasers'
-                      instructions: 'Add teasers for expertise'
-                      icon: text-formatting-image-left
-                      fields:
-                        -
-                          import: teasers_expertise
-                    teaser_video:
-                      display: 'Video Teaser'
-                      instructions: 'Add a teaser with a video, text and call to action.'
-                      icon: media-webcam-video
-                      fields:
-                        -
-                          import: teaser_video
+                          import: horizontal_ruler
               type: replicator
               display: Inhalte
               icon: replicator

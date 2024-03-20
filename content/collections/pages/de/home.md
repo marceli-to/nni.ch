@@ -4,7 +4,7 @@ blueprint: pages
 title: Home
 author: 3f4934a7-72ef-446c-bf12-5336d13e6898
 updated_by: c2f8321e-be41-4d83-b9ee-8136dba46b39
-updated_at: 1710926870
+updated_at: 1710930808
 page_theme: winter
 open_graph_title: 'Nightnurse Images'
 template: templates/views/home
@@ -99,6 +99,10 @@ page_elements:
             type: text
             text: 'Ihre Ideen verdienen es, gesehen zu werden – bringen wir Ihr Projekt ins Rollen!'
   -
+    id: ltzmersg
+    type: horizontal_ruler
+    enabled: true
+  -
     id: ltyj2rb3
     teaser_items:
       -
@@ -191,4 +195,50 @@ page_elements:
           -
             type: text
             text: 'Lorem ipsum dolor est vlupat consequat autem dolor ipsum.'
+  -
+    id: ltzmm4tc
+    image: teaser-services.jpg
+    teaser_image_text_title:
+      -
+        type: paragraph
+        attrs:
+          class: null
+        content:
+          -
+            type: text
+            text: 'Genau so, wie Sie'
+          -
+            type: hardBreak
+          -
+            type: text
+            marks:
+              -
+                type: bold
+            text: 'uns brauchen'
+    cta_text:
+      -
+        type: paragraph
+        attrs:
+          class: null
+        content:
+          -
+            type: text
+            text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua lorem ipsum atuem.'
+      -
+        type: paragraph
+        attrs:
+          class: null
+        content:
+          -
+            type: text
+            text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua lorem ipsum atuem.'
+    cta_link: 'entry::b4c71264-9178-4a5b-a41b-40b0de57f577'
+    cta_button_text: 'Zu den Services'
+    type: teaser_image_text
+    enabled: true
+    anchor: services
+  -
+    id: ltznpcl0
+    type: horizontal_ruler
+    enabled: true
 ---

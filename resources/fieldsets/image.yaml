@@ -19,15 +19,4 @@ fields:
       visibility: visible
       replicator_preview: true
       hide_display: false
-  -
-    handle: caption
-    field:
-      antlers: false
-      type: textarea
-      display: Legende
-      icon: textarea
-      listable: hidden
-      instructions_position: above
-      visibility: visible
-      replicator_preview: true
-      hide_display: false
+      localizable: false
