@@ -1,6 +1,6 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-720367d5.css",
+    "file": "assets/app-1ee51bd6.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -36,8 +36,15 @@
     "file": "assets/MetaPro-4d6c1560.woff2",
     "src": "resources/css/fonts/MetaPro.woff2"
   },
+  "resources/js/app.css": {
+    "file": "assets/app-816446ca.css",
+    "src": "resources/js/app.css"
+  },
   "resources/js/app.js": {
-    "file": "assets/app-977d81e1.js",
+    "css": [
+      "assets/app-816446ca.css"
+    ],
+    "file": "assets/app-076c029d.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   },

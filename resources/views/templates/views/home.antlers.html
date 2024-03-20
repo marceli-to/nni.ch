@@ -2,6 +2,11 @@
   {{ page_elements }}
     {{ partial:elements }}
   {{ /page_elements }}
+
+  <section data-section-theme="light" class="py-60 xl:pb-0 xl:pt-150 {{ snap_scroll ? 'md:snap-center' : '' }}">
+    {{ partial:fieldsets/teaser/blog/wrapper }}
+  </section>
+
   <section data-section-theme="light" class="{{ snap_scroll ? 'md:snap-center' : '' }}">
     {{ partial:layout/footer }}
   </section>

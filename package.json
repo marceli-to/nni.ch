@@ -19,7 +19,6 @@
   "dependencies": {
     "@vitejs/plugin-vue": "^4.5.2",
     "alpinejs": "^3.13.3",
-    "gsap": "^3.12.5",
-    "vue": "^3.3.13"
+    "swiper": "^11.0.7"
   }
 }

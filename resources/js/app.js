@@ -19,3 +19,9 @@ import './modules/theme.js';
  */
 
 import './modules/video.js';
+
+/**
+ * Import and initialize swiper module
+ */
+
+import './modules/swiper.js';

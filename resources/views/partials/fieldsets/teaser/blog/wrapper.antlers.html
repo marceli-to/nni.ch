@@ -1,0 +1,33 @@
+{{ partial:components/swiper/wrapper class="pl-35 md:hidden" }}
+  {{ partial:components/swiper/container }}
+
+    {{ partial:components/swiper/slide class="max-w-[calc(100%_-_55px)]" }}
+      {{ partial:fieldsets/teaser/blog/item class="bg-green-200" }}
+    {{ /partial:components/swiper/slide }}
+
+    {{ partial:components/swiper/slide class="max-w-[calc(100%_-_55px)]" }}
+      {{ partial:fieldsets/teaser/blog/item class="bg-red-200" }}
+    {{ /partial:components/swiper/slide }}
+
+    {{ partial:components/swiper/slide class="max-w-[calc(100%_-_55px)]" }}
+      {{ partial:fieldsets/teaser/blog/item class="bg-yellow-200" }}
+    {{ /partial:components/swiper/slide }}
+
+  {{ /partial:components/swiper/container }}
+{{ /partial:components/swiper/wrapper }}
+
+{{ partial:layout/blocks/inner class="hidden md:block" }}
+  <div class="md:grid grid-cols-12 gap-20 xl:gap-50">
+    <div class="md:col-span-4 bg-yellow-200">
+      <figure class="aspect-square w-full"></figure>
+    </div>
+    <div class="md:col-span-4 bg-green-200">
+      <figure class="aspect-square"></figure>
+    </div>
+    <div class="md:col-span-4 bg-blue-200">
+      <figure class="aspect-square"></figure>
+    </div>
+  </div>
+{{ /partial:layout/blocks/inner }}
+
+
