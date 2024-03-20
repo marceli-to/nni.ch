@@ -4,59 +4,56 @@
     video: '[data-video]',
   };
 
-  let currentSource = 'low';
+  const breakpoint = 768;
 
   const init = () => {
-    // if the video element is not found, return
-    if (!document.querySelector(selectors.video)) {
+    // if no video elements are found, return
+    const videos = document.querySelectorAll(selectors.video);
+    if (videos.length === 0) {
       return;
     }
+    videos.forEach(video => {
+      // Initialize each video's current source
+      video.setAttribute('data-current-source', 'low');
+    });
     load();
     window.addEventListener('resize', resize);
   };
 
   const resize = () => {
-    // on resize switch the video source depending on the screen size. keep the video playing
-    const video = document.querySelector(selectors.video);
-
-    // Only change source if the width crosses a defined threshold
     const width = window.innerWidth;
-
-    if ((width < 768 && currentSource !== 'low') || (width >= 768 && currentSource !== 'high')) {
-      load();
-    }
+    load(width);
   };
 
-  const load = () => {
-    // get the video element
-    const video = document.querySelector(selectors.video);
+  const load = (width = window.innerWidth) => {
+    const videos = document.querySelectorAll(selectors.video);
 
-    // get 'data-video-source' attribute
-    const sources = video.getAttribute('data-video-source');
+    videos.forEach((video) => {
+      // get 'data-video-source' attribute
+      const sources = video.getAttribute('data-video-source');
 
-    // parse the source into an object
-    const parsedSources = JSON.parse(sources);
+      // parse the source into an object
+      const parsedSources = JSON.parse(sources);
 
-    // set the video source depending on the screen size
-    const width = window.innerWidth;
-    let source;
-    
-    if (width < 768 && currentSource !== 'low') {
-      source = parsedSources.low;
-      currentSource = 'low';
-    } 
-    else if (width >= 768 && currentSource !== 'high') {
-      source = parsedSources.high;
-      currentSource = 'high';
-    } else {
-      // No source change needed
-      return;
-    }
-    
-    video.src = `${source}`;
+      // get current source from the video's data attribute
+      let currentSource = video.getAttribute('data-current-source');
+      let source;
 
-    // remove class 'hidden' from the video element
-    video.classList.remove('hidden');
+      if (width < breakpoint && currentSource !== 'low') {
+        source = parsedSources.low;
+        video.setAttribute('data-current-source', 'low');
+      } 
+      else if (width >= breakpoint && currentSource !== 'high') {
+        source = parsedSources.high;
+        video.setAttribute('data-current-source', 'high');
+      } else {
+        // No source change needed
+        return;
+      }
+
+      video.src = `${source}`;
+      video.classList.remove('hidden');
+    });
   };
 
   init();

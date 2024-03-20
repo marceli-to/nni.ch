@@ -88,7 +88,7 @@ tabs:
                   sets:
                     horizontal_ruler:
                       display: 'Horizontal Ruler'
-                      instructions: null
+                      instructions: 'Add a thin, gray line'
                       icon: align-object-bottom
                       fields:
                         -

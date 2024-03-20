@@ -1,5 +1,4 @@
 (function () {
-  // Selectors
   const selectors = {
     theme: {
       header: 'header[data-icon-theme]',
@@ -7,22 +6,51 @@
     },
   };
 
-  const init = () => {
-    const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const theme = entry.target.getAttribute('data-section-theme');
-          const header = document.querySelector(selectors.theme.header);
-          header.setAttribute('data-icon-theme', theme);
-        }
-      });
-    }, {threshold: 0.1, rootMargin: "50px 0px 50px 0px"}); // Configure to trigger when 50% of the section is visible
+  let lastScrollY = window.scrollY;
+  let debounceTimer;
 
-    // Observe all sections
-    document.querySelectorAll(selectors.theme.section).forEach(section => {
-      observer.observe(section);
-    });
+  const checkAndUpdateTheme = () => {
+    const currentScrollY = window.scrollY;
+    const scrollDown = currentScrollY > lastScrollY;
+    const sections = Array.from(document.querySelectorAll(selectors.theme.section));
+    const header = document.querySelector(selectors.theme.header);
+    if (!header) return;
+
+    let relevantSection = null;
+    for (let i = 0; i < sections.length; i++) {
+      const section = sections[i];
+      const rect = section.getBoundingClientRect();
+      if (scrollDown) {
+        if (rect.top < 50 && rect.bottom > 0) {
+          relevantSection = section;
+          break;
+        }
+      } else {
+        if (rect.bottom > 50 && rect.top < 0) {
+          relevantSection = section;
+        }
+      }
+    }
+
+    if (relevantSection) {
+      const theme = relevantSection.getAttribute('data-section-theme');
+      header.setAttribute('data-icon-theme', theme);
+    }
+
+    lastScrollY = currentScrollY;
   };
 
-  init();
+  // Debounce function to limit how often checkAndUpdateTheme is called
+  const debounce = (func, delay) => {
+    return function() {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        func();
+      }, delay);
+    };
+  };
+
+  window.addEventListener('scroll', debounce(checkAndUpdateTheme, 10), { passive: true });
+
+  checkAndUpdateTheme();
 })();

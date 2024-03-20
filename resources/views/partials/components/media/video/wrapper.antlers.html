@@ -3,14 +3,13 @@
 {{ /if }}
 <video 
   poster="" 
+  preload="none"
   class="relative md:absolute z-10 left-0 top-0 aspect-square md:aspect-video w-full h-full object-cover" 
   muted 
   autoplay 
   playsinline 
+  loop
   data-video
-  data-video-source='{
-    "low": "{{ video_low }}",
-    "high": "{{ video_high }}"
-  }'>
+  data-video-source='{"low": "{{ video_low }}", "high": "{{ video_high }}"}'>
   <source src="{{ video_low }}" type="video/mp4">
 </video>
