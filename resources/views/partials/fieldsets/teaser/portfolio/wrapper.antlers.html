@@ -1,7 +1,5 @@
-{{ partial:components/misc/anchor anchor="{{ anchor }}" }}
-<section 
-  data-section-theme="light" 
-  class="relative md:min-h-screen {{ snap_scroll ? 'md:snap-start' : '' }}">
+<section data-section-theme="light" class="relative md:min-h-screen {{ snap_scroll ? 'md:snap-start' : '' }}">
+  {{ partial:components/misc/anchor anchor="{{ anchor }}" }}
   {{ partial:layout/blocks/inner }}
     <div class="grid grid-cols-12 gap-x-20 xl:gap-x-50 pt-90 xl:pt-150 py-90 xl:py-150">
       <div class="col-span-full md:col-span-4">
