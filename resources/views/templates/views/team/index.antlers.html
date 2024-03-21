@@ -1,0 +1,11 @@
+<section data-section-theme="light" class="pt-90 lg:pt-150 {{ snap_scroll ? 'md:snap-center' : '' }}">
+  {{ partial:layout/blocks/inner }}
+  <div class="grid grid-cols-12 gap-20 lg:gap-x-50 lg:gap-y-45">
+    {{ collection from="team" }}
+      <div class="col-span-full md:col-span-6 lg:col-span-4">
+        {{ partial:components/cards/team_member link="true" overlay="true" }}
+      </div>
+    {{ /collection }}
+  </div>
+  {{ /partial:layout/blocks/inner }}
+</section>

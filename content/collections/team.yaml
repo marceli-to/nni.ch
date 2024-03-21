@@ -3,8 +3,8 @@ sites:
   - de
   - en
 propagate: false
-template: default
-layout: layout
+template: templates/views/team/show
+layout: templates/layout/default
 revisions: false
 title_format: '{firstname} {name}'
 route:

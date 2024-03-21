@@ -1,11 +1,9 @@
-<figure class="bg-black group">
+<figure class="bg-black relative group">
   {{ if link }}
     <a href="{{ url }}" title="{{ title }}" class="relative z-20 {{ if overlay }} after:block after:content-[''] after:absolute after:top-0 after:left-0 after:z-10 after:w-full after:h-full after:bg-black after:bg-opacity-20 hover:after:bg-opacity-0 after:transition-bg-opacity after:duration-500 {{ /if }}">
   {{ /if }}
     <picture>
-      <source media="(min-width: 1024px)" srcset="{{ glide:portrait preset='xl-webp' }}" type="image/webp">
       <source srcset="{{ glide:portrait preset='lg-webp' }}" type="image/webp">
-      <source media="(min-width: 1024px)" srcset="{{ glide:portrait preset='xl' }}" type="image/jpeg">
       <img 
         src="{{ glide:portrait preset='lg' }}" 
         alt="{{ portrait:alt }}" 
@@ -13,7 +11,10 @@
         height="{{ portrait:height }}" 
         width="{{ portrait:width }}"
         class="w-full h-auto"
-        loading="lazy">
+        {{ if index > 3 }}
+        loading="lazy"
+        {{ /if }}
+        >
     </picture>
   {{ if link }}
     </a>
@@ -38,7 +39,7 @@
         <a 
           href="tel:{{ phone }}" 
           title="{{ "Telefon Nr." | trans }} {{ title }}"
-          class="block no-underline hover:underline-offset-4 hover:decoration-1 hover:underline">
+          class="block no-underline hover:underline-offset-8 hover:decoration-1 hover:underline">
           {{ phone }}
         </a>
       {{ /if }}
