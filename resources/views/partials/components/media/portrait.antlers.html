@@ -1,24 +1,47 @@
-<figure>
-  <picture>
-    <source media="(min-width: 1024px)" srcset="{{ glide:portrait preset='xl-webp' }}" type="image/webp">
-    <source srcset="{{ glide:portrait preset='lg-webp' }}" type="image/webp">
-    <source media="(min-width: 1024px)" srcset="{{ glide:portrait preset='xl' }}" type="image/jpeg">
-    <img 
-      src="{{ glide:portrait preset='lg' }}" 
-      alt="{{ portrait:alt }}" 
-      title="{{ portrait:alt }}" 
-      height="{{ portrait:height }}" 
-      width="{{ portrait:width }}"
-      class="w-full h-auto"
-      loading="lazy">
-  </picture>
+<figure class="bg-black group">
+  {{ if link }}
+    <a href="{{ url }}" title="{{ title }}" class="relative z-20 {{ if overlay }} after:block after:content-[''] after:absolute after:top-0 after:left-0 after:z-10 after:w-full after:h-full after:bg-black after:bg-opacity-20 hover:after:bg-opacity-0 after:transition-bg-opacity after:duration-500 {{ /if }}">
+  {{ /if }}
+    <picture>
+      <source media="(min-width: 1024px)" srcset="{{ glide:portrait preset='xl-webp' }}" type="image/webp">
+      <source srcset="{{ glide:portrait preset='lg-webp' }}" type="image/webp">
+      <source media="(min-width: 1024px)" srcset="{{ glide:portrait preset='xl' }}" type="image/jpeg">
+      <img 
+        src="{{ glide:portrait preset='lg' }}" 
+        alt="{{ portrait:alt }}" 
+        title="{{ portrait:alt }}" 
+        height="{{ portrait:height }}" 
+        width="{{ portrait:width }}"
+        class="w-full h-auto"
+        loading="lazy">
+    </picture>
+  {{ if link }}
+    </a>
+  {{ /if }}
   {{ if overlay }}
-    <figcaption 
-      class="absolute top-0 left-0 w-full h-full flex flex-col justify-end items-start text-white pl-30 xl:pl-45 pb-20 xl:pb-60 bg-black bg-opacity-20 group-hover:opacity-0 transition-opacity duration-500">
+    <figcaption class="absolute bottom-0 left-0 z-20 w-auto h-auto flex flex-col justify-end items-start text-white pl-30 xl:pl-55 pb-30 xl:pb-55">
       <h3 class="font-meta-medium mb-2">
         {{ title }}
       </h3>
-      {{ alt }}
+      {{ if position }}
+        <div>{{ position }}</div>
+      {{ /if }}
+      {{ if email }}
+        <a 
+          href="mailto:{{ email }}" 
+          title="{{ "E-Mail" | trans }} {{ title }}"
+          class="block no-underline hover:underline-offset-8 hover:decoration-1 hover:underline">
+          {{ email }}
+        </a>
+      {{ /if }}
+      {{ if phone }}
+        <a 
+          href="tel:{{ phone }}" 
+          title="{{ "Telefon Nr." | trans }} {{ title }}"
+          class="block no-underline hover:underline-offset-4 hover:decoration-1 hover:underline">
+          {{ phone }}
+        </a>
+      {{ /if }}
     </figcaption>
   {{ /if }}
 </figure>

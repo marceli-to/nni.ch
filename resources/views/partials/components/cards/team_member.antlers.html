@@ -1,7 +1,1 @@
-{{ if link }}
-  <a href="{{ url }}">
-    {{ partial:components/media/portrait overlay="true" }}
-  </a>
-{{ else }}
-  {{ partial:components/media/portrait overlay="false" }}
-{{ /if }}
+{{ partial:components/media/portrait overlay="{{ overlay ?? false }}" link="{{ link ?? false }}" }}

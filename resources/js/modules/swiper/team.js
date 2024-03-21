@@ -1,6 +1,9 @@
 import debounce from '../debounce.js';
 import Swiper from 'swiper';
+import { Navigation } from 'swiper/modules';
 import 'swiper/css';
+import 'swiper/css/navigation';
+
 
 (function () {
 
@@ -8,19 +11,24 @@ import 'swiper/css';
 
   const selectors = {
     swiper: '.js-swiper-team',
+    btns: {
+      prev: '.swiper-btn-prev',
+      next: '.swiper-btn-next',
+    }
   };
 
   const opts = {
     direction: 'horizontal',
     slidesPerView: "auto",
     loop: true,
+    lazy: true,
     autoplay: {
       delay: 6000,
     },
     spaceBetween: 20,
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+      nextEl: '.swiper-btn-next',
+      prevEl: '.swiper-btn-prev',
     },
     breakpoints: {
       768: {
@@ -40,6 +48,9 @@ import 'swiper/css';
   const initSwiper = () => {
     if (document.querySelector(selectors.swiper)) {
       swiper = new Swiper(selectors.swiper, opts);
+      // add click event to the buttons
+      document.querySelector(selectors.btns.prev).addEventListener('click', () => swiper.slidePrev());
+      document.querySelector(selectors.btns.next).addEventListener('click', () => swiper.slideNext());
     }
   };
 

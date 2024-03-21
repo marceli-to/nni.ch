@@ -14,6 +14,7 @@ import 'swiper/css';
     direction: 'horizontal',
     slidesPerView: "auto",
     loop: true,
+    lazy: true,
     autoplay: {
       delay: 6000,
     },
