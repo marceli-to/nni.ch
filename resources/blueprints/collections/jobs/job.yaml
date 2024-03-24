@@ -10,17 +10,11 @@ tabs:
             field:
               type: text
               required: true
-              localizable: true
+              localizable: false
               validate:
                 - required
-              display: Title
-              instructions_position: above
-              listable: hidden
-              visibility: visible
-              replicator_preview: true
-              input_type: text
-              antlers: false
-              hide_display: false
+          -
+            import: editor
   seo:
     display: SEO
     sections:
@@ -45,8 +39,8 @@ tabs:
             field:
               type: entries
               collections:
-                - projects
+                - jobs
               max_items: 1
               listable: false
               localizable: true
-title: Project
+title: Job

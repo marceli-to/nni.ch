@@ -4,7 +4,7 @@ blueprint: pages
 title: Startseite
 author: 3f4934a7-72ef-446c-bf12-5336d13e6898
 updated_by: c2f8321e-be41-4d83-b9ee-8136dba46b39
-updated_at: 1711284760
+updated_at: 1711286461
 page_theme: winter
 open_graph_title: 'Nightnurse Images'
 template: templates/views/home
@@ -101,7 +101,7 @@ page_elements:
   -
     id: ltzmersg
     type: horizontal_ruler
-    enabled: false
+    enabled: true
   -
     id: ltyj2rb3
     teaser_items:
@@ -240,7 +240,7 @@ page_elements:
   -
     id: ltznpcl0
     type: horizontal_ruler
-    enabled: false
+    enabled: true
   -
     id: ltzyf1pq
     type: teaser_blog

@@ -1,0 +1,8 @@
+title: Jobs
+fields:
+  -
+    import: title
+    prefix: jobs_
+  -
+    import: editor
+    prefix: jobs_

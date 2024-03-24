@@ -1,0 +1,31 @@
+<section 
+  data-section-theme="light" 
+  class="relative py-90 xl:py-150 {{ snap_scroll ? 'md:snap-start' : '' }}">
+  {{ partial:components/misc/anchor anchor="{{ anchor }}" }}
+  {{ partial:layout/blocks/inner }}
+    <article class="grid grid-cols-12 gap-x-20 xl:gap-x-50">
+      <figure class="col-span-3 col-start-2 md:col-span-7 md:col-start-5 md:order-1 mb-45 xl:mb-60">
+        <img 
+          src="{{ visual }}" 
+          width="{{ visual:width }}" 
+          height="{{ visual:height }}" 
+          alt="{{ title }}"
+          class="w-full md:max-w-[125px] xl:max-w-[165px] h-auto">
+      </figure>
+      <div class="col-span-12 md:col-span-4 xl:col-span-4 md:order-2 mb-30">
+        {{ partial:components/headings/h1 }}
+          {{ title | nl2br }}
+        {{ /partial:components/headings/h1 }}
+      </div>
+      <div class="space-y-20 md:space-y-0 col-span-10 col-start-2 md:col-span-8 md:order-3 md:grid md:grid-cols-12 md:gap-x-20 xl:gap-x-50">
+        <div class="space-y-20 md:col-span-6">
+          {{ text_left }}
+        </div>
+        <div class="md:col-span-6">
+          {{ text_right }}
+        </div>
+      </div>
+    </article>
+  
+  {{ /partial:layout/blocks/inner }}
+</section>

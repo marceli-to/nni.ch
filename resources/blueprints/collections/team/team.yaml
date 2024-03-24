@@ -1,10 +1,9 @@
 tabs:
-  data:
-    display: Data
+  main:
+    display: Content
     sections:
       -
-        display: Main
-        instructions: 'Add the member data'
+        display: Content
         fields:
           -
             handle: firstname

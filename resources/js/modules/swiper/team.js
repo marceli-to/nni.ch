@@ -20,6 +20,7 @@ import 'swiper/css/navigation';
   const opts = {
     direction: 'horizontal',
     slidesPerView: "auto",
+    speed: 600,
     loop: true,
     lazy: true,
     autoplay: {

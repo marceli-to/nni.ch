@@ -2,6 +2,14 @@
   @apply h-auto w-full
 }
 
+.swiper-slide.swiper-slide--mute-inactive {
+  @apply opacity-40 transition-opacity;
+}
+
+.swiper-slide-active.swiper-slide--mute-inactive {
+  @apply opacity-100;
+}
+
 /* .swiper img {
   @apply aspect-[21/9] object-cover h-full w-full
 }

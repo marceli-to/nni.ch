@@ -1,10 +1,10 @@
 title: Page
 tabs:
   main:
-    display: Inhalt
+    display: Content
     sections:
       -
-        display: Inhalt
+        display: Content
         fields:
           -
             handle: title
@@ -75,14 +75,14 @@ tabs:
                         -
                           import: teaser_video
                     teaser_image_text:
-                      display: 'Image/Text'
+                      display: Image/Text
                       instructions: 'Add a teaser with an image, a text and a call to action.'
                       icon: text-formatting-wrap-image-margin-left
                       fields:
                         -
                           import: teaser_image_text
                     teaser_blog:
-                      display: 'Blog'
+                      display: 'Blog Teaser'
                       instructions: 'Add the latest 3 blog entries.'
                       icon: layout-three-columns
                       fields:
@@ -107,6 +107,20 @@ tabs:
                       fields:
                         -
                           import: slideshow_team
+                    vision:
+                      display: Vision
+                      instructions: 'Add vision content'
+                      icon: text-formatting-image-right
+                      fields:
+                        -
+                          import: vision
+                    jobs:
+                      display: Jobs
+                      instructions: 'List published jobs'
+                      icon: text-formatting-image-left
+                      fields:
+                        -
+                          import: jobs
               type: replicator
               display: Inhalte
               icon: replicator
@@ -123,55 +137,7 @@ tabs:
         display: SEO
         fields:
           -
-            handle: open_graph_title
-            field:
-              input_type: text
-              antlers: false
-              type: text
-              display: Title
-              icon: text
-              instructions: 'Can be used as a replacement for the page title'
-              listable: hidden
-              instructions_position: below
-              visibility: visible
-              replicator_preview: true
-              hide_display: false
-              localizable: false
-          -
-            handle: open_graph_description
-            field:
-              antlers: false
-              type: textarea
-              display: Description
-              icon: textarea
-              listable: hidden
-              instructions_position: below
-              visibility: visible
-              replicator_preview: true
-              hide_display: false
-              instructions: 'One or two descriptive sentences about the content of the page.'
-              localizable: false
-          -
-            handle: open_graph_image
-            field:
-              max_files: 1
-              mode: list
-              container: assets
-              restrict: false
-              allow_uploads: true
-              show_filename: true
-              show_set_alt: true
-              type: assets
-              display: Image
-              icon: assets
-              listable: hidden
-              instructions_position: below
-              visibility: visible
-              replicator_preview: true
-              hide_display: false
-              folder: images
-              instructions: 'Open Graph Image used for sharing on social media.'
-              localizable: false
+            import: seo
   settings:
     display: Settings
     sections:
