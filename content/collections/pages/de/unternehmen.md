@@ -7,7 +7,7 @@ updated_at: 1711290671
 page_elements:
   -
     id: ltzz02cq
-    section_theme: dark
+    theme: dark
     title:
       -
         type: paragraph
@@ -143,6 +143,6 @@ page_elements:
     type: teaser_blog
     enabled: true
 template: templates/views/default
-snap_scroll: false
-section_theme: dark
+is_fullpage: false
+theme: dark
 ---

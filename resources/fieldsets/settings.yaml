@@ -1,0 +1,46 @@
+title: Settings
+fields:
+  -
+    handle: is_fullpage
+    field:
+      default: false
+      type: toggle
+      display: Fullpage
+      icon: toggle
+      instructions: 'Define if a page is in fullpage mode.'
+      localizable: false
+      listable: hidden
+      instructions_position: below
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+  -
+    import: theme
+  -
+    handle: template
+    field:
+      hide_partials: true
+      blueprint: false
+      type: template
+      display: Template
+      icon: template
+      localizable: false
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+  -
+    handle: layout
+    field:
+      hide_partials: true
+      blueprint: false
+      type: template
+      display: Layout
+      icon: template
+      localizable: false
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false

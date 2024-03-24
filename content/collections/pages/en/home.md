@@ -14,7 +14,7 @@ page_elements:
       expertise: Expertise
       company: Company
       services: Services
-    section_theme: dark
+    theme: dark
     title:
       -
         type: paragraph

@@ -5,11 +5,9 @@ title: 'Swiper Demo'
 author: 3f4934a7-72ef-446c-bf12-5336d13e6898
 updated_by: c2f8321e-be41-4d83-b9ee-8136dba46b39
 updated_at: 1711285212
-page_theme: winter
-open_graph_title: 'Nightnurse Images'
 template: templates/views/swiper
 layout: templates/layout/home
-snap_scroll: false
+is_fullpage: false
 page_elements:
   -
     id: ltwr9dnb
@@ -23,7 +21,7 @@ page_elements:
       expertise: Expertise
       unternehmen: Unternehmen
       services: Services
-    section_theme: dark
+    theme: dark
     title:
       -
         type: paragraph
@@ -245,6 +243,6 @@ page_elements:
     id: ltzyf1pq
     type: teaser_blog
     enabled: true
-section_theme: dark
+theme: dark
 duplicated_from: home
 ---

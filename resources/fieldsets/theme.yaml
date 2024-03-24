@@ -1,7 +1,7 @@
 title: Theme
 fields:
   -
-    handle: section_theme
+    handle: theme
     field:
       options:
         light: Light

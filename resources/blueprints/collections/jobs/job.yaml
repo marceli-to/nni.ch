@@ -43,4 +43,12 @@ tabs:
               max_items: 1
               listable: false
               localizable: true
+  settings:
+    display: Settings
+    sections:
+      -
+        display: 'Neuer Abschnitt'
+        fields:
+          -
+            import: settings
 title: Job

@@ -49,4 +49,12 @@ tabs:
               max_items: 1
               listable: false
               localizable: true
+  settings:
+    display: Settings
+    sections:
+      -
+        display: Settings
+        fields:
+          -
+            import: settings
 title: Project

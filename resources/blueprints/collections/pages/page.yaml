@@ -145,41 +145,7 @@ tabs:
         display: Settings
         fields:
           -
-            handle: snap_scroll
-            field:
-              default: false
-              type: toggle
-              display: 'Snap scroll'
-              icon: toggle
-              localizable: false
-              listable: hidden
-              instructions_position: below
-              visibility: visible
-              replicator_preview: true
-              hide_display: false
-              instructions: 'Define whether or not snap scrolling is activated.'
-          -
-            import: section_theme
-          -
-            handle: template
-            field:
-              type: template
-              display: Template
-              localizable: true
-          -
-            handle: layout
-            field:
-              hide_partials: true
-              blueprint: false
-              type: template
-              display: Layout
-              icon: template
-              listable: hidden
-              instructions_position: above
-              visibility: visible
-              replicator_preview: true
-              hide_display: false
-              localizable: false
+            import: settings
   sidebar:
     display: Sidebar
     sections:

@@ -1,7 +1,7 @@
 title: 'Intro (Video, Anchors)'
 fields:
   -
-    import: section_theme
+    import: theme
   -
     import: title
   -
