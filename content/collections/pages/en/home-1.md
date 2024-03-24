@@ -1,15 +1,7 @@
 ---
-id: home
-blueprint: pages
-title: Startseite
-author: 3f4934a7-72ef-446c-bf12-5336d13e6898
-updated_by: c2f8321e-be41-4d83-b9ee-8136dba46b39
-updated_at: 1711284760
-page_theme: winter
-open_graph_title: 'Nightnurse Images'
-template: templates/views/home
-layout: templates/layout/home
-snap_scroll: false
+id: 532cc3a2-10b1-49af-9e01-97a026c2eddf
+origin: 5c87a0ee-2be1-4df5-9760-07eaf32c4ce4
+published: false
 page_elements:
   -
     id: ltwr9dnb
@@ -21,7 +13,7 @@ page_elements:
     anchors:
       portfolio: Portfolio
       expertise: Expertise
-      unternehmen: Unternehmen
+      company: Company
       services: Services
     section_theme: dark
     title:
@@ -32,13 +24,13 @@ page_elements:
         content:
           -
             type: text
-            text: 'Lebensräume '
+            text: 'Design '
           -
             type: text
             marks:
               -
                 type: bold
-            text: gestalten
+            text: 'living spaces'
   -
     id: lty4dhrv
     title:
@@ -70,7 +62,7 @@ page_elements:
       br_image: projects/nightnurse-images-projekt-2.jpg
       br_link: 'entry::ab6dd26e-ce41-4116-89c6-829ce374c019'
     cta_link: 'entry::6dc5a5ba-4450-45c6-9684-53b3a8bb4261'
-    cta_button_text: 'Eigenes Projekt starten'
+    cta_button_text: 'Start your own project'
     type: teaser_portfolio
     enabled: true
     anchor: portfolio
@@ -82,13 +74,13 @@ page_elements:
         content:
           -
             type: text
-            text: 'Projekte '
+            text: 'Implement '
           -
             type: text
             marks:
               -
                 type: bold
-            text: realisieren
+            text: projects
     cta_text:
       -
         type: paragraph
@@ -97,11 +89,11 @@ page_elements:
         content:
           -
             type: text
-            text: 'Ihre Ideen verdienen es, gesehen zu werden – bringen wir Ihr Projekt ins Rollen!'
+            text: "Your ideas deserve to be seen - let's get your project rolling!"
   -
     id: ltzmersg
     type: horizontal_ruler
-    enabled: false
+    enabled: true
   -
     id: ltyj2rb3
     teaser_items:
@@ -172,7 +164,7 @@ page_elements:
         content:
           -
             type: text
-            text: 'Digitale Welten'
+            text: 'Digital worlds'
           -
             type: hardBreak
           -
@@ -180,12 +172,12 @@ page_elements:
             marks:
               -
                 type: bold
-            text: 'lokal verwurzelt'
+            text: 'locally rooted'
     cta_link: 'entry::017b73d4-5285-4914-88b4-13d3b72c75a2'
-    cta_button_text: 'Zum Unternehmen'
+    cta_button_text: 'About the company'
     type: teaser_video
     enabled: true
-    anchor: unternehmen
+    anchor: company
     cta_text:
       -
         type: paragraph
@@ -198,7 +190,7 @@ page_elements:
   -
     id: ltzmm4tc
     image: teaser-services.jpg
-    teaser_image_text_title:
+    title:
       -
         type: paragraph
         attrs:
@@ -206,7 +198,7 @@ page_elements:
         content:
           -
             type: text
-            text: 'Genau so, wie Sie'
+            text: 'Just the way you'
           -
             type: hardBreak
           -
@@ -214,7 +206,7 @@ page_elements:
             marks:
               -
                 type: bold
-            text: 'uns brauchen'
+            text: 'need us'
     cta_text:
       -
         type: paragraph
@@ -233,17 +225,11 @@ page_elements:
             type: text
             text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua lorem ipsum atuem.'
     cta_link: 'entry::b4c71264-9178-4a5b-a41b-40b0de57f577'
-    cta_button_text: 'Zu den Services'
+    cta_button_text: 'To the services'
     type: teaser_image_text
     enabled: true
-    anchor: services
-  -
-    id: ltznpcl0
-    type: horizontal_ruler
-    enabled: false
-  -
-    id: ltzyf1pq
-    type: teaser_blog
-    enabled: true
-section_theme: dark
+updated_by: c2f8321e-be41-4d83-b9ee-8136dba46b39
+updated_at: 1710928933
+title: 'Startseite (Duplicated)'
+duplicated_from: a7e0ceec-5299-4684-b71b-8a3ed25d49b6
 ---
