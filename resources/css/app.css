@@ -27,6 +27,10 @@ strong {
   @apply font-meta-medium font-medium
 }
 
+main p:not(:last-of-type) {
+  @apply mb-16 xl:mb-25;
+}
+
 /* Theming */
 [data-icon-theme="light"] svg[data-icon-theme] {
   @apply text-black transition-colors

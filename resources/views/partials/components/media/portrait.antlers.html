@@ -10,8 +10,8 @@
         title="{{ portrait:alt }}" 
         height="{{ portrait:height }}" 
         width="{{ portrait:width }}"
-        class="w-full h-auto"
-        {{ if index > 3 }}
+        class="w-full h-auto {{ imageClass ?? ''}}"
+        {{ if index > 3 || lazyload }}
         loading="lazy"
         {{ /if }}
         >

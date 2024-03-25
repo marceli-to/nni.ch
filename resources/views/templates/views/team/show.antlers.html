@@ -1,6 +1,63 @@
 <section data-section-theme="light" class="pt-90 lg:pt-150 {{ is_fullpage ? 'md:snap-center' : '' }}">
   {{ partial:layout/blocks/inner }}
-  {{ partial:menu/breadcrumbs/wrapper }}
-  {{ title }}
+  <div class="md:grid md:grid-cols-12 md:gap-x-20 xl:gap-x-50">
+    <div class="md:col-span-6 flex flex-col justify-between">
+      {{ partial:menu/breadcrumbs/wrapper }}
+      {{ if quote }}
+        <div class="text-4xl xl:text-6xl order-1 leading-[1.36]">
+          {{ quote }}
+        </div>
+      {{ /if }}
+      <div class="order-2">
+        <h1 class="font-meta-medium">
+          {{ title }}
+        </h1>
+        {{ if position }}
+          {{ position }}
+        {{ /if }}
+        {{ if email || phone }}
+          <div class="font-meta-medium xl:mt-25">
+            {{ if email }}
+              <a href="mailto:{{ email }}" 
+                title="{{ "E-Mail an" | trans }} {{ title }}"
+                class="no-underline block">
+                {{ email}}
+              </a>
+            {{ /if }}
+            {{ if phone }}
+              <a href="tel:{{ phone }}" 
+                title=" {{ title }} {{ "anrufen" | trans }}"
+                class="no-underline block">
+                {{ phone }}
+              </a>
+          {{ /if }}
+          </div>
+        {{ /if }}
+      </div>
+    </div>
+    <div class="md:col-span-6 flex justify-end">
+      <figure>
+        {{ partial:components/media/portrait overlay="false" link="false" lazyload="true" }}
+      </figure>
+    </div>
+    <div class="md:col-span-8 md:col-start-4 md:mt-90 xl:mt-150">
+      {{ text }}
+    </div>
+  </div>
+
+  <div class="mt-150 mb-30">
+    {{ partial:components/buttons/back title="{{ "Zurück zum Team" | trans }}" url="{{ link id="da3064ef-0ff3-40b8-8ea7-12771204c109" }}" }}
+  </div>
+  {{ partial:components/swiper/wrapper }}
+    {{ partial:components/swiper/container class="js-swiper-team" navigation="false" }}
+      {{ collection from="team" sort="random" limit="3" slug:not_in="{{ slug }}" }}
+        {{ partial:components/swiper/slide class="max-w-[calc(100%_-_55px)] md:max-w-none" }}
+          {{ partial:components/cards/team_member link="true" overlay="true" }}
+        {{ /partial:components/swiper/slide }}
+      {{ /collection }}
+    {{ /partial:components/swiper/container }}
+  {{ /partial:components/swiper/wrapper }}
+
+
   {{ /partial:layout/blocks/inner }}
 </section>
