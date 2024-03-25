@@ -9,6 +9,10 @@ h2 p br {
   @apply hidden md:block
 }
 
+h3 {
+  @apply font-meta-medium mb-4 xl:mb-8
+}
+
 .contact h1 {
   @apply text-4xl xl:text-6xl leading-9 mb-30 xl:mb-45
 }

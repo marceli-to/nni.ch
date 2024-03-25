@@ -28,7 +28,19 @@ strong {
 }
 
 main p:not(:last-of-type) {
+  @apply mb-16 xl:mb-25
+}
+
+main ul:not(main nav ul) {
+  @apply p-0 m-0 list-['–_']
+}
+
+main ul:not(:last-child) {
   @apply mb-16 xl:mb-25;
+}
+
+main ul li:not(main nav ul li) {
+  @apply ml-16 pl-6 xl:pl-12
 }
 
 /* Theming */

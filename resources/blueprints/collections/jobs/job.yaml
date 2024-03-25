@@ -10,9 +10,22 @@ tabs:
             field:
               type: text
               required: true
-              localizable: false
+              localizable: true
               validate:
                 - required
+          -
+            handle: lead
+            field:
+              antlers: false
+              type: textarea
+              display: Lead
+              icon: textarea
+              localizable: true
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
           -
             import: editor
   seo:

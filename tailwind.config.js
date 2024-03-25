@@ -19,8 +19,8 @@ export default {
       },
 
       maxWidth: {
-        page: '1600px',
-        menu: '1080px',
+        site: '1600px',
+        content: '1080px'
       },
 
       fontFamily: {

@@ -1,6 +1,16 @@
 <section data-section-theme="light" class="pt-90 lg:pt-150 {{ is_fullpage ? 'md:snap-center' : '' }}">
   {{ partial:layout/blocks/inner }}
-  {{ partial:menu/breadcrumbs/wrapper }}
-  {{ title }}
+    <article class="max-w-content mx-auto">
+      <h1 class="font-meta-medium text-4xl xl:text-6xl leading-[1.2] mb-15 xl:mb-30">
+        {{ title }}
+      </h1>
+      <div class="text-md xl:text-2xl mb-30 xl:mb-60">
+        {{ lead }}
+      </div>
+      {{ content }}
+      <div class="mt-30 xl:mt-60">
+        {{ partial:components/buttons/back title="{{ "Zurück" | trans }}" url="javascript:history.back();" }}
+      </div>
+    </article>
   {{ /partial:layout/blocks/inner }}
 </section>

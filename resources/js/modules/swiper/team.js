@@ -53,9 +53,19 @@ import 'swiper/css/navigation';
   const initSwiper = () => {
     if (document.querySelector(selectors.swiper)) {
       swiper = new Swiper(selectors.swiper, opts);
-      // add click event to the buttons
-      document.querySelector(selectors.btns.prev).addEventListener('click', () => swiper.slidePrev());
-      document.querySelector(selectors.btns.next).addEventListener('click', () => swiper.slideNext());
+      // add click event to the buttons if they exist
+      const prevBtn = document.querySelector(selectors.btns.prev);
+      const nextBtn = document.querySelector(selectors.btns.next);
+      if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+          swiper.slidePrev();
+        });
+      }
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+          swiper.slideNext();
+        });
+      }
     }
   };
 
