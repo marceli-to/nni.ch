@@ -3,7 +3,7 @@ id: 017b73d4-5285-4914-88b4-13d3b72c75a2
 blueprint: page
 title: Unternehmen
 updated_by: c2f8321e-be41-4d83-b9ee-8136dba46b39
-updated_at: 1711290671
+updated_at: 1711378825
 page_elements:
   -
     id: ltzz02cq
@@ -139,10 +139,42 @@ page_elements:
     type: teaser_video
     enabled: true
   -
+    id: lu72mmy3
+    jobs_title:
+      -
+        type: paragraph
+        attrs:
+          class: null
+        content:
+          -
+            type: text
+            text: Deine
+          -
+            type: hardBreak
+          -
+            type: text
+            marks:
+              -
+                type: bold
+            text: Berufung
+    jobs_content:
+      -
+        type: paragraph
+        attrs:
+          class: null
+        content:
+          -
+            type: text
+            text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua lorem ipsum atuem.'
+    type: jobs
+    enabled: true
+    anchor: berufung
+  -
     id: lu07r7zb
     type: teaser_blog
     enabled: true
 template: templates/views/default
-is_fullpage: false
+is_fullscreen: false
 theme: dark
+is_fullpage: false
 ---

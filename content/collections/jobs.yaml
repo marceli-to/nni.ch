@@ -4,7 +4,7 @@ sites:
   - en
 propagate: false
 template: templates/views/jobs/show
-layout: layout
+layout: templates/layout/default
 revisions: false
 route:
   de: '/unternehmen/jobs/{slug}'

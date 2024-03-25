@@ -2,6 +2,13 @@ h1, h2, h3 {
 
 }
 
+h2 p {
+  @apply space-x-10 md:space-x-0
+}
+h2 p br {
+  @apply hidden md:block
+}
+
 .contact h1 {
   @apply text-4xl xl:text-6xl leading-9 mb-30 xl:mb-45
 }
