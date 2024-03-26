@@ -52,10 +52,5 @@
     "file": "assets/map-5de5b791.js",
     "isEntry": true,
     "src": "resources/js/map.js"
-  },
-  "resources/js/snap.js": {
-    "file": "assets/snap-4ed993c7.js",
-    "isEntry": true,
-    "src": "resources/js/snap.js"
   }
 }
