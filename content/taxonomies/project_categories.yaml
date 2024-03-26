@@ -1,0 +1,12 @@
+title: 'Project Categories'
+preview_targets:
+  -
+    label: Term
+    url: '{permalink}'
+    refresh: true
+template: project_categories.index
+term_template: project_categories.show
+layout: layout
+sites:
+  - de
+  - en

@@ -8,7 +8,7 @@ fields:
         - removeformat
       smart_typography: false
       save_html: false
-      inline: false
+      inline: break
       toolbar_mode: fixed
       reading_time: false
       word_count: false

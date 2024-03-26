@@ -1,0 +1,16 @@
+<figure class="bg-silver relative aspect-square {{ layout == 'landscape' ? 'md:aspect-[16/9]' : 'md:aspect-[3/4]' }}">
+  <picture>
+    <source srcset="{{ glide:feature_image preset='lg-webp' }}" type="image/webp">
+    <img 
+      src="{{ glide:feature_image preset='lg' }}" 
+      alt="{{ feature_image:alt }}" 
+      title="{{ feature_image:alt }}" 
+      height="{{ feature_image:height }}" 
+      width="{{ feature_image:width }}"
+      class="w-full h-full object-cover {{ imageClass ?? ''}}"
+      {{ if lazyload }}
+      loading="lazy"
+      {{ /if }}
+      >
+  </picture>
+</figure>

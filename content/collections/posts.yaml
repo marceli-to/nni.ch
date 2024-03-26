@@ -7,7 +7,7 @@ template: default
 layout: layout
 taxonomies:
   - post_categories
-  - post_tags
+  - tags
 revisions: false
 date: true
 sort_dir: asc

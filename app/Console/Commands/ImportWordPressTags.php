@@ -41,7 +41,7 @@ class ImportWordPressTags extends Command
     {
       // Create tags
       $term = Term::make()
-      ->taxonomy('post_tags')
+      ->taxonomy('tags')
       ->slug($key)
       ->data([
         'title' => $tag,

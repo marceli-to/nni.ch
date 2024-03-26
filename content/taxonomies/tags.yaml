@@ -4,6 +4,8 @@ preview_targets:
     label: Term
     url: '{permalink}'
     refresh: true
-template: post_tags.index
-term_template: post_tags.show
+template: tags.index
+term_template: tags.show
 layout: layout
+sites:
+  - de

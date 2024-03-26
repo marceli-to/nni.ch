@@ -52,6 +52,10 @@ export default {
         widest: '.1em',
       },
 
+      listStyleType: {
+        square: 'square',
+      },
+
       colors: {
         'graphite': '#707070',
         'silver': '#E5E5E5',

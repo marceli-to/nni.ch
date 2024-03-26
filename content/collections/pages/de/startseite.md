@@ -4,7 +4,7 @@ blueprint: pages
 title: Startseite
 author: 3f4934a7-72ef-446c-bf12-5336d13e6898
 updated_by: c2f8321e-be41-4d83-b9ee-8136dba46b39
-updated_at: 1711379954
+updated_at: 1711443102
 template: templates/views/home
 layout: templates/layout/home
 is_fullpage: false
@@ -24,19 +24,14 @@ page_elements:
     theme: dark
     title:
       -
-        type: paragraph
-        attrs:
-          class: null
-        content:
+        type: text
+        text: 'Lebensräume '
+      -
+        type: text
+        marks:
           -
-            type: text
-            text: 'Lebensräume '
-          -
-            type: text
-            marks:
-              -
-                type: bold
-            text: gestalten
+            type: bold
+        text: gestalten
   -
     id: lty4dhrv
     title:
@@ -74,21 +69,16 @@ page_elements:
     anchor: portfolio
     teaser_portfolio_title:
       -
-        type: paragraph
-        attrs:
-          class: null
-        content:
+        type: text
+        text: Projekte
+      -
+        type: hardBreak
+      -
+        type: text
+        marks:
           -
-            type: text
-            text: Projekte
-          -
-            type: hardBreak
-          -
-            type: text
-            marks:
-              -
-                type: bold
-            text: realisieren
+            type: bold
+        text: realisieren
     cta_text:
       -
         type: paragraph
@@ -166,21 +156,16 @@ page_elements:
     video_overlay: dim-30
     teaser_video_title:
       -
-        type: paragraph
-        attrs:
-          class: null
-        content:
+        type: text
+        text: 'Digitale Welten'
+      -
+        type: hardBreak
+      -
+        type: text
+        marks:
           -
-            type: text
-            text: 'Digitale Welten'
-          -
-            type: hardBreak
-          -
-            type: text
-            marks:
-              -
-                type: bold
-            text: 'lokal verwurzelt'
+            type: bold
+        text: 'lokal verwurzelt'
     cta_link: 'entry::017b73d4-5285-4914-88b4-13d3b72c75a2'
     cta_button_text: 'Zum Unternehmen'
     type: teaser_video
@@ -200,21 +185,16 @@ page_elements:
     image: teaser-services.jpg
     teaser_image_text_title:
       -
-        type: paragraph
-        attrs:
-          class: null
-        content:
+        type: text
+        text: 'Genau so, wie Sie'
+      -
+        type: hardBreak
+      -
+        type: text
+        marks:
           -
-            type: text
-            text: 'Genau so, wie Sie'
-          -
-            type: hardBreak
-          -
-            type: text
-            marks:
-              -
-                type: bold
-            text: 'uns brauchen'
+            type: bold
+        text: 'uns brauchen'
     cta_text:
       -
         type: paragraph

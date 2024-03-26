@@ -1,0 +1,20 @@
+{{ if feature_image }}
+  {{ partial:components/media/feature layout="{{ feature_layout }}" }}
+{{ /if }}
+{{ partial:menu/breadcrumbs/wrapper class="mt-45 xl:mt-150" }}
+<div class="mt-45 xl:mt-30">
+  <div class="md:grid md:grid-cols-12 md:gap-x-20 xl:gap-x-50">
+    <div class="md:col-span-6">
+      {{ partial:components/project/elements/title }}
+      <div class="mt-30 xl:mt-45">
+        {{ partial:components/project/elements/summary }}
+      </div>
+    </div>
+    <div class="mt-30 xl:mt-4 md:col-span-5 md:col-start-8">
+      {{ partial:components/project/elements/services }}
+      <div class="mt-30 xl:mt-45">
+        {{ partial:components/project/elements/tags }}
+      </div>
+    </div>
+  </div>
+</div>

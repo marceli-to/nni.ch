@@ -75,11 +75,11 @@ tabs:
               display: Categories
               mode: select
           -
-            handle: post_tags
+            handle: tags
             field:
               type: terms
               taxonomies:
-                - post_tags
+                - tags
               display: Tags
               mode: select
           -

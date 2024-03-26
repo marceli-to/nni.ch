@@ -6,6 +6,51 @@ tabs:
         display: Content
         fields:
           -
+            handle: feature_image
+            field:
+              max_files: 1
+              mode: list
+              container: assets
+              folder: projects
+              restrict: false
+              allow_uploads: true
+              show_filename: true
+              show_set_alt: true
+              type: assets
+              display: 'Feature image'
+              icon: assets
+              localizable: false
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: feature_layout
+            field:
+              options:
+                landscape: Landscape
+                portrait: Portrait
+              taggable: false
+              push_tags: false
+              multiple: false
+              clearable: false
+              searchable: true
+              cast_booleans: false
+              default: landscape
+              type: select
+              display: 'Header Layout'
+              icon: select
+              instructions: 'Choose a layout for the header, depending on the feature image.'
+              localizable: false
+              listable: hidden
+              instructions_position: below
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              validate:
+                - required
+          -
             handle: title
             field:
               type: text
@@ -21,6 +66,99 @@ tabs:
               input_type: text
               antlers: false
               hide_display: false
+          -
+            handle: client
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: Client
+              icon: text
+              localizable: true
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: summary
+            field:
+              buttons:
+                - bold
+                - unorderedlist
+                - removeformat
+                - anchor
+              smart_typography: false
+              save_html: false
+              inline: false
+              toolbar_mode: fixed
+              reading_time: false
+              word_count: false
+              fullscreen: true
+              allow_source: true
+              enable_input_rules: true
+              enable_paste_rules: true
+              remove_empty_nodes: true
+              antlers: false
+              link_noopener: false
+              link_noreferrer: false
+              target_blank: false
+              always_show_set_button: false
+              collapse: false
+              previews: true
+              type: bard
+              display: Summary
+              icon: bard
+              localizable: true
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: services
+            field:
+              buttons:
+                - bold
+                - unorderedlist
+                - removeformat
+                - anchor
+              smart_typography: false
+              save_html: false
+              inline: false
+              toolbar_mode: fixed
+              reading_time: false
+              word_count: false
+              fullscreen: true
+              allow_source: true
+              enable_input_rules: true
+              enable_paste_rules: true
+              remove_empty_nodes: true
+              antlers: false
+              link_noopener: false
+              link_noreferrer: false
+              target_blank: false
+              always_show_set_button: false
+              collapse: false
+              previews: true
+              type: bard
+              display: Services
+              icon: bard
+              localizable: true
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+  elements:
+    display: Elements
+    sections:
+      -
+        display: Elements
+        instructions: 'Design your page with different elements.'
+        fields:
+          -
+            import: anchor
   seo:
     display: SEO
     sections:
@@ -49,6 +187,40 @@ tabs:
               max_items: 1
               listable: false
               localizable: true
+          -
+            handle: related
+            field:
+              mode: select
+              create: false
+              collections:
+                - projects
+              type: entries
+              display: 'Related projects'
+              icon: entries
+              localizable: false
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: project_categories
+            field:
+              type: terms
+              taxonomies:
+                - project_categories
+              display: 'Project Categories'
+              mode: select
+              localizable: false
+          -
+            handle: tags
+            field:
+              type: terms
+              taxonomies:
+                - tags
+              display: Tags
+              mode: select
+              localizable: false
   settings:
     display: Settings
     sections:

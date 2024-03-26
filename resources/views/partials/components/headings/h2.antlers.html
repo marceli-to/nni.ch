@@ -1,3 +1,9 @@
-<h2 class="text-4xl xl:text-6xl leading-[1.2] {{ class }}">
-  {{ slot }}
-</h2>
+{{ if is_project }}
+  <h2 class="font-meta-medium mb-2 xl:mb-4">
+    {{ slot }}
+  </h2>
+{{ else }}
+  <h2 class="text-4xl xl:text-6xl leading-[1.2] {{ class }}">
+    {{ slot }}
+  </h2>
+{{ /if }}

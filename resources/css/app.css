@@ -6,6 +6,7 @@
 @import "components/headings.css";
 @import "components/forms.css";
 @import "components/swiper.css";
+@import "components/theme.css";
 @import "components/video.css";
 @import "utils.css";
 
@@ -28,29 +29,26 @@ strong {
 }
 
 main p:not(:last-of-type) {
-  @apply mb-16 xl:mb-25
+  @apply mb-20 xl:mb-30
 }
 
 main ul:not(main nav ul) {
-  @apply p-0 m-0 list-['–_']
+  @apply p-0 m-0 list-square
+}
+
+main ul:not(main nav ul) li::marker {
+  @apply text-xxs
 }
 
 main ul:not(:last-child) {
-  @apply mb-16 xl:mb-25;
+  @apply mb-20 xl:mb-30;
 }
 
 main ul li:not(main nav ul li) {
-  @apply ml-16 pl-6 xl:pl-12
+  @apply ml-18
 }
 
 /* Theming */
-[data-icon-theme="light"] svg[data-icon-theme] {
-  @apply text-black transition-colors
-}
-
-[data-icon-theme="dark"] svg[data-icon-theme] {
-  @apply text-white transition-colors
-}
 
 @keyframes fadeOutLeft {
   0% {

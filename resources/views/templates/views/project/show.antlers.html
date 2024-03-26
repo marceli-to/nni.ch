@@ -1,0 +1,13 @@
+<section data-section-theme="light" class="py-90 md:py-150 {{ is_fullpage ? 'md:snap-center' : '' }}">
+  {{ partial:layout/blocks/inner }}
+
+    {{ if feature_layout == 'landscape' }}
+      {{ partial:components/project/layout/landscape }}
+    {{ /if }}
+
+    {{ if feature_layout == 'portrait' }}
+      {{ partial:components/project/layout/portrait }}
+    {{ /if }}
+
+  {{ /partial:layout/blocks/inner }}
+</section>

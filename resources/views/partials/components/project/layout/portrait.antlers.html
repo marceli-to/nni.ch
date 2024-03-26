@@ -1,0 +1,22 @@
+<div class="flex flex-col md:grid md:grid-cols-12 md:gap-x-20 xl:gap-x-50">
+  <div class="order-2 md:order-1 md:col-span-6">
+    {{ partial:menu/breadcrumbs/wrapper }}
+    <div class="mt-45 xl:mt-90">
+      {{ partial:components/project/elements/title }}
+    </div>
+    <div class="mt-30 xl:mt-45">
+      {{ partial:components/project/elements/summary }}
+    </div>
+    <div class="mt-30 xl:mt-45">
+      {{ partial:components/project/elements/services }}
+    </div>
+    <div class="mt-30 xl:mt-45">
+      {{ partial:components/project/elements/tags }}
+    </div>
+  </div>
+  <div class="order-1 md:order-2 md:col-span-6 xl:col-span-5 xl:col-start-8">
+    {{ if feature_image }}
+      {{ partial:components/media/feature layout="{{ feature_layout }}" }}
+    {{ /if }}
+  </div>
+</div>

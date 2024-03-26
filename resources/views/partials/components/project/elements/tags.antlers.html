@@ -1,0 +1,13 @@
+{{ partial:components/headings/h2 is_project="true" }}
+  {{ "Partner" | trans }}
+{{ /partial:components/headings/h2 }}
+<div class="">
+  {{ tags }}
+    <a 
+      href="{{ url }}" 
+      title="{{ title }}"
+      class="inline-block mx-2 md:mx-5 underline decoration-1 underline-offset-4 hover:no-underline">
+      {{ title }}
+    </a>
+  {{ /tags }}
+</div>

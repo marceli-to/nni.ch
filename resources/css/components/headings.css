@@ -2,13 +2,6 @@ h1, h2, h3 {
 
 }
 
-h2 p {
-  @apply space-x-10 md:space-x-0
-}
-h2 p br {
-  @apply hidden md:block
-}
-
 h3 {
   @apply font-meta-medium mb-4 xl:mb-8
 }
