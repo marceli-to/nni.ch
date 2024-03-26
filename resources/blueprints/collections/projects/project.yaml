@@ -158,7 +158,47 @@ tabs:
         instructions: 'Design your page with different elements.'
         fields:
           -
-            import: anchor
+            handle: elements
+            field:
+              collapse: false
+              previews: true
+              fullscreen: true
+              sets:
+                elemements:
+                  display: Elements
+                  instructions: null
+                  icon: text-formatting-image-left
+                  sets:
+                    fullscreen_image:
+                      display: 'Fullscreen image'
+                      instructions: 'Add a fullscreen image'
+                      icon: align-object-center
+                      fields:
+                        -
+                          import: image_fullscreen
+                    image:
+                      display: Image
+                      instructions: 'Add an image'
+                      icon: media-image-picture-orientation
+                      fields:
+                        -
+                          import: image
+                    image_text:
+                      display: Image/Text
+                      instructions: 'Add an image/text block.'
+                      icon: text-formatting-image-left
+                      fields:
+                        -
+                          import: image_text
+              type: replicator
+              display: Elements
+              icon: replicator
+              localizable: false
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
   seo:
     display: SEO
     sections:

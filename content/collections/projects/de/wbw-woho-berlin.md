@@ -3,7 +3,7 @@ id: 6585e18c-0f59-4d1c-8514-48178b49b41f
 blueprint: project
 title: 'WBW WOHO, Berlin'
 updated_by: c2f8321e-be41-4d83-b9ee-8136dba46b39
-updated_at: 1711458039
+updated_at: 1711463547
 feature_layout: portrait
 is_fullpage: false
 theme: light
@@ -83,4 +83,65 @@ project_categories:
 tags:
   - visual-workflow
   - topick-partner
+elements:
+  -
+    id: lu8ghup9
+    sequence: image_text
+    image: projects/nightnurse-images-projekt-1.jpg
+    title: Ausgangslage
+    text:
+      -
+        type: paragraph
+        attrs:
+          class: null
+        content:
+          -
+            type: text
+            text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua lorem ipsum atuem.'
+      -
+        type: paragraph
+        attrs:
+          class: null
+        content:
+          -
+            type: text
+            text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua lorem ipsum atuem.'
+    call_to_action: false
+    type: image_text
+    enabled: true
+    cta: false
+  -
+    id: lu8gclno
+    image: projects/nightnurse-images-projekt-1.jpg
+    text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua lorem ipsum atuem.'
+    type: fullscreen_image
+    enabled: true
+  -
+    id: lu8grr37
+    sequence: text_image
+    image: projects/nightnurse-images-projekt-4.jpg
+    title: Resultat
+    text:
+      -
+        type: paragraph
+        attrs:
+          class: null
+        content:
+          -
+            type: text
+            text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua lorem ipsum atuem.'
+    cta: true
+    cta_text:
+      -
+        type: paragraph
+        attrs:
+          class: null
+        content:
+          -
+            type: text
+            text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua lorem ipsum atuem.'
+    cta_link: 'entry::6dc5a5ba-4450-45c6-9684-53b3a8bb4261'
+    cta_link_text: 'Eigenes Projekt starten'
+    type: image_text
+    enabled: true
 ---

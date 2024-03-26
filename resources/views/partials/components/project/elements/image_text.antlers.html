@@ -1,0 +1,13 @@
+{{ partial:layout/blocks/inner }}
+  <div class="md:grid md:grid-cols-12 gap-x-20 xl:gap-x-50">
+    <div class="{{ image:width > image:height ? 'md:col-span-8' : 'md:col-span-6' }} {{ sequence == 'image_text' ? 'md:order-1' : 'md:order-2'}} mb-30 md:mb-0">
+      {{ partial:components/media/image class="w-full h-auto" }}
+    </div>
+    <div class="md:flex md:flex-col md:justify-center {{ image:width > image:height ? 'md:col-span-3' : 'md:col-span-5' }}  {{ sequence == 'image_text' ? 'md:order-2' : 'md:order-1'}}">
+      {{ partial:components/headings/h2 is_project="true" class="text-md xl:text-4xl mb-15 xl:mb-30" }}
+        {{ title }}
+      {{ /partial:components/headings/h2 }}
+      {{ text }}
+    </div>
+  </div>
+{{ /partial:layout/blocks/inner }}
