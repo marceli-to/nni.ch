@@ -14,16 +14,9 @@ import 'swiper/css';
     direction: 'horizontal',
     slidesPerView: "auto",
     speed: 600,
-    loop: true,
+    loop: false,
     lazy: true,
-    autoplay: {
-      delay: 6000,
-    },
     spaceBetween: 20,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
     breakpoints: {
       768: {
         slidesPerView: 2,

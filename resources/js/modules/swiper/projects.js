@@ -13,11 +13,8 @@ import 'swiper/css';
     direction: 'horizontal',
     slidesPerView: "auto",
     speed: 600,
-    loop: true,
+    loop: false,
     lazy: true,
-    autoplay: {
-      delay: 6000,
-    },
     spaceBetween: 20,
     breakpoints: {
       768: {
