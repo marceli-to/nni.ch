@@ -1,8 +1,8 @@
 <figure 
-  class="bg-silver relative group {{ if overlay }} image-overlay after:bg-opacity-20 {{ /if }}"
+  class="bg-silver relative group"
   data-touch>
   {{ if link }}
-    <a href="{{ url }}" title="{{ title }}" class="relative z-20 ">
+    <a href="{{ url }}" title="{{ title }}" class="block relative z-30 {{ if overlay }} image-overlay after:bg-opacity-20 {{ /if }}">
   {{ /if }}
     <picture>
       <source srcset="{{ glide:portrait preset='lg-webp' }}" type="image/webp">
