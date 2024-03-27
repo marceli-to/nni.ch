@@ -1,5 +1,5 @@
 (function () {
-
+  
   const selectors = {
     touch: '[data-touch]'
   };
@@ -8,7 +8,6 @@
     const touchElements = Array.from(document.querySelectorAll(selectors.touch));
     touchElements.forEach((element) => {
       element.addEventListener('touchstart', () => {
-        alert('touchstart');
         element.classList.add('has-touch');
       });
 
@@ -18,5 +17,8 @@
     });
   };
 
-  init();
+  // init on touch devices only
+  if ('ontouchstart' in window) {
+    init();
+  }
 })();
