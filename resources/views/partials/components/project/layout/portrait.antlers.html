@@ -5,13 +5,17 @@
       <div class="mt-45 xl:mt-90">
         {{ partial:components/project/elements/title }}
       </div>
-      <div class="mt-30 xl:mt-45">
-        {{ partial:components/project/elements/summary }}
-      </div>
-      <div class="mt-30 xl:mt-45">
-        {{ partial:components/project/elements/services }}
-      </div>
-      <div class="mt-30 xl:mt-45">
+      {{ if summary }}
+        <div class="mt-30 xl:mt-45">
+          {{ partial:components/project/elements/summary }}
+        </div>
+      {{ /if }}
+      {{ if services }}
+        <div class="mt-30 xl:mt-45">
+          {{ partial:components/project/elements/services }}
+        </div>
+      {{ /if }}
+      <div class="{{ services ? 'mt-30 xl:mt-45' : '' }}">
         {{ partial:components/project/elements/tags }}
       </div>
     </div>
