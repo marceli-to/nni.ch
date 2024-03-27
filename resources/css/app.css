@@ -53,7 +53,7 @@ main ul li:not(main nav ul li) {
 }
 
 .image-overlay.has-touch {
-  @apply after:bg-opacity-0 border-red-300 border
+  @apply after:bg-opacity-0
 }
 
 @keyframes fadeOutLeft {
