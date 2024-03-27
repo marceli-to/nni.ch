@@ -53,13 +53,13 @@ tabs:
                       fields:
                         -
                           import: intro
-                    teaser_portfolio:
+                    teaser_project:
                       display: Portfolio
                       instructions: 'Add a set of images, a text and a link.'
                       icon: text-formatting-image-left
                       fields:
                         -
-                          import: teaser_portfolio
+                          import: teaser_project
                     teasers_expertise:
                       display: Expertise
                       instructions: 'Add teasers for expertise'
@@ -88,6 +88,13 @@ tabs:
                       fields:
                         -
                           import: teaser_blog
+                    project_grids:
+                      display: 'Project Grids'
+                      instructions: 'Add project items in a grid.'
+                      icon: layout-grid-dots
+                      fields:
+                        -
+                          import: grid_project
                 miscellaneous:
                   display: Miscellaneous
                   instructions: null

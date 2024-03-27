@@ -10,7 +10,7 @@
   {{ partial:fieldsets/intro/wrapper }}
 {{ /if }}
 
-{{ if type == 'teaser_portfolio' }}
+{{ if type == 'teaser_project' }}
   {{ partial:fieldsets/teaser/portfolio/wrapper }}
 {{ /if }}
 
@@ -40,4 +40,8 @@
 
 {{ if type == 'jobs' }}
   {{ partial:fieldsets/misc/jobs/wrapper }}
+{{ /if }}
+
+{{ if type == 'project_grids' }}
+  {{ partial:fieldsets/teaser/portfolio_grid/wrapper }}
 {{ /if }}

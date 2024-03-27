@@ -1,0 +1,9 @@
+<section data-section-theme="light" class="pt-90 lg:pt-150 {{ is_fullpage ? 'md:snap-start' : '' }}">
+  {{ partial:layout/blocks/inner }}
+    <div class="grid grid-cols-12 gap-15">
+      {{ grid_items }}
+        {{ partial:fieldsets/teaser/portfolio_grid/{{ grid_layout }} }}
+      {{ /grid_items }}
+    </div>
+  {{ /partial:layout/blocks/inner }}
+</section>

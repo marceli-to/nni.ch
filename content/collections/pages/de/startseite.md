@@ -64,10 +64,10 @@ page_elements:
       br_link: 'entry::ab6dd26e-ce41-4116-89c6-829ce374c019'
     cta_link: 'entry::6dc5a5ba-4450-45c6-9684-53b3a8bb4261'
     cta_button_text: 'Eigenes Projekt starten'
-    type: teaser_portfolio
+    type: teaser_project
     enabled: true
     anchor: portfolio
-    teaser_portfolio_title:
+    teaser_project_title:
       -
         type: text
         text: Projekte

@@ -1,10 +1,10 @@
-title: 'Portfolio Teaser'
+title: 'Project Teaser'
 fields:
   -
     import: anchor
   -
     import: title
-    prefix: teaser_portfolio_
+    prefix: teaser_project_
   -
     handle: items
     field:
@@ -32,7 +32,7 @@ fields:
             replicator_preview: true
             hide_display: false
         -
-          import: teaser_portfolio_item
+          import: teaser_project_item
           prefix: tl_
         -
           handle: item_top_right
@@ -47,7 +47,7 @@ fields:
             replicator_preview: true
             hide_display: false
         -
-          import: teaser_portfolio_item
+          import: teaser_project_item
           prefix: tr_
         -
           handle: item_bottom_left
@@ -62,7 +62,7 @@ fields:
             replicator_preview: true
             hide_display: false
         -
-          import: teaser_portfolio_item
+          import: teaser_project_item
           prefix: bl_
         -
           handle: item_bottom_right
@@ -77,7 +77,7 @@ fields:
             replicator_preview: true
             hide_display: false
         -
-          import: teaser_portfolio_item
+          import: teaser_project_item
           prefix: br_
   -
     import: cta_section_header
