@@ -23,8 +23,34 @@
 
   {{ if type == 'image' }}
     <section data-section-theme="light" class="py-30 xl:py-60">
+      {{ partial:components/misc/hr }}
       {{ partial:components/project/elements/image }}
     </section>
   {{ /if }}
 
 {{ /elements }}
+
+{{ if related }}
+  <section data-section-theme="light" class="pt-60 xl:pt-150">
+    {{ partial:layout/blocks/inner }}
+      {{ partial:components/headings/h2 is_project="true" class="text-md xl:text-4xl mb-15 xl:mb-30" }}
+        {{ "Ähnliche Projekte" | trans }}
+      {{ /partial:components/headings/h2 }}
+
+      {{ partial:components/swiper/wrapper  }}
+        {{ partial:components/swiper/container class="js-swiper-team" navigation="false" }}
+          {{ related }}
+            {{ partial:components/swiper/slide class="max-w-[calc(100%_-_55px)] swiper-slide--mute-inactive" }}
+              {{ partial:components/project/elements/card }}
+            {{ /partial:components/swiper/slide }}
+          {{ /related }}
+        {{ /partial:components/swiper/container }}
+      {{ /partial:components/swiper/wrapper }}
+
+      <div class="mt-60 xl:mt-90">
+        {{ partial:components/buttons/back title="{{ "Zum Portfolio" | trans }}" url="{{ link id="6dc5a5ba-4450-45c6-9684-53b3a8bb4261" }}" }}
+      </div>
+
+    {{ /partial:layout/blocks/inner }}
+  </section>
+{{ /if }}

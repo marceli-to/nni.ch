@@ -159,7 +159,7 @@ fields:
         cta: 'equals true'
       width: 50
   -
-    handle: cta_link_text
+    handle: cta_button_text
     field:
       input_type: text
       antlers: false

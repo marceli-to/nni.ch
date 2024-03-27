@@ -1,0 +1,13 @@
+<div class="{{ class }}">
+  <hr class="border-graphite opacity-80 mb-15 w-80">
+  <div class="text-xxs xl:text-2xl">
+    {{ cta_text }}
+  </div>
+  <a 
+    href="{{ cta_link }}"
+    class="text-sm xl:text-xl font-meta-medium uppercase tracking-wide mt-15 xl:mt-30 flex items-center gap-x-10 group"
+    title="{{ cta_button_text }}">
+    <span>{{ cta_button_text }}</span>
+    {{ partial:components/icons/arrow-right-long class="w-24 xl:w-32 h-auto group-hover:translate-x-5 transition-transform" }}
+  </a>
+</div>

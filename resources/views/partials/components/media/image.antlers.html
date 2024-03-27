@@ -16,4 +16,9 @@
       class="block {{ class ?? '' }}"
       loading="lazy">
   </picture>
+  {{ if caption }}
+    <figcaption class="py-5">
+      {{ caption }}
+    </figcaption>
+  {{ /if }}
 </figure>

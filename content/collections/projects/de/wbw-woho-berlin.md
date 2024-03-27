@@ -3,7 +3,7 @@ id: 6585e18c-0f59-4d1c-8514-48178b49b41f
 blueprint: project
 title: 'WBW WOHO, Berlin'
 updated_by: c2f8321e-be41-4d83-b9ee-8136dba46b39
-updated_at: 1711463547
+updated_at: 1711530615
 feature_layout: portrait
 is_fullpage: false
 theme: light
@@ -77,6 +77,7 @@ services:
 related:
   - 36d70c38-f997-478f-9efe-9540a946db03
   - ab6dd26e-ce41-4116-89c6-829ce374c019
+  - fd9e0ea4-8426-4c8e-96b2-71ab20481387
 feature_image: projects/nightnurse-images-projekt-1.jpg
 project_categories:
   - innenarchitektur
@@ -139,9 +140,14 @@ elements:
         content:
           -
             type: text
-            text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua lorem ipsum atuem.'
+            text: 'Ihre Ideen verdienen es, gesehen zu werden – bringen wir Ihr Projekt ins Rollen!'
     cta_link: 'entry::6dc5a5ba-4450-45c6-9684-53b3a8bb4261'
-    cta_link_text: 'Eigenes Projekt starten'
+    cta_button_text: 'Eigenes Projekt starten'
     type: image_text
+    enabled: true
+  -
+    id: lu9ka6sl
+    image: projects/nightnurse-images-projekt-1.jpg
+    type: image
     enabled: true
 ---

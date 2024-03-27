@@ -3,7 +3,7 @@
 }
 
 .swiper-slide.swiper-slide--mute-inactive {
-  @apply opacity-40 transition-opacity;
+  @apply opacity-40 transition-opacity md:opacity-100;
 }
 
 .swiper-slide-active.swiper-slide--mute-inactive {
