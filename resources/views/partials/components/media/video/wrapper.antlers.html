@@ -10,6 +10,7 @@
   playsinline 
   loop
   data-video
+  data-video-lazy
   data-video-source='{"low": "{{ video_low }}", "high": "{{ video_high }}"}'>
-  <source src="{{ video_low }}" type="video/mp4">
+  <source data-src="{{ video_high }}" type="video/mp4">
 </video>
