@@ -1,3 +1,4 @@
+import debounce from '../debounce.js';
 import Swiper from 'swiper';
 import 'swiper/css';
 
@@ -12,6 +13,7 @@ import 'swiper/css';
   const opts = {
     direction: 'horizontal',
     slidesPerView: "auto",
+    centeredSlides: true,
     speed: 600,
     loop: false,
     lazy: true,
@@ -28,13 +30,34 @@ import 'swiper/css';
     }
   };
 
+  const maxScreenWidth = 768;
+
   const init = () => {
-    initSwiper();
+    if (window.innerWidth < maxScreenWidth) {
+      initSwiper();
+    }
+
+    window.addEventListener('resize', debounce(handleResize, 50), { passive: true });
+  };
+
+  const handleResize = () => {
+    if (window.innerWidth < maxScreenWidth) {
+      initSwiper();
+    } 
+    else if (window.innerWidth >= maxScreenWidth) {
+      destroySwiper();
+    }
   };
 
   const initSwiper = () => {
     if (document.querySelector(selectors.swiper)) {
       swiper = new Swiper(selectors.swiper, opts);
+    }
+  };
+
+  const destroySwiper = () => {
+    if (swiper) {
+      swiper.destroy(true, true);
     }
   };
 

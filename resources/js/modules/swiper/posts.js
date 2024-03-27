@@ -13,6 +13,7 @@ import 'swiper/css';
   const opts = {
     direction: 'horizontal',
     slidesPerView: "auto",
+    centeredSlides: true,
     speed: 600,
     loop: false,
     lazy: true,

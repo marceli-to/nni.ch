@@ -17,6 +17,7 @@ import 'swiper/css/navigation';
   const opts = {
     direction: 'horizontal',
     slidesPerView: "auto",
+    centeredSlides: true,
     speed: 600,
     loop: false,
     lazy: true,
@@ -29,10 +30,12 @@ import 'swiper/css/navigation';
       768: {
         slidesPerView: 2,
         spaceBetween: 20,
+        centeredSlides: false,
       },
       1024: {
         slidesPerView: 3,
         spaceBetween: 50,
+        centeredSlides: false,
       }
     }
   };
@@ -40,7 +43,6 @@ import 'swiper/css/navigation';
   const init = () => {
     initSwiper();
   };
-
 
   const initSwiper = () => {
     if (document.querySelector(selectors.swiper)) {
@@ -57,12 +59,6 @@ import 'swiper/css/navigation';
           swiper.slideNext();
         });
       }
-    }
-  };
-
-  const destroySwiper = () => {
-    if (swiper) {
-      swiper.destroy(true, true);
     }
   };
 

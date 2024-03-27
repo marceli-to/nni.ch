@@ -36,13 +36,12 @@
 {{ if related }}
 
   <section data-section-theme="light" class="pt-60 xl:pt-150">
-    {{ partial:layout/blocks/inner }}
-      
-    {{ partial:components/headings/h2 is_project="true" class="text-md xl:text-4xl mb-15 xl:mb-30" }}
+    <div class="max-w-site md:mx-auto md:px-35">
+    {{ partial:components/headings/h2 is_project="true" class="pl-35 md:pl-0 text-md xl:text-4xl mb-15 xl:mb-30" }}
         {{ "Ähnliche Projekte" | trans }}
       {{ /partial:components/headings/h2 }}
 
-      {{ partial:components/swiper/wrapper  }}
+      {{ partial:components/swiper/wrapper class="md:!hidden"  }}
         {{ partial:components/swiper/container class="js-swiper-projects" navigation="false" }}
           {{ related }}
             {{ partial:components/swiper/slide class="swiper-slide--mute-inactive" }}
@@ -51,12 +50,19 @@
           {{ /related }}
         {{ /partial:components/swiper/container }}
       {{ /partial:components/swiper/wrapper }}
+
+      <div class="hidden md:grid grid-cols-12 gap-20 lg:gap-50">
+        {{ related }}        
+          <div class="md:col-span-4">
+            {{ partial:components/project/elements/card }}
+          </div>
+        {{ /related }}
+      </div>
       
       <div class="mt-60 xl:mt-90 flex justify-center">
         {{ partial:components/buttons/back title="{{ "Zum Portfolio" | trans }}" url="{{ link id="6dc5a5ba-4450-45c6-9684-53b3a8bb4261" }}" }}
       </div>
-
-    {{ /partial:layout/blocks/inner }}
+    </div>
   </section>
 
 {{ /if }}
