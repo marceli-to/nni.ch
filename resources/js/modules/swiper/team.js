@@ -1,9 +1,6 @@
-import debounce from '../debounce.js';
 import Swiper from 'swiper';
-import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
-
 
 (function () {
 
@@ -43,8 +40,6 @@ import 'swiper/css/navigation';
     }
   };
 
-  const maxScreenWidth = 768;
-
   const init = () => {
     initSwiper();
   };
@@ -53,7 +48,6 @@ import 'swiper/css/navigation';
   const initSwiper = () => {
     if (document.querySelector(selectors.swiper)) {
       swiper = new Swiper(selectors.swiper, opts);
-      // add click event to the buttons if they exist
       const prevBtn = document.querySelector(selectors.btns.prev);
       const nextBtn = document.querySelector(selectors.btns.next);
       if (prevBtn) {

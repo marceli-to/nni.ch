@@ -3,7 +3,7 @@
   {{ partial:components/swiper/wrapper class="pl-35 md:px-35 max-w-site mx-auto" }}
     {{ partial:components/swiper/container class="js-swiper-team" navigation="true" }}
       {{ collection from="team" }}
-        {{ partial:components/swiper/slide class="max-w-[calc(100%_-_55px)] swiper-slide--mute-inactive" }}
+        {{ partial:components/swiper/slide class="swiper-slide--mute-inactive" }}
           {{ partial:components/cards/team_member link="true" overlay="true" }}
         {{ /partial:components/swiper/slide }}
       {{ /collection }}

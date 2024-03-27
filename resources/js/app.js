@@ -33,6 +33,12 @@ import './modules/swiper/posts.js';
 import './modules/swiper/team.js';
 
 /**
+ * Import and initialize swiper module for projects
+ */
+
+import './modules/swiper/projects.js';
+
+/**
  * Import and initialize swiper module for full page sections
  */
 import './modules/swiper/page.js';

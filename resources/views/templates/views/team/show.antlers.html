@@ -50,7 +50,7 @@
     {{ partial:components/swiper/wrapper }}
       {{ partial:components/swiper/container class="js-swiper-team" navigation="false" }}
         {{ collection from="team" sort="random" limit="3" slug:not_in="{{ slug }}" }}
-          {{ partial:components/swiper/slide class="max-w-[calc(100%_-_55px)] md:max-w-none" }}
+          {{ partial:components/swiper/slide class="md:max-w-none" }}
             {{ partial:components/cards/team_member link="true" overlay="true" }}
           {{ /partial:components/swiper/slide }}
         {{ /collection }}
