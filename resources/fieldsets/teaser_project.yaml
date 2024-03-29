@@ -1,6 +1,19 @@
 title: 'Project Teaser'
 fields:
   -
+    handle: mirrored
+    field:
+      default: false
+      type: toggle
+      display: 'Mirrored?'
+      icon: toggle
+      localizable: false
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+  -
     import: anchor
   -
     import: title

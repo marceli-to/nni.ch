@@ -36,3 +36,18 @@ fields:
       hide_display: false
       validate:
         - required
+  -
+    handle: byline
+    field:
+      input_type: text
+      antlers: false
+      type: text
+      display: Byline
+      icon: text
+      instructions: 'Optional byline'
+      localizable: false
+      listable: hidden
+      instructions_position: below
+      visibility: visible
+      replicator_preview: true
+      hide_display: false

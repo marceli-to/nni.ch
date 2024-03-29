@@ -1,8 +1,10 @@
+{{ if url }}
 <a href="{{ url }}"
   title="{{ title }}"
   class="group">
+{{ /if }}
   <figure 
-    class="block relative image-overlay after:bg-opacity-10"
+    class="block relative image-overlay after:bg-opacity-10 {{ aspectRatio ?? '' }}"
     data-touch>
     <picture>
       <source media="(min-width: 768px)" srcset="{{ glide:img preset='lg-webp' }}" type="img/webp">
@@ -14,15 +16,19 @@
         title="{{ alt }}" 
         height="{{ height }}" 
         width="{{ width }}"
-        class="block w-full h-auto {{ imgClass ?? '' }}"
+        class="block w-full {{ aspectRatio ? 'h-full object-cover' : 'h-auto' }} {{ imgClass ?? '' }}"
         loading="lazy">
     </picture>
-    <figcaption 
-      class="absolute top-0 left-0 z-40 w-full h-full flex flex-col justify-end items-start text-white pl-30 xl:pl-45 pb-20 xl:pb-60 group-hover:opacity-0 transition-opacity duration-500">
-      <h3 class="font-meta-medium mb-2">
-        {{ title }}
-      </h3>
-      {{ alt }}
-    </figcaption>
+    {{ if title }}
+      <figcaption 
+        class="absolute top-0 left-0 z-40 w-full h-full flex flex-col justify-end items-start text-white pl-30 xl:pl-45 pb-20 xl:pb-60 group-hover:opacity-0 transition-opacity duration-500">
+        <h3 class="font-meta-medium mb-2">
+          {{ title }}
+        </h3>
+        {{ alt }}
+      </figcaption>
+    {{ /if }}
   </figure>
+{{ if url }}
 </a>
+{{ /if }}

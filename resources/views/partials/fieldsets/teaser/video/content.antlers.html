@@ -1,8 +1,11 @@
 {{ partial:layout/blocks/inner class="absolute md:relative left-0 top-90 xl:top-240 z-20 " }}
   <article class="text-white">
-    {{ partial:components/headings/h2 class="mb-10 xl:mb-90" }}
+    {{ partial:components/headings/h2 class="mb-10 {{ teaser_video_byline ? '' : 'xl:mb-90' }}" }}
       {{ teaser_video_title }}
     {{ /partial:components/headings/h2 }}
+    {{ if teaser_video_byline }}
+      {{ teaser_video_byline }}
+    {{ /if }}
     <div class="hidden md:block md:text-3xl max-w-md">
       {{ cta_text }}
     </div>
