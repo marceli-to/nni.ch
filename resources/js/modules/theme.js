@@ -40,7 +40,7 @@ import debounce from './debounce.js';
 
     lastScrollY = currentScrollY;
   };
-
+  // const body = document.querySelector('body');
   window.addEventListener('scroll', debounce(checkAndUpdateTheme, 10), { passive: true });
 
   checkAndUpdateTheme();

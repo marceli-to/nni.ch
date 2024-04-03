@@ -3,7 +3,7 @@ id: 6585e18c-0f59-4d1c-8514-48178b49b41f
 blueprint: project
 title: 'WBW WOHO, Berlin'
 updated_by: c2f8321e-be41-4d83-b9ee-8136dba46b39
-updated_at: 1711549220
+updated_at: 1712129617
 feature_layout: portrait
 is_fullpage: false
 theme: light
@@ -150,4 +150,5 @@ elements:
     image: projects/nightnurse-images-projekt-1.jpg
     type: image
     enabled: true
+teaser_image_portrait: projects/nightnurse-images-projekt-4.jpg
 ---

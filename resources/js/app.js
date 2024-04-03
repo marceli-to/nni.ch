@@ -38,9 +38,8 @@ import './modules/swiper/team.js';
 
 import './modules/swiper/projects.js';
 
-/**
- * Import and initialize swiper module for full page sections
- */
-import './modules/swiper/page.js';
-
 import './modules/touch.js';
+
+// import './modules/snap.js';
+
+import './modules/section.js';

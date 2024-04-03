@@ -1,4 +1,4 @@
-<section data-section-theme="light" class="pt-90 pb-30 md:pt-150 md:pb-60 {{ is_fullpage ? 'md:snap-center' : '' }}">
+<section data-section data-section-theme="light" class="pt-90 pb-30 md:pt-150 md:pb-60 {{ is_fullpage ? 'md:snap-center' : '' }}">
 
   {{ if feature_layout == 'landscape' }}
     {{ partial:components/project/layout/landscape }}
@@ -13,19 +13,19 @@
 {{ elements }}
 
   {{ if type == 'image_text' }}
-    <section data-section-theme="light" class="py-30 xl:py-60">
+    <section data-section data-section-theme="light" class="py-30 xl:py-60">
       {{ partial:components/project/elements/image_text }}
     </section>
   {{ /if }}
 
   {{ if type == 'fullscreen_image' }}
-    <section data-section-theme="dark" class="py-30 xl:py-60">
+    <section data-section data-section-theme="dark" class="py-30 xl:py-60">
       {{ partial:components/project/elements/fullscreen_image }}
     </section>
   {{ /if }}
 
   {{ if type == 'image' }}
-    <section data-section-theme="light" class="py-30 xl:py-60">
+    <section data-section data-section-theme="light" class="py-30 xl:py-60">
       {{ partial:components/misc/hr }}
       {{ partial:components/project/elements/image }}
     </section>
@@ -35,7 +35,7 @@
 
 {{ if related }}
 
-  <section data-section-theme="light" class="pt-60 xl:pt-150">
+  <section data-section data-section-theme="light" class="pt-60 xl:pt-150">
     <div class="max-w-site md:mx-auto md:px-35">
     {{ partial:components/headings/h2 is_project="true" class="pl-35 md:pl-0 text-md xl:text-4xl mb-15 xl:mb-30" }}
         {{ "Ähnliche Projekte" | trans }}

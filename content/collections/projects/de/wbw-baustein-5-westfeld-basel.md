@@ -3,7 +3,7 @@ id: ab6dd26e-ce41-4116-89c6-829ce374c019
 blueprint: project
 title: 'WBW Baustein 5 Westfeld, Basel'
 updated_by: c2f8321e-be41-4d83-b9ee-8136dba46b39
-updated_at: 1711549215
+updated_at: 1712129673
 feature_layout: landscape
 project_categories:
   - innenarchitektur
@@ -83,4 +83,6 @@ services:
 tags:
   - 3dvisualisation
   - apps-script
+teaser_image_portrait: projects/nightnurse-images-projekt-4.jpg
+teaser_image_landscape: projects/nightnurse-images-projekt-4.jpg
 ---

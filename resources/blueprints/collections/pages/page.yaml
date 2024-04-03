@@ -88,13 +88,6 @@ tabs:
                       fields:
                         -
                           import: teaser_blog
-                    project_grids:
-                      display: 'Project Grids'
-                      instructions: 'Add project items in a grid.'
-                      icon: layout-grid-dots
-                      fields:
-                        -
-                          import: grid_project
                 miscellaneous:
                   display: Miscellaneous
                   instructions: null
