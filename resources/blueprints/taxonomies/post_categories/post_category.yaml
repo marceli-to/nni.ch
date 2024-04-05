@@ -11,6 +11,7 @@ tabs:
               required: true
               validate:
                 - required
+              localizable: false
   sidebar:
     display: Sidebar
     sections:
@@ -24,4 +25,5 @@ tabs:
               validate:
                 - required
                 - 'max:200'
+              localizable: false
 title: Category

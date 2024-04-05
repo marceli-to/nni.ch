@@ -80,9 +80,6 @@ services:
               -
                 type: text
                 text: 'Lorem ipsum dolor sit amet sadipscing'
-tags:
-  - 3dvisualisation
-  - apps-script
 teaser_image_portrait: projects/nightnurse-images-projekt-4.jpg
 teaser_image_landscape: projects/nightnurse-images-projekt-4.jpg
 ---

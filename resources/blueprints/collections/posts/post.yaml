@@ -19,6 +19,7 @@ tabs:
               input_type: text
               antlers: false
               hide_display: false
+              localizable: true
           -
             handle: date
             field:
@@ -41,16 +42,130 @@ tabs:
               hide_display: false
               validate:
                 - required
+              localizable: false
           -
             handle: content
             field:
-              type: markdown
+              buttons:
+                - h2
+                - h3
+                - bold
+                - italic
+                - unorderedlist
+                - orderedlist
+                - removeformat
+                - quote
+                - anchor
+                - image
+                - table
+                - h4
+                - h5
+              smart_typography: false
+              save_html: false
+              inline: false
+              toolbar_mode: fixed
+              reading_time: false
+              word_count: false
+              fullscreen: true
+              allow_source: true
+              enable_input_rules: true
+              enable_paste_rules: true
+              remove_empty_nodes: false
+              antlers: false
+              link_noopener: false
+              link_noreferrer: false
+              target_blank: false
+              always_show_set_button: false
+              collapse: false
+              previews: true
+              type: bard
+              display: Content
+              icon: bard
               localizable: true
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              sets:
+                image:
+                  display: Image
+                  instructions: null
+                  icon: media-image-picture-orientation
+                  sets:
+                    image:
+                      display: Image
+                      instructions: null
+                      icon: media-image-picture-orientation
+                      fields:
+                        -
+                          import: blog_image
   sidebar:
     display: Sidebar
     sections:
       -
         fields:
+          -
+            handle: feature_image
+            field:
+              max_files: 1
+              mode: list
+              container: assets
+              restrict: false
+              allow_uploads: true
+              show_filename: true
+              show_set_alt: true
+              type: assets
+              display: 'Feature image'
+              icon: assets
+              localizable: false
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              validate:
+                - required
+              folder: posts
+          -
+            handle: post_categories
+            field:
+              type: terms
+              taxonomies:
+                - post_categories
+              display: Categories
+              mode: select
+              localizable: false
+              instructions_position: above
+              listable: hidden
+              visibility: visible
+              replicator_preview: true
+              create: true
+              hide_display: false
+          -
+            handle: tags
+            field:
+              type: terms
+              taxonomies:
+                - tags
+              display: Tags
+              mode: select
+              localizable: false
+          -
+            handle: author
+            field:
+              default: current
+              max_items: 1
+              mode: select
+              type: users
+              display: Author
+              icon: users
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              localizable: false
           -
             handle: slug
             field:
@@ -66,34 +181,4 @@ tabs:
               max_items: 1
               listable: false
               localizable: true
-          -
-            handle: post_categories
-            field:
-              type: terms
-              taxonomies:
-                - post_categories
-              display: Categories
-              mode: select
-          -
-            handle: tags
-            field:
-              type: terms
-              taxonomies:
-                - tags
-              display: Tags
-              mode: select
-          -
-            handle: author
-            field:
-              default: current
-              max_items: 1
-              mode: select
-              type: users
-              display: Author
-              icon: users
-              listable: hidden
-              instructions_position: above
-              visibility: visible
-              replicator_preview: true
-              hide_display: false
 title: Post

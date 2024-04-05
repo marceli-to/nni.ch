@@ -9,3 +9,4 @@ term_template: tags.show
 layout: layout
 sites:
   - de
+  - en

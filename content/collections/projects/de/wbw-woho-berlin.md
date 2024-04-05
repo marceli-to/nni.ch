@@ -81,9 +81,6 @@ related:
 feature_image: projects/nightnurse-images-projekt-1.jpg
 project_categories:
   - innenarchitektur
-tags:
-  - visual-workflow
-  - topick-partner
 elements:
   -
     id: lu8ghup9

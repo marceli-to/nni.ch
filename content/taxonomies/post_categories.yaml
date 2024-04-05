@@ -1,4 +1,4 @@
-title: Categories
+title: 'Post Categories'
 preview_targets:
   -
     label: Term
@@ -7,3 +7,6 @@ preview_targets:
 template: post_categories.index
 term_template: post_categories.show
 layout: layout
+sites:
+  - de
+  - en

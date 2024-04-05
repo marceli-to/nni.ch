@@ -1,14 +1,15 @@
 title: Posts
 sites:
-  - de
   - en
+  - de
 propagate: false
-template: default
-layout: layout
+template: templates/views/post/show
+layout: templates/layout/default
 taxonomies:
   - post_categories
   - tags
 revisions: false
+route: '/blog/{month}/{year}/{slug}'
 date: true
 sort_dir: asc
 date_behavior:

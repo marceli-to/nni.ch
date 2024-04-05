@@ -1,0 +1,41 @@
+<section data-section data-section-theme="light" class="pt-60 xl:pt-150 {{ is_fullpage ? 'md:min-h-screen md:snap-center' : '' }}">
+  <div class="flex justify-end mb-30 pr-35 md:hidden">
+    {{ partial:components/buttons/more title="{{ "Zum Blog" | trans }}" url="{{ link id="aa4457b3-2553-4340-9848-81b494b5361f" }}" }}
+  </div>
+{{ partial:components/swiper/wrapper class="md:hidden" }}
+  {{ partial:components/swiper/container class="js-swiper-posts" }}
+
+    {{ partial:components/swiper/slide class="swiper-slide--mute-inactive" }}
+      {{ partial:fieldsets/teaser/post/item class="bg-gray-200" date="18. Januar 2024" title="Initiative Stadtgrün Zürich" }}
+    {{ /partial:components/swiper/slide }}
+
+    {{ partial:components/swiper/slide class="swiper-slide--mute-inactive" }}
+      {{ partial:fieldsets/teaser/post/item class="bg-gray-200" date="2. Februar 2024" title="Project Showcase: Working with Zaha" }}
+    {{ /partial:components/swiper/slide }}
+
+    {{ partial:components/swiper/slide class="swiper-slide--mute-inactive" }}
+      {{ partial:fieldsets/teaser/post/item class="bg-gray-200" date="21. März 2024" title="Project Showcase: Limmat Revitalisierung" }}
+    {{ /partial:components/swiper/slide }}
+
+  {{ /partial:components/swiper/container }}
+{{ /partial:components/swiper/wrapper }}
+
+{{ partial:layout/blocks/inner class="hidden md:block" }}
+  <div class="flex justify-end mb-30 xl:mb-60">
+    {{ partial:components/buttons/more title="{{ "Zum Blog" | trans }}" url="{{ link id="aa4457b3-2553-4340-9848-81b494b5361f" }}" }}
+  </div>
+  <div class="md:grid grid-cols-12 gap-20 lg:gap-50">
+    <div class="md:col-span-4">
+      {{ partial:fieldsets/teaser/post/item class="bg-gray-200" date="18. Januar 2024" title="Initiative Stadtgrün Zürich" }}
+    </div>
+    <div class="md:col-span-4">
+      {{ partial:fieldsets/teaser/post/item class="bg-gray-200" date="2. Februar 2024" title="Project Showcase: Working with Zaha" }}
+    </div>
+    <div class="md:col-span-4">
+      {{ partial:fieldsets/teaser/post/item class="bg-gray-200" date="21. März 2024" title="Project Showcase: Limmat Revitalisierung" }}
+    </div>
+  </div>
+{{ /partial:layout/blocks/inner }}
+</section>
+
+

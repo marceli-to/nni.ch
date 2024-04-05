@@ -1,0 +1,9 @@
+<section data-section-theme="light" class="pt-90 lg:pt-150">
+  {{ partial:layout/blocks/inner }}
+    <div class="grid grid-cols-12 gap-20 xl:gap-50">
+      {{ collection from="posts" sort="order" }}
+        {{ partial:components/cards/post }}
+      {{ /collection }}
+    </div>
+  {{ /partial:layout/blocks/inner }}
+</section>
