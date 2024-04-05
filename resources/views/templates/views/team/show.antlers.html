@@ -37,7 +37,7 @@
       </div>
       <div class="md:col-span-6 flex justify-end">
         <figure>
-          {{ partial:components/media/portrait overlay="false" link="false" }}
+          {{ partial:components/team/media/portrait overlay="false" link="false" }}
         </figure>
       </div>
       <div class="md:col-span-8 md:col-start-4 md:mt-90 xl:mt-150">
@@ -51,7 +51,7 @@
       {{ partial:components/swiper/container class="js-swiper-team" navigation="false" }}
         {{ collection from="team" sort="random" limit="3" slug:not_in="{{ slug }}" }}
           {{ partial:components/swiper/slide class="md:max-w-none" }}
-            {{ partial:components/cards/team_member link="true" overlay="true" }}
+            {{ partial:components/team/elements/card link="true" overlay="true" }}
           {{ /partial:components/swiper/slide }}
         {{ /collection }}
       {{ /partial:components/swiper/container }}

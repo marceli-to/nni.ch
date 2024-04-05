@@ -8,7 +8,7 @@
             title="{{ title }}"
             class="block col-span-full image-overlay after:bg-opacity-20"
             data-touch>
-            {{ partial:partials/components/media/project/grid image="{{ teaser_image_landscape ?? teaser_image_portrait }}" title="{{ title }}" client="{{ client }}" class="aspect-[16/8]" }}
+            {{ partial:partials/components/project/media/preview image="{{ teaser_image_landscape ?? teaser_image_portrait }}" title="{{ title }}" client="{{ client }}" class="aspect-[16/8]" }}
           </a>
         {{ elseif count | mod(2) == 0 }}
           <a 
@@ -16,7 +16,7 @@
           title="{{ title }}"
           class="block col-span-full sm:col-span-8 image-overlay after:bg-opacity-20"
           data-touch>
-          {{ partial:partials/components/media/project/grid image="{{ teaser_image_landscape ?? teaser_image_portrait }}" title="{{ title }}" client="{{ client }}" class="aspect-[3/2]" }}
+          {{ partial:partials/components/project/media/preview image="{{ teaser_image_landscape ?? teaser_image_portrait }}" title="{{ title }}" client="{{ client }}" class="aspect-[3/2]" }}
         </a>
         {{ else }}
           <a 
@@ -24,7 +24,7 @@
           title="{{ title }}"
           class="block col-span-full sm:col-span-4 image-overlay after:bg-opacity-20"
           data-touch>
-          {{ partial:partials/components/media/project/grid image="{{ teaser_image_portrait ?? teaser_image_landscape }}" title="{{ title }}" client="{{ client }}" class="aspect-[3/4]" }}
+          {{ partial:partials/components/project/media/preview image="{{ teaser_image_portrait ?? teaser_image_landscape }}" title="{{ title }}" client="{{ client }}" class="aspect-[3/4]" }}
         </a>
         {{ /if }}
       {{ /collection }}

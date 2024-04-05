@@ -1,0 +1,19 @@
+{{ if index == 0 }}
+<div class="col-span-full md:col-span-7">
+  {{ partial:components/post/elements/date }}
+  {{ partial:components/post/media/preview ratio="aspect-[510/330] md:aspect-[930/474]" }}
+  {{ partial:components/post/elements/heading }}
+</div>
+{{ elseif index == 1 }}
+<div class="col-span-full md:col-span-5">
+  {{ partial:components/post/elements/date }}
+  {{ partial:components/post/media/preview ratio="aspect-[510/330] md:aspect-[650/474]" }}
+  {{ partial:components/post/elements/heading }}
+</div>
+{{ else }}
+<div class="col-span-full md:col-span-4">
+  {{ partial:components/post/elements/date }}
+  {{ partial:components/post/media/preview }}
+  {{ partial:components/post/elements/heading }}
+</div>
+{{ /if }}

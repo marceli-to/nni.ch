@@ -1,8 +1,11 @@
-<section data-section-theme="light" class="pt-90 lg:pt-150">
+<section data-section-theme="light" class="pt-90 lg:pt-150 posts">
   {{ partial:layout/blocks/inner }}
+    <header class="mb-30 xl:mb-60">
+      <h1>Blog</h1>
+    </header>
     <div class="grid grid-cols-12 gap-20 xl:gap-50">
-      {{ collection from="posts" sort="order" }}
-        {{ partial:components/cards/post }}
+      {{ collection from="posts" sort="date:desc" limit="10" }}
+        {{ partial:components/post/elements/card }}
       {{ /collection }}
     </div>
   {{ /partial:layout/blocks/inner }}
