@@ -3,8 +3,8 @@ sites:
   - de
   - en
 propagate: false
-template: templates/views/jobs/show
-layout: templates/layout/default
+template: jobs/show
+layout: layout/default
 revisions: false
 route:
   de: '/unternehmen/jobs/{slug}'

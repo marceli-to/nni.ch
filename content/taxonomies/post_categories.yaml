@@ -4,9 +4,7 @@ preview_targets:
     label: Term
     url: '{permalink}'
     refresh: true
-template: post_categories.index
-term_template: post_categories.show
-layout: layout
+layout: layout/default
 sites:
   - de
   - en

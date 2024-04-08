@@ -1,0 +1,17 @@
+<figure>
+  <picture>
+    <source media="(min-width: 1024px)" srcset="{{ glide:image preset='xl-webp' }}" type="image/webp">
+    <source media="(min-width: 768px)" srcset="{{ glide:image preset='lg-webp' }}" type="image/webp">
+    <source srcset="{{ glide:image preset='md-webp' }}" type="image/webp">
+    <source media="(min-width: 1024px)" srcset="{{ glide:image preset='xl' }}" type="image/jpeg">
+    <source media="(min-width: 768px)" srcset="{{ glide:image preset='lg' }}" type="image/jpeg">
+    <img 
+      src="{{ glide:image preset='md' }}" 
+      alt="{{ image:alt }}" 
+      title="{{ image:alt }}" 
+      height="{{ image:height }}" 
+      width="{{ image:width }}"
+      class="block w-full h-full object-cover aspect-video {{ class ?? '' }}"
+      loading="lazy">
+  </picture>
+</figure>

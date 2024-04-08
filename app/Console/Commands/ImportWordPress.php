@@ -129,31 +129,6 @@ class ImportWordPress extends Command
 
       // replace /> with >
       $content = preg_replace('/  \/>/', '>', $content);
-     
-
-      // Get all Taxonomies 'post_categories'
-      // $terms = Term::all();
-      // $taxonomies = [];
-      
-      // foreach ($terms as $term)
-      // {
-      //   $taxonomy = $term->taxonomyHandle();
-      //   $taxonomies[$taxonomy][] = $term;
-      // }
-
-      // // $post->main_category, $taxonomies['post_categories']
-      // // find the term with the slug $post->main_category in $taxonomies['post_categories']
-      // $category = collect($taxonomies['post_categories'])->where('title', $post->main_category)->first();
-
-      // $cat = isset($category->slug) ? [$category->slug] : ['fix-me'];
-
-      // // Handle tags
-      // $taxs = $post->taxonomies()->get();
-      // $tags = [];
-      // foreach($taxs as $taxonomy)
-      // {
-      //   $tags[] = $taxonomy->slug;
-      // }
 
       $t = [];
       $c = [];

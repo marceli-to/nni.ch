@@ -7,7 +7,7 @@ updated_at: 1712129617
 feature_layout: portrait
 is_fullpage: false
 theme: light
-template: templates/views/project/show
+template: project/show
 client: 'Topik Partner AG'
 summary:
   -

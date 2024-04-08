@@ -3,8 +3,8 @@ sites:
   - de
   - en
 propagate: false
-template: templates/views/default
-layout: templates/layout/default
+template: default
+layout: layout/default
 revisions: false
 route: '{parent_uri}/{slug}'
 sort_dir: asc

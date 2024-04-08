@@ -5,22 +5,6 @@ tabs:
       -
         fields:
           -
-            handle: title
-            field:
-              type: text
-              required: true
-              validate:
-                - required
-              display: Title
-              instructions_position: above
-              listable: hidden
-              visibility: visible
-              replicator_preview: true
-              input_type: text
-              antlers: false
-              hide_display: false
-              localizable: true
-          -
             handle: date
             field:
               type: date
@@ -43,6 +27,35 @@ tabs:
               validate:
                 - required
               localizable: false
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+              display: Title
+              instructions_position: above
+              listable: hidden
+              visibility: visible
+              replicator_preview: true
+              input_type: text
+              antlers: false
+              hide_display: false
+              localizable: true
+          -
+            handle: excerpt
+            field:
+              antlers: false
+              type: textarea
+              display: Excerpt
+              icon: textarea
+              localizable: true
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
           -
             handle: content
             field:

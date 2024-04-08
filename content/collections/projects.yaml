@@ -3,8 +3,8 @@ sites:
   - de
   - en
 propagate: false
-template: templates/views/project/show
-layout: templates/layout/default
+template: project/show
+layout: layout/default
 taxonomies:
   - project_categories
   - tags

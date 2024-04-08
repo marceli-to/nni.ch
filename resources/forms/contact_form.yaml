@@ -7,5 +7,5 @@ email:
     from: beeper@nightnurse.ch
     reply_to: beeper@nightnurse.ch
     subject: 'Kontaktformular nightnurse.ch'
-    html: templates/views/email/html/contact
-    text: templates/views/email/text/contact
+    html: email/html/contact
+    text: email/text/contact

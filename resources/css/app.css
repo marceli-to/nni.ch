@@ -28,7 +28,7 @@ strong {
   @apply font-meta-medium font-medium
 }
 
-main p:not(:last-of-type) {
+p:not(:last-of-type) {
   @apply mb-20 xl:mb-30
 }
 

@@ -3,8 +3,8 @@ sites:
   - en
   - de
 propagate: false
-template: templates/views/post/show
-layout: templates/layout/default
+template: blog/show
+layout: layout/default
 taxonomies:
   - post_categories
   - tags

@@ -16,3 +16,12 @@ use Illuminate\Support\Facades\Route;
 // Route::statamic('example', 'example-view', [
 //    'title' => 'Example'
 // ]);
+
+Route::statamic('/en/blog/category/{taxonomy_term}', 'blog.categories.index', [
+  'layout' => 'layout.default',
+  'title' => 'Blog',
+]); 
+Route::statamic('/blog/kategorie/{taxonomy_term}', 'blog.categories.index', [
+  'layout' => 'layout.default',
+]); 
+

@@ -173,7 +173,6 @@ page_elements:
     id: lu07r7zb
     type: teaser_blog
     enabled: true
-template: templates/views/default
 is_fullscreen: false
 theme: dark
 is_fullpage: false
