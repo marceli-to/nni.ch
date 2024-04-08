@@ -15,7 +15,6 @@
            // get data-section attribute
             const section = entry.target.getAttribute('data-section');
             const theme = entry.target.getAttribute('data-section-theme');
-            console.log(theme);
             // Unobserve the section if you only need to trigger once
             // observer.unobserve(entry.target);
           } else {
