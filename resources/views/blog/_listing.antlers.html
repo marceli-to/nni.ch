@@ -1,7 +1,7 @@
 <header class="mb-30 xl:mb-60">
   <h1>Blog</h1>
 </header>
-{{ collection from="posts" as="posts" sort="date:desc" limit="25" taxonomy:post_categories="{{ taxonomy_term }}" }}
+{{ collection from="posts" as="posts" sort="date:desc" limit="25" taxonomy:post_categories="{{ category }}" taxonomy:tags="{{ tag }}" }}
   {{ if no_results }}
     <p>{{ "Oh, es gibt keine Resultate." | trans }}</p>
   {{ else }}

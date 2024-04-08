@@ -1,6 +1,6 @@
 {{ if !term && index == 0 }}
   <div class="col-span-full md:col-span-7 md:mb-30">
-    {{ partial:components/post/elements/date }}
+    {{ partial:components/post/elements/date class="mb-15" }}
     <a href="{{ url }}" title="{{ title }}">
       {{ partial:components/post/media/preview ratio="aspect-[510/330] md:aspect-[930/474]" }}
       {{ partial:components/post/elements/heading }}
@@ -8,7 +8,7 @@
   </div>
 {{ elseif !term && index == 1 }}
   <div class="col-span-full md:col-span-5 md:mb-30">
-    {{ partial:components/post/elements/date }}
+    {{ partial:components/post/elements/date class="mb-15" }}
     <a href="{{ url }}" title="{{ title }}">
       {{ partial:components/post/media/preview ratio="aspect-[510/330] md:aspect-[650/474]" }}
       {{ partial:components/post/elements/heading }}
@@ -16,7 +16,7 @@
   </div>
 {{ else }}
   <div class="col-span-full md:col-span-4">
-    {{ partial:components/post/elements/date }}
+    {{ partial:components/post/elements/date class="mb-15" }}
     <a href="{{ url }}" title="{{ title }}">
       {{ partial:components/post/media/preview }}
       {{ partial:components/post/elements/heading }}

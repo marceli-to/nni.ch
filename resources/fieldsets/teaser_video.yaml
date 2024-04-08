@@ -3,7 +3,7 @@ fields:
   -
     import: anchor
   -
-    import: video
+    import: fullscreen_video
   -
     import: title
     prefix: teaser_video_

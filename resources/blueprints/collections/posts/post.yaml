@@ -112,7 +112,14 @@ tabs:
                       icon: media-image-picture-orientation
                       fields:
                         -
-                          import: blog_image
+                          import: image
+                    video:
+                      display: Video
+                      instructions: 'Add a video (MP4, Youtube or Vimeo)'
+                      icon: media-webcam-video
+                      fields:
+                        -
+                          import: video
   sidebar:
     display: Sidebar
     sections:

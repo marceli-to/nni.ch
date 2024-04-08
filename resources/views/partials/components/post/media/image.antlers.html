@@ -13,7 +13,7 @@
       title="{{ image:alt }}" 
       height="{{ image:height }}" 
       width="{{ image:width }}"
-      class="block {{ class ?? '' }}"
+      class="block w-full h-auto {{ class ?? '' }} max-w-content"
       loading="lazy">
   </picture>
   {{ if caption }}

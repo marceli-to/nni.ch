@@ -3,20 +3,20 @@
     {{ if feature_image }}
       {{ partial:components/post/media/feature image="{{ feature_image }}" }}
     {{ /if }}
-    <div class="flex justify-between mt-15 mb-60 xl:mb-120">
+    <header class="flex justify-between mt-15 mb-60 xl:mb-120">
       {{ partial:components/post/elements/date }}
       <div>
         {{ post_categories }}
           {{ partial:components/post/elements/category }}
         {{ /post_categories }}
       </div>
-    </div>
+    </header>
     <article class="max-w-content mx-auto">
-      <h1 class="leading-[1.2] mb-15 xl:mb-30">
+      <h1 class="font-meta-medium leading-[1.2] mb-15 xl:mb-30">
         {{ title }}
       </h1>
       {{ if excerpt }}
-        <div class="text-md xl:text-2xl mb-30 xl:mb-60">
+        <div class="text-md xl:text-2xl mb-45 xl:mb-90">
           {{ excerpt }}
         </div>
       {{ /if }}
@@ -28,13 +28,28 @@
         {{ /if }}
 
         {{ if type == 'image' }}
-          <div class="mb-30 xl:mb-60">
+          <div class="my-30 xl:my-45">
             {{ partial:components/post/media/image }}
           </div>
         {{ /if }}
+
+        {{ if type == 'video' }}
+        <div class="my-30 xl:my-45">
+          {{ partial:components/media/video/video }}
+        </div>
+      {{ /if }}
   
       {{ /content }}
     </article>
+    <footer class="mt-45 xl:mt-90">
+      <div class="flex justify-between items-start">
+        {{ partial:components/post/elements/share }}
+        {{ partial:components/post/elements/tags }}
+      </div>
+       <div class="mt-60 xl:mt-120 flex justify-center">
+        {{ partial:components/buttons/back title="{{ "Zur Übersicht" | trans }}" url="{{ link id="aa4457b3-2553-4340-9848-81b494b5361f" }}" }}
+      </div>
+    </footer>
 
   {{ /partial:layout/blocks/inner }}
 </section>

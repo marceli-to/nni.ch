@@ -1,81 +1,62 @@
 title: Video
 fields:
   -
-    handle: video_low
-    field:
-      mode: list
-      container: assets
-      restrict: false
-      allow_uploads: true
-      show_filename: true
-      show_set_alt: true
-      type: assets
-      display: 'Video (low)'
-      icon: assets
-      instructions: 'Add a low resolution video for small devices. The video format needs to be MP4'
-      localizable: false
-      listable: hidden
-      instructions_position: below
-      visibility: visible
-      replicator_preview: true
-      hide_display: false
-      folder: video
-      width: 50
-      max_files: 1
-      validate:
-        - required
-  -
-    handle: video_high
-    field:
-      mode: list
-      container: assets
-      restrict: false
-      allow_uploads: true
-      show_filename: true
-      show_set_alt: true
-      type: assets
-      display: 'Video (high)'
-      icon: assets
-      instructions: 'Add a low resolution video for medium and large devices. The video format needs to be MP4.'
-      localizable: false
-      listable: hidden
-      instructions_position: below
-      visibility: visible
-      replicator_preview: true
-      hide_display: false
-      folder: video
-      width: 50
-      max_files: 1
-      validate:
-        - required
-  -
-    handle: video_overlay
+    handle: video_source
     field:
       options:
-        none: None
-        dim-10: 10%
-        dim-20: 20%
-        dim-30: 30%
-        dim-40: 40%
-        dim-50: 50%
-        dim-60: 60%
-        dim-70: 70%
-        dim-80: 80%
-        dim-90: 90%
+        file: 'File (MP4)'
+        code: 'Code (Youtube, Vimeo)'
       taggable: false
       push_tags: false
       multiple: false
       clearable: false
       searchable: true
       cast_booleans: false
-      default: dim-0
+      default: code
       type: select
-      display: 'Video overlay opacity'
+      display: 'Video source'
       icon: select
-      instructions: 'Set video overlay opacity. Default is 0.'
       localizable: false
       listable: hidden
       instructions_position: below
       visibility: visible
       replicator_preview: true
       hide_display: false
+      instructions: 'Set the source of the video'
+  -
+    handle: video_code
+    field:
+      antlers: false
+      type: textarea
+      display: 'Video Code'
+      icon: textarea
+      instructions: 'Embed code from Youtube / Vimeo'
+      localizable: false
+      listable: hidden
+      instructions_position: below
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      if:
+        video_source: 'equals code'
+  -
+    handle: video_file
+    field:
+      mode: list
+      container: assets
+      restrict: false
+      allow_uploads: true
+      show_filename: true
+      show_set_alt: true
+      type: assets
+      display: 'Video File'
+      icon: assets
+      localizable: false
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      folder: video
+      if:
+        video_source: 'equals file'

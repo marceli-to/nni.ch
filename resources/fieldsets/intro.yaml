@@ -5,6 +5,6 @@ fields:
   -
     import: title
   -
-    import: video
+    import: fullscreen_video
   -
     import: anchors

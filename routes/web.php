@@ -17,11 +17,19 @@ use Illuminate\Support\Facades\Route;
 //    'title' => 'Example'
 // ]);
 
-Route::statamic('/en/blog/category/{taxonomy_term}', 'blog.categories.index', [
+Route::statamic('/en/blog/category/{category}', 'blog.categories.index', [
   'layout' => 'layout.default',
   'title' => 'Blog',
 ]); 
-Route::statamic('/blog/kategorie/{taxonomy_term}', 'blog.categories.index', [
+Route::statamic('/blog/kategorie/{category}', 'blog.categories.index', [
+  'layout' => 'layout.default',
+]);
+
+Route::statamic('/en/blog/tag/{tag}', 'blog.tags.index', [
+  'layout' => 'layout.default',
+  'title' => 'Blog',
+]); 
+Route::statamic('/blog/tag/{tag}', 'blog.tags.index', [
   'layout' => 'layout.default',
 ]); 
 

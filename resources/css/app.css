@@ -28,23 +28,23 @@ strong {
   @apply font-meta-medium font-medium
 }
 
-p:not(:last-of-type) {
+section p:not(:last-of-type) {
   @apply mb-20 xl:mb-30
 }
 
-main ul:not(main nav ul) {
+section ul:not(nav ul) {
   @apply p-0 m-0 list-square
 }
 
-main ul:not(main nav ul) li::marker {
+section ul:not(nav ul) li::marker {
   @apply text-xxs
 }
 
-main ul:not(:last-child) {
+section ul:not(:last-child) {
   @apply mb-20 xl:mb-30;
 }
 
-main ul li:not(main nav ul li) {
+section ul li:not(nav ul li) {
   @apply ml-18
 }
 
@@ -54,6 +54,14 @@ main ul li:not(main nav ul li) {
 
 .image-overlay.has-touch {
   @apply after:bg-opacity-0
+}
+
+.video-container {
+  @apply relative aspect-video
+}
+
+.video-container iframe {
+  @apply w-full h-full object-contain max-w-content
 }
 
 @keyframes fadeOutLeft {
