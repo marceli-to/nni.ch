@@ -17,19 +17,14 @@ page_elements:
     theme: dark
     title:
       -
-        type: paragraph
-        attrs:
-          class: null
-        content:
+        type: text
+        text: 'Design '
+      -
+        type: text
+        marks:
           -
-            type: text
-            text: 'Design '
-          -
-            type: text
-            marks:
-              -
-                type: bold
-            text: 'living spaces'
+            type: bold
+        text: 'living spaces'
   -
     id: lty4dhrv
     title:
@@ -67,19 +62,14 @@ page_elements:
     anchor: portfolio
     teaser_project_title:
       -
-        type: paragraph
-        attrs:
-          class: null
-        content:
+        type: text
+        text: 'Implement '
+      -
+        type: text
+        marks:
           -
-            type: text
-            text: 'Implement '
-          -
-            type: text
-            marks:
-              -
-                type: bold
-            text: projects
+            type: bold
+        text: projects
     cta_text:
       -
         type: paragraph
@@ -89,6 +79,7 @@ page_elements:
           -
             type: text
             text: "Your ideas deserve to be seen - let's get your project rolling!"
+    mirrored: false
   -
     id: ltzmersg
     type: horizontal_ruler
@@ -157,21 +148,16 @@ page_elements:
     video_overlay: dim-30
     teaser_video_title:
       -
-        type: paragraph
-        attrs:
-          class: null
-        content:
+        type: text
+        text: 'Digital worlds'
+      -
+        type: hardBreak
+      -
+        type: text
+        marks:
           -
-            type: text
-            text: 'Digital worlds'
-          -
-            type: hardBreak
-          -
-            type: text
-            marks:
-              -
-                type: bold
-            text: 'locally rooted'
+            type: bold
+        text: 'locally rooted'
     cta_link: 'entry::017b73d4-5285-4914-88b4-13d3b72c75a2'
     cta_button_text: 'About the company'
     type: teaser_video
@@ -227,6 +213,27 @@ page_elements:
     cta_button_text: 'To the services'
     type: teaser_image_text
     enabled: true
+    anchor: services
+    teaser_image_text_title:
+      -
+        type: text
+        text: 'Just the way you'
+      -
+        type: hardBreak
+      -
+        type: text
+        marks:
+          -
+            type: bold
+        text: 'need us'
+  -
+    id: lur1lmrm
+    type: horizontal_ruler
+    enabled: true
+  -
+    id: lur1ekkc
+    type: teaser_blog
+    enabled: true
 updated_by: c2f8321e-be41-4d83-b9ee-8136dba46b39
-updated_at: 1710928933
+updated_at: 1712586194
 ---

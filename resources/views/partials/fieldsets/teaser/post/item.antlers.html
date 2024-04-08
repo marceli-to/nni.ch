@@ -1,8 +1,7 @@
-<a href="">
+<a href="{{ url }}">
   <span class="block mb-10">{{ date }}</span>
-  <figure class="aspect-square {{ class }}">
-  </figure>
-  {{ partial:components/headings/h3 class="mt-15 xl:mt-30 text-md xl:text-5xl" }}
+  {{ partial:components/post/media/preview ratio="aspect-square" }}
+  {{ partial:components/headings/h3 class="mt-15 xl:mt-30 text-md xl:text-5xl leading-[1.2]" }}
     {{ title }}
   {{ /partial:components/headings/h3 }}
 </a>
