@@ -12,8 +12,14 @@
       </div>
       <div class="col-span-full mt-30 md:mt-0 md:col-span-8 md:col-start-5">
         <div class="border-t border-t-black">
-          {{ collection from="jobs" }}
-            {{ partial:fieldsets/misc/jobs/item }}
+          {{ collection from="jobs" as="jobs" }}
+          {{ if no_results }}
+            <p>{{ "Aktuell sind alle unsere Stellen besetzt." | trans }}</p>
+          {{ else }}
+            {{ jobs }}
+              {{ partial:fieldsets/misc/jobs/item }}
+            {{ /jobs }}
+          {{ /if }}
           {{ /collection }}
         </div>
       </div>
