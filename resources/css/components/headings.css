@@ -7,11 +7,11 @@ h3 {
 }
 
 .posts h1 {
-  @apply text-4xl xl:text-6xl
+  @apply text-4xl xl:text-7xl
 }
 
 .contact h1 {
-  @apply text-4xl xl:text-6xl leading-9 mb-30 xl:mb-45
+  @apply text-4xl xl:text-7xl leading-9 mb-30 xl:mb-45
 }
 
 .contact h1 strong {

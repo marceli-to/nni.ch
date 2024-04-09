@@ -31,11 +31,9 @@ export default {
       },
 
       fontSize: {
-        // mini, 13px
         'mini': '0.8125rem', // 13px
-        'tiny': '0.875rem',  // 14px
         'xxs': '0.9375rem',  // 15px
-        'xs': '1rem',       // 16px
+        'xs': '1rem',        // 16px
         'sm': '1.125rem',    // 18px
         'md': '1.25rem',     // 20px
         'lg': '1.375rem',    // 22px
@@ -44,8 +42,9 @@ export default {
         '3xl': '1.875rem',   // 30px
         '4xl': '2.1875rem',  // 35px
         '5xl': '2.375rem',   // 38px
-        '6xl': '3.4375rem',  // 55px
-        '7xl': '4.375rem',   // 70px
+        '6xl': '2.8125rem',  // 45px
+        '7xl': '3.4375rem',  // 55px => was 6xl
+        '8xl': '4.375rem',   // 70px => was 7xl
       },
 
       letterSpacing: {
