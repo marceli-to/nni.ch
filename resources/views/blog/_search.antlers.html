@@ -1,0 +1,15 @@
+<div class="flex items-center w-full">
+  <form 
+    action="{{ site:short_locale == 'en' ? '/en/blog/search' : '/blog/suche' }}" 
+    class="block w-full max-w-140 md:max-w-280 xl:w-280 relative">
+    <input 
+      class="w-full !pt-0 !pb-5 xl:!pb-8 !outline-none border-b-2 border-silver placeholder:text-black xl:text-lg"
+      type="text" 
+      name="q" 
+      value="{{ get:q }}"
+      placeholder="{{ "Suche in Posts" | trans }}">
+    <button type="submit" class="absolute right-0 top-2 sm:top-6">
+      {{ partial:components/icons/magnifier class="w-16 xl:w-24 h-auto" }}
+    </button>
+  </form>
+</div>

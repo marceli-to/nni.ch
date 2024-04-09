@@ -1,0 +1,25 @@
+<div class="flex items-center w-full">
+  <form class="relative block w-full max-w-140 md:max-w-280 xl:w-280">
+    <select 
+      class="w-full !pt-0 !pb-5 xl:!pb-8 pr-18 xl:pr-36 relative z-10 appearance-none !outline-none border-b-2 border-silver placeholder:text-black xl:text-lg"
+      {{ if site:short_locale == 'en' }}
+        onchange="window.location = '/en/blog/category/' + this.value">
+      {{ else }}
+        onchange="window.location = '/blog/kategorie/' + this.value">
+      {{ /if }}
+      <option value="">{{ "Alle Themen" | trans }}</option>
+      {{ taxonomy:post_categories }}
+        <option 
+          value="{{ slug }}" 
+          {{ if slug == category }}
+          selected
+          {{ /if }}
+          >
+          {{ title }}
+        </option>
+      {{ /taxonomy:post_categories }}
+    </select>
+    {{ partial:components/icons/chevron-down class="w-16 xl:w-24 h-auto absolute right-0 top-6 sm:top-10 -z-10" }}
+
+  </form>
+</div>

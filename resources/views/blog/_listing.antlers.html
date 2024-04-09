@@ -1,14 +1,33 @@
-<header class="mb-30 xl:mb-60">
+<header class="mb-30 xl:mb-60 flex justify-between items-center">
   <h1>Blog</h1>
+  <div class="flex gap-x-20 xl:gap-x-50 sm:min-w-1/2">
+    {{ partial:blog/filter }} 
+    {{ partial:blog/search }}
+  </div>
 </header>
-{{ collection from="posts" as="posts" sort="date:desc" limit="25" taxonomy:post_categories="{{ category }}" taxonomy:tags="{{ tag }}" }}
-  {{ if no_results }}
-    <p>{{ "Oh, es gibt keine Resultate." | trans }}</p>
-  {{ else }}
-    <div class="grid grid-cols-12 gap-20 xl:gap-50">
-      {{ posts }}
-        {{ partial:components/post/elements/card term="{{ term }}" }}
-      {{ /posts }}
-    </div>
-  {{ /if }}
-{{ /collection }}
+
+{{ if get:q }}
+  <div class="grid grid-cols-12 gap-20 xl:gap-50">
+    {{ search:results index="blog" sort="date:desc" }}
+      {{ if no_results }}
+        <div class="col-span-full md:col-span-4">
+          <p>{{ "Keine Resultate gefunden für" | trans }} {{ get:q }}.</p>
+        </div>
+      {{ else }}
+        {{ partial:components/post/elements/card term="true" }}
+      {{ /if }}
+    {{ /search:results }}
+  </div>
+{{ else }}
+  {{ collection from="posts" as="posts" sort="date:desc" limit="25" taxonomy:post_categories="{{ category }}" taxonomy:tags="{{ tag }}" }}
+    {{ if no_results }}
+      <p>{{ "Oh, es gibt leider noch keine Beiträge. Schau doch zu einem späteren Zeitpunkt noch einmal vorbei." | trans }}</p>
+    {{ else }}
+      <div class="grid grid-cols-12 gap-20 xl:gap-50">
+        {{ posts }}
+          {{ partial:components/post/elements/card term="{{ term }}" }}
+        {{ /posts }}
+      </div>
+    {{ /if }}
+  {{ /collection }}
+{{ /if }}
