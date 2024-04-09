@@ -5,10 +5,13 @@
 @import "typo/webfonts.css";
 @import "components/headings.css";
 @import "components/forms.css";
+@import "components/image.css";
 @import "components/swiper.css";
 @import "components/theme.css";
 @import "components/video.css";
 @import "utils.css";
+
+@import "views/posts.css";
 
 * {
   font-variant-ligatures: none;
@@ -48,21 +51,8 @@ section ul li:not(nav ul li) {
   @apply ml-18
 }
 
-.image-overlay {
-  @apply relative after:block after:content-[''] after:absolute after:top-0 after:left-0 after:z-30 after:w-full after:h-full after:bg-black after:bg-opacity-20 hover:after:bg-opacity-0 after:transition-all after:duration-500
-}
 
-.image-overlay.has-touch {
-  @apply after:bg-opacity-0
-}
 
-.video-container {
-  @apply relative aspect-video
-}
-
-.video-container iframe {
-  @apply w-full h-full object-contain max-w-content
-}
 
 @keyframes fadeOutLeft {
   0% {

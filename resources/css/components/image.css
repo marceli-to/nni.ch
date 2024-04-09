@@ -1,0 +1,7 @@
+.image-overlay {
+  @apply relative after:block after:content-[''] after:absolute after:top-0 after:left-0 after:z-30 after:w-full after:h-full after:bg-black after:bg-opacity-20 hover:after:bg-opacity-0 after:transition-all after:duration-500
+}
+
+.image-overlay.has-touch {
+  @apply after:bg-opacity-0
+}

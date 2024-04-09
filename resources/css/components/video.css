@@ -1,5 +1,9 @@
-video {
-  
+.video-container {
+  @apply relative aspect-video
+}
+
+.video-container iframe {
+  @apply w-full h-full object-contain max-w-content
 }
 
 .dim-10 { @apply bg-opacity-10; }

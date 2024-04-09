@@ -1,0 +1,7 @@
+.posts blockquote {
+  @apply text-steel font-meta-medium text-sm xl:text-3xl leading-[1.3];
+}
+
+.posts blockquote {
+  @apply mb-30 xl:mb-60
+}

@@ -59,6 +59,7 @@ export default {
       colors: {
         'graphite': '#707070',
         'silver': '#E5E5E5',
+        'steel': '#a2a2a2',
       },
       
     },

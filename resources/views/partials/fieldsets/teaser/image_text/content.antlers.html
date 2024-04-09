@@ -1,11 +1,11 @@
 <div class="grid grid-cols-12 gap-x-20 xl:gap-x-50">
   <figure class="col-span-full md:col-span-6">
-    {{ partial:components/media/image/image class="w-full h-full aspect-square object-cover" }}
+    {{ partial:components/media/image/image class="w-full h-full aspect-[16/10] md:aspect-square object-cover" }}
   </figure>
   <div class="col-span-full md:col-span-6 mt-45 md:flex md:flex-col md:items-start md:justify-center">
     <div class="grid grid-cols-12 gap-x-20 ">
-      <div class="col-span-10 col-start-2 md:col-span-full md:-translate-x-120">
-        {{ partial:components/headings/h2 class="mb-15 xl:mb-60" }}
+      <div class="col-span-8 col-start-4 md:col-span-full md:-translate-x-120">
+        {{ partial:components/headings/h2 class="mb-15 md:mb-30 xl:mb-60" }}
           {{ teaser_image_text_title }}
         {{ /partial:components/headings/h2 }}
       </div>
