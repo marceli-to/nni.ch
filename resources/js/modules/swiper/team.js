@@ -34,9 +34,14 @@ import 'swiper/css/navigation';
       },
       1024: {
         slidesPerView: 3,
+        spaceBetween: 20,
+        centeredSlides: false,
+      },
+      1280: {
+        slidesPerView: 3,
         spaceBetween: 50,
         centeredSlides: false,
-      }
+      },
     }
   };
 

@@ -16,11 +16,12 @@ export default {
 
       screens: {
         'xs': '414px',
+        '3xl': '1920px',
       },
 
       maxWidth: {
-        site: '1600px',
-        content: '1080px'
+        site: '1630px',
+        content: '1068px'
       },
 
       fontFamily: {
