@@ -6,11 +6,7 @@
 
   {{ if success }}
     {{ partial:components/forms/elements/success }}
-    {{ if form_response:contact_form_response }}
-      {{ form_response:contact_form_response | nl2br }}
-    {{ else }}
       Vielen Dank für Ihre Anfrage.
-    {{ /if }}
     {{ /partial:components/forms/elements/success }}
   {{ /if }}
 
