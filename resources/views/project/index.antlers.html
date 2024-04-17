@@ -1,31 +1,35 @@
 <section data-section-theme="light" class="pt-90 lg:pt-150">
   {{ partial:layout/blocks/inner }}
     <div class="grid grid-cols-12 gap-15">
-      {{ collection from="projects" sort="order" }}
-        {{ if count | mod(3) == 0 }}
-          <a 
-            href="{{ url }}"
-            title="{{ title }}"
-            class="block col-span-full image-overlay after:bg-opacity-20"
-            data-touch>
-            {{ partial:partials/components/project/media/preview image="{{ teaser_image_landscape ?? teaser_image_portrait }}" title="{{ title }}" client="{{ client }}" class="aspect-[16/8]" }}
-          </a>
-        {{ elseif count | mod(2) == 0 }}
-          <a 
-          href="{{ url }}"
-          title="{{ title }}"
-          class="block col-span-full sm:col-span-8 image-overlay after:bg-opacity-20"
-          data-touch>
-          {{ partial:partials/components/project/media/preview image="{{ teaser_image_landscape ?? teaser_image_portrait }}" title="{{ title }}" client="{{ client }}" class="aspect-[3/2]" }}
-        </a>
-        {{ else }}
-          <a 
-          href="{{ url }}"
-          title="{{ title }}"
-          class="block col-span-full sm:col-span-4 image-overlay after:bg-opacity-20"
-          data-touch>
-          {{ partial:partials/components/project/media/preview image="{{ teaser_image_portrait ?? teaser_image_landscape }}" title="{{ title }}" client="{{ client }}" class="aspect-[3/4]" }}
-        </a>
+      {{ collection from="projects" as="projects" sort="order" }}
+        {{ if no_results }}
+          <p>{{ "Oh, es gibt leider noch keine Projekte. Schau doch zu einem späteren Zeitpunkt noch einmal vorbei." | trans }}</p>
+        {{ else }}  
+          {{ if count | mod(3) == 0 }}
+            <a 
+              href="{{ url }}"
+              title="{{ title }}"
+              class="block col-span-full image-overlay after:bg-opacity-20"
+              data-touch>
+              {{ partial:partials/components/project/media/preview image="{{ teaser_image_landscape ?? teaser_image_portrait }}" title="{{ title }}" client="{{ client }}" class="aspect-[16/8]" }}
+            </a>
+          {{ elseif count | mod(2) == 0 }}
+            <a 
+              href="{{ url }}"
+              title="{{ title }}"
+              class="block col-span-full sm:col-span-8 image-overlay after:bg-opacity-20"
+              data-touch>
+              {{ partial:partials/components/project/media/preview image="{{ teaser_image_landscape ?? teaser_image_portrait }}" title="{{ title }}" client="{{ client }}" class="aspect-[3/2]" }}
+            </a>
+          {{ else }}
+            <a 
+              href="{{ url }}"
+              title="{{ title }}"
+              class="block col-span-full sm:col-span-4 image-overlay after:bg-opacity-20"
+              data-touch>
+              {{ partial:partials/components/project/media/preview image="{{ teaser_image_portrait ?? teaser_image_landscape }}" title="{{ title }}" client="{{ client }}" class="aspect-[3/4]" }}
+            </a>
+          {{ /if }}
         {{ /if }}
       {{ /collection }}
     </div>
