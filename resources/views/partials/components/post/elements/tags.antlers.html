@@ -4,7 +4,11 @@
       <strong>Tags:</strong>
       {{ tags }}
         <a 
-          href="/{{ site:locale }}/blog/tag/{{ slug }}" 
+          {{ if site:locale == 'de' }} 
+            href="/blog/tag/{{ slug }}" 
+          {{ else }} 
+            href="/{{ site:locale }}/blog/tag/{{ slug }}"
+          {{ /if }}
           title="{{ title }}"
           class="inline-block mx-2 underline underline-offset-2 decoration-1 hover:no-underline">
           {{ title }}

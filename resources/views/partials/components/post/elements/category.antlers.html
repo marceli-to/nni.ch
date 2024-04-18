@@ -1,5 +1,9 @@
 <a 
-  href="/{{ site:locale }}/blog/category/{{ slug }}" 
+  {{ if site:locale == 'de' }} 
+    href="/blog/kategorie/{{ slug }}" 
+  {{ else }} 
+    href="/{{ site:locale }}/blog/category/{{ slug }}" 
+  {{ /if }}
   title="{{ title }}"
   class="uppercase font-meta-medium inline-flex items-center tracking-wide">
   {{ partial:components/icons/chevron-right class="h-10 xl:h-14 w-auto block mr-5 xl:mr-10" }}
