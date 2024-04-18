@@ -1,9 +1,8 @@
-<section data-section data-section-theme="light" class="relative {{ is_fullpage ? 'md:min-h-screen md:snap-start' : '' }}">
+<section data-section data-section-theme="light" class="relative py-90 xl:py-150 {{ is_fullpage ? 'md:min-h-screen md:snap-start' : '' }}">
   {{ partial:components/misc/anchor anchor="{{ anchor }}" }}
   {{ partial:layout/blocks/inner }}
-
     {{ if mirrored }}
-      <div class="py-90 md:hidden grid grid-cols-6 gap-x-20">
+      <div class="md:hidden grid grid-cols-6 gap-x-20">
         <div class="col-span-full mb-45 md:mb-60">
           {{ partial:components/headings/h2 class="mb-15" }}
             {{ teaser_project_title }}
@@ -64,7 +63,7 @@
           </div>
         {{ /if }}
       </div>
-      <div class="hidden md:grid md:grid-cols-12 md:gap-x-20 lg:gap-x-30 xl:gap-x-50 md:pt-90 xl:pt-150 py-90 xl:py-150">
+      <div class="hidden md:grid md:grid-cols-12 md:gap-x-20 lg:gap-x-30 xl:gap-x-50">
         <div class="md:col-span-8">
           {{ if items:tr_image }}
             <div class="w-full pl-10 relative">
@@ -97,7 +96,7 @@
           {{ /if }}
         </div>
         <div class="md:col-span-4">
-          <div class="md:mb-45 md:mt-15 lg:mb-60 lg:mt-30 xl:mb-120 xl:mt-60 md:ml-15 lg:ml-45 xl:ml-60 md:w-[calc(100%_+_65px)] lg:w-[calc(100%_+_35px)] bg-yellow-200">
+          <div class="md:mb-45 md:mt-15 lg:mb-60 lg:mt-30 xl:mb-120 xl:mt-60 md:ml-15 lg:ml-45 xl:ml-60 md:w-[calc(100%_+_65px)] lg:w-[calc(100%_+_35px)]">
             {{ partial:components/headings/h2 class="mb-10 xl:mb-30" }}
               {{ teaser_project_title }}
             {{ /partial:components/headings/h2 }}
@@ -129,11 +128,8 @@
           {{ /if }}
         </div>
       </div>
-
-
     {{ else }}
-
-      <div class="py-90 md:hidden grid grid-cols-6 gap-x-20">
+      <div class="md:hidden grid grid-cols-6 gap-x-20">
         <div class="col-span-full mb-45 md:mb-60">
           {{ partial:components/headings/h2 class="mb-15" }}
             {{ teaser_project_title }}
@@ -194,8 +190,7 @@
           </div>
         {{ /if }}
       </div>
-
-      <div class="hidden md:grid md:grid-cols-12 md:gap-x-20 lg:gap-x-30 xl:gap-x-50 md:pt-90 xl:pt-150 py-90 xl:py-150">
+      <div class="hidden md:grid md:grid-cols-12 md:gap-x-20 lg:gap-x-30 xl:gap-x-50">
         <div class="md:col-span-4">
           <div class="md:mb-45 md:mt-15 lg:mb-60 lg:mt-30 xl:mb-120 xl:mt-60 xl:max-w-[400px]">
             {{ partial:components/headings/h2 class="mb-10 xl:mb-30" }}
@@ -260,7 +255,15 @@
           {{ /if }}
         </div>
       </div>
-
     {{ /if }}
+
+    {{ if text }}
+      <div class="md:grid md:grid-cols-12 md:gap-x-20 lg:gap-x-30 xl:gap-x-50">
+        <div class="md:col-span-8 md:col-start-4 mt-60 lg:mt-90 xl:mt-120">
+          {{ text }}
+        </div>
+      </div>
+    {{/if }}
+
   {{ /partial:layout/blocks/inner }}
 </section>
