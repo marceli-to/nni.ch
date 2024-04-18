@@ -3,10 +3,71 @@
   {{ partial:layout/blocks/inner }}
 
     {{ if mirrored }}
-      <div class="grid grid-cols-12 gap-x-20 lg:gap-x-30 xl:gap-x-50 pt-90 xl:pt-150 py-90 xl:py-150">
-        <div class="col-span-full md:col-span-8">
+      <div class="py-90 md:hidden grid grid-cols-6 gap-x-20">
+        <div class="col-span-full mb-45 md:mb-60">
+          {{ partial:components/headings/h2 class="mb-15" }}
+            {{ teaser_project_title }}
+          {{ /partial:components/headings/h2 }}
+          {{ partial:components/buttons/more title="{{ "Zum Portfolio" | trans }}" url="{{ link id="6dc5a5ba-4450-45c6-9684-53b3a8bb4261" }}" }}
+        </div>
+        {{ if items:tr_image }}
+          <div class="col-span-full mb-15 relative -translate-x-[35px] sm:-translate-x-[80px]">
+            {{ partial:fieldsets/teaser/portfolio/item 
+              url="{{ items:tr_link:url }}" 
+              title="{{ items:tr_link:title }}" 
+              img="{{ items:tr_image }}" 
+              height="{{ items:tr_image:height }}" 
+              width="{{ items:tr_image:width }}" 
+              aspectRatio="aspect-[305/250] sm:aspect-[612/461]"
+              alt="{{ items:tr_image:alt }}" }}
+          </div>
+        {{ /if }}
+        {{ if items:tl_image }}
+          <div class="col-span-full relative mb-15 translate-x-[35px] sm:translate-x-0">
+            {{ partial:fieldsets/teaser/portfolio/item 
+              url="{{ items:tl_link:url }}" 
+              title="{{ items:tl_link:title }}" 
+              img="{{ items:tl_image }}"
+              height="{{ items:tl_image:height }}" 
+              width="{{ items:tl_image:width }}" 
+              aspectRatio="aspect-[285/360] sm:aspect-[500/700]"
+              alt="{{ items:tl_image:alt }}" }}
+          </div>
+        {{ /if }}
+        {{ if items:br_image }}
+          <div class="col-span-5 relative translate-x-[20px] mb-15">
+            {{ partial:fieldsets/teaser/portfolio/item 
+              url="{{ items:br_link:url }}" 
+              title="{{ items:br_link:title }}" 
+              img="{{ items:br_image }}" 
+              height="{{ items:br_image:height }}" 
+              width="{{ items:br_image:width }}" 
+              aspectRatio="aspect-[270/360] sm:aspect-[530/736]"
+              alt="{{ items:br_image:alt }}" }}
+          </div>
+        {{ /if }}
+        {{ if items:bl_image }}
+          <div class="col-span-5 col-start-2">
+            {{ partial:fieldsets/teaser/portfolio/item 
+              url="{{ items:bl_link:url }}" 
+              title="{{ items:bl_link:title }}" 
+              img="{{ items:bl_image }}"
+              height="{{ items:bl_image:height }}" 
+              width="{{ items:bl_image:width }}" 
+              aspectRatio="aspect-square"
+              alt="{{ items:bl_image:alt }}" }}
+          </div>
+        {{ /if }}
+        {{ if cta_text && cta_link }}
+          <div class="col-span-6 xs:col-span-4 xs:col-start-2 sm:col-span-4 sm:col-start-2 mt-60">
+            {{ partial:components/misc/cta class="" }}
+          </div>
+        {{ /if }}
+      </div>
+      <div class="hidden md:grid md:grid-cols-12 md:gap-x-20 lg:gap-x-30 xl:gap-x-50 md:pt-90 xl:pt-150 py-90 xl:py-150">
+        <div class="md:col-span-8">
           {{ if items:tr_image }}
-            <div class="w-full mb-15 relative pl-30 lg:max-w-[90%] xl:max-w-none md:-translate-x-[50px] xl:-translate-x-[110px]">
+            <div class="w-full pl-10 relative">
               {{ partial:fieldsets/teaser/portfolio/item 
                 url="{{ items:tr_link:url }}" 
                 title="{{ items:tr_link:title }}" 
@@ -17,9 +78,8 @@
                 alt="{{ items:tr_image:alt }}" }}
             </div>
           {{ /if }}
-
           {{ if items:br_image }}
-            <div class="w-full relative mb-15 md:mb-0 md:mt-45 xl:mt-120 md:ml-50 pr-60 md:max-w-[80%] lg:max-w-[60%] xl:max-w-[70%]">
+            <div class="w-[calc(100%_-_80px)] xl:w-[calc(100%_-_170px)] relative ml-40 xl:ml-70 mt-60 xl:mt-120">
               {{ partial:fieldsets/teaser/portfolio/item 
                 url="{{ items:br_link:url }}" 
                 title="{{ items:br_link:title }}" 
@@ -30,16 +90,21 @@
                 alt="{{ items:br_image:alt }}" }}
             </div>
           {{ /if }}
+          {{ if cta_text && cta_link }}
+            <div class="ml-50 xl:ml-90 mt-60 max-w-[560px]">
+              {{ partial:components/misc/cta class="" }}
+            </div>
+          {{ /if }}
         </div>
-        <div class="col-span-full md:col-span-4">
-          <div class="mb-45 md:mb-60 lg:mb-90 xl:mb-175 xl:max-w-[400px]">
+        <div class="md:col-span-4">
+          <div class="md:mb-45 md:mt-15 lg:mb-60 lg:mt-30 xl:mb-120 xl:mt-60 md:ml-15 lg:ml-45 xl:ml-60 md:w-[calc(100%_+_65px)] lg:w-[calc(100%_+_35px)] bg-yellow-200">
             {{ partial:components/headings/h2 class="mb-10 xl:mb-30" }}
               {{ teaser_project_title }}
             {{ /partial:components/headings/h2 }}
             {{ partial:components/buttons/more title="{{ "Zum Portfolio" | trans }}" url="{{ link id="6dc5a5ba-4450-45c6-9684-53b3a8bb4261" }}" }}
           </div>
           {{ if items:tl_image }}
-            <div class="w-full mb-15 md:mb-0 relative -translate-x-[30px] md:-translate-x-[145px]">
+            <div class="w-[calc(100%_+_80px)] xl:w-[calc(100%_+_30px)] xl:-translate-x-[20px] relative" data-top-left>
               {{ partial:fieldsets/teaser/portfolio/item 
                 url="{{ items:tl_link:url }}" 
                 title="{{ items:tl_link:title }}" 
@@ -51,7 +116,7 @@
             </div>
           {{ /if }}
           {{ if items:bl_image }}
-            <div class="w-full mb-15 md:mb-0 md:mt-20 relative -translate-x-[35px] md:-translate-x-[0px] xl:-translate-x-[340px]">
+            <div class="w-[calc(100%_+_30px)] md:mt-30 relative md:-translate-x-[30px] xl:-translate-x-[80px]" data-bottom-left>
               {{ partial:fieldsets/teaser/portfolio/item 
                 url="{{ items:bl_link:url }}" 
                 title="{{ items:bl_link:title }}" 
@@ -64,6 +129,8 @@
           {{ /if }}
         </div>
       </div>
+
+
     {{ else }}
 
       <div class="py-90 md:hidden grid grid-cols-6 gap-x-20">
@@ -130,7 +197,7 @@
 
       <div class="hidden md:grid md:grid-cols-12 md:gap-x-20 lg:gap-x-30 xl:gap-x-50 md:pt-90 xl:pt-150 py-90 xl:py-150">
         <div class="md:col-span-4">
-          <div class="md:mb-60 lg:mb-90 xl:mb-175 xl:max-w-[400px]">
+          <div class="md:mb-45 md:mt-15 lg:mb-60 lg:mt-30 xl:mb-120 xl:mt-60 xl:max-w-[400px]">
             {{ partial:components/headings/h2 class="mb-10 xl:mb-30" }}
               {{ teaser_project_title }}
             {{ /partial:components/headings/h2 }}
