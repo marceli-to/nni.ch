@@ -1,13 +1,13 @@
 <header class="mb-30 xl:mb-60 flex justify-between items-center">
   <h1>Blog</h1>
-  <div class="flex gap-x-20 xl:gap-x-50 sm:min-w-1/2">
+  <div class="flex gap-x-20 lg:gap-x-30 xl:gap-x-50 sm:min-w-1/2">
     {{ partial:blog/filter }} 
     {{ partial:blog/search }}
   </div>
 </header>
 
 {{ if get:q }}
-  <div class="grid grid-cols-12 gap-20 xl:gap-50">
+  <div class="grid grid-cols-12 gap-20 lg:gap-30 xl:gap-50">
     {{ search:results index="blog" sort="date:desc" }}
       {{ if no_results }}
         <div class="col-span-full md:col-span-4">
@@ -23,7 +23,7 @@
     {{ if no_results }}
       <p>{{ "Oh, es gibt leider noch keine Beiträge. Schau doch zu einem späteren Zeitpunkt noch einmal vorbei." | trans }}</p>
     {{ else }}
-      <div class="grid grid-cols-12 gap-20 xl:gap-50">
+      <div class="grid grid-cols-12 gap-20 lg:gap-30 xl:gap-50">
         {{ posts }}
           {{ partial:components/post/elements/card term="{{ term }}" }}
         {{ /posts }}

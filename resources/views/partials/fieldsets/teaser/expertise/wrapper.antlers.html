@@ -1,13 +1,11 @@
-<section data-section="expertise" data-section-theme="light" class="relative md:min-h-screen {{ is_fullpage ? 'md:snap-start' : '' }}">
+<section data-section="expertise" data-section-theme="light" class="relative py-60 md:py-90 xl:py-120 {{ is_fullpage ? 'md:min-h-screen md:snap-start' : '' }}">
   {{ partial:components/misc/anchor anchor="{{ anchor }}" }}
-  <div class="py-90 xl:pt-240">
-    {{ partial:layout/blocks/inner }}
-      {{ teaser_items }}
-        {{ if index == 0 }}
-          {{ partial:fieldsets/teaser/expertise/item }}
-        {{ /if }}
-      {{ /teaser_items }}
-      {{ partial:fieldsets/teaser/expertise/nav }}
-    {{ /partial:layout/blocks/inner }}
-  </div>
+  {{ partial:layout/blocks/inner }}
+    {{ teaser_items }}
+      {{ if index == 0 }}
+        {{ partial:fieldsets/teaser/expertise/item }}
+      {{ /if }}
+    {{ /teaser_items }}
+    {{ partial:fieldsets/teaser/expertise/nav }}
+  {{ /partial:layout/blocks/inner }}
 </section>

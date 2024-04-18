@@ -34,7 +34,7 @@ import 'swiper/css/navigation';
       },
       1024: {
         slidesPerView: 3,
-        spaceBetween: 20,
+        spaceBetween: 30,
         centeredSlides: false,
       },
       1280: {

@@ -18,7 +18,7 @@
   <div class="flex justify-end mb-30 xl:mb-60">
     {{ partial:components/buttons/more title="{{ "Zum Blog" | trans }}" url="{{ link id="aa4457b3-2553-4340-9848-81b494b5361f" }}" }}
   </div>
-  <div class="md:grid grid-cols-12 gap-20 lg:gap-50">
+  <div class="md:grid grid-cols-12 gap-20 lg:gap-30 xl:gap-50">
     {{ collection from="posts" as="posts" sort="date:desc" limit="3" }}
       {{ posts }}
         <div class="md:col-span-4">

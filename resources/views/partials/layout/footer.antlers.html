@@ -1,13 +1,13 @@
 <footer class="bg-white py-80 xl:pt-240">
   {{ partial:layout/blocks/inner }}
     <div class="grid grid-cols-12 gap-x-20">
-      <div class="col-span-12 md:col-span-6 md:order-2 mb-60 md:mb-0 flex flex-col justify-center">
+      <div class="col-span-12 lg:col-span-6 lg:order-2 mb-60 lg:mb-0 flex flex-col justify-center">
         <div class="flex flex-col items-center gap-y-15">
           <p>{{ "Kommen Sie auf einen Kaffee vorbei." | trans }}</p>
-          {{ partial:components/buttons/contact }}
+          {{ partial:components/buttons/contact title="{{ "Kontakt aufnehmen" | trans }}" url="{{ link id="2d95afd4-22c4-431d-aea3-3d08d2abcd38" }}" }}
         </div>
       </div>
-      <div class="col-span-8 md:col-span-3 md:order-1 flex flex-col justify-between">
+      <div class="col-span-8 lg:col-span-3 lg:order-1 flex flex-col justify-between">
         <div>
           <strong>{{ contact_info:name }}</strong>
         </div>
@@ -32,16 +32,16 @@
           </a>
         </div>
       </div>
-      <div class="col-span-4 md:col-span-3 md:order-3">
-        {{ partial:components/misc/social-media-channels class="hidden md:flex justify-end" }}
+      <div class="col-span-4 lg:col-span-3 lg:order-3">
+        {{ partial:components/misc/social-media-channels class="hidden lg:flex justify-end" }}
         {{ partial:menu/footer/wrapper }}
       </div>
     </div>
 
     <div class="grid grid-cols-12 gap-x-20 mt-40">
       <div class="col-span-8 flex flex-col justify-between">
-        {{ partial:components/misc/social-media-channels class="flex md:hidden" }}
-        <span class="mt-15 md:mt-0 text-mini xl:text-xs font-meta-medium">
+        {{ partial:components/misc/social-media-channels class="flex lg:hidden" }}
+        <span class="mt-15 lg:mt-0 text-mini xl:text-xs font-meta-medium">
           &copy; {{ current_date | format('Y') }} {{ config:app:name }}
         </span>
       </div>
