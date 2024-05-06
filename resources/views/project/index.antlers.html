@@ -10,7 +10,7 @@
               <a 
                 href="{{ url }}"
                 title="{{ title }}"
-                class="block col-span-full image-overlay after:bg-opacity-20"
+                class="block col-span-full image-overlay after:bg-opacity-20 group"
                 data-touch>
                 {{ partial:partials/components/project/media/preview image="{{ teaser_image_landscape ?? teaser_image_portrait }}" title="{{ title }}" client="{{ client }}" class="aspect-[16/8]" }}
               </a>
@@ -18,7 +18,7 @@
               <a 
                 href="{{ url }}"
                 title="{{ title }}"
-                class="block col-span-full sm:col-span-8 image-overlay after:bg-opacity-20"
+                class="block col-span-full md:col-span-8 image-overlay after:bg-opacity-20 group"
                 data-touch>
                 {{ partial:partials/components/project/media/preview image="{{ teaser_image_landscape ?? teaser_image_portrait }}" title="{{ title }}" client="{{ client }}" class="aspect-[3/2]" }}
               </a>
@@ -26,7 +26,7 @@
               <a 
                 href="{{ url }}"
                 title="{{ title }}"
-                class="block col-span-full sm:col-span-4 image-overlay after:bg-opacity-20"
+                class="block col-span-full md:col-span-4 image-overlay after:bg-opacity-20 group"
                 data-touch>
                 {{ partial:partials/components/project/media/preview image="{{ teaser_image_portrait ?? teaser_image_landscape }}" title="{{ title }}" client="{{ client }}" class="aspect-[3/4]" }}
               </a>
