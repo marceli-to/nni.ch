@@ -1,33 +1,34 @@
-<section data-section data-section-theme="light" class="relative pt-45 md:pt-90 {{ is_fullpage ? 'md:flex md:flex-col md:justify-center md:min-h-screen md:snap-center' : '' }}">
-  <div class="flex justify-end mb-30 pr-35 md:hidden">
+<section data-section data-section-theme="light" class="relative pt-90 md:pt-150 {{ is_fullpage ? 'pt-45 md:pt-90 md:flex md:flex-col md:justify-center md:min-h-screen md:snap-center' : '' }}">
+  <div class="flex justify-end mb-30 pr-35 sm:pr-80 sm:hidden">
     {{ partial:components/buttons/more title="{{ "Zum Blog" | trans }}" url="{{ link id="aa4457b3-2553-4340-9848-81b494b5361f" }}" }}
   </div>
-{{ partial:components/swiper/wrapper class="md:hidden" }}
-  {{ partial:components/swiper/container class="js-swiper-posts" }}
-    {{ collection from="posts" as="posts" sort="date:desc" limit="3" }}
-      {{ posts }}
-        {{ partial:components/swiper/slide class="swiper-slide--mute-inactive" }}
-          {{ partial:fieldsets/teaser/post/item }}
-        {{ /partial:components/swiper/slide }}
-      {{ /posts }}
-    {{ /collection }}
-  {{ /partial:components/swiper/container }}
-{{ /partial:components/swiper/wrapper }}
+  
+  {{ partial:components/swiper/wrapper class="sm:hidden" }}
+    {{ partial:components/swiper/container class="js-swiper-posts" }}
+      {{ collection from="posts" as="posts" sort="date:desc" limit="3" }}
+        {{ posts }}
+          {{ partial:components/swiper/slide class="swiper-slide--mute-inactive" }}
+            {{ partial:fieldsets/teaser/post/item }}
+          {{ /partial:components/swiper/slide }}
+        {{ /posts }}
+      {{ /collection }}
+    {{ /partial:components/swiper/container }}
+  {{ /partial:components/swiper/wrapper }}
 
-{{ partial:layout/blocks/inner class="hidden md:block" }}
-  <div class="flex justify-end mb-30 xl:mb-60">
-    {{ partial:components/buttons/more title="{{ "Zum Blog" | trans }}" url="{{ link id="aa4457b3-2553-4340-9848-81b494b5361f" }}" }}
-  </div>
-  <div class="md:grid grid-cols-12 gap-20 lg:gap-30 xl:gap-50">
-    {{ collection from="posts" as="posts" sort="date:desc" limit="3" }}
-      {{ posts }}
-        <div class="md:col-span-4">
-          {{ partial:fieldsets/teaser/post/item  }}
-        </div>
-      {{ /posts }}
-    {{ /collection }}
-  </div>
-{{ /partial:layout/blocks/inner }}
+  {{ partial:layout/blocks/inner class="hidden sm:block" }}
+    <div class="flex justify-end mb-30 xl:mb-60">
+      {{ partial:components/buttons/more title="{{ "Zum Blog" | trans }}" url="{{ link id="aa4457b3-2553-4340-9848-81b494b5361f" }}" }}
+    </div>
+    <div class="sm:grid sm:grid-cols-6 md:grid-cols-12 gap-20 lg:gap-30 xl:gap-50">
+      {{ collection from="posts" as="posts" sort="date:desc" limit="4" }}
+        {{ posts }}
+          <div class="sm:col-span-3 md:col-span-4 xl:col-span-3 {{ index == 2 ? 'sm:hidden md:block' : '' }} {{ index == 3 ? 'sm:hidden xl:block' : '' }}">
+            {{ partial:fieldsets/teaser/post/item  }}
+          </div>
+        {{ /posts }}
+      {{ /collection }}
+    </div>
+  {{ /partial:layout/blocks/inner }}
 </section>
 
 
