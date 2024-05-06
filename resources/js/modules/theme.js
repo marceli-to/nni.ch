@@ -40,8 +40,11 @@ import debounce from './debounce.js';
 
     lastScrollY = currentScrollY;
   };
-  // const body = document.querySelector('body');
+  const body = document.querySelector('body');
   window.addEventListener('scroll', debounce(checkAndUpdateTheme, 10), { passive: true });
+
+  // add event listener on body
+  body.addEventListener('scroll', debounce(checkAndUpdateTheme, 10), { passive: true });
 
   checkAndUpdateTheme();
 })();

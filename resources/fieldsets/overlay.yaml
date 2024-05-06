@@ -1,0 +1,32 @@
+title: Overlay
+fields:
+  -
+    handle: overlay_opacity
+    field:
+      options:
+        none: None
+        dim-10: 10%
+        dim-20: 20%
+        dim-30: 30%
+        dim-40: 40%
+        dim-50: 60%
+        dim-70: 70%
+        dim-80: 80%
+        dim-90: 90%
+      taggable: false
+      push_tags: false
+      multiple: false
+      clearable: false
+      searchable: true
+      cast_booleans: false
+      default: dim-0
+      type: select
+      display: Overlay
+      icon: select
+      instructions: 'Set overlay opacity. Default is 0.'
+      localizable: false
+      listable: hidden
+      instructions_position: below
+      visibility: visible
+      replicator_preview: true
+      hide_display: false

@@ -213,13 +213,13 @@ tabs:
               previews: true
               fullscreen: true
               sets:
-                elemements:
-                  display: Elements
+                main_elements:
+                  display: 'Main Elements'
                   instructions: null
-                  icon: text-formatting-image-left
+                  icon: addon-boxes-stack
                   sets:
                     fullscreen_image:
-                      display: 'Fullscreen image'
+                      display: 'Fullscreen Image'
                       instructions: 'Add a fullscreen image'
                       icon: align-object-center
                       fields:
@@ -233,7 +233,7 @@ tabs:
                         -
                           import: image
                     image_text:
-                      display: Image/Text
+                      display: 'Image - Text'
                       instructions: 'Add an image/text block.'
                       icon: text-formatting-image-left
                       fields:

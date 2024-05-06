@@ -22,6 +22,10 @@
   {{ partial:fieldsets/teaser/video/wrapper }}
 {{ /if }}
 
+{{ if type == 'teaser_fullscreen_image' }}
+  {{ partial:fieldsets/teaser/image/wrapper }}
+{{ /if }}
+
 {{ if type == 'teaser_image_text' }}
   {{ partial:fieldsets/teaser/image_text/wrapper }}
 {{ /if }}
@@ -34,8 +38,8 @@
   {{ partial:fieldsets/slideshow/team/wrapper }}
 {{ /if }}
 
-{{ if type == 'vision' }}
-  {{ partial:fieldsets/misc/vision }}
+{{ if type == 'title_text' }}
+  {{ partial:fieldsets/misc/title_text }}
 {{ /if }}
 
 {{ if type == 'jobs' }}

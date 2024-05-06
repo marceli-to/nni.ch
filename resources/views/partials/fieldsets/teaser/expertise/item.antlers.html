@@ -1,18 +1,18 @@
 <article class="grid grid-cols-6 lg:grid-cols-12 gap-x-20 lg:gap-x-30 xl:gap-x-50">
-  <figure class="col-span-1 lg:col-span-2 col-start-2 lg:col-start-6 md:order-1 mb-15 md:mb-20 lg:mb-90">
+  {{# <figure class="col-span-1 lg:col-span-2 col-start-2 lg:col-start-6 md:order-1 mb-15 md:mb-20 lg:mb-90">
     <img 
       src="{{ visual }}" 
       width="{{ visual:width }}" 
       height="{{ visual:height }}" 
       alt="{{ title }}"
       class="w-full h-auto max-w-165">
-  </figure>
-  <div class="col-span-5 col-start-2 lg:col-start-1 md:order-2 mb-15 md:mb-30 lg:mb-0">
+  </figure> #}}
+  <div class="col-span-5 col-start-2 lg:col-start-1 lg:col-span-10 md:order-2 mb-15 md:mb-30 lg:mb-60">
     <h2 class="uppercase font-meta-medium text-xl md:text-5xl lg:text-8xl leading-none tracking-widest">
       {{ title }}
     </h2>
   </div>
-  <div class="col-span-full lg:col-span-7 md:order-3">
+  <div class="col-span-full lg:col-span-7 lg:col-start-6 md:order-3">
     {{ text }}
     <div class="hidden lg:block lg:mt-45">
       {{ partial:components/buttons/more title="{{ cta_button_text }}" url="{{ cta_link }}" }}

@@ -1,0 +1,34 @@
+title: 'Image Teaser'
+fields:
+  -
+    import: anchor
+  -
+    handle: fullscreen_image
+    field:
+      max_files: 1
+      mode: list
+      container: assets
+      restrict: false
+      allow_uploads: true
+      show_filename: true
+      show_set_alt: true
+      type: assets
+      display: Image
+      icon: assets
+      localizable: false
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+  -
+    import: overlay
+  -
+    import: title
+    prefix: teaser_image_
+  -
+    import: cta_section_header
+  -
+    import: cta_text
+  -
+    import: cta

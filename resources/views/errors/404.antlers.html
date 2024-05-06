@@ -1,1 +1,19 @@
-<p>404 Page not found.</p>
+{{ partial:layout/head }}
+{{ partial:layout/body class="flex flex-col" }}
+    {{ partial:layout/header }}
+    <main class="flex-1">
+      {{ partial:layout/blocks/inner }}
+        <section class="grid grid-cols-12 gap-20 lg:gap-30 xl:gap-50 mt-100 xl:mt-200">
+          <article class="col-span-full">
+            {{ partial:components/headings/h1 class="xl:!text-7xl normal-case tracking-normal mb-30 xl:mb-60" }}
+              {{ "404 – Seite nicht gefunden" | trans }}
+            {{ /partial:components/headings/h1 }}
+            <p>{{ "Sorry, diese Seite haben wir leider nicht." | trans }}</p>
+          </article>
+        </section>
+      {{ /partial:layout/blocks/inner }}
+    </main>
+  {{ partial:layout/footer }}
+{{ /partial:layout/body }}
+</html>
+{{ partial:layout/credits }}

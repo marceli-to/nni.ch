@@ -1,27 +1,7 @@
-title: Vision
+title: Title/Text
 fields:
   -
     import: anchor
-  -
-    handle: visual
-    field:
-      max_files: 1
-      mode: list
-      container: assets
-      folder: icons
-      restrict: false
-      allow_uploads: true
-      show_filename: true
-      show_set_alt: true
-      type: assets
-      display: Visual
-      icon: assets
-      localizable: false
-      listable: hidden
-      instructions_position: above
-      visibility: visible
-      replicator_preview: true
-      hide_display: false
   -
     handle: title
     field:

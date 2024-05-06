@@ -1,8 +1,8 @@
-<div class="w-auto inline-block absolute bottom-45 xl:bottom-90 left-1/2 -translate-x-1/2 z-30">
+<div class="w-auto inline-block bottom-[10%] absolute left-1/2 -translate-x-1/2 z-30">
   {{ if title }}
-    {{ partial:fieldsets/intro/title }}
+    {{ partial:fieldsets/intro/title class="opacity-0 transition-opacity duration-500" data="data-title" }}
   {{ /if }}
   {{ if anchors }}
-    {{ partial:fieldsets/intro/anchors }}
+    {{ partial:fieldsets/intro/anchors class="opacity-0 transition-opacity duration-500" data="data-anchors" }}
   {{ /if }}
 </div>

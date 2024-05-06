@@ -1,10 +1,10 @@
-{{ if video_overlay != 'none' }}
-  {{ partial:components/media/video/fullscreen/dimmer }}
+{{ if overlay != 'none' }}
+  {{ partial:components/media/overlay }}
 {{ /if }}
 <video 
   poster="" 
   preload="none"
-  class="relative md:absolute z-10 left-0 top-0 aspect-square md:aspect-video w-full h-full object-cover" 
+  class="absolute z-10 left-0 top-0 w-full h-full object-cover" 
   muted 
   autoplay 
   playsinline 

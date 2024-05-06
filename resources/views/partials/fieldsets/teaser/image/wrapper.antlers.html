@@ -1,0 +1,8 @@
+<section data-section data-section-theme="dark" class="relative min-h-screen {{ is_fullpage ? 'md:snap-start' : '' }}">
+  {{ partial:components/misc/anchor anchor="{{ anchor }}" }}
+  {{ if overlay != 'none' }}
+    {{ partial:components/media/overlay }}
+  {{ /if }}
+  {{ partial:components/media/image/fullscreen image="{{ fullscreen_image }}" class="absolute z-10 left-0 top-0 w-full h-full object-cover" }}
+  {{ partial:fieldsets/teaser/image/content }}
+</section>

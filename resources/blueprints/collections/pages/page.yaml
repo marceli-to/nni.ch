@@ -25,73 +25,101 @@ tabs:
           -
             handle: page_elements
             field:
-              collapse: false
+              collapse: true
               previews: true
               fullscreen: true
               sets:
-                text:
-                  display: Text
+                main_elements:
+                  display: 'Main Elements'
                   instructions: null
-                  icon: text-formatting-markdown
-                  sets:
-                    editor:
-                      display: Editor
-                      instructions: null
-                      icon: text-formatting-markdown
-                      fields:
-                        -
-                          import: editor
-                teasers:
-                  display: Teasers
-                  instructions: 'Various teasers (Video, Image/Text, Porfolio, Expertise etc.)'
-                  icon: text-formatting-image-top
+                  icon: addon-boxes-stack
                   sets:
                     intro:
-                      display: Intro
+                      display: 'Intro Fullscreen'
                       instructions: 'Add an intro (Video/Image, Anchors)'
                       icon: media-image-picture-orientation
                       fields:
                         -
                           import: intro
+                    teaser_video:
+                      display: 'Fullscreen Video'
+                      instructions: 'Add a teaser with a video, text and call to action.'
+                      icon: media-webcam-video
+                      fields:
+                        -
+                          import: teaser_video
+                    teaser_fullscreen_image:
+                      display: 'Fullscreen Image'
+                      instructions: 'Add a teaser with a fullscreen image, text and call to action.'
+                      icon: media-image-picture-orientation
+                      fields:
+                        -
+                          import: teaser_image
+                    teaser_image_text:
+                      display: 'Image - Text'
+                      instructions: 'Add a teaser with an image, a text and a call to action.'
+                      icon: text-formatting-wrap-image-margin-left
+                      fields:
+                        -
+                          import: teaser_image_text
+                    title_text:
+                      display: 'Title - Text'
+                      instructions: 'Add title/text element'
+                      icon: text-formatting-image-right
+                      fields:
+                        -
+                          import: title_text
+                    editor:
+                      display: Texteditor
+                      instructions: null
+                      icon: text-formatting-markdown
+                      fields:
+                        -
+                          import: editor
+                special_elements:
+                  display: 'Special Elements'
+                  instructions: null
+                  icon: addon-boxes-stack
+                  sets:
                     teaser_project:
-                      display: Portfolio
+                      display: 'Masonry (Portfolio)'
                       instructions: 'Add a set of images, a text and a link.'
                       icon: text-formatting-image-left
                       fields:
                         -
                           import: teaser_project
                     teasers_expertise:
-                      display: Expertise
+                      display: 'Slider (Expertise)'
                       instructions: 'Add teasers for expertise'
                       icon: text-formatting-image-left
                       fields:
                         -
                           import: teasers_expertise
-                    teaser_video:
-                      display: Video
-                      instructions: 'Add a teaser with a video, text and call to action.'
-                      icon: media-webcam-video
-                      fields:
-                        -
-                          import: teaser_video
-                    teaser_image_text:
-                      display: Image/Text
-                      instructions: 'Add a teaser with an image, a text and a call to action.'
-                      icon: text-formatting-wrap-image-margin-left
-                      fields:
-                        -
-                          import: teaser_image_text
                     teaser_blog:
-                      display: 'Blog Teaser'
+                      display: 'Slideshow Blog'
                       instructions: 'Add the latest 3 blog entries.'
                       icon: layout-three-columns
                       fields:
                         -
                           import: teaser_blog
-                miscellaneous:
-                  display: Miscellaneous
+                    slideshow_team:
+                      display: 'Slideshow Team'
+                      instructions: 'Add the team as a slideshow.'
+                      icon: layout-three-columns
+                      fields:
+                        -
+                          import: slideshow_team
+                    jobs:
+                      display: Jobs
+                      instructions: 'List published jobs'
+                      icon: text-formatting-image-left
+                      fields:
+                        -
+                          import: jobs
+                graphical_elements:
+                  display: 'Graphical Elements'
                   instructions: null
-                  icon: programming-module-box-cube
+                  icon: addon-boxes-stack
                   sets:
                     horizontal_ruler:
                       display: 'Horizontal Ruler'
@@ -100,27 +128,6 @@ tabs:
                       fields:
                         -
                           import: horizontal_ruler
-                    slideshow_team:
-                      display: 'Team Slideshow'
-                      instructions: 'Add the team as a slideshow.'
-                      icon: layout-carousel-horizontal
-                      fields:
-                        -
-                          import: slideshow_team
-                    vision:
-                      display: Vision
-                      instructions: 'Add vision content'
-                      icon: text-formatting-image-right
-                      fields:
-                        -
-                          import: vision
-                    jobs:
-                      display: Jobs
-                      instructions: 'List published jobs'
-                      icon: text-formatting-image-left
-                      fields:
-                        -
-                          import: jobs
               type: replicator
               display: Inhalte
               icon: replicator
