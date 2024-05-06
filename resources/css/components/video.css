@@ -6,6 +6,7 @@
   @apply w-full h-full object-contain max-w-content
 }
 
+.dim-0 { @apply bg-opacity-0; }
 .dim-10 { @apply bg-opacity-10; }
 .dim-20 { @apply bg-opacity-20; }
 .dim-30 { @apply bg-opacity-30; }
