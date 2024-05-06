@@ -19,7 +19,7 @@ fields:
       clearable: false
       searchable: true
       cast_booleans: false
-      default: dim-0
+      default: none
       type: select
       display: Overlay
       icon: select

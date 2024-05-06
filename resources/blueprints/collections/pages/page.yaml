@@ -76,13 +76,6 @@ tabs:
                       fields:
                         -
                           import: editor
-                    neues_set:
-                      display: Vision
-                      instructions: null
-                      icon: null
-                      fields:
-                        -
-                          import: vision
                 special_elements:
                   display: 'Special Elements'
                   instructions: null
