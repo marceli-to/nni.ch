@@ -1,11 +1,3 @@
-h1, h2, h3 {
-
-}
-
-h3 {
-  @apply font-meta-medium mb-4 xl:mb-8
-}
-
 .posts h1 {
   @apply text-4xl xl:text-7xl
 }
@@ -16,4 +8,8 @@ h3 {
 
 .contact h1 strong {
   @apply block mt-5 md:mt-0 md:inline
+}
+
+h3 {
+  @apply font-meta-medium mb-4 xl:mb-8
 }
