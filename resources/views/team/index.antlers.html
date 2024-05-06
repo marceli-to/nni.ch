@@ -1,8 +1,8 @@
 <section data-section data-section-theme="light" class="pt-90 lg:pt-150 {{ is_fullpage ? 'md:snap-center' : '' }}">
   {{ partial:layout/blocks/inner }}
-  <div class="grid grid-cols-12 gap-20 lg:gap-30 xl:gap-50">
+  <div class="grid grid-cols-6 md:grid-cols-12 gap-20 md:gap-30 xl:gap-50">
     {{ collection from="team" }}
-      <div class="col-span-full md:col-span-6 lg:col-span-4">
+      <div class="col-span-full sm:col-span-3 md:col-span-6 lg:col-span-4">
         {{ partial:components/team/elements/card link="true" overlay="true" lazyload="true" }}
       </div>
     {{ /collection }}

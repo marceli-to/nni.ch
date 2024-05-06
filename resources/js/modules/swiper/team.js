@@ -27,7 +27,7 @@ import 'swiper/css/navigation';
       prevEl: '.swiper-btn-prev',
     },
     breakpoints: {
-      768: {
+      640: {
         slidesPerView: 2,
         spaceBetween: 20,
         centeredSlides: false,
