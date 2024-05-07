@@ -1,0 +1,32 @@
+<section data-section data-section-theme="light" class="pt-60 xl:pt-150">
+
+  <div class="max-w-site mx-auto px-35 sm:px-80 xl:px-100 3xl:px-100">
+    {{ partial:components/headings/h2 is_project="true" class="text-md md:text-xl xl:text-4xl mb-15 xl:mb-30" }}
+      {{ "Ähnliche Projekte" | trans }}
+    {{ /partial:components/headings/h2 }}
+  </div>
+
+  {{ partial:components/swiper/wrapper class="md:!hidden"  }}
+    {{ partial:components/swiper/container class="js-swiper-projects" navigation="false" }}
+      {{ related }}
+        {{ partial:components/swiper/slide class="swiper-slide--mute-inactive" }}
+          {{ partial:components/project/elements/card }}
+        {{ /partial:components/swiper/slide }}
+      {{ /related }}
+    {{ /partial:components/swiper/container }}
+  {{ /partial:components/swiper/wrapper }}
+
+  {{ partial:layout/blocks/inner class="hidden md:block" }}
+    <div class="md:grid grid-cols-12 gap-x-20 lg:gap-x-30 xl:gap-x-50">
+      {{ related }}        
+        <div class="md:col-span-4">
+          {{ partial:components/project/elements/card }}
+        </div>
+      {{ /related }}
+    </div>
+  {{ /partial:layout/blocks/inner }}
+  <div class="mt-60 xl:mt-90 flex justify-center">
+    {{ partial:components/buttons/back title="{{ "Zum Portfolio" | trans }}" url="{{ link id="6dc5a5ba-4450-45c6-9684-53b3a8bb4261" }}" }}
+  </div>
+
+</section>
