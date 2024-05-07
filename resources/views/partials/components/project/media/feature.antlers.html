@@ -1,8 +1,10 @@
-<figure class="bg-silver relative aspect-square {{ layout == 'landscape' ? 'md:aspect-[16/9]' : 'md:aspect-[3/4]' }}">
+<figure class="bg-silver relative aspect-square {{ layout == 'landscape' ? 'md:aspect-[16/9]' : 'lg:aspect-[3/4]' }}">
   <picture>
-    <source srcset="{{ glide:feature_image preset='lg-webp' }}" type="image/webp">
+    <source media="(min-width: 1280px)" srcset="{{ glide:feature_image preset='2xl-webp' }}" type="image/jpeg">
+    <source srcset="{{ glide:feature_image preset='xl-webp' }}" type="image/webp">
+    <source media="(min-width: 1280px)" srcset="{{ glide:feature_image preset='2xl' }}" type="image/jpeg">
     <img 
-      src="{{ glide:feature_image preset='lg' }}" 
+      src="{{ glide:feature_image preset='xl' }}" 
       alt="{{ feature_image:alt }}" 
       title="{{ feature_image:alt }}" 
       height="{{ feature_image:height }}" 
