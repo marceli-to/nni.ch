@@ -15,9 +15,13 @@
       loading="lazy">
   </picture>
   {{ if text }}
-    <figcaption class="bg-black bg-opacity-20 absolute z-30 w-full h-full">
-      <div class="text-white font-meta-medium text-lg md:text-xl xl:text-3xl leading-[1.4] absolute z-30 left-35 md:left-80 pr-35 md:pr-0 bottom-90 md:bottom-150 xl:left-[30%] xl:top-[30%] md:max-w-2xl xl:max-w-[790px]">
-        {{ text }}
+    <figcaption class="bg-black bg-opacity-20 absolute z-30 w-full h-full flex lg:block items-end pb-70 md:pb-150 lg:pb-0">
+      <div class="max-w-site mx-auto px-35 sm:px-80 xl:px-100 relative lg:top-[30%]">
+        <div class="grid grid-cols-12 gap-x-20 lg:gap-x-30 xl:gap-x-50 ">
+          <div class="col-span-full md:col-span-9 xl:col-span-6 lg:col-start-2 xl:col-start-3 text-white font-meta-medium text-lg md:text-xl xl:text-3xl leading-[1.4]">
+            {{ text }}
+          </div>
+        </div>
       </div>
     </figcaption>
   {{ /if }}

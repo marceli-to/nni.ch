@@ -118,7 +118,7 @@ return [
           '3xl' => ['w' => 2000, 'h' => 10000, 'q' => 90, 'fit' => 'contain'],
           '4xl' => ['w' => 2400, 'h' => 10000, 'q' => 90, 'fit' => 'contain'],
 
-          'max_upload_size' => ['w' => 4000, 'h' => 4000, 'fit' => 'max'],
+          'max_upload_size' => ['w' => 5000, 'h' => 5000, 'fit' => 'max'],
 
         ],
 
