@@ -26,9 +26,12 @@
 
   {{ if type == 'image' }}
     <section data-section data-section-theme="light" class="py-30 xl:py-60">
-      {{ partial:components/misc/hr }}
       {{ partial:components/project/elements/image }}
     </section>
+  {{ /if }}
+
+  {{ if type == 'horizontal_ruler' }}
+    {{ partial:components/misc/hr }}
   {{ /if }}
 
 {{ /elements }}

@@ -130,82 +130,6 @@ tabs:
               visibility: visible
               replicator_preview: true
               hide_display: false
-  media:
-    display: Media
-    sections:
-      -
-        display: Media
-        fields:
-          -
-            handle: feature_image
-            field:
-              max_files: 1
-              mode: list
-              container: assets
-              folder: projects
-              restrict: false
-              allow_uploads: true
-              show_filename: true
-              show_set_alt: true
-              type: assets
-              display: 'Feature image'
-              icon: assets
-              localizable: false
-              listable: hidden
-              instructions_position: below
-              visibility: visible
-              replicator_preview: true
-              hide_display: false
-              instructions: 'Used on the projects detail page.'
-          -
-            handle: teaser_image_portrait
-            field:
-              max_files: 1
-              mode: list
-              container: assets
-              folder: projects
-              restrict: false
-              allow_uploads: true
-              show_filename: true
-              show_set_alt: true
-              type: assets
-              display: 'Teaser image: Portrait'
-              icon: assets
-              instructions: 'Used on the project listing page. Image ratio should be approx. 3:4.'
-              localizable: false
-              listable: hidden
-              instructions_position: below
-              visibility: visible
-              replicator_preview: true
-              hide_display: false
-          -
-            handle: teaser_image_landscape
-            field:
-              max_files: 1
-              mode: list
-              container: assets
-              folder: projects
-              restrict: false
-              allow_uploads: true
-              show_filename: true
-              show_set_alt: true
-              type: assets
-              display: 'Teaser image: Landscape'
-              icon: assets
-              instructions: 'Used on the project listing page. Image ratio should be approx. 16:8 for fullwidth or 3:2 for landscape mode.'
-              localizable: false
-              listable: hidden
-              instructions_position: below
-              visibility: visible
-              replicator_preview: true
-              hide_display: false
-  elements:
-    display: Elements
-    sections:
-      -
-        display: Elements
-        instructions: 'Design your page with different elements.'
-        fields:
           -
             handle: elements
             field:
@@ -239,12 +163,90 @@ tabs:
                       fields:
                         -
                           import: image_text
+                graphical_elements:
+                  display: 'Graphical Elements'
+                  instructions: null
+                  icon: addon-boxes-stack
+                  sets:
+                    horizontal_ruler:
+                      display: 'Horizontal Ruler'
+                      instructions: null
+                      icon: align-object-bottom
+                      fields:
+                        -
+                          import: horizontal_ruler
               type: replicator
               display: Elements
               icon: replicator
               localizable: false
               listable: hidden
               instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+  media:
+    display: Media
+    sections:
+      -
+        display: Media
+        fields:
+          -
+            handle: feature_image
+            field:
+              max_files: 1
+              mode: list
+              container: assets
+              restrict: false
+              allow_uploads: true
+              show_filename: true
+              show_set_alt: true
+              type: assets
+              display: 'Feature image'
+              icon: assets
+              localizable: false
+              listable: hidden
+              instructions_position: below
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              instructions: 'Used on the projects detail page.'
+          -
+            handle: teaser_image_portrait
+            field:
+              max_files: 1
+              mode: list
+              container: assets
+              restrict: false
+              allow_uploads: true
+              show_filename: true
+              show_set_alt: true
+              type: assets
+              display: 'Teaser image: Portrait'
+              icon: assets
+              instructions: 'Used on the project listing page. Image ratio should be approx. 3:4.'
+              localizable: false
+              listable: hidden
+              instructions_position: below
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: teaser_image_landscape
+            field:
+              max_files: 1
+              mode: list
+              container: assets
+              restrict: false
+              allow_uploads: true
+              show_filename: true
+              show_set_alt: true
+              type: assets
+              display: 'Teaser image: Landscape'
+              icon: assets
+              instructions: 'Used on the project listing page. Image ratio should be approx. 16:8 for fullwidth or 3:2 for landscape mode.'
+              localizable: false
+              listable: hidden
+              instructions_position: below
               visibility: visible
               replicator_preview: true
               hide_display: false

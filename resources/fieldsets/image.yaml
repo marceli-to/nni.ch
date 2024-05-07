@@ -20,17 +20,3 @@ fields:
       replicator_preview: true
       hide_display: false
       localizable: false
-  -
-    handle: caption
-    field:
-      input_type: text
-      antlers: false
-      type: text
-      display: Caption
-      icon: text
-      localizable: true
-      listable: hidden
-      instructions_position: above
-      visibility: visible
-      replicator_preview: true
-      hide_display: false
