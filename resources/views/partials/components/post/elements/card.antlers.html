@@ -3,7 +3,7 @@
     {{ partial:components/post/elements/date class="mb-15" }}
     <a href="{{ url }}" title="{{ title }}">
       {{ partial:components/post/media/preview ratio="aspect-[510/330] md:aspect-[930/473]" }}
-      {{ partial:components/post/elements/heading }}
+      {{ partial:components/post/elements/heading class="!text-lg xl:!text-5xl" }}
     </a>
   </div>
 {{ elseif !term && index == 1 }}
@@ -11,7 +11,7 @@
     {{ partial:components/post/elements/date class="mb-15" }}
     <a href="{{ url }}" title="{{ title }}">
       {{ partial:components/post/media/preview ratio="aspect-[510/330] md:aspect-[650/474]" }}
-      {{ partial:components/post/elements/heading }}
+      {{ partial:components/post/elements/heading class="!text-lg xl:!text-5xl" }}
     </a>
   </div>
 {{ else }}
