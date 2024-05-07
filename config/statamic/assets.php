@@ -108,7 +108,7 @@ return [
           '2xl-webp' => ['w' => 1680, 'h' => 10000, 'q' => 90, 'fit' => 'contain', 'fm' => 'webp'],
           '3xl-webp' => ['w' => 2000, 'h' => 10000, 'q' => 90, 'fit' => 'contain', 'fm' => 'webp'],
           '4xl-webp' => ['w' => 2400, 'h' => 10000, 'q' => 90, 'fit' => 'contain', 'fm' => 'webp'],
-          '5xl-webp' => ['w' => 3200, 'h' => 10000, 'q' => 90, 'fit' => 'contain', 'fm' => 'webp'],
+          '5xl-webp' => ['w' => 3600, 'h' => 10000, 'q' => 90, 'fit' => 'contain', 'fm' => 'webp'],
 
           'xs' => ['w' => 320, 'h' => 10000, 'q' => 90, 'fit' => 'contain'],
           'sm' => ['w' => 480, 'h' => 10000, 'q' => 90, 'fit' => 'contain'],
@@ -118,7 +118,7 @@ return [
           '2xl' => ['w' => 1680, 'h' => 10000, 'q' => 90, 'fit' => 'contain'],
           '3xl' => ['w' => 2000, 'h' => 10000, 'q' => 90, 'fit' => 'contain'],
           '4xl' => ['w' => 2400, 'h' => 10000, 'q' => 90, 'fit' => 'contain'],
-          '5xl' => ['w' => 3200, 'h' => 10000, 'q' => 90, 'fit' => 'contain'],
+          '5xl' => ['w' => 3600, 'h' => 10000, 'q' => 90, 'fit' => 'contain'],
 
           'max_upload_size' => ['w' => 5000, 'h' => 5000, 'fit' => 'max'],
 
