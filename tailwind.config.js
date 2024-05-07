@@ -24,6 +24,13 @@ export default {
         content: '1068px'
       },
 
+      zIndex: {
+        '60': '60',
+        '70': '70',
+        '80': '80',
+        '90': '90',
+      },
+
       fontFamily: {
         'meta-bold': ['MetaProBold', ...defaultTheme.fontFamily.sans],
         'meta-medium': ['MetaProMedium', ...defaultTheme.fontFamily.sans],
