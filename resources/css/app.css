@@ -8,9 +8,8 @@
 @import "components/image.css";
 @import "components/swiper.css";
 @import "components/theme.css";
-@import "components/video.css";
+@import "components/media.css";
 @import "utils.css";
-
 @import "views/posts.css";
 
 * {

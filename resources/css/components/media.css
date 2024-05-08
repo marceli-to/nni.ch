@@ -1,8 +1,8 @@
-.video-container {
+.media-container {
   @apply relative aspect-video
 }
 
-.video-container iframe {
+.media-container iframe {
   @apply w-full h-full object-contain max-w-content
 }
 
