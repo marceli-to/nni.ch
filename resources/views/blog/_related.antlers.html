@@ -5,7 +5,7 @@
 {{ /post_categories }}
 
 <section data-section data-section-theme="light" class="pt-60 xl:pt-120">
-  <div class="md:px-80 xl:px-100 3xl:px-100 max-w-site mx-auto">
+  <div class="md:px-80 xl:px-100 max-w-site mx-auto">
     {{ collection from="posts" as="posts" sort="date:desc" limit="3" taxonomy:post_categories="{{ category }}" slug:not_in="{{ slug }}" }}
 
       {{ if results }}

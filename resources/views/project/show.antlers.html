@@ -1,49 +1,61 @@
-<section data-section data-section-theme="light" class="pt-90 pb-30 md:pt-150 md:pb-60 {{ is_fullpage ? 'section' : '' }}">
-
-  {{ if feature_layout == 'landscape' }}
-    {{ partial:components/project/layout/landscape }}
-  {{ /if }}
-  
-  {{ if feature_layout == 'portrait' }}
-    {{ partial:components/project/layout/portrait }}
-  {{ /if }}
-
-</section>
+<div id="{{ is_fullpage ? 'fullpage' : '' }}">
+  <section data-section data-section-theme="light" class="{{ is_fullpage ? 'section fp-section-centered' : 'pt-90 pb-30 md:pt-150 md:pb-60' }}">
+    <div class="{{ is_fullpage ? 'pt-90 pb-30 md:pt-150 md:pb-60' : '' }}">
+      {{ if feature_layout == 'landscape' }}
+        {{ partial:components/project/layout/landscape }}
+      {{ /if }}
+      
+      {{ if feature_layout == 'portrait' }}
+        {{ partial:components/project/layout/portrait }}
+      {{ /if }}
+    </div>
+  </section>
  
 {{ elements }}
 
   {{ if type == 'image_text' }}
-    <section data-section data-section-theme="light" class="py-30 md:py-60 xl:py-90">
+    <section data-section data-section-theme="light" class="{{ is_fullpage ? 'section fp-section-centered' : 'py-30 md:py-60 xl:py-90' }}">
       {{ partial:components/project/elements/image_text }}
     </section>
   {{ /if }}
 
   {{ if type == 'fullscreen_image' }}
-    <section data-section data-section-theme="dark" class="my-30 xl:my-60 relative min-h-screen">
+    <section data-section data-section-theme="dark" class="relative {{ is_fullpage ? 'section' : 'my-30 xl:my-60 min-h-screen' }}">
       {{ partial:components/project/elements/fullscreen_image }}
     </section>
   {{ /if }}
 
   {{ if type == 'image' }}
-    <section data-section data-section-theme="light" class="py-30 xl:py-60">
+    <section data-section data-section-theme="light" class="{{ is_fullpage ? 'section fp-section-centered' : 'py-30 xl:py-60' }}">
       {{ partial:components/project/elements/image }}
     </section>
   {{ /if }}
 
   {{ if type == 'video' }}
-    <section data-section data-section-theme="dark" class="py-30 xl:py-60">
-      {{ partial:layout/blocks/inner class="pt-45 xl:pt-120" }}
+    <section data-section data-section-theme="light" class="{{ is_fullpage ? 'section fp-section-centered' : 'py-30 xl:py-60' }}">
+      {{ partial:layout/blocks/inner }}
         {{ partial:components/media/video/video }}
       {{ /partial:layout/blocks/inner }}
     </section>
   {{ /if }}
 
-  {{ if type == 'horizontal_ruler' }}
+  {{# {{ if type == 'horizontal_ruler' }}
     {{ partial:components/misc/hr }}
-  {{ /if }}
+  {{ /if }} #}}
 
 {{ /elements }}
 
-{{ if related }}
+{{# {{ if related }}
   {{ partial:project/_related }}
+{{ /if }} #}}
+
+{{ if is_fullpage }}
+  <section data-section data-section-theme="light" class="section fp-auto-height">
+    {{ partial:layout/footer }}
+  </section>
+{{ /if }}
+</div>
+
+{{ if !is_fullpage }}
+  {{ partial:layout/footer }}
 {{ /if }}

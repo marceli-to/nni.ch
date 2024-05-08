@@ -6,11 +6,13 @@
     {{ partial:layout/header }}
   {{ /slot:header }}
 
-  {{ partial:layout/main }}
+  {{ template_content }}
 
-  {{ slot:footer }}
-    {{ partial:layout/footer }}
-  {{ /slot:footer }}
+    {{ slot:footer }}
+      {{ if !is_fullpage }}
+        {{ partial:layout/footer }}
+      {{ /if }}
+    {{ /slot:footer }}
 
 {{ /partial:layout/body }}
 
