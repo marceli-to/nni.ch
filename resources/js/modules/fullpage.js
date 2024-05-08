@@ -15,7 +15,7 @@ import fullpage from 'fullpage.js';
 
     const fullPageInstance = new fullpage(selector, {
       licenseKey: 'O6CM9-7M5PI-Y4VK9-JVO3H-ZKKOM',
-      navigation: false,
+      navigation: true,
       lockAnchors: true,
       lazyLoading: true,
       fitToSection: true,
