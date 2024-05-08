@@ -6,7 +6,7 @@
         {{ partial:components/media/image/image class="w-full h-auto" }}
       </div>
       <div class="md:flex md:flex-col md:justify-center md:order-2 {{ image:width > image:height ? 'md:col-span-full lg:col-span-4' : 'md:col-span-5' }}">
-        {{ partial:components/headings/h2 is_project="true" class="text-md xl:text-4xl mb-15 xl:mb-30" }}
+        {{ partial:components/headings/h2 is_project="true" class="text-md md:text-xl xl:text-4xl mb-15 xl:mb-30" }}
           {{ title }}
         {{ /partial:components/headings/h2 }}
         {{ text }}
@@ -23,7 +23,7 @@
         {{ partial:components/media/image/image class="w-full h-auto" }}
       </div>
       <div class="md:flex md:flex-col md:justify-center md:order-1 {{ image:width > image:height ? 'md:col-span-full lg:col-span-4' : 'md:col-span-5' }}">
-        {{ partial:components/headings/h2 is_project="true" class="text-md xl:text-4xl mb-15 xl:mb-30" }}
+        {{ partial:components/headings/h2 is_project="true" class="text-md md:text-xl xl:text-4xl mb-15 xl:mb-30" }}
           {{ title }}
         {{ /partial:components/headings/h2 }}
         {{ text }}

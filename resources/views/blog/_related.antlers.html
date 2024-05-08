@@ -9,7 +9,7 @@
     {{ collection from="posts" as="posts" sort="date:desc" limit="3" taxonomy:post_categories="{{ category }}" slug:not_in="{{ slug }}" }}
 
       {{ if results }}
-        {{ partial:components/headings/h2 is_project="true" class="pl-35 md:pl-0 text-md xl:text-4xl mb-15 xl:mb-30" }}
+        {{ partial:components/headings/h2 is_project="true" class="pl-35 md:pl-0 text-md md:text-xl xl:text-4xl mb-15 xl:mb-30" }}
           {{ "Ähnliche Beiträge" | trans }}
         {{ /partial:components/headings/h2 }}
 
