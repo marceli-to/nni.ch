@@ -17,6 +17,7 @@ import fullpage from 'fullpage.js';
       lazyLoading: true,
       fitToSection: true,
       scrollOverflowMacStyle: true,
+      touchSensitivity: 20,
       credits: { enabled: false},
       beforeLeave: function(origin, destination, direction, trigger){},
       onLeave: function(origin, destination, direction, trigger){},
