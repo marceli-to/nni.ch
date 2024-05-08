@@ -1,16 +1,33 @@
 {{ if overlay != 'none' }}
   {{ partial:components/media/overlay }}
 {{ /if }}
-<video 
-  poster="" 
-  preload="none"
-  class="absolute z-10 left-0 top-0 w-full h-full object-cover" 
-  muted 
-  autoplay 
-  playsinline 
-  loop
-  data-video
-  data-video-lazy
-  data-video-source='{"low": "{{ video_low }}", "high": "{{ video_high }}"}'>
-  <source data-src="{{ video_high }}" type="video/mp4">
-</video>
+
+{{ if is_fullpage }}
+  <video 
+    poster="" 
+    preload="none"
+    class="absolute z-10 left-0 top-0 w-full h-full object-cover" 
+    muted 
+    autoplay 
+    playsinline 
+    loop
+    data-video
+    data-autoplay>
+    <source data-src="{{ video_high }}" type="video/mp4">
+  </video>
+{{ else }}
+  <video 
+    poster="" 
+    preload="none"
+    class="absolute z-10 left-0 top-0 w-full h-full object-cover" 
+    muted 
+    autoplay 
+    playsinline 
+    loop
+    data-video
+    data-video-lazy
+    data-video-source='{"low": "{{ video_low }}", "high": "{{ video_high }}"}'>
+    <source data-src="{{ video_high }}" type="video/mp4">
+  </video>
+{{ /if }}
+

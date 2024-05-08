@@ -11,6 +11,7 @@
 @import "components/media.css";
 @import "utils.css";
 @import "views/posts.css";
+@import "vendor/fullpage.css";
 
 * {
   font-variant-ligatures: none;

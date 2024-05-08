@@ -40,6 +40,4 @@ import './modules/swiper/projects.js';
 
 import './modules/touch.js';
 
-// import './modules/snap.js';
-
-import './modules/section.js';
+import './modules/fullpage.js';

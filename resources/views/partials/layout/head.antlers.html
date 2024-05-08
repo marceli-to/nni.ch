@@ -1,6 +1,7 @@
 <!doctype html>
 {{# <html lang="{{ site:short_locale }}" class="scroll-smooth overflow-y-auto {{ is_fullpage ? 'md:h-screen md:snap-y md:snap-mandatory' : '' }}"> #}}
-<html lang="{{ site:short_locale }}" class="scroll-smooth {{ is_fullpage ? 'overflow-y-hidden md:h-screen md:snap-y md:snap-mandatory' : 'overflow-y-auto' }}">
+{{# <html lang="{{ site:short_locale }}" class="scroll-smooth {{ is_fullpage ? 'overflow-y-hidden md:h-screen md:snap-y md:snap-mandatory' : 'overflow-y-auto' }}"> #}}
+<html lang="{{ site:short_locale }}" class="scroll-smooth overflow-y-auto {{ is_fullpage ? '' : '' }}">
 <head>
 <meta charset="utf-8">
 {{ if is_homepage }}<title>Nightnurse Images</title>{{ else }}<title>{{ open_graph_title ?? title ?? site:name }} | Nightnurse Images</title>{{ endif }}
