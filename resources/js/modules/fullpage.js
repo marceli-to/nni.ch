@@ -11,11 +11,9 @@ import fullpage from 'fullpage.js';
       return;
     }
 
-    console.log('fullpage.js loaded');
-
     const fullPageInstance = new fullpage(selector, {
       licenseKey: 'O6CM9-7M5PI-Y4VK9-JVO3H-ZKKOM',
-      navigation: true,
+      navigation: false,
       lockAnchors: true,
       lazyLoading: true,
       fitToSection: true,
