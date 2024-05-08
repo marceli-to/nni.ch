@@ -1,0 +1,15 @@
+title: Iframe
+fields:
+  -
+    handle: code
+    field:
+      antlers: false
+      type: textarea
+      display: Code
+      icon: textarea
+      localizable: true
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false

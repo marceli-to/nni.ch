@@ -19,7 +19,7 @@ tabs:
               cast_booleans: false
               default: landscape
               type: select
-              display: 'Header Layout'
+              display: Layout
               icon: select
               instructions: 'Choose a layout for the header, depending on the feature image.'
               localizable: false
@@ -133,7 +133,7 @@ tabs:
           -
             handle: elements
             field:
-              collapse: false
+              collapse: true
               previews: true
               fullscreen: true
               sets:
@@ -163,6 +163,20 @@ tabs:
                       fields:
                         -
                           import: image_text
+                    iframe:
+                      display: Iframe
+                      instructions: null
+                      icon: programming-script-code-brackets
+                      fields:
+                        -
+                          import: iframe
+                    video:
+                      display: Video
+                      instructions: 'Add a video from file (mp4) or embed code (Youtube, Vimeo)'
+                      icon: media-webcam-video
+                      fields:
+                        -
+                          import: video
                 graphical_elements:
                   display: 'Graphical Elements'
                   instructions: null

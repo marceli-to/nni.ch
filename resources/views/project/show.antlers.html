@@ -30,6 +30,14 @@
     </section>
   {{ /if }}
 
+  {{ if type == 'video' }}
+    <section data-section data-section-theme="dark" class="py-30 xl:py-60">
+      {{ partial:layout/blocks/inner class="pt-45 xl:pt-120" }}
+        {{ partial:components/media/video/video }}
+      {{ /partial:layout/blocks/inner }}
+    </section>
+  {{ /if }}
+
   {{ if type == 'horizontal_ruler' }}
     {{ partial:components/misc/hr }}
   {{ /if }}

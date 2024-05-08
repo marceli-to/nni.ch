@@ -7,7 +7,11 @@
 }
 
 .media-container iframe {
-  @apply w-full h-full object-contain max-w-content
+  @apply w-full h-full object-contain
+}
+
+.media-container video {
+  @apply w-full h-full object-contain
 }
 
 .dim-0 { @apply bg-opacity-0; }

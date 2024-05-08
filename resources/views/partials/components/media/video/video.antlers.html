@@ -1,3 +1,17 @@
 <div class="media-container media-container--video">
-  {{ video_code }}
+  {{ if video_code }}
+    {{ video_code }}
+  {{ /if }}
+
+  {{ if video_file }}
+    <video 
+      poster="" 
+      preload="none"
+      muted 
+      autoplay 
+      controls
+      loop>
+      <source src="{{ video_file }}" type="video/mp4">
+    </video>
+  {{ /if }}
 </div>

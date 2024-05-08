@@ -60,3 +60,4 @@ fields:
       folder: video
       if:
         video_source: 'equals file'
+      max_files: 1
