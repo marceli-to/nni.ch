@@ -1,5 +1,9 @@
 .media-container {
-  @apply relative aspect-video
+  @apply relative
+}
+
+.media-container--video {
+  @apply aspect-video
 }
 
 .media-container iframe {
