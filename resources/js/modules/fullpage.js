@@ -12,8 +12,8 @@ import fullpage from 'fullpage.js';
 
     const fullPageInstance = new fullpage(selector, {
       licenseKey: 'O6CM9-7M5PI-Y4VK9-JVO3H-ZKKOM',
+      // anchors:['portfolio', 'expertise', 'unternehmen', 'services'],
       navigation: false,
-      lockAnchors: true,
       lazyLoading: true,
       fitToSection: true,
       //scrollOverflowMacStyle: true,

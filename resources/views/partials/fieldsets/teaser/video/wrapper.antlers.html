@@ -1,4 +1,4 @@
-<section data-section data-section-theme="dark" class="relative {{ is_fullpage ? 'section' : 'min-h-screen' }}">
+<section data-section data-section-theme="dark" {{ is_fullpage ? 'data-anchor="{{ anchor }}"' : '' }} class="relative {{ is_fullpage ? 'section' : 'min-h-screen' }}">
   {{ partial:components/misc/anchor anchor="{{ anchor }}" }}
   {{ partial:components/media/video/fullscreen/wrapper }}
   {{ partial:fieldsets/teaser/video/content }}
