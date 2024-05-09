@@ -27,6 +27,12 @@ import fullpage from 'fullpage.js';
         const header = document.querySelector('header[data-icon-theme]');
         if (!header) return;
         header.setAttribute('data-icon-theme', theme);
+
+        // find video element with data-video attribute
+        const video = nextSection.querySelector('video[data-video]');
+        if (video) {
+          video.play();
+        }
       },
     });
   };
