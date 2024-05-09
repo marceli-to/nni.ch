@@ -11,6 +11,12 @@ document.addEventListener('DOMContentLoaded', function() {
   // get the anchors by data-anchors attribute
   const anchors = document.querySelector('[data-anchors]');
 
+  video.addEventListener("play", (event) => {
+    console.log(
+      "The Boolean paused property is now 'false'. Either the play() method was called or the autoplay attribute was toggled.",
+    );
+  });
+
   // Detect when the video has started playing
   video.addEventListener('play', function() {
       // After 2 seconds, fade in the icons and text
