@@ -310,8 +310,7 @@ Not supports in Firefox and IE */
 }
 
 .fp-overflow {
-  @apply min-h-screen;
-  min-height: calc(100vh - var(--vh, 0px));
+  @apply min-h-screen
 }
 
 .fp-section-centered .fp-overflow {
