@@ -1,5 +1,6 @@
-<div id="{{ is_fullpage ? 'fullpage' : '' }}">
-  <section data-section data-section-theme="light" class="{{ is_fullpage ? 'section fp-section-centered' : 'pt-90 pb-30 md:pt-150 md:pb-60' }}">
+{{# <div id="{{ is_fullpage ? 'fullpage' : '' }}"> #}}
+<div id="{{ is_fullpage ? '' : '' }}">
+  <section data-section data-section-theme="light" class="{{ is_fullpage ? 'snap-always snap-center' : 'pt-90 pb-30 md:pt-150 md:pb-60' }}">
     <div class="{{ is_fullpage ? 'pt-90 pb-150 md:pt-150 md:pb-60' : '' }}">
       {{ if feature_layout == 'landscape' }}
         {{ partial:components/project/layout/landscape }}
@@ -14,7 +15,7 @@
 {{ elements }}
 
   {{ if type == 'image_text' }}
-    <section data-section data-section-theme="light" class="{{ is_fullpage ? 'section fp-section-centered' : 'py-30 md:py-60 xl:py-90' }}">
+    <section data-section data-section-theme="light" class="{{ is_fullpage ? 'snap-always snap-center' : 'py-30 md:py-60 xl:py-90' }}">
       <div class="pt-90 pb-150">
         {{ partial:components/project/elements/image_text }}
       </div>
@@ -28,7 +29,7 @@
   {{ /if }}
 
   {{ if type == 'image' }}
-    <section data-section data-section-theme="light" class="{{ is_fullpage ? 'section fp-section-centered' : 'py-30 xl:py-60' }}">
+    <section data-section data-section-theme="light" class="{{ is_fullpage ? 'snap-always snap-center' : 'py-30 xl:py-60' }}">
       <div>
         {{ partial:components/project/elements/image }}
       </div>
@@ -36,7 +37,7 @@
   {{ /if }}
 
   {{ if type == 'video' }}
-    <section data-section data-section-theme="light" class="{{ is_fullpage ? 'section fp-section-centered' : 'py-30 xl:py-60' }}">
+    <section data-section data-section-theme="light" class="{{ is_fullpage ? 'snap-always snap-center' : 'py-30 xl:py-60' }}">
       {{ partial:layout/blocks/inner }}
         {{ partial:components/media/video/video }}
       {{ /partial:layout/blocks/inner }}
