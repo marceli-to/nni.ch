@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ site:short_locale }}" class="scroll-smooth overflow-y-auto">
+<html lang="{{ site:short_locale }}" class="scroll-smooth overflow-y-auto {{ is_fullpage ? '!h-screen' : ''}}">
 <head>
 <meta charset="utf-8">
 {{ if is_homepage }}<title>Nightnurse Images</title>{{ else }}<title>{{ open_graph_title ?? title ?? site:name }} | Nightnurse Images</title>{{ endif }}
