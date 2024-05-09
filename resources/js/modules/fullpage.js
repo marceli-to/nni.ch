@@ -17,6 +17,7 @@ import fullpage from 'fullpage.js';
       lazyLoading: true,
       fitToSection: true,
       autoScrolling: false,
+      fitToSectionDelay: 100,
       //scrollOverflowMacStyle: true,
       bigSectionsDestination: 'top',
       touchSensitivity: 20,
