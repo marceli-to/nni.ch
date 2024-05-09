@@ -1,6 +1,6 @@
 <section data-section data-section-theme="light" class="relative {{ is_fullpage ? 'section fp-section-centered' : 'py-90 xl:py-150' }}">
   {{ partial:components/misc/anchor anchor="{{ anchor }}" }}
-  {{ partial:layout/blocks/inner }}
+  {{ partial:layout/blocks/inner class="{{ is_fullpage ? 'pt-90 pb-150 xs:py-90 lg:py-150' : '' }}" }}
     <div class="grid grid-cols-12 gap-x-20 lg:gap-x-30 xl:gap-x-50">
       <div class="col-span-12 lg:col-span-4 xl:col-span-5 2xl:col-span-4 lg:order-2 mb-30">
         {{ partial:components/headings/h1 }}
