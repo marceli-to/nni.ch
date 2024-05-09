@@ -29,9 +29,9 @@
 
   {{ if type == 'image' }}
     <section data-section data-section-theme="light" class="{{ is_fullpage ? 'section fp-section-centered' : 'py-30 xl:py-60' }}">
-      <div class="pt-90 pb-150 lg:py-150 xl:py-240">
+      {{ partial:layout/blocks/inner class="pt-90 pb-150 lg:py-150 xl:py-240 lg:h-[calc(100vh_-_300px)] lg:w-full lg:relative" }}
         {{ partial:components/project/elements/image }}
-      </div>
+      {{ /partial:layout/blocks/inner }}
     </section>
   {{ /if }}
 
