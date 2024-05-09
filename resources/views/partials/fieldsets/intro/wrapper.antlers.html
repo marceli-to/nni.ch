@@ -3,8 +3,6 @@
   {{ partial:fieldsets/intro/content }}
 </section>
 <script>
-
-
 document.addEventListener('DOMContentLoaded', function() {
   // get the video by data-video attribute
   const video = document.querySelector('[data-video]');
@@ -19,15 +17,5 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }, 500);
 
-  // Detect when the video has started playing
-  video.addEventListener('play', function() {
-      // After 2 seconds, fade in the icons and text
-      setTimeout(function() {
-          // add class opacity-100 to the title
-          title.classList.add('opacity-100');
-          // add class opacity-100 to the anchors
-          anchors.classList.add('opacity-100');
-      }, 2000);
-  });
 });
 </script>
