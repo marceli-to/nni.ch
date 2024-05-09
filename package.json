@@ -20,6 +20,7 @@
     "@vitejs/plugin-vue": "^4.5.2",
     "alpinejs": "^3.13.3",
     "fullpage.js": "^4.0.22",
-    "swiper": "^11.0.7"
+    "swiper": "^11.0.7",
+    "vh-check": "^2.0.5"
   }
 }

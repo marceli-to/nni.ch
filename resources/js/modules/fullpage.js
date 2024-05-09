@@ -1,11 +1,12 @@
 import fullpage from 'fullpage.js';
+import vhCheck from 'vh-check';
 
 (function () {
 
   const init = () => {
 
     const selector = '#fullpage';
-
+    vhCheck('browser-address-bar');
     // check if the element exists
     if (!document.querySelector(selector)) {
       return;
