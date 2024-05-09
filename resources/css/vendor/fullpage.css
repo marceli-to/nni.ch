@@ -310,7 +310,7 @@ Not supports in Firefox and IE */
 }
 
 .fp-overflow {
-  @apply min-h-screen pt-120 pb-60
+  @apply min-h-screen pt-180 pb-60
 }
 
 .fp-section-centered .fp-overflow {
