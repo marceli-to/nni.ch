@@ -205,6 +205,28 @@ tabs:
         display: Media
         fields:
           -
+            handle: feature_type
+            field:
+              options:
+                image: Image
+                video: Video
+              taggable: false
+              push_tags: false
+              multiple: false
+              clearable: false
+              searchable: true
+              cast_booleans: false
+              default: image
+              type: select
+              display: 'Feature type'
+              icon: select
+              localizable: false
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
             handle: feature_image
             field:
               max_files: 1

@@ -13,7 +13,7 @@
     loop
     data-video
     data-autoplay>
-    <source data-src="{{ video_high }}" type="video/mp4">
+    <source data-src="{{ video_landscape }}" type="video/mp4">
   </video>
 {{ else }}
   <video 
@@ -26,8 +26,8 @@
     loop
     data-video
     data-video-lazy
-    data-video-source='{"low": "{{ video_low }}", "high": "{{ video_high }}"}'>
-    <source data-src="{{ video_high }}" type="video/mp4">
+    data-video-source='{"low": "{{ video_portrait }}", "high": "{{ video_landscape }}"}'>
+    <source data-src="{{ video_landscape }}" type="video/mp4">
   </video>
 {{ /if }}
 

@@ -1,7 +1,7 @@
 title: 'Fullscreen Video'
 fields:
   -
-    handle: video_low
+    handle: video_portrait
     field:
       mode: list
       container: assets
@@ -10,9 +10,9 @@ fields:
       show_filename: true
       show_set_alt: true
       type: assets
-      display: 'Video (low)'
+      display: 'Video (Portrait)'
       icon: assets
-      instructions: 'Add a low resolution video for small devices. The video format needs to be MP4'
+      instructions: 'Add a video in portrait mode for mobile devices. Format needs to be MP4'
       localizable: false
       listable: hidden
       instructions_position: below
@@ -25,7 +25,7 @@ fields:
       validate:
         - required
   -
-    handle: video_high
+    handle: video_landscape
     field:
       mode: list
       container: assets
@@ -34,9 +34,9 @@ fields:
       show_filename: true
       show_set_alt: true
       type: assets
-      display: 'Video (high)'
+      display: 'Video (Landscape)'
       icon: assets
-      instructions: 'Add a low resolution video for medium and large devices. The video format needs to be MP4.'
+      instructions: 'Add a video in landscape mode for tablets and desktop. Format needs to be MP4'
       localizable: false
       listable: hidden
       instructions_position: below
