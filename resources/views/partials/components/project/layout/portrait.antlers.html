@@ -20,8 +20,8 @@
       </div>
     </div>
     <div class="order-1 lg:order-2 lg:col-span-6 lg:col-start-7">
-      {{ if feature_image }}
-        {{ partial:components/project/media/feature layout="{{ feature_layout }}" }}
+      {{ if feature_image || feature_video }}
+        {{ partial:components/project/media/feature layout="{{ feature_layout }}" type="{{ feature_type }}" }}
       {{ /if }}
     </div>
   </div>

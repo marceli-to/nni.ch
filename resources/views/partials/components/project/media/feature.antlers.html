@@ -1,18 +1,26 @@
-<figure class="bg-silver relative aspect-square {{ layout == 'landscape' ? 'md:aspect-[16/9]' : 'lg:aspect-[3/4]' }}">
-  <picture>
-    <source media="(min-width: 1280px)" srcset="{{ glide:feature_image preset='2xl-webp' }}" type="image/jpeg">
-    <source srcset="{{ glide:feature_image preset='xl-webp' }}" type="image/webp">
-    <source media="(min-width: 1280px)" srcset="{{ glide:feature_image preset='2xl' }}" type="image/jpeg">
-    <img 
-      src="{{ glide:feature_image preset='xl' }}" 
-      alt="{{ feature_image:alt }}" 
-      title="{{ feature_image:alt }}" 
-      height="{{ feature_image:height }}" 
-      width="{{ feature_image:width }}"
-      class="w-full h-full object-cover {{ imageClass ?? ''}}"
-      {{ if lazyload }}
-      loading="lazy"
-      {{ /if }}
-      >
-  </picture>
-</figure>
+{{ if type == 'image' }}
+  <figure class="bg-silver relative aspect-square {{ layout == 'landscape' ? 'md:aspect-[16/9]' : 'lg:aspect-[3/4]' }}">
+    <picture>
+      <source media="(min-width: 1280px)" srcset="{{ glide:feature_image preset='2xl-webp' }}" type="image/jpeg">
+      <source srcset="{{ glide:feature_image preset='xl-webp' }}" type="image/webp">
+      <source media="(min-width: 1280px)" srcset="{{ glide:feature_image preset='2xl' }}" type="image/jpeg">
+      <img 
+        src="{{ glide:feature_image preset='xl' }}" 
+        alt="{{ feature_image:alt }}" 
+        title="{{ feature_image:alt }}" 
+        height="{{ feature_image:height }}" 
+        width="{{ feature_image:width }}"
+        class="w-full h-full object-cover {{ imageClass ?? ''}}"
+        {{ if lazyload }}
+        loading="lazy"
+        {{ /if }}
+        >
+    </picture>
+  </figure>
+{{ /if }}
+
+{{ if type == 'video' }}
+  <video poster="" preload="none" muted autoplay loop  data-video data-autoplay class="bg-silver relative aspect-square object-cover {{ layout == 'landscape' ? 'md:aspect-[16/9]' : 'lg:aspect-[3/4]' }}">
+    <source src="{{ feature_video }}" type="video/mp4">
+  </video>
+{{ /if }}

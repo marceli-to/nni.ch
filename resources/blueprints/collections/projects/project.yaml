@@ -245,7 +245,32 @@ tabs:
               visibility: visible
               replicator_preview: true
               hide_display: false
-              instructions: 'Used on the projects detail page.'
+              instructions: 'Add a feature image used on the projects detail page.'
+              if:
+                feature_type: 'equals image'
+          -
+            handle: feature_video
+            field:
+              max_files: 1
+              mode: list
+              container: assets
+              folder: video
+              restrict: false
+              allow_uploads: true
+              show_filename: true
+              show_set_alt: true
+              type: assets
+              display: 'Feature video'
+              icon: assets
+              instructions: 'Add a feature video used on the projects detail page. Format needs to be MP4'
+              localizable: false
+              listable: hidden
+              instructions_position: below
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              if:
+                feature_type: 'equals video'
           -
             handle: teaser_image_portrait
             field:
@@ -280,6 +305,27 @@ tabs:
               display: 'Teaser image: Landscape'
               icon: assets
               instructions: 'Used on the project listing page. Image ratio should be approx. 16:8 for fullwidth or 3:2 for landscape mode.'
+              localizable: false
+              listable: hidden
+              instructions_position: below
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: teaser_video
+            field:
+              max_files: 1
+              mode: list
+              container: assets
+              folder: video
+              restrict: false
+              allow_uploads: true
+              show_filename: true
+              show_set_alt: true
+              type: assets
+              display: 'Teaser video'
+              icon: assets
+              instructions: 'Used on the project listing page.'
               localizable: false
               listable: hidden
               instructions_position: below
