@@ -29,4 +29,6 @@
 <meta name="theme-color" content="#ffffff">
 {{ vite src="resources/css/app.css" }}
 </head>
+{{ if environment != 'production' }}
 {{ partial:layout/breakpoints }}
+{{ /if }}
