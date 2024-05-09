@@ -6,7 +6,7 @@ import vhCheck from 'vh-check';
   const init = () => {
 
     const selector = '#fullpage';
-    console.log(vhCheck('browser-address-bar'));
+    console.log(vhCheck('browser-address-bar').windowHeight);
     // check if the element exists
     if (!document.querySelector(selector)) {
       return;
