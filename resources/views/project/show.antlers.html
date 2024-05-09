@@ -22,7 +22,7 @@
   {{ /if }}
 
   {{ if type == 'fullscreen_image' }}
-    <section data-section data-section-theme="dark" class="relative {{ is_fullpage ? 'section overflow-y-hidden' : 'my-30 xl:my-60 min-h-screen' }}">
+    <section data-section data-section-theme="dark" class="relative {{ is_fullpage ? 'section' : 'my-30 xl:my-60 min-h-screen' }}">
       {{ partial:components/project/elements/fullscreen_image }}
     </section>
   {{ /if }}
