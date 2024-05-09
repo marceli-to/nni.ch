@@ -314,7 +314,7 @@ Not supports in Firefox and IE */
 }
 
 .fp-section-centered .fp-overflow {
-  @apply flex flex-col items-center min-h-0 py-90;
+  @apply flex flex-col items-center min-h-0 py-120;
 }
 
 .fp-section-overflow-x-hidden .fp-overflow {
