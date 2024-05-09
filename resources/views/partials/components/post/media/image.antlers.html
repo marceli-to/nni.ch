@@ -16,9 +16,9 @@
       class="block w-full h-auto {{ class ?? '' }} max-w-content"
       loading="lazy">
   </picture>
-  {{ if caption }}
+  {{ if image:alt }}
     <figcaption class="py-5">
-      {{ caption }}
+      {{ image:alt }}
     </figcaption>
   {{ /if }}
 </figure>
