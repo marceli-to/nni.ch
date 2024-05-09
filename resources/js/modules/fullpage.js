@@ -1,12 +1,10 @@
 import fullpage from 'fullpage.js';
-import vhCheck from 'vh-check';
 
 (function () {
 
   const init = () => {
 
     const selector = '#fullpage';
-    alert(vhCheck('browser-address-bar').windowHeight);
     // check if the element exists
     if (!document.querySelector(selector)) {
       return;
