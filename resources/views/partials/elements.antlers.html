@@ -1,5 +1,9 @@
 {{ if type == 'editor' }}
-  {{ content  }}
+  <section data-section data-section-theme="light" class="pt-90 lg:pt-150">
+    {{ partial:layout/blocks/inner }}
+    {{ content  }}
+    {{ /partial:layout/blocks/inner }}
+  </section>
 {{ /if }}
 
 {{ if type == 'horizontal_ruler' }}
