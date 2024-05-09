@@ -3,6 +3,8 @@
   {{ partial:fieldsets/intro/content }}
 </section>
 <script>
+
+
 document.addEventListener('DOMContentLoaded', function() {
   // get the video by data-video attribute
   const video = document.querySelector('[data-video]');
@@ -11,13 +13,11 @@ document.addEventListener('DOMContentLoaded', function() {
   // get the anchors by data-anchors attribute
   const anchors = document.querySelector('[data-anchors]');
 
-  console.log(video);
-
-  video.addEventListener("onplay", (event) => {
-    console.log(
-      "The Boolean paused property is now 'false'. Either the play() method was called or the autoplay attribute was toggled.",
-    );
-  });
+  setTimeout(() => {
+    video.addEventListener('play', (e) => {
+      console.info('playing');
+    });
+  }, 500);
 
   // Detect when the video has started playing
   video.addEventListener('play', function() {
