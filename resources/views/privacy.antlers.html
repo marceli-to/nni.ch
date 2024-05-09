@@ -1,6 +1,11 @@
 <section data-section data-section-theme="light" class="pt-90 lg:pt-150 privacy">
   {{ partial:layout/blocks/inner }}
     <article class="max-w-content mx-auto">
+      {{ page_elements }}
+        {{ if type == 'editor' }}
+          {{ content  }}
+        {{ /if }}
+      {{ /page_elements }}
       {{ content }}
     </article>
   {{ /partial:layout/blocks/inner }}
