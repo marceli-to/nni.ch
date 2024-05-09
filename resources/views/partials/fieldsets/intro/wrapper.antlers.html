@@ -11,11 +11,15 @@ document.addEventListener('DOMContentLoaded', function() {
   // get the anchors by data-anchors attribute
   const anchors = document.querySelector('[data-anchors]');
 
-  setTimeout(() => {
-    video.addEventListener('play', (e) => {
-      console.info('playing');
-    });
-  }, 500);
-
+  // Detect when the video has started playing
+  video.addEventListener('play', function() {
+      // After 2 seconds, fade in the icons and text
+      setTimeout(function() {
+          // add class opacity-100 to the title
+          title.classList.add('opacity-100');
+          // add class opacity-100 to the anchors
+          anchors.classList.add('opacity-100');
+      }, 2000);
+  });
 });
 </script>
