@@ -17,7 +17,7 @@ import fullpage from 'fullpage.js';
       lockAnchors: true,
       lazyLoading: true,
       fitToSection: true,
-      paddingTop: '90px',
+      paddingTop: '120px',
       paddingBottom: '30px',
       fixedElements: '.site-header',
       scrollOverflowMacStyle: true,
