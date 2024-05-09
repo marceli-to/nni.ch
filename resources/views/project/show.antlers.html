@@ -15,7 +15,7 @@
 
   {{ if type == 'image_text' }}
     <section data-section data-section-theme="light" class="{{ is_fullpage ? 'section fp-section-centered' : 'py-30 md:py-60 xl:py-90' }}">
-      <div class="pt-90 pb-150">
+      <div class="pt-90 pb-150 lg:py-150">
         {{ partial:components/project/elements/image_text }}
       </div>
     </section>
@@ -49,9 +49,9 @@
 
 {{ /elements }}
 
-{{# {{ if related }}
+{{ if related }}
   {{ partial:project/_related }}
-{{ /if }} #}}
+{{ /if }}
 
 {{ if is_fullpage }}
   <section data-section data-section-theme="light" class="section fp-auto-height pt-90 xl:pt-150">
