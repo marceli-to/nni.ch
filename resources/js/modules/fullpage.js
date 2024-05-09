@@ -1,11 +1,11 @@
 import fullpage from 'fullpage.js';
-import vhCheck from 'vh-check';
+// import vhCheck from 'vh-check';
 
 (function () {
 
   const init = () => {
 
-    vhCheck();
+    // vhCheck();
 
     const selector = '#fullpage';
     // check if the element exists
