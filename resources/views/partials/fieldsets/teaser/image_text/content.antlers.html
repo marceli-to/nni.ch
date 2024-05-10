@@ -8,7 +8,9 @@
   <div class="col-span-full lg:col-span-6 mt-30 md:mt-45 lg:mt-0 lg:py-60 lg:flex lg:flex-col lg:items-start lg:justify-center">
     <div class="grid grid-cols-6 gap-x-20">
       <div class="mb-30 lg:mb-45 col-span-5 lg:col-span-full lg:-translate-x-120 xl:-translate-x-150">
-        <div data-animation="fadeIn_slideInRight">
+        <div 
+          data-animation="fadeIn_slideInRight"
+          data-animation-delay="long">
           {{ partial:components/headings/h2 }}
             {{ teaser_image_text_title }}
           {{ /partial:components/headings/h2 }}
@@ -17,7 +19,8 @@
       <div 
         class="col-span-full"
         data-animation="fadeIn"
-        data-animation-duration="fast">
+        data-animation-duration="fast"
+        data-animation-delay="long">
         {{ cta_text }}
         <div class="mt-15 md:mt-30 lg:mt-45">
           {{ partial:components/buttons/contact title="{{ cta_button_text }}" url="{{ cta_link }}" }}

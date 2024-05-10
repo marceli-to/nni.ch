@@ -30,6 +30,10 @@
   animation-duration: .75s, 1.25s;
 }
 
+.active [data-animation="fadeIn_slideInRight"][data-animation-delay="long"] {
+  animation-delay: 1s;
+}
+
 /* visited state */
 .visited [data-animation="fadeIn_slideInRight"] {
   animation: none;
