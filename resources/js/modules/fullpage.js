@@ -23,15 +23,19 @@ import fullpage from 'fullpage.js';
       bigSectionsDestination: 'top',
       touchSensitivity: 20,
       credits: { enabled: false},
+      afterRender: function(){
+        document.querySelector(selectors.container).classList.remove('opacity-0');
+      },
       afterLoad: function(origin, destination, direction, trigger){
+        playVideo(destination.item);
+
         if (destination.item && direction === 'down') {
           changeTheme(destination.item);
-          playVideo(destination.item);
         }
       },
       onLeave: function(origin, destination, direction){
         if (origin.item) {
-          origin.item.classList.add('visited');
+          // origin.item.classList.add('visited');
           pauseVideo(origin.item);
         }
         if (destination.item && direction === 'up') {
@@ -51,6 +55,7 @@ import fullpage from 'fullpage.js';
 
   const playVideo = (section) => {
     const video = section.querySelector(selectors.video);
+    console.log(video);
     if (!video) return;
     video.play();
     if (!video.paused) {
