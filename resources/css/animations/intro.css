@@ -1,0 +1,57 @@
+@keyframes fadeInIntro {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* initial state */
+[data-video-animation="introTitle"],
+[data-video-animation="introMenu"],
+[data-video-animation="introHeader"] {
+  opacity: 0;
+}
+
+/* active state */
+.playing[data-video-animation="introHeader"] {
+  animation-fill-mode: forwards;
+  animation-name: fadeInIntro;
+  animation-delay: .75s;
+  animation-duration: 1.5s;
+}
+
+.playing [data-video-animation="introTitle"] {
+  animation-fill-mode: forwards;
+  animation-name: fadeInIntro;
+  animation-delay: .75s;
+  animation-duration: 1.5s;
+}
+
+.playing [data-video-animation="introMenu"] {
+  animation-fill-mode: forwards;
+  animation-name: fadeInIntro;
+  animation-delay: 1.25s;
+  animation-duration: 1.5s;
+}
+
+.is-homepage .playing[data-video-animation="introHeader"] {
+  animation-delay: 4s;
+}
+
+.is-homepage .playing [data-video-animation="introTitle"] {
+  animation-delay: 3.25s;
+}
+
+.is-homepage .playing [data-video-animation="introMenu"] {
+  animation-delay: 4s;
+}
+
+/* visited state */
+.visited [data-animation="introHeader"],
+.visited [data-animation="introTitle"],
+.visited [data-animation="introMenu"] {
+  animation: none;
+  opacity: 1;
+}

@@ -1,25 +1,7 @@
-<section data-section data-section-theme="{{ theme }}" class="bg-black relative {{ is_fullpage ? 'section' : 'min-h-screen' }}">
+<section 
+  data-section 
+  data-section-theme="{{ theme }}" 
+  class="bg-black relative {{ is_fullpage ? 'section' : 'min-h-screen' }}">
   {{ partial:components/media/video/fullscreen/wrapper }}
   {{ partial:fieldsets/intro/content }}
 </section>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  // get the video by data-video attribute
-  const video = document.querySelector('[data-video]');
-  // get the title by data-title attribute
-  const title = document.querySelector('[data-title]');
-  // get the anchors by data-anchors attribute
-  const anchors = document.querySelector('[data-anchors]');
-
-  // Detect when the video has started playing
-  video.addEventListener('play', function() {
-      // After 2 seconds, fade in the icons and text
-      setTimeout(function() {
-          // add class opacity-100 to the title
-          title.classList.add('opacity-100');
-          // add class opacity-100 to the anchors
-          anchors.classList.add('opacity-100');
-      }, 2000);
-  });
-});
-</script>

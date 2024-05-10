@@ -3,6 +3,7 @@ import fullpage from 'fullpage.js';
 (function () {
 
   const selectors = {
+    header: '#header',
     container: '#fullpage',
     video: 'video',
     sectionTheme: 'data-section-theme',
@@ -55,11 +56,12 @@ import fullpage from 'fullpage.js';
 
   const playVideo = (section) => {
     const video = section.querySelector(selectors.video);
-    console.log(video);
     if (!video) return;
     video.play();
     if (!video.paused) {
       section.classList.add('playing');
+      const header = document.querySelector(selectors.header);
+      header.classList.add('playing');
     }
   };
 

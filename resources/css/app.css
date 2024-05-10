@@ -8,6 +8,7 @@
 @import "animations/fadeIn_slideUp.css";
 @import "animations/fadeIn_slideInRight.css";
 @import "animations/fadeIn.css";
+@import "animations/intro.css";
 
 @import "components/headings.css";
 @import "components/forms.css";
