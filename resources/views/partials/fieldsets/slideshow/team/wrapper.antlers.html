@@ -1,6 +1,9 @@
 <section data-section data-section-theme="light" {{ is_fullpage ? 'data-anchor="{{ anchor }}"' : '' }} class="relative {{ is_fullpage ? 'section fp-section-centered fp-section-overflow-x-hidden' : 'py-60 xl:py-150' }}">
   {{ partial:components/misc/anchor anchor="{{ anchor }}" }}
-  {{ partial:components/swiper/wrapper class="sm:px-80 xl:px-100 max-w-site mx-auto w-full {{ is_fullpage ? 'pt-90 pb-170 xs:py-90 lg:py-150' : '' }}" }}
+  {{ partial:components/swiper/wrapper 
+    class="sm:px-80 xl:px-100 max-w-site mx-auto w-full {{ is_fullpage ? 'pt-90 pb-170 xs:py-90 lg:py-150' : '' }}"
+    data="data-animation='fadeIn_slideInRight'"
+   }}
     {{ partial:components/swiper/container class="js-swiper-team" navigation="true" }}
       {{ collection from="team" }}
         {{ partial:components/swiper/slide class="swiper-slide--mute-inactive" }}

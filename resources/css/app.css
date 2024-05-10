@@ -6,6 +6,7 @@
 
 @import "animations/fadeIn_slideInLeft.css";
 @import "animations/fadeIn_slideUp.css";
+@import "animations/fadeIn_slideInRight.css";
 @import "animations/fadeIn.css";
 
 @import "components/headings.css";

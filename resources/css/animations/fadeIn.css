@@ -8,27 +8,37 @@
 }
 
 /* initial state */
-[data-animation="fadeIn"] {
+[data-animation="fadeIn"],
+[data-video-animation="fadeIn"] {
   opacity: 0;
 }
 
 /* active state */
-.active [data-animation="fadeIn"] {
+.active [data-animation="fadeIn"],
+.playing [data-video-animation="fadeIn"] {
   animation-fill-mode: forwards;
   animation-name: fadeIn;
   animation-delay: .75s;
 }
 
-.active [data-animation="fadeIn"][data-animation-duration="slow"] {
+.active [data-animation="fadeIn"][data-animation-duration="slow"],
+.playing [data-video-animation="fadeIn"][data-video-animation-duration="slow"] {
   animation-duration: 1.25s;
 }
 
-.active [data-animation="fadeIn"][data-animation-duration="fast"] {
+.active [data-animation="fadeIn"][data-animation-duration="fast"],
+.playing [data-video-animation="fadeIn"][data-video-animation-duration="fast"] {
   animation-duration: .75s;
 }
 
+.active [data-animation="fadeIn"][data-animation-delay="long"],
+.playing [data-video-animation="fadeIn"][data-video-animation-delay="long"] {
+  animation-delay: 1s;
+}
+
 /* visited state */
-.visited [data-animation="fadeIn"] {
+.visited [data-animation="fadeIn"],
+.visited [data-video-animation="fadeIn"] {
   animation: none;
   opacity: 1;
 }

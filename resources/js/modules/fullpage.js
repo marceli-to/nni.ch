@@ -1,5 +1,4 @@
 import fullpage from 'fullpage.js';
-import { start } from 'nprogress';
 
 (function () {
 
@@ -25,7 +24,7 @@ import { start } from 'nprogress';
       touchSensitivity: 20,
       credits: { enabled: false},
       afterLoad: function(origin, destination, direction, trigger){
-        if (destination.item) {
+        if (destination.item && direction === 'down') {
           changeTheme(destination.item);
           playVideo(destination.item);
         }
@@ -34,6 +33,9 @@ import { start } from 'nprogress';
         if (origin.item) {
           origin.item.classList.add('visited');
           pauseVideo(origin.item);
+        }
+        if (destination.item && direction === 'up') {
+          changeTheme(destination.item);
         }
       },
     });
@@ -51,12 +53,16 @@ import { start } from 'nprogress';
     const video = section.querySelector(selectors.video);
     if (!video) return;
     video.play();
+    if (!video.paused) {
+      section.classList.add('playing');
+    }
   };
 
   const pauseVideo = (section) => {
     const video = section.querySelector(selectors.video);
     if (!video) return;
     video.pause();
+    section.classList.remove('playing');
   }
 
   init();
