@@ -52,6 +52,6 @@
 .visited [data-animation="introHeader"],
 .visited [data-animation="introTitle"],
 .visited [data-animation="introMenu"] {
-  animation: none;
-  opacity: 1;
+  animation: none !important;
+  opacity: 1 !important;
 }
