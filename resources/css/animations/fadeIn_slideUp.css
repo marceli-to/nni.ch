@@ -33,5 +33,6 @@
 /* visited state */
 .visited [data-animation="fadeIn_slideUp"] {
   animation: none;
+  opacity: 1;
   transform: translateY(0);
 }
