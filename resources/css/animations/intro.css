@@ -49,9 +49,9 @@
 }
 
 /* visited state */
-.visited [data-animation="introHeader"],
-.visited [data-animation="introTitle"],
-.visited [data-animation="introMenu"] {
+.visited [data-video-animation="introHeader"],
+.visited [data-video-animation="introTitle"],
+.visited [data-video-animation="introMenu"] {
   animation: none !important;
   opacity: 1 !important;
 }
