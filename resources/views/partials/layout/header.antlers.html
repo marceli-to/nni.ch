@@ -2,7 +2,7 @@
   id="header"
   class="fixed left-0 top-0 z-70 w-full py-30 xl:pt-60" 
   data-icon-theme="{{ theme ?? 'light' }}"
-  {{ if is_fullpage }}
+  {{ if is_fullpage && theme == 'dark' }}
     data-video-animation='introHeader'
   {{ /if }}
   >
