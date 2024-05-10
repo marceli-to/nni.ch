@@ -1,0 +1,38 @@
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-20%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* initial state */
+[data-animation="fadeIn_slideInLeft"] {
+  transform: translateX(-20%);
+  opacity: 0;
+}
+
+/* active state */
+.active [data-animation="fadeIn_slideInLeft"] {
+  animation-fill-mode: forwards;
+  animation-name: slideInLeft, fadeIn;
+  animation-delay: 1s;
+  animation-duration: .75s, 1.25s;
+}
+
+/* visited state */
+.visited [data-animation="fadeIn_slideInLeft"] {
+  animation: none;
+  transform: translateX(0);
+  opacity: 1;
+}

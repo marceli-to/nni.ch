@@ -1,0 +1,34 @@
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* initial state */
+[data-animation="fadeIn"] {
+  opacity: 0;
+}
+
+/* active state */
+.active [data-animation="fadeIn"] {
+  animation-fill-mode: forwards;
+  animation-name: fadeIn;
+  animation-delay: .75s;
+}
+
+.active [data-animation="fadeIn"][data-animation-duration="slow"] {
+  animation-duration: 1.25s;
+}
+
+.active [data-animation="fadeIn"][data-animation-duration="fast"] {
+  animation-duration: .75s;
+}
+
+/* visited state */
+.visited [data-animation="fadeIn"] {
+  animation: none;
+  opacity: 1;
+}

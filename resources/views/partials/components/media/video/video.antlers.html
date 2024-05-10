@@ -1,10 +1,13 @@
-<div class="media-container media-container--video w-full">
+<div 
+  class="media-container media-container--video w-full" 
+  data-animation="fadeIn"
+  data-animation-duration="slow">
   {{ if video_code }}
     {{ video_code }}
   {{ /if }}
 
   {{ if video_file }}
-    <video poster="" preload="none" muted autoplay controls loop>
+    <video poster="" preload="none" muted autoplay controls>
       <source src="{{ video_file }}" type="video/mp4">
     </video>
   {{ /if }}
