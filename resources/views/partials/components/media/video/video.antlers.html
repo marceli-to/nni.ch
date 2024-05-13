@@ -1,5 +1,5 @@
 <div 
-  class="media-container media-container--video w-full" 
+  class="media-container media-container--video {{ if video_code }} min-h-screen flex flex-col justify-center {{ /if }} w-full" 
   data-animation="fadeIn"
   data-animation-duration="slow">
   {{ if video_code }}

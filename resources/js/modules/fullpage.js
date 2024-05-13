@@ -12,6 +12,7 @@ import fullpage from 'fullpage.js';
 
   const init = () => {
 
+
     if (!document.querySelector(selectors.container)) {
       return;
     }
