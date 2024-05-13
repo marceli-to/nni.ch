@@ -6,7 +6,8 @@
   @apply aspect-video
 }
 
-.media-container iframe {
+.media-container iframe,
+.media-container.media-container--iframe iframe {
   @apply w-full h-full object-contain
 }
 
