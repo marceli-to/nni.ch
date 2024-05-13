@@ -43,7 +43,7 @@
   {{ /if }}
 
   {{ if type == 'iframe' }}
-    <section data-section data-section-theme="light" class="{{ is_fullpage ? 'section fp-section-centered' : 'py-30 xl:py-60' }}">
+    <section data-section data-section-theme="light" class="{{ is_fullpage ? 'section' : 'py-30 xl:py-60' }}">
       {{ partial:layout/blocks/inner }}
         {{ partial:components/media/iframe/container }}
       {{ /partial:layout/blocks/inner }}
