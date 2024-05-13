@@ -6,9 +6,12 @@
   @apply aspect-video
 }
 
-.media-container iframe,
-.media-container.media-container--iframe iframe {
+.media-container iframe {
   @apply w-full h-full object-contain
+}
+
+.media-container.media-container--iframe iframe {
+  @apply w-full h-full object-contain aspect-video
 }
 
 .media-container video {
