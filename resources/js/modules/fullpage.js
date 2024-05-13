@@ -39,7 +39,7 @@ import fullpage from 'fullpage.js';
       },
       onLeave: function(origin, destination, direction){
         if (origin.item) {
-          //origin.item.classList.add('visited');
+          origin.item.classList.add('visited');
           pauseVideo(origin.item);
         }
         if (destination.item && direction === 'up') {
