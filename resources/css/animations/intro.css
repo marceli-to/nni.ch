@@ -7,51 +7,90 @@
   }
 }
 
+@keyframes fadeInSlideInByline {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOutByline {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
 /* initial state */
 [data-video-animation="introTitle"],
 [data-video-animation="introMenu"],
-[data-video-animation="introHeader"] {
+[data-video-animation="introHeader"],
+[data-video-animation="logoByline"] {
   opacity: 0;
 }
 
+[data-video-animation="logoByline"] {
+  transform: translateX(-30px);
+}
+
 /* active state */
-.playing[data-video-animation="introHeader"] {
-  animation-fill-mode: forwards;
-  animation-name: fadeInIntro;
-  animation-delay: .75s;
-  animation-duration: 1.5s;
-}
-
-.playing [data-video-animation="introTitle"] {
-  animation-fill-mode: forwards;
-  animation-name: fadeInIntro;
-  animation-delay: .75s;
-  animation-duration: 1.5s;
-}
-
-.playing [data-video-animation="introMenu"] {
+.running[data-video-animation="introHeader"] {
   animation-fill-mode: forwards;
   animation-name: fadeInIntro;
   animation-delay: 1.25s;
   animation-duration: 1.5s;
 }
 
-.is-homepage .playing[data-video-animation="introHeader"] {
+.running [data-video-animation="introTitle"] {
+  animation-fill-mode: forwards;
+  animation-name: fadeInIntro;
+  animation-delay: 1.25s;
+  animation-duration: 1.5s;
+}
+
+.running [data-video-animation="introMenu"] {
+  animation-fill-mode: forwards;
+  animation-name: fadeInIntro;
+  animation-delay: 1.25s;
+  animation-duration: 1.5s;
+}
+
+.is-homepage .running [data-video-animation="logoByline"] {
+  animation-fill-mode: forwards;
+  animation-name: fadeInSlideInByline, fadeOutByline;
+  animation-delay: 5.25s, 8.5s;
+  animation-duration: .5s;
+}
+
+.is-homepage .running[data-video-animation="introHeader"] {
   animation-delay: 4s;
 }
 
-.is-homepage .playing [data-video-animation="introTitle"] {
-  animation-delay: 3.25s;
+.is-homepage .running [data-video-animation="introTitle"] {
+  animation-delay: 4s;
 }
 
-.is-homepage .playing [data-video-animation="introMenu"] {
+.is-homepage .running [data-video-animation="introMenu"] {
   animation-delay: 4s;
 }
 
 /* visited state */
-.visited [data-video-animation="introHeader"],
 .visited [data-video-animation="introTitle"],
-.visited [data-video-animation="introMenu"] {
+.visited [data-video-animation="introMenu"],
+.visited[data-video-animation="introHeader"],
+.prevent-animation[data-video-animation="introHeader"] {
   animation: none !important;
   opacity: 1 !important;
+}
+
+.prevent-animation [data-video-animation="logoByline"] {
+  animation: none !important;
+  opacity: 0 !important;
 }

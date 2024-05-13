@@ -13,7 +13,11 @@
       title="Home"
       :class="{ 'is-active': menu === true }"
       class="group">
-      {{ partial:components/icons/logo class="w-26 xl:w-32 h-auto" }}
+      {{ if is_homepage }}
+        {{ partial:components/icons/logo-byline class="w-auto h-29 xl:h-35" }}
+      {{ else }}
+        {{ partial:components/icons/logo class="w-auto h-29 xl:h-35" }}
+      {{ /if }}
     </a>
 
     <a 

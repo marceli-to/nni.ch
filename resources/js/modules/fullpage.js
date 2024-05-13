@@ -25,11 +25,19 @@ import fullpage from 'fullpage.js';
       touchSensitivity: 20,
       credits: { enabled: false},
       afterRender: function(){
-        document.querySelector(selectors.container).classList.remove('opacity-0');
+        setTimeout(() => {
+          document.querySelector(selectors.container).classList.remove('opacity-0');
+        }, 250);
+
+        // if the url contains a hash, set class 'running' to the header
+        const hash = window.location.hash;
+        if (hash) {
+          const header = document.querySelector(selectors.header);
+          header.classList.add('prevent-animation');
+        }
       },
       afterLoad: function(origin, destination, direction, trigger){
         playVideo(destination.item);
-
         if (destination.item && direction === 'down') {
           changeTheme(destination.item);
         }
@@ -59,9 +67,9 @@ import fullpage from 'fullpage.js';
     if (!video) return;
     video.play();
     if (!video.paused) {
-      section.classList.add('playing');
+      section.classList.add('running');
       const header = document.querySelector(selectors.header);
-      header.classList.add('playing');
+      header.classList.add('running');
     }
   };
 
@@ -69,7 +77,7 @@ import fullpage from 'fullpage.js';
     const video = section.querySelector(selectors.video);
     if (!video) return;
     video.pause();
-    section.classList.remove('playing');
+    section.classList.remove('running');
   }
 
   init();
