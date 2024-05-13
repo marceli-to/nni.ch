@@ -17,7 +17,8 @@
 }
 
 /* initial state */
-[data-animation="fadeIn_slideInRight"] {
+[data-animation="fadeIn_slideInRight"],
+[data-animation-lg="fadeIn_slideInRight"] {
   transform: translateX(20%);
   opacity: 0;
 }
@@ -30,12 +31,24 @@
   animation-duration: .75s, 1.25s;
 }
 
-.active [data-animation="fadeIn_slideInRight"][data-animation-delay="long"] {
+/* add media query for 1024px */
+@media (min-width: 1024px) {
+  .active [data-animation-lg="fadeIn_slideInRight"] {
+    animation-fill-mode: forwards;
+    animation-name: slideInRight, fadeIn !important;
+    animation-delay: 1s;
+    animation-duration: .75s, 1.25s;
+  }
+}
+
+.active [data-animation="fadeIn_slideInRight"][data-animation-delay="long"],
+.active [data-animation-lg="fadeIn_slideInRight"][data-animation-delay="long"] {
   animation-delay: 1s;
 }
 
 /* visited state */
-.visited [data-animation="fadeIn_slideInRight"] {
+.visited [data-animation="fadeIn_slideInRight"],
+.visited [data-animation-lg="fadeIn_slideInRight"] {
   animation: none;
   transform: translateX(0);
   opacity: 1;

@@ -24,12 +24,7 @@ import fullpage from 'fullpage.js';
       bigSectionsDestination: 'top',
       touchSensitivity: 20,
       credits: { enabled: false},
-      afterRender: function(){
-        setTimeout(() => {
-          document.querySelector(selectors.container).classList.remove('opacity-0');
-        }, 250);
-
-        // if the url contains a hash, set class 'running' to the header
+      afterRender: function() {
         const hash = window.location.hash;
         if (hash) {
           const header = document.querySelector(selectors.header);
@@ -44,7 +39,7 @@ import fullpage from 'fullpage.js';
       },
       onLeave: function(origin, destination, direction){
         if (origin.item) {
-          origin.item.classList.add('visited');
+          //origin.item.classList.add('visited');
           pauseVideo(origin.item);
         }
         if (destination.item && direction === 'up') {
