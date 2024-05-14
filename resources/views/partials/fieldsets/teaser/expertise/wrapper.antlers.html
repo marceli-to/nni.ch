@@ -1,10 +1,8 @@
-<section data-section="expertise" {{ is_fullpage ? 'data-anchor="{{ anchor }}"' : '' }}  data-section-theme="light" class="relative {{ is_fullpage ? 'section fp-section-centered' : 'py-60 md:py-90 xl:py-120' }}">
+<section data-section="expertise" {{ is_fullpage ? 'data-anchor="{{ anchor }}"' : '' }}  data-section-theme="light" class="relative {{ is_fullpage ? 'section section-slides fp-section-centered' : 'py-60 md:py-90 xl:py-120' }}">
   {{ partial:components/misc/anchor anchor="{{ anchor }}" }}
   {{ partial:layout/blocks/inner class="{{ is_fullpage ? 'pt-90 pb-150 xs:py-90 lg:py-150' : '' }}" }}
     {{ teaser_items }}
-      {{ if index == 0 }}
-        {{ partial:fieldsets/teaser/expertise/item }}
-      {{ /if }}
+      {{ partial:fieldsets/teaser/expertise/item class="{{ index > 0 ? 'hidden' : 'visible' }}" index="{{ index }}" }}
     {{ /teaser_items }}
     {{ partial:fieldsets/teaser/expertise/nav }}
   {{ /partial:layout/blocks/inner }}
