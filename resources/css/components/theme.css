@@ -7,5 +7,5 @@
 }
 
 svg[data-icon-theme].is-visible {
-  @apply opacity-100 duration-0
+  @apply !opacity-100 !duration-0
 }
