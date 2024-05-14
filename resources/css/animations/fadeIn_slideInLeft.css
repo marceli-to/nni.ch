@@ -34,6 +34,17 @@
   animation-delay: 1.25s;
 }
 
+.active [data-animation="fadeIn_slideInLeft"][data-animation-staggered="0"] {
+  animation-delay: 1s;
+}
+.active [data-animation="fadeIn_slideInLeft"][data-animation-staggered="1"] {
+  animation-delay: 1.15s;
+}
+.active [data-animation="fadeIn_slideInLeft"][data-animation-staggered="2"] {
+  animation-delay: 1.3s;
+}
+
+
 /* visited state */
 .visited [data-animation="fadeIn_slideInLeft"] {
   animation: none;
