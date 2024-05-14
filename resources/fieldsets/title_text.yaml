@@ -43,21 +43,6 @@ fields:
       replicator_preview: true
       hide_display: false
   -
-    handle: title
-    field:
-      antlers: false
-      type: textarea
-      display: Title
-      icon: textarea
-      localizable: true
-      listable: hidden
-      instructions_position: above
-      visibility: visible
-      replicator_preview: true
-      hide_display: false
-      validate:
-        - required
-  -
     handle: text_left
     field:
       buttons:
