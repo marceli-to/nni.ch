@@ -16,13 +16,14 @@ import fullpage from 'fullpage.js';
   let currentSlide = 0;
   let slides;
   let isHandlingWheelEvent = false;
+  let touchStartY = 0;
 
   const init = () => {
     slides = document.querySelectorAll(selectors.slide);
     const slidesWrapper = document.querySelector(selectors.slidesWrapper);
     if (slidesWrapper) {
       slidesWrapper.addEventListener('wheel', handleWheelEvent);
-      slidesWrapper.addEventListener('touchmove', handleTouchMoveEvent);
+      slidesWrapper.addEventListener('touchstart', handleTouchStartEvent);
     }
 
     fullPageInstance = new fullpage(selectors.container, {
@@ -39,14 +40,16 @@ import fullpage from 'fullpage.js';
     });
   };
 
-  const handleTouchMoveEvent = (event) => {
-    if (isHandlingWheelEvent) return; // Ignore touch events if already handling one
-    isHandlingWheelEvent = true;
-    const direction = event.touches[0].clientY > touchStartY ? 'down' : 'up';
+  const handleTouchStartEvent = (event) => {
+    touchStartY = event.touches[0].clientY;
+    document.addEventListener('touchend', handleTouchEndEvent);
+  };
+  
+  const handleTouchEndEvent = (event) => {
+    const touchEndY = event.changedTouches[0].clientY;
+    const deltaY = touchEndY - touchStartY;
+    const direction = deltaY > 0 ? 'down' : 'up';
     nextSlide(direction);
-    setTimeout(() => {
-      isHandlingWheelEvent = false;
-    }, 500);
   };
 
   const handleWheelEvent = (event) => {
