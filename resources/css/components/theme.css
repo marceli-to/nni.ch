@@ -5,3 +5,7 @@
 [data-icon-theme="dark"] svg[data-icon-theme] {
   @apply text-white transition-colors
 }
+
+svg[data-icon-theme].is-visible {
+  @apply opacity-100 duration-0
+}

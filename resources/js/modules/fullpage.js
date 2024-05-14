@@ -106,6 +106,25 @@ import fullpage from 'fullpage.js';
     if (destination.item && direction === 'up') {
       changeTheme(destination.item);
     }
+
+    // if we are leaving the first section, hide the byline and show the svg immediately
+    if (origin.index === 0) {
+
+      // add class 'is-visible' to all svgs with data-icon-theme
+      const svgs = document.querySelectorAll(`svg[${selectors.iconTheme}]`);
+      if (svgs) {
+        svgs.forEach(svg => {
+          svg.classList.add('is-visible');
+        });
+      }
+
+      // hide data-video-animation="logoByline"
+      const logoByline = document.querySelector('[data-video-animation="logoByline"]');
+      if (logoByline) {
+        logoByline.classList.add('hidden');
+      }
+    }
+
   };
 
   const allowScrolling = () => {
