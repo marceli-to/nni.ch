@@ -1,3 +1,13 @@
+/*!
+ * swiped-events.js - v1.2.0
+ * Pure JavaScript swipe events
+ * https://github.com/john-doherty/swiped-events
+ * @inspiration https://stackoverflow.com/questions/16348031/disable-scrolling-when-touch-moving-certain-element
+ * @author John Doherty <www.johndoherty.info>
+ * @license MIT
+ */
+!function(t,e){"use strict";"function"!=typeof t.CustomEvent&&(t.CustomEvent=function(t,n){n=n||{bubbles:!1,cancelable:!1,detail:void 0};var a=e.createEvent("CustomEvent");return a.initCustomEvent(t,n.bubbles,n.cancelable,n.detail),a},t.CustomEvent.prototype=t.Event.prototype),e.addEventListener("touchstart",function(t){if("true"===t.target.getAttribute("data-swipe-ignore"))return;l=t.target,r=Date.now(),n=t.touches[0].clientX,a=t.touches[0].clientY,u=0,i=0,o=t.touches.length},!1),e.addEventListener("touchmove",function(t){if(!n||!a)return;var e=t.touches[0].clientX,r=t.touches[0].clientY;u=n-e,i=a-r},!1),e.addEventListener("touchend",function(t){if(l!==t.target)return;var c=parseInt(s(l,"data-swipe-threshold","20"),10),d=s(l,"data-swipe-unit","px"),p=parseInt(s(l,"data-swipe-timeout","500"),10),h=Date.now()-r,v="",b=t.changedTouches||t.touches||[];"vh"===d&&(c=Math.round(c/100*e.documentElement.clientHeight));"vw"===d&&(c=Math.round(c/100*e.documentElement.clientWidth));Math.abs(u)>Math.abs(i)?Math.abs(u)>c&&h<p&&(v=u>0?"swiped-left":"swiped-right"):Math.abs(i)>c&&h<p&&(v=i>0?"swiped-up":"swiped-down");if(""!==v){var E={dir:v.replace(/swiped-/,""),touchType:(b[0]||{}).touchType||"direct",fingers:o,xStart:parseInt(n,10),xEnd:parseInt((b[0]||{}).clientX||-1,10),yStart:parseInt(a,10),yEnd:parseInt((b[0]||{}).clientY||-1,10)};l.dispatchEvent(new CustomEvent("swiped",{bubbles:!0,cancelable:!0,detail:E})),l.dispatchEvent(new CustomEvent(v,{bubbles:!0,cancelable:!0,detail:E}))}n=null,a=null,r=null},!1);var n=null,a=null,u=null,i=null,r=null,l=null,o=0;function s(t,n,a){for(;t&&t!==e.documentElement;){var u=t.getAttribute(n);if(u)return u;t=t.parentNode}return a}}(window,document);
+
 import fullpage from 'fullpage.js';
 
 (function () {
@@ -23,7 +33,8 @@ import fullpage from 'fullpage.js';
     const slidesWrapper = document.querySelector(selectors.slidesWrapper);
     if (slidesWrapper) {
       slidesWrapper.addEventListener('wheel', handleWheelEvent);
-      slidesWrapper.addEventListener('touchstart', handleTouchStartEvent);
+      slidesWrapper.addEventListener('swiped-down', handleTouchEvent);
+      slidesWrapper.addEventListener('swiped-up', handleTouchEvent);
     }
 
     fullPageInstance = new fullpage(selectors.container, {
@@ -42,13 +53,18 @@ import fullpage from 'fullpage.js';
 
   const handleTouchStartEvent = (event) => {
     touchStartY = event.touches[0].clientY;
-    document.addEventListener('touchend', handleTouchEndEvent);
+    // document.addEventListener('touchend', handleTouchEndEvent);
   };
   
   const handleTouchEndEvent = (event) => {
     const touchEndY = event.changedTouches[0].clientY;
     const deltaY = touchEndY - touchStartY;
     const direction = deltaY > 0 ? 'down' : 'up';
+    nextSlide(direction);
+  };
+
+  const handleTouchEvent = (event) => {
+    const direction = event.detail.dir;
     nextSlide(direction);
   };
 
