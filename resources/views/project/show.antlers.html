@@ -35,11 +35,23 @@
   {{ /if }}
 
   {{ if type == 'video' }}
-    <section data-section data-section-theme="light" class="{{ is_fullpage ? 'section' : 'py-30 xl:py-60' }} {{ video_file ? 'fp-section-centered' : ''}}">
-      {{ partial:layout/blocks/inner class="{{ video_code ? 'min-h-screen flex flex-col justify-center' : '' }}" }}
-        {{ partial:components/media/video/video }}
-      {{ /partial:layout/blocks/inner }}
-    </section>
+
+    {{ if video_file }}
+      <section data-section data-section-theme="light" class="{{ is_fullpage ? 'section fp-section-centered' : 'py-30 xl:py-60' }}">
+        {{ partial:layout/blocks/inner }}
+          {{ partial:components/media/video/video }}
+        {{ /partial:layout/blocks/inner }}
+      </section>
+    {{ /if }}
+    
+    {{ if video_code }}
+      <section data-section data-section-theme="light" class="{{ is_fullpage ? 'section' : 'py-30 xl:py-60' }}">
+        {{ partial:layout/blocks/inner class="min-h-screen flex flex-col justify-center" }}
+          {{ partial:components/media/video/video }}
+        {{ /partial:layout/blocks/inner }}
+      </section>
+    {{ /if}}
+
   {{ /if }}
 
   {{ if type == 'iframe' }}
