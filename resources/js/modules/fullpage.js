@@ -74,6 +74,7 @@ import fullpage from 'fullpage.js';
     const destinationHasSlides = destination.item.classList.contains('section-slides');
     if (destinationHasSlides) {
       preventScrolling();
+      resetSlides();
     }
     playVideo(destination.item);
     if (destination.item && direction === 'down') {
@@ -154,6 +155,15 @@ import fullpage from 'fullpage.js';
   
     // Update the current slide index
     currentSlide = nextSlideIndex;
+  };
+
+  const resetSlides = () => {
+    // remove 'visible' class from all slides
+    slides.forEach(slide => {
+      slide.classList.remove('visible');
+    });
+    // add 'visible' class to the first slide
+    slides[0].classList.add('visible');
   };
   
   if (document.querySelector(selectors.container)) {
