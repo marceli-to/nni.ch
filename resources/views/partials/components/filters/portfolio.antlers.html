@@ -1,8 +1,10 @@
 {{ taxonomy:project_categories }}
-<a 
-  :class="{ 'opacity-0': filter === false}"
-  class="border-b-2 border-silver py-5 mb-2 hover:text-steel transition-colors"
-  href="{{ site:short_locale == 'en' ? '/en/portfolio/category/' : '/portfolio/kategorie' }}/{{ slug }}">
-  {{ title | replace(' ', '&nbsp;') }}
-</a>
+  {{ if entries }}
+    <a 
+      :class="{ 'opacity-0': filter === false}"
+      class="border-b-2 border-silver py-5 mb-2 hover:text-steel transition-colors"
+      href="{{ site:short_locale == 'en' ? '/en/portfolio/category/' : '/portfolio/kategorie' }}/{{ slug }}">
+      {{ title | replace(' ', '&nbsp;') }}
+    </a>
+  {{ /if }}
 {{ /taxonomy:project_categories }}
