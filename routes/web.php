@@ -48,6 +48,7 @@ Route::statamic('/blog/suche', 'blog.search', [
 Route::statamic('/en/portfolio/category/{category?}', 'project.index', [
   'layout' => 'layout.default',
   'title' => 'Portfolio',
+  'show_portfolio_filter' => true,
 ]); 
 Route::statamic('/portfolio/kategorie/{category?}', 'project.index', [
   'layout' => 'layout.default',
