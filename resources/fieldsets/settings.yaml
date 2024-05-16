@@ -10,10 +10,41 @@ fields:
       instructions: 'Define if a page is in fullpage mode.'
       localizable: false
       listable: hidden
-      instructions_position: below
+      instructions_position: above
       visibility: visible
       replicator_preview: true
       hide_display: false
+      width: 33
+  -
+    handle: show_portfolio_filter
+    field:
+      default: false
+      type: toggle
+      display: 'Show Portfolio Filter'
+      icon: toggle
+      localizable: false
+      width: 33
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      instructions: 'Define if the portfolio filter is visible.'
+  -
+    handle: show_team_filter
+    field:
+      default: false
+      type: toggle
+      display: 'Show Team Filter'
+      icon: toggle
+      localizable: false
+      width: 33
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      instructions: 'Define if the team filter is visible.'
   -
     import: theme
   -

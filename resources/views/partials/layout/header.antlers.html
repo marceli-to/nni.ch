@@ -7,7 +7,6 @@
   {{ /if }}
   >
   {{ partial:layout/blocks/inner class="flex items-center justify-between" }}
-  
     <a 
       href="{{ site:url }}" 
       title="Home"
@@ -19,7 +18,16 @@
         {{ partial:components/icons/logo class="w-auto h-29 xl:h-35" }}
       {{ /if }}
     </a>
-
+    {{ if show_portfolio_filter }}
+      {{ partial:components/filters/wrapper }}
+        {{ partial:components/filters/portfolio }}
+      {{ /partial:components/filters/wrapper }}
+    {{ /if }}
+    {{ if show_team_filter }}
+      {{ partial:components/filters/wrapper }}
+        {{ partial:components/filters/team }}
+      {{ /partial:components/filters/wrapper }}
+    {{ /if }}
     <a 
       href="javascript:;" 
       x-on:click="menu = ! menu" 

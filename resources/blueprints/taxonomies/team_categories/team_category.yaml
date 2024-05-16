@@ -9,9 +9,9 @@ tabs:
             field:
               type: text
               required: true
+              localizable: true
               validate:
                 - required
-              localizable: true
           -
             handle: slug
             field:
@@ -29,4 +29,4 @@ tabs:
               generate: true
               show_regenerate: true
               hide_display: false
-title: Category
+title: 'Team Category'

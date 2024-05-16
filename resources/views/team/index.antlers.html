@@ -2,7 +2,9 @@
   {{ partial:layout/blocks/inner }}
   <div class="grid grid-cols-6 md:grid-cols-12 gap-20 md:gap-30 xl:gap-50">
     {{ collection from="team" }}
-      <div class="col-span-full sm:col-span-3 md:col-span-6 lg:col-span-4">
+      <div 
+        data-filter-category="{{ category:slug }}"
+        class="col-span-full sm:col-span-3 md:col-span-6 lg:col-span-4">
         {{ partial:components/team/elements/card link="true" overlay="true" lazyload="true" }}
       </div>
     {{ /collection }}

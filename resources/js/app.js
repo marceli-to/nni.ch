@@ -41,3 +41,5 @@ import './modules/swiper/projects.js';
 import './modules/touch.js';
 
 import './modules/fullpage.js';
+
+import './modules/team.js';

@@ -1,16 +1,26 @@
 <nav class="text-md xl:text-lg text-right absolute bottom-8 xl:bottom-18 right-0">
   <ul class="font-meta-medium uppercase flex items-center leading-none gap-x-8">
-    {{ locales }}
+
+    {{ if segment_1 == 'blog' && category }}
+      {{ partial:menu/language/blog-category }}
+    {{ /if }}
+
+    {{ if segment_1 == 'portfolio' && category }}
+      {{ partial:menu/language/portfolio-category }}
+    {{ /if }}
+
+    {{ locales current_first="false" }}
       <li>
         <a href="{{ permalink }}" title="{{ locale:locale }}">
           {{ locale:locale }}
         </a>
       </li>
       {{ if !last }}
-      <li>
-        <span class="block text-sm -mt-2">|</span>
-      </li>
+        <li>
+          <span class="block text-sm -mt-2">|</span>
+        </li>
       {{ /if }}
     {{ /locales }}
+
   </ul>
 </nav>

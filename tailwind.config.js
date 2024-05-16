@@ -29,6 +29,7 @@ export default {
         '70': '70',
         '80': '80',
         '90': '90',
+        '100': '100',
       },
 
       fontFamily: {
@@ -40,6 +41,7 @@ export default {
 
       fontSize: {
         'mini': '0.8125rem', // 13px
+        'tiny': '0.875rem', // 14px
         'xxs': '0.9375rem',  // 15px
         'xs': '1rem',        // 16px
         'sm': '1.125rem',    // 18px

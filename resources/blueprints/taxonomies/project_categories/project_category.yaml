@@ -21,9 +21,12 @@ tabs:
                 - required
                 - 'max:200'
               localizable: true
-  sidebar:
-    display: Sidebar
-    sections:
-      -
-        display: 'Neuer Abschnitt'
+              instructions_position: above
+              listable: hidden
+              visibility: visible
+              replicator_preview: true
+              from: title
+              generate: true
+              show_regenerate: true
+              hide_display: false
 title: 'Project category'

@@ -185,6 +185,22 @@ tabs:
       -
         fields:
           -
+            handle: category
+            field:
+              type: terms
+              taxonomies:
+                - team_categories
+              display: Category
+              mode: select
+              localizable: false
+              instructions_position: above
+              listable: hidden
+              visibility: visible
+              replicator_preview: true
+              max_items: 1
+              create: true
+              hide_display: false
+          -
             handle: title
             field:
               type: hidden

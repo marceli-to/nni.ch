@@ -23,6 +23,7 @@ Route::statamic('/en/blog/category/{category?}', 'blog.categories.index', [
 ]); 
 Route::statamic('/blog/kategorie/{category?}', 'blog.categories.index', [
   'layout' => 'layout.default',
+  'title' => 'Blog',
 ]);
 
 Route::statamic('/en/blog/tag/{tag}', 'blog.tags.index', [
@@ -31,6 +32,7 @@ Route::statamic('/en/blog/tag/{tag}', 'blog.tags.index', [
 ]); 
 Route::statamic('/blog/tag/{tag}', 'blog.tags.index', [
   'layout' => 'layout.default',
+  'title' => 'Blog',
 ]); 
 
 Route::statamic('/en/blog/search', 'blog.search', [
@@ -40,5 +42,15 @@ Route::statamic('/en/blog/search', 'blog.search', [
 
 Route::statamic('/blog/suche', 'blog.search', [
   'layout' => 'layout.default',
+  'title' => 'Blog',
 ]); 
+
+Route::statamic('/en/portfolio/category/{category?}', 'project.index', [
+  'layout' => 'layout.default',
+  'title' => 'Portfolio',
+]); 
+Route::statamic('/portfolio/kategorie/{category?}', 'project.index', [
+  'layout' => 'layout.default',
+  'title' => 'Portfolio',
+]);
 
