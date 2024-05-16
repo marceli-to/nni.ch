@@ -18,7 +18,7 @@
         {{ partial:components/icons/logo class="w-auto h-29 xl:h-35" }}
       {{ /if }}
     </a>
-    {{ if show_portfolio_filter }}
+    {{ if show_portfolio_filter || (segment_1 == 'portfolio' && (segment_2 == 'category' || segment_2 == 'kategorie'))}}
       {{ partial:components/filters/wrapper }}
         {{ partial:components/filters/portfolio }}
       {{ /partial:components/filters/wrapper }}
