@@ -7,14 +7,12 @@
   {{ "Alle" | trans }}
 </a>
 {{ taxonomy:team_categories }}
-  {{ if entries }}
-    <a 
-      :class="{ 'opacity-0': filter === false}"
-      class="border-b-2 border-silver py-5 mb-2 hover:text-steel transition-colors"
-      data-filter="{{ slug }}"
-      @click="filter = ! filter"
-      href="javascript:;">
-      {{ title | replace(' ', '&nbsp;') }}
-    </a>
-  {{ /if }}
+  <a 
+    :class="{ 'opacity-0': filter === false}"
+    class="border-b-2 border-silver py-5 mb-2 hover:text-steel transition-colors"
+    data-filter="{{ slug }}"
+    @click="filter = ! filter"
+    href="javascript:;">
+    {{ title | replace(' ', '&nbsp;') }}
+  </a>
 {{ /taxonomy:team_categories }}
