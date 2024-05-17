@@ -13,7 +13,7 @@ function createCarousel(container) {
 
     const init = () => {
       const loadedCount = imagesLoaded(images);
-      duration = document.querySelector(selectors.duration).dataset.loopDuration;
+      duration = document.querySelector(selectors.duration).dataset.carouselDuration;
 
       if (loadedCount === images.length) {
         loopImages();
