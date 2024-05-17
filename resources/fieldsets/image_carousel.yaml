@@ -1,7 +1,7 @@
-title: 'Animated Images'
+title: 'Image carousel'
 fields:
   -
-    handle: animated_images
+    handle: image_carousel
     field:
       collapse: true
       previews: true
@@ -37,7 +37,7 @@ fields:
                     replicator_preview: true
                     hide_display: false
       type: replicator
-      display: 'Animated Images'
+      display: 'Image carousel'
       icon: replicator
       localizable: false
       listable: hidden

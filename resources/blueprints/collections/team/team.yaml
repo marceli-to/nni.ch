@@ -140,7 +140,7 @@ tabs:
               hide_display: false
               folder: team
           -
-            import: animated_images
+            import: image_carousel
   quote:
     display: Quote
     sections:

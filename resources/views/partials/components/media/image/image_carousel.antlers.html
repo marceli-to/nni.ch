@@ -1,5 +1,5 @@
 <figure class="bg-silver relative group">
-  {{ animated_images }}
+  {{ image_carousel }}
     <picture>
       <source srcset="{{ glide:image preset='lg-webp' }}" type="image/webp">
       <img 
@@ -12,5 +12,5 @@
         data-loop-duration="{{ intervall_duration ?? 150 }}"
         class="w-full h-auto {{ !first ? 'hidden' : '' }}">
     </picture>
-  {{ /animated_images }}
+  {{ /image_carousel }}
 </figure>
