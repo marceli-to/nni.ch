@@ -1,0 +1,16 @@
+<figure class="bg-silver relative group">
+  {{ animated_images }}
+    <picture>
+      <source srcset="{{ glide:image preset='lg-webp' }}" type="image/webp">
+      <img 
+        src="{{ glide:image preset='lg' }}" 
+        alt="{{ image:alt }}" 
+        title="{{ image:alt }}" 
+        height="{{ image:height }}" 
+        width="{{ image:width }}"
+        data-loop-image
+        data-loop-duration="{{ intervall_duration ?? 150 }}"
+        class="w-full h-auto {{ !first ? 'hidden' : '' }}">
+    </picture>
+  {{ /animated_images }}
+</figure>

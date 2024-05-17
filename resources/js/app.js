@@ -43,3 +43,5 @@ import './modules/touch.js';
 import './modules/fullpage.js';
 
 import './modules/team.js';
+
+import './modules/imageLoop.js';

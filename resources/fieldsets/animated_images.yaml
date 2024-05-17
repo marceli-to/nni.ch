@@ -1,0 +1,62 @@
+title: 'Animated Images'
+fields:
+  -
+    handle: animated_images
+    field:
+      collapse: true
+      previews: true
+      fullscreen: true
+      sets:
+        neue_set-gruppe:
+          display: 'Neue Set-Gruppe'
+          instructions: null
+          icon: null
+          sets:
+            image:
+              display: Image
+              instructions: null
+              icon: null
+              fields:
+                -
+                  handle: image
+                  field:
+                    max_files: 1
+                    mode: list
+                    container: assets
+                    restrict: false
+                    allow_uploads: true
+                    show_filename: true
+                    show_set_alt: true
+                    type: assets
+                    display: Image
+                    icon: assets
+                    localizable: false
+                    listable: hidden
+                    instructions_position: above
+                    visibility: visible
+                    replicator_preview: true
+                    hide_display: false
+      type: replicator
+      display: 'Animated Images'
+      icon: replicator
+      localizable: false
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+  -
+    handle: intervall_duration
+    field:
+      input_type: number
+      antlers: false
+      type: text
+      display: Duration
+      icon: text
+      instructions: 'Define the duration of the intervall in milliseconds. Default is 150ms.'
+      localizable: false
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false

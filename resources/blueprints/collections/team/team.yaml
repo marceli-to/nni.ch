@@ -139,6 +139,8 @@ tabs:
               replicator_preview: true
               hide_display: false
               folder: team
+          -
+            import: animated_images
   quote:
     display: Quote
     sections:
@@ -221,6 +223,15 @@ tabs:
               max_items: 1
               listable: false
               localizable: true
+          -
+            handle: team_categories
+            field:
+              type: terms
+              taxonomies:
+                - team_categories
+              display: 'Team Categories'
+              mode: select
+              localizable: false
   settings:
     display: Settings
     sections:
