@@ -10,7 +10,7 @@
         width="{{ image:width }}"
         data-loop-image
         data-loop-duration="{{ intervall_duration ?? 150 }}"
-        class="w-full h-auto {{ !first ? 'hidden' : '' }}">
+        class="w-full h-auto {{ class }} {{ !first ? 'hidden' : '' }}">
     </picture>
   {{ /image_carousel }}
 </figure>

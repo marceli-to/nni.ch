@@ -6,12 +6,13 @@
   };
 
   let currentIndex = 0;
+  let duration = 150;
 
   const images = document.querySelectorAll(selectors.images);
-  const duration = document.querySelector(selectors.duration).dataset.loopDuration;
 
   const init = () => {
     const loadedCount = imagesLoaded(images);
+    duration = document.querySelector(selectors.duration).dataset.loopDuration;
 
     if (loadedCount === images.length) {
       loopImages();
