@@ -8,7 +8,9 @@
     <a href="javascript:;" class="hidden sm:block swiper-btn-prev">
       {{ partial:components/icons/arrow-right-short class="w-22 xl:w-40 xl:h-auto rotate-180" }}
     </a>
-    {{ partial:components/buttons/more title="{{ "Zum Team" | trans }}" url="{{ link id="da3064ef-0ff3-40b8-8ea7-12771204c109" }}" }}
+    {{ if moreLink }}
+      {{ partial:components/buttons/more title="{{ "Zum Team" | trans }}" url="{{ link id="da3064ef-0ff3-40b8-8ea7-12771204c109" }}" }}
+    {{ /if }}
     <a href="javascript:;" class="hidden sm:block swiper-btn-next">
       {{ partial:components/icons/arrow-right-short class="w-22 xl:w-40 xl:h-auto" }}
     </a>

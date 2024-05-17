@@ -1,4 +1,4 @@
-title: 'Image carousel'
+title: 'Image Carousel'
 fields:
   -
     handle: image_carousel
@@ -37,7 +37,7 @@ fields:
                     replicator_preview: true
                     hide_display: false
       type: replicator
-      display: 'Image carousel'
+      display: 'Image Carousel'
       icon: replicator
       localizable: false
       listable: hidden

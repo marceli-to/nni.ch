@@ -26,6 +26,12 @@
     </section>
   {{ /if }}
 
+  {{ if type == 'image_slideshow' }}
+    <section data-section data-section-theme="light" class="relative {{ is_fullpage ? 'section fp-section-centered fp-section-overflow-x-hidden' : 'my-30 xl:my-60 min-h-screen' }}">
+      {{ partial:components/project/elements/slideshow }}
+    </section>
+  {{ /if }}
+
   {{ if type == 'image' }}
     <section data-section data-section-theme="light" class="{{ is_fullpage ? 'section fp-section-centered' : 'py-30 xl:py-60' }}">
       <div class="pt-90 pb-150 lg:py-150 w-full">

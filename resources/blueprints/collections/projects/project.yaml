@@ -156,6 +156,13 @@ tabs:
                       fields:
                         -
                           import: image
+                    image_slideshow:
+                      display: 'Image Slideshow'
+                      instructions: null
+                      icon: media-image-picture-gallery
+                      fields:
+                        -
+                          import: image_slideshow
                     image_text:
                       display: 'Image - Text'
                       instructions: 'Add an image/text block.'

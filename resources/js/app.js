@@ -38,6 +38,8 @@ import './modules/swiper/team.js';
 
 import './modules/swiper/projects.js';
 
+import './modules/swiper/images.js';
+
 import './modules/touch.js';
 
 import './modules/fullpage.js';
