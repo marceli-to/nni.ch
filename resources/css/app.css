@@ -4,12 +4,12 @@
 
 @import "typo/webfonts.css";
 
-@import "animations/fadeIn_slideInLeft.css";
+/* @import "animations/fadeIn_slideInLeft.css";
 @import "animations/fadeIn_slideUp.css";
 @import "animations/fadeIn_slideInRight.css";
 @import "animations/fadeIn.css";
 @import "animations/intro.css";
-@import "animations/masonry.css";
+@import "animations/masonry.css"; */
 
 @import "components/headings.css";
 @import "components/forms.css";
