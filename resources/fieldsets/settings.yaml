@@ -53,7 +53,7 @@ fields:
       input_type: text
       antlers: false
       type: text
-      display: 'Contact slogan'
+      display: 'Footer contact slogan'
       icon: text
       localizable: true
       listable: hidden
