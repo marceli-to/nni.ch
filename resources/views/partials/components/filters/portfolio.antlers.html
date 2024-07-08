@@ -1,3 +1,9 @@
+<a 
+  :class="{ 'opacity-0': filter === false}"
+  class="border-b-2 border-silver py-5 mb-2 hover:text-steel transition-colors"
+  href="{{ site:short_locale == 'en' ? '/en/portfolio' : '/portfolio' }}">
+  {{ "Alle" | trans }}
+</a>
 {{ taxonomy:project_categories }}
   {{ if entries }}
     <a 
