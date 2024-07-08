@@ -1,14 +1,19 @@
-{{ partial:layout/head }}
+{{ partial:layout/head title="{{ error_page_404:title ?? "404 – Seite nicht gefunden" | trans }}" }}
 {{ partial:layout/body class="flex flex-col" }}
     {{ partial:layout/header }}
     <main class="flex-1">
-      {{ partial:layout/blocks/inner }}
-        <section class="grid grid-cols-12 gap-20 lg:gap-30 xl:gap-50 mt-100 xl:mt-200">
-          <article class="col-span-full">
+      {{ partial:layout/blocks/inner class="pt-90 md:pt-150" }}
+        {{ if error_page_404:image }}
+          <div class="mb-40 xl:mb-80">
+            {{ partial:components/media/image/fullscreen image="{{ error_page_404:image }}" }}
+          </div>
+        {{ /if}}
+        <section class="grid grid-cols-12 gap-20 lg:gap-30 xl:gap-50">
+          <article class="col-span-full max-w-content mx-auto">
             {{ partial:components/headings/h1 class="xl:!text-7xl normal-case tracking-normal mb-30 xl:mb-60" }}
-              {{ "404 – Seite nicht gefunden" | trans }}
+              {{ error_page_404:title ?? "404 – Seite nicht gefunden" | trans }}
             {{ /partial:components/headings/h1 }}
-            <p>{{ "Sorry, diese Seite haben wir leider nicht." | trans }}</p>
+            {{ error_page_404:text ?? "Sorry, diese Seite haben wir leider nicht." | trans }}
           </article>
         </section>
       {{ /partial:layout/blocks/inner }}
