@@ -54,20 +54,20 @@
 .is-active [data-menu-animation="fadeIn_slideInLeft"] {
   animation-fill-mode: forwards;
   animation-name: slideInLeft, fadeIn;
-  animation-delay: .5s;
+  animation-delay: 1s;
   animation-duration: .75s, 1.25s;
 }
 
 .is-active [data-menu-animation="fadeIn_slideInRight"] {
   animation-fill-mode: forwards;
   animation-name: slideInRight, fadeIn;
-  animation-delay: 1.75s;
+  animation-delay: 2s;
   animation-duration: .75s, 1.25s;
 }
 
 .is-active [data-menu-animation="fadeIn_slideUp"] {
   animation-fill-mode: forwards;
   animation-name: slideUp, fadeIn;
-  animation-delay: 1.75s;
+  animation-delay: 2s;
   animation-duration: .75s, 1.25s;
 }
