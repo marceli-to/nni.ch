@@ -1,32 +1,67 @@
 <div class="grid grid-cols-12 gap-x-20 lg:gap-x-30 xl:gap-x-50">
-  <div 
-    class="col-span-full lg:col-span-6"
-    data-animation="fadeIn"
-    data-animation-duration="fast">
-    {{ partial:components/media/image/teaser class="w-full h-full aspect-[16/10] lg:aspect-none object-cover" }}
-  </div>
-  <div class="col-span-full lg:col-span-6 mt-30 md:mt-45 lg:mt-0 lg:py-60 lg:flex lg:flex-col lg:items-start lg:justify-center">
-    <div class="grid grid-cols-6 gap-x-20">
-      <div class="mb-30 lg:mb-45 col-span-5 lg:col-span-full lg:-translate-x-120 xl:-translate-x-150">
-        <div 
-          data-animation="fadeIn_slideInLeft"
-          data-animation-lg="fadeIn_slideInRight"
-          data-animation-delay="long">
-          {{ partial:components/headings/h2 }}
-            {{ teaser_image_text_title }}
-          {{ /partial:components/headings/h2 }}
+  {{ if sequence == 'image_text' }}
+    <div 
+      class="col-span-full lg:col-span-6"
+      data-animation="fadeIn"
+      data-animation-duration="fast">
+      {{ partial:components/media/image/teaser class="w-full h-full aspect-[16/10] lg:aspect-none object-cover" }}
+    </div>
+    <div class="col-span-full lg:col-span-6 mt-30 md:mt-45 lg:mt-0 lg:py-60 lg:flex lg:flex-col lg:items-start lg:justify-center">
+      <div class="grid grid-cols-6 gap-x-20">
+        <div class="mb-30 lg:mb-45 col-span-5 lg:col-span-full lg:-translate-x-120 xl:-translate-x-150">
+          <div 
+            data-animation="fadeIn_slideInLeft"
+            data-animation-lg="fadeIn_slideInRight"
+            data-animation-delay="long">
+            {{ partial:components/headings/h2 }}
+              {{ teaser_image_text_title }}
+            {{ /partial:components/headings/h2 }}
+          </div>
         </div>
-      </div>
-      <div 
-        class="col-span-full"
-        data-animation="fadeIn"
-        data-animation-duration="fast"
-        data-animation-delay="long">
-        {{ cta_text }}
-        <div class="mt-15 md:mt-30 lg:mt-45">
-          {{ partial:components/buttons/contact title="{{ cta_button_text }}" url="{{ cta_link }}" }}
+        <div 
+          class="col-span-full"
+          data-animation="fadeIn"
+          data-animation-duration="fast"
+          data-animation-delay="long">
+          {{ cta_text }}
+          <div class="mt-15 md:mt-30 lg:mt-45">
+            {{ partial:components/buttons/contact title="{{ cta_button_text }}" url="{{ cta_link }}" }}
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  {{ /if }}
+
+  {{ if sequence == 'text_image' }}
+    <div class="col-span-full order-2 lg:order-1 lg:col-span-6 mt-30 md:mt-45 lg:mt-0 lg:py-60 lg:flex lg:flex-col lg:items-start lg:justify-center">
+      <div class="grid grid-cols-6 gap-x-20">
+        <div class="mb-30 lg:mb-45 col-span-5 lg:col-span-full">
+          <div 
+            data-animation="fadeIn_slideInLeft"
+            data-animation-lg="fadeIn_slideInRight"
+            data-animation-delay="long">
+            {{ partial:components/headings/h2 }}
+              {{ teaser_image_text_title }}
+            {{ /partial:components/headings/h2 }}
+          </div>
+        </div>
+        <div 
+          class="col-span-full"
+          data-animation="fadeIn"
+          data-animation-duration="fast"
+          data-animation-delay="long">
+          {{ cta_text }}
+          <div class="mt-15 md:mt-30 lg:mt-45">
+            {{ partial:components/buttons/contact title="{{ cta_button_text }}" url="{{ cta_link }}" }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div 
+      class="col-span-full order-1 lg:order-2 lg:col-span-6"
+      data-animation="fadeIn"
+      data-animation-duration="fast">
+      {{ partial:components/media/image/teaser class="w-full h-full aspect-[16/10] lg:aspect-none object-cover" }}
+    </div>
+  {{ /if }}
 </div>

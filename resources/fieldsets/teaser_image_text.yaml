@@ -1,6 +1,29 @@
 title: 'Image/Text Teaser'
 fields:
   -
+    handle: sequence
+    field:
+      options:
+        image_text: 'Image / Text'
+        text_image: 'Text / Image'
+      taggable: false
+      push_tags: false
+      multiple: false
+      clearable: false
+      searchable: true
+      cast_booleans: false
+      default: image_text
+      type: select
+      display: Sequence
+      icon: select
+      instructions: 'Define the position of image and text.'
+      localizable: false
+      listable: hidden
+      instructions_position: below
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+  -
     import: anchor
   -
     import: image
