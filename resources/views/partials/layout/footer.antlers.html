@@ -33,21 +33,23 @@
         </div>
       </div>
       <div class="col-span-4 lg:col-span-3 lg:order-3">
-        {{ partial:components/misc/social-media-channels class="hidden lg:flex justify-end" }}
+        {{# {{ partial:components/misc/social-media-channels class="hidden lg:flex justify-end" }} #}}
         {{ partial:menu/footer/wrapper }}
       </div>
     </div>
 
     <div class="grid grid-cols-12 gap-x-20 mt-40">
-      <div class="col-span-8 flex flex-col justify-between">
+      <div class="col-span-8 flex flex-col justify-between text-mini xl:text-xs font-meta-medium">
         {{ partial:components/misc/social-media-channels class="flex lg:hidden" }}
-        <span class="mt-15 lg:mt-0 text-mini xl:text-xs font-meta-medium">
+        <span class="mt-15 lg:mt-0">
           &copy; {{ current_date | format('Y') }} {{ config:app:name }}
         </span>
-      </div>
-      <div class="col-span-4">
         {{ partial:menu/privacy/wrapper }}
       </div>
+      <div class="hidden lg:block col-span-4">
+        {{ partial:components/misc/social-media-channels class="hidden lg:flex justify-end items-center lg:mt-3" }}
+      </div>
+
     </div>
   {{ /partial:layout/blocks/inner }}
 </footer>
