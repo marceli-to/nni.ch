@@ -1,0 +1,20 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: text
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: Text
+              icon: text
+              localizable: true
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false

@@ -3,7 +3,7 @@
     <div class="grid grid-cols-12 gap-x-20">
       <div class="col-span-12 lg:col-span-6 lg:order-2 mb-60 lg:mb-0 flex flex-col justify-center">
         <div class="flex flex-col items-center gap-y-15">
-          <p>{{ "Kommen Sie auf einen Kaffee vorbei." | trans }}</p>
+          {{ settings_contact_slogan ?? contact_slogan:text }}
           {{ partial:components/buttons/contact title="{{ "Kontakt aufnehmen" | trans }}" url="{{ link id="2d95afd4-22c4-431d-aea3-3d08d2abcd38" }}" }}
         </div>
       </div>

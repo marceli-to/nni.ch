@@ -48,6 +48,20 @@ fields:
   -
     import: theme
   -
+    handle: settings_contact_slogan
+    field:
+      input_type: text
+      antlers: false
+      type: text
+      display: 'Contact slogan'
+      icon: text
+      localizable: true
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+  -
     handle: template
     field:
       hide_partials: true
