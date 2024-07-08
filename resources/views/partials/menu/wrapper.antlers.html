@@ -2,12 +2,12 @@
 <div 
   x-cloak 
   x-show="menu"
-  x-transition:enter="transition ease-in duration-0"
-  x-transition:enter-start="opacity-0"
-  x-transition:enter-end="opacity-100"
+  x-transition:enter="transition ease-in duration-200"
+  x-transition:enter-start="opacity-0 -translate-y-full"
+  x-transition:enter-end="opacity-100 translate-y-0"
   x-transition:leave="transition ease-in duration-0"
-  x-transition:leave-start="opacity-0"
-  x-transition:leave-end="opacity-0"
+  x-transition:leave-start="opacity-100 translate-y-0"
+  x-transition:leave-end="opacity-0 -translate-y-full"
   :class="{ 'is-active': menu }"
   class="bg-white fixed left-0 top-0 z-60 w-full h-full overflow-y-auto flex flex-col justify-center">
   <div class="w-full max-w-content mx-auto px-35 md:px-80">
