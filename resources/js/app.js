@@ -47,3 +47,5 @@ import './modules/fullpage.js';
 import './modules/team.js';
 
 import './modules/carousel.js';
+
+import './modules/gdpr.js';
