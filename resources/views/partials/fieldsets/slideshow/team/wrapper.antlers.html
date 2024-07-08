@@ -5,7 +5,7 @@
     data="data-animation='fadeIn_slideInRight'"
    }}
     {{ partial:components/swiper/container class="js-swiper-team" navigation="true" moreLink="true" }}
-      {{ collection from="team" order="random" }}
+      {{ collection from="team" sort="random" }}
         {{ partial:components/swiper/slide class="swiper-slide--mute-inactive" }}
           {{ partial:components/team/elements/card link="true" overlay="true" }}
         {{ /partial:components/swiper/slide }}
