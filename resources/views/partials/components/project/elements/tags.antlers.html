@@ -1,13 +1,15 @@
-{{ partial:components/headings/h2 is_project="true" class="mb-2 xl:mb-4" }}
-  {{ "Partner" | trans }}
-{{ /partial:components/headings/h2 }}
-<div>
-  {{ tags }}
-    <a 
-      href="{{ url }}" 
-      title="{{ title }}"
-      class="inline-block mr-2 md:mr-5 last-of-type:mr-0 underline decoration-1 underline-offset-4 xl:underline-offset-8 hover:no-underline">
-      {{ title }}
-    </a>
-  {{ /tags }}
-</div>
+{{ if tags }}
+  {{ partial:components/headings/h2 is_project="true" class="mb-2 xl:mb-4" }}
+    {{ "Partner" | trans }}
+  {{ /partial:components/headings/h2 }}
+  <div>
+    {{ tags }}
+      <a 
+        href="{{ url }}" 
+        title="{{ title }}"
+        class="inline-block mr-2 md:mr-5 last-of-type:mr-0 underline decoration-1 underline-offset-4 xl:underline-offset-8 hover:no-underline">
+        {{ title }}
+      </a>
+    {{ /tags }}
+  </div>
+{{ /if }}
