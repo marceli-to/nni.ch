@@ -1,0 +1,73 @@
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-20%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(20%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(20%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* initial state */
+[data-menu-animation="fadeIn_slideInLeft"] {
+  transform: translateX(-20%);
+  opacity: 0;
+}
+
+[data-menu-animation="fadeIn_slideInRight"] {
+  transform: translateX(20%);
+  opacity: 0;
+}
+
+[data-menu-animation="fadeIn_slideUp"] {
+  transform: translateY(20%);
+  opacity: 0;
+}
+
+/* active state */
+.is-active [data-menu-animation="fadeIn_slideInLeft"] {
+  animation-fill-mode: forwards;
+  animation-name: slideInLeft, fadeIn;
+  animation-delay: .5s;
+  animation-duration: .75s, 1.25s;
+}
+
+.is-active [data-menu-animation="fadeIn_slideInRight"] {
+  animation-fill-mode: forwards;
+  animation-name: slideInRight, fadeIn;
+  animation-delay: 1.75s;
+  animation-duration: .75s, 1.25s;
+}
+
+.is-active [data-menu-animation="fadeIn_slideUp"] {
+  animation-fill-mode: forwards;
+  animation-name: slideUp, fadeIn;
+  animation-delay: 1.75s;
+  animation-duration: .75s, 1.25s;
+}
