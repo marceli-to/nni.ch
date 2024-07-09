@@ -13,6 +13,11 @@
   opacity: 0;
 }
 
+.posts [data-animation="fadeIn"],
+.posts [data-video-animation="fadeIn"] {
+  opacity: 100 !important;
+}
+
 /* active state */
 .is-active [data-animation="fadeIn"],
 .is-playing [data-video-animation="fadeIn"] {
