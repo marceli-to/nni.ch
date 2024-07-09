@@ -42,6 +42,7 @@
     const hash = window.location.hash;
     if (hash) {
       header.classList.add('prevent-animation');
+      scrollToAnchor(hash.replace('#', ''));
     }
   };
 
@@ -72,12 +73,17 @@
 
   const handleAnchorClick = (event) => {
     const anchor = event.currentTarget;
-    const target = document.querySelector('[data-anchor-target="' + anchor.dataset.anchor + '"]');
+    scrollToAnchor(anchor.dataset.anchor);
+  };
+
+  const scrollToAnchor = (anchor) => {
+    const target = document.querySelector('[data-anchor-target="' + anchor + '"]');
+
     if (target) {
       history.pushState(null, null, '#' + anchor.dataset.anchor);
       target.scrollIntoView({ behavior: 'smooth' });
     }
-  };
+  }
 
   const playVideo = (video, section) => {
     const header = document.querySelector(selectors.header);
