@@ -5,6 +5,8 @@
     logoByline: '[data-logo-byline]',
     header: '#header',
     video: 'video',
+    anchor: '[data-anchor]',
+    anchorTarget: '[data-anchor-target]',
   };
 
   let currentSection = null;
@@ -12,9 +14,7 @@
   const header = document.querySelector(selectors.header);
 
   const init = () => {
-
     handleOnLoad();
-
     currentSection = sections[0];
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -29,6 +29,13 @@
       });
     }, { threshold: 0.25 });
     sections.forEach(section => observer.observe(section));
+
+    // Handle anchors
+    const anchors = document.querySelectorAll(selectors.anchor);
+    anchors.forEach(anchor => {
+      anchor.addEventListener('click', handleAnchorClick);
+    });
+
   };
 
   const handleOnLoad = () => {
@@ -57,13 +64,19 @@
   };
 
   const handleTheme = (section) => {
-    setTimeout(() => {
-      const theme = section.getAttribute('data-section-theme');
-      if (theme) {
-        header.setAttribute('data-icon-theme', theme);
-      }
-    }, 150);
+    const theme = section.getAttribute('data-section-theme');
+    if (theme) {
+      header.setAttribute('data-icon-theme', theme);
+    }
+  };
 
+  const handleAnchorClick = (event) => {
+    const anchor = event.currentTarget;
+    const target = document.querySelector('[data-anchor-target="' + anchor.dataset.anchor + '"]');
+    if (target) {
+      history.pushState(null, null, '#' + anchor.dataset.anchor);
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const playVideo = (video, section) => {

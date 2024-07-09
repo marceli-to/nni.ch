@@ -3,7 +3,12 @@
   {{ foreach:anchors }}
     <li>
       <a 
-        href="#{{ key }}"
+        {{ if is_fullpage }}
+          href="javascript:;"
+          data-anchor="{{ key }}"
+        {{ else }}
+          href="#{{ key }}"
+        {{ /if }}
         title="{{ value }}"
         class="text-white font-meta-medium text-xxs xl:text-sm tracking-wide flex flex-col items-center group">
         {{ value }}
