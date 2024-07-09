@@ -21,7 +21,7 @@
       data-section 
       data-section-theme="light" 
       {{ is_fullpage ? 'data-section-snap' : '' }} 
-      class="{{ is_fullpage ? 'snap-center snap-always min-h-screen' : 'py-30 md:py-60 xl:py-90' }}">
+      class="{{ is_fullpage ? 'snap-center snap-always min-h-screen flex flex-col justify-center' : 'py-30 md:py-60 xl:py-90' }}">
       <div class="pt-90 pb-150 lg:py-150">
         {{ partial:components/project/elements/image_text }}
       </div>
@@ -33,7 +33,7 @@
       data-section 
       data-section-theme="dark" 
       {{ is_fullpage ? 'data-section-snap' : '' }} 
-      class="relative {{ is_fullpage ? 'snap-center snap-always min-h-screen' : 'my-30 xl:my-60 min-h-screen' }}">
+      class="relative {{ is_fullpage ? 'snap-center snap-always min-h-screen flex flex-col justify-center' : 'my-30 xl:my-60 min-h-screen' }}">
       {{ partial:components/project/elements/fullscreen_image }}
     </section>
   {{ /if }}
@@ -49,7 +49,7 @@
       data-section 
       data-section-theme="light" 
       {{ is_fullpage ? 'data-section-snap' : '' }} 
-      class="{{ is_fullpage ? 'snap-center snap-always min-h-screen' : 'py-30 xl:py-60' }}">
+      class="{{ is_fullpage ? 'snap-center snap-always min-h-screen flex flex-col justify-center' : 'py-30 xl:py-60' }}">
       <div class="pt-90 pb-150 lg:py-150 w-full">
         {{ partial:components/project/elements/image }}
       </div>
