@@ -49,5 +49,3 @@ import './modules/team.js';
 import './modules/carousel.js';
 
 import './modules/gdpr.js';
-
-import './modules/snap.js';

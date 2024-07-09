@@ -44,7 +44,7 @@
     "css": [
       "assets/app-e2ee8f87.css"
     ],
-    "file": "assets/app-89b7ff7a.js",
+    "file": "assets/app-6f2ae5a2.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   },
@@ -52,5 +52,10 @@
     "file": "assets/map-5de5b791.js",
     "isEntry": true,
     "src": "resources/js/map.js"
+  },
+  "resources/js/snap.js": {
+    "file": "assets/snap-e33bf339.js",
+    "isEntry": true,
+    "src": "resources/js/snap.js"
   }
 }
