@@ -1,4 +1,9 @@
-<section data-section data-section-theme="light" {{ is_fullpage ? 'data-anchor="{{ anchor }}"' : '' }} class="relative {{ is_fullpage ? 'section fp-section-centered' : 'py-90 md:py-150 md:flex md:flex-col md:justify-center' }}">
+<section 
+  data-section 
+  data-section-theme="light" 
+  {{ is_fullpage ? 'data-anchor="{{ anchor }}"' : '' }} 
+  {{ is_fullpage ? 'data-section-snap' : '' }} 
+  class="relative {{ is_fullpage ? 'snap-center snap-always min-h-screen flex flex-col justify-center' : 'py-90 md:py-150 md:flex md:flex-col md:justify-center' }}">
   {{ partial:components/misc/anchor anchor="{{ anchor }}" }}
   {{ partial:layout/blocks/inner class="{{ is_fullpage ? 'pt-90 pb-150 xs:py-90 lg:py-150' : '' }}" }}
     {{ partial:fieldsets/teaser/image_text/content }}

@@ -42,10 +42,12 @@ import './modules/swiper/images.js';
 
 import './modules/touch.js';
 
-import './modules/fullpage.js';
+// import './modules/fullpage.js';
 
 import './modules/team.js';
 
 import './modules/carousel.js';
 
 import './modules/gdpr.js';
+
+import './modules/snap.js';

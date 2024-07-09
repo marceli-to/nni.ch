@@ -14,31 +14,31 @@
 }
 
 /* active state */
-.active [data-animation="fadeIn"],
-.running [data-video-animation="fadeIn"] {
+.is-active [data-animation="fadeIn"],
+.is-playing [data-video-animation="fadeIn"] {
   animation-fill-mode: forwards;
   animation-name: fadeIn;
   animation-delay: .75s;
 }
 
-.active [data-animation="fadeIn"][data-animation-duration="slow"],
-.running [data-video-animation="fadeIn"][data-video-animation-duration="slow"] {
+.is-active [data-animation="fadeIn"][data-animation-duration="slow"],
+.is-playing [data-video-animation="fadeIn"][data-video-animation-duration="slow"] {
   animation-duration: 1.25s;
 }
 
-.active [data-animation="fadeIn"][data-animation-duration="fast"],
-.running [data-video-animation="fadeIn"][data-video-animation-duration="fast"] {
+.is-active [data-animation="fadeIn"][data-animation-duration="fast"],
+.is-playing [data-video-animation="fadeIn"][data-video-animation-duration="fast"] {
   animation-duration: .75s;
 }
 
-.active [data-animation="fadeIn"][data-animation-delay="long"],
-.running [data-video-animation="fadeIn"][data-video-animation-delay="long"] {
+.is-active [data-animation="fadeIn"][data-animation-delay="long"],
+.is-playing [data-video-animation="fadeIn"][data-video-animation-delay="long"] {
   animation-delay: 1s;
 }
 
 /* visited state */
-.visited [data-animation="fadeIn"],
-.visited [data-video-animation="fadeIn"] {
+.is-visited [data-animation="fadeIn"],
+.is-visited [data-video-animation="fadeIn"] {
   animation: none;
   opacity: 1;
 }

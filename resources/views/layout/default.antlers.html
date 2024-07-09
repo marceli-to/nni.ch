@@ -8,11 +8,9 @@
 
   {{ template_content }}
 
-    {{ slot:footer }}
-      {{ if !is_fullpage }}
-        {{ partial:layout/footer }}
-      {{ /if }}
-    {{ /slot:footer }}
+  {{ slot:footer }}
+    {{ partial:layout/footer }}
+  {{ /slot:footer }}
 
 {{ /partial:layout/body }}
 

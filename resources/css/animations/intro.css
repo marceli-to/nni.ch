@@ -41,50 +41,54 @@
 }
 
 /* active state */
-.running[data-video-animation="introHeader"] {
+.is-playing[data-video-animation="introHeader"] {
   animation-fill-mode: forwards;
   animation-name: fadeInIntro;
   animation-delay: 1.25s;
   animation-duration: 1.5s;
+  animation-iteration-count: 1;
 }
 
-.running [data-video-animation="introTitle"] {
+.is-playing [data-video-animation="introTitle"] {
   animation-fill-mode: forwards;
   animation-name: fadeInIntro;
   animation-delay: 1.25s;
   animation-duration: 1.5s;
+  animation-iteration-count: 1;
 }
 
-.running [data-video-animation="introMenu"] {
+.is-playing [data-video-animation="introMenu"] {
   animation-fill-mode: forwards;
   animation-name: fadeInIntro;
   animation-delay: 1.25s;
   animation-duration: 1.5s;
+  animation-iteration-count: 1;
 }
 
-.is-homepage .running [data-video-animation="logoByline"] {
+.is-homepage .is-playing [data-video-animation="logoByline"] {
   animation-fill-mode: forwards;
   animation-name: fadeInSlideInByline, fadeOutByline;
   animation-delay: 5.25s, 8.5s;
   animation-duration: .5s;
+  animation-iteration-count: 1;
 }
 
-.is-homepage .running[data-video-animation="introHeader"] {
-  animation-delay: 4s;
+.is-homepage .is-playing[data-video-animation="introHeader"] {
+  animation-delay: 1s;
 }
 
-.is-homepage .running [data-video-animation="introTitle"] {
-  animation-delay: 4s;
+.is-homepage .is-playing [data-video-animation="introTitle"] {
+  animation-delay: 2.5s;
 }
 
-.is-homepage .running [data-video-animation="introMenu"] {
-  animation-delay: 4s;
+.is-homepage .is-playing [data-video-animation="introMenu"] {
+  animation-delay: 2.5s;
 }
 
 /* visited state */
-.visited [data-video-animation="introTitle"],
-.visited [data-video-animation="introMenu"],
-.visited[data-video-animation="introHeader"],
+.is-visited [data-video-animation="introTitle"],
+.is-visited [data-video-animation="introMenu"],
+.is-visited[data-video-animation="introHeader"],
 .prevent-animation[data-video-animation="introHeader"] {
   animation: none !important;
   opacity: 1 !important;

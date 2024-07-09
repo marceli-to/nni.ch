@@ -1,5 +1,5 @@
 <div id="{{ is_fullpage ? 'fullpage' : '' }}">
-  <section data-section data-section-theme="light" class="{{ is_fullpage ? 'section fp-section-centered' : 'pt-90 pb-30 md:pt-150 md:pb-60' }}">
+  <section data-section data-section-theme="light" class="{{ is_fullpage ? 'snap-center snap-always min-h-screen' : 'pt-90 pb-30 md:pt-150 md:pb-60' }}">
     <div class="{{ is_fullpage ? 'pt-90 pb-150 md:pt-150 md:pb-60' : '' }}">
       {{ if feature_layout == 'landscape' }}
         {{ partial:components/project/layout/landscape }}
@@ -13,7 +13,7 @@
 {{ elements }}
 
   {{ if type == 'image_text' }}
-    <section data-section data-section-theme="light" class="{{ is_fullpage ? 'section fp-section-centered' : 'py-30 md:py-60 xl:py-90' }}">
+    <section data-section data-section-theme="light" class="{{ is_fullpage ? 'snap-center snap-always min-h-screen' : 'py-30 md:py-60 xl:py-90' }}">
       <div class="pt-90 pb-150 lg:py-150">
         {{ partial:components/project/elements/image_text }}
       </div>
@@ -27,13 +27,13 @@
   {{ /if }}
 
   {{ if type == 'image_slideshow' }}
-    <section data-section data-section-theme="light" class="relative {{ is_fullpage ? 'section fp-section-centered fp-section-overflow-x-hidden' : 'my-30 xl:my-60 min-h-screen' }}">
+    <section data-section data-section-theme="light" class="relative {{ is_fullpage ? 'snap-center snap-always min-h-screen fp-section-overflow-x-hidden' : 'my-30 xl:my-60 min-h-screen' }}">
       {{ partial:components/project/elements/slideshow }}
     </section>
   {{ /if }}
 
   {{ if type == 'image' }}
-    <section data-section data-section-theme="light" class="{{ is_fullpage ? 'section fp-section-centered' : 'py-30 xl:py-60' }}">
+    <section data-section data-section-theme="light" class="{{ is_fullpage ? 'snap-center snap-always min-h-screen' : 'py-30 xl:py-60' }}">
       <div class="pt-90 pb-150 lg:py-150 w-full">
         {{ partial:components/project/elements/image }}
       </div>
@@ -43,7 +43,7 @@
   {{ if type == 'video' }}
 
     {{ if video_file }}
-      <section data-section data-section-theme="light" class="{{ is_fullpage ? 'section fp-section-centered' : 'py-30 xl:py-60' }}">
+      <section data-section data-section-theme="light" class="{{ is_fullpage ? 'snap-center snap-always min-h-screen' : 'py-30 xl:py-60' }}">
         {{ partial:layout/blocks/inner }}
           {{ partial:components/media/video/video }}
         {{ /partial:layout/blocks/inner }}
@@ -78,13 +78,5 @@
   {{ partial:project/_related }}
 {{ /if }}
 
-{{ if is_fullpage }}
-  <section data-section data-section-theme="light" class="section fp-auto-height pt-90 xl:pt-150">
-    {{ partial:layout/footer }}
-  </section>
-{{ /if }}
 </div>
 
-{{# {{ if !is_fullpage }}
-  {{ partial:layout/footer }}
-{{ /if }} #}}

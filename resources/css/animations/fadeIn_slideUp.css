@@ -23,15 +23,16 @@
 }
 
 /* active state */
-.active [data-animation="fadeIn_slideUp"] {
+.is-active [data-animation="fadeIn_slideUp"] {
   animation-fill-mode: forwards;
   animation-name: fadeIn_slideUp, fadeIn;
   animation-delay: 1s;
   animation-duration: .75s, 1.25s;
+  animation-iteration-count: 1;
 }
 
 /* visited state */
-.visited [data-animation="fadeIn_slideUp"] {
+.is-visited [data-animation="fadeIn_slideUp"] {
   animation: none;
   opacity: 1;
   transform: translateY(0);

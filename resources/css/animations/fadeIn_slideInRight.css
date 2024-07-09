@@ -24,31 +24,33 @@
 }
 
 /* active state */
-.active [data-animation="fadeIn_slideInRight"] {
+.is-active [data-animation="fadeIn_slideInRight"] {
   animation-fill-mode: forwards;
   animation-name: slideInRight, fadeIn;
   animation-delay: .75s;
   animation-duration: .75s, 1.25s;
+  animation-iteration-count: 1;
 }
 
 /* add media query for 1024px */
 @media (min-width: 1024px) {
-  .active [data-animation-lg="fadeIn_slideInRight"] {
+  .is-active [data-animation-lg="fadeIn_slideInRight"] {
     animation-fill-mode: forwards;
     animation-name: slideInRight, fadeIn !important;
     animation-delay: 1s;
     animation-duration: .75s, 1.25s;
+    animation-iteration-count: 1;
   }
 }
 
-.active [data-animation="fadeIn_slideInRight"][data-animation-delay="long"],
-.active [data-animation-lg="fadeIn_slideInRight"][data-animation-delay="long"] {
+.is-active [data-animation="fadeIn_slideInRight"][data-animation-delay="long"],
+.is-active [data-animation-lg="fadeIn_slideInRight"][data-animation-delay="long"] {
   animation-delay: 1s;
 }
 
 /* visited state */
-.visited [data-animation="fadeIn_slideInRight"],
-.visited [data-animation-lg="fadeIn_slideInRight"] {
+.is-visited [data-animation="fadeIn_slideInRight"],
+.is-visited [data-animation-lg="fadeIn_slideInRight"] {
   animation: none;
   transform: translateX(0);
   opacity: 1;

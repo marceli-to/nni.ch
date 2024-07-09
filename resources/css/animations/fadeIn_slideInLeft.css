@@ -23,30 +23,31 @@
 }
 
 /* active state */
-.active [data-animation="fadeIn_slideInLeft"] {
+.is-active [data-animation="fadeIn_slideInLeft"] {
   animation-fill-mode: forwards;
   animation-name: slideInLeft, fadeIn;
   animation-delay: 1s;
   animation-duration: .75s, 1.25s;
+  animation-iteration-count: 1;
 }
 
-.active [data-animation="fadeIn_slideInLeft"][data-animation-delay="long"] {
+.is-active [data-animation="fadeIn_slideInLeft"][data-animation-delay="long"] {
   animation-delay: 1.25s;
 }
 
-.active [data-animation="fadeIn_slideInLeft"][data-animation-staggered="0"] {
+.is-active [data-animation="fadeIn_slideInLeft"][data-animation-staggered="0"] {
   animation-delay: 1s;
 }
-.active [data-animation="fadeIn_slideInLeft"][data-animation-staggered="1"] {
+.is-active [data-animation="fadeIn_slideInLeft"][data-animation-staggered="1"] {
   animation-delay: 1.15s;
 }
-.active [data-animation="fadeIn_slideInLeft"][data-animation-staggered="2"] {
+.is-active [data-animation="fadeIn_slideInLeft"][data-animation-staggered="2"] {
   animation-delay: 1.3s;
 }
 
 
 /* visited state */
-.visited [data-animation="fadeIn_slideInLeft"] {
+.is-visited [data-animation="fadeIn_slideInLeft"] {
   animation: none;
   transform: translateX(0);
   opacity: 1;
