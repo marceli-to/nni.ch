@@ -48,4 +48,6 @@ import './modules/team.js';
 
 import './modules/carousel.js';
 
+import './modules/slides.js';
+
 import './modules/gdpr.js';

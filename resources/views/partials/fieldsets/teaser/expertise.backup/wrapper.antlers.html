@@ -3,6 +3,9 @@
   {{ is_fullpage ? 'data-anchor-target="{{ anchor }}"' : '' }} 
   {{ is_fullpage ? 'data-section-snap' : '' }} 
   data-section-theme="light" 
+  data-swipe-threshold="10" 
+  data-swipe-unit="px" 
+  data-swipe-timeout="250"
   class="relative {{ is_fullpage ? 'snap-center snap-always min-h-screen section-slides' : 'py-60 md:py-90 xl:py-120' }}">
   {{ partial:components/misc/anchor anchor="{{ anchor }}" }}
   {{ partial:layout/blocks/inner class="{{ is_fullpage ? 'pt-90 pb-150 xs:py-90 lg:py-150' : '' }}" }}

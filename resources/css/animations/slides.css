@@ -1,0 +1,50 @@
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-40px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInTop {
+  0% {
+    transform: translateY(40px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Initial State */
+[data-animation="slide"] h2 {
+  @apply opacity-0 translate-y-[40px];
+}
+
+[data-animation="slide"] [data-slide-text] {
+  @apply opacity-0 translate-y-[40px];
+}
+
+/* Fade In */
+[data-animation="slide"].visible h2 {
+  animation-fill-mode: forwards;
+  animation-name: fadeIn, slideInTop;
+  animation-duration: .75s, .75s;
+  animation-delay: .2s;
+}
+
+[data-animation="slide"].visible [data-slide-text] {
+  animation-fill-mode: forwards;
+  animation-name: fadeIn, slideInTop;
+  animation-duration: .2s, .75s;
+  animation-delay: .2s;
+}

@@ -11,6 +11,7 @@
 @import "animations/intro.css";
 @import "animations/masonry.css";
 @import "animations/menu.css";
+@import "animations/slides.css";
 
 @import "components/headings.css";
 @import "components/forms.css";
