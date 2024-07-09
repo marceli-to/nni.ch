@@ -12,6 +12,7 @@
   let currentSection = null;
   const sections = document.querySelectorAll(selectors.section);
   const header = document.querySelector(selectors.header);
+  
   const init = () => {
     handleOnLoad();
     currentSection = sections[0];
