@@ -45,7 +45,7 @@
         x-cloak
         x-show="quickMenu && !menu"
         class="hidden md:block absolute right-full -top-5 z-60 w-auto h-auto">
-        <ul class="flex flex-col space-y-10 text-white m-0 p-0 pr-20 list-none">
+        <ul class="flex flex-col space-y-10  {{ theme == 'dark' ? 'text-white' : 'text-black' }} m-0 p-0 pr-20 list-none">
           {{ nav:main }}
             {{ partial:menu/main/item class="text-right" }}
           {{ /nav:main }}
