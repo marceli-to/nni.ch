@@ -80,7 +80,7 @@
     const target = document.querySelector('[data-anchor-target="' + anchor + '"]');
 
     if (target) {
-      history.pushState(null, null, '#' + anchor.dataset.anchor);
+      history.pushState(null, null, '#' + anchor);
       target.scrollIntoView({ behavior: 'smooth' });
     }
   }
