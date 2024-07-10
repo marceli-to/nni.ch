@@ -5,3 +5,7 @@
 .posts blockquote {
   @apply mb-30 xl:mb-60
 }
+
+.posts article a {
+  @apply underline underline-offset-2 decoration-1 hover:no-underline
+}
