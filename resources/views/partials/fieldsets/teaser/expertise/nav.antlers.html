@@ -1,15 +1,17 @@
 <nav class="mt-30 sm:mt-60 grid-cols-6 gap-x-20" data-slides-nav>
   <ul class="col-span-5 col-start-2 md:col-start-1 flex flex-col space-y-5 xl:space-y-15">
     {{ teaser_items }}
-      <li>
-        <a 
-          href="javascript:;" 
-          title="{{ title }}" 
-          class="text-lg md:text-2xl lg:text-5xl font-meta-medium uppercase tracking-wider flex items-center gap-x-10 md:gap-x-15 lg:gap-x-25 group">
-          {{ partial:components/icons/arrow-right-short class="w-22 md:w-32 lg:w-40 h-auto group-hover:translate-x-5 transition-transform" }}
-          <span>{{ title }}</span>
-        </a>
-      </li>
+      {{ if index != 0 }}
+        <li>
+          <a 
+            href="javascript:;" 
+            title="{{ title }}" 
+            class="text-lg md:text-2xl lg:text-5xl font-meta-medium uppercase tracking-wider flex items-center gap-x-10 md:gap-x-15 lg:gap-x-25 group">
+            {{ partial:components/icons/arrow-right-short class="w-22 md:w-32 lg:w-40 h-auto group-hover:translate-x-5 transition-transform" }}
+            <span>{{ title }}</span>
+          </a>
+        </li>
+      {{ /if }}
     {{ /teaser_items }}
   </ul>
 
