@@ -19,7 +19,7 @@
     {{ /search:results }}
   </div>
 {{ else }}
-  {{ collection from="posts" as="posts" sort="date:desc" taxonomy:post_categories="{{ category }}" taxonomy:tags="{{ tag }}" }}
+  {{ collection from="posts" as="posts" paginate="18" sort="date:desc" taxonomy:post_categories="{{ category }}" taxonomy:tags="{{ tag }}" }}
     {{ if no_results }}
       <p>{{ "Oh, es gibt leider noch keine Beiträge. Schau doch zu einem späteren Zeitpunkt noch einmal vorbei." | trans }}</p>
     {{ else }}
@@ -27,6 +27,28 @@
         {{ posts }}
           {{ partial:components/post/elements/card term="{{ term }}" }}
         {{ /posts }}
+
+        <div class="col-span-full">
+          <div class="max-w-lg mx-auto flex justify-center space-x-20 lg:space-x-45 text-sm">
+            {{ paginate }}
+              <div>
+                <a 
+                  href="{{ prev_page }}" 
+                  class="block no-underline hover:underline-offset-8 hover:decoration-1 hover:underline">
+                  Previous
+                </a>
+              </div>
+              <div>{{ current_page }} of {{ total_pages }} pages</div>
+              <div>
+                <a 
+                  href="{{ next_page }}"
+                  class="block no-underline hover:underline-offset-8 hover:decoration-1 hover:underline">
+                  Next
+                </a>
+              </div>
+            {{ /paginate }}
+          </div>
+        </div>
       </div>
     {{ /if }}
   {{ /collection }}
