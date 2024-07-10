@@ -6,7 +6,7 @@
   <div class="grid grid-cols-6 md:grid-cols-12 gap-20 md:gap-30 xl:gap-50">
     {{ collection from="team" }}
       <div 
-        data-filter-category="{{ category:slug }}"
+        data-filter-category="{{ category }}{{ slug }}{{ if !last }},{{/if}}{{ /category }}"
         class="col-span-full sm:col-span-3 md:col-span-6 lg:col-span-4">
         {{ partial:components/team/elements/card link="true" overlay="true" lazyload="true" }}
       </div>

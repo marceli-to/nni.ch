@@ -41,16 +41,16 @@
         class="group">
         {{ partial:components/icons/burger class="w-28 xl:w-32 h-auto" }}
       </a>
-      <div
+      <nav
         x-cloak
         x-show="quickMenu && !menu"
-        class="hidden md:block absolute right-full -top-5 z-60 w-auto h-auto">
-        <ul class="flex flex-col space-y-10  {{ theme == 'dark' ? 'text-white' : 'text-black' }} m-0 p-0 pr-20 list-none">
+        class="hidden py-10 md:block absolute right-full -top-16 xl:-top-18 z-60 w-auto h-auto quick-menu">
+        <ul class="flex space-x-15  {{ theme == 'dark' ? 'text-white' : 'text-black' }} m-0 p-0 pr-20 list-none">
           {{ nav:main }}
             {{ partial:menu/main/item class="text-right" }}
           {{ /nav:main }}
         </ul>
-      </div>
+      </nav>
     </div>
 
   {{ /partial:layout/blocks/inner }}

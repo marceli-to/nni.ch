@@ -6,7 +6,6 @@
   };
 
   const init = () => {
-    // Add event handler to <a href="" data-filter="term"> elements
     document.querySelectorAll(selectors.filterTerm).forEach((el) => {
       el.addEventListener('click', filter);
     });
@@ -22,8 +21,7 @@
         el.classList.remove('hidden');
         return;
       }
-
-      if (el.dataset.filterCategory === term) {
+      if (el.dataset.filterCategory.includes(term)) {
         el.classList.remove('hidden');
       } else {
         el.classList.add('hidden');

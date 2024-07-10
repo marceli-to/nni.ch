@@ -199,7 +199,6 @@ tabs:
               listable: hidden
               visibility: visible
               replicator_preview: true
-              max_items: 1
               create: true
               hide_display: false
           -
@@ -223,15 +222,6 @@ tabs:
               max_items: 1
               listable: false
               localizable: true
-          -
-            handle: team_categories
-            field:
-              type: terms
-              taxonomies:
-                - team_categories
-              display: 'Team Categories'
-              mode: select
-              localizable: false
   settings:
     display: Settings
     sections:
