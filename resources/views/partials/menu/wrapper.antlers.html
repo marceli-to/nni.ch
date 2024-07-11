@@ -8,17 +8,17 @@
   x-transition:leave-start="opacity-100 translate-y-0"
   x-transition:leave-end="opacity-0 -translate-y-full"
   :class="{ 'is-active': menu }"
-  class="bg-white fixed left-0 top-0 z-60 w-full h-full overflow-y-auto flex flex-col justify-center">
+  class="bg-white fixed left-0 top-0 z-60 w-full h-full overflow-y-auto flex flex-col justify-center md:min-h-[600px]">
   <div class="w-full max-w-content mx-auto px-35 md:px-80">
     <div class="flex justify-between relative">
       {{ partial:menu/main/wrapper }}
       {{ partial:menu/meta/wrapper }}
       {{ partial:menu/language/wrapper }}
     </div>
-    <div class="mt-100" data-menu-animation="appear">
+    <div class="mt-100 wide-narrow:mt-20" data-menu-animation="appear">
       {{ partial:components/misc/social-media-channels class="justify-center" }}
     </div>
-    <div class="flex justify-center mt-35 xl:mt-60" data-menu-animation="appear">
+    <div class="flex justify-center mt-35 xl:mt-60 wide-narrow:mt-20" data-menu-animation="appear">
       {{ partial:components/buttons/contact title="{{ "Offerte anfragen" | trans }}" url="{{ link id="2d95afd4-22c4-431d-aea3-3d08d2abcd38" }}" }}
     </div>
   </div>
