@@ -3,7 +3,7 @@
   data-section-theme="dark" 
   {{ is_fullpage ? 'data-anchor-target="{{ anchor }}"' : '' }} 
   {{ is_fullpage ? 'data-section-snap' : '' }} 
-  class="relative {{ is_fullpage ? 'snap-center snap-always min-h-screen' : 'min-h-screen' }}">
+  class="relative {{ is_fullpage ? 'snap-center snap-normal min-h-screen' : 'min-h-screen' }}">
   {{ partial:components/misc/anchor anchor="{{ anchor }}" }}
   {{ partial:components/media/video/fullscreen/wrapper }}
   {{ partial:fieldsets/teaser/video/content }}
