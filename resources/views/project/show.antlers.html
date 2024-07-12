@@ -94,7 +94,7 @@
       data-section-theme="light" 
       {{ is_fullpage ? 'data-section-snap' : '' }} 
       class="{{ is_fullpage ? 'snap-center snap-always "min-h-screen flex flex-col justify-center' : 'py-30 xl:py-60' }}">
-      {{ partial:layout/blocks/inner }}
+      {{ partial:layout/blocks/inner class="min-h-screen flex flex-col justify-center" }}
         {{ partial:components/media/iframe/container }}
       {{ /partial:layout/blocks/inner }}
     </section>
