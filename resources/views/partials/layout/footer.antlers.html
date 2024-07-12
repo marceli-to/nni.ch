@@ -33,24 +33,25 @@
         </div>
       </div>
       <div class="col-span-4 lg:col-span-3 lg:order-3">
-        {{# {{ partial:components/misc/social-media-channels class="hidden lg:flex justify-end" }} #}}
         {{ partial:menu/footer/wrapper }}
       </div>
     </div>
 
-    <div class="grid grid-cols-12 gap-x-20 mt-40">
-      <div class="col-span-8 flex flex-col justify-between text-mini xl:text-xs font-meta-medium">
-        {{ partial:components/misc/social-media-channels class="flex lg:hidden" }}
-        <span class="mt-15 lg:mt-0">
+    <div class="flex justify-between items-start md:items-center md:grid md:grid-cols-12 md:gap-x-20 mt-40 0">
+      <div class="md:col-span-4 flex flex-col text-mini xl:text-xs font-meta-medium">
           &copy; {{ current_date | format('Y') }} {{ config:app:name }}
-        </span>
+          <div class="md:hidden mt-5">
+            {{ partial:menu/privacy/wrapper }}
+          </div>
+      </div>
+      <div class="md:col-span-4">
+        {{ partial:components/misc/social-media-channels class="flex justify-center" }}
+      </div>
+      <div class="hidden md:col-span-4 md:flex md:justify-end text-mini xl:text-xs font-meta-medium leading-none">
         {{ partial:menu/privacy/wrapper }}
       </div>
-      <div class="hidden lg:block col-span-4">
-        {{ partial:components/misc/social-media-channels class="hidden lg:flex justify-end items-center lg:mt-3" }}
-      </div>
-
     </div>
+    
   {{ /partial:layout/blocks/inner }}
 </footer>
 {{ partial:components/gdpr }}
