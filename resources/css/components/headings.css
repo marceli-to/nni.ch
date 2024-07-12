@@ -7,7 +7,7 @@
 }
 
 .contact h1 strong {
-  @apply block mt-5 md:mt-0 md:inline
+  @apply mt-5 md:mt-0
 }
 
 h3 {

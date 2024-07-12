@@ -28,19 +28,20 @@
         {{ partial:components/filters/team }}
       {{ /partial:components/filters/wrapper }}
     {{ /if }}
+    <a 
+      href="javascript:;" 
+      x-on:click="menu = ! menu"
+      x-on:mouseenter="quickMenu = true"
+      title="{{ "Menü anzeigen" | trans }}"
+      :class="{ 'is-active': menu === true }"
+      class="group">
+      {{ partial:components/icons/burger class="w-28 xl:w-32 h-auto" }}
+    </a>
 
-    <div 
+    {{# <div 
       class="relative"
       x-on:mouseleave="quickMenu = false">
-      <a 
-        href="javascript:;" 
-        x-on:click="menu = ! menu"
-        x-on:mouseenter="quickMenu = true"
-        title="{{ "Menü anzeigen" | trans }}"
-        :class="{ 'is-active': menu === true }"
-        class="group">
-        {{ partial:components/icons/burger class="w-28 xl:w-32 h-auto" }}
-      </a>
+
       <nav
         x-cloak
         x-show="quickMenu && !menu"
@@ -51,7 +52,7 @@
           {{ /nav:main }}
         </ul>
       </nav>
-    </div>
+    </div> #}}
 
   {{ /partial:layout/blocks/inner }}
 
