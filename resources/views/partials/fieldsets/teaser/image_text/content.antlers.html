@@ -24,9 +24,11 @@
           data-animation-duration="fast"
           data-animation-delay="long">
           {{ cta_text }}
-          <div class="mt-15 md:mt-30 lg:mt-45">
-            {{ partial:components/buttons/contact title="{{ cta_button_text }}" url="{{ cta_link }}" }}
-          </div>
+          {{ if cta_link}}
+            <div class="mt-15 md:mt-30 lg:mt-45">
+              {{ partial:components/buttons/contact title="{{ cta_button_text }}" url="{{ cta_link }}" }}
+            </div>
+          {{ /if }}
         </div>
       </div>
     </div>
@@ -51,9 +53,11 @@
           data-animation-duration="fast"
           data-animation-delay="long">
           {{ cta_text }}
-          <div class="mt-15 md:mt-30 lg:mt-45">
-            {{ partial:components/buttons/contact title="{{ cta_button_text }}" url="{{ cta_link }}" }}
-          </div>
+          {{ if cta_link}}
+            <div class="mt-15 md:mt-30 lg:mt-45">
+              {{ partial:components/buttons/contact title="{{ cta_button_text }}" url="{{ cta_link }}" }}
+            </div>
+          {{ /if }}
         </div>
       </div>
     </div>
