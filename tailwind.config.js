@@ -17,7 +17,7 @@ export default {
       screens: {
         'xs': '414px',
         '3xl': '1920px',
-        'wide-narrow': {'raw': '(min-aspect-ratio: 16/8)'},
+        'wide-narrow': {'raw': '(min-aspect-ratio: 16/6)'},
       },
 
       maxWidth: {

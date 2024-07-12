@@ -1,19 +1,23 @@
-<article 
-  class="grid grid-cols-6 lg:grid-cols-12 gap-x-20 lg:gap-x-30 xl:gap-x-50 {{ class }}" 
-  data-slide="{{ title | slugify }}" 
-  data-animation="slide">
-  <div class="col-span-5 col-start-2 lg:col-start-1 lg:col-span-10 md:order-2 mb-15 md:mb-30 lg:mb-60">
-    <h2 class="uppercase font-meta-medium text-xl md:text-5xl lg:text-8xl leading-none tracking-widest">
-      {{ title }}
-    </h2>
-  </div>
-  <div class="col-span-full lg:col-span-7 lg:col-start-6 md:order-3" data-slide-text>
-    {{ text }}
-    <div class="hidden lg:block lg:mt-45">
+<div class="flex flex-col justify-center {{ class }}">
+  <article class="grid grid-cols-6 lg:grid-cols-12 gap-x-20 lg:gap-x-30 xl:gap-x-50">
+    <div class="col-span-5 col-start-2 lg:col-start-1 lg:col-span-10 md:order-2 mb-15 md:mb-30 lg:mb-60">
+      <h2 class="uppercase font-meta-medium text-xl md:text-5xl lg:text-8xl leading-none tracking-widest">
+        {{ title }}
+      </h2>
+    </div>
+    <div class="col-span-full lg:col-span-7 lg:col-start-6 md:order-3" data-slide-text>
+      {{ text }}
+      <div class="hidden lg:block lg:mt-45">
+        {{ partial:components/buttons/more title="{{ cta_button_text }}" url="{{ cta_link }}" }}
+      </div>
+    </div>
+    <div class="col-span-full md:col-span-5 md:col-start-2 md:order-4 mt-15 md:mt-30 lg:hidden">
       {{ partial:components/buttons/more title="{{ cta_button_text }}" url="{{ cta_link }}" }}
     </div>
-  </div>
-  <div class="col-span-full md:col-span-5 md:col-start-2 md:order-4 mt-15 md:mt-30 lg:hidden">
-    {{ partial:components/buttons/more title="{{ cta_button_text }}" url="{{ cta_link }}" }}
-  </div>
-</article>
+  </article>
+</div>
+
+{{# <article 
+  class="grid grid-cols-6 lg:grid-cols-12 gap-x-20 lg:gap-x-30 xl:gap-x-50 {{ class }}" 
+  data-slide="{{ title | slugify }}" 
+  data-animation="slide"> #}}
