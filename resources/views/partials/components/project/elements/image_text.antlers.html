@@ -33,7 +33,12 @@
         class="{{ image:width > image:height ? 'md:col-span-full lg:col-span-8 md:mb-30 lg:mb-0' : 'md:col-span-7 xl:col-span-6' }} md:order-2 mb-30 md:mb-0"
         data-animation="fadeIn"
         data-animation-duration="fast">
-        {{ partial:components/media/image/image class="w-full h-auto" }}
+        {{ if image }}
+          {{ partial:components/media/image/image class="w-full h-auto" }}
+        {{ /if }}
+        {{ if image_carousel }}
+          {{ partial:components/media/image/image_carousel class="w-full h-auto" }}
+        {{ /if }}
       </div>
       <div 
         class="md:flex md:flex-col md:justify-center md:order-1 {{ image:width > image:height ? 'md:col-span-full lg:col-span-4' : 'md:col-span-5 xl:col-span-6' }}"
