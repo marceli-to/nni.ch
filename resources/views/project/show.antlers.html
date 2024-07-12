@@ -39,7 +39,11 @@
   {{ /if }}
 
   {{ if type == 'image_slideshow' }}
-    <section data-section data-section-theme="light" class="relative {{ is_fullpage ? 'snap-center snap-always min-h-screen overflow-x-hidden' : 'my-30 xl:my-60 min-h-screen' }}">
+    <section 
+      data-section 
+      data-section-theme="light" 
+      {{ is_fullpage ? 'data-section-snap' : '' }} 
+      class="relative {{ is_fullpage ? 'snap-center snap-always min-h-screen overflow-x-hidden' : 'my-30 xl:my-60 min-h-screen' }}">
       {{ partial:components/project/elements/slideshow }}
     </section>
   {{ /if }}

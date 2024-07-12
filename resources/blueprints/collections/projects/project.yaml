@@ -199,7 +199,7 @@ tabs:
               type: replicator
               display: Elements
               icon: replicator
-              localizable: false
+              localizable: true
               listable: hidden
               instructions_position: above
               visibility: visible
