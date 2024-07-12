@@ -1,5 +1,5 @@
 <body 
-  class="relative font-meta-light text-xxs md:text-sm xl:text-lg leading-[1.5] antialiased min-h-screen {{ is_homepage ? 'is-homepage' : '' }} {{ is_fullpage ? 'h-screen snap-y snap-proximity overflow-y-auto scroll-smooth' : ''}} {{ class }}"
+  class="relative font-meta-light text-xxs md:text-sm xl:text-lg leading-[1.5] antialiased min-h-screen {{ is_homepage ? 'is-homepage' : '' }} {{ is_fullpage ? 'h-screen snap-y snap-mandatory sm:snap-proximity overflow-y-auto scroll-smooth' : ''}} {{ class }}"
   x-data="{ menu: false, quickMenu: false }">
   {{ slot:header }}
   {{ slot }}
