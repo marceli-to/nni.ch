@@ -9,13 +9,13 @@
   x-transition:leave-end="opacity-0 -translate-y-full"
   :class="{ 'is-active': menu }"
   class="bg-white fixed left-0 top-0 z-60 w-full h-full overflow-y-auto flex flex-col justify-center min-h-[480px] sm:min-h-[700px]">
-  <div class="w-full max-w-content mx-auto px-35 md:px-80">
+  <div class="w-full max-w-content mx-auto pt-40 sm:pt-0 px-35 md:px-80">
     <div class="flex justify-between relative">
       {{ partial:menu/main/wrapper }}
       {{ partial:menu/meta/wrapper }}
       {{ partial:menu/language/wrapper }}
     </div>
-    <div class="mt-100 wide-narrow:mt-20" data-menu-animation="appear">
+    <div class="mt-60 sm:mt-100 wide-narrow:mt-20" data-menu-animation="appear">
       {{ partial:components/misc/social-media-channels class="justify-center" }}
     </div>
     <div class="flex justify-center mt-35 xl:mt-60 wide-narrow:mt-20" data-menu-animation="appear">
