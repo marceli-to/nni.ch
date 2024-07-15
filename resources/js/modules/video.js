@@ -1,7 +1,6 @@
 (function () {
 
   const selectors = {
-    video: '[data-video]',
     lazy: '[data-video-lazy]',
   };
 

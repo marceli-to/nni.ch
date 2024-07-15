@@ -10,8 +10,7 @@
     muted 
     autoplay 
     playsinline 
-    loop
-    data-video>
+    loop>
     <source src="{{ video_landscape }}" type="video/mp4">
   </video>
 {{ else }}
@@ -23,7 +22,6 @@
     autoplay 
     playsinline 
     loop
-    data-video
     data-video-lazy
     data-video-source='{"low": "{{ video_portrait }}", "high": "{{ video_landscape }}"}'>
     <source data-src="{{ video_landscape }}" type="video/mp4">

@@ -1,6 +1,12 @@
 {{ if teaser_video }}
   <div class="h-full relative">
-    <video poster="" preload="none" muted autoplay loop data-video data-autoplay class="block w-full h-full object-cover {{ class ?? '' }}">
+    <video 
+      poster="" 
+      preload="none" 
+      muted 
+      autoplay 
+      playsinline 
+      loop class="block w-full h-full object-cover {{ class ?? '' }}">
       <source src="{{ teaser_video }}" type="video/mp4">
     </video>
     <span class="absolute bottom-0 left-0 z-50 w-auto h-auto flex flex-col justify-end items-start text-white px-30 pb-30 xl:px-60 xl:pb-60 group-hover:opacity-0 transition-opacity duration-500">
