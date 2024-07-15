@@ -89,3 +89,23 @@ fields:
       visibility: visible
       replicator_preview: true
       hide_display: false
+  -
+    handle: page_class
+    field:
+      options:
+        contact-thank-you: 'Contact (Thank you)'
+      taggable: false
+      push_tags: false
+      multiple: false
+      clearable: false
+      searchable: true
+      cast_booleans: false
+      type: select
+      display: 'Page class'
+      icon: select
+      localizable: false
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false

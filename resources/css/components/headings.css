@@ -1,5 +1,10 @@
-.posts h1 {
+.posts h1,
+.contact-thank-you h1 {
   @apply text-4xl xl:text-7xl
+}
+
+.contact-thank-you h1 {
+  @apply text-4xl xl:text-7xl leading-9 mb-30 xl:mb-45 font-meta-medium
 }
 
 .contact h1 {
