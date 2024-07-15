@@ -1,4 +1,4 @@
-{{ form:contact_form class="" }}
+{{ form:contact_form class="contact-form" }}
 
   {{ if errors }}
     {{ partial:components/forms/elements/errors }}
@@ -12,7 +12,6 @@
     {{ /if }}
   {{ /if }}
 
-  <input type="text" name="webs1te" class="hidden" />
   <div class="space-y-30 xl:space-y-45">
     <div class="">
       <input type="text" name="name" value="" placeholder="{{ "Name" | trans }}*">
