@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0feeb77d426eed74a244c18e9acc4ad5",
+    "content-hash": "86881e6345795e270dbac22e52d5e6fd",
     "packages": [
         {
             "name": "ajthinking/archetype",
@@ -5025,6 +5025,54 @@
             "time": "2023-11-08T05:53:05+00:00"
         },
         {
+            "name": "reachweb/locale-lander",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reachweb/locale-lander.git",
+                "reference": "9052e2f78228b4fb1200791fd258b6660224fc89"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reachweb/locale-lander/zipball/9052e2f78228b4fb1200791fd258b6660224fc89",
+                "reference": "9052e2f78228b4fb1200791fd258b6660224fc89",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1 || ^8.2",
+                "statamic/cms": "^4.0.0",
+                "symfony/intl": "^6.4 || ^7.0"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.13",
+                "orchestra/testbench": "^8.19",
+                "phpunit/phpunit": "^10.5"
+            },
+            "type": "library",
+            "extra": {
+                "statamic": {
+                    "name": "Locale Lander",
+                    "description": "Land your users at the right site based on their locale!"
+                },
+                "laravel": {
+                    "providers": [
+                        "Reach\\LocaleLander\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Reach\\LocaleLander\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "support": {
+                "issues": "https://github.com/reachweb/locale-lander/issues",
+                "source": "https://github.com/reachweb/locale-lander/tree/v2.0.0"
+            },
+            "time": "2024-02-11T17:39:28+00:00"
+        },
+        {
             "name": "react/promise",
             "version": "v3.1.0",
             "source": {
@@ -6740,6 +6788,89 @@
                 }
             ],
             "time": "2023-12-01T17:02:02+00:00"
+        },
+        {
+            "name": "symfony/intl",
+            "version": "v7.0.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/intl.git",
+                "reference": "4e4ffbfa65fae8bebb8e53712b3e493c85204612"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/intl/zipball/4e4ffbfa65fae8bebb8e53712b3e493c85204612",
+                "reference": "4e4ffbfa65fae8bebb8e53712b3e493c85204612",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2"
+            },
+            "require-dev": {
+                "symfony/filesystem": "^6.4|^7.0",
+                "symfony/finder": "^6.4|^7.0",
+                "symfony/var-exporter": "^6.4|^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Intl\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/",
+                    "/Resources/data/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bernhard Schussek",
+                    "email": "bschussek@gmail.com"
+                },
+                {
+                    "name": "Eriksen Costa",
+                    "email": "eriksen.costa@infranology.com.br"
+                },
+                {
+                    "name": "Igor Wiedler",
+                    "email": "igor@wiedler.ch"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Provides access to the localization data of the ICU library",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "i18n",
+                "icu",
+                "internationalization",
+                "intl",
+                "l10n",
+                "localization"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/intl/tree/v7.0.8"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2024-05-31T14:55:39+00:00"
         },
         {
             "name": "symfony/lock",
