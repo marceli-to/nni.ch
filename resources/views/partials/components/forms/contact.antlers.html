@@ -5,9 +5,11 @@
   {{ /if }}
 
   {{ if success }}
-    {{ partial:components/forms/elements/success }}
-      Vielen Dank für Ihre Anfrage.
-    {{ /partial:components/forms/elements/success }}
+    {{ if site:locale == 'de' }} 
+      {{ redirect to="/kontakt/vielen-dank" }}
+    {{ else }}
+      {{ redirect to="/en/contact/thank-you" }}
+    {{ /if }}
   {{ /if }}
 
   <input type="text" name="webs1te" class="hidden" />
@@ -24,8 +26,13 @@
     <div class="mt-15 xl:mt-30">
       <textarea name="message" rows="5" placeholder="{{ "Ihre Nachricht" | trans }}"></textarea>
     </div>
+
+    <div class="mt-15 xl:mt-30">
+      {{ recaptcha:checkbox }}
+    </div>
         
     <div class="mt-30 flex justify-end">
+      
       <button class="uppercase font-meta-medium text-xs md:text-md flex items-center leading-none group gap-x-10 xl:gap-x-15">
         {{ partial:components/icons/arrow-right-short class="w-16 xl:w-20 h-auto group-hover:translate-x-4 transition-transform" }}
         <span class="group-hover:translate-x-8 transition-transform">Senden</span>
@@ -33,6 +40,5 @@
     </div>
 
   </div>
-
 
 {{ /form:contact_form }}

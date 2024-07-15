@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eb86af686cc935c1e167fb2dcef51488",
+    "content-hash": "0feeb77d426eed74a244c18e9acc4ad5",
     "packages": [
         {
             "name": "ajthinking/archetype",
@@ -68,6 +68,53 @@
                 "source": "https://github.com/ajthinking/archetype/tree/v1.1.5"
             },
             "time": "2022-08-24T05:52:35+00:00"
+        },
+        {
+            "name": "anakadote/statamic-recaptcha",
+            "version": "1.0.14",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/anakadote/statamic-recaptcha.git",
+                "reference": "7c02186b2338eb51be8550d128712848be8bf874"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/anakadote/statamic-recaptcha/zipball/7c02186b2338eb51be8550d128712848be8bf874",
+                "reference": "7c02186b2338eb51be8550d128712848be8bf874",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "statamic": {
+                    "name": "Statamic reCAPTCHA (v3 and v2)",
+                    "description": "A reCAPTCHA v3 and v2 addon."
+                },
+                "laravel": {
+                    "providers": [
+                        "Anakadote\\StatamicRecaptcha\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Anakadote\\StatamicRecaptcha\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Collins",
+                    "homepage": "https://endif.io"
+                }
+            ],
+            "support": {
+                "issues": "https://github.com/anakadote/statamic-recaptcha/issues",
+                "source": "https://github.com/anakadote/statamic-recaptcha/tree/1.0.14"
+            },
+            "time": "2024-02-13T17:14:12+00:00"
         },
         {
             "name": "bordoni/phpass",
