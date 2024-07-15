@@ -6,27 +6,13 @@ body {
   color: #333;
 }
 
-table {
-  width: 100%;
-}
-
-table td {
-  padding: 5px 0;
-  vertical-align: top;
-}
-
-table td:first-of-type {
-  width: 200px;
-}
 </style>
 <div style="padding: 10px 5px">
   <p>Folgende Daten wurden über das Kontaktformular übermittelt:</p>
-  <table cellpadding="0" cellspacing="0">
-    {{ fields }}
-    <tr>
-      <td>{{ display }}</td>
-      <td>{{ value ?? '–' }}</td>
-    </tr>
-    {{ /fields }}
-  </table>
+  {{ fields }}
+    <p style="padding-bottom: 20px;">
+      <strong>{{ display }}</strong><br>
+      {{ value ?? '–' }}
+    </p>
+  {{ /fields }}
 </div>
