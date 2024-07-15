@@ -1,7 +1,8 @@
 <section 
   data-section 
   data-section-theme="light" 
-  {{ is_fullpage ? 'data-section-snap' : '' }} 
+  {{ is_fullpage ? 'data-section-snap' : '' }}
+  {{ is_fullpage ? 'data-anchor-target="{{ anchor }}"' : '' }}
   class="relative {{ is_fullpage ? 'snap-center snap-always min-h-screen flex flex-col justify-center' : 'py-90 xl:py-150' }}">
   {{ partial:components/misc/anchor anchor="{{ anchor }}" }}
   {{ partial:layout/blocks/inner class="{{ is_fullpage ? 'pt-90 pb-150 xs:py-90 lg:py-150' : '' }}" }}
