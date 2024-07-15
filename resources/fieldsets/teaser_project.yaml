@@ -19,6 +19,23 @@ fields:
     import: title
     prefix: teaser_project_
   -
+    handle: main_link
+    field:
+      type: link
+      display: 'Main link'
+      icon: link
+      instructions: 'Main link below the title. If empty, a link to the portfolio will be generated.'
+      localizable: true
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      collections:
+        - pages
+        - projects
+        - posts
+  -
     handle: items
     field:
       fullscreen: true

@@ -15,7 +15,11 @@
             {{ /partial:components/headings/h2 }}
           </div>
           <div data-animation="masonryCta">
-            {{ partial:components/buttons/more title="{{ "Zum Portfolio" | trans }}" url="{{ link id="6dc5a5ba-4450-45c6-9684-53b3a8bb4261" }}" }}
+            {{ if main_link }}
+              {{ partial:components/buttons/more title="{{ "Zum Portfolio" | trans }}" url="{{ main_link }}" }}
+            {{ else }}
+              {{ partial:components/buttons/more title="{{ "Zum Portfolio" | trans }}" url="{{ link id="6dc5a5ba-4450-45c6-9684-53b3a8bb4261" }}" }}
+            {{ /if }}
           </div>
         </div>
         {{ if items:tr_image }}
@@ -124,7 +128,11 @@
               {{ /partial:components/headings/h2 }}
             </div>
             <div data-animation="masonryCta">
-              {{ partial:components/buttons/more title="{{ "Zum Portfolio" | trans }}" url="{{ link id="6dc5a5ba-4450-45c6-9684-53b3a8bb4261" }}" }}
+              {{ if main_link }}
+                {{ partial:components/buttons/more title="{{ "Zum Portfolio" | trans }}" url="{{ main_link }}" }}
+              {{ else }}
+                {{ partial:components/buttons/more title="{{ "Zum Portfolio" | trans }}" url="{{ link id="6dc5a5ba-4450-45c6-9684-53b3a8bb4261" }}" }}
+              {{ /if }}
             </div>
           </div>
           {{ if items:tl_image }}
@@ -168,7 +176,11 @@
             {{ /partial:components/headings/h2 }}
           </div>
           <div data-animation="masonryCta">
-            {{ partial:components/buttons/more title="{{ "Zum Portfolio" | trans }}" url="{{ link id="6dc5a5ba-4450-45c6-9684-53b3a8bb4261" }}" }}
+            {{ if main_link }}
+              {{ partial:components/buttons/more title="{{ "Zum Portfolio" | trans }}" url="{{ main_link }}" }}
+            {{ else }}
+              {{ partial:components/buttons/more title="{{ "Zum Portfolio" | trans }}" url="{{ link id="6dc5a5ba-4450-45c6-9684-53b3a8bb4261" }}" }}
+            {{ /if }}
           </div>
         </div>
         {{ if items:tr_image }}
@@ -242,7 +254,11 @@
               {{ /partial:components/headings/h2 }}
             </div>
             <div data-animation="masonryCta">
-              {{ partial:components/buttons/more title="{{ "Zum Portfolio" | trans }}" url="{{ link id="6dc5a5ba-4450-45c6-9684-53b3a8bb4261" }}" }}
+              {{ if main_link }}
+                {{ partial:components/buttons/more title="{{ "Zum Portfolio" | trans }}" url="{{ main_link }}" }}
+              {{ else }}
+                {{ partial:components/buttons/more title="{{ "Zum Portfolio" | trans }}" url="{{ link id="6dc5a5ba-4450-45c6-9684-53b3a8bb4261" }}" }}
+              {{ /if }}
             </div>
           </div>
           {{ if items:tl_image }}
