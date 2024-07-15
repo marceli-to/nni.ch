@@ -1,4 +1,4 @@
-{{# <body 
+<body 
   class="relative font-meta-light text-xxs md:text-sm xl:text-lg leading-[1.5] antialiased min-h-screen {{ is_homepage ? 'is-homepage' : '' }} {{ is_fullpage ? 'h-screen sm:snap-y sm:snap-mandatory overflow-y-auto scroll-smooth' : '' }} {{ class }}"
   x-data="{ menu: false, quickMenu: false }">
   <noscript>
@@ -7,9 +7,9 @@
   {{ slot:header }}
   {{ slot }}
   {{ slot:footer }}
-</body> #}}
+</body>
 
-<body 
+{{# <body 
   class="relative font-meta-light text-xxs md:text-sm xl:text-lg leading-[1.5] antialiased min-h-screen {{ is_homepage ? 'is-homepage' : '' }} {{ is_fullpage ? 'h-screen snap-y snap-proximity overflow-y-auto scroll-smooth' : '' }} {{ class }} {{ page_class}}"
   x-data="{ menu: false, quickMenu: false }">
   <noscript>
@@ -18,4 +18,4 @@
   {{ slot:header }}
   {{ slot }}
   {{ slot:footer }}
-</body>
+</body> #}}
