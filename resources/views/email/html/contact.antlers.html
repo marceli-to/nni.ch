@@ -12,7 +12,11 @@ body {
   {{ fields }}
     <p style="padding-bottom: 20px;">
       <strong>{{ display }}</strong><br>
-      {{ value ?? '–' }}
+      {{ if value }}
+        {{ value | nl2br }}
+      {{ else }}
+        '–'
+      {{ /if }}
     </p>
   {{ /fields }}
 </div>
