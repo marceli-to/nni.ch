@@ -1,9 +1,7 @@
 <body 
   class="relative font-meta-light text-xxs md:text-sm xl:text-lg leading-[1.5] antialiased min-h-screen {{ is_homepage ? 'is-homepage' : '' }} {{ is_fullpage ? 'h-screen sm:snap-y sm:snap-mandatory overflow-y-auto scroll-smooth' : '' }} {{ class }}"
   x-data="{ menu: false, quickMenu: false }">
-  <noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MTN383N" height="0" width="0" style="display:none;visibility:hidden"></iframe>
-  </noscript>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MTN383N" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   {{ slot:header }}
   {{ slot }}
   {{ slot:footer }}
