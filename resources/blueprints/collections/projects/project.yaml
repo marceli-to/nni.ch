@@ -163,6 +163,13 @@ tabs:
                       fields:
                         -
                           import: image_slideshow
+                    image_comparison:
+                      display: 'Image Comparison'
+                      instructions: null
+                      icon: media-image-picture-gallery
+                      fields:
+                        -
+                          import: image_comparison
                     image_text:
                       display: 'Image - Text'
                       instructions: 'Add an image/text block.'

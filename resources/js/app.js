@@ -42,12 +42,12 @@ import './modules/swiper/images.js';
 
 import './modules/touch.js';
 
-// import './modules/fullpage.js';
-
 import './modules/team.js';
 
 import './modules/carousel.js';
 
+import './modules/comparison.js';
+
 import './modules/slides.js';
 
-import './modules/gdpr.js';
+// import './gdpr.js';

@@ -1,6 +1,6 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-fe183eb0.css",
+    "file": "assets/app-20c5eb1f.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -44,9 +44,14 @@
     "css": [
       "assets/app-e2ee8f87.css"
     ],
-    "file": "assets/app-946b56d7.js",
+    "file": "assets/app-ebcb4c40.js",
     "isEntry": true,
     "src": "resources/js/app.js"
+  },
+  "resources/js/gdpr.js": {
+    "file": "assets/gdpr-a8f9599d.js",
+    "isEntry": true,
+    "src": "resources/js/gdpr.js"
   },
   "resources/js/map.js": {
     "file": "assets/map-5de5b791.js",
