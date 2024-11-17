@@ -16,7 +16,6 @@
   };
 
   const accept = () => {
-    console.log('accept');
     localStorage.setItem('global_consent', 'true');
     document.querySelector(selectors.btn).remove();
     document.querySelector(selectors.banner).remove();
