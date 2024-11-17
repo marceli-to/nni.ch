@@ -6,6 +6,12 @@
 
   let isDown = false;
 
+  // Exit if required elements don't exist
+  if (!slider || !beforeImage || !afterImage || !container) {
+    console.warn('Comparison slider: Required elements not found');
+    return;
+  }
+
   function getPosition(event) {
     return {
       x: event.type.includes('mouse') ? event.pageX : event.touches[0].clientX,
