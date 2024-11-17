@@ -54,12 +54,12 @@
     
   {{ /partial:layout/blocks/inner }}
 </footer>
-{{# {{ partial:components/gdpr }} #}}
+{{ partial:components/gdpr }}
 {{ vite src="resources/js/app.js" }}
 {{ if is_fullpage }}
   {{ vite src="resources/js/snap.js" }}
 {{ /if }}
-{{# {{ vite src="resources/js/gdpr.js" }} #}}
+{{ vite src="resources/js/gdpr.js" }}
 
 {{# <script async src="https://www.googletagmanager.com/gtag/js?id=UA-34204366-1"></script>
 <script>

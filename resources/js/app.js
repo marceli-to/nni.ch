@@ -49,5 +49,3 @@ import './modules/carousel.js';
 import './modules/comparison.js';
 
 import './modules/slides.js';
-
-// import './gdpr.js';
