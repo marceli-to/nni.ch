@@ -1,7 +1,6 @@
 {{ partial:layout/blocks/inner }}
   <div 
-    class="relative w-full h-auto overflow-hidden select-none min-h-[300px] lg:h-[calc(100vh_-_300px)]"
-    style="aspect-ratio: {{ image_before:width }} / {{ image_before:height }}" 
+    class="relative w-full overflow-hidden select-none"
     data-comparison-slider-container
     data-animation="fadeIn"
     data-animation-duration="slow">
@@ -20,7 +19,7 @@
         title="{{ image_before:alt }}" 
         height="{{ image_before:height }}" 
         width="{{ image_before:width }}"
-        class="block absolute top-0 left-0 w-full h-full object-cover"
+        class="block w-full h-auto object-cover relative z-10"
         data-comparison-before-image>
     </picture>
 
@@ -38,15 +37,15 @@
         title="{{ image_after:alt }}" 
         height="{{ image_after:height }}" 
         width="{{ image_after:width }}"
-        class="block absolute top-0 left-0 w-full h-full object-cover"
+        class="block w-full h-auto object-cover absolute top-0 left-0 z-20"
         style="clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%)"
         data-comparison-after-image>
     </picture>
 
-    <div class="absolute w-[2px] h-full bg-black left-1/2 -translate-x-1/2 cursor-ew-resize " data-comparison-slider>
-      <div class="absolute w-38 h-38 rounded-full bg-black top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize flex items-center justify-center gap-x-6">
-        {{ partial:components/icons/chevron-left class="text-white w-9 h-auto" }}
-        {{ partial:components/icons/chevron-right class="text-white w-9 h-auto" }}
+    <div class="absolute w-[2px] h-full bg-black left-1/2 -translate-x-1/2 cursor-ew-resize top-0 z-40" data-comparison-slider>
+      <div class="absolute size-30 lg:size-38 rounded-full bg-black top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize flex items-center justify-center gap-x-4 lg:gap-x-6">
+        {{ partial:components/icons/chevron-left class="text-white w-7 lg:w-9 h-auto" }}
+        {{ partial:components/icons/chevron-right class="text-white w-7 lg:w-9 h-auto" }}
       </div>
     </div>
   </div>
