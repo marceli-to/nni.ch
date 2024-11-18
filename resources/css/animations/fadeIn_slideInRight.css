@@ -45,7 +45,7 @@
 
 .is-active [data-animation="fadeIn_slideInRight"][data-animation-delay="long"],
 .is-active [data-animation-lg="fadeIn_slideInRight"][data-animation-delay="long"] {
-  animation-delay: .25s;
+  animation-delay: .1s;
 }
 
 /* visited state */
