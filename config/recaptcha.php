@@ -10,7 +10,7 @@ return [
     | Set your version of reCAPTCHA here, either "3" or "2".
     |
     */
-    'recaptcha_version' => 2,
+    'recaptcha_version' => 3,
 
     /*
     |--------------------------------------------------------------------------
