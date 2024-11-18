@@ -1,6 +1,8 @@
-{{ partial:layout/blocks/inner class="h-[calc(100vh_-_300px)] bg-red-200" }}
+<div 
+  class="max-w-site mx-auto px-35 sm:px-80 xl:px-100 lg:h-[calc(100vh_-_300px)] bg-red-200"
+  style="aspect-ratio: {{ image_before:width }} / {{ image_before:height }}">
   <div 
-    class="relative  w-full overflow-hidden select-none h-[calc(100vh_-_300px)]"
+    class="relative  w-full overflow-hidden select-none lg:h-[calc(100vh_-_300px)]"
     style="aspect-ratio: {{ image_before:width }} / {{ image_before:height }}" 
     data-comparison-slider-container
     data-animation="fadeIn"
@@ -50,4 +52,4 @@
       </div>
     </div>
   </div>
-{{ /partial:layout/blocks/inner }}
+</div>
