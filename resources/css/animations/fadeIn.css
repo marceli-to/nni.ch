@@ -23,7 +23,7 @@
 .is-playing [data-video-animation="fadeIn"] {
   animation-fill-mode: forwards;
   animation-name: fadeIn;
-  animation-delay: .75s;
+  animation-delay: .25s;
 }
 
 .is-active [data-animation="fadeIn"][data-animation-duration="slow"],
