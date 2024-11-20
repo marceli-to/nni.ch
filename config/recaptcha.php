@@ -28,7 +28,7 @@ return [
         // Statamic reCAPTCHA for v3 also runs on page load, and if it is determined
         // that the user is likely a bot, all forms on the page will be removed.
         // You can disable that behavior here by setting the below value to `false`.
-        'verify_on_page_load' => true,
+        'verify_on_page_load' => false,
     ],
 
     /*
