@@ -54,3 +54,12 @@ Route::statamic('/portfolio/kategorie/{category?}', 'project.index', [
   'title' => 'Portfolio',
 ]);
 
+Route::statamic('/en/portfolio/tag/{tag?}', 'project.index', [
+  'layout' => 'layout.default',
+  'title' => 'Portfolio',
+]); 
+Route::statamic('/portfolio/tag/{tag?}', 'project.index', [
+  'layout' => 'layout.default',
+  'title' => 'Portfolio',
+]);
+
