@@ -5,7 +5,7 @@ if (window.recaptchaV3) {
     window.recaptchaV3.siteKey == 'undefined' ||
     window.recaptchaV3.siteKey == ''
   ) {
-    console.log('A RECAPTCHA_V3_SITE_KEY has not been set in .env')
+    console.warn('A RECAPTCHA_V3_SITE_KEY has not been set in .env')
   }
 
   // reCAPTCHA v3
@@ -49,7 +49,7 @@ if (window.recaptchaV3) {
                   errorMessage = document.createElement('div')
                   errorMessage.className = 'alert alert-danger p-2 rounded bg-red-500'
                   errorMessage.setAttribute('role', 'alert')
-                  errorMessage.innerHTML = error.response.data.error || 'Sorry, but you look like a robot.'
+                  errorMessage.innerHTML = error.response?.data?.error || 'Sorry, but you look like a robot.'
 
                   forms[i].parentNode.replaceChild(errorMessage, forms[i])
                 }
