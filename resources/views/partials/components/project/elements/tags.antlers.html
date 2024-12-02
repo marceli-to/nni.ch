@@ -5,6 +5,11 @@
   <div>
     {{ tags }}
       <a 
+        {{ if site:locale == 'de' }} 
+          href="/portfolio/tag/{{ slug }}" 
+        {{ else }} 
+          href="/en/portfolio/tag/{{ slug }}" 
+        {{ /if }}
         href="{{ url }}" 
         title="{{ title }}"
         class="inline-block mr-2 md:mr-5 last-of-type:mr-0 underline decoration-1 underline-offset-4 xl:underline-offset-8 hover:no-underline">
