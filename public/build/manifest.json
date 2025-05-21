@@ -1,6 +1,6 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-f9b3cc38.css",
+    "file": "assets/app-909f2adc.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -58,9 +58,9 @@
     "isEntry": true,
     "src": "resources/js/map.js"
   },
-  "resources/js/snap.js": {
-    "file": "assets/snap-d133799c.js",
+  "resources/js/observe.js": {
+    "file": "assets/observe-e2e0d529.js",
     "isEntry": true,
-    "src": "resources/js/snap.js"
+    "src": "resources/js/observe.js"
   }
 }

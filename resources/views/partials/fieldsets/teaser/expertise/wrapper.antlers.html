@@ -1,13 +1,11 @@
 <div 
   data-section="expertise" 
-  {{ is_fullpage ? 'data-anchor-target="{{ anchor }}"' : '' }}> 
-  {{ partial:components/misc/anchor anchor="{{ anchor }}" }}
   {{ partial:layout/blocks/inner }}
     {{ teaser_items }}
       <div
-      {{ is_fullpage ? 'data-section-snap' : '' }} 
+      {{ is_fullpage ? 'data-section-observe' : '' }} 
       data-section-theme="light" 
-      class="relative {{ is_fullpage ? 'snap-center snap-always min-h-screen section-slides flex flex-col justify-center' : 'py-60 md:py-90 xl:py-120' }}">
+      class="relative {{ is_fullpage ? 'min-h-screen section-slides flex flex-col justify-center' : 'py-60 md:py-90 xl:py-120' }}">
         {{ partial:fieldsets/teaser/expertise/item class="scroll-item min-h-screen" }}
       </div>
     {{ /teaser_items }}

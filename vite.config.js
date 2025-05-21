@@ -15,7 +15,7 @@ export default defineConfig({
           input: [
               'resources/css/app.css',
               'resources/js/app.js',
-              'resources/js/snap.js',
+              'resources/js/observe.js',
               'resources/js/map.js',
               'resources/js/gdpr.js',
               // Control Panel assets.

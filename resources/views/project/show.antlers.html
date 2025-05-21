@@ -2,8 +2,8 @@
   <section 
     data-section 
     data-section-theme="light" 
-    {{ is_fullpage ? 'data-section-snap' : '' }} 
-    class="{{ is_fullpage ? 'snap-end snap-always min-h-screen' : 'pt-90 pb-30 md:pt-150 md:pb-60' }}">
+    {{ is_fullpage ? 'data-section-observe' : '' }} 
+    class="{{ is_fullpage ? 'min-h-screen' : 'pt-90 pb-30 md:pt-150 md:pb-60' }}">
     <div class="{{ is_fullpage ? 'pt-90 pb-150 md:pt-150 md:pb-60' : '' }}">
       {{ if feature_layout == 'landscape' }}
         {{ partial:components/project/layout/landscape }}
@@ -20,8 +20,8 @@
     <section 
       data-section 
       data-section-theme="light" 
-      {{ is_fullpage ? 'data-section-snap' : '' }} 
-      class="{{ is_fullpage ? 'snap-center snap-always min-h-screen flex flex-col justify-center' : 'py-30 md:py-60 xl:py-90' }}">
+      {{ is_fullpage ? 'data-section-observe' : '' }} 
+      class="{{ is_fullpage ? 'min-h-screen flex flex-col justify-center' : 'py-30 md:py-60 xl:py-90' }}">
       <div class="pt-90 pb-150 lg:py-150">
         {{ partial:components/project/elements/image_text }}
       </div>
@@ -31,9 +31,10 @@
   {{ if type == 'fullscreen_image' }}
     <section 
       data-section 
-      data-section-theme="dark" 
-      {{ is_fullpage ? 'data-section-snap' : '' }} 
-      class="relative {{ is_fullpage ? 'snap-center snap-always min-h-screen flex flex-col justify-center' : 'my-30 xl:my-60 min-h-screen' }}">
+      data-section-theme="dark"
+      data-section-snap 
+      {{ is_fullpage ? 'data-section-observe' : '' }} 
+      class="relative {{ is_fullpage ? 'min-h-screen flex flex-col justify-center' : 'my-30 xl:my-60 min-h-screen' }}">
       {{ partial:components/project/elements/fullscreen_image }}
     </section>
   {{ /if }}
@@ -42,8 +43,8 @@
     <section 
       data-section 
       data-section-theme="light" 
-      {{ is_fullpage ? 'data-section-snap' : '' }} 
-      class="relative {{ is_fullpage ? 'snap-center snap-always min-h-screen overflow-x-hidden flex flex-col justify-center' : 'my-30 xl:my-60 min-h-screen' }}">
+      {{ is_fullpage ? 'data-section-observe' : '' }} 
+      class="relative {{ is_fullpage ? 'min-h-screen overflow-x-hidden flex flex-col justify-center' : 'my-30 xl:my-60 min-h-screen' }}">
       {{ partial:components/project/elements/slideshow }}
     </section>
   {{ /if }}
@@ -52,8 +53,8 @@
     <section 
       data-section 
       data-section-theme="light" 
-      {{ is_fullpage ? 'data-section-snap' : '' }} 
-      class="relative {{ is_fullpage ? 'snap-center snap-always min-h-screen overflow-x-hidden flex flex-col justify-center' : 'my-30 xl:my-60 min-h-screen' }}">
+      {{ is_fullpage ? 'data-section-observe' : '' }} 
+      class="relative {{ is_fullpage ? 'min-h-screen overflow-x-hidden flex flex-col justify-center' : 'my-30 xl:my-60 min-h-screen' }}">
       {{ partial:components/project/elements/image_comparison }}
     </section>
   {{ /if }}
@@ -62,8 +63,8 @@
     <section 
       data-section 
       data-section-theme="light" 
-      {{ is_fullpage ? 'data-section-snap' : '' }} 
-      class="{{ is_fullpage ? 'snap-center snap-always min-h-screen flex flex-col justify-center' : 'py-30 xl:py-60' }}">
+      {{ is_fullpage ? 'data-section-observe' : '' }} 
+      class="{{ is_fullpage ? 'min-h-screen flex flex-col justify-center' : 'py-30 xl:py-60' }}">
       <div class="pt-90 pb-150 lg:py-150 w-full">
         {{ partial:components/project/elements/image }}
       </div>
@@ -76,8 +77,8 @@
       <section 
         data-section 
         data-section-theme="light" 
-        {{ is_fullpage ? 'data-section-snap' : '' }} 
-        class="{{ is_fullpage ? 'snap-center snap-always min-h-screen flex flex-col justify-center' : 'py-30 xl:py-60' }}">
+        {{ is_fullpage ? 'data-section-observe' : '' }} 
+        class="{{ is_fullpage ? 'min-h-screen flex flex-col justify-center' : 'py-30 xl:py-60' }}">
         {{ partial:layout/blocks/inner }}
           {{ partial:components/media/video/video }}
         {{ /partial:layout/blocks/inner }}
@@ -88,8 +89,8 @@
       <section 
         data-section 
         data-section-theme="light" 
-        {{ is_fullpage ? 'data-section-snap' : '' }} 
-        class="{{ is_fullpage ? 'snap-center snap-always min-h-screen flex flex-col justify-center' : 'py-30 xl:py-60' }}">
+        {{ is_fullpage ? 'data-section-observe' : '' }} 
+        class="{{ is_fullpage ? 'min-h-screen flex flex-col justify-center' : 'py-30 xl:py-60' }}">
         {{ partial:layout/blocks/inner class="min-h-screen flex flex-col justify-center" }}
           {{ partial:components/media/video/video }}
         {{ /partial:layout/blocks/inner }}
@@ -102,8 +103,8 @@
     <section 
       data-section 
       data-section-theme="light" 
-      {{ is_fullpage ? 'data-section-snap' : '' }} 
-      class="{{ is_fullpage ? 'snap-center snap-always "min-h-screen flex flex-col justify-center' : 'py-30 xl:py-60' }}">
+      {{ is_fullpage ? 'data-section-observe' : '' }} 
+      class="{{ is_fullpage ? '"min-h-screen flex flex-col justify-center' : 'py-30 xl:py-60' }}">
       {{ partial:layout/blocks/inner class="min-h-screen flex flex-col justify-center" }}
         {{ partial:components/media/iframe/container }}
       {{ /partial:layout/blocks/inner }}

@@ -1,4 +1,4 @@
-<footer class="bg-white {{ is_fullpage ? 'snap-center snap-always pb-80' : 'py-80 xl:pt-240' }}">
+<footer class="bg-white {{ is_fullpage ? 'pb-80' : 'py-80 xl:pt-240' }}">
   {{ partial:layout/blocks/inner }}
     <div class="grid grid-cols-12 gap-x-20">
       <div class="col-span-12 lg:col-span-6 lg:order-2 mb-60 lg:mb-0 flex flex-col justify-center">
@@ -55,7 +55,7 @@
 {{ partial:components/gdpr }}
 {{ vite src="resources/js/app.js" }}
 {{ if is_fullpage }}
-  {{ vite src="resources/js/snap.js" }}
+  {{ vite src="resources/js/observe.js" }}
 {{ /if }}
 {{ vite src="resources/js/gdpr.js" }}
 <script>

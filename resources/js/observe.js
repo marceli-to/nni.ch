@@ -1,16 +1,16 @@
 (function () {
   const selectors = {
-    section: '[data-section-snap]',
-    sectionIntro: '[data-section-snap-intro]',
+    sectionObserve: '[data-section-observe]',
+    sectionSnap: '[data-section-snap]',
+    sectionIntro: '[data-section-observe-intro]',
     logoByline: '[data-logo-byline]',
     header: '#header',
     video: 'video',
     anchor: '[data-anchor]',
-    anchorTarget: '[data-anchor-target]',
   };
 
   let currentSection = null;
-  const sections = document.querySelectorAll(selectors.section);
+  const sections = document.querySelectorAll(selectors.sectionObserve);
   const header = document.querySelector(selectors.header);
   
   const init = () => {
@@ -22,19 +22,22 @@
           if (currentSection && entry.target !== currentSection) {
             pauseVideo(currentSection);
           }
-          handleSnapped(entry.target);
+
+          if (entry.target !== currentSection && entry.target.hasAttribute('data-section-snap') && !entry.target.classList.contains('has-snapped')) {
+            entry.target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+            });
+            entry.target.classList.add('has-snapped');
+          }
+
+          handleActiveSection(entry.target);
           handleTheme(entry.target);
           currentSection = entry.target;
         }
       });
     }, { threshold: 0.25 });
     sections.forEach(section => observer.observe(section));
-
-    // Handle anchors
-    const anchors = document.querySelectorAll(selectors.anchor);
-    anchors.forEach(anchor => {
-      anchor.addEventListener('click', handleAnchorClick);
-    });
 
   };
 
@@ -46,7 +49,7 @@
     }
   };
 
-  const handleSnapped = (section) => {
+  const handleActiveSection = (section) => {
     section.classList.add('is-active');
 
     // Handle intro section: if section is not intro, add class 'hidden' to logoByline
@@ -70,19 +73,6 @@
       header.setAttribute('data-icon-theme', theme);
     }
   };
-
-  const handleAnchorClick = (event) => {
-    const anchor = event.currentTarget;
-    scrollToAnchor(anchor.dataset.anchor);
-  };
-
-  const scrollToAnchor = (anchor) => {
-    const target = document.querySelector('[data-anchor-target="' + anchor + '"]');
-    if (target) {
-      history.pushState(null, null, '#' + anchor);
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
 
   const playVideo = (video, section) => {
     const header = document.querySelector(selectors.header);

@@ -1,10 +1,8 @@
 <section 
   data-section 
   data-section-theme="light" 
-  {{ is_fullpage ? 'data-anchor-target="{{ anchor }}"' : '' }} 
-  {{ is_fullpage ? 'data-section-snap' : '' }} 
-  class="relative {{ is_fullpage ? 'snap-center snap-always min-h-screen overflow-x-hidden flex flex-col justify-center' : 'py-60 xl:py-150' }}">
-  {{ partial:components/misc/anchor anchor="{{ anchor }}" }}
+  {{ is_fullpage ? 'data-section-observe' : '' }} 
+  class="relative {{ is_fullpage ? 'min-h-screen overflow-x-hidden flex flex-col justify-center' : 'py-60 xl:py-150' }}">
   {{ partial:components/swiper/wrapper 
     class="sm:px-80 xl:px-100 max-w-site mx-auto w-full {{ is_fullpage ? 'pt-90 pb-170 xs:py-90 lg:py-150' : '' }}"
     data="data-animation='fadeIn_slideInRight'"
