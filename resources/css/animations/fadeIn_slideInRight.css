@@ -27,7 +27,7 @@
 .is-active [data-animation="fadeIn_slideInRight"] {
   animation-fill-mode: forwards;
   animation-name: slideInRight, fadeIn;
-  animation-delay: .75s;
+  animation-delay: .25s;
   animation-duration: .75s, 1.25s;
   animation-iteration-count: 1;
 }
@@ -37,7 +37,7 @@
   .is-active [data-animation-lg="fadeIn_slideInRight"] {
     animation-fill-mode: forwards;
     animation-name: slideInRight, fadeIn !important;
-    animation-delay: 1s;
+    animation-delay: .5s;
     animation-duration: .75s, 1.25s;
     animation-iteration-count: 1;
   }
@@ -45,7 +45,7 @@
 
 .is-active [data-animation="fadeIn_slideInRight"][data-animation-delay="long"],
 .is-active [data-animation-lg="fadeIn_slideInRight"][data-animation-delay="long"] {
-  animation-delay: 1s;
+  animation-delay: .5s;
 }
 
 /* visited state */

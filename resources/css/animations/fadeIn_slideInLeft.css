@@ -26,25 +26,24 @@
 .is-active [data-animation="fadeIn_slideInLeft"] {
   animation-fill-mode: forwards;
   animation-name: slideInLeft, fadeIn;
-  animation-delay: 1s;
+  animation-delay: .5s;
   animation-duration: .75s, 1.25s;
   animation-iteration-count: 1;
 }
 
 .is-active [data-animation="fadeIn_slideInLeft"][data-animation-delay="long"] {
-  animation-delay: 1.25s;
+  animation-delay: .75s;
 }
 
 .is-active [data-animation="fadeIn_slideInLeft"][data-animation-staggered="0"] {
-  animation-delay: 1s;
+  animation-delay: .75s;
 }
 .is-active [data-animation="fadeIn_slideInLeft"][data-animation-staggered="1"] {
-  animation-delay: 1.15s;
+  animation-delay: .85s;
 }
 .is-active [data-animation="fadeIn_slideInLeft"][data-animation-staggered="2"] {
-  animation-delay: 1.3s;
+  animation-delay: .95s;
 }
-
 
 /* visited state */
 .is-visited [data-animation="fadeIn_slideInLeft"] {

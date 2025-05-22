@@ -44,7 +44,7 @@
 .is-playing[data-video-animation="introHeader"] {
   animation-fill-mode: forwards;
   animation-name: fadeInIntro;
-  animation-delay: 1.25s;
+  animation-delay: .5s;
   animation-duration: 1.5s;
   animation-iteration-count: 1;
 }
@@ -52,7 +52,7 @@
 .is-playing [data-video-animation="introTitle"] {
   animation-fill-mode: forwards;
   animation-name: fadeInIntro;
-  animation-delay: 1.25s;
+  animation-delay: .5s;
   animation-duration: 1.5s;
   animation-iteration-count: 1;
 }
@@ -60,7 +60,7 @@
 .is-playing [data-video-animation="introMenu"] {
   animation-fill-mode: forwards;
   animation-name: fadeInIntro;
-  animation-delay: 1.25s;
+  animation-delay: .5s;
   animation-duration: 1.5s;
   animation-iteration-count: 1;
 }
@@ -74,15 +74,15 @@
 }
 
 .is-homepage .is-playing[data-video-animation="introHeader"] {
-  animation-delay: 1s;
+  animation-delay: .5s;
 }
 
 .is-homepage .is-playing [data-video-animation="introTitle"] {
-  animation-delay: 2.5s;
+  animation-delay: 1.5s;
 }
 
 .is-homepage .is-playing [data-video-animation="introMenu"] {
-  animation-delay: 2.5s;
+  animation-delay: 1.5s;
 }
 
 /* visited state */

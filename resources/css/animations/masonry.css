@@ -62,13 +62,13 @@
 }
 
 .is-active [data-animation="masonryCta"] {
-  animation-delay: 1.5s;
+  animation-delay: .75s;
 }
 
 .is-active [data-animation="masonrySlideInTopRight"] {
   animation-fill-mode: forwards;
   animation-name: masonrySlideInTopRight, masonryFadeIn;
-  animation-delay: 1s;
+  animation-delay: .25s;
   animation-duration: .75s, 1.25s;
   animation-iteration-count: 1;
 }
@@ -76,7 +76,7 @@
 .is-active [data-animation="masonrySlideInBottom"] {
   animation-fill-mode: forwards;
   animation-name: masonrySlideInBottom, masonryFadeIn;
-  animation-delay: 1s;
+  animation-delay: .25s;
   animation-duration: .75s, 1.25s;
   animation-iteration-count: 1;
 }
