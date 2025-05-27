@@ -18,41 +18,36 @@
         {{ partial:components/icons/logo class="w-auto h-29 xl:h-35" }}
       {{ /if }}
     </a>
+
     {{ if show_portfolio_filter || (segment_1 == 'portfolio' && (segment_2 == 'category' || segment_2 == 'kategorie'))}}
-      {{ partial:components/filters/wrapper }}
+      {{ partial:components/filters/wrapper class="lg:!hidden" }}
         {{ partial:components/filters/portfolio }}
       {{ /partial:components/filters/wrapper }}
     {{ /if }}
+
     {{ if show_team_filter }}
-      {{ partial:components/filters/wrapper }}
+      {{ partial:components/filters/wrapper class="lg:!hidden" }}
         {{ partial:components/filters/team }}
       {{ /partial:components/filters/wrapper }}
     {{ /if }}
+
+    <nav class="hidden lg:block w-auto h-auto" x-show="!menu">
+      <ul class="flex space-x-15 xl:space-x-45 {{ theme == 'dark' ? 'text-white' : 'text-black' }} m-0 p-0 list-none" data-nav-theme>
+        {{ nav:main }}
+          {{ partial:menu/main/item class="text-right !font-meta-light no-underline hover:underline underline-offset-4 decoration-1" }}
+        {{ /nav:main }}
+      </ul>
+    </nav>
+  
     <a 
       href="javascript:;" 
       x-on:click="menu = ! menu"
-      x-on:mouseenter="quickMenu = true"
       title="{{ "Menü anzeigen" | trans }}"
       :class="{ 'is-active': menu === true }"
       class="group">
       {{ partial:components/icons/burger class="w-28 xl:w-32 h-auto" }}
     </a>
 
-    {{# <div 
-      class="relative"
-      x-on:mouseleave="quickMenu = false">
-
-      <nav
-        x-cloak
-        x-show="quickMenu && !menu"
-        class="hidden py-10 md:block absolute right-full -top-16 xl:-top-18 z-60 w-auto h-auto quick-menu">
-        <ul class="flex space-x-15  {{ theme == 'dark' ? 'text-white' : 'text-black' }} m-0 p-0 pr-20 list-none">
-          {{ nav:main }}
-            {{ partial:menu/main/item class="text-right !font-meta-light" }}
-          {{ /nav:main }}
-        </ul>
-      </nav>
-    </div> #}}
 
   {{ /partial:layout/blocks/inner }}
 

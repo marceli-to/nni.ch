@@ -3,6 +3,11 @@
   data-section-theme="light" 
   class="pt-90 lg:pt-150">
   {{ partial:layout/blocks/inner }}
+
+  {{ partial:components/filters/wrapper class="hidden lg:flex lg:mb-20" }}
+    {{ partial:components/filters/team }}
+  {{ /partial:components/filters/wrapper }}
+
   <div class="grid grid-cols-6 md:grid-cols-12 gap-20 md:gap-30 xl:gap-50">
     {{ collection from="team" }}
       <div 

@@ -4,7 +4,7 @@
   :class="{ 'opacity-0': menu === true }"
   @click.away="filter = false"
   @scroll.window="filter = false"
-  class="text-tiny sm:text-xxs font-meta-medium tracking-wider relative flex flex-col items-center">
+  class="text-tiny sm:text-xxs font-meta-medium tracking-wider relative flex flex-col items-center {{ class }}">
   <div 
     class="max-w-md relative z-80">
     <a 

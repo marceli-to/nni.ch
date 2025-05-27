@@ -1,5 +1,10 @@
 <section data-section-theme="light" class="pt-90 lg:pt-150">
   {{ partial:layout/blocks/inner }}
+
+  {{ partial:components/filters/wrapper class="hidden lg:flex lg:mb-20" }}
+    {{ partial:components/filters/portfolio }}
+  {{ /partial:components/filters/wrapper }}
+
     <div class="grid grid-cols-12 gap-15">
 
       {{ if category }}
@@ -81,5 +86,6 @@
       {{ /if }}
       
     </div>
+    
   {{ /partial:layout/blocks/inner }}
 </section>
