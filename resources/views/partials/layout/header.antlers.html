@@ -32,9 +32,9 @@
     {{ /if }}
 
 
-    <div>
+    <div class="flex items-center gap-x-15 lg:gap-x-45">
       <nav class="hidden lg:block w-auto h-auto" x-show="!menu">
-        <ul class="flex space-x-15 xl:space-x-45 {{ theme == 'dark' ? 'text-white' : 'text-black' }} m-0 p-0 list-none" data-nav-theme>
+        <ul class="flex space-x-15 lg:space-x-30 {{ theme == 'dark' ? 'text-white' : 'text-black' }} m-0 p-0 list-none" data-nav-theme>
           {{ nav:main }}
             {{ partial:menu/main/item class="text-right !font-meta-light no-underline hover:underline underline-offset-4 decoration-1" }}
           {{ /nav:main }}
