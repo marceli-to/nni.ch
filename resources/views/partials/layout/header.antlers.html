@@ -31,22 +31,25 @@
       {{ /partial:components/filters/wrapper }}
     {{ /if }}
 
-    <nav class="hidden lg:block w-auto h-auto" x-show="!menu">
-      <ul class="flex space-x-15 xl:space-x-45 {{ theme == 'dark' ? 'text-white' : 'text-black' }} m-0 p-0 list-none" data-nav-theme>
-        {{ nav:main }}
-          {{ partial:menu/main/item class="text-right !font-meta-light no-underline hover:underline underline-offset-4 decoration-1" }}
-        {{ /nav:main }}
-      </ul>
-    </nav>
-  
-    <a 
-      href="javascript:;" 
-      x-on:click="menu = ! menu"
-      title="{{ "Menü anzeigen" | trans }}"
-      :class="{ 'is-active': menu === true }"
-      class="group">
-      {{ partial:components/icons/burger class="w-28 xl:w-32 h-auto" }}
-    </a>
+
+    <div>
+      <nav class="hidden lg:block w-auto h-auto" x-show="!menu">
+        <ul class="flex space-x-15 xl:space-x-45 {{ theme == 'dark' ? 'text-white' : 'text-black' }} m-0 p-0 list-none" data-nav-theme>
+          {{ nav:main }}
+            {{ partial:menu/main/item class="text-right !font-meta-light no-underline hover:underline underline-offset-4 decoration-1" }}
+          {{ /nav:main }}
+        </ul>
+      </nav>
+    
+      <a 
+        href="javascript:;" 
+        x-on:click="menu = ! menu"
+        title="{{ "Menü anzeigen" | trans }}"
+        :class="{ 'is-active': menu === true }"
+        class="group">
+        {{ partial:components/icons/burger class="w-28 xl:w-32 h-auto" }}
+      </a>
+    </div>
 
 
   {{ /partial:layout/blocks/inner }}
