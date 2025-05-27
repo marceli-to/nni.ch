@@ -28,7 +28,7 @@
 
 .is-active [data-animation="fadeIn"][data-animation-duration="slow"],
 .is-playing [data-video-animation="fadeIn"][data-video-animation-duration="slow"] {
-  animation-duration: .75s;
+  animation-duration: .5s;
 }
 
 .is-active [data-animation="fadeIn"][data-animation-duration="fast"],
