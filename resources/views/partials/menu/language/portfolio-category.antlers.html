@@ -1,13 +1,28 @@
-<li>
-  <a href="/portfolio/kategorie/{{ category }}" title="Portfolio | {{ category }}">
-    DE
-  </a>
-</li>
+{{ current_id = null }}
+{{ taxonomy:project_categories as="categories" slug:is="{{ category }}" limit="1" }}
+  {{ categories }}
+    {{ current_id = id }}
+  {{ /categories }}
+{{ /taxonomy:project_categories }}
+
+{{ taxonomy:project_categories site="de" }}
+  {{ if current_id == id }}
+    <li>
+      <a href="/portfolio/kategorie/{{ slug }}" title="Portfolio | {{ title }}">
+        DE
+      </a>
+    </li>
+  {{ /if }}
+{{ /taxonomy:project_categories }}
 <li>
   <span class="block text-sm -mt-2">|</span>
 </li>
-<li>
-  <a href="/en/portfolio/category/{{ category }}" title="Portfolio | {{ category }}">
-    EN
-  </a>
-</li>
+{{ taxonomy:project_categories site="en" }}
+  {{ if current_id == id }}
+    <li>
+      <a href="/en/portfolio/category/{{ slug }}" title="Portfolio | {{ title }}">
+        EN
+      </a>
+    </li>
+  {{ /if }}
+{{ /taxonomy:project_categories }}
