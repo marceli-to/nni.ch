@@ -54,8 +54,8 @@ export default {
         '4xl': '2.1875rem',  // 35px
         '5xl': '2.5rem',     // 40px
         '6xl': '2.8125rem',  // 45px
-        '7xl': '3.4375rem',  // 55px => was 6xl
-        '8xl': '4.0625rem',  // 65px => was 7xl
+        '7xl': '3.4375rem',  // 55px
+        '8xl': '4.0625rem',  // 65px 
       },
 
       letterSpacing: {
