@@ -28,12 +28,12 @@
 
 .is-active [data-animation="fadeIn"][data-animation-duration="slow"],
 .is-playing [data-video-animation="fadeIn"][data-video-animation-duration="slow"] {
-  animation-duration: 1.25s;
+  animation-duration: .75s;
 }
 
 .is-active [data-animation="fadeIn"][data-animation-duration="fast"],
 .is-playing [data-video-animation="fadeIn"][data-video-animation-duration="fast"] {
-  animation-duration: .75s;
+  animation-duration: .25s;
 }
 
 .is-active [data-animation="fadeIn"][data-animation-delay="long"],
