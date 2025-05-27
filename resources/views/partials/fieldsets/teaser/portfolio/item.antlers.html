@@ -7,11 +7,12 @@
     class="block relative image-overlay after:bg-opacity-10 {{ aspectRatio ?? '' }}"
     data-touch>
     <picture>
-      <source media="(min-width: 768px)" srcset="{{ glide:img preset='lg-webp' }}" type="img/webp">
-      <source srcset="{{ glide:img preset='md-webp' }}" type="img/webp">
-      <source media="(min-width: 768px)" srcset="{{ glide:img preset='lg' }}" type="img/jpeg">
+      <source media="(min-width: 1024px)" srcset="{{ glide:img preset='2xl-webp' }}" type="img/webp">
+      <source media="(min-width: 768px)" srcset="{{ glide:img preset='xl-webp' }}" type="img/webp">
+      <source srcset="{{ glide:img preset='lg-webp' }}" type="img/webp">
+      <source media="(min-width: 768px)" srcset="{{ glide:img preset='xl' }}" type="img/jpeg">
       <img 
-        src="{{ glide:img preset='md' }}" 
+        src="{{ glide:img preset='lg' }}" 
         alt="{{ alt }}" 
         title="{{ alt }}" 
         height="{{ height }}" 

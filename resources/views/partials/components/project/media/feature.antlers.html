@@ -23,7 +23,12 @@
   <video 
     poster="" 
     preload="none" 
-    muted autoplay loop controls 
+    muted 
+    autoplay 
+    loop 
+    controls 
+    width="1600"
+    height="900"
     class="bg-silver relative aspect-square object-cover {{ layout == 'landscape' ? 'md:aspect-[16/9]' : 'lg:aspect-[3/4]' }}">
     <source src="{{ feature_video }}" type="video/mp4">
   </video>
