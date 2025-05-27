@@ -78,9 +78,40 @@ return [
     'invalidation' => [
 
         'class' => null,
-
         'rules' => [
-            //
+
+          'collections' => [
+
+            'pages' => [
+              'urls' => [
+                '/*',
+              ]
+            ],
+
+            'projects' => [
+              'urls' => [
+                '/*',
+              ]
+            ],
+
+            'jobs' => [
+              'urls' => [
+                '/*',
+              ]
+            ],
+
+            'team' => [
+              'urls' => [
+                '/*',
+              ]
+            ],
+
+            'posts' => [
+              'urls' => [
+                '/*',
+              ]
+            ],
+          ],
         ],
 
     ],
