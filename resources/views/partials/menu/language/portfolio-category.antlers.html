@@ -26,32 +26,3 @@
     </li>
   {{ /if }}
 {{ /taxonomy:project_categories }}
-
-
-{{ category }}
-  {{ id as="current_id" }}
-{{ /category }}
-
-{{ taxonomy:project_categories site="de" }}
-  {{ if id == current_id }}
-    <li>
-      <a href="/portfolio/kategorie/{{ slug }}" title="Portfolio | {{ title }}">
-        DE
-      </a>
-    </li>
-  {{ /if }}
-{{ /taxonomy:project_categories }}
-
-<li>
-  <span class="block text-sm -mt-2">|</span>
-</li>
-
-{{ taxonomy:project_categories site="en" }}
-  {{ if id == current_id }}
-    <li>
-      <a href="/en/portfolio/category/{{ slug }}" title="Portfolio | {{ title }}">
-        EN
-      </a>
-    </li>
-  {{ /if }}
-{{ /taxonomy:project_categories }}
