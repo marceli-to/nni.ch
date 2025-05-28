@@ -1,6 +1,6 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-e7dd5602.css",
+    "file": "assets/app-c217c48b.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -44,7 +44,7 @@
     "css": [
       "assets/app-e2ee8f87.css"
     ],
-    "file": "assets/app-89c77bbe.js",
+    "file": "assets/app-49674a64.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   },
@@ -57,10 +57,5 @@
     "file": "assets/map-5de5b791.js",
     "isEntry": true,
     "src": "resources/js/map.js"
-  },
-  "resources/js/observe.js": {
-    "file": "assets/observe-7ef64cc3.js",
-    "isEntry": true,
-    "src": "resources/js/observe.js"
   }
 }

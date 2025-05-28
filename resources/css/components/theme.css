@@ -17,11 +17,3 @@ svg[data-icon-theme].is-visible {
 [data-icon-theme="light"] nav.quick-menu a {
   @apply text-black
 }
-
-ul[data-nav-theme="dark"] a {
-  @apply text-white
-}
-
-ul[data-nav-theme="light"] a {
-  @apply text-black
-}

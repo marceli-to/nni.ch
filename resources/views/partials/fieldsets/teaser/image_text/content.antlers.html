@@ -3,7 +3,7 @@
     <div 
       class="col-span-full lg:col-span-6"
       data-animation="fadeIn"
-      data-animation-duration="fast">
+      data-animation-duration="slow">
       {{ partial:components/media/image/teaser class="{{ image:height >= image:width ? 'w-full h-auto object-cover' : 'w-full h-full aspect-[16/9] lg:aspect-none object-cover' }}" }}
     </div>
     <div class="col-span-full lg:col-span-6 mt-30 md:mt-45 lg:overflow-x-hidden lg:mt-0 lg:py-60 lg:flex lg:flex-col lg:items-start lg:justify-center">
@@ -21,7 +21,7 @@
         <div 
           class="col-span-full"
           data-animation="fadeIn"
-          data-animation-duration="fast"
+          data-animation-duration="slow"
           data-animation-delay="long">
           {{ cta_text }}
           {{ if cta_link}}
@@ -50,7 +50,7 @@
         <div 
           class="col-span-full"
           data-animation="fadeIn"
-          data-animation-duration="fast"
+          data-animation-duration="slow"
           data-animation-delay="long">
           {{ cta_text }}
           {{ if cta_link}}
@@ -64,7 +64,7 @@
     <div 
       class="col-span-full order-1 lg:order-2 lg:col-span-6"
       data-animation="fadeIn"
-      data-animation-duration="fast">
+      data-animation-duration="slow">
       {{ partial:components/media/image/teaser class="{{ image:height >= image:width ? 'w-full h-auto object-cover' : 'w-full h-full aspect-[16/9] lg:aspect-none object-cover' }}" }}
     </div>
   {{ /if }}

@@ -24,7 +24,7 @@
 
 @import "views/posts.css";
 @import "views/privacy.css";
-@import "vendor/fullpage.css";
+/* @import "vendor/fullpage.css"; */
 
 * {
   font-variant-ligatures: none;

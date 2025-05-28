@@ -11,7 +11,7 @@ Alpine.start();
  * This module changes the theme of the header icons based on the section in view
  */
 
-import './modules/theme.js';
+// import './modules/theme.js';
 
 /**
  * Import and initialize the video module
@@ -49,3 +49,8 @@ import './modules/carousel.js';
 import './modules/comparison.js';
 
 import './modules/slides.js';
+
+import './modules/quickmenu.js';
+
+import './modules/observer.js';
+

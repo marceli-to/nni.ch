@@ -1,8 +1,8 @@
 <section 
   data-section 
   data-section-theme="{{ theme }}" 
-  {{ is_fullpage ? 'data-section-observe data-section-observe-intro' : '' }}
-  class="bg-black relative {{ is_fullpage ? 'snap-start snap-always min-h-[100dvh] sm:min-h-screen' : 'min-h-screen' }}">
+  {{ is_fullpage ? 'data-section-observe data-intro-observe data-section-snap' : '' }}
+  class="bg-black relative {{ is_fullpage ? 'min-h-[100dvh] sm:min-h-screen' : 'min-h-screen' }}">
   {{ partial:components/media/video/fullscreen/wrapper }}
   {{ partial:fieldsets/intro/content }}
 </section>

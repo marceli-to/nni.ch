@@ -54,9 +54,9 @@
 </footer>
 {{ partial:components/gdpr }}
 {{ vite src="resources/js/app.js" }}
-{{ if is_fullpage }}
+{{# {{ if is_fullpage }}
   {{ vite src="resources/js/observe.js" }}
-{{ /if }}
+{{ /if }} #}}
 {{ vite src="resources/js/gdpr.js" }}
 <script>
   (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
