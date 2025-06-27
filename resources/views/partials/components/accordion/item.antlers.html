@@ -17,10 +17,10 @@
   class="relative w-full border-b border-black">
   <button 
     type="button"
-    class="w-full block hover:bg-white transition-colors duration-300 ease-in-out"
+    class="w-full block hover:bg-white transition-colors duration-300 ease-in-out group"
     @click="toggle()">
 
-    <div class="w-full flex items-center justify-between py-10 xl:py-15 pr-10">
+    <div class="w-full flex items-center justify-between py-20 xl:py-30">
 
       <h3 class="font-meta-medium text-lg xl:text-4xl">
         {{ button }}
@@ -29,13 +29,13 @@
       <span 
         class="p-5 flex items-center justify-center leading-none"
         :class="{ 'block': !open, 'hidden': open }">
-        [arrow down]
+        {{ partial:components/icons/arrow-right-short class="w-24 xl:w-36 h-auto mt-8 md:-mt-4 group-hover:rotate-90 transition-all" }}
       </span>
 
       <span 
         class="p-5 flex items-center justify-center leading-none"
         :class="{ 'block': open, 'hidden': !open }">
-        [arrow up]
+        {{ partial:components/icons/arrow-right-short class="w-24 xl:w-36 h-auto mt-8 md:-mt-4 rotate-90" }}
       </span>
 
     </div>
