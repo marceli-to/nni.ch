@@ -10,10 +10,10 @@ svg[data-icon-theme].is-visible {
   @apply !opacity-100 !duration-0
 }
 
-[data-icon-theme="dark"] nav.quick-menu a {
+[data-icon-theme="dark"] nav[data-quick-menu] a {
   @apply text-white
 }
 
-[data-icon-theme="light"] nav.quick-menu a {
+[data-icon-theme="light"] nav[data-quick-menu] a {
   @apply text-black
 }
