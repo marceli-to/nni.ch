@@ -36,7 +36,7 @@ tabs:
                   sets:
                     intro:
                       display: 'Intro Fullscreen'
-                      instructions: 'Add an intro (Video/Image, Anchors)'
+                      instructions: 'Add an intro (Video/Image)'
                       icon: media-image-picture-orientation
                       fields:
                         -
@@ -116,6 +116,13 @@ tabs:
                       fields:
                         -
                           import: jobs
+                    faq:
+                      display: FAQ
+                      instructions: 'Add FAQ'
+                      icon: form-drop-down-menu
+                      fields:
+                        -
+                          import: faq
                 graphical_elements:
                   display: 'Graphical Elements'
                   instructions: null
@@ -130,7 +137,6 @@ tabs:
                           import: horizontal_ruler
               type: replicator
               display: Inhalte
-              icon: replicator
               listable: hidden
               instructions_position: above
               visibility: visible

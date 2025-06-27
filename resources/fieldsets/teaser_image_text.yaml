@@ -15,7 +15,6 @@ fields:
       default: image_text
       type: select
       display: Sequence
-      icon: select
       instructions: 'Define the position of image and text.'
       localizable: false
       listable: hidden
@@ -23,8 +22,6 @@ fields:
       visibility: visible
       replicator_preview: true
       hide_display: false
-  -
-    import: anchor
   -
     import: image
   -

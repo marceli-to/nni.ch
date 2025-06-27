@@ -1,8 +1,6 @@
 title: Title/Text
 fields:
   -
-    import: anchor
-  -
     handle: title_items
     field:
       collapse: true
@@ -35,7 +33,6 @@ fields:
                     hide_display: false
       type: replicator
       display: 'Title Items'
-      icon: replicator
       localizable: true
       listable: hidden
       instructions_position: above
@@ -70,7 +67,6 @@ fields:
       previews: true
       type: bard
       display: 'Text (left)'
-      icon: bard
       localizable: true
       listable: hidden
       instructions_position: above
@@ -105,7 +101,6 @@ fields:
       previews: true
       type: bard
       display: 'Text (right)'
-      icon: bard
       localizable: true
       listable: hidden
       instructions_position: above

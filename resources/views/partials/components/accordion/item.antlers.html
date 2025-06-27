@@ -1,0 +1,55 @@
+<div 
+  x-data="{
+    open: false,
+    init() {
+      this.open = selected === {{ index }};
+    },
+    toggle() {
+      selected = selected === {{ index }} ? null : {{ index }};
+    },
+    updateHeight() {
+      this.$refs.container.style.maxHeight = this.open
+        ? this.$refs.container.scrollHeight + 'px'
+        : '0px';
+    }
+  }"
+  x-effect="open = selected === {{ index }}; updateHeight()"
+  class="relative w-full border-b border-black">
+  <button 
+    type="button"
+    class="w-full block hover:bg-white transition-colors duration-300 ease-in-out"
+    @click="toggle()">
+
+    <div class="w-full flex items-center justify-between py-10 xl:py-15 pr-10">
+
+      {{ button }}
+
+      <span 
+        class="p-5 flex items-center justify-center leading-none"
+        :class="{ 'block': !open, 'hidden': open }">
+        [arrow down]
+      </span>
+
+      <span 
+        class="p-5 flex items-center justify-center leading-none"
+        :class="{ 'block': open, 'hidden': !open }">
+        [arrow up]
+      </span>
+
+    </div>
+  </button>
+  <div 
+    x-ref="container"
+    role="region"
+    class="relative bg-transparent overflow-hidden max-h-0 transition-all duration-300 ease-in-out" 
+    :class="{ 'bg-white': open }"
+    style="max-height: 0px;">
+    <div>
+      <div 
+        class="w-full pb-20 xl:pb-30 transition-opacity duration-300 ease-in-out"
+        :class="{ 'opacity-100': open, 'opacity-0': !open }">
+        {{ slot }}
+      </div>
+    </div>
+  </div>
+</div>

@@ -6,15 +6,12 @@ fields:
       default: false
       type: toggle
       display: 'Mirrored?'
-      icon: toggle
       localizable: false
       listable: hidden
       instructions_position: above
       visibility: visible
       replicator_preview: true
       hide_display: false
-  -
-    import: anchor
   -
     import: title
     prefix: teaser_project_
@@ -23,7 +20,6 @@ fields:
     field:
       type: link
       display: 'Main link'
-      icon: link
       instructions: 'Main link below the title. If empty, a link to the portfolio will be generated.'
       localizable: true
       listable: hidden
@@ -41,7 +37,6 @@ fields:
       fullscreen: true
       type: group
       display: 'Grid items'
-      icon: group
       localizable: false
       listable: hidden
       instructions_position: above
@@ -143,7 +138,6 @@ fields:
       previews: true
       type: bard
       display: Text
-      icon: bard
       localizable: false
       listable: hidden
       instructions_position: above

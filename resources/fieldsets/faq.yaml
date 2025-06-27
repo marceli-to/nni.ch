@@ -1,0 +1,88 @@
+title: FAQ
+fields:
+  -
+    import: title
+    prefix: faq_
+  -
+    import: editor
+    prefix: faq_
+  -
+    handle: items
+    field:
+      collapse: true
+      previews: true
+      fullscreen: true
+      sets:
+        neue_set-gruppe:
+          display: 'Neue Set-Gruppe'
+          instructions: null
+          icon: null
+          sets:
+            items:
+              display: Items
+              instructions: 'Add FAQ item'
+              icon: form-drop-down-menu
+              fields:
+                -
+                  handle: question
+                  field:
+                    input_type: text
+                    antlers: false
+                    type: text
+                    display: Question
+                    localizable: false
+                    listable: hidden
+                    instructions_position: above
+                    visibility: visible
+                    replicator_preview: true
+                    hide_display: false
+                -
+                  handle: answer
+                  field:
+                    buttons:
+                      - bold
+                      - italic
+                      - unorderedlist
+                      - removeformat
+                      - anchor
+                    smart_typography: false
+                    save_html: false
+                    inline: false
+                    toolbar_mode: floating
+                    reading_time: false
+                    word_count: false
+                    fullscreen: true
+                    allow_source: true
+                    enable_input_rules: true
+                    enable_paste_rules: true
+                    remove_empty_nodes: true
+                    antlers: false
+                    link_noopener: false
+                    link_noreferrer: false
+                    target_blank: false
+                    link_collections:
+                      - posts
+                      - jobs
+                      - pages
+                      - projects
+                      - team
+                    container: assets
+                    always_show_set_button: false
+                    collapse: true
+                    previews: true
+                    type: bard
+                    display: Answer
+                    localizable: false
+                    listable: hidden
+                    instructions_position: above
+                    visibility: visible
+                    replicator_preview: true
+                    hide_display: false
+      type: replicator
+      display: Items
+      localizable: false
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false

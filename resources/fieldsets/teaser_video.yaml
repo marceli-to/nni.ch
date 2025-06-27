@@ -1,8 +1,6 @@
 title: 'Video Teaser'
 fields:
   -
-    import: anchor
-  -
     import: fullscreen_video
   -
     import: title

@@ -1,8 +1,6 @@
 title: 'Expertise Teasers'
 fields:
   -
-    import: anchor
-  -
     handle: teaser_items
     field:
       collapse: false
@@ -23,7 +21,6 @@ fields:
                   import: teaser_expertise
       type: replicator
       display: 'Teaser items'
-      icon: replicator
       localizable: false
       listable: hidden
       instructions_position: above

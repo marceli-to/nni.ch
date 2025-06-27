@@ -1,8 +1,6 @@
 title: Jobs
 fields:
   -
-    import: anchor
-  -
     import: title
     prefix: jobs_
   -
