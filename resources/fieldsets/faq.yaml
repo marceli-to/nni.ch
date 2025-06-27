@@ -30,7 +30,7 @@ fields:
                     antlers: false
                     type: text
                     display: Question
-                    localizable: false
+                    localizable: true
                     listable: hidden
                     instructions_position: above
                     visibility: visible
@@ -72,7 +72,7 @@ fields:
                     previews: true
                     type: bard
                     display: Answer
-                    localizable: false
+                    localizable: true
                     listable: hidden
                     instructions_position: above
                     visibility: visible
@@ -80,7 +80,7 @@ fields:
                     hide_display: false
       type: replicator
       display: Items
-      localizable: false
+      localizable: true
       listable: hidden
       instructions_position: above
       visibility: visible
