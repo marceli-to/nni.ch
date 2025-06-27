@@ -1,19 +1,19 @@
-[data-icon-theme="light"] svg[data-icon-theme] {
+[data-theme="light"] svg[data-theme] {
   @apply text-black transition-colors
 }
 
-[data-icon-theme="dark"] svg[data-icon-theme] {
+[data-theme="dark"] svg[data-theme] {
   @apply text-white transition-colors
 }
 
-svg[data-icon-theme].is-visible {
+svg[data-theme].is-visible {
   @apply !opacity-100 !duration-0
 }
 
-[data-icon-theme="dark"] nav[data-quick-menu] a {
+[data-theme="dark"] nav[data-quick-menu] a {
   @apply text-white
 }
 
-[data-icon-theme="light"] nav[data-quick-menu] a {
+[data-theme="light"] nav[data-quick-menu] a {
   @apply text-black
 }

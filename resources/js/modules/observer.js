@@ -88,7 +88,7 @@ import debounce from './debounce.js';
 
   const setTheme = (theme) => {
     if (theme && header) {
-      header.setAttribute('data-icon-theme', theme);
+      header.setAttribute('data-theme', theme);
     }
   };
 

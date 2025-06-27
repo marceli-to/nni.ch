@@ -1,7 +1,7 @@
 <header 
   id="header"
   class="fixed left-0 top-0 z-70 w-full pt-30 xl:pt-60 wide-narrow:pt-30" 
-  data-icon-theme="{{ theme ?? 'light' }}"
+  data-theme="{{ theme ?? 'light' }}"
   {{ if is_fullpage && theme == 'dark' }}
     data-video-animation='introHeader'
   {{ /if }}
@@ -34,7 +34,9 @@
 
     <div class="flex items-center gap-x-15 lg:gap-x-45">
       <div x-show="!menu">
-        <nav class="hidden lg:block w-auto h-auto" data-quick-menu>
+        <nav 
+          class="hidden lg:block w-auto h-auto" 
+          data-quick-menu>
           <ul class="flex space-x-15 lg:space-x-30 {{ theme == 'dark' ? 'text-white' : 'text-black' }} m-0 p-0 list-none">
             {{ nav:main }}
               {{ partial:menu/main/item class="text-right !font-meta-light no-underline hover:underline underline-offset-4 decoration-1" }}
