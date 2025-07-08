@@ -2,12 +2,7 @@
   data-section="expertise" 
   {{ partial:layout/blocks/inner }}
     {{ teaser_items }}
-      <div
-      {{ is_fullpage ? 'data-section-observe' : '' }} 
-      data-section-theme="light" 
-      class="relative {{ is_fullpage ? 'min-h-screen section-slides flex flex-col justify-center' : 'py-60 md:py-90 xl:py-120' }}">
-        {{ partial:fieldsets/teaser/expertise/item class="scroll-item min-h-screen" }}
-      </div>
+      {{ partial:fieldsets/teaser/expertise/item }}
     {{ /teaser_items }}
   {{ /partial:layout/blocks/inner }}
 </div>
