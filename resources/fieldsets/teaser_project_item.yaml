@@ -12,20 +12,29 @@ fields:
       show_set_alt: true
       type: assets
       display: Image
-      icon: assets
       localizable: false
       listable: hidden
       instructions_position: above
       visibility: visible
       replicator_preview: true
       hide_display: false
-      width: 50
+  -
+    handle: caption
+    field:
+      antlers: false
+      type: textarea
+      display: Caption
+      localizable: true
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
   -
     handle: link
     field:
       type: link
       display: Link
-      icon: link
       localizable: false
       listable: hidden
       instructions_position: above
@@ -37,4 +46,3 @@ fields:
         - projects
         - posts
         - team
-      width: 50
