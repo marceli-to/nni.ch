@@ -105,7 +105,7 @@ tabs:
                   sets:
                     image:
                       display: Image
-                      instructions: null
+                      instructions: 'Add a single image'
                       icon: media-image-picture-orientation
                       fields:
                         -
@@ -117,6 +117,13 @@ tabs:
                       fields:
                         -
                           import: video
+                    image_slideshow:
+                      display: Slideshow
+                      instructions: 'Add an slideshow of images'
+                      icon: media-image-picture-gallery
+                      fields:
+                        -
+                          import: image_slideshow
   seo:
     display: SEO
     sections:

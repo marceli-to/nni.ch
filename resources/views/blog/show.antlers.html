@@ -41,6 +41,12 @@
             {{ partial:components/media/video/video }}
           </div>
         {{ /if }}
+
+        {{ if type == 'image_slideshow' }}
+          <div class="my-60 xl:my-90">
+            {{ partial:components/project/elements/slideshow class="!px-0" }}
+          </div>
+        {{ /if }}
   
       {{ /content }}
     </article>

@@ -19,7 +19,7 @@ import 'swiper/css';
     slidesPerView: "auto",
     centeredSlides: true,
     speed: 600,
-    loop: false,
+    loop: true,
     lazy: true,
     spaceBetween: 20,
     breakpoints: {

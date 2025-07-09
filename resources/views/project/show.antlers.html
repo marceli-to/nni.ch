@@ -45,7 +45,7 @@
       data-section-theme="light" 
       {{ is_fullpage ? 'data-section-observe' : '' }} 
       class="relative {{ is_fullpage ? 'min-h-screen overflow-x-hidden flex flex-col justify-center' : 'my-30 xl:my-60 min-h-screen' }}">
-      {{ partial:components/project/elements/slideshow }}
+      {{ partial:components/project/elements/slideshow data="data-animation='fadeIn_slideInRight'" }}
     </section>
   {{ /if }}
 

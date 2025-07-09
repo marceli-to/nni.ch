@@ -1,7 +1,4 @@
-{{ partial:components/swiper/wrapper 
-  class="sm:px-80 xl:px-100 max-w-site mx-auto w-full"
-  data="data-animation='fadeIn_slideInRight'"
- }}
+{{ partial:components/swiper/wrapper class="sm:px-80 xl:px-100 max-w-site mx-auto w-full {{ class }}" data="{{ data }}" }}
   {{ partial:components/swiper/container class="js-swiper-images" navigation="true" }}
     {{ slideshow_images }} 
       {{ partial:components/swiper/slide class="md:max-w-none swiper-slide--mute-inactive" }}
