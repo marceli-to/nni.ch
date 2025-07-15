@@ -17,10 +17,12 @@
       let lazyVideoObserver = new IntersectionObserver(function(entries) {
         entries.forEach(function(video) {
           if (video.isIntersecting) {
-            for (let source in video.target.children) {
-              let videoSource = video.target.children[source];
-              if (typeof videoSource.tagName === "string" && videoSource.tagName === "SOURCE") {
-                videoSource.src = videoSource.dataset.src;
+            for (let i = 0; i < video.target.children.length; i++) {
+              let videoSource = video.target.children[i];
+              if (videoSource.tagName && videoSource.tagName.toUpperCase() === "SOURCE") {
+                if (videoSource.dataset.src) {
+                  videoSource.src = videoSource.dataset.src;
+                }
               }
             }
 

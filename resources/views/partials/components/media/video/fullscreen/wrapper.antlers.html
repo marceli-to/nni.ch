@@ -9,7 +9,9 @@
     muted 
     autoplay 
     playsinline 
-    loop>
+    loop
+    data-video-lazy
+    data-video-source='{{ video_landscape }}'>
     <source src="{{ video_landscape }}" type="video/mp4">
   </video>
 {{ else }}
