@@ -1,4 +1,4 @@
 <?php
 return [
-  'enable_redirection' => false,
+  'enable_redirection' => true,
 ];
