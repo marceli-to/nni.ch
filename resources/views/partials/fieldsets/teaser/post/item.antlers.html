@@ -1,5 +1,7 @@
 <a href="{{ url }}" class="group">
-  <span class="block mb-10 text-xxs xl:text-sm">{{ date }}</span>
+  <span class="block mb-10 text-xxs xl:text-sm">
+    {{ date iso_format="D. MMMM YYYY" }}
+  </span>
   {{ partial:components/post/media/preview ratio="aspect-square" }}
   {{ partial:components/headings/h3 class="mt-15 text-md xl:text-2xl !leading-[1.25]" }}
     {{ title }}
