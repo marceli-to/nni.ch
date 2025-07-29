@@ -10,7 +10,9 @@
     autoplay 
     playsinline 
     loop
-    <source src="{{ video_landscape }}" type="video/mp4">
+    data-video-lazy
+    data-video-source='{{ video_landscape }}'>
+    <source data-src="{{ video_landscape }}" type="video/mp4">
   </video>
 {{ else }}
   <video 
