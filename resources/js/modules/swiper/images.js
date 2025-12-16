@@ -38,15 +38,19 @@ import 'swiper/css';
     if (swiperEl) {
       const slideCount = swiperEl.querySelectorAll('.swiper-slide').length;
       swiper = new Swiper(selectors.swiper, getOpts(slideCount));
-      const prevBtn = document.querySelector(selectors.btns.prev);
-      const nextBtn = document.querySelector(selectors.btns.next);
+      const wrapper = swiperEl.parentElement;
+      const prevBtn = wrapper.querySelector(selectors.btns.prev);
+      const nextBtn = wrapper.querySelector(selectors.btns.next);
+      console.log('Swiper init:', { slideCount, wrapper, prevBtn, nextBtn, swiper });
       if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
+        prevBtn.addEventListener('click', (e) => {
+          e.preventDefault();
           swiper.slidePrev();
         });
       }
       if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
+        nextBtn.addEventListener('click', (e) => {
+          e.preventDefault();
           swiper.slideNext();
         });
       }
