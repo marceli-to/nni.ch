@@ -14,12 +14,12 @@ import 'swiper/css';
     }
   };
 
-  const opts = {
+  const getOpts = (slideCount) => ({
     direction: 'horizontal',
     slidesPerView: "auto",
     centeredSlides: true,
     speed: 600,
-    loop: true,
+    loop: slideCount > 2,
     lazy: true,
     spaceBetween: 20,
     breakpoints: {
@@ -27,15 +27,17 @@ import 'swiper/css';
         spaceBetween: 0,
       },
     }
-  };
+  });
 
   const init = () => {
     initSwiper();
   };
 
   const initSwiper = () => {
-    if (document.querySelector(selectors.swiper)) {
-      swiper = new Swiper(selectors.swiper, opts);
+    const swiperEl = document.querySelector(selectors.swiper);
+    if (swiperEl) {
+      const slideCount = swiperEl.querySelectorAll('.swiper-slide').length;
+      swiper = new Swiper(selectors.swiper, getOpts(slideCount));
       const prevBtn = document.querySelector(selectors.btns.prev);
       const nextBtn = document.querySelector(selectors.btns.next);
       if (prevBtn) {
