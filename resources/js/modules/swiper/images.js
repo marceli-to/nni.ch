@@ -37,11 +37,10 @@ import 'swiper/css';
     const swiperEl = document.querySelector(selectors.swiper);
     if (swiperEl) {
       const slideCount = swiperEl.querySelectorAll('.swiper-slide').length;
-      swiper = new Swiper(selectors.swiper, getOpts(slideCount));
+      swiper = new Swiper(swiperEl, getOpts(slideCount));
       const wrapper = swiperEl.parentElement;
       const prevBtn = wrapper.querySelector(selectors.btns.prev);
       const nextBtn = wrapper.querySelector(selectors.btns.next);
-      console.log('Swiper init:', { slideCount, wrapper, prevBtn, nextBtn, swiper });
       if (prevBtn) {
         prevBtn.addEventListener('click', (e) => {
           e.preventDefault();
