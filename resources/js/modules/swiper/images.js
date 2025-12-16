@@ -4,8 +4,6 @@ import 'swiper/css';
 
 (function () {
 
-  let swiper;
-
   const selectors = {
     swiper: '.js-swiper-images',
     btns: {
@@ -34,10 +32,9 @@ import 'swiper/css';
   };
 
   const initSwiper = () => {
-    const swiperEl = document.querySelector(selectors.swiper);
-    if (swiperEl) {
+    document.querySelectorAll(selectors.swiper).forEach((swiperEl) => {
       const slideCount = swiperEl.querySelectorAll('.swiper-slide').length;
-      swiper = new Swiper(swiperEl, getOpts(slideCount));
+      const swiper = new Swiper(swiperEl, getOpts(slideCount));
       const wrapper = swiperEl.parentElement;
       const prevBtn = wrapper.querySelector(selectors.btns.prev);
       const nextBtn = wrapper.querySelector(selectors.btns.next);
@@ -53,7 +50,7 @@ import 'swiper/css';
           swiper.slideNext();
         });
       }
-    }
+    });
   };
 
   init();
