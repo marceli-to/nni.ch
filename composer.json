@@ -17,7 +17,6 @@
         "laravel/framework": "^10.8",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
-        "livewire/livewire": "^3.1",
         "pecotamic/sitemap": "^1.4",
         "reachweb/locale-lander": "^2.0",
         "statamic/cms": "^4.0",
