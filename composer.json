@@ -13,15 +13,11 @@
         "anakadote/statamic-recaptcha": "^1.0",
         "guzzlehttp/guzzle": "^7.8",
         "jacksleight/statamic-bard-texstyle": "^3.1",
-        "jgrossi/corcel": "^8.0",
         "laravel/framework": "^11.0",
-        "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "pecotamic/sitemap": "^1.4",
         "reachweb/locale-lander": "^3.0",
-        "statamic/cms": "^5.0",
-        "symfony/http-client": "^7.1",
-        "symfony/mailgun-mailer": "^7.1"
+        "statamic/cms": "^5.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.13",
