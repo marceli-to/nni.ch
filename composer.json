@@ -18,8 +18,8 @@
         "pecotamic/sitemap": "^1.4",
         "reachweb/locale-lander": "^3.0",
         "statamic/cms": "^5.0",
-        "symfony/http-client": "^8.0",
-        "symfony/mailgun-mailer": "^8.0"
+        "symfony/http-client": "^7.0",
+        "symfony/mailgun-mailer": "^7.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.13",
@@ -40,6 +40,9 @@
             "pestphp/pest-plugin": true,
             "php-http/discovery": true,
             "pixelfear/composer-dist-plugin": true
+        },
+        "platform": {
+            "php": "8.3.30"
         }
     },
     "extra": {
