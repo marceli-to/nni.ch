@@ -17,7 +17,9 @@
         "laravel/tinker": "^2.9",
         "pecotamic/sitemap": "^1.4",
         "reachweb/locale-lander": "^3.0",
-        "statamic/cms": "^5.0"
+        "statamic/cms": "^5.0",
+        "symfony/http-client": "^8.0",
+        "symfony/mailgun-mailer": "^8.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.13",
