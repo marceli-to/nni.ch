@@ -9,18 +9,52 @@ titles/descriptions, (2) 180+ pages crawled but not indexed.
 
 ## 1. Root cause
 
-The site emitted **no international-SEO signals at all**. The only `<head>` template
-(`resources/views/partials/layout/head.antlers.html`) contained:
+Two compounding problems.
+
+### 1a. A browser-language 302 redirect served English content on German URLs (primary)
+
+The site ran the **`reachweb/locale-lander`** Statamic addon. It auto-registers a
+middleware (`HandleLocaleRedirection`) on every web request that:
+
+1. reads the visitor's browser **`Accept-Language`** header, and
+2. if it doesn't match the current URL's locale, issues a **302 (temporary)
+   redirect** to the same entry in the other language.
+
+The only skip conditions are `enable_redirection === false` or a **session cookie**
+(`locale_lander = completed`). **There was no bot/crawler detection whatsoever**, and
+the published config only set `enable_redirection => true` (with `redirect_only_homepage`
+unset, so it redirected on *every* page, not just the homepage).
+
+Googlebot crawls from the US with `Accept-Language: en` and keeps no session cookie,
+so every crawl of a German URL behaved like:
+
+```
+Googlebot GET /expertise      →  302 Found  →  /en/expertise
+```
+
+Because a **302 is temporary**, Google keeps the *original* URL (`/expertise`) in its
+index but renders it from the **English content it was redirected to** — i.e. the
+German URL indexed with an English title/description. This is the direct cause of
+symptom (1) and a major driver of the "Seite mit Weiterleitung" (69) and "Duplikat"
+(61) rows. It is exactly the risk the agency flagged ("birgt Risiken beim Umgang mit
+Search-Bots").
+
+**Resolution:** the package was removed entirely (see §5). It had no template usage —
+it only provided the auto-redirect. hreflang (§3) now communicates the DE/EN pairing
+to Google without redirecting anyone.
+
+### 1b. The site emitted no international-SEO signals
+
+The only `<head>` template (`resources/views/partials/layout/head.antlers.html`)
+contained:
 
 - ❌ no `<link rel="alternate" hreflang="…">` — Google had no way to know that
   `/expertise` (DE) and `/en/expertise` (EN) are the same page in two languages
 - ❌ no `<link rel="canonical">` — no page declared its own canonical URL
 - ❌ no `<meta name="robots">`
 
-With neither hreflang nor canonical, Google treated the DE and EN URLs as
-near-duplicates and consolidated them on its own — frequently choosing the *wrong*
-language's title/description to represent a URL. This is the direct cause of
-symptom (1) and a major contributor to (2).
+Even without the redirect, missing hreflang/canonical let Google treat the DE and EN
+URLs as near-duplicates and pick the wrong language to represent a URL.
 
 The data required for hreflang already existed in the app: the language switcher
 (`resources/views/partials/menu/language/wrapper.antlers.html`) loops
@@ -116,27 +150,53 @@ KEPT:     ^3d_modelle_exportieren  ^exporting_3d_models  (Notion docs)
 
 ---
 
-## 5. Open items — server / infrastructure (outside this codebase)
+## 5. Fix implemented — removed the `reachweb/locale-lander` addon
 
-1. **Browser-language redirect.** The agency observed a redirect that sends
-   English-browser visitors from `nightnurse.ch` → the English version. It is **not**
-   in `public/.htaccess`, the app code, or the JS — it lives at the server/edge/proxy
-   layer. Googlebot crawls predominantly from the US with English preferences, so it
-   may be served English content on German URLs. **Action for the server admin:**
-   confirm Googlebot is exempted from this redirect (or that the redirect is removed).
-2. **`robots.txt`** — confirmed identical to production (`User-agent: * / Disallow:`),
-   blocks nothing. The 21 "blocked by robots.txt" URLs come from elsewhere — export
-   the list from GSC to identify them.
-3. **Sitemap** — the site runs the `pecotamic/sitemap` addon with no published config
-   (defaults). Confirm it emits **both** locales and only published entries, that it
-   points to the **new** URLs (not the removed legacy ones), and that it's submitted
-   in GSC.
-4. **404s (21)** — export the URL list from GSC and fix/redirect.
-5. **noindex (3)** — identify the 3 URLs; confirm they should be excluded.
+The addon was the browser-language redirect described in §1a. It was removed rather
+than reconfigured, because auto-redirecting crawlers (and users) on `Accept-Language`
+is the anti-pattern; with hreflang now in place, Google serves the correct language
+in search results without any redirect.
+
+**Removal steps performed:**
+
+```bash
+composer remove reachweb/locale-lander     # dropped from composer.json + composer.lock
+rm config/locale-lander.php                # orphaned published config
+```
+
+**Verified safe:**
+
+- No template/code usage anywhere in the project — the addon only supplied the
+  auto-redirect middleware (no `{{ locale_banner }}` tag, no published views).
+- `vendor/reachweb/` removed; no references remain outside `vendor/` and this doc.
+- App boots clean afterward: `php artisan about` → Statamic 5.73.23 PRO, no errors.
+
+> **Note:** the redirect was a UX convenience (first-time visitors landed in their
+> browser language). If that UX is wanted back later, do it the SEO-safe way: keep
+> `enable_redirection => false` and instead use locale-lander's dismissible **banner**
+> (`{{ locale_banner }}`), or exempt search-engine crawlers from any redirect. Do
+> **not** restore blanket `Accept-Language` redirection.
+
+> `public/.htaccess` is gitignored on this project, so its cleanup (§4) is deployed
+> from disk but not tracked in git.
 
 ---
 
-## 6. Verification notes
+## 6. Open items — server / infrastructure (outside this codebase)
+
+1. **`robots.txt`** — confirmed identical to production (`User-agent: * / Disallow:`),
+   blocks nothing. The 21 "blocked by robots.txt" URLs come from elsewhere — export
+   the list from GSC to identify them.
+2. **Sitemap** — the site runs the `pecotamic/sitemap` addon with no published config
+   (defaults). Confirm it emits **both** locales and only published entries, that it
+   points to the **new** URLs (not the removed legacy ones), and that it's submitted
+   in GSC.
+3. **404s (21)** — export the URL list from GSC and fix/redirect.
+4. **noindex (3)** — identify the 3 URLs; confirm they should be excluded.
+
+---
+
+## 7. Verification notes
 
 - Confirmed `short_locale` and `handle` are exposed on Statamic's augmented Site
   object (`vendor/statamic/cms/src/Sites/Site.php` `toAugmentedArray`).
@@ -156,10 +216,12 @@ KEPT:     ^3d_modelle_exportieren  ^exporting_3d_models  (Notion docs)
 
 ---
 
-## 7. Files changed
+## 8. Files changed
 
 | File | Change |
 |---|---|
 | `resources/views/partials/layout/head.antlers.html` | Added robots meta, self-canonical, hreflang alternates |
-| `public/.htaccess` | Removed legacy content 301 redirects (kept infra + external routes) |
+| `composer.json` / `composer.lock` | Removed `reachweb/locale-lander` |
+| `config/locale-lander.php` | Deleted (orphaned addon config) |
+| `public/.htaccess` | Removed legacy content 301 redirects (kept infra + external routes) — *gitignored* |
 | `docs/seo-investigation.md` | This document |

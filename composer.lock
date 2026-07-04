@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0757f46753922edbb8edc4d2d3254d96",
+    "content-hash": "b0b7aa6a7ce3946f2a8d5676085bade7",
     "packages": [
         {
             "name": "ajthinking/archetype",
@@ -4129,72 +4129,6 @@
             "time": "2025-12-14T04:43:48+00:00"
         },
         {
-            "name": "reachweb/locale-lander",
-            "version": "v3.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/reachweb/locale-lander.git",
-                "reference": "a59540fa0508d042cdb36dc1ff3bf0d32b25fa61"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/reachweb/locale-lander/zipball/a59540fa0508d042cdb36dc1ff3bf0d32b25fa61",
-                "reference": "a59540fa0508d042cdb36dc1ff3bf0d32b25fa61",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^8.2",
-                "statamic/cms": "^5.0 | ^6.0",
-                "symfony/intl": "^6.4 | ^7.0"
-            },
-            "require-dev": {
-                "laravel/pint": "^1.15",
-                "orchestra/testbench": "^8.19 || ^9.0 || ^10.0",
-                "phpunit/phpunit": "^10.5 || ^11.0",
-                "spatie/laravel-ray": "^1.39"
-            },
-            "type": "statamic-addon",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Reach\\LocaleLander\\ServiceProvider"
-                    ]
-                },
-                "statamic": {
-                    "name": "Locale Lander",
-                    "description": "Land your users at the right site based on their locale!"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Reach\\LocaleLander\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "mit"
-            ],
-            "authors": [
-                {
-                    "name": "Iosif Chatzimichail",
-                    "email": "iosif@reach.gr",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Locale Lander for Statamic",
-            "homepage": "https://www.reach.gr",
-            "keywords": [
-                "multilingual",
-                "statamic"
-            ],
-            "support": {
-                "email": "info@reach.gr",
-                "issues": "https://github.com/reachweb/locale-lander/issues",
-                "source": "https://github.com/reachweb/locale-lander/tree/v3.3.0"
-            },
-            "time": "2026-01-29T08:56:12+00:00"
-        },
-        {
             "name": "rebing/graphql-laravel",
             "version": "9.16.0",
             "source": {
@@ -5882,96 +5816,6 @@
                 }
             ],
             "time": "2026-01-28T10:33:42+00:00"
-        },
-        {
-            "name": "symfony/intl",
-            "version": "v7.4.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/intl.git",
-                "reference": "7fa2d46174166bcd7829abc8717949f8a0b21fb7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/intl/zipball/7fa2d46174166bcd7829abc8717949f8a0b21fb7",
-                "reference": "7fa2d46174166bcd7829abc8717949f8a0b21fb7",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.2",
-                "symfony/deprecation-contracts": "^2.5|^3"
-            },
-            "conflict": {
-                "symfony/string": "<7.1"
-            },
-            "require-dev": {
-                "symfony/filesystem": "^6.4|^7.0|^8.0",
-                "symfony/var-exporter": "^6.4|^7.0|^8.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\Intl\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/",
-                    "/Resources/data/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Bernhard Schussek",
-                    "email": "bschussek@gmail.com"
-                },
-                {
-                    "name": "Eriksen Costa",
-                    "email": "eriksen.costa@infranology.com.br"
-                },
-                {
-                    "name": "Igor Wiedler",
-                    "email": "igor@wiedler.ch"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Provides access to the localization data of the ICU library",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "i18n",
-                "icu",
-                "internationalization",
-                "intl",
-                "l10n",
-                "localization"
-            ],
-            "support": {
-                "source": "https://github.com/symfony/intl/tree/v7.4.4"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://github.com/nicolas-grekas",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2026-01-12T12:19:02+00:00"
         },
         {
             "name": "symfony/lock",
