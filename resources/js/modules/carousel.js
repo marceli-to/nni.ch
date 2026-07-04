@@ -1,69 +1,43 @@
-function createCarousel(container) {
-  (function () {
-    
-    const selectors = {
-      images: `${container} [data-carousel-image]`,
-      duration: `${container} [data-carousel-duration]`,
-    };
+/**
+ * Frame-by-frame image carousel: cycles through [data-carousel-image] frames
+ * by toggling the `hidden` class on an interval, once every frame has loaded.
+ * Each carousel is scoped by its [data-carousel="id"] container.
+ */
 
-    let currentIndex = 0;
-    let duration = 150;
+const createCarousel = (container) => {
+  const images = [...container.querySelectorAll('[data-carousel-image]')];
+  if (images.length === 0) return;
 
-    const images = document.querySelectorAll(selectors.images);
+  const duration = Number(container.querySelector('[data-carousel-duration]')?.dataset.carouselDuration) || 150;
 
-    const init = () => {
-      const loadedCount = imagesLoaded(images);
-      duration = document.querySelector(selectors.duration).dataset.carouselDuration;
+  let currentIndex = 0;
 
-      if (loadedCount === images.length) {
-        loopImages();
-      }
-    };
+  const loop = () => {
+    setInterval(() => {
+      images[currentIndex].classList.add('hidden');
+      currentIndex = (currentIndex + 1) % images.length;
+      images[currentIndex].classList.remove('hidden');
+    }, duration);
+  };
 
-    const loopImages = () => {
-      setInterval(() => {
-        images[currentIndex].classList.add('hidden');
-        currentIndex = (currentIndex + 1) % images.length;
-        images[currentIndex].classList.remove('hidden');
-      }, duration);
-    };
+  // Start only once every frame has loaded, so the animation doesn't stutter.
+  const pending = images.filter((image) => !image.complete);
 
-    const imagesLoaded = (images) => {
-      let count = 0;
-      images.forEach((image) => {
-        if (image.complete) {
-          count++;
-        } else {
-          image.addEventListener('load', () => {
-            count++;
-            if (count === images.length) {
-              loopImages();
-            }
-          });
-          image.addEventListener('error', handleImageError);
-        }
-      });
-      return count;
-    };
+  if (pending.length === 0) {
+    loop();
+    return;
+  }
 
-    const handleImageError = (e) => {
-      console.error('Image failed to load', e);
-    };
-
-    if (document.querySelector(selectors.images)) {
-      init();
-    }
-  })();
-}
-
-// Get all carousel containers
-document.addEventListener('DOMContentLoaded', () => {
-  // Get all carousel containers
-  const carouselContainers = document.querySelectorAll('[data-carousel]');
-  // Create an instance for each carousel container
-  carouselContainers.forEach(container => {
-    createCarousel(`[data-carousel="${container.dataset.carousel}"]`);
+  let remaining = pending.length;
+  pending.forEach((image) => {
+    image.addEventListener('load', () => {
+      remaining -= 1;
+      if (remaining === 0) loop();
+    });
+    image.addEventListener('error', (e) => console.error('Image failed to load', e));
   });
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('[data-carousel]').forEach(createCarousel);
 });
-
-

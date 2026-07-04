@@ -1,45 +1,30 @@
-(function () {
+/**
+ * Lazily loads videos once they scroll into view: swaps each <source>'s
+ * data-src into src, calls load(), then stops observing.
+ */
 
-  const selectors = {
-    lazy: '[data-video-lazy]',
-  };
+const selector = '[data-video-lazy]';
 
-  const breakpoint = 768;
-
-  const init = () => {
-    lazyLoad();
+const loadVideo = (video) => {
+  for (const source of video.children) {
+    if (source.tagName === 'SOURCE' && source.dataset.src) {
+      source.src = source.dataset.src;
+    }
   }
 
-  const lazyLoad = () => {
-    let lazyVideos = [...document.querySelectorAll(selectors.lazy)];
+  video.load();
+  // Remove the marker so the video is never re-loaded.
+  video.removeAttribute('data-video-lazy');
+};
 
-    if ("IntersectionObserver" in window) {
-      let lazyVideoObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(function(video) {
-          if (video.isIntersecting) {
-            for (let i = 0; i < video.target.children.length; i++) {
-              let videoSource = video.target.children[i];
-              if (videoSource.tagName && videoSource.tagName.toUpperCase() === "SOURCE") {
-                if (videoSource.dataset.src) {
-                  videoSource.src = videoSource.dataset.src;
-                }
-              }
-            }
-
-            video.target.load();
-            // remove attribute to prevent loading the video multiple times
-            video.target.removeAttribute('data-video-lazy');
-            lazyVideoObserver.unobserve(video.target);
-          }
-        });
-      });
-
-      lazyVideos.forEach(function(lazyVideo) {
-        lazyVideoObserver.observe(lazyVideo);
-      });
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      loadVideo(entry.target);
+      observer.unobserve(entry.target);
     }
-  };
+  });
 
-  init();
-  
-})();
+  document.querySelectorAll(selector).forEach((video) => observer.observe(video));
+}

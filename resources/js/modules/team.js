@@ -1,36 +1,24 @@
-(function () {
-  
-  const selectors = {
-    filterTerm: '[data-filter]',
-    filterItem: '[data-filter-category]',
-  };
+/**
+ * Category filter: clicking a [data-filter] term shows/hides the
+ * [data-filter-category] items whose categories include that term.
+ * The term "all" reveals everything.
+ */
 
-  const init = () => {
-    document.querySelectorAll(selectors.filterTerm).forEach((el) => {
-      el.addEventListener('click', filter);
-    });
-  };
+const selectors = {
+  filterTerm: '[data-filter]',
+  filterItem: '[data-filter-category]',
+};
 
-  const filter = (e) => {
-    e.preventDefault();
-    const term = e.currentTarget.dataset.filter;
-    const items = document.querySelectorAll(selectors.filterItem);
+const filter = (e) => {
+  e.preventDefault();
+  const term = e.currentTarget.dataset.filter;
 
-    items.forEach((el) => {
-      if (term === 'all') {
-        el.classList.remove('hidden');
-        return;
-      }
-      if (el.dataset.filterCategory.includes(term)) {
-        el.classList.remove('hidden');
-      } else {
-        el.classList.add('hidden');
-      }
-    });
-  }
+  document.querySelectorAll(selectors.filterItem).forEach((el) => {
+    const show = term === 'all' || el.dataset.filterCategory.includes(term);
+    el.classList.toggle('hidden', !show);
+  });
+};
 
-  // init it data-filter is present
-  if (document.querySelector(selectors.filterTerm)) {
-    init();
-  }
-})();
+document.querySelectorAll(selectors.filterTerm).forEach((el) => {
+  el.addEventListener('click', filter);
+});

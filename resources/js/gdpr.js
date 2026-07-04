@@ -1,26 +1,24 @@
-(function () {
+/**
+ * GDPR consent banner: shows the banner until the user accepts, then persists
+ * consent in localStorage and removes the banner + button.
+ */
 
-  const selectors = {
-    btn: '[data-gdpr-btn]',
-    banner: '[data-gdpr-banner]',
-  };
+const selectors = {
+  btn: '[data-gdpr-btn]',
+  banner: '[data-gdpr-banner]',
+};
 
-  const init = () => {
-    document.querySelector(selectors.btn).addEventListener('click', accept);
+const accept = () => {
+  localStorage.setItem('global_consent', 'true');
+  document.querySelector(selectors.btn)?.remove();
+  document.querySelector(selectors.banner)?.remove();
+};
 
-    const globalConsent = localStorage.getItem('global_consent');
-    if (!globalConsent) {
-      document.querySelector(selectors.banner).classList.remove('hidden');
-      return;
-    }  
-  };
+const btn = document.querySelector(selectors.btn);
+const banner = document.querySelector(selectors.banner);
 
-  const accept = () => {
-    localStorage.setItem('global_consent', 'true');
-    document.querySelector(selectors.btn).remove();
-    document.querySelector(selectors.banner).remove();
-  };
-  init();
-})();
+btn?.addEventListener('click', accept);
 
-
+if (banner && !localStorage.getItem('global_consent')) {
+  banner.classList.remove('hidden');
+}

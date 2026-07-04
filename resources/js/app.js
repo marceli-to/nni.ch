@@ -21,24 +21,11 @@ Alpine.start();
 import './modules/video.js';
 
 /**
- * Import and initialize swiper module for blog posts
+ * Import and initialize the swiper sliders (posts, team, projects, images).
+ * All sliders are declared in a single config-driven module.
  */
 
-import './modules/swiper/posts.js';
-
-/**
- * Import and initialize swiper module for team members
- */
-
-import './modules/swiper/team.js';
-
-/**
- * Import and initialize swiper module for projects
- */
-
-import './modules/swiper/projects.js';
-
-import './modules/swiper/images.js';
+import './modules/swiper/index.js';
 
 import './modules/touch.js';
 

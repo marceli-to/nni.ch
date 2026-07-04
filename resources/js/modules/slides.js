@@ -1,31 +1,28 @@
-(function () {
+/**
+ * Simple tabbed slides: clicking a nav link ([data-slide-button="slug"])
+ * hides every [data-slide] and reveals the one matching the slug.
+ */
 
-  const selectors = {
-    slides: '[data-slide]',
-    slideButtons: '[data-slides-nav] a',
-  };
+const selectors = {
+  slides: '[data-slide]',
+  navButtons: '[data-slides-nav] a',
+};
 
-  const init = () => {
-    const buttons = document.querySelectorAll(selectors.slideButtons);
-    if (buttons) {
-      buttons.forEach((button) => {
-        button.addEventListener('click', handleClick);
-      });
-    }
-  };
+const showSlide = (e) => {
+  e.preventDefault();
+  const slug = e.currentTarget.dataset.slideButton;
 
-  const handleClick = (e) => {
-    e.preventDefault();
-    const slug = e.currentTarget.dataset.slideButton;
-    const slides = document.querySelectorAll(selectors.slides);
-    slides.forEach((slide) => {
-      slide.classList.add('hidden');
-    });
-    // show the clicked slide
-    const clickedSlide = document.querySelector(`[data-slide="${slug}"]`);
-    clickedSlide.classList.remove('hidden');
-    clickedSlide.classList.add('visible');
-  };  
+  document.querySelectorAll(selectors.slides).forEach((slide) => {
+    slide.classList.add('hidden');
+  });
 
-  init();
-})();
+  const target = document.querySelector(`[data-slide="${slug}"]`);
+  if (target) {
+    target.classList.remove('hidden');
+    target.classList.add('visible');
+  }
+};
+
+document.querySelectorAll(selectors.navButtons).forEach((button) => {
+  button.addEventListener('click', showSlide);
+});

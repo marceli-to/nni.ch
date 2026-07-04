@@ -1,24 +1,11 @@
-(function () {
-  
-  const selectors = {
-    touch: '[data-touch]'
-  };
+/**
+ * Toggles a `has-touch` class on elements while they are being touched,
+ * so styles can react to touch without relying on :hover on touch devices.
+ */
 
-  const init = () => {
-    const touchElements = Array.from(document.querySelectorAll(selectors.touch));
-    touchElements.forEach((element) => {
-      element.addEventListener('touchstart', () => {
-        element.classList.add('has-touch');
-      });
-
-      element.addEventListener('touchend', () => {
-        element.classList.remove('has-touch');
-      });
-    });
-  };
-
-  // init on touch devices only
-  if ('ontouchstart' in window) {
-    init();
-  }
-})();
+if ('ontouchstart' in window) {
+  document.querySelectorAll('[data-touch]').forEach((el) => {
+    el.addEventListener('touchstart', () => el.classList.add('has-touch'));
+    el.addEventListener('touchend', () => el.classList.remove('has-touch'));
+  });
+}
