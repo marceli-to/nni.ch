@@ -6,6 +6,16 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {{ if  open_graph_description }}<meta name="description" content="{{ open_graph_description }}">{{ else }}<meta name="description" content="{{ config.client.meta_description }}">{{ /if}}
+
+{{# International SEO: robots directive, self-referencing canonical, and hreflang alternates. #}}
+{{# hreflang/canonical only render on entry pages (where {{ locales }} / permalink resolve); #}}
+{{# taxonomy/route listing pages fall back to the robots tag + current_url canonical. #}}
+{{ if noindex }}<meta name="robots" content="noindex, follow">{{ else }}<meta name="robots" content="index, follow">{{ /if }}
+<link rel="canonical" href="{{ permalink ?? current_url }}">
+{{ locales }}
+<link rel="alternate" hreflang="{{ locale:short_locale }}" href="{{ permalink }}">
+{{ if locale:handle == 'de' }}<link rel="alternate" hreflang="x-default" href="{{ permalink }}">{{ /if }}
+{{ /locales }}
 <meta property="og:title" content="{{ open_graph_title ?? title }} | Nightnurse Images">
 {{ if  open_graph_description }}<meta name="og:description" content="{{ open_graph_description }}">{{ else }}<meta property="og:description" content="{{ config.client.meta_description }}">{{ /if }}
 {{ if open_graph_image }}<meta property="og:image" content="{{ config.client.base_url }}{{ open_graph_image:url }}"> {{ else }}<meta property="og:image" content="{{ config.client.base_url }}/opengraph.jpg">{{ /if }}
