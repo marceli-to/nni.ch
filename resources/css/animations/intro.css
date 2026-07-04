@@ -85,10 +85,7 @@
   animation-delay: 1.5s;
 }
 
-/* visited state */
-.is-visited [data-video-animation="introTitle"],
-.is-visited [data-video-animation="introMenu"],
-.is-visited[data-video-animation="introHeader"],
+/* prevent intro replay when deep-linking via hash */
 .prevent-animation[data-video-animation="introHeader"] {
   animation: none !important;
   opacity: 1 !important;

@@ -1,8 +1,12 @@
-import debounce from './debounce.js';
-
 /**
  * Section observer: drives the active-section state, header theme, video
  * play/pause and (optional) scroll-snapping as the user moves through the page.
+ *
+ * Both the active-section state and the header theme are driven entirely by
+ * IntersectionObserver — there is no scroll listener. The theme observer in
+ * particular replaces a previous scroll handler that called
+ * getBoundingClientRect() on every theme section per scroll tick (a forced-
+ * reflow / layout-thrashing hotspot).
  */
 
 const selectors = {
@@ -16,7 +20,6 @@ const selectors = {
 };
 
 let currentSection = null;
-let lastScrollY = window.scrollY;
 
 // Cache DOM elements.
 const sections = document.querySelectorAll(selectors.sectionObserve);
@@ -78,7 +81,6 @@ const initIntersectionObserver = () => {
       }
 
       handleActiveSection(entry.target);
-      setTheme(entry.target.getAttribute('data-section-theme'));
       currentSection = entry.target;
     });
   }, { threshold: 0.25 });
@@ -86,38 +88,51 @@ const initIntersectionObserver = () => {
   sections.forEach((section) => observer.observe(section));
 };
 
-const checkAndUpdateTheme = () => {
-  if (!header || themeSections.length === 0) return;
+/**
+ * Header theme observer.
+ *
+ * A degenerate root band pinned to the very top of the viewport
+ * (`rootMargin: '0px 0px -100% 0px'`) means exactly the theme section currently
+ * crossing the top edge is reported as intersecting — i.e. the section sitting
+ * under the header. Whichever theme section is at the top wins, regardless of
+ * scroll direction, with no per-scroll layout reads.
+ *
+ * We track the intersecting sections in a Map keyed on the top offset that the
+ * IntersectionObserver entry already provides (`boundingClientRect.top`, which
+ * does NOT force a reflow). At a section boundary the topmost crossing section
+ * wins.
+ */
+const initThemeObserver = () => {
+  const intersecting = new Map();
 
-  const currentScrollY = window.scrollY;
-  const scrollDown = currentScrollY > lastScrollY;
-  let relevantSection = null;
+  const applyTopmostTheme = () => {
+    let active = null;
+    let activeTop = -Infinity;
 
-  for (const section of themeSections) {
-    const rect = section.getBoundingClientRect();
-
-    if (scrollDown) {
-      if (rect.top < 50 && rect.bottom > 0) {
-        relevantSection = section;
-        break;
+    for (const [section, top] of intersecting) {
+      if (top > activeTop) {
+        activeTop = top;
+        active = section;
       }
-    } else if (rect.bottom > 50 && rect.top < 0) {
-      relevantSection = section;
     }
-  }
 
-  if (relevantSection) {
-    setTheme(relevantSection.getAttribute('data-section-theme'));
-  }
+    if (active) {
+      setTheme(active.getAttribute('data-section-theme'));
+    }
+  };
 
-  lastScrollY = currentScrollY;
-};
+  const observer = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        intersecting.set(entry.target, entry.boundingClientRect.top);
+      } else {
+        intersecting.delete(entry.target);
+      }
+    }
+    applyTopmostTheme();
+  }, { rootMargin: '0px 0px -100% 0px', threshold: 0 });
 
-const initScrollObserver = () => {
-  const debouncedThemeUpdate = debounce(checkAndUpdateTheme, 10);
-  window.addEventListener('scroll', debouncedThemeUpdate, { passive: true });
-  document.body.addEventListener('scroll', debouncedThemeUpdate, { passive: true });
-  checkAndUpdateTheme();
+  themeSections.forEach((section) => observer.observe(section));
 };
 
 const handleOnLoad = () => {
@@ -133,5 +148,5 @@ if (sections.length > 0) {
 }
 
 if (themeSections.length > 0) {
-  initScrollObserver();
+  initThemeObserver();
 }

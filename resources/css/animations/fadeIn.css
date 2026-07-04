@@ -40,10 +40,3 @@
 .is-playing [data-video-animation="fadeIn"][data-video-animation-delay="long"] {
   animation-delay: .75s;
 }
-
-/* visited state */
-.is-visited [data-animation="fadeIn"],
-.is-visited [data-video-animation="fadeIn"] {
-  animation: none;
-  opacity: 1;
-}

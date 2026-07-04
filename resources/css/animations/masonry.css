@@ -80,20 +80,3 @@
   animation-duration: .75s, 1.25s;
   animation-iteration-count: 1;
 }
-
-/* visited state */
-.is-visited [data-animation="masonryTitle"],
-.is-visited [data-animation="masonryCta"],
-.is-visited [data-animation="masonryTitleMirrored"],
-.is-visited [data-animation="masonryCtaMirrored"] {
-  animation: none;
-  transform: translateX(0);
-  opacity: 1;
-}
-
-.is-visited [data-animation="masonrySlideInTopRight"],
-.is-visited [data-animation="masonrySlideInBottom"] {
-  animation: none;
-  transform: translate(0);
-  opacity: 1;
-}

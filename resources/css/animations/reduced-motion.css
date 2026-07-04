@@ -1,0 +1,29 @@
+/**
+ * Respect the user's "reduce motion" OS setting (WCAG 2.3.3).
+ *
+ * Imported last so it overrides the animation modules. The scroll-triggered
+ * fade/slide elements start from an animated-out state (opacity: 0 / translated),
+ * so for reduced-motion users we must force them to their final, visible state —
+ * otherwise disabling the animation would leave content invisible.
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Force scroll-reveal / menu elements to their resolved end state. */
+  [data-animation],
+  [data-animation-lg],
+  [data-video-animation],
+  [data-menu-animation] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

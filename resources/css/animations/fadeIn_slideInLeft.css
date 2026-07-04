@@ -44,10 +44,3 @@
 .is-active [data-animation="fadeIn_slideInLeft"][data-animation-staggered="2"] {
   animation-delay: .95s;
 }
-
-/* visited state */
-.is-visited [data-animation="fadeIn_slideInLeft"] {
-  animation: none;
-  transform: translateX(0);
-  opacity: 1;
-}

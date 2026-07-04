@@ -12,6 +12,7 @@
 @import "animations/masonry.css";
 @import "animations/menu.css";
 @import "animations/slides.css";
+@import "animations/reduced-motion.css";
 
 @import "components/headings.css";
 @import "components/forms.css";
@@ -24,7 +25,6 @@
 
 @import "views/posts.css";
 @import "views/privacy.css";
-/* @import "vendor/fullpage.css"; */
 
 * {
   font-variant-ligatures: none;

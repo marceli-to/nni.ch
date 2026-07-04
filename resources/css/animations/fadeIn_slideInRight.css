@@ -47,11 +47,3 @@
 .is-active [data-animation-lg="fadeIn_slideInRight"][data-animation-delay="long"] {
   animation-delay: .5s;
 }
-
-/* visited state */
-.is-visited [data-animation="fadeIn_slideInRight"],
-.is-visited [data-animation-lg="fadeIn_slideInRight"] {
-  animation: none;
-  transform: translateX(0);
-  opacity: 1;
-}
