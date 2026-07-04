@@ -7,16 +7,20 @@
   class="text-tiny sm:text-xxs font-meta-medium tracking-wider relative flex flex-col items-center {{ class }}">
   <div 
     class="max-w-md relative z-80">
-    <a 
+    <a
       href="javascript:;"
+      role="button"
+      aria-controls="filter-panel"
+      :aria-expanded="filter ? 'true' : 'false'"
       @click="filter = ! filter"
       class="flex flex-col items-center">
       <span class="uppercase">{{ "Filter" | trans }}</span>
       {{ partial:components/icons/filter class="w-16 h-auto sm:w-20" }}
     </a>
   </div>
-  <div 
-    x-cloak 
+  <div
+    id="filter-panel"
+    x-cloak
     x-show="filter"
     :class="{ 'opacity-0': filter === false, 'h-0': filter === false, 'w-0': filter === false, 'transition-none': filter === false, 'duration-0': filter === false}"
     class="flex flex-col z-70 pt-70 pb-15 px-15 bg-white border-2 border-silver absolute -top-10 transition-all duration-200">

@@ -45,10 +45,14 @@
         </nav>
       </div>
     
-      <a 
-        href="javascript:;" 
+      <a
+        href="javascript:;"
+        role="button"
         x-on:click="menu = ! menu"
         title="{{ "Menü anzeigen" | trans }}"
+        aria-label="{{ "Menü anzeigen" | trans }}"
+        aria-controls="main-menu"
+        :aria-expanded="menu === true ? 'true' : 'false'"
         :class="{ 'is-active': menu === true }"
         class="group">
         {{ partial:components/icons/burger class="w-28 xl:w-32 h-auto" }}

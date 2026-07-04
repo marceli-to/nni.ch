@@ -15,8 +15,11 @@
   }"
   x-effect="open = selected === {{ index }}; updateHeight()"
   class="relative w-full border-b border-black">
-  <button 
+  <button
     type="button"
+    id="accordion-button-{{ index }}"
+    aria-controls="accordion-panel-{{ index }}"
+    :aria-expanded="open ? 'true' : 'false'"
     class="w-full block hover:bg-white transition-colors duration-300 ease-in-out group"
     @click="toggle()">
 
@@ -40,10 +43,13 @@
 
     </div>
   </button>
-  <div 
+  <div
     x-ref="container"
+    id="accordion-panel-{{ index }}"
     role="region"
-    class="relative bg-transparent overflow-hidden max-h-0 transition-all duration-300 ease-in-out" 
+    aria-labelledby="accordion-button-{{ index }}"
+    :aria-hidden="open ? 'false' : 'true'"
+    class="relative bg-transparent overflow-hidden max-h-0 transition-all duration-300 ease-in-out"
     :class="{ 'bg-white': open }"
     style="max-height: 0px;">
     <div>
