@@ -1,0 +1,20 @@
+title: Statement
+fields:
+  -
+    handle: heading
+    field:
+      buttons:
+        - bold
+        - removeformat
+      inline: break
+      remove_empty_nodes: true
+      type: bard
+      display: Heading
+      instructions: 'Bold the second word for emphasis, e.g. “Imagine **tomorrow**”.'
+      localizable: true
+  -
+    handle: text
+    field:
+      type: textarea
+      display: Text
+      localizable: false

@@ -14,24 +14,17 @@ tabs:
               validate:
                 - required
               display: Titel
-              instructions_position: above
-              listable: hidden
-              visibility: visible
-              replicator_preview: true
-              input_type: text
-              antlers: false
-              hide_display: false
               localizable: true
           -
             handle: page_elements
             field:
               collapse: true
-              previews: true
-              fullscreen: true
+              type: replicator
+              display: Inhalte
+              localizable: true
               sets:
                 main_elements:
                   display: 'Main Elements'
-                  instructions: null
                   icon: addon-boxes-stack
                   sets:
                     intro:
@@ -71,30 +64,28 @@ tabs:
                           import: title_text
                     editor:
                       display: Texteditor
-                      instructions: null
                       icon: text-formatting-markdown
                       fields:
                         -
                           import: editor
+                special_elements:
+                  display: 'Special Elements'
+                  icon: addon-boxes-stack
+                  sets:
+                    statement:
+                      display: Statement
+                      instructions: 'Optional Heading with an offset text'
+                      icon: text-formatting-initial-letter
+                      fields:
+                        -
+                          import: statement
                     cta_expertise:
                       display: 'CTA Expertise'
                       instructions: 'Consultation CTA (text left, portrait right).'
-                      icon: user
+                      icon: alert-alarm-bell
                       fields:
                         -
                           import: cta_expertise
-                    cta_project:
-                      display: 'CTA Project'
-                      instructions: 'Consultation CTA (portrait left, text right, with rules).'
-                      icon: user
-                      fields:
-                        -
-                          import: cta_project
-                special_elements:
-                  display: 'Special Elements'
-                  instructions: null
-                  icon: addon-boxes-stack
-                  sets:
                     teaser_project:
                       display: 'Masonry (Portfolio)'
                       instructions: 'Add a set of images, a text and a link.'
@@ -139,7 +130,6 @@ tabs:
                           import: faq
                 graphical_elements:
                   display: 'Graphical Elements'
-                  instructions: null
                   icon: addon-boxes-stack
                   sets:
                     horizontal_ruler:
@@ -149,14 +139,6 @@ tabs:
                       fields:
                         -
                           import: horizontal_ruler
-              type: replicator
-              display: Inhalte
-              listable: hidden
-              instructions_position: above
-              visibility: visible
-              replicator_preview: true
-              hide_display: false
-              localizable: true
   seo:
     display: SEO
     sections:
@@ -184,6 +166,7 @@ tabs:
               type: slug
               localizable: true
               validate: 'max:200'
+              show_regenerate: true
           -
             handle: parent
             field:

@@ -1,0 +1,26 @@
+<section
+  data-section
+  data-section-theme="light"
+  data-section-observe
+  class="relative py-90 xl:py-150">
+
+  {{ partial:layout/blocks/inner }}
+
+    <div class="md:grid md:grid-cols-12 md:gap-20">
+
+      {{ if heading }}
+        {{ partial:components/headings/h2 class="[&_strong]:font-meta-bold text-pretty md:col-span-4 lg:col-span-3" }}
+          {{ heading }}
+        {{ /partial:components/headings/h2 }}
+      {{ /if }}
+
+      <div
+        class="md:col-span-8 lg:col-span-9 {{ !heading ? 'md:col-start-2 lg:col-start-4' : 'md:mt-80 xl:mt-120' }} text-md md:text-xl lg:text-2xl xl:text-3xl !leading-[1.5] text-pretty"
+        data-animation="fadeIn"
+        data-animation-duration="slow">
+        {{ text }}
+      </div>
+
+    </div>
+  {{ /partial:layout/blocks/inner }}
+</section>

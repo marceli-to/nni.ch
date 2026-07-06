@@ -48,6 +48,10 @@
   {{ partial:fieldsets/misc/title_text }}
 {{ /if }}
 
+{{ if type == 'statement' }}
+  {{ partial:fieldsets/misc/statement }}
+{{ /if }}
+
 {{ if type == 'jobs' }}
   {{ partial:fieldsets/misc/jobs/wrapper }}
 {{ /if }}
