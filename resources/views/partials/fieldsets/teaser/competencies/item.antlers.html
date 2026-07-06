@@ -1,0 +1,42 @@
+{{ if image }}
+
+  <a
+    href="{{ link:url }}"
+    title="{{ link:title }}"
+    class="group block no-underline">
+
+    {{ partial:components/media/image/image image="{{ image }}" class="w-full h-auto aspect-square lg:aspect-[3/4] object-cover" }}
+
+    <div class="flex items-end justify-between gap-x-20 mt-15 md:mt-20 xl:mt-30">
+
+      {{ partial:components/headings/h2 is_competency_teaser="true" class="font-meta-medium hyphens-auto" }}
+        {{ link:title }}
+      {{ /partial:components/headings/h2 }}
+
+      {{ partial:components/icons/arrow-right-long class="shrink-0 w-28 xl:w-33 h-auto mb-8 group-hover:translate-x-8 transition-transform" }}
+
+    </div>
+  </a>
+
+{{ else }}
+
+  <a
+    href="{{ link:url }}"
+    title="{{ link:title }}"
+    aria-label="{{ link:title }}"
+    class="group flex flex-col gap-y-15 lg:gap-y-30 border-t border-t-black pt-10 lg:pt-15 no-underline">
+    
+    {{ partial:components/headings/h2 is_competency_teaser="true" class="font-meta-medium" }}
+      {{ link:title }}
+    {{ /partial:components/headings/h2 }}
+
+    <span class="text-xs md:text-md leading-[1.25] font-meta-medium uppercase tracking-wider flex items-center gap-x-10 xl:gap-x-15">
+
+      {{ partial:components/icons/arrow-right-short class="w-18 xl:w-20 h-auto group-hover:translate-x-4 transition-transform" }}
+
+      <span class="group-hover:translate-x-8 transition-transform">{{ "Mehr erfahren" | trans }}</span>
+
+    </span>
+  </a>
+
+{{ /if }}

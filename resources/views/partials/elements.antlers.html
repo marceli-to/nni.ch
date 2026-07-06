@@ -20,6 +20,10 @@
   {{ partial:fieldsets/teaser/portfolio/wrapper is_teaser="true" }}
 {{ /if }}
 
+{{ if type == 'teaser_competencies' }}
+  {{ partial:fieldsets/teaser/competencies/wrapper }}
+{{ /if }}
+
 {{ if type == 'teasers_expertise' }}
   {{ partial:fieldsets/teaser/expertise/wrapper }}
 {{ /if }}

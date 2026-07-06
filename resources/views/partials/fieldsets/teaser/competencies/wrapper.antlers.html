@@ -1,0 +1,17 @@
+<section 
+  data-section 
+  data-section-theme="light" 
+  class="pt-90 lg:pt-150">
+
+  {{ partial:layout/blocks/inner }}
+
+    <div class="flex flex-col sm:grid sm:grid-cols-12 gap-30 xl:gap-50">
+      {{ items }}
+        <div class="sm:col-span-full lg:col-span-4">
+          {{ partial:fieldsets/teaser/competencies/item }}
+        </div>
+      {{ /items }}
+    </div>
+
+  {{ /partial:layout/blocks/inner }}
+</section>

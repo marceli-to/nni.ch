@@ -93,6 +93,13 @@ tabs:
                       fields:
                         -
                           import: teaser_project
+                    teaser_competencies:
+                      display: 'Teaser (Competencies)'
+                      instructions: '3-column competencies teaser, with or without images.'
+                      icon: layout-three-columns
+                      fields:
+                        -
+                          import: teaser_competencies
                     teasers_expertise:
                       display: 'Slider (Expertise)'
                       instructions: 'Add teasers for expertise'

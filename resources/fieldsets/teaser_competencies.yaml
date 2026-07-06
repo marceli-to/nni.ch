@@ -1,0 +1,40 @@
+title: 'Competencies Teaser'
+fields:
+  -
+    handle: items
+    field:
+      collapse: true
+      max_sets: 3
+      type: replicator
+      display: Competencies
+      localizable: true
+      sets:
+        items:
+          display: Competencies
+          sets:
+            item:
+              display: 'Competency page'
+              icon: text-formatting-image-left
+              fields:
+                -
+                  handle: link
+                  field:
+                    type: entries
+                    collections:
+                      - pages
+                    max_items: 1
+                    display: Link
+                    instructions: 'The page to link to. Its title is shown as the heading.'
+                    localizable: true
+                    validate:
+                      - required
+                -
+                  handle: image
+                  field:
+                    max_files: 1
+                    min_files: 0
+                    container: assets
+                    type: assets
+                    display: Bild
+                    instructions: 'Optional. With an image the item shows a portrait; without one it shows the compact title + “Mehr erfahren” layout.'
+                    localizable: false
