@@ -76,6 +76,20 @@ tabs:
                       fields:
                         -
                           import: editor
+                    cta_expertise:
+                      display: 'CTA Expertise'
+                      instructions: 'Consultation CTA (text left, portrait right).'
+                      icon: user
+                      fields:
+                        -
+                          import: cta_expertise
+                    cta_project:
+                      display: 'CTA Project'
+                      instructions: 'Consultation CTA (portrait left, text right, with rules).'
+                      icon: user
+                      fields:
+                        -
+                          import: cta_project
                 special_elements:
                   display: 'Special Elements'
                   instructions: null

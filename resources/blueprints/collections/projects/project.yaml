@@ -59,6 +59,20 @@ tabs:
               display: Services
               localizable: true
           -
+            handle: cta
+            field:
+              type: section
+              display: CTA
+              localizable: false
+          -
+            import: cta_project
+          -
+            handle: project_elements
+            field:
+              type: section
+              display: 'Project elements'
+              localizable: false
+          -
             handle: elements
             field:
               collapse: true

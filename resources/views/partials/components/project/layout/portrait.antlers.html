@@ -1,28 +1,50 @@
 {{ partial:layout/blocks/inner }}
   <div class="flex flex-col lg:grid lg:grid-cols-12 lg:gap-x-30 xl:gap-x-50">
     <div class="order-2 lg:order-1 lg:col-span-5">
+
       {{ partial:menu/breadcrumbs/wrapper class="hidden lg:block" }}
+
       <div class="mt-45 xl:mt-90">
         {{ partial:components/project/elements/title }}
       </div>
+
       {{ if summary }}
         <div class="mt-30 xl:mt-45">
           {{ partial:components/project/elements/summary }}
         </div>
       {{ /if }}
+
       {{ if services }}
         <div class="mt-30 xl:mt-45">
           {{ partial:components/project/elements/services }}
         </div>
       {{ /if }}
+
       <div class="{{ services ? 'mt-30 xl:mt-45' : '' }}">
         {{ partial:components/project/elements/tags }}
       </div>
+
+      {{ if person }}
+        <div class="lg:hidden mt-45">
+          {{ partial:fieldsets/cta/project type="portrait" }}
+        </div>
+      {{ /if }}
+
     </div>
+
     <div class="order-1 lg:order-2 lg:col-span-6 lg:col-start-7">
+
       {{ if feature_image || feature_video }}
         {{ partial:components/project/media/feature layout="{{ feature_layout }}" type="{{ feature_type }}" }}
       {{ /if }}
+
+      {{ if person }}
+        <div class="hidden lg:block mt-45">
+        {{ partial:fieldsets/cta/project type="portrait" }}
+        </div>
+      {{ /if }}
+
     </div>
+
   </div>
 {{ /partial:layout/blocks/inner }}
