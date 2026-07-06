@@ -1,0 +1,63 @@
+title: Feedbacks
+fields:
+  -
+    handle: feedbacks
+    field:
+      collapse: false
+      previews: true
+      fullscreen: true
+      sets:
+        feedback:
+          display: Feedback
+          instructions: null
+          icon: quote-close
+          fields:
+            -
+              handle: quote
+              field:
+                type: textarea
+                display: Quote
+                icon: textarea
+                localizable: true
+                listable: hidden
+                instructions_position: above
+                visibility: visible
+                replicator_preview: true
+                hide_display: false
+            -
+              handle: author
+              field:
+                input_type: text
+                antlers: false
+                type: text
+                display: Author
+                icon: text
+                localizable: true
+                listable: hidden
+                instructions_position: above
+                visibility: visible
+                replicator_preview: true
+                hide_display: false
+            -
+              handle: company
+              field:
+                input_type: text
+                antlers: false
+                type: text
+                display: Company
+                icon: text
+                localizable: true
+                listable: hidden
+                instructions_position: above
+                visibility: visible
+                replicator_preview: true
+                hide_display: false
+      type: replicator
+      display: Feedbacks
+      icon: replicator
+      localizable: true
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false

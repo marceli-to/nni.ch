@@ -100,14 +100,24 @@
   {{ /if }}
 
   {{ if type == 'iframe' }}
-    <section 
-      data-section 
-      data-section-theme="light" 
-      {{ is_fullpage ? 'data-section-observe' : '' }} 
+    <section
+      data-section
+      data-section-theme="light"
+      {{ is_fullpage ? 'data-section-observe' : '' }}
       class="{{ is_fullpage ? '"min-h-screen flex flex-col justify-center' : 'py-30 xl:py-60' }}">
       {{ partial:layout/blocks/inner class="min-h-screen flex flex-col justify-center" }}
         {{ partial:components/media/iframe/container }}
       {{ /partial:layout/blocks/inner }}
+    </section>
+  {{ /if }}
+
+  {{ if type == 'feedbacks' }}
+    <section
+      data-section
+      data-section-theme="light"
+      {{ is_fullpage ? 'data-section-observe' : '' }}
+      class="{{ is_fullpage ? 'min-h-screen flex flex-col justify-center' : 'py-30 xl:py-60' }}">
+      {{ partial:components/project/elements/feedbacks }}
     </section>
   {{ /if }}
 

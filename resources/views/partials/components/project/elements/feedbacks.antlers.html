@@ -1,0 +1,25 @@
+{{ partial:layout/blocks/inner }}
+
+  {{ partial:components/headings/h2 is_project="true" class="text-md md:text-xl xl:text-4xl mb-15 md:mb-30 xl:mb-45 text-center" }}
+    {{ "Feedback," | trans }} <span class="font-meta-light">das uns stolz macht.</span>
+  {{ /partial:components/headings/h2 }}
+
+  {{ if feedbacks }}
+    <div class="sm:grid sm:grid-cols-12 gap-20 lg:gap-30 xl:gap-50 border-t border-t-black lg:border-none">
+      {{ feedbacks }}
+        <div class="sm:col-span-full lg:col-span-4">
+          <article class="flex flex-col items-center gap-y-10 lg:gap-y-20 border-b border-b-black lg:border-y lg:border-y-black py-20 lg:py-30">
+            <div class="text-sm lg:text-xl font-meta-medium text-center text-pretty">
+              «{{ quote }}»
+            </div>
+            <div class="text-center">
+              <strong>{{ author }}</strong><br>
+              {{ company }}
+            </div>
+          </article>
+        </div>
+      {{ /feedbacks }}
+    </div>
+  {{ /if }}
+
+{{ /partial:layout/blocks/inner }}

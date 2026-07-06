@@ -11,23 +11,12 @@ tabs:
               options:
                 landscape: Landscape
                 portrait: Portrait
-              taggable: false
-              push_tags: false
-              multiple: false
-              clearable: false
-              searchable: true
-              cast_booleans: false
               default: landscape
               type: select
               display: Layout
-              icon: select
               instructions: 'Choose a layout for the header, depending on the feature image.'
               localizable: false
-              listable: hidden
               instructions_position: below
-              visibility: visible
-              replicator_preview: true
-              hide_display: false
               validate:
                 - required
           -
@@ -39,27 +28,12 @@ tabs:
               validate:
                 - required
               display: Title
-              instructions_position: above
-              listable: hidden
-              visibility: visible
-              replicator_preview: true
-              input_type: text
-              antlers: false
-              hide_display: false
           -
             handle: client
             field:
-              input_type: text
-              antlers: false
               type: text
               display: Client
-              icon: text
               localizable: true
-              listable: hidden
-              instructions_position: above
-              visibility: visible
-              replicator_preview: true
-              hide_display: false
           -
             handle: summary
             field:
@@ -68,33 +42,10 @@ tabs:
                 - unorderedlist
                 - removeformat
                 - anchor
-              smart_typography: false
-              save_html: false
-              inline: false
-              toolbar_mode: fixed
-              reading_time: false
-              word_count: false
-              fullscreen: true
-              allow_source: true
-              enable_input_rules: true
-              enable_paste_rules: true
               remove_empty_nodes: true
-              antlers: false
-              link_noopener: false
-              link_noreferrer: false
-              target_blank: false
-              always_show_set_button: false
-              collapse: false
-              previews: true
               type: bard
               display: Summary
-              icon: bard
               localizable: true
-              listable: hidden
-              instructions_position: above
-              visibility: visible
-              replicator_preview: true
-              hide_display: false
           -
             handle: services
             field:
@@ -103,43 +54,20 @@ tabs:
                 - unorderedlist
                 - removeformat
                 - anchor
-              smart_typography: false
-              save_html: false
-              inline: false
-              toolbar_mode: fixed
-              reading_time: false
-              word_count: false
-              fullscreen: true
-              allow_source: true
-              enable_input_rules: true
-              enable_paste_rules: true
               remove_empty_nodes: true
-              antlers: false
-              link_noopener: false
-              link_noreferrer: false
-              target_blank: false
-              always_show_set_button: false
-              collapse: false
-              previews: true
               type: bard
               display: Services
-              icon: bard
               localizable: true
-              listable: hidden
-              instructions_position: above
-              visibility: visible
-              replicator_preview: true
-              hide_display: false
           -
             handle: elements
             field:
               collapse: true
-              previews: true
-              fullscreen: true
+              type: replicator
+              display: Elements
+              localizable: true
               sets:
                 main_elements:
                   display: 'Main Elements'
-                  instructions: null
                   icon: addon-boxes-stack
                   sets:
                     fullscreen_image:
@@ -158,14 +86,12 @@ tabs:
                           import: image
                     image_slideshow:
                       display: 'Image Slideshow'
-                      instructions: null
                       icon: media-image-picture-gallery
                       fields:
                         -
                           import: image_slideshow
                     image_comparison:
                       display: 'Image Comparison'
-                      instructions: null
                       icon: media-image-picture-gallery
                       fields:
                         -
@@ -179,7 +105,6 @@ tabs:
                           import: image_text
                     iframe:
                       display: Iframe
-                      instructions: null
                       icon: programming-script-code-brackets
                       fields:
                         -
@@ -191,27 +116,23 @@ tabs:
                       fields:
                         -
                           import: video
+                    feedbacks:
+                      display: Feedbacks
+                      instructions: 'Add a set of feedback quotes.'
+                      icon: text-formatting-quotation
+                      fields:
+                        -
+                          import: feedbacks
                 graphical_elements:
                   display: 'Graphical Elements'
-                  instructions: null
                   icon: addon-boxes-stack
                   sets:
                     horizontal_ruler:
                       display: 'Horizontal Ruler'
-                      instructions: null
                       icon: align-object-bottom
                       fields:
                         -
                           import: horizontal_ruler
-              type: replicator
-              display: Elements
-              icon: replicator
-              localizable: true
-              listable: hidden
-              instructions_position: above
-              visibility: visible
-              replicator_preview: true
-              hide_display: false
   media:
     display: Media
     sections:
@@ -224,41 +145,19 @@ tabs:
               options:
                 image: Image
                 video: Video
-              taggable: false
-              push_tags: false
-              multiple: false
-              clearable: false
-              searchable: true
-              cast_booleans: false
               default: image
               type: select
               display: 'Feature type'
-              icon: select
               localizable: false
-              listable: hidden
-              instructions_position: above
-              visibility: visible
-              replicator_preview: true
-              hide_display: false
           -
             handle: feature_image
             field:
               max_files: 1
-              mode: list
               container: assets
-              restrict: false
-              allow_uploads: true
-              show_filename: true
-              show_set_alt: true
               type: assets
               display: 'Feature image'
-              icon: assets
               localizable: false
-              listable: hidden
               instructions_position: below
-              visibility: visible
-              replicator_preview: true
-              hide_display: false
               instructions: 'Add a feature image used on the projects detail page.'
               if:
                 feature_type: 'equals image'
@@ -266,86 +165,46 @@ tabs:
             handle: feature_video
             field:
               max_files: 1
-              mode: list
               container: assets
               folder: video
-              restrict: false
-              allow_uploads: true
-              show_filename: true
-              show_set_alt: true
               type: assets
               display: 'Feature video'
-              icon: assets
               instructions: 'Add a feature video used on the projects detail page. Format needs to be MP4'
               localizable: false
-              listable: hidden
               instructions_position: below
-              visibility: visible
-              replicator_preview: true
-              hide_display: false
               if:
                 feature_type: 'equals video'
           -
             handle: teaser_image_portrait
             field:
               max_files: 1
-              mode: list
               container: assets
-              restrict: false
-              allow_uploads: true
-              show_filename: true
-              show_set_alt: true
               type: assets
               display: 'Teaser image: Portrait'
-              icon: assets
               instructions: 'Used on the project listing page. Image ratio should be approx. 3:4.'
               localizable: false
-              listable: hidden
               instructions_position: below
-              visibility: visible
-              replicator_preview: true
-              hide_display: false
           -
             handle: teaser_image_landscape
             field:
               max_files: 1
-              mode: list
               container: assets
-              restrict: false
-              allow_uploads: true
-              show_filename: true
-              show_set_alt: true
               type: assets
               display: 'Teaser image: Landscape'
-              icon: assets
               instructions: 'Used on the project listing page. Image ratio should be approx. 16:8 for fullwidth or 3:2 for landscape mode.'
               localizable: false
-              listable: hidden
               instructions_position: below
-              visibility: visible
-              replicator_preview: true
-              hide_display: false
           -
             handle: teaser_video
             field:
               max_files: 1
-              mode: list
               container: assets
               folder: video
-              restrict: false
-              allow_uploads: true
-              show_filename: true
-              show_set_alt: true
               type: assets
               display: 'Teaser video'
-              icon: assets
               instructions: 'Used on the project listing page.'
               localizable: false
-              listable: hidden
               instructions_position: below
-              visibility: visible
-              replicator_preview: true
-              hide_display: false
   seo:
     display: SEO
     sections:
@@ -383,13 +242,7 @@ tabs:
                 - projects
               type: entries
               display: 'Related projects'
-              icon: entries
               localizable: false
-              listable: hidden
-              instructions_position: above
-              visibility: visible
-              replicator_preview: true
-              hide_display: false
           -
             handle: project_categories
             field:
