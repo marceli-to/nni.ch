@@ -3,15 +3,9 @@ fields:
   -
     handle: mirrored
     field:
-      default: false
       type: toggle
       display: 'Mirrored?'
       localizable: false
-      listable: hidden
-      instructions_position: above
-      visibility: visible
-      replicator_preview: true
-      hide_display: false
   -
     import: title
     prefix: teaser_project_
@@ -22,11 +16,6 @@ fields:
       display: 'Main link'
       instructions: 'Main link below the title. If empty, a link to the portfolio will be generated.'
       localizable: true
-      listable: hidden
-      instructions_position: above
-      visibility: visible
-      replicator_preview: true
-      hide_display: false
       collections:
         - pages
         - projects
@@ -34,15 +23,9 @@ fields:
   -
     handle: items
     field:
-      fullscreen: true
       type: group
       display: 'Grid items'
       localizable: false
-      listable: hidden
-      instructions_position: above
-      visibility: visible
-      replicator_preview: true
-      hide_display: false
       fields:
         -
           handle: item_top_left
@@ -118,29 +101,7 @@ fields:
         - unorderedlist
         - removeformat
         - anchor
-      smart_typography: false
-      save_html: false
-      inline: false
-      toolbar_mode: fixed
-      reading_time: false
-      word_count: false
-      fullscreen: true
-      allow_source: true
-      enable_input_rules: true
-      enable_paste_rules: true
       remove_empty_nodes: true
-      antlers: false
-      link_noopener: false
-      link_noreferrer: false
-      target_blank: false
-      always_show_set_button: false
-      collapse: false
-      previews: true
       type: bard
       display: Text
       localizable: false
-      listable: hidden
-      instructions_position: above
-      visibility: visible
-      replicator_preview: true
-      hide_display: false

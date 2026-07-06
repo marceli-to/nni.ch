@@ -17,7 +17,7 @@
 {{ /if }}
 
 {{ if type == 'teaser_project' }}
-  {{ partial:fieldsets/teaser/portfolio/wrapper }}
+  {{ partial:fieldsets/teaser/portfolio/wrapper is_teaser="true" }}
 {{ /if }}
 
 {{ if type == 'teasers_expertise' }}
