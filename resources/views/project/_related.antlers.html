@@ -20,7 +20,7 @@
     {{ /partial:ui/swiper/track }}
   {{ /partial:ui/swiper/wrapper }}
 
-  {{ partial:layout/blocks/inner class="hidden md:block" }}
+  {{ partial:layout/container class="hidden md:block" }}
     <div class="md:grid grid-cols-12 gap-x-20 lg:gap-x-30 xl:gap-x-50">
       {{ related }}        
         <div class="md:col-span-4">
@@ -28,7 +28,7 @@
         </div>
       {{ /related }}
     </div>
-  {{ /partial:layout/blocks/inner }}
+  {{ /partial:layout/container }}
   <div class="mt-60 xl:mt-90 flex justify-center">
     {{ partial:ui/button/back title="{{ "Zum Portfolio" | trans }}" url="{{ link id="6dc5a5ba-4450-45c6-9684-53b3a8bb4261" }}" }}
   </div>

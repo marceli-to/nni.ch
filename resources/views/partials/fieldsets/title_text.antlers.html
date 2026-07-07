@@ -3,7 +3,7 @@
   data-section-theme="light" 
   {{ is_fullpage ? 'data-section-observe' : '' }}
   class="relative {{ is_fullpage ? 'min-h-screen flex flex-col justify-center' : 'py-90 xl:py-150' }}">
-  {{ partial:layout/blocks/inner class="{{ is_fullpage ? 'pt-90 pb-150 xs:py-90 lg:py-150' : '' }}" }}
+  {{ partial:layout/container class="{{ is_fullpage ? 'pt-90 pb-150 xs:py-90 lg:py-150' : '' }}" }}
     <div class="grid grid-cols-12 gap-x-20 lg:gap-x-30 xl:gap-x-50">
       <div class="col-span-12 lg:col-span-4 xl:col-span-5 2xl:col-span-4 lg:order-2 mb-30">
 
@@ -30,5 +30,5 @@
         </div>
       </div>
     </div>
-  {{ /partial:layout/blocks/inner }}
+  {{ /partial:layout/container }}
 </section>

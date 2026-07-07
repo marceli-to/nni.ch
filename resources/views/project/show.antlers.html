@@ -79,9 +79,9 @@
         data-section-theme="light" 
         {{ is_fullpage ? 'data-section-observe' : '' }} 
         class="{{ is_fullpage ? 'min-h-screen flex flex-col justify-center' : 'py-30 xl:py-60' }}">
-        {{ partial:layout/blocks/inner }}
+        {{ partial:layout/container }}
           {{ partial:ui/media/video/video }}
-        {{ /partial:layout/blocks/inner }}
+        {{ /partial:layout/container }}
       </section>
     {{ /if }}
     
@@ -91,9 +91,9 @@
         data-section-theme="light" 
         {{ is_fullpage ? 'data-section-observe' : '' }} 
         class="{{ is_fullpage ? 'min-h-screen flex flex-col justify-center' : 'py-30 xl:py-60' }}">
-        {{ partial:layout/blocks/inner class="min-h-screen flex flex-col justify-center" }}
+        {{ partial:layout/container class="min-h-screen flex flex-col justify-center" }}
           {{ partial:ui/media/video/video }}
-        {{ /partial:layout/blocks/inner }}
+        {{ /partial:layout/container }}
       </section>
     {{ /if}}
 
@@ -105,9 +105,9 @@
       data-section-theme="light"
       {{ is_fullpage ? 'data-section-observe' : '' }}
       class="{{ is_fullpage ? '"min-h-screen flex flex-col justify-center' : 'py-30 xl:py-60' }}">
-      {{ partial:layout/blocks/inner class="min-h-screen flex flex-col justify-center" }}
+      {{ partial:layout/container class="min-h-screen flex flex-col justify-center" }}
         {{ partial:ui/media/iframe/wrapper }}
-      {{ /partial:layout/blocks/inner }}
+      {{ /partial:layout/container }}
     </section>
   {{ /if }}
 

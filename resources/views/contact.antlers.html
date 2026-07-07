@@ -1,4 +1,4 @@
-{{ partial:layout/blocks/inner }}
+{{ partial:layout/container }}
   <section class="contact grid grid-cols-12 gap-20 lg:gap-30 xl:gap-50 mt-100 xl:mt-200">
     <article class="col-span-full md:col-span-8 xl:col-start-2">
       {{ page_elements }}
@@ -49,7 +49,7 @@
       {{ partial:ui/form/contact }}
     </div>
   </section>
-{{ /partial:layout/blocks/inner }}
+{{ /partial:layout/container }}
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLu-JOyUzNdkWgV0S__QqWHow0mqFV-KE"></script>
 {{ recaptcha }}
 {{ vite src="resources/js/map.js" }}

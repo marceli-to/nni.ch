@@ -2,7 +2,7 @@
 {{ partial:layout/body class="flex flex-col" }}
     {{ partial:layout/header }}
     <main class="flex-1">
-      {{ partial:layout/blocks/inner class="pt-90 md:pt-150" }}
+      {{ partial:layout/container class="pt-90 md:pt-150" }}
         {{ if error_page_404:image }}
           <div class="mb-40 xl:mb-80">
             {{ partial:ui/media/image/fullscreen image="{{ error_page_404:image }}" }}
@@ -16,7 +16,7 @@
             {{ error_page_404:text ?? "Sorry, diese Seite haben wir leider nicht." | trans }}
           </article>
         </section>
-      {{ /partial:layout/blocks/inner }}
+      {{ /partial:layout/container }}
     </main>
   {{ partial:layout/footer }}
 {{ /partial:layout/body }}
