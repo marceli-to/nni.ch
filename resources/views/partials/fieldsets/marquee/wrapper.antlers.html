@@ -1,0 +1,20 @@
+{{ if marquee_logos }}
+  {{ partial:layout/section section_theme="light" class="pt-90 lg:pt-150" }}
+
+  <div
+      class="marquee w-full overflow-hidden"
+      style="--marquee-duration: {{ marquee_logos | length | multiply:4 }}s;">
+
+      {{# Track holds two identical copies so the loop reads as seamless. #}}
+      <div class="marquee__track flex w-max items-center">
+        {{ marquee_logos }}
+          {{ partial:fieldsets/marquee/item }}
+        {{ /marquee_logos }}
+        {{ marquee_logos }}
+          {{ partial:fieldsets/marquee/item aria_hidden="true" }}
+        {{ /marquee_logos }}
+      </div>
+
+    </div>
+  {{ /partial:layout/section }}
+{{ /if }}

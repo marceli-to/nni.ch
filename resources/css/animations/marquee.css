@@ -1,0 +1,27 @@
+/**
+ * Logo marquee — continuous, seamless auto-scroll.
+ *
+ * The track (`.marquee__track`) contains two identical copies of the logo list.
+ * Translating it by -50% shifts it exactly one full copy, so when the animation
+ * restarts the position is visually identical → no visible jump.
+ *
+ * Duration is set per-instance via the `--marquee-duration` custom property
+ * (see marquee/wrapper.antlers.html), scaled by the number of logos so the
+ * scroll speed stays constant regardless of how many are added.
+ *
+ * NB: `prefers-reduced-motion` is handled globally in reduced-motion.css, which
+ * forces animation-iteration-count: 1 — the track settles to a static state.
+ */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.marquee__track {
+  animation: marquee var(--marquee-duration, 30s) linear infinite;
+}
+
+/* Pause while the visitor is reading / about to click a logo. */
+.marquee:hover .marquee__track {
+  animation-play-state: paused;
+}

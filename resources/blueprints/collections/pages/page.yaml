@@ -139,6 +139,13 @@ tabs:
                   display: 'Graphical Elements'
                   icon: addon-boxes-stack
                   sets:
+                    marquee:
+                      display: 'Logo Marquee'
+                      instructions: 'Auto-scrolling, full-width logo strip. Image, title and optional external link per logo.'
+                      icon: layout-three-columns
+                      fields:
+                        -
+                          import: marquee
                     horizontal_ruler:
                       display: 'Horizontal Ruler'
                       instructions: 'Add a thin, gray line'

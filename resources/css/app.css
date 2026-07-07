@@ -12,6 +12,7 @@
 @import "animations/masonry.css";
 @import "animations/menu.css";
 @import "animations/slides.css";
+@import "animations/marquee.css";
 @import "animations/reduced-motion.css";
 
 @import "components/headings.css";

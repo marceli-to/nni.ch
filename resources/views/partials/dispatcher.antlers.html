@@ -6,6 +6,10 @@
   {{ partial:ui/hr }}
 {{ /if }}
 
+{{ if type == 'marquee' }}
+  {{ partial:fieldsets/marquee/wrapper }}
+{{ /if }}
+
 {{ if type == 'intro' }}
   {{ partial:fieldsets/intro/wrapper }}
 {{ /if }}
