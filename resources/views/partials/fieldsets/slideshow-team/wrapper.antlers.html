@@ -7,12 +7,12 @@
     class="sm:px-80 xl:px-100 max-w-site mx-auto w-full {{ is_fullpage ? 'pt-90 pb-170 xs:py-90 lg:py-150' : '' }}"
     data="data-animation='fadeIn_slideInRight'"
    }}
-    {{ partial:components/swiper/container class="js-swiper-team" navigation="true" moreLink="true" }}
+    {{ partial:components/swiper/track class="js-swiper-team" navigation="true" moreLink="true" }}
       {{ collection from="team" sort="random" }}
         {{ partial:components/swiper/slide class="swiper-slide--mute-inactive" }}
           {{ partial:components/team/elements/card link="true" overlay="true" }}
         {{ /partial:components/swiper/slide }}
       {{ /collection }}
-    {{ /partial:components/swiper/container }}
+    {{ /partial:components/swiper/track }}
   {{ /partial:components/swiper/wrapper }}
 </section>

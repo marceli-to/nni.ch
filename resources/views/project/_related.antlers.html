@@ -11,13 +11,13 @@
   </div>
 
   {{ partial:components/swiper/wrapper class="md:!hidden"  }}
-    {{ partial:components/swiper/container class="js-swiper-projects" navigation="false" }}
+    {{ partial:components/swiper/track class="js-swiper-projects" navigation="false" }}
       {{ related }}
         {{ partial:components/swiper/slide class="swiper-slide--mute-inactive" }}
           {{ partial:components/project/elements/card }}
         {{ /partial:components/swiper/slide }}
       {{ /related }}
-    {{ /partial:components/swiper/container }}
+    {{ /partial:components/swiper/track }}
   {{ /partial:components/swiper/wrapper }}
 
   {{ partial:layout/blocks/inner class="hidden md:block" }}

@@ -55,13 +55,13 @@
       {{ partial:components/buttons/back title="{{ "Zurück zum Team" | trans }}" url="{{ link id="da3064ef-0ff3-40b8-8ea7-12771204c109" }}" }}
     </div>
     {{ partial:components/swiper/wrapper }}
-      {{ partial:components/swiper/container class="js-swiper-team" navigation="false" }}
+      {{ partial:components/swiper/track class="js-swiper-team" navigation="false" }}
         {{ collection from="team" sort="random" limit="3" slug:not_in="{{ slug }}" }}
           {{ partial:components/swiper/slide class="md:max-w-none swiper-slide--mute-inactive" }}
             {{ partial:components/team/elements/card link="true" overlay="true" }}
           {{ /partial:components/swiper/slide }}
         {{ /collection }}
-      {{ /partial:components/swiper/container }}
+      {{ /partial:components/swiper/track }}
     {{ /partial:components/swiper/wrapper }}
   </div>
 </section>

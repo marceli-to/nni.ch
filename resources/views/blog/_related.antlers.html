@@ -14,13 +14,13 @@
         {{ /partial:components/headings/h2 }}
 
         {{ partial:components/swiper/wrapper class="md:!hidden"  }}
-          {{ partial:components/swiper/container class="js-swiper-posts" navigation="false" }}
+          {{ partial:components/swiper/track class="js-swiper-posts" navigation="false" }}
             {{ posts }}
               {{ partial:components/swiper/slide class="swiper-slide--mute-inactive" }}
                 {{ partial:components/post/elements/card term="true" }}
               {{ /partial:components/swiper/slide }}
             {{ /posts }}
-          {{ /partial:components/swiper/container }}
+          {{ /partial:components/swiper/track }}
         {{ /partial:components/swiper/wrapper }}
 
         <div class="hidden md:grid grid-cols-12 gap-20 lg:gap-30 xl:gap-50">

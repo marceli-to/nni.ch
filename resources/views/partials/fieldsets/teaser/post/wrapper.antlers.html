@@ -7,7 +7,7 @@
   </div>
   
   {{ partial:components/swiper/wrapper class="sm:hidden" }}
-    {{ partial:components/swiper/container class="js-swiper-posts" }}
+    {{ partial:components/swiper/track class="js-swiper-posts" }}
       {{ collection from="posts" as="posts" sort="date:desc" limit="3" }}
         {{ posts }}
           {{ partial:components/swiper/slide class="swiper-slide--mute-inactive" }}
@@ -15,7 +15,7 @@
           {{ /partial:components/swiper/slide }}
         {{ /posts }}
       {{ /collection }}
-    {{ /partial:components/swiper/container }}
+    {{ /partial:components/swiper/track }}
   {{ /partial:components/swiper/wrapper }}
 
   {{ partial:layout/blocks/inner class="hidden sm:block" }}
