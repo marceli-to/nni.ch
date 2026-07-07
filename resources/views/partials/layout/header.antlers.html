@@ -13,22 +13,22 @@
       :class="{ 'is-active': menu === true }"
       class="group">
       {{ if is_homepage }}
-        {{ partial:ui/icons/logo-byline class="w-auto h-29 xl:h-35" }}
+        {{ partial:ui/icon/logo-byline class="w-auto h-29 xl:h-35" }}
       {{ else }}
-        {{ partial:ui/icons/logo class="w-auto h-29 xl:h-35" }}
+        {{ partial:ui/icon/logo class="w-auto h-29 xl:h-35" }}
       {{ /if }}
     </a>
 
     {{ if show_portfolio_filter || (segment_1 == 'portfolio' && (segment_2 == 'category' || segment_2 == 'kategorie'))}}
-      {{ partial:ui/filters/wrapper class="lg:!hidden" }}
-        {{ partial:ui/filters/portfolio }}
-      {{ /partial:ui/filters/wrapper }}
+      {{ partial:ui/filter/wrapper class="lg:!hidden" }}
+        {{ partial:ui/filter/portfolio }}
+      {{ /partial:ui/filter/wrapper }}
     {{ /if }}
 
     {{ if show_team_filter }}
-      {{ partial:ui/filters/wrapper class="lg:!hidden" }}
-        {{ partial:ui/filters/team }}
-      {{ /partial:ui/filters/wrapper }}
+      {{ partial:ui/filter/wrapper class="lg:!hidden" }}
+        {{ partial:ui/filter/team }}
+      {{ /partial:ui/filter/wrapper }}
     {{ /if }}
 
 
@@ -55,7 +55,7 @@
         :aria-expanded="menu === true ? 'true' : 'false'"
         :class="{ 'is-active': menu === true }"
         class="group">
-        {{ partial:ui/icons/burger class="w-28 xl:w-32 h-auto" }}
+        {{ partial:ui/icon/burger class="w-28 xl:w-32 h-auto" }}
       </a>
     </div>
 

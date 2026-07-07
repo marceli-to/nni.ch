@@ -6,13 +6,13 @@
 {{ if navigation }}
   <nav class="flex justify-center sm:justify-between items-center mt-60 sm:mt-45" aria-label="{{ "Slider" | trans }}">
     <a href="javascript:;" role="button" aria-label="{{ "Zurück" | trans }}" class="hidden sm:block swiper-btn-prev">
-      {{ partial:ui/icons/arrow-right-short class="w-22 xl:w-40 xl:h-auto rotate-180" }}
+      {{ partial:ui/icon/arrow-right-short class="w-22 xl:w-40 xl:h-auto rotate-180" }}
     </a>
     {{ if moreLink }}
-      {{ partial:ui/buttons/more title="{{ "Zum Team" | trans }}" url="{{ link id="da3064ef-0ff3-40b8-8ea7-12771204c109" }}" }}
+      {{ partial:ui/button/more title="{{ "Zum Team" | trans }}" url="{{ link id="da3064ef-0ff3-40b8-8ea7-12771204c109" }}" }}
     {{ /if }}
     <a href="javascript:;" role="button" aria-label="{{ "Weiter" | trans }}" class="hidden sm:block swiper-btn-next">
-      {{ partial:ui/icons/arrow-right-short class="w-22 xl:w-40 xl:h-auto" }}
+      {{ partial:ui/icon/arrow-right-short class="w-22 xl:w-40 xl:h-auto" }}
     </a>
   </nav>
 {{ /if }}

@@ -3,7 +3,7 @@
   {{ is_fullpage ? 'data-section-observe' : '' }} 
   class="relative {{ is_fullpage ? 'min-h-screen flex flex-col justify-center' : 'pt-90 md:pt-150' }}">
   <div class="flex justify-end w-full mb-30 pr-35 sm:pr-80 sm:hidden">
-    {{ partial:ui/buttons/more title="{{ "Zum Blog" | trans }}" url="{{ link id="aa4457b3-2553-4340-9848-81b494b5361f" }}" }}
+    {{ partial:ui/button/more title="{{ "Zum Blog" | trans }}" url="{{ link id="aa4457b3-2553-4340-9848-81b494b5361f" }}" }}
   </div>
   
   {{ partial:ui/swiper/wrapper class="sm:hidden" }}
@@ -20,7 +20,7 @@
 
   {{ partial:layout/blocks/inner class="hidden sm:block" }}
     <div class="flex justify-end mb-30 xl:mb-60">
-      {{ partial:ui/buttons/more title="{{ "Zum Blog" | trans }}" url="{{ link id="aa4457b3-2553-4340-9848-81b494b5361f" }}" }}
+      {{ partial:ui/button/more title="{{ "Zum Blog" | trans }}" url="{{ link id="aa4457b3-2553-4340-9848-81b494b5361f" }}" }}
     </div>
     <div class="sm:grid sm:grid-cols-6 md:grid-cols-12 gap-20 lg:gap-30 xl:gap-50">
       {{ collection from="posts" as="posts" sort="date:desc" limit="4" }}

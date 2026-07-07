@@ -2,7 +2,7 @@
   {{ form:contact_form class="contact-form" }}
 
     {{ if errors }}
-      {{ partial:ui/forms/elements/errors }}
+      {{ partial:ui/form/elements/errors }}
     {{ /if }}
 
     {{ if success }}
@@ -29,7 +29,7 @@
           
       <div class="mt-30 md:flex md:justify-between">
         <button class="uppercase font-meta-medium text-xs md:text-md flex items-center leading-none group gap-x-10 xl:gap-x-15">
-          {{ partial:ui/icons/arrow-right-short class="w-16 xl:w-20 h-auto group-hover:translate-x-4 transition-transform" }}
+          {{ partial:ui/icon/arrow-right-short class="w-16 xl:w-20 h-auto group-hover:translate-x-4 transition-transform" }}
           <span class="group-hover:translate-x-8 transition-transform">{{ "Senden" | trans }}</span>
         </button>
       </div>

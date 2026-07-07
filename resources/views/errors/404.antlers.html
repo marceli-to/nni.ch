@@ -10,9 +10,9 @@
         {{ /if}}
         <section class="grid grid-cols-12 gap-20 lg:gap-30 xl:gap-50">
           <article class="col-span-full max-w-content mx-auto">
-            {{ partial:ui/headings/h1 class="xl:!text-7xl normal-case tracking-normal mb-30 xl:mb-60" }}
+            {{ partial:ui/heading/h1 class="xl:!text-7xl normal-case tracking-normal mb-30 xl:mb-60" }}
               {{ error_page_404:title ?? "404 – Seite nicht gefunden" | trans }}
-            {{ /partial:ui/headings/h1 }}
+            {{ /partial:ui/heading/h1 }}
             {{ error_page_404:text ?? "Sorry, diese Seite haben wir leider nicht." | trans }}
           </article>
         </section>

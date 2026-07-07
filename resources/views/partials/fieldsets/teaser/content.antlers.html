@@ -2,14 +2,14 @@
   <article
     class="text-white max-w-xs md:max-w-sm lg:max-w-md"
     {{ if is_video }}data-video-animation="fadeIn" data-video-animation-duration="slow" data-video-animation-delay="long"{{ else }}data-animation="fadeIn" data-animation-duration="slow" data-animation-delay="long"{{ /if }}>
-    {{ partial:ui/headings/h2 class="mb-15 md:mb-30" }}
+    {{ partial:ui/heading/h2 class="mb-15 md:mb-30" }}
       {{ title }}
-    {{ /partial:ui/headings/h2 }}
+    {{ /partial:ui/heading/h2 }}
     <div class="lg:text-3xl {{ text_class ?? '' }}">
       {{ cta_text }}
     </div>
     <div class="mt-15 md:mt-30 xl:mt-45">
-      {{ partial:ui/buttons/more title="{{ cta_button_text }}" url="{{ cta_link }}" }}
+      {{ partial:ui/button/more title="{{ cta_button_text }}" url="{{ cta_link }}" }}
     </div>
   </article>
 {{ /partial:layout/blocks/inner }}

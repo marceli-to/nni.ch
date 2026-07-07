@@ -25,20 +25,20 @@
 
     <div class="w-full flex items-center justify-between py-20 xl:py-30">
 
-      {{ partial:ui/headings/h3 size="lg" class="text-left text-pretty" }}
+      {{ partial:ui/heading/h3 size="lg" class="text-left text-pretty" }}
         {{ button }}
-      {{ /partial:ui/headings/h3 }}
+      {{ /partial:ui/heading/h3 }}
       
       <span 
         class="p-5 flex items-center justify-center leading-none"
         :class="{ 'block': !open, 'hidden': open }">
-        {{ partial:ui/icons/arrow-right-short class="w-24 xl:w-36 h-auto mt-8 md:-mt-4 group-hover:rotate-90 transition-all" }}
+        {{ partial:ui/icon/arrow-right-short class="w-24 xl:w-36 h-auto mt-8 md:-mt-4 group-hover:rotate-90 transition-all" }}
       </span>
 
       <span 
         class="p-5 flex items-center justify-center leading-none"
         :class="{ 'block': open, 'hidden': !open }">
-        {{ partial:ui/icons/arrow-right-short class="w-24 xl:w-36 h-auto mt-8 md:-mt-4 rotate-90" }}
+        {{ partial:ui/icon/arrow-right-short class="w-24 xl:w-36 h-auto mt-8 md:-mt-4 rotate-90" }}
       </span>
 
     </div>

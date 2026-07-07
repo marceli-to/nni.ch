@@ -9,9 +9,9 @@
     {{ collection from="posts" as="posts" sort="date:desc" limit="3" taxonomy:post_categories="{{ category }}" slug:not_in="{{ slug }}" }}
 
       {{ if results }}
-        {{ partial:ui/headings/h2 size="xs" class="font-meta-medium pl-35 md:pl-0 mb-15 xl:mb-30" }}
+        {{ partial:ui/heading/h2 size="xs" class="font-meta-medium pl-35 md:pl-0 mb-15 xl:mb-30" }}
           {{ "Ähnliche Beiträge" | trans }}
-        {{ /partial:ui/headings/h2 }}
+        {{ /partial:ui/heading/h2 }}
 
         {{ partial:ui/swiper/wrapper class="md:!hidden"  }}
           {{ partial:ui/swiper/track class="js-swiper-posts" navigation="false" }}
@@ -32,7 +32,7 @@
         </div>
    
         <div class="mt-60 xl:mt-90 flex justify-center">
-          {{ partial:ui/buttons/back title="{{ "Zur Übersicht" | trans }}" url="{{ link id="aa4457b3-2553-4340-9848-81b494b5361f" }}" }}
+          {{ partial:ui/button/back title="{{ "Zur Übersicht" | trans }}" url="{{ link id="aa4457b3-2553-4340-9848-81b494b5361f" }}" }}
         </div>
       {{ /if }}
     {{ /collection }}
