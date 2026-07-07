@@ -16,7 +16,7 @@
 
 .posts [data-animation="fadeIn"],
 .posts [data-video-animation="fadeIn"] {
-  opacity: 100 !important;
+  opacity: 1 !important;
 }
 
 /* active state */
