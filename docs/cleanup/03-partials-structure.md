@@ -16,9 +16,22 @@
 > - Rename synonym `container`s: `swiper/container` → `swiper/track`,
 >   `media/iframe/container` → `media/iframe/wrapper` (`m4`).
 >
-> **Deferred** (declined for now): the `components/ → ui/ + content/` split (medium-risk,
-> ~40 files) and the singular/plural folder normalization. Both are still mechanical/safe by
-> the same method — just larger surface.
+> **Medium tier — now also DONE (2026-07-07):**
+> - Split content-model partials `components/{post,project,team}` → `content/` (`c1`).
+> - Renamed `components/` → `ui/` (generic reusable); flattened the `components/misc/`
+>   catch-all into `ui/` leaves (`contact-links`, `cta`, `hr`, `social-media-channels`);
+>   `gdpr` → `ui/gdpr` (`c2`).
+> - Normalized plural type folders to singular: `ui/{buttons,filters,forms,headings,icons}`
+>   → `ui/{button,filter,form,heading,icon}` (`c3`).
+> Rewrote ~113 files / 243 `partial:` refs total; verified byte-identical across 12 pages
+> per step + a broad 17-URL smoke test (0 exceptions, 0 "partial not found"), and a repo-wide
+> scan confirms no lingering `components/` or plural paths in views/blueprints/config/JS.
+>
+> **Remaining (not pursued):** `layout/blocks/inner` → `layout/container` rename (74 refs) and
+> the `post/elements/heading` rival-component fold-in — both still safe by the same method.
+
+The resulting top-level `partials/` tree is now: `_dispatch` · `content/` · `fieldsets/` ·
+`layout/` · `menu/` · `ui/`.
 
 ## Verdict
 
