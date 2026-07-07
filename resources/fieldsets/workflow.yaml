@@ -32,19 +32,18 @@ fields:
                 -
                   handle: phase
                   field:
-                    input_type: text
+                    input_type: number
                     antlers: false
                     type: text
                     display: Phase
                     icon: text
-                    instructions: 'The phase label, e.g. "1. Phase".'
+                    instructions: 'The phase number only, e.g. "1". The word "Phase" is added automatically.'
                     localizable: true
                     listable: hidden
                     instructions_position: above
                     visibility: visible
                     replicator_preview: true
                     hide_display: false
-                    width: 33
                     validate:
                       - required
                 -
@@ -61,7 +60,6 @@ fields:
                     visibility: visible
                     replicator_preview: true
                     hide_display: false
-                    width: 66
                     validate:
                       - required
                 -
@@ -119,6 +117,22 @@ fields:
                     type: bard
                     display: 'Text (optional)'
                     icon: bard
+                    localizable: true
+                    listable: hidden
+                    instructions_position: above
+                    visibility: visible
+                    replicator_preview: true
+                    hide_display: false
+                -
+                  handle: link
+                  field:
+                    type: entries
+                    collections:
+                      - pages
+                    max_items: 1
+                    display: 'Link (optional)'
+                    icon: link
+                    instructions: 'Optional page to link to. Rendered as a "Mehr erfahren" link below the text.'
                     localizable: true
                     listable: hidden
                     instructions_position: above

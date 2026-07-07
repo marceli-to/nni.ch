@@ -136,7 +136,7 @@ tabs:
                         -
                           import: faq
                     workflow:
-                      display: 'Workflow (Phases)'
+                      display: 'Workflow'
                       instructions: 'Heading + CTA on the left, expandable phases (label, title, optional image and text) on the right.'
                       icon: list-bullets
                       fields:
