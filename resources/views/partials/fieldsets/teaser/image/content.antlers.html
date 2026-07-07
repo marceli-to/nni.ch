@@ -1,17 +1,1 @@
-{{ partial:layout/blocks/inner class="absolute md:relative left-0 top-150 md:top-200 xl:top-240 z-20 " }}
-  <article 
-    class="text-white max-w-xs md:max-w-sm lg:max-w-md"
-    data-animation="fadeIn"
-    data-animation-duration="slow"
-    data-animation-delay="long">
-    {{ partial:components/headings/h2 class="mb-15 md:mb-30" }}
-      {{ teaser_image_title }}
-    {{ /partial:components/headings/h2 }}
-    <div class="lg:text-3xl">
-      {{ cta_text }}
-    </div>
-    <div class="mt-15 md:mt-30 xl:mt-45">
-      {{ partial:components/buttons/more title="{{ cta_button_text }}" url="{{ cta_link }}" }}
-    </div>
-  </article>
-{{ /partial:layout/blocks/inner }}
+{{ partial:fieldsets/teaser/content title="{{ teaser_image_title }}" }}
