@@ -3,6 +3,23 @@
 **Date:** 2026-07-06
 **Scope:** `resources/views/partials/**`.
 
+> **Execution status (2026-07-07): LOW-RISK TIER DONE.** All partial references are the
+> static `partial:<path>` form (verified: no `partial src=`, no `partial:{{ var }}`, no
+> Blade/PHP includes), so relocation is fully mechanical and every move was verified
+> byte-identical across 11 pages (team pages have a ~80-line member-rotation nondeterminism
+> floor). Done:
+> - Dispatcher `elements.antlers.html` → `_dispatch.antlers.html` (`m1` commit).
+> - Promote `fieldsets/misc/{faq,jobs,statement,title_text}` → `fieldsets/` root; `misc/`
+>   folder removed (`m2`).
+> - Flatten single-child chains: `slideshow/team/` → `slideshow-team/`, `video/fullscreen/
+>   wrapper` → `video/fullscreen-wrapper` (`m3`).
+> - Rename synonym `container`s: `swiper/container` → `swiper/track`,
+>   `media/iframe/container` → `media/iframe/wrapper` (`m4`).
+>
+> **Deferred** (declined for now): the `components/ → ui/ + content/` split (medium-risk,
+> ~40 files) and the singular/plural folder normalization. Both are still mechanical/safe by
+> the same method — just larger surface.
+
 ## Verdict
 
 The "mess" feeling is real but **purely organizational** — the *wiring* is sound
