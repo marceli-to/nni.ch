@@ -9,6 +9,48 @@ each removes. Two things that turned out *fine*: there are **no inline SVGs** ou
 
 ---
 
+## Execution status (2026-07-07)
+
+Executed the **safe subset only** (no visual-QA harness beyond render-diffing via Valet).
+Several items in this doc turned out to be based on an **oversimplified premise** — the
+code has drifted since the 2026-07-06 audit, so "near-identical" is often no longer true.
+
+**DONE (verified render-neutral via before/after HTML diff on live pages):**
+- **#3 contact-links** — extracted `components/misc/contact-links`. Real callers were **3,
+  not 6**: footer is a different design (phone-first, `target=_blank`, `hover:text-graphite`)
+  and was excluded; `contact.antlers.html`/`team/show` no longer carry the pair.
+- **#7 post/elements/card-inner** — clean in-file extraction.
+- **#8 twin teaser/{image,video}/content** — merged into `fieldsets/teaser/content` + 2 shims.
+  Doc missed a 4th delta (video's `cta_text` div carries extra `max-w-*`); preserved.
+
+**DEFERRED / FLAGGED (premise stale or drift makes them risky without visual QA):**
+- **#1 picture blocks** — NOT a mechanical merge. Six distinct glide field names
+  (`image`, `feature_image`, `url`, `img`, `image_before`, `image_after`) which Antlers can't
+  parameterize into `{{ glide:field }}`; **five** distinct breakpoint/preset profiles (not
+  one); wildly different wrappers. The two "byte-identical" partials (`image`/`fullscreen`)
+  have diverged (`1280`+`md-webp` vs `1024`+`lg-webp`+`w-full h-auto`). Also spotted 3
+  pre-existing MIME bugs here: `type="img/webp"`/`type="img/jpeg"` in `teaser/portfolio/item`,
+  and webp `<source>`s mislabeled `type="image/jpeg"` in `project/media/feature:4` and
+  `project/elements/fullscreen_image:6`.
+- **#2 / #2b arrow-CTA reuse** — NOT safe reuse. The `cta/*` anchors differ from
+  `buttons/contact` in text-size ramp, tracking, icon hover-distance, and icon breakpoint
+  (reuse would change rendering); **#2b can't use `buttons/more` at all** — the competencies
+  variant is a `<span>` nested inside the card's outer `<a>`, so the partial (itself an `<a>`)
+  would produce an invalid nested anchor.
+- **#4 cta/project ≈ cta/expertise merge** — deferred per earlier decision (needs a human eye).
+- **#5 overlay-caption** — occurrences differ structurally (`<span>` vs `<figcaption>`,
+  `bottom-0 w-auto` vs `top-0 w-full`, subtitle from `client` vs `caption`), plus a stray `xl`
+  class. Would need ~3 params for a small block — marginal, and a regression risk. Flagged.
+- **#6 teaser card** — folded into the Doc 04 heading-size work (the `mt-15 text-md
+  xl:text-2xl !leading-[1.25]` h3 string is the real target there).
+- **#9 section wrapper** — the `<section data-section>` shell shares only ~1 line; theme,
+  observe-attributes, and the full class string all vary per caller across 11 files. Low
+  dedup value for high churn/regression surface. Flagged.
+- **#10 grid string** & **#11 portfolio/wrapper** — deferred (10-file sweep / 354-line
+  structural refactor; both higher-risk without visual QA).
+
+---
+
 ## TIER 1 — highest impact
 
 ### 1. Responsive `<picture>` block — ~15 hand-written copies
