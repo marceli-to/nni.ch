@@ -27,8 +27,11 @@
 > per step + a broad 17-URL smoke test (0 exceptions, 0 "partial not found"), and a repo-wide
 > scan confirms no lingering `components/` or plural paths in views/blueprints/config/JS.
 >
-> **Remaining (not pursued):** `layout/blocks/inner` → `layout/container` rename (74 refs) and
-> the `post/elements/heading` rival-component fold-in — both still safe by the same method.
+> - Renamed the highest-fan-in partial `layout/blocks/inner` → `layout/container` (72 refs /
+>   34 files); the single-child `layout/blocks/` folder removed (`cont` step).
+>
+> **Remaining (not pursued):** folding the `post/elements/heading` rival h2 component into the
+> real `ui/heading/h2` — safe by the same method, deferred as a heading-consolidation task.
 
 The resulting top-level `partials/` tree is now: `_dispatch` · `content/` · `fieldsets/` ·
 `layout/` · `menu/` · `ui/`.
