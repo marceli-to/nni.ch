@@ -9,9 +9,18 @@ caller; plus `resources/css/components/headings.css`.
 > `class`). Migrated all 12 partial callers; the 4× project-section magic string → `size=xs`,
 > the h3 card string → `size=2xs`. `{{ class }}`/`{{ data }}` passthrough made consistent;
 > h1 class-drop fixed (closes 05 #4). Verified render-neutral via before/after HTML diff
-> (only cascade-irrelevant class-order changes). **Not done:** rec #4 (CSS-vs-component
-> boundary / global bare `h3{}`) and rec #5 (converting the 13 raw-tag bypasses) — larger,
-> deferred with the other flagged work.
+> (only cascade-irrelevant class-order changes).
+>
+> **rec #5 (raw-tag bypasses): partially done.** Converted the 3 render-neutral ones —
+> `jobs/show:4` (h1 `size=lg`), `jobs/item:5` + `accordion/item:28` (new h3 `size=lg`, which
+> deliberately omits `leading-[1.4]` to match the raw tags). The other 8 are intentionally
+> left (decided 2026-07-07): the 4 overlay-caption h3s → convert with **02 #5** (overlay
+> extraction); the `blog/show`/`team/show`/`blog/_listing`/`intro/content` page-title h1s and
+> `expertise/item:4` h2 are bespoke one-offs (would need `none`/display sizes + h1 data
+> passthrough for little gain); `post/elements/heading` is the rival component **03** should
+> fold in.
+>
+> **Not done:** rec #4 (CSS-vs-component boundary / global bare `h3{}`) — deferred.
 
 ## Verdict
 
