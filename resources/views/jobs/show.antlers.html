@@ -1,9 +1,9 @@
 <section data-section data-section-theme="light" class="pt-90 lg:pt-150">
   {{ partial:layout/blocks/inner }}
     <article class="max-w-content mx-auto">
-      <h1 class="font-meta-medium text-4xl xl:text-7xl leading-[1.2] mb-15 xl:mb-30">
+      {{ partial:components/headings/h1 size="lg" class="mb-15 xl:mb-30" }}
         {{ title }}
-      </h1>
+      {{ /partial:components/headings/h1 }}
       <div class="text-md lg:text-lg xl:text-2xl mb-30 xl:mb-60">
         {{ lead }}
       </div>
