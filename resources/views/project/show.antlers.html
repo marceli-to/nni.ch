@@ -80,7 +80,7 @@
         {{ is_fullpage ? 'data-section-observe' : '' }} 
         class="{{ is_fullpage ? 'min-h-screen flex flex-col justify-center' : 'py-30 xl:py-60' }}">
         {{ partial:layout/blocks/inner }}
-          {{ partial:components/media/video/video }}
+          {{ partial:ui/media/video/video }}
         {{ /partial:layout/blocks/inner }}
       </section>
     {{ /if }}
@@ -92,7 +92,7 @@
         {{ is_fullpage ? 'data-section-observe' : '' }} 
         class="{{ is_fullpage ? 'min-h-screen flex flex-col justify-center' : 'py-30 xl:py-60' }}">
         {{ partial:layout/blocks/inner class="min-h-screen flex flex-col justify-center" }}
-          {{ partial:components/media/video/video }}
+          {{ partial:ui/media/video/video }}
         {{ /partial:layout/blocks/inner }}
       </section>
     {{ /if}}
@@ -106,7 +106,7 @@
       {{ is_fullpage ? 'data-section-observe' : '' }}
       class="{{ is_fullpage ? '"min-h-screen flex flex-col justify-center' : 'py-30 xl:py-60' }}">
       {{ partial:layout/blocks/inner class="min-h-screen flex flex-col justify-center" }}
-        {{ partial:components/media/iframe/wrapper }}
+        {{ partial:ui/media/iframe/wrapper }}
       {{ /partial:layout/blocks/inner }}
     </section>
   {{ /if }}

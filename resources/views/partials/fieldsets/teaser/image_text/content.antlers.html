@@ -4,7 +4,7 @@
       class="col-span-full lg:col-span-6"
       data-animation="fadeIn"
       data-animation-duration="slow">
-      {{ partial:components/media/image/teaser class="{{ image:height >= image:width ? 'w-full h-auto object-cover' : 'w-full h-full aspect-[16/9] lg:aspect-none object-cover' }}" }}
+      {{ partial:ui/media/image/teaser class="{{ image:height >= image:width ? 'w-full h-auto object-cover' : 'w-full h-full aspect-[16/9] lg:aspect-none object-cover' }}" }}
     </div>
     <div class="col-span-full lg:col-span-6 mt-30 md:mt-45 lg:overflow-x-hidden lg:mt-0 lg:py-60 lg:flex lg:flex-col lg:items-start lg:justify-center">
       <div class="grid grid-cols-6 gap-x-20">
@@ -13,9 +13,9 @@
             data-animation="fadeIn_slideInLeft"
             data-animation-lg="fadeIn_slideInRight"
             data-animation-delay="long">
-            {{ partial:components/headings/h2 }}
+            {{ partial:ui/headings/h2 }}
               {{ teaser_image_text_title }}
-            {{ /partial:components/headings/h2 }}
+            {{ /partial:ui/headings/h2 }}
           </div>
         </div>
         <div 
@@ -26,7 +26,7 @@
           {{ cta_text }}
           {{ if cta_link}}
             <div class="mt-15 md:mt-30 lg:mt-45">
-              {{ partial:components/buttons/contact title="{{ cta_button_text }}" url="{{ cta_link }}" }}
+              {{ partial:ui/buttons/contact title="{{ cta_button_text }}" url="{{ cta_link }}" }}
             </div>
           {{ /if }}
         </div>
@@ -42,9 +42,9 @@
             data-animation="fadeIn_slideInLeft"
             data-animation-lg="fadeIn_slideInRight"
             data-animation-delay="long">
-            {{ partial:components/headings/h2 }}
+            {{ partial:ui/headings/h2 }}
               {{ teaser_image_text_title }}
-            {{ /partial:components/headings/h2 }}
+            {{ /partial:ui/headings/h2 }}
           </div>
         </div>
         <div 
@@ -55,7 +55,7 @@
           {{ cta_text }}
           {{ if cta_link}}
             <div class="mt-15 md:mt-30 lg:mt-45">
-              {{ partial:components/buttons/contact title="{{ cta_button_text }}" url="{{ cta_link }}" }}
+              {{ partial:ui/buttons/contact title="{{ cta_button_text }}" url="{{ cta_link }}" }}
             </div>
           {{ /if }}
         </div>
@@ -65,7 +65,7 @@
       class="col-span-full order-1 lg:order-2 lg:col-span-6"
       data-animation="fadeIn"
       data-animation-duration="slow">
-      {{ partial:components/media/image/teaser class="{{ image:height >= image:width ? 'w-full h-auto object-cover' : 'w-full h-full aspect-[16/9] lg:aspect-none object-cover' }}" }}
+      {{ partial:ui/media/image/teaser class="{{ image:height >= image:width ? 'w-full h-auto object-cover' : 'w-full h-full aspect-[16/9] lg:aspect-none object-cover' }}" }}
     </div>
   {{ /if }}
 </div>

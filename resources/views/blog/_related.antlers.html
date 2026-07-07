@@ -9,19 +9,19 @@
     {{ collection from="posts" as="posts" sort="date:desc" limit="3" taxonomy:post_categories="{{ category }}" slug:not_in="{{ slug }}" }}
 
       {{ if results }}
-        {{ partial:components/headings/h2 size="xs" class="font-meta-medium pl-35 md:pl-0 mb-15 xl:mb-30" }}
+        {{ partial:ui/headings/h2 size="xs" class="font-meta-medium pl-35 md:pl-0 mb-15 xl:mb-30" }}
           {{ "Ähnliche Beiträge" | trans }}
-        {{ /partial:components/headings/h2 }}
+        {{ /partial:ui/headings/h2 }}
 
-        {{ partial:components/swiper/wrapper class="md:!hidden"  }}
-          {{ partial:components/swiper/track class="js-swiper-posts" navigation="false" }}
+        {{ partial:ui/swiper/wrapper class="md:!hidden"  }}
+          {{ partial:ui/swiper/track class="js-swiper-posts" navigation="false" }}
             {{ posts }}
-              {{ partial:components/swiper/slide class="swiper-slide--mute-inactive" }}
+              {{ partial:ui/swiper/slide class="swiper-slide--mute-inactive" }}
                 {{ partial:content/post/elements/card term="true" }}
-              {{ /partial:components/swiper/slide }}
+              {{ /partial:ui/swiper/slide }}
             {{ /posts }}
-          {{ /partial:components/swiper/track }}
-        {{ /partial:components/swiper/wrapper }}
+          {{ /partial:ui/swiper/track }}
+        {{ /partial:ui/swiper/wrapper }}
 
         <div class="hidden md:grid grid-cols-12 gap-20 lg:gap-30 xl:gap-50">
           {{ posts }}        
@@ -32,7 +32,7 @@
         </div>
    
         <div class="mt-60 xl:mt-90 flex justify-center">
-          {{ partial:components/buttons/back title="{{ "Zur Übersicht" | trans }}" url="{{ link id="aa4457b3-2553-4340-9848-81b494b5361f" }}" }}
+          {{ partial:ui/buttons/back title="{{ "Zur Übersicht" | trans }}" url="{{ link id="aa4457b3-2553-4340-9848-81b494b5361f" }}" }}
         </div>
       {{ /if }}
     {{ /collection }}

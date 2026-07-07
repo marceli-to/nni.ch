@@ -3,24 +3,24 @@
   {{ is_fullpage ? 'data-section-observe' : '' }} 
   class="relative {{ is_fullpage ? 'min-h-screen flex flex-col justify-center' : 'pt-90 md:pt-150' }}">
   <div class="flex justify-end w-full mb-30 pr-35 sm:pr-80 sm:hidden">
-    {{ partial:components/buttons/more title="{{ "Zum Blog" | trans }}" url="{{ link id="aa4457b3-2553-4340-9848-81b494b5361f" }}" }}
+    {{ partial:ui/buttons/more title="{{ "Zum Blog" | trans }}" url="{{ link id="aa4457b3-2553-4340-9848-81b494b5361f" }}" }}
   </div>
   
-  {{ partial:components/swiper/wrapper class="sm:hidden" }}
-    {{ partial:components/swiper/track class="js-swiper-posts" }}
+  {{ partial:ui/swiper/wrapper class="sm:hidden" }}
+    {{ partial:ui/swiper/track class="js-swiper-posts" }}
       {{ collection from="posts" as="posts" sort="date:desc" limit="3" }}
         {{ posts }}
-          {{ partial:components/swiper/slide class="swiper-slide--mute-inactive" }}
+          {{ partial:ui/swiper/slide class="swiper-slide--mute-inactive" }}
             {{ partial:fieldsets/teaser/post/item }}
-          {{ /partial:components/swiper/slide }}
+          {{ /partial:ui/swiper/slide }}
         {{ /posts }}
       {{ /collection }}
-    {{ /partial:components/swiper/track }}
-  {{ /partial:components/swiper/wrapper }}
+    {{ /partial:ui/swiper/track }}
+  {{ /partial:ui/swiper/wrapper }}
 
   {{ partial:layout/blocks/inner class="hidden sm:block" }}
     <div class="flex justify-end mb-30 xl:mb-60">
-      {{ partial:components/buttons/more title="{{ "Zum Blog" | trans }}" url="{{ link id="aa4457b3-2553-4340-9848-81b494b5361f" }}" }}
+      {{ partial:ui/buttons/more title="{{ "Zum Blog" | trans }}" url="{{ link id="aa4457b3-2553-4340-9848-81b494b5361f" }}" }}
     </div>
     <div class="sm:grid sm:grid-cols-6 md:grid-cols-12 gap-20 lg:gap-30 xl:gap-50">
       {{ collection from="posts" as="posts" sort="date:desc" limit="4" }}

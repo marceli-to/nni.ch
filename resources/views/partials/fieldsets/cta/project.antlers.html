@@ -2,7 +2,7 @@
   <div class="sm:grid sm:grid-cols-12 sm:gap-30 {{ type == 'portrait' ? '2xl:gap-50' : 'lg:gap-30' }} border-y border-black py-20 lg:py-30">
 
     <div class="sm:col-span-5 {{ type == 'portrait' ? 'lg:col-span-12 2xl:col-span-6' : 'lg:col-span-full' }}">
-      {{ partial:components/media/image/image image="{{ image }}" class="w-full h-auto" }}
+      {{ partial:ui/media/image/image image="{{ image }}" class="w-full h-auto" }}
     </div>
 
     <div class="sm:col-span-7 {{ type == 'portrait' ? 'lg:col-span-12 2xl:col-span-6' : 'lg:col-span-full' }} mt-30 sm:mt-0">
@@ -11,9 +11,9 @@
         {{ "Planen Sie ein ähnliches Projekt?" | trans }}
       </div>
 
-      {{ partial:components/headings/h2 size="none" class="font-meta-medium text-xl md:text-2xl xl:text-4xl !leading-[1.2] !font-meta-light [&_strong]:!font-meta-medium mb-20 xl:mb-30 text-pretty" }}
+      {{ partial:ui/headings/h2 size="none" class="font-meta-medium text-xl md:text-2xl xl:text-4xl !leading-[1.2] !font-meta-light [&_strong]:!font-meta-medium mb-20 xl:mb-30 text-pretty" }}
         {{ heading }}
-      {{ /partial:components/headings/h2 }}
+      {{ /partial:ui/headings/h2 }}
 
       {{ if position }}
         <div>
@@ -21,14 +21,14 @@
         </div>
       {{ /if }}
 
-      {{ partial:components/misc/contact-links email="{{ email }}" phone="{{ phone }}" title="{{ title }}" }}
+      {{ partial:ui/contact-links email="{{ email }}" phone="{{ phone }}" title="{{ title }}" }}
 
       {{ if cta_link }}
         <a
           href="{{ cta_link }}"
           class="text-sm md:text-xl font-meta-medium uppercase tracking-wider flex items-center gap-x-10 group mt-20 xl:mt-30"
           title="{{ cta_button_text }}">
-          {{ partial:components/icons/arrow-right-long class="w-24 xl:w-32 h-auto group-hover:translate-x-6 transition-transform" }}
+          {{ partial:ui/icons/arrow-right-long class="w-24 xl:w-32 h-auto group-hover:translate-x-6 transition-transform" }}
           <span class="group-hover:translate-x-6 transition-transform">{{ cta_button_text }}</span>
         </a>
       {{ /if }}

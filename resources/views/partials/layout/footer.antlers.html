@@ -4,7 +4,7 @@
       <div class="col-span-12 lg:col-span-6 lg:order-2 mb-60 lg:mb-0 flex flex-col justify-center">
         <div class="flex flex-col items-center gap-y-15">
           {{ settings_contact_slogan ?? contact_slogan:text }}
-          {{ partial:components/buttons/contact title="{{ "Kontakt aufnehmen" | trans }}" url="{{ link id="2d95afd4-22c4-431d-aea3-3d08d2abcd38" }}" }}
+          {{ partial:ui/buttons/contact title="{{ "Kontakt aufnehmen" | trans }}" url="{{ link id="2d95afd4-22c4-431d-aea3-3d08d2abcd38" }}" }}
         </div>
       </div>
       <div class="col-span-8 lg:col-span-3 lg:order-1 flex flex-col justify-between">
@@ -44,7 +44,7 @@
           </div>
       </div>
       <div class="md:col-span-4">
-        {{ partial:components/misc/social-media-channels class="flex justify-center" }}
+        {{ partial:ui/social-media-channels class="flex justify-center" }}
       </div>
       <div class="hidden md:col-span-4 md:flex md:justify-end text-mini xl:text-xs font-meta-medium leading-none">
         {{ partial:menu/privacy/wrapper }}
@@ -52,7 +52,7 @@
     </div>
   {{ /partial:layout/blocks/inner }}
 </footer>
-{{ partial:components/gdpr }}
+{{ partial:ui/gdpr }}
 {{ vite src="resources/js/app.js" }}
 {{# {{ if is_fullpage }}
   {{ vite src="resources/js/observe.js" }}
