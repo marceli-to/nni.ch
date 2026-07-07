@@ -66,8 +66,12 @@
   {{ partial:fieldsets/workflow/wrapper }}
 {{ /if }}
 
+{{ if type == 'services' }}
+  {{ partial:fieldsets/services/wrapper }}
+{{ /if }}
+
 {{ if type == 'cta_expertise' }}
-  {{ partial:fieldsets/cta/wrapper }}
+  {{ partial:fieldsets/cta/wrapper fullpage="true" }}
     {{ partial:fieldsets/cta/expertise }}
   {{ /partial:fieldsets/cta/wrapper }}
 {{ /if }}

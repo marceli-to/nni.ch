@@ -1,0 +1,13 @@
+{{ partial:layout/section section_theme="light" spacing="py-90 lg:py-150" fullpage="min-h-screen flex flex-col items-center justify-center py-90 lg:py-150" }}
+
+  {{ partial:layout/container }}
+
+    {{ partial:ui/accordion/wrapper class="!border-none xl:max-w-6xl" }}
+      {{ services }}
+        {{ partial:fieldsets/services/service index="{{ index }}" }}
+      {{ /services }}
+    {{ /partial:ui/accordion/wrapper }}
+
+  {{ /partial:layout/container }}
+
+{{ /partial:layout/section }}

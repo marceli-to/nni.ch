@@ -1,0 +1,100 @@
+title: Services
+fields:
+  -
+    handle: services
+    field:
+      collapse: true
+      previews: true
+      type: replicator
+      display: Services
+      icon: replicator
+      instructions: 'Add the services. Each service can be expanded to reveal an optional text and a call-to-action link.'
+      localizable: true
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      sets:
+        services:
+          display: Services
+          sets:
+            service:
+              display: Service
+              instructions: null
+              icon: list-bullets
+              fields:
+                -
+                  handle: is_open
+                  field:
+                    default: false
+                    type: toggle
+                    display: 'Open by default'
+                    icon: toggle
+                    instructions: 'Expand this service on page load. If several are toggled on, the last one wins.'
+                    localizable: false
+                    listable: hidden
+                    instructions_position: above
+                    visibility: visible
+                    replicator_preview: true
+                    hide_display: false
+                -
+                  handle: title
+                  field:
+                    input_type: text
+                    antlers: false
+                    type: text
+                    display: Title
+                    icon: text
+                    localizable: true
+                    listable: hidden
+                    instructions_position: above
+                    visibility: visible
+                    replicator_preview: true
+                    hide_display: false
+                    validate:
+                      - required
+                -
+                  handle: text
+                  field:
+                    buttons:
+                      - bold
+                      - italic
+                      - unorderedlist
+                      - removeformat
+                      - anchor
+                    smart_typography: false
+                    save_html: false
+                    inline: false
+                    toolbar_mode: floating
+                    reading_time: false
+                    word_count: false
+                    fullscreen: true
+                    allow_source: true
+                    enable_input_rules: true
+                    enable_paste_rules: true
+                    remove_empty_nodes: true
+                    antlers: false
+                    link_noopener: false
+                    link_noreferrer: false
+                    target_blank: false
+                    link_collections:
+                      - pages
+                      - posts
+                      - projects
+                      - team
+                    container: assets
+                    always_show_set_button: false
+                    collapse: true
+                    previews: true
+                    type: bard
+                    display: 'Text (optional)'
+                    icon: bard
+                    localizable: true
+                    listable: hidden
+                    instructions_position: above
+                    visibility: visible
+                    replicator_preview: true
+                    hide_display: false
+                -
+                  import: cta

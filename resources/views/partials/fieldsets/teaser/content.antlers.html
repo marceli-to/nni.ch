@@ -1,6 +1,6 @@
 {{ partial:layout/container class="absolute md:relative left-0 top-150 md:top-200 xl:top-240 z-20" }}
   <article
-    class="text-white max-w-xs md:max-w-sm lg:max-w-md"
+    class="text-white max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg"
     {{ if is_video }}data-video-animation="fadeIn" data-video-animation-duration="slow" data-video-animation-delay="long"{{ else }}data-animation="fadeIn" data-animation-duration="slow" data-animation-delay="long"{{ /if }}>
     {{ partial:ui/heading/h2 class="mb-15 md:mb-30" }}
       {{ title }}
@@ -8,8 +8,10 @@
     <div class="lg:text-3xl {{ text_class ?? '' }}">
       {{ cta_text }}
     </div>
-    <div class="mt-15 md:mt-30 xl:mt-45">
-      {{ partial:ui/button/more title="{{ cta_button_text }}" url="{{ cta_link }}" }}
-    </div>
+    {{ if cta_link }}
+      <div class="mt-15 md:mt-30 xl:mt-45">
+        {{ partial:ui/button/more title="{{ cta_button_text }}" url="{{ cta_link }}" }}
+      </div>
+    {{ /if }}
   </article>
 {{ /partial:layout/container }}

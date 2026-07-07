@@ -1,0 +1,88 @@
+{{#
+  Single service — expandable. Mirrors the ui/accordion/item Alpine contract
+  (shared `selected` state from ui/accordion/wrapper) so only one service is
+  open at a time. The arrow top-right is the toggle: it points right when
+  collapsed and flips to point left (back) when open.
+#}}
+<div
+  x-data="{
+    open: false,
+    init() {
+      {{ if is_open }}selected = {{ index }};{{ /if }}
+      this.open = selected === {{ index }};
+    },
+    toggle() {
+      selected = selected === {{ index }} ? null : {{ index }};
+    },
+    updateHeight() {
+      this.$refs.container.style.maxHeight = this.open
+        ? this.$refs.container.scrollHeight + 'px'
+        : '0px';
+    }
+  }"
+  x-effect="open = selected === {{ index }}; updateHeight()"
+  class="relative w-full transition-colors duration-300">
+
+  <button
+    type="button"
+    id="service-button-{{ index }}"
+    aria-controls="service-panel-{{ index }}"
+    :aria-expanded="open ? 'true' : 'false'"
+    class="w-full block hover:bg-white transition-colors duration-300 ease-in-out group"
+    :class="{ 'border-t border-black': open, 'border-t border-black/40': !open }"
+    @click="toggle()">
+
+    <div class="w-full flex items-center justify-between gap-x-20 py-15 xl:py-30">
+
+      <div class="text-left transition-all" :class="{ 'font-meta-bold': open, 'font-meta': !open }">
+        {{ partial:ui/heading/h2 size="sm" class="text-pretty leading-[1.15]" }}
+          {{ title }}
+        {{ /partial:ui/heading/h2 }}
+      </div>
+
+      <span
+        class="shrink-0 p-5 flex items-center justify-center leading-none transition-transform duration-300"
+        :class="{ 'rotate-180': open, 'group-hover:translate-x-6': !open }">
+        {{ partial:ui/icon/arrow-right-long class="w-24 xl:w-40 h-auto" }}
+      </span>
+
+    </div>
+  </button>
+
+  <div
+    x-ref="container"
+    id="service-panel-{{ index }}"
+    role="region"
+    aria-labelledby="service-button-{{ index }}"
+    :aria-hidden="open ? 'false' : 'true'"
+    class="relative overflow-hidden max-h-0 transition-all duration-300 ease-in-out"
+    style="max-height: 0px;">
+    <div
+      class="w-full pt-10 pb-30 xl:pb-45 transition-opacity duration-300 ease-in-out"
+      :class="{ 'opacity-100': open, 'opacity-0': !open }">
+
+      <div class="grid grid-cols-12 gap-x-20 lg:gap-x-30 xl:gap-x-50">
+        <div class="col-span-full md:col-span-8 md:col-start-5 xl:col-span-7 xl:col-start-5">
+
+          {{ if text }}
+            <div>
+              {{ text }}
+            </div>
+          {{ /if }}
+
+          {{ if cta_link }}
+            <a
+              href="{{ cta_link }}"
+              title="{{ cta_button_text }}"
+              class="inline-flex items-center gap-x-10 mt-20 xl:mt-40 text-sm md:text-lg xl:text-xl font-meta-medium uppercase tracking-wide group">
+              <span class="group-hover:translate-x-6 transition-transform">{{ cta_button_text }}</span>
+              {{ partial:ui/icon/arrow-right-long class="w-24 xl:w-32 h-auto group-hover:translate-x-12 transition-transform" }}
+            </a>
+          {{ /if }}
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

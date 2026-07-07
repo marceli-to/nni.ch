@@ -80,7 +80,7 @@ tabs:
                         -
                           import: statement
                     cta_expertise:
-                      display: 'CTA Expertise'
+                      display: 'CTA Consultation'
                       instructions: 'Consultation CTA (text left, portrait right).'
                       icon: alert-alarm-bell
                       fields:
@@ -142,6 +142,13 @@ tabs:
                       fields:
                         -
                           import: workflow
+                    services:
+                      display: 'Services'
+                      instructions: 'Full-width list of expandable services. Each service reveals an optional text and a call-to-action link.'
+                      icon: list-bullets
+                      fields:
+                        -
+                          import: services
                 graphical_elements:
                   display: 'Graphical Elements'
                   icon: addon-boxes-stack

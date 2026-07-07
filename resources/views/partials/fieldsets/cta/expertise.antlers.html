@@ -1,33 +1,39 @@
 {{ person }}
   {{ partial:layout/container }}
-    <div class="sm:grid sm:grid-cols-12 sm:gap-30 xl:gap-50 items-center">
+    <div class="md:grid md:grid-cols-12 md:gap-30 xl:gap-50 items-center">
 
-      <div class="sm:col-span-6 sm:order-1 mt-30 sm:mt-0">
-        <div class="text-xl md:text-2xl xl:text-4xl !leading-[1.2] [&_strong]:font-meta-medium mb-30 xl:mb-45">
+      <div
+        class="md:col-span-6 md:order-1 mt-30 md:mt-0"
+        data-animation="fadeIn_slideUp">
+
+        {{ partial:ui/heading/h2 size="md" class="[&_strong]:font-meta-medium mb-30 xl:mb-45" }}
           {{ heading }}
-        </div>
+        {{ /partial:ui/heading/h2 }}
 
         {{ if position }}
-          <div class="text-graphite text-sm md:text-md xl:text-lg mb-10">{{ position }}</div>
+          {{ position }}
         {{ /if }}
 
-        <div class="font-meta-medium text-sm md:text-md xl:text-lg">
+        <div class="font-meta-medium">
           {{ partial:ui/contact-links email="{{ email }}" phone="{{ phone }}" title="{{ title }}" }}
         </div>
 
         {{ if cta_link }}
           <a
             href="{{ cta_link }}"
-            class="text-sm md:text-lg xl:text-xl font-meta-medium uppercase tracking-wide mt-30 xl:mt-45 inline-flex items-center gap-x-10 group"
+            class="text-sm md:text-md xl:text-lg font-meta-medium uppercase tracking-wide mt-30 xl:mt-45 inline-flex items-center gap-x-10 group"
             title="{{ cta_button_text }}">
             <span class="group-hover:translate-x-6 transition-transform">{{ cta_button_text }}</span>
-            {{ partial:ui/icon/arrow-right-long class="w-24 xl:w-32 h-auto group-hover:translate-x-12 transition-transform" }}
+            {{ partial:ui/icon/arrow-right-long class="w-20 xl:w-28 h-auto group-hover:translate-x-12 transition-transform" }}
           </a>
         {{ /if }}
       </div>
 
-      <div class="sm:col-span-6 sm:order-2">
-        {{ partial:ui/media/image/image image="{{ image }}" class="w-full h-auto aspect-[4/3] object-cover grayscale" }}
+      <div
+        class="md:col-span-6 md:order-2 mt-20"
+        data-animation="fadeIn"
+        data-animation-duration="slow">
+        {{ partial:ui/media/image/image image="{{ image }}" class="w-full h-auto aspect-[4/3] object-cover" }}
       </div>
 
     </div>
