@@ -1,7 +1,7 @@
 {{ partial:layout/blocks/inner }}
 
   {{ if feature_image || feature_video }}
-    {{ partial:components/project/media/feature layout="{{ feature_layout }}" type="{{ feature_type }}" }}
+    {{ partial:content/project/media/feature layout="{{ feature_layout }}" type="{{ feature_type }}" }}
   {{ /if }}
 
   {{ partial:menu/breadcrumbs/wrapper class="hidden md:block mt-45 xl:mt-150" }}
@@ -11,10 +11,10 @@
     <div class="lg:grid lg:grid-cols-12 lg:gap-x-30 xl:gap-x-50">
 
       <div class="lg:col-span-7">
-        {{ partial:components/project/elements/title }}
+        {{ partial:content/project/elements/title }}
         {{ if summary }}
           <div class="mt-30 xl:mt-45">
-            {{ partial:components/project/elements/summary }}
+            {{ partial:content/project/elements/summary }}
           </div>
         {{ /if }}
       </div>
@@ -22,11 +22,11 @@
       <div class="xl:mt-4 lg:col-span-4 lg:col-start-9">
 
         {{ if services }}
-          {{ partial:components/project/elements/services }}
+          {{ partial:content/project/elements/services }}
         {{ /if }}
 
         <div class="{{ services ? 'mt-30 xl:mt-45' : '' }}">
-          {{ partial:components/project/elements/tags }}
+          {{ partial:content/project/elements/tags }}
         </div>
 
         {{ if person }}

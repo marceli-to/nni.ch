@@ -17,7 +17,7 @@
           {{ partial:components/swiper/track class="js-swiper-posts" navigation="false" }}
             {{ posts }}
               {{ partial:components/swiper/slide class="swiper-slide--mute-inactive" }}
-                {{ partial:components/post/elements/card term="true" }}
+                {{ partial:content/post/elements/card term="true" }}
               {{ /partial:components/swiper/slide }}
             {{ /posts }}
           {{ /partial:components/swiper/track }}
@@ -26,7 +26,7 @@
         <div class="hidden md:grid grid-cols-12 gap-20 lg:gap-30 xl:gap-50">
           {{ posts }}        
             <div class="md:col-span-4">
-              {{ partial:components/post/elements/card term="true" }}
+              {{ partial:content/post/elements/card term="true" }}
             </div>
           {{ /posts }}
         </div>

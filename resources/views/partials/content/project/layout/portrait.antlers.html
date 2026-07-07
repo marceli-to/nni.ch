@@ -5,23 +5,23 @@
       {{ partial:menu/breadcrumbs/wrapper class="hidden lg:block" }}
 
       <div class="mt-45 xl:mt-90">
-        {{ partial:components/project/elements/title }}
+        {{ partial:content/project/elements/title }}
       </div>
 
       {{ if summary }}
         <div class="mt-30 xl:mt-45">
-          {{ partial:components/project/elements/summary }}
+          {{ partial:content/project/elements/summary }}
         </div>
       {{ /if }}
 
       {{ if services }}
         <div class="mt-30 xl:mt-45">
-          {{ partial:components/project/elements/services }}
+          {{ partial:content/project/elements/services }}
         </div>
       {{ /if }}
 
       <div class="{{ services ? 'mt-30 xl:mt-45' : '' }}">
-        {{ partial:components/project/elements/tags }}
+        {{ partial:content/project/elements/tags }}
       </div>
 
       {{ if person }}
@@ -35,7 +35,7 @@
     <div class="order-1 lg:order-2 lg:col-span-6 lg:col-start-7">
 
       {{ if feature_image || feature_video }}
-        {{ partial:components/project/media/feature layout="{{ feature_layout }}" type="{{ feature_type }}" }}
+        {{ partial:content/project/media/feature layout="{{ feature_layout }}" type="{{ feature_type }}" }}
       {{ /if }}
 
       {{ if person }}

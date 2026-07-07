@@ -39,7 +39,7 @@
         {{ if image_carousel }}
           {{ partial:components/media/image/image_carousel }}
         {{ else }}
-          {{ partial:components/team/media/portrait overlay="false" link="false" }}
+          {{ partial:content/team/media/portrait overlay="false" link="false" }}
         {{ /if }}
       </div>
       <div class="md:col-span-8 md:col-start-4 mt-60 sm:mt-120 md:mt-90 xl:mt-150">
@@ -58,7 +58,7 @@
       {{ partial:components/swiper/track class="js-swiper-team" navigation="false" }}
         {{ collection from="team" sort="random" limit="3" slug:not_in="{{ slug }}" }}
           {{ partial:components/swiper/slide class="md:max-w-none swiper-slide--mute-inactive" }}
-            {{ partial:components/team/elements/card link="true" overlay="true" }}
+            {{ partial:content/team/elements/card link="true" overlay="true" }}
           {{ /partial:components/swiper/slide }}
         {{ /collection }}
       {{ /partial:components/swiper/track }}

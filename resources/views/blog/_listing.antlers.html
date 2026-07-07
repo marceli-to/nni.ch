@@ -14,7 +14,7 @@
           <p>{{ "Keine Resultate gefunden für" | trans }} {{ get:q }}.</p>
         </div>
       {{ else }}
-        {{ partial:components/post/elements/card term="true" }}
+        {{ partial:content/post/elements/card term="true" }}
       {{ /if }}
     {{ /search:results }}
   </div>
@@ -25,7 +25,7 @@
     {{ else }}
       <div class="grid grid-cols-12 gap-20 lg:gap-30 xl:gap-50">
         {{ posts }}
-          {{ partial:components/post/elements/card term="{{ term }}" }}
+          {{ partial:content/post/elements/card term="{{ term }}" }}
         {{ /posts }}
 
         <div class="col-span-full">

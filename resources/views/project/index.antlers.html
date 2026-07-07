@@ -22,7 +22,7 @@
                         title="{{ title }}"
                         class="block col-span-full image-overlay after:bg-opacity-20 group"
                         data-touch>
-                        {{ partial:components/project/media/preview video="{{ teaser_video }}" image="{{ teaser_image_landscape ?? teaser_image_portrait }}" title="{{ title }}" client="{{ client }}" class="aspect-[16/8]" }}
+                        {{ partial:content/project/media/preview video="{{ teaser_video }}" image="{{ teaser_image_landscape ?? teaser_image_portrait }}" title="{{ title }}" client="{{ client }}" class="aspect-[16/8]" }}
                       </a>
                     {{ elseif count | mod(2) == 0 }}
                       <a 
@@ -30,7 +30,7 @@
                         title="{{ title }}"
                         class="block col-span-full md:col-span-8 image-overlay after:bg-opacity-20 group"
                         data-touch>
-                        {{ partial:components/project/media/preview video="{{ teaser_video }}" image="{{ teaser_image_landscape ?? teaser_image_portrait }}" title="{{ title }}" client="{{ client }}" class="aspect-[3/2]" }}
+                        {{ partial:content/project/media/preview video="{{ teaser_video }}" image="{{ teaser_image_landscape ?? teaser_image_portrait }}" title="{{ title }}" client="{{ client }}" class="aspect-[3/2]" }}
                       </a>
                     {{ else }}
                       <a 
@@ -38,7 +38,7 @@
                         title="{{ title }}"
                         class="block col-span-full md:col-span-4 image-overlay after:bg-opacity-20 group"
                         data-touch>
-                        {{ partial:components/project/media/preview video="{{ teaser_video }}" image="{{ teaser_image_portrait ?? teaser_image_landscape }}" title="{{ title }}" client="{{ client }}" class="aspect-[3/4]" }}
+                        {{ partial:content/project/media/preview video="{{ teaser_video }}" image="{{ teaser_image_portrait ?? teaser_image_landscape }}" title="{{ title }}" client="{{ client }}" class="aspect-[3/4]" }}
                       </a>
                     {{ /if }}
                   {{ /projects }}
@@ -60,7 +60,7 @@
                   title="{{ title }}"
                   class="block col-span-full image-overlay after:bg-opacity-20 group"
                   data-touch>
-                  {{ partial:components/project/media/preview video="{{ teaser_video }}" image="{{ teaser_image_landscape ?? teaser_image_portrait }}" title="{{ title }}" client="{{ client }}" class="aspect-[16/8]" }}
+                  {{ partial:content/project/media/preview video="{{ teaser_video }}" image="{{ teaser_image_landscape ?? teaser_image_portrait }}" title="{{ title }}" client="{{ client }}" class="aspect-[16/8]" }}
                 </a>
               {{ elseif count | mod(2) == 0 }}
                 <a 
@@ -68,7 +68,7 @@
                   title="{{ title }}"
                   class="block col-span-full md:col-span-8 image-overlay after:bg-opacity-20 group"
                   data-touch>
-                  {{ partial:components/project/media/preview video="{{ teaser_video }}" image="{{ teaser_image_landscape ?? teaser_image_portrait }}" title="{{ title }}" client="{{ client }}" class="aspect-[3/2]" }}
+                  {{ partial:content/project/media/preview video="{{ teaser_video }}" image="{{ teaser_image_landscape ?? teaser_image_portrait }}" title="{{ title }}" client="{{ client }}" class="aspect-[3/2]" }}
                 </a>
               {{ else }}
                 <a 
@@ -76,7 +76,7 @@
                   title="{{ title }}"
                   class="block col-span-full md:col-span-4 image-overlay after:bg-opacity-20 group"
                   data-touch>
-                  {{ partial:components/project/media/preview video="{{ teaser_video }}" image="{{ teaser_image_portrait ?? teaser_image_landscape }}" title="{{ title }}" client="{{ client }}" class="aspect-[3/4]" }}
+                  {{ partial:content/project/media/preview video="{{ teaser_video }}" image="{{ teaser_image_portrait ?? teaser_image_landscape }}" title="{{ title }}" client="{{ client }}" class="aspect-[3/4]" }}
                 </a>
               {{ /if }}
             {{ /projects }}

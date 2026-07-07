@@ -2,14 +2,14 @@
   {{ partial:layout/blocks/inner }}
     
     {{ if feature_image }}
-      {{ partial:components/post/media/feature image="{{ feature_image }}" }}
+      {{ partial:content/post/media/feature image="{{ feature_image }}" }}
     {{ /if }}
 
     <header class="flex justify-between mt-15 mb-60 xl:mb-120">
-      {{ partial:components/post/elements/date }}
+      {{ partial:content/post/elements/date }}
       <div>
         {{ post_categories }}
-          {{ partial:components/post/elements/category }}
+          {{ partial:content/post/elements/category }}
         {{ /post_categories }}
       </div>
     </header>
@@ -32,7 +32,7 @@
 
         {{ if type == 'image' }}
           <div class="my-30 xl:my-45">
-            {{ partial:components/post/media/image }}
+            {{ partial:content/post/media/image }}
           </div>
         {{ /if }}
 
@@ -44,7 +44,7 @@
 
         {{ if type == 'image_slideshow' }}
           <div class="my-60 xl:my-90">
-            {{ partial:components/project/elements/slideshow class="!px-0" }}
+            {{ partial:content/project/elements/slideshow class="!px-0" }}
           </div>
         {{ /if }}
   
@@ -53,7 +53,7 @@
 
     <footer class="mt-45 xl:mt-90">
       <div class="md:flex md:justify-end md:items-start">
-        {{ partial:components/post/elements/tags }}
+        {{ partial:content/post/elements/tags }}
       </div>
     </footer>
 
