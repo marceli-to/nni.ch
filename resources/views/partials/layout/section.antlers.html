@@ -2,7 +2,7 @@
   Standard page-section shell. Params:
     section_theme — data-section-theme value (default 'light'). NB: named to avoid
                     collision with the ambient `theme` var the intro block sets.
-    base          — always-on class prefix (default 'relative'; pass base="" to omit)
+    no_relative   — pass "true" to drop the default `relative` (for static sections)
     fullpage      — class(es) used when the page is is_fullpage
     spacing       — class(es) used when NOT is_fullpage
     class         — extra classes (optional)
@@ -12,6 +12,6 @@
   data-section
   data-section-theme="{{ section_theme ?? 'light' }}"
   {{ is_fullpage ? 'data-section-observe' : '' }}
-  class="{{ base ?? 'relative' }} {{ is_fullpage ? fullpage : spacing }} {{ class }}">
+  class="{{ no_relative ? '' : 'relative' }} {{ is_fullpage ? fullpage : spacing }} {{ class }}">
   {{ slot }}
 </section>
