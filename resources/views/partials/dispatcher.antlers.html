@@ -62,6 +62,10 @@
   {{ partial:fieldsets/faq/wrapper }}
 {{ /if }}
 
+{{ if type == 'workflow' }}
+  {{ partial:fieldsets/workflow/wrapper }}
+{{ /if }}
+
 {{ if type == 'cta_expertise' }}
   {{ partial:fieldsets/cta/wrapper }}
     {{ partial:fieldsets/cta/expertise }}

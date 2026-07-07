@@ -1,0 +1,76 @@
+{{#
+  Single workflow phase — expandable. Mirrors the ui/accordion/item Alpine
+  contract (shared `selected` state from ui/accordion/wrapper) so only one
+  phase is open at a time. The arrow top-right is the toggle.
+#}}
+<div
+  x-data="{
+    open: false,
+    init() {
+      this.open = selected === {{ index }};
+    },
+    toggle() {
+      selected = selected === {{ index }} ? null : {{ index }};
+    },
+    updateHeight() {
+      this.$refs.container.style.maxHeight = this.open
+        ? this.$refs.container.scrollHeight + 'px'
+        : '0px';
+    }
+  }"
+  x-effect="open = selected === {{ index }}; updateHeight()"
+  class="relative w-full border-b border-black first:border-t">
+
+  <button
+    type="button"
+    id="workflow-button-{{ index }}"
+    aria-controls="workflow-panel-{{ index }}"
+    :aria-expanded="open ? 'true' : 'false'"
+    class="w-full block hover:bg-white transition-colors duration-300 ease-in-out group"
+    @click="toggle()">
+
+    <div class="w-full flex items-start justify-between gap-x-20 py-20 xl:py-30">
+
+      <div class="text-left">
+        {{ if phase }}
+          <div class="text-md xl:text-xl mb-5 xl:mb-10">{{ phase }}</div>
+        {{ /if }}
+        {{ partial:ui/heading/h3 size="lg" class="font-meta-bold text-pretty" }}
+          {{ title }}
+        {{ /partial:ui/heading/h3 }}
+      </div>
+
+      <span
+        class="shrink-0 p-5 mt-4 flex items-center justify-center leading-none transition-transform duration-300 group-hover:rotate-90"
+        :class="{ 'rotate-90': open }">
+        {{ partial:ui/icon/arrow-right-short class="w-24 xl:w-36 h-auto" }}
+      </span>
+
+    </div>
+  </button>
+
+  <div
+    x-ref="container"
+    id="workflow-panel-{{ index }}"
+    role="region"
+    aria-labelledby="workflow-button-{{ index }}"
+    :aria-hidden="open ? 'false' : 'true'"
+    class="relative overflow-hidden max-h-0 transition-all duration-300 ease-in-out"
+    style="max-height: 0px;">
+    <div
+      class="w-full pb-30 xl:pb-40 transition-opacity duration-300 ease-in-out"
+      :class="{ 'opacity-100': open, 'opacity-0': !open }">
+
+      {{ if image }}
+        {{ partial:ui/media/image/image image="{{ image }}" class="w-full h-auto mb-20 xl:mb-30" }}
+      {{ /if }}
+
+      {{ if text }}
+        <div class="text-md xl:text-xl leading-[1.5] text-pretty">
+          {{ text }}
+        </div>
+      {{ /if }}
+
+    </div>
+  </div>
+</div>

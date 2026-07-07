@@ -1,0 +1,127 @@
+title: Workflow
+fields:
+  -
+    import: title
+    prefix: workflow_
+  -
+    import: cta
+  -
+    handle: phases
+    field:
+      collapse: true
+      previews: true
+      type: replicator
+      display: Phases
+      icon: replicator
+      instructions: 'Add the workflow phases. Each phase can be expanded to reveal an optional image and text.'
+      localizable: true
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      sets:
+        phases:
+          display: Phases
+          sets:
+            phase:
+              display: Phase
+              instructions: null
+              icon: list-bullets
+              fields:
+                -
+                  handle: phase
+                  field:
+                    input_type: text
+                    antlers: false
+                    type: text
+                    display: Phase
+                    icon: text
+                    instructions: 'The phase label, e.g. "1. Phase".'
+                    localizable: true
+                    listable: hidden
+                    instructions_position: above
+                    visibility: visible
+                    replicator_preview: true
+                    hide_display: false
+                    width: 33
+                    validate:
+                      - required
+                -
+                  handle: title
+                  field:
+                    input_type: text
+                    antlers: false
+                    type: text
+                    display: Title
+                    icon: text
+                    localizable: true
+                    listable: hidden
+                    instructions_position: above
+                    visibility: visible
+                    replicator_preview: true
+                    hide_display: false
+                    width: 66
+                    validate:
+                      - required
+                -
+                  handle: image
+                  field:
+                    max_files: 1
+                    mode: list
+                    container: assets
+                    restrict: false
+                    allow_uploads: true
+                    show_filename: true
+                    show_set_alt: true
+                    type: assets
+                    display: 'Image (optional)'
+                    icon: assets
+                    localizable: false
+                    listable: hidden
+                    instructions_position: above
+                    visibility: visible
+                    replicator_preview: true
+                    hide_display: false
+                -
+                  handle: text
+                  field:
+                    buttons:
+                      - bold
+                      - italic
+                      - unorderedlist
+                      - removeformat
+                      - anchor
+                    smart_typography: false
+                    save_html: false
+                    inline: false
+                    toolbar_mode: floating
+                    reading_time: false
+                    word_count: false
+                    fullscreen: true
+                    allow_source: true
+                    enable_input_rules: true
+                    enable_paste_rules: true
+                    remove_empty_nodes: true
+                    antlers: false
+                    link_noopener: false
+                    link_noreferrer: false
+                    target_blank: false
+                    link_collections:
+                      - pages
+                      - posts
+                      - projects
+                      - team
+                    container: assets
+                    always_show_set_button: false
+                    collapse: true
+                    previews: true
+                    type: bard
+                    display: 'Text (optional)'
+                    icon: bard
+                    localizable: true
+                    listable: hidden
+                    instructions_position: above
+                    visibility: visible
+                    replicator_preview: true
+                    hide_display: false

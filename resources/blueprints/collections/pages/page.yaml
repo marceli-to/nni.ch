@@ -135,6 +135,13 @@ tabs:
                       fields:
                         -
                           import: faq
+                    workflow:
+                      display: 'Workflow (Phases)'
+                      instructions: 'Heading + CTA on the left, expandable phases (label, title, optional image and text) on the right.'
+                      icon: list-bullets
+                      fields:
+                        -
+                          import: workflow
                 graphical_elements:
                   display: 'Graphical Elements'
                   icon: addon-boxes-stack
