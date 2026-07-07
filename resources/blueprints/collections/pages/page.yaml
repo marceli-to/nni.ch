@@ -141,7 +141,7 @@ tabs:
                   sets:
                     marquee:
                       display: 'Logo Marquee'
-                      instructions: 'Auto-scrolling, full-width logo strip. Image, title and optional external link per logo.'
+                      instructions: 'Insert the auto-scrolling, full-width logo strip. Logos are managed centrally under Globals → Partner Logos.'
                       icon: layout-three-columns
                       fields:
                         -
