@@ -29,22 +29,7 @@
       {{ if position }}
         <div>{{ position }}</div>
       {{ /if }}
-      {{ if email }}
-        <a 
-          href="mailto:{{ email }}" 
-          title="{{ "E-Mail" | trans }} {{ title }}"
-          class="block no-underline hover:underline-offset-8 hover:decoration-1 hover:underline">
-          {{ email }}
-        </a>
-      {{ /if }}
-      {{ if phone }}
-        <a 
-          href="tel:{{ phone }}" 
-          title="{{ "Telefon Nr." | trans }} {{ title }}"
-          class="block no-underline hover:underline-offset-8 hover:decoration-1 hover:underline">
-          {{ phone }}
-        </a>
-      {{ /if }}
+      {{ partial:components/misc/contact-links email="{{ email }}" phone="{{ phone }}" title="{{ title }}" }}
     </figcaption>
   {{ /if }}
 </figure>
