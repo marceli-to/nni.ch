@@ -1,11 +1,5 @@
 {{ if type == 'editor' }}
-  <section data-section data-section-theme="light" class="pt-90 lg:pt-150">
-    {{ partial:layout/container }}
-    <article class="max-w-content mx-auto">
-      {{ content  }}
-    </article>
-    {{ /partial:layout/container }}
-  </section>
+  {{ partial:fieldsets/editor }}
 {{ /if }}
 
 {{ if type == 'horizontal_ruler' }}
