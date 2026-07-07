@@ -43,9 +43,13 @@ code has drifted since the 2026-07-06 audit, so "near-identical" is often no lon
   class. Would need ~3 params for a small block — marginal, and a regression risk. Flagged.
 - **#6 teaser card** — folded into the Doc 04 heading-size work (the `mt-15 text-md
   xl:text-2xl !leading-[1.25]` h3 string is the real target there).
-- **#9 section wrapper** — the `<section data-section>` shell shares only ~1 line; theme,
-  observe-attributes, and the full class string all vary per caller across 11 files. Low
-  dedup value for high churn/regression surface. Flagged.
+- **#9 section wrapper** — ~~Low dedup value.~~ **DONE (2026-07-07):** on reflection the
+  `is_fullpage` observe/class *logic* (not just the tag) is the real duplication. Extracted
+  `layout/section` (`section_theme`/`base`/`fullpage`/`spacing`/`class` params) and converted
+  the **8** wrappers that follow the pattern; the 7 outliers (intro, video, statement,
+  competencies, editor block, expertise `<div>`, project/index) stay bespoke. Verified
+  render-neutral both fullpage+normal modes. **Gotcha caught by render-diff:** a `theme`
+  param collides with an ambient cascaded `theme` var → renamed to `section_theme`.
 - **#10 grid string** & **#11 portfolio/wrapper** — deferred (10-file sweep / 354-line
   structural refactor; both higher-risk without visual QA).
 
