@@ -3,6 +3,14 @@
 **Date:** 2026-07-06
 These surfaced during the audit and are each independently actionable. All verified by grep.
 
+> **Execution status (2026-07-07): ALL DONE.**
+> - #1 dead partials — deleted all 10 (`e70823e`).
+> - #2 opacity:100 — fixed to `opacity:1` (`d66f7bb`).
+> - #3 redundant `partial:partials/…` — normalized in `project/index` (`d66f7bb`).
+> - #4 h1 `is_project` class-drop — fixed as part of the Doc 04 heading refactor (`602abf8`).
+> - #5 expertise/wrapper — confirmed genuinely malformed (missing `>`), fixed & verified
+>   live on `/en` (`d66f7bb`). It is a live block (`teasers_expertise`, used on home pages).
+
 ---
 
 ## 1. Dead partials — 10 files, zero references (verified)

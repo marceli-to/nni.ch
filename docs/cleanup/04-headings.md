@@ -4,6 +4,15 @@
 **Scope:** `resources/views/partials/components/headings/{h1,h2,h3}.antlers.html` and every
 caller; plus `resources/css/components/headings.css`.
 
+> **Execution status (2026-07-07): recs #1–#3 DONE (`602abf8`).** Replaced the boolean-flag
+> enum with a single `size` param on h1/h2/h3 (text-size step only; weight decoupled into
+> `class`). Migrated all 12 partial callers; the 4× project-section magic string → `size=xs`,
+> the h3 card string → `size=2xs`. `{{ class }}`/`{{ data }}` passthrough made consistent;
+> h1 class-drop fixed (closes 05 #4). Verified render-neutral via before/after HTML diff
+> (only cascade-irrelevant class-order changes). **Not done:** rec #4 (CSS-vs-component
+> boundary / global bare `h3{}`) and rec #5 (converting the 13 raw-tag bypasses) — larger,
+> deferred with the other flagged work.
+
 ## Verdict
 
 The heading component **exists but leaks**. There are **three competing styling channels**
