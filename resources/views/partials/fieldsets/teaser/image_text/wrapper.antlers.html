@@ -1,9 +1,5 @@
-<section 
-  data-section 
-  data-section-theme="light" 
-  {{ is_fullpage ? 'data-section-observe' : '' }} 
-  class="relative {{ is_fullpage ? 'min-h-screen flex flex-col justify-center' : 'py-90 md:py-150 md:flex md:flex-col md:justify-center' }}">
+{{ partial:layout/section fullpage="min-h-screen flex flex-col justify-center" spacing="py-90 md:py-150 md:flex md:flex-col md:justify-center" }}
   {{ partial:layout/container class="{{ is_fullpage ? 'pt-90 pb-150 xs:py-90 lg:py-150' : '' }}" }}
     {{ partial:fieldsets/teaser/image_text/content }}
   {{ /partial:layout/container }}
-</section>
+{{ /partial:layout/section }}

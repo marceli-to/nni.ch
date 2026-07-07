@@ -1,12 +1,5 @@
-<section 
-  data-section 
-  data-section-theme="light" 
-  {{ is_fullpage ? 'data-section-observe' : '' }} 
-  class="relative {{ is_fullpage ? 'min-h-screen overflow-x-hidden flex flex-col justify-center' : 'py-60 xl:py-150' }}">
-  {{ partial:ui/swiper/wrapper 
-    class="sm:px-80 xl:px-100 max-w-site mx-auto w-full {{ is_fullpage ? 'pt-90 pb-170 xs:py-90 lg:py-150' : '' }}"
-    data="data-animation='fadeIn_slideInRight'"
-   }}
+{{ partial:layout/section fullpage="min-h-screen overflow-x-hidden flex flex-col justify-center" spacing="py-60 xl:py-150" }}
+  {{ partial:ui/swiper/wrapper class="sm:px-80 xl:px-100 max-w-site mx-auto w-full {{ is_fullpage ? 'pt-90 pb-170 xs:py-90 lg:py-150' : '' }}" data="data-animation='fadeIn_slideInRight'" }}
     {{ partial:ui/swiper/track class="js-swiper-team" navigation="true" moreLink="true" }}
       {{ collection from="team" sort="random" }}
         {{ partial:ui/swiper/slide class="swiper-slide--mute-inactive" }}
@@ -15,4 +8,4 @@
       {{ /collection }}
     {{ /partial:ui/swiper/track }}
   {{ /partial:ui/swiper/wrapper }}
-</section>
+{{ /partial:layout/section }}

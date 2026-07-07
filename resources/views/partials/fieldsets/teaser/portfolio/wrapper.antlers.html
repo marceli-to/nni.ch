@@ -1,8 +1,4 @@
-<section 
-  data-section 
-  data-section-theme="light"
-  {{ is_fullpage ? 'data-section-observe' : '' }} 
-  class="relative {{ is_fullpage ? 'min-h-screen' : 'py-90 xl:py-150' }}">
+{{ partial:layout/section fullpage="min-h-screen" spacing="py-90 xl:py-150" }}
   {{ partial:layout/container class="{{ is_fullpage ? 'pt-90 pb-150 xs:py-90 lg:py-150 overflow-hidden' : '' }}" }}
     {{ if mirrored }}
       <div class="md:hidden grid grid-cols-6 gap-x-20">
@@ -351,4 +347,4 @@
     {{/if }}
 
   {{ /partial:layout/container }}
-</section>
+{{ /partial:layout/section }}
