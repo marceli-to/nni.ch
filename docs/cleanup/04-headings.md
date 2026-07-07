@@ -85,14 +85,42 @@ system, and several are duplicated verbatim:
 
 ## Recommendations
 
-1. **Turn the duplicated `class` strings into named variants.** The 5× `text-md md:text-xl
-   xl:text-4xl mb-15 xl:mb-30` becomes something like a `variant="project-section"`; the
-   h3 `mt-15 text-md xl:text-2xl !leading-[1.25]` becomes an h3 variant. This is where the
-   real value is — the magic strings collapse to one definition each.
-2. **Replace the boolean-flag enum with a single `variant`/`level` param.** `is_project`,
-   `is_competency_teaser`, `is_teaser` as separate booleans is a hand-rolled enum where two
-   flags can be passed at once (first-match wins silently). One `variant="project"` param is
-   clearer and can't conflict.
+1. **Introduce a `size` scale instead of usage-named variants.** Names like `is_project` /
+   `is_teaser` / `is_competency_teaser` tightly couple the heading to *where* it's used —
+   change the project section design and you're editing a variant called "project." But the
+   variants aren't really different *kinds* of heading; they're the same heading at
+   different points on one type ramp. Every branch above differs only by its `text-*` triple
+   (see the census table). So replace them with a decoupled `size` param:
+
+   | `size` | base | md | xl | replaces |
+   |---|---|---|---|---|
+   | `xl` | `text-3xl` | `md:text-5xl` | `xl:text-8xl` | h1 default (page title) |
+   | `lg` | `text-3xl` | `md:text-5xl` | `xl:text-7xl` | h2 default, h1 `is_project` |
+   | `md` | `text-3xl` | — | `xl:text-6xl` | h2 `is_teaser` |
+   | `sm` | `text-2xl` | `md:text-3xl` | `xl:text-5xl` | h2 `is_competency_teaser` |
+   | `xs` | `text-md` | `md:text-xl` | `xl:text-4xl` | the 5× `is_project` `class` override |
+   | `2xs` | `text-md` | — | `xl:text-2xl` | the 2× h3 `class` override |
+
+   A caller then writes `size="xs"` instead of `variant="project-section"` — the size says
+   what it *is* (a small heading), not where it lives, so the same size is reusable anywhere
+   and redesigning the project section never touches a "project" name. This is where the
+   real value is: the duplicated magic strings collapse to one definition per size step, and
+   the `mb-*`/`!leading-*` bits those strings also carried stay caller-side as plain `class`
+   (they're spacing/context, not size).
+
+2. **Fold size into one param shared by h1/h2/h3; drop the boolean-flag enum.** With size
+   extracted, `is_project`/`is_competency_teaser`/`is_teaser` disappear entirely — they were
+   only ever selecting a size. That also kills the hand-rolled-enum footgun where two flags
+   can be passed at once (first-match wins silently). Each component keeps a sensible default
+   size so bare `{{ partial ... }}` calls are unchanged.
+   - **The one thing that isn't size:** the h1 default's `uppercase tracking-widest` display
+     treatment. Keep it as a separate orthogonal flag (e.g. `display="true"`) or bake it into
+     the h1 default only — don't smuggle it back into the size scale.
+   - **Regularize while you're here (optional):** the current triples wobble at small
+     breakpoints — h1 `is_project` starts at `text-4xl` with no `md:` step, while the
+     otherwise-identical-at-`xl` h2 default starts `text-3xl md:text-5xl`. Adopting the table
+     above makes those consistent; confirm the `lg` row's small-screen sizing is what's
+     wanted for the project h1 before collapsing them.
 3. **Make `{{ class }}` and `{{ data }}` passthrough consistent** across *all* branches (h1
    `is_project` and h2 `is_project`/`is_competency_teaser` currently drop one or the other).
 4. **Decide the CSS-vs-component boundary.** Either route `.posts`/`.contact`/`.privacy`

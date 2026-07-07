@@ -7,14 +7,7 @@
   }
 }
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
+/* @keyframes fadeIn lives in fadeIn.css (shared) */
 
 /* initial state */
 [data-animation="fadeIn_slideUp"] {

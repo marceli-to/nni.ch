@@ -7,5 +7,5 @@ select {
 }
 
 textarea {
-  @apply min-h-[150px] py-10
+  @apply min-h-150 py-10
 }

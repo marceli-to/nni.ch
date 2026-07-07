@@ -17,7 +17,7 @@
 }
 
 [data-menu-animation="appear"] {
-  @apply -translate-y-[40px] opacity-0
+  @apply -translate-y-40 opacity-0
 }
 
 /* active state */

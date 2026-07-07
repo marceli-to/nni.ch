@@ -1,3 +1,4 @@
+/* Canonical fadeIn keyframe — shared by fadeIn_slideInLeft/Right/Up + slides.css */
 @keyframes fadeIn {
   0% {
     opacity: 0;

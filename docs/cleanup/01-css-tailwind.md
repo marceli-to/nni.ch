@@ -30,13 +30,17 @@ Duplication / housekeeping:
 - **`views/posts.css:1–7`** — `.posts blockquote` is declared **twice** back-to-back. Merge
   into one rule.
 - **`components/media.css:21–31`** — the `.dim-0`…`.dim-100` block is a hand-rolled 1:1
-  re-alias of Tailwind's native `bg-opacity-*`. If templates used `bg-opacity-40` directly
-  the whole block could be dropped. Grep `class="...dim-` before removing.
+  re-alias of Tailwind's native `bg-opacity-*`. ~~If templates used `bg-opacity-40` directly
+  the whole block could be dropped.~~ **KEPT (2026-07-07):** grep shows `dim-*` is a stored
+  CMS value — `overlay_opacity: dim-20` across many `content/collections/pages/*` entries,
+  with the options defined in `resources/fieldsets/overlay.yaml`. Dropping the block would be
+  a content migration, not a CSS cleanup. Left as-is.
 - **`cp.css`** — contains only the Statamic scaffold comment `/* This is all you. */`.
   Effectively empty; leave or delete.
-- **`@keyframes fadeIn`** is defined independently in 5 files (`fadeIn.css`,
-  `fadeIn_slideInLeft.css`, `fadeIn_slideInRight.css`, `fadeIn_slideUp.css`, `slides.css`).
-  Not dead, but a duplicated keyframe worth centralizing into one file.
+- **`@keyframes fadeIn`** ~~is defined independently in 5 files~~ **DONE (2026-07-07):**
+  centralized into `fadeIn.css` (marked canonical); the identical copies in
+  `fadeIn_slideInLeft.css`, `fadeIn_slideInRight.css`, `fadeIn_slideUp.css`, and `slides.css`
+  were removed (each left a one-line pointer comment).
 
 > ⚠️ `fadeIn.css:18` has `opacity: 100 !important` — a latent bug, tracked in
 > [`05-additional-findings.md`](./05-additional-findings.md).
