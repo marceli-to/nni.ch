@@ -1,8 +1,101 @@
-title: 'Intro (Video)'
+title: 'Intro (Video/Image)'
 fields:
   -
     import: theme
   -
     import: title
   -
-    import: fullscreen_video
+    handle: media_type
+    field:
+      options:
+        video: Video
+        image: Image
+      taggable: false
+      push_tags: false
+      multiple: false
+      clearable: false
+      searchable: false
+      cast_booleans: false
+      default: video
+      type: select
+      display: 'Media Type'
+      instructions: 'Choose whether the intro shows a fullscreen video or a fullscreen image.'
+      icon: select
+      localizable: false
+      listable: hidden
+      instructions_position: below
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+  -
+    handle: video_portrait
+    field:
+      if:
+        media_type: 'equals video'
+      mode: list
+      container: assets
+      restrict: false
+      allow_uploads: true
+      show_filename: true
+      show_set_alt: true
+      type: assets
+      display: 'Video (Portrait)'
+      icon: assets
+      instructions: 'Add a video in portrait mode for mobile devices. Format needs to be MP4'
+      localizable: false
+      listable: hidden
+      instructions_position: below
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      folder: video
+      width: 50
+      max_files: 1
+  -
+    handle: video_landscape
+    field:
+      if:
+        media_type: 'equals video'
+      mode: list
+      container: assets
+      restrict: false
+      allow_uploads: true
+      show_filename: true
+      show_set_alt: true
+      type: assets
+      display: 'Video (Landscape)'
+      icon: assets
+      instructions: 'Add a video in landscape mode for tablets and desktop. Format needs to be MP4'
+      localizable: false
+      listable: hidden
+      instructions_position: below
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      folder: video
+      width: 50
+      max_files: 1
+  -
+    handle: image
+    field:
+      if:
+        media_type: 'equals image'
+      max_files: 1
+      mode: list
+      container: assets
+      restrict: false
+      allow_uploads: true
+      show_filename: true
+      show_set_alt: true
+      type: assets
+      display: Image
+      icon: assets
+      instructions: 'Add a fullscreen image. It will be cropped to cover the viewport.'
+      localizable: false
+      listable: hidden
+      instructions_position: below
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+  -
+    import: overlay

@@ -62,6 +62,12 @@ const handleActiveSection = (section) => {
   const video = section.querySelector(selectors.video);
   if (video) {
     playVideo(video, section);
+  } else if (section.matches(selectors.sectionIntro)) {
+    // Image intro: there is no video to trigger the reveal, so apply the
+    // `is-playing` class directly. This drives the same intro fade-in
+    // animations (header, menu, title) that playVideo() would.
+    section.classList.add('is-playing');
+    header?.classList.add('is-playing');
   }
 };
 
