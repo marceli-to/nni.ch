@@ -1,3 +1,9 @@
+{{ if size == '2xs' }}
+<h3 class="font-meta-medium leading-[1.4] text-md xl:text-2xl {{ class }}">
+  {{ slot }}
+</h3>
+{{ else }}
 <h3 class="font-meta-medium leading-[1.4] {{ class }}">
   {{ slot }}
 </h3>
+{{ /if }}
