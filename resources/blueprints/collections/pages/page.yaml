@@ -87,72 +87,68 @@ tabs:
                         -
                           import: cta_expertise
                     teaser_project:
-                      display: 'Masonry (Portfolio)'
+                      display: 'Portfolio (Masonry)'
                       instructions: 'Add a set of images, a text and a link.'
                       icon: text-formatting-image-left
                       fields:
                         -
                           import: teaser_project
                     teaser_competencies:
-                      display: 'Teaser (Competencies)'
+                      display: 'Teaser Competencies'
                       instructions: '3-column competencies teaser, with or without images.'
                       icon: layout-three-columns
                       fields:
                         -
                           import: teaser_competencies
                     teasers_expertise:
-                      display: 'Slider (Expertise)'
+                      display: 'Slider Expertise'
                       instructions: 'Add teasers for expertise'
                       icon: text-formatting-image-left
                       fields:
                         -
                           import: teasers_expertise
                     teaser_blog:
-                      display: 'Slideshow Blog'
-                      instructions: 'Add the latest 3 blog entries.'
+                      display: 'Blog Teaser'
+                      instructions: 'Add the latest 3 blog entries'
                       icon: layout-three-columns
                       fields:
                         -
                           import: teaser_blog
                     slideshow_team:
                       display: 'Slideshow Team'
-                      instructions: 'Add the team as a slideshow.'
+                      instructions: 'Add the team as a slideshow'
                       icon: layout-three-columns
                       fields:
                         -
                           import: slideshow_team
                     jobs:
                       display: Jobs
-                      instructions: 'List published jobs'
+                      instructions: 'Add a list of published jobs'
                       icon: text-formatting-image-left
                       fields:
                         -
                           import: jobs
                     faq:
                       display: FAQ
-                      instructions: 'Add FAQ'
+                      instructions: 'Add an FAQ section'
                       icon: form-drop-down-menu
                       fields:
                         -
                           import: faq
                     workflow:
-                      display: 'Workflow'
-                      instructions: 'Heading + CTA on the left, expandable phases (label, title, optional image and text) on the right.'
-                      icon: list-bullets
+                      display: Workflow
+                      instructions: 'Add a workflow with multiple phases'
+                      icon: layout-split-horizontal
                       fields:
                         -
                           import: workflow
                     services:
-                      display: 'Services'
-                      instructions: 'Full-width list of expandable services. Each service reveals an optional text and a call-to-action link.'
-                      icon: list-bullets
+                      display: Services
+                      instructions: 'Add a list of services'
+                      icon: layout-split-horizontal
                       fields:
                         -
                           import: services
-                graphical_elements:
-                  display: 'Graphical Elements'
-                  icon: addon-boxes-stack
-                  sets:
                     marquee:
                       display: 'Logo Marquee'
                       instructions: 'Insert the auto-scrolling, full-width logo strip. Logos are managed centrally under Globals → Partner Logos.'
@@ -160,6 +156,10 @@ tabs:
                       fields:
                         -
                           import: marquee
+                graphical_elements:
+                  display: 'Graphical Elements'
+                  icon: addon-boxes-stack
+                  sets:
                     horizontal_ruler:
                       display: 'Horizontal Ruler'
                       instructions: 'Add a thin, gray line'
