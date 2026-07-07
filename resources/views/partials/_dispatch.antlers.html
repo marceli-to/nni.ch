@@ -65,13 +65,13 @@
 {{ /if }}
 
 {{ if type == 'cta_expertise' }}
-  <section data-section data-section-theme="light" class="py-30 md:py-60 xl:py-90">
+  {{ partial:fieldsets/cta/wrapper }}
     {{ partial:fieldsets/cta/expertise }}
-  </section>
+  {{ /partial:fieldsets/cta/wrapper }}
 {{ /if }}
 
 {{ if type == 'cta_project' }}
-  <section data-section data-section-theme="light" class="py-30 md:py-60 xl:py-90">
+  {{ partial:fieldsets/cta/wrapper }}
     {{ partial:fieldsets/cta/project }}
-  </section>
+  {{ /partial:fieldsets/cta/wrapper }}
 {{ /if }}
