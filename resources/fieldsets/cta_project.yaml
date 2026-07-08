@@ -10,14 +10,8 @@ fields:
         - team
       type: entries
       display: Person
-      icon: user
       instructions: 'Select the team member. Portrait, role, email and phone are pulled from this entry.'
       localizable: false
-      listable: hidden
-      instructions_position: above
-      visibility: visible
-      replicator_preview: true
-      hide_display: false
       validate:
         - required
   -
@@ -25,49 +19,25 @@ fields:
     field:
       max_files: 1
       min_files: 1
-      mode: list
       container: assets
-      restrict: false
-      allow_uploads: true
-      show_filename: true
-      show_set_alt: true
       type: assets
       display: Image
-      icon: assets
       instructions: 'Upload the portrait shown next to the text.'
       localizable: false
-      listable: hidden
-      instructions_position: above
-      visibility: visible
-      replicator_preview: true
-      hide_display: false
   -
     handle: heading
     field:
       buttons:
         - bold
         - removeformat
-      smart_typography: false
-      save_html: false
-      inline: true
+      inline: break
       toolbar_mode: floating
-      reading_time: false
-      word_count: false
       fullscreen: false
       allow_source: false
-      enable_input_rules: true
-      enable_paste_rules: true
       remove_empty_nodes: true
-      antlers: false
       type: bard
       display: Heading
-      icon: bard
       instructions: 'Bold the name for emphasis, e.g. “Persönliche Beratung mit **Christoph Deiters**”'
       localizable: true
-      listable: hidden
-      instructions_position: above
-      visibility: visible
-      replicator_preview: true
-      hide_display: false
   -
     import: cta
