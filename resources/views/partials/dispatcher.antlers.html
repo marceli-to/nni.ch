@@ -10,6 +10,10 @@
   {{ partial:fieldsets/marquee/wrapper }}
 {{ /if }}
 
+{{ if type == 'network' }}
+  {{ partial:fieldsets/network/wrapper }}
+{{ /if }}
+
 {{ if type == 'intro' }}
   {{ partial:fieldsets/intro/wrapper }}
 {{ /if }}

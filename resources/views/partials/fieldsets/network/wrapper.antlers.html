@@ -1,0 +1,19 @@
+{{ partial:layout/section section_theme="light" fullpage="min-h-screen flex flex-col justify-center py-90 lg:py-150" spacing="py-90 lg:py-150" }}
+
+  {{ partial:layout/container }}
+
+    {{ if title }}
+      {{ partial:ui/heading/h2 class="[&_strong]:font-meta-medium text-pretty mb-60 lg:mb-100 xl:mb-120" }}
+        {{ title }}
+      {{ /partial:ui/heading/h2 }}
+    {{ /if }}
+
+    <div class="grid grid-cols-2 gap-x-20 lg:gap-x-30 xl:gap-x-50 gap-y-60 lg:grid-cols-4">
+      {{ partners }}
+        {{ partial:fieldsets/network/item }}
+      {{ /partners }}
+    </div>
+
+  {{ /partial:layout/container }}
+
+{{ /partial:layout/section }}

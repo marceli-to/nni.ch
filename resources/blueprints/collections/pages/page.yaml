@@ -163,6 +163,13 @@ tabs:
                       fields:
                         -
                           import: marquee
+                    network:
+                      display: Network
+                      instructions: 'A titled row of network partners — logo, label and external link each.'
+                      icon: layout-three-columns
+                      fields:
+                        -
+                          import: network
                 graphical_elements:
                   display: 'Graphical Elements'
                   icon: addon-boxes-stack

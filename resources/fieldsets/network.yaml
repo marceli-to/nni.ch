@@ -1,0 +1,90 @@
+title: Network
+fields:
+  -
+    import: title
+  -
+    handle: partners
+    field:
+      collapse: false
+      previews: true
+      fullscreen: true
+      type: replicator
+      display: Partners
+      icon: replicator
+      instructions: 'Add the network partners. Place every logo on a square so they all read at the same visual size.'
+      localizable: false
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      validate:
+        - required
+      sets:
+        partners:
+          display: Partners
+          sets:
+            partner:
+              display: Partner
+              instructions: null
+              icon: media-image-picture-orientation
+              fields:
+                -
+                  handle: image
+                  field:
+                    max_files: 1
+                    min_files: 1
+                    mode: list
+                    container: assets
+                    folder: netzwerk
+                    restrict: false
+                    allow_uploads: true
+                    show_filename: true
+                    show_set_alt: true
+                    type: assets
+                    display: Logo
+                    icon: assets
+                    instructions: 'Place the logo on a square (transparent or white background) so every partner reads at the same size.'
+                    localizable: false
+                    listable: hidden
+                    instructions_position: above
+                    visibility: visible
+                    replicator_preview: true
+                    hide_display: false
+                    validate:
+                      - required
+                -
+                  handle: label
+                  field:
+                    input_type: text
+                    antlers: false
+                    type: text
+                    display: Label
+                    icon: text
+                    instructions: 'Link text, e.g. “Zu Christian Ammann”. Rendered in uppercase.'
+                    localizable: true
+                    listable: hidden
+                    instructions_position: above
+                    visibility: visible
+                    replicator_preview: true
+                    hide_display: false
+                    validate:
+                      - required
+                -
+                  handle: url
+                  field:
+                    input_type: url
+                    antlers: false
+                    type: text
+                    display: Link
+                    icon: link
+                    instructions: 'External link only, e.g. https://example.com. Opens in a new tab.'
+                    localizable: false
+                    listable: hidden
+                    instructions_position: above
+                    visibility: visible
+                    replicator_preview: true
+                    hide_display: false
+                    validate:
+                      - required
+                      - url
