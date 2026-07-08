@@ -1,26 +1,26 @@
-title: 'Expertise Teasers'
+title: Principles
 fields:
   -
-    handle: teaser_items
+    handle: principle_items
     field:
       collapse: false
       previews: true
       fullscreen: true
       sets:
-        teaser_items:
-          display: 'Teaser items'
+        principle_items:
+          display: Principles
           instructions: null
           icon: text-formatting-image-left
           sets:
-            teaser_item:
-              display: 'Teaser item'
+            principle_item:
+              display: Principle
               instructions: null
               icon: text-formatting-image-left
               fields:
                 -
-                  import: teaser_expertise
+                  import: principle
       type: replicator
-      display: 'Teaser items'
+      display: Principles
       localizable: false
       listable: hidden
       instructions_position: above

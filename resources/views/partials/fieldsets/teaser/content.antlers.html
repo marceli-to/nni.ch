@@ -1,11 +1,11 @@
 {{ partial:layout/container class="absolute md:relative left-0 top-150 md:top-200 xl:top-240 z-20" }}
   <article
-    class="text-white max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg"
+    class="text-white max-w-xs md:max-w-sm lg:max-w-2xl"
     {{ if is_video }}data-video-animation="fadeIn" data-video-animation-duration="slow" data-video-animation-delay="long"{{ else }}data-animation="fadeIn" data-animation-duration="slow" data-animation-delay="long"{{ /if }}>
-    {{ partial:ui/heading/h2 class="mb-15 md:mb-30" }}
+    {{ partial:ui/heading/h2 class="mb-15 md:mb-30 text-pretty max-w-lg" }}
       {{ title }}
     {{ /partial:ui/heading/h2 }}
-    <div class="lg:text-3xl {{ text_class ?? '' }}">
+    <div class="lg:text-2xl {{ text_class ?? '' }}">
       {{ cta_text }}
     </div>
     {{ if cta_link }}

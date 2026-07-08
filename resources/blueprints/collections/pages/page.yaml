@@ -100,13 +100,13 @@ tabs:
                       fields:
                         -
                           import: teaser_competencies
-                    teasers_expertise:
-                      display: 'Slider Expertise'
-                      instructions: 'Add teasers for expertise'
+                    principles:
+                      display: Principles
+                      instructions: 'Add company principles'
                       icon: text-formatting-image-left
                       fields:
                         -
-                          import: teasers_expertise
+                          import: principles
                     teaser_blog:
                       display: 'Blog Teaser'
                       instructions: 'Add the latest 3 blog entries'

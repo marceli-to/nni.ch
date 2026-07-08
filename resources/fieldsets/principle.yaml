@@ -1,0 +1,22 @@
+title: Principle
+fields:
+  -
+    handle: title
+    field:
+      type: text
+      display: Title
+      localizable: true
+      validate:
+        - required
+  -
+    handle: text
+    field:
+      buttons:
+        - h3
+        - bold
+        - unorderedlist
+        - anchor
+      remove_empty_nodes: false
+      type: bard
+      display: Text
+      localizable: true
