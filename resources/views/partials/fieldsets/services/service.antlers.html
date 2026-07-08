@@ -71,13 +71,7 @@
           {{ /if }}
 
           {{ if cta_link }}
-            <a
-              href="{{ cta_link }}"
-              title="{{ cta_button_text }}"
-              class="inline-flex items-center gap-x-10 mt-20 xl:mt-40 text-sm md:text-lg xl:text-xl font-meta-medium uppercase tracking-wide group">
-              <span class="group-hover:translate-x-6 transition-transform">{{ cta_button_text }}</span>
-              {{ partial:ui/icon/arrow-right-long class="w-24 xl:w-32 h-auto group-hover:translate-x-12 transition-transform" }}
-            </a>
+            {{ partial:ui/link/arrow url="{{ cta_link }}" label="{{ cta_button_text }}" class="inline-flex mt-20 xl:mt-40 text-sm md:text-lg xl:text-xl" }}
           {{ /if }}
 
         </div>

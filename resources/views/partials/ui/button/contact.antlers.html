@@ -1,7 +1,1 @@
-<a 
-  href="{{ url }}"
-  class="text-sm md:text-md xl:text-lg font-meta-medium uppercase tracking-wider flex items-center gap-x-10 group"
-  title="{{ title }}">
-  <span class="group-hover:translate-x-6 transition-transform">{{ title }}</span>
-  {{ partial:ui/icon/arrow-right-long class="w-20 xl:w-28 h-auto group-hover:translate-x-12 transition-transform" }}
-</a>
+{{ partial:ui/link/arrow url="{{ url }}" label="{{ title }}" class="flex text-sm md:text-md xl:text-lg" icon_class="w-20 xl:w-28 h-auto group-hover:translate-x-12 transition-transform" }}

@@ -1,0 +1,23 @@
+{{#
+  ui/link/arrow — CTA-style text link with a sliding long arrow.
+
+  Params:
+    url        (required)  href
+    label      (required)  visible text
+    title      (optional)  title attribute; defaults to label
+    class      (optional)  display (flex / inline-flex), text size, margins…
+    icon_class (optional)  arrow icon classes; override for a different size / hover distance
+    reverse    (optional)  when truthy, the arrow renders before the label
+#}}
+<a
+  href="{{ url }}"
+  title="{{ title ?? label }}"
+  class="group items-center gap-x-10 font-meta-medium uppercase tracking-wide {{ class }}">
+  {{ if reverse }}
+    {{ partial:ui/icon/arrow-right-long class="{{ icon_class ?? 'w-24 xl:w-32 h-auto group-hover:translate-x-12 transition-transform' }}" }}
+    <span class="group-hover:translate-x-6 transition-transform">{{ label }}</span>
+  {{ else }}
+    <span class="group-hover:translate-x-6 transition-transform">{{ label }}</span>
+    {{ partial:ui/icon/arrow-right-long class="{{ icon_class ?? 'w-24 xl:w-32 h-auto group-hover:translate-x-12 transition-transform' }}" }}
+  {{ /if }}
+</a>

@@ -77,13 +77,7 @@
       {{ /if }}
 
       {{ if link }}
-        <a
-          href="{{ link:url }}"
-          title="{{ link:title }}"
-          class="inline-flex items-center gap-x-10 mt-20 xl:mt-30 text-sm md:text-lg xl:text-xl font-meta-medium uppercase tracking-wide group">
-          <span class="group-hover:translate-x-6 transition-transform">{{ "Mehr erfahren" | trans }}</span>
-          {{ partial:ui/icon/arrow-right-long class="w-24 xl:w-32 h-auto group-hover:translate-x-12 transition-transform" }}
-        </a>
+        {{ partial:ui/link/arrow url="{{ link:url }}" label="{{ 'Mehr erfahren' | trans }}" title="{{ link:title }}" class="inline-flex mt-20 xl:mt-30 text-sm md:text-lg xl:text-xl" }}
       {{ /if }}
 
     </div>
