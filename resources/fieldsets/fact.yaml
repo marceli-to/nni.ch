@@ -1,0 +1,18 @@
+title: Fact
+fields:
+  -
+    handle: number
+    field:
+      type: text
+      display: Number
+      localizable: true
+      validate:
+        - required
+  -
+    handle: label
+    field:
+      type: text
+      display: Label
+      localizable: true
+      validate:
+        - required

@@ -107,6 +107,13 @@ tabs:
                       fields:
                         -
                           import: principles
+                    facts_figures:
+                      display: 'Facts & Figures'
+                      instructions: 'Key numbers with labels (e.g. 8000+ Visualised projects).'
+                      icon: analytics-graph-bar
+                      fields:
+                        -
+                          import: facts_figures
                     teaser_blog:
                       display: 'Blog Teaser'
                       instructions: 'Add the latest 3 blog entries'

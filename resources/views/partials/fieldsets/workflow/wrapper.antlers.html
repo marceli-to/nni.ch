@@ -4,7 +4,6 @@
 
     <div class="grid grid-cols-12 gap-x-20 lg:gap-x-30 xl:gap-x-50">
 
-      {{# Left: heading + CTA (sticky on desktop). #}}
       <div class="col-span-full md:col-span-5 xl:col-span-4 lg:sticky lg:top-120 self-start mb-40 md:mb-0">
         {{ partial:ui/heading/h2 size="sm" class="[&_strong]:font-meta-bold text-pretty" }}
           {{ workflow_title }}
@@ -21,7 +20,6 @@
         {{ /if }}
       </div>
 
-      {{# Right: expandable phases. #}}
       <div class="col-span-full md:col-span-7 xl:col-span-8 md:border-l md:border-black md:pl-20 xl:pl-30">
         {{ partial:ui/accordion/wrapper class="!border-none flex flex-col gap-y-30 xl:gap-y-45" }}
           {{ phases }}

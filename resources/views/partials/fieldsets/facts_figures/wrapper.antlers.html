@@ -1,0 +1,11 @@
+{{ partial:layout/section section_theme="light" fullpage="min-h-screen flex flex-col items-center justify-center py-90 lg:py-150" }}
+
+  {{ partial:layout/container }}
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-100 lg:gap-x-120 xl:gap-x-160 gap-y-30 lg:gap-y-60 max-w-7xl mx-auto">
+      {{ fact_items }}
+        {{ partial:fieldsets/facts_figures/item }}
+      {{ /fact_items }}
+    </div>
+  {{ /partial:layout/container }}
+
+{{ /partial:layout/section }}

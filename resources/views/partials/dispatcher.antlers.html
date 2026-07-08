@@ -26,6 +26,10 @@
   {{ partial:fieldsets/principles/wrapper }}
 {{ /if }}
 
+{{ if type == 'facts_figures' }}
+  {{ partial:fieldsets/facts_figures/wrapper }}
+{{ /if }}
+
 {{ if type == 'teaser_video' }}
   {{ partial:fieldsets/teaser/video/wrapper }}
 {{ /if }}

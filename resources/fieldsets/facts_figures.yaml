@@ -1,0 +1,29 @@
+title: 'Facts & Figures'
+fields:
+  -
+    handle: fact_items
+    field:
+      collapse: false
+      previews: true
+      fullscreen: true
+      sets:
+        fact_items:
+          display: 'Facts & Figures'
+          instructions: null
+          icon: analytics-graph-bar
+          sets:
+            fact_item:
+              display: Fact
+              instructions: null
+              icon: analytics-graph-bar
+              fields:
+                -
+                  import: fact
+      type: replicator
+      display: 'Facts & Figures'
+      localizable: false
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
