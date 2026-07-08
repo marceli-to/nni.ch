@@ -35,6 +35,7 @@ fields:
       allow_source: false
       remove_empty_nodes: true
       type: bard
+      toolbar_mode: floating
       display: Heading
       instructions: 'Bold the name for emphasis, e.g. “Wie wärs mit einer Sprechstunde mit **Christoph Deiters?**”'
       localizable: true

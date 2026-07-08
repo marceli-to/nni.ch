@@ -20,3 +20,4 @@ fields:
       type: bard
       display: Text
       localizable: true
+      toolbar_mode: floating

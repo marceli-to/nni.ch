@@ -44,6 +44,7 @@ tabs:
                 - anchor
               remove_empty_nodes: true
               type: bard
+              toolbar_mode: floating
               display: Summary
               localizable: true
           -
@@ -56,6 +57,7 @@ tabs:
                 - anchor
               remove_empty_nodes: true
               type: bard
+              toolbar_mode: floating
               display: Services
               localizable: true
           -

@@ -103,5 +103,6 @@ fields:
         - anchor
       remove_empty_nodes: true
       type: bard
+      toolbar_mode: floating
       display: Text
       localizable: false

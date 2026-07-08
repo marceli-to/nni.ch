@@ -9,7 +9,7 @@ fields:
       smart_typography: false
       save_html: false
       inline: break
-      toolbar_mode: fixed
+      toolbar_mode: floating
       reading_time: false
       word_count: false
       fullscreen: true
