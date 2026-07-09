@@ -33,6 +33,8 @@ import './modules/team.js';
 
 import './modules/carousel.js';
 
+import './modules/intro-slideshow.js';
+
 import './modules/comparison.js';
 
 import './modules/slides.js';

@@ -8,6 +8,11 @@
       {{ partial:ui/media/overlay }}
     {{ /if }}
     {{ partial:ui/media/image/fullscreen image="{{ image }}" class="absolute z-10 left-0 top-0 w-full h-full object-cover" }}
+  {{ elseif media_type == 'images' }}
+    {{ if overlay != 'none' }}
+      {{ partial:ui/media/overlay }}
+    {{ /if }}
+    {{ partial:ui/media/image/fullscreen-slideshow }}
   {{ else }}
     {{ partial:ui/media/video/fullscreen-wrapper }}
   {{ /if }}

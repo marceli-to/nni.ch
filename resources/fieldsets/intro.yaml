@@ -23,6 +23,7 @@ fields:
       options:
         video: Video
         image: Image
+        images: Images
       taggable: false
       push_tags: false
       multiple: false
@@ -104,6 +105,54 @@ fields:
       display: Image
       icon: assets
       instructions: 'Add a fullscreen image. It will be cropped to cover the viewport.'
+      localizable: false
+      listable: hidden
+      instructions_position: below
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+  -
+    handle: images
+    field:
+      if:
+        media_type: 'equals images'
+      collapse: true
+      previews: true
+      fullscreen: true
+      sets:
+        images:
+          display: Images
+          instructions: null
+          icon: null
+          sets:
+            image:
+              display: Image
+              instructions: null
+              icon: null
+              fields:
+                -
+                  handle: image
+                  field:
+                    max_files: 1
+                    mode: list
+                    container: assets
+                    restrict: false
+                    allow_uploads: true
+                    show_filename: true
+                    show_set_alt: true
+                    type: assets
+                    display: Image
+                    icon: assets
+                    localizable: false
+                    listable: hidden
+                    instructions_position: above
+                    visibility: visible
+                    replicator_preview: true
+                    hide_display: false
+      type: replicator
+      display: Images
+      icon: replicator
+      instructions: 'Add multiple fullscreen images. They are shown in a random order as an autoplaying slideshow with a fade effect.'
       localizable: false
       listable: hidden
       instructions_position: below

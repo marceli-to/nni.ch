@@ -1,0 +1,23 @@
+<div data-intro-slideshow class="absolute z-10 left-0 top-0 w-full h-full">
+  {{ images }}
+    <figure
+      data-intro-slide
+      class="absolute inset-0 w-full h-full opacity-0 transition-opacity duration-1000 ease-in-out">
+      <picture>
+        <source media="(min-width: 1024px)" srcset="{{ glide:image preset='2xl-webp' }}" type="image/webp">
+        <source media="(min-width: 768px)" srcset="{{ glide:image preset='xl-webp' }}" type="image/webp">
+        <source srcset="{{ glide:image preset='lg-webp' }}" type="image/webp">
+        <source media="(min-width: 1024px)" srcset="{{ glide:image preset='2xl' }}" type="image/jpeg">
+        <source media="(min-width: 768px)" srcset="{{ glide:image preset='xl' }}" type="image/jpeg">
+        <img
+          src="{{ glide:image preset='lg' }}"
+          alt="{{ image:alt }}"
+          title="{{ image:alt }}"
+          height="{{ image:height }}"
+          width="{{ image:width }}"
+          class="block w-full h-full object-cover"
+          loading="lazy">
+      </picture>
+    </figure>
+  {{ /images }}
+</div>
