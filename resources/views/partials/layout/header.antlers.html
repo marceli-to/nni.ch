@@ -9,11 +9,7 @@
       title="Home"
       :class="{ 'is-active': menu === true }"
       class="group">
-      {{ if is_homepage }}
-        {{ partial:ui/icon/logo-byline class="w-auto h-29 xl:h-35" }}
-      {{ else }}
-        {{ partial:ui/icon/logo class="w-auto h-29 xl:h-35" }}
-      {{ /if }}
+      {{ partial:ui/icon/logo-byline class="w-auto h-29 xl:h-35" }}
     </a>
 
     {{ if show_portfolio_filter || (segment_1 == 'portfolio' && (segment_2 == 'category' || segment_2 == 'kategorie'))}}
