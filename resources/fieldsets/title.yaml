@@ -34,5 +34,3 @@ fields:
       visibility: visible
       replicator_preview: true
       hide_display: false
-      validate:
-        - required
