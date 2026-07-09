@@ -1,19 +1,19 @@
-{{# Logos are managed centrally in the "Partner Logos" global. #}}
-{{ if partner_logos:marquee_logos }}
+{{# Logos are managed on this element via the "marquee_logos" field. #}}
+{{ if marquee_logos }}
   {{ partial:layout/section section_theme="light" class="pt-90 lg:pt-150" }}
 
   <div
       class="marquee w-full overflow-hidden"
-      style="--marquee-duration: {{ partner_logos:marquee_logos | length | multiply:4 }}s;">
+      style="--marquee-duration: {{ marquee_logos | length | multiply:4 }}s;">
 
       {{# Track holds two identical copies so the loop reads as seamless. #}}
       <div class="marquee__track flex w-max items-center">
-        {{ partner_logos:marquee_logos }}
+        {{ marquee_logos }}
           {{ partial:fieldsets/marquee/item }}
-        {{ /partner_logos:marquee_logos }}
-        {{ partner_logos:marquee_logos }}
+        {{ /marquee_logos }}
+        {{ marquee_logos }}
           {{ partial:fieldsets/marquee/item aria_hidden="true" }}
-        {{ /partner_logos:marquee_logos }}
+        {{ /marquee_logos }}
       </div>
 
     </div>

@@ -158,7 +158,7 @@ tabs:
                           import: services
                     marquee:
                       display: 'Logo Marquee'
-                      instructions: 'Insert the auto-scrolling, full-width logo strip. Logos are managed centrally under Globals → Partner Logos.'
+                      instructions: 'Insert the auto-scrolling, full-width logo strip, then add the logos directly on this element.'
                       icon: layout-three-columns
                       fields:
                         -
