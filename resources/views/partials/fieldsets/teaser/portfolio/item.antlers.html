@@ -1,20 +1,22 @@
-  <figure
-    class="block {{ aspectRatio ?? '' }}"
-    data-touch>
-    <picture>
-      <source media="(min-width: 1024px)" srcset="{{ glide:img preset='2xl-webp' }}" type="img/webp">
-      <source media="(min-width: 768px)" srcset="{{ glide:img preset='xl-webp' }}" type="img/webp">
-      <source srcset="{{ glide:img preset='lg-webp' }}" type="img/webp">
-      <source media="(min-width: 768px)" srcset="{{ glide:img preset='xl' }}" type="img/jpeg">
-      <img
-        src="{{ glide:img preset='lg' }}"
-        alt="{{ alt }}"
-        title="{{ alt }}"
-        height="{{ height }}"
-        width="{{ width }}"
-        class="block w-full {{ aspectRatio ? 'h-full object-cover' : 'h-auto' }} {{ imgClass ?? '' }}"
-        loading="lazy">
-    </picture>
+  <figure class="block">
+    <div
+      class="block {{ aspectRatio ?? '' }} {{ offset ?? '' }}"
+      data-touch>
+      <picture>
+        <source media="(min-width: 1024px)" srcset="{{ glide:img preset='2xl-webp' }}" type="img/webp">
+        <source media="(min-width: 768px)" srcset="{{ glide:img preset='xl-webp' }}" type="img/webp">
+        <source srcset="{{ glide:img preset='lg-webp' }}" type="img/webp">
+        <source media="(min-width: 768px)" srcset="{{ glide:img preset='xl' }}" type="img/jpeg">
+        <img
+          src="{{ glide:img preset='lg' }}"
+          alt="{{ alt }}"
+          title="{{ alt }}"
+          height="{{ height }}"
+          width="{{ width }}"
+          class="block w-full {{ aspectRatio ? 'h-full object-cover' : 'h-auto' }} {{ imgClass ?? '' }}"
+          loading="lazy">
+      </picture>
+    </div>
     {{ if title }}
       <figcaption
         class="pt-10 md:pt-15">
