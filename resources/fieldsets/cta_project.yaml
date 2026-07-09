@@ -12,13 +12,10 @@ fields:
       display: Person
       instructions: 'Select the team member. Portrait, role, email and phone are pulled from this entry.'
       localizable: false
-      validate:
-        - required
   -
     handle: image
     field:
       max_files: 1
-      min_files: 1
       container: assets
       type: assets
       display: Image
