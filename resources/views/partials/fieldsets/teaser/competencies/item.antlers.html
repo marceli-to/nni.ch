@@ -2,7 +2,7 @@
 
   <a
     href="{{ link:url }}"
-    title="{{ link:title }}"
+    title="{{ title ? title : link:title }}"
     class="group block no-underline">
 
     {{ partial:ui/media/image/image image="{{ image }}" class="w-full h-auto aspect-square lg:aspect-[3/4] object-cover group-hover:opacity-80 transition-opacity" }}
@@ -10,7 +10,7 @@
     <div class="flex items-end justify-between gap-x-20 mt-15 md:mt-20 xl:mt-30">
 
       {{ partial:ui/heading/h2 size="sm" class="font-meta-medium hyphens-auto" }}
-        {{ link:title }}
+        {{ title ? title : link:title }}
       {{ /partial:ui/heading/h2 }}
 
       {{ partial:ui/icon/arrow-right-long class="shrink-0 w-28 xl:w-33 h-auto mb-8 group-hover:translate-x-8 transition-transform" }}
@@ -22,12 +22,12 @@
 
   <a
     href="{{ link:url }}"
-    title="{{ link:title }}"
-    aria-label="{{ link:title }}"
+    title="{{ title ? title : link:title }}"
+    aria-label="{{ title ? title : link:title }}"
     class="group flex flex-col gap-y-15 lg:gap-y-30 border-t border-t-black pt-10 lg:pt-15 no-underline">
-    
+
     {{ partial:ui/heading/h2 size="sm" class="font-meta-medium hyphens-auto" }}
-      {{ link:title }}
+      {{ title ? title : link:title }}
     {{ /partial:ui/heading/h2 }}
 
     <span class="text-xs md:text-md leading-[1.25] font-meta-medium uppercase tracking-wider flex items-center gap-x-10 xl:gap-x-15">

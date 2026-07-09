@@ -19,6 +19,13 @@ fields:
               icon: text-formatting-image-left
               fields:
                 -
+                  handle: title
+                  field:
+                    type: text
+                    display: Titel
+                    instructions: 'Optional. Overrides the heading. If empty, the linked page’s title is used.'
+                    localizable: true
+                -
                   handle: link
                   field:
                     type: entries

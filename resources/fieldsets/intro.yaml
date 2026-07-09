@@ -5,6 +5,19 @@ fields:
   -
     import: title
   -
+    handle: show_logo
+    field:
+      type: toggle
+      display: 'Show logo'
+      instructions: 'Show the Nightnurse Images logo in the intro.'
+      default: false
+      localizable: false
+      listable: hidden
+      instructions_position: below
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+  -
     handle: media_type
     field:
       options:

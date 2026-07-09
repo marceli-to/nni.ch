@@ -1,9 +1,12 @@
 <div class="w-auto inline-block bottom-[12%] absolute left-1/2 -translate-x-1/2 z-30">
-  {{ if title }}
+  {{ if title || show_logo }}
     <h1
       class="text-3xl md:text-5xl xl:text-7xl text-white text-center leading-[1.25]"
       {{ is_fullpage ? 'data-video-animation="introTitle"' : '' }}>
       {{ title }}
+      {{ if show_logo }}
+        {{ partial:ui/icon/logo class="w-[498px] max-w-[70vw] h-auto text-white mx-auto mt-30" }}
+      {{ /if }}
     </h1>
   {{ /if }}
 </div>
