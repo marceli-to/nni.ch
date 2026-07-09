@@ -9,13 +9,13 @@
     <div class="md:grid md:grid-cols-12 md:gap-20">
 
       {{ if heading }}
-        {{ partial:ui/heading/h2 class="[&_strong]:font-meta-medium text-pretty md:col-span-4 lg:col-span-3" }}
+        {{ partial:ui/heading/h2 class="[&_strong]:font-meta-medium text-pretty md:col-span-4 lg:col-span-3 mb-20 md:mb-0" }}
           {{ heading }}
         {{ /partial:ui/heading/h2 }}
       {{ /if }}
 
       <div
-        class="md:col-span-8 lg:col-span-9 {{ !heading ? 'md:col-start-2 lg:col-start-4' : 'md:mt-80 xl:mt-120' }} text-md md:text-xl lg:text-2xl xl:text-3xl !leading-[1.5] text-pretty"
+        class="md:col-span-8 lg:col-span-9 {{ !heading ? 'md:col-start-2 lg:col-start-4' : 'md:mt-100 xl:mt-140' }} text-md md:text-xl lg:text-2xl xl:text-3xl !leading-[1.5] text-pretty"
         data-animation="fadeIn"
         data-animation-duration="slow">
         {{ text }}
