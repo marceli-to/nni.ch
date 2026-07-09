@@ -32,20 +32,18 @@ fields:
                 -
                   handle: phase
                   field:
-                    input_type: number
+                    input_type: text
                     antlers: false
                     type: text
                     display: Phase
                     icon: text
-                    instructions: 'The phase number only, e.g. "1". The word "Phase" is added automatically.'
+                    instructions: 'Optional label, e.g. "1" or "Phase 1". If empty, only the title is shown.'
                     localizable: true
                     listable: hidden
                     instructions_position: above
                     visibility: visible
                     replicator_preview: true
                     hide_display: false
-                    validate:
-                      - required
                 -
                   handle: title
                   field:
