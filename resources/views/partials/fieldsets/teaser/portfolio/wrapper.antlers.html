@@ -10,7 +10,7 @@
           </div>
           <div data-animation="masonryCta">
             {{ if main_link }}
-              {{ partial:ui/button/more title="{{ "Projekt anfragen" | trans }}" url="{{ main_link }}" }}
+              {{ if main_link_title }}{{ partial:ui/button/more title="{{ main_link_title }}" url="{{ main_link }}" }}{{ else }}{{ partial:ui/button/more title="{{ "Projekt anfragen" | trans }}" url="{{ main_link }}" }}{{ /if }}
             {{ else }}
               {{ partial:ui/button/more title="{{ "Zum Portfolio" | trans }}" url="{{ link id="6dc5a5ba-4450-45c6-9684-53b3a8bb4261" }}" }}
             {{ /if }}
@@ -136,7 +136,7 @@
             </div>
             <div data-animation="masonryCta">
               {{ if main_link }}
-                {{ partial:ui/button/more title="{{ "Projekt anfragen" | trans }}" url="{{ main_link }}" }}
+                {{ if main_link_title }}{{ partial:ui/button/more title="{{ main_link_title }}" url="{{ main_link }}" }}{{ else }}{{ partial:ui/button/more title="{{ "Projekt anfragen" | trans }}" url="{{ main_link }}" }}{{ /if }}
               {{ else }}
                 {{ partial:ui/button/more title="{{ "Zum Portfolio" | trans }}" url="{{ link id="6dc5a5ba-4450-45c6-9684-53b3a8bb4261" }}" }}
               {{ /if }}
@@ -189,7 +189,7 @@
           </div>
           <div data-animation="masonryCta">
             {{ if main_link }}
-              {{ partial:ui/button/more title="{{ "Projekt anfragen" | trans }}" url="{{ main_link }}" }}
+              {{ if main_link_title }}{{ partial:ui/button/more title="{{ main_link_title }}" url="{{ main_link }}" }}{{ else }}{{ partial:ui/button/more title="{{ "Projekt anfragen" | trans }}" url="{{ main_link }}" }}{{ /if }}
             {{ else }}
               {{ partial:ui/button/more title="{{ "Zum Portfolio" | trans }}" url="{{ link id="6dc5a5ba-4450-45c6-9684-53b3a8bb4261" }}" }}
             {{ /if }}
@@ -276,7 +276,7 @@
             </div>
             <div data-animation="masonryCta">
               {{ if main_link }}
-                {{ partial:ui/button/more title="{{ "Projekt anfragen" | trans }}" url="{{ main_link }}" }}
+                {{ if main_link_title }}{{ partial:ui/button/more title="{{ main_link_title }}" url="{{ main_link }}" }}{{ else }}{{ partial:ui/button/more title="{{ "Projekt anfragen" | trans }}" url="{{ main_link }}" }}{{ /if }}
               {{ else }}
                 {{ partial:ui/button/more title="{{ "Zum Portfolio" | trans }}" url="{{ link id="6dc5a5ba-4450-45c6-9684-53b3a8bb4261" }}" }}
               {{ /if }}

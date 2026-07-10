@@ -21,6 +21,13 @@ fields:
         - projects
         - posts
   -
+    handle: main_link_title
+    field:
+      type: text
+      display: 'Main link label'
+      instructions: 'Optional label for the main link. If empty, "Projekt anfragen" (translated) is used.'
+      localizable: true
+  -
     handle: items
     field:
       type: group
