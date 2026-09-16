@@ -181,6 +181,14 @@ tabs:
               visibility: visible
               replicator_preview: true
               hide_display: false
+  seo:
+    display: SEO
+    sections:
+      -
+        display: SEO
+        fields:
+          -
+            import: seo
   sidebar:
     display: Sidebar
     sections:
