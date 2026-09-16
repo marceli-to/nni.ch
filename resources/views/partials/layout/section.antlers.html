@@ -11,7 +11,7 @@
 <section
   data-section
   data-section-theme="{{ section_theme ?? 'light' }}"
-  {{ is_fullpage ? 'data-section-observe' : '' }}
+  data-section-observe
   class="{{ no_relative ? '' : 'relative' }} {{ is_fullpage ? fullpage : spacing }} {{ class }}">
   {{ slot }}
 </section>
