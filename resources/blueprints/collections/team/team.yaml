@@ -139,6 +139,8 @@ tabs:
               replicator_preview: true
               hide_display: false
               folder: team
+              validate:
+                - required
           -
             import: image_carousel
   quote:
