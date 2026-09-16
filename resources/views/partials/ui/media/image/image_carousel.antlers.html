@@ -6,8 +6,8 @@
       <source srcset="{{ glide:image preset='lg-webp' }}" type="image/webp">
       <img 
         src="{{ glide:image preset='lg' }}" 
-        alt="{{ image:alt }}" 
-        title="{{ image:alt }}" 
+        alt="{{ image_alt ?? image:alt }}"
+        title="{{ image_alt ?? image:alt }}"
         height="{{ image:height }}" 
         width="{{ image:width }}"
         data-carousel-image

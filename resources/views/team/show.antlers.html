@@ -37,7 +37,7 @@
       </div>
       <div class="md:col-span-6 flex justify-end lg:max-h-[calc(100vh_-_160px)] xl:max-h-[calc(100vh_-_160px)] lg:overflow-y-hidden">
         {{ if image_carousel }}
-          {{ partial:ui/media/image/image_carousel }}
+          {{ partial:ui/media/image/image_carousel image_alt="{{ title }}" }}
         {{ else }}
           {{ partial:content/team/media/portrait overlay="false" link="false" }}
         {{ /if }}
