@@ -9,7 +9,7 @@
   {{ /partial:ui/filter/wrapper }}
 
   <div class="grid grid-cols-6 md:grid-cols-12 gap-20 md:gap-30 xl:gap-50">
-    {{ collection from="team" }}
+    {{ collection from="team" sort="order" }}
       <div 
         data-filter-category="{{ category }}{{ slug }}{{ if !last }},{{/if}}{{ /category }}"
         class="col-span-full sm:col-span-3 md:col-span-6 lg:col-span-4">
