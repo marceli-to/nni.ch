@@ -2,13 +2,23 @@
   class="media-container media-container--video" 
   data-animation="fadeIn"
   data-animation-duration="slow">
-  {{ if video_code }}
-    {{ video_code }}
-  {{ /if }}
+  {{ if manual_playback }}
+    {{ if video_source == 'code' && video_code }}
+      {{ video_code }}
+    {{ elseif video_source == 'file' && video_file }}
+      <video data-manual-video {{ if video_title }}aria-label="{{ video_title | entities }}"{{ /if }} {{ if video_poster }}poster="{{ video_poster:url }}"{{ /if }} preload="none" playsinline controls>
+        <source src="{{ video_file }}" type="video/mp4">
+      </video>
+    {{ /if }}
+  {{ else }}
+    {{ if video_code }}
+      {{ video_code }}
+    {{ /if }}
 
-  {{ if video_file }}
-    <video poster="" preload="none" muted autoplay controls>
-      <source src="{{ video_file }}" type="video/mp4">
-    </video>
+    {{ if video_file }}
+      <video poster="" preload="none" muted autoplay controls>
+        <source src="{{ video_file }}" type="video/mp4">
+      </video>
+    {{ /if }}
   {{ /if }}
 </div>

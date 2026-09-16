@@ -1,0 +1,61 @@
+{{ if tour_url && tour_poster }}
+<section data-section data-section-observe data-section-theme="light" class="relative py-30 md:py-60">
+  {{ partial:layout/container }}
+    <div
+      class="media-container media-container--tour bg-black"
+      x-data="{ loaded: false }"
+      data-animation="fadeIn"
+      data-animation-duration="slow">
+      <template x-if="loaded">
+        <iframe
+          src="{{ tour_url }}"
+          title="{{ tour_title | entities }}"
+          loading="lazy"
+          allow="fullscreen; accelerometer; gyroscope"
+          allowfullscreen
+          referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </template>
+
+      <button
+        x-show="!loaded"
+        type="button"
+        class="virtual-tour__poster group absolute inset-0 z-10 block w-full cursor-pointer overflow-hidden text-white"
+        aria-label="{{ tour_button_text | entities }}: {{ tour_title | entities }}"
+        @click="loaded = true">
+        {{ partial:ui/media/image/image image="{{ tour_poster }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]" }}
+        <span class="absolute inset-0 bg-black/30 transition-colors group-hover:bg-black/40" aria-hidden="true"></span>
+        <span class="absolute inset-0 flex items-center justify-center p-20">
+          <span class="border border-white px-20 py-12 text-xs font-meta-medium uppercase tracking-wider transition-colors group-hover:bg-white group-hover:text-black md:px-30 md:py-15 md:text-md">
+            {{ tour_button_text }}
+          </span>
+        </span>
+      </button>
+
+      <noscript>
+        <a class="absolute inset-0 z-20 flex items-center justify-center bg-black text-white underline" href="{{ tour_url }}">
+          {{ tour_button_text }}
+        </a>
+      </noscript>
+    </div>
+
+    {{ if tour_title || content || project_link }}
+      <div class="posts mt-30">
+        <article class="max-w-content mx-auto">
+          {{ if tour_title }}
+            {{ partial:ui/heading/h2 size="xs" class="font-meta-medium mb-15" }}
+              {{ tour_title }}
+            {{ /partial:ui/heading/h2 }}
+          {{ /if }}
+
+          {{ content }}
+
+          {{ if project_link }}
+            {{ partial:ui/link/arrow url="{{ project_link }}" label="{{ project_link_text }}" class="inline-flex mt-20 text-sm md:text-md" icon_class="w-20 xl:w-24 h-auto group-hover:translate-x-8 transition-transform" }}
+          {{ /if }}
+        </article>
+      </div>
+    {{ /if }}
+  {{ /partial:layout/container }}
+</section>
+{{ /if }}
+

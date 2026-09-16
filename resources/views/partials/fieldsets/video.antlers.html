@@ -1,0 +1,19 @@
+{{ if (video_source == 'file' && video_file) || (video_source == 'code' && video_code) }}
+<section data-section data-section-observe data-section-theme="light" class="relative py-30 md:py-60">
+  {{ partial:layout/container }}
+    {{ partial:ui/media/video/video manual_playback="true" }}
+    {{ if video_title || content }}
+      <div class="posts mt-30">
+        <article class="max-w-content mx-auto">
+          {{ if video_title }}
+            {{ partial:ui/heading/h2 size="xs" class="font-meta-medium mb-15" }}
+              {{ video_title }}
+            {{ /partial:ui/heading/h2 }}
+          {{ /if }}
+          {{ content }}
+        </article>
+      </div>
+    {{ /if }}
+  {{ /partial:layout/container }}
+</section>
+{{ /if }}

@@ -41,6 +41,20 @@ tabs:
                       fields:
                         -
                           import: teaser_video
+                    video:
+                      display: Video
+                      instructions: 'Add a video with playback controls, a poster image and an optional caption.'
+                      icon: media-webcam-video
+                      fields:
+                        -
+                          import: page_video
+                    virtual_tour:
+                      display: 'Virtueller Rundgang'
+                      instructions: 'Add a virtual tour that loads after clicking its poster image.'
+                      icon: media-image-picture-gallery
+                      fields:
+                        -
+                          import: page_virtual_tour
                     teaser_fullscreen_image:
                       display: 'Fullscreen Image'
                       instructions: 'Add a teaser with a fullscreen image, text and call to action.'

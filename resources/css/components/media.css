@@ -6,6 +6,16 @@
   @apply aspect-video
 }
 
+.media-container--tour {
+  @apply aspect-video overflow-hidden
+}
+
+.virtual-tour__poster figure,
+.virtual-tour__poster picture,
+.virtual-tour__poster img {
+  @apply block w-full h-full
+}
+
 .media-container iframe {
   @apply w-full h-full object-contain
 }

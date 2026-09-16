@@ -1,0 +1,63 @@
+title: 'Virtueller Rundgang'
+fields:
+  -
+    handle: tour_title
+    field:
+      type: text
+      display: Titel
+      instructions: 'Projektname oder kurze Bezeichnung des Rundgangs.'
+      localizable: true
+      validate:
+        - required
+  -
+    handle: tour_url
+    field:
+      input_type: url
+      type: text
+      display: Rundgang-URL
+      instructions: 'Direkte HTTPS-Adresse des eingebetteten Rundgangs.'
+      localizable: true
+      validate:
+        - required
+        - url
+  -
+    handle: tour_poster
+    field:
+      type: assets
+      container: assets
+      max_files: 1
+      min_files: 1
+      mode: list
+      display: Vorschaubild
+      instructions: 'Wird angezeigt, bis der Rundgang per Klick geladen wird.'
+      localizable: false
+      validate:
+        - 'mimes:jpg,jpeg,png,webp'
+  -
+    handle: tour_button_text
+    field:
+      type: text
+      display: Startbutton
+      default: 'Rundgang starten'
+      localizable: true
+      validate:
+        - required
+  -
+    import: editor
+  -
+    handle: project_link
+    field:
+      collections:
+        - projects
+      type: link
+      display: Projektlink
+      localizable: true
+      width: 50
+  -
+    handle: project_link_text
+    field:
+      type: text
+      display: Linktext
+      default: 'Zum Projekt'
+      localizable: true
+      width: 50

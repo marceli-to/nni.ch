@@ -1,0 +1,27 @@
+title: 'Page Video'
+fields:
+  -
+    handle: video_title
+    field:
+      type: text
+      display: Videotitel
+      localizable: true
+      instructions: 'Projektname oder kurze Bezeichnung des Films.'
+  -
+    import: video
+  -
+    handle: video_poster
+    field:
+      type: assets
+      container: assets
+      max_files: 1
+      mode: list
+      display: Vorschaubild
+      instructions: 'Wird vor dem Abspielen der MP4-Datei angezeigt.'
+      localizable: true
+      validate:
+        - 'mimes:jpg,jpeg,png,webp'
+      if:
+        video_source: 'equals file'
+  -
+    import: editor

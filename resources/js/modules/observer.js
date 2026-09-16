@@ -15,7 +15,8 @@ const selectors = {
   sectionIntro: '[data-intro-observe]',
   logoByline: '[data-logo-byline]',
   header: '#header',
-  video: 'video',
+  // Manual players are started by the visitor, never by scrolling into view.
+  video: 'video:not([data-manual-video])',
   motionVideo: '[data-motion-video]',
   themeSection: 'section[data-section-theme]',
 };

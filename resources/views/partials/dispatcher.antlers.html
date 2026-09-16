@@ -2,6 +2,14 @@
   {{ partial:fieldsets/editor }}
 {{ /if }}
 
+{{ if type == 'video' }}
+  {{ partial:fieldsets/video }}
+{{ /if }}
+
+{{ if type == 'virtual_tour' }}
+  {{ partial:fieldsets/virtual_tour }}
+{{ /if }}
+
 {{ if type == 'horizontal_ruler' }}
   {{ partial:ui/hr }}
 {{ /if }}
