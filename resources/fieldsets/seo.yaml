@@ -30,6 +30,19 @@ fields:
       replicator_preview: true
       hide_display: false
   -
+    handle: noindex
+    field:
+      default: false
+      type: toggle
+      display: 'Exclude from search engines'
+      instructions: 'Prevents this page from appearing in search results and removes it from the XML sitemap.'
+      localizable: true
+      listable: hidden
+      instructions_position: below
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+  -
     handle: open_graph_image
     field:
       max_files: 1
