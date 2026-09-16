@@ -2,14 +2,32 @@
   {{ partial:ui/media/overlay }}
 {{ /if }}
 
+{{ if video_poster_landscape }}
+  <picture class="absolute z-10 inset-0 block w-full h-full" aria-hidden="true">
+    {{ if video_poster_portrait }}
+      <source srcset="{{ video_poster_portrait:url }}" media="(max-width: 767px) and (orientation: portrait)">
+    {{ /if }}
+    <img
+      src="{{ video_poster_landscape:url }}"
+      alt=""
+      class="block w-full h-full object-cover"
+      loading="eager"
+      fetchpriority="high">
+  </picture>
+{{ /if }}
+
 {{ if is_fullpage }}
   <video 
-    preload="none"
-    class="absolute z-10 left-0 top-0 w-full h-[100dvh] object-cover" 
-    muted 
-    autoplay 
+    preload="metadata"
+    class="absolute z-10 left-0 top-0 w-full h-[100dvh] object-cover"
+    {{ if video_poster_landscape }}poster="{{ video_poster_landscape:url }}" data-motion-video{{ /if }}
+    muted
+    autoplay
     playsinline 
-    loop
+    loop>
+    {{ if video_portrait }}
+      <source src="{{ video_portrait }}" media="(max-width: 767px) and (orientation: portrait)" type="video/mp4">
+    {{ /if }}
     <source src="{{ video_landscape }}" type="video/mp4">
   </video>
 {{ else }}
@@ -20,9 +38,10 @@
     autoplay 
     playsinline 
     loop
-    data-video-lazy
-    data-video-source='{"low": "{{ video_portrait }}", "high": "{{ video_landscape }}"}'>
+    data-video-lazy>
+    {{ if video_portrait }}
+      <source data-src="{{ video_portrait }}" media="(max-width: 767px) and (orientation: portrait)" type="video/mp4">
+    {{ /if }}
     <source data-src="{{ video_landscape }}" type="video/mp4">
   </video>
 {{ /if }}
-

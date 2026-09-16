@@ -90,6 +90,54 @@ fields:
       width: 50
       max_files: 1
   -
+    handle: video_poster_portrait
+    field:
+      if:
+        media_type: 'equals video'
+      mode: list
+      container: assets
+      restrict: false
+      allow_uploads: true
+      show_filename: true
+      show_set_alt: true
+      type: assets
+      display: 'Video Poster (Portrait)'
+      icon: assets
+      instructions: 'Optional portrait poster for mobile devices and reduced-motion users.'
+      localizable: false
+      listable: hidden
+      instructions_position: below
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      folder: video
+      width: 50
+      max_files: 1
+  -
+    handle: video_poster_landscape
+    field:
+      if:
+        media_type: 'equals video'
+      mode: list
+      container: assets
+      restrict: false
+      allow_uploads: true
+      show_filename: true
+      show_set_alt: true
+      type: assets
+      display: 'Video Poster (Landscape)'
+      icon: assets
+      instructions: 'Optional landscape poster shown while the video loads and to reduced-motion users.'
+      localizable: false
+      listable: hidden
+      instructions_position: below
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      folder: video
+      width: 50
+      max_files: 1
+  -
     handle: image
     field:
       if:
