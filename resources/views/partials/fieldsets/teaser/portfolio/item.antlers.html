@@ -3,10 +3,10 @@
       class="block {{ aspectRatio ?? '' }} {{ offset ?? '' }}"
       data-touch>
       <picture>
-        <source media="(min-width: 1024px)" srcset="{{ glide:img preset='2xl-webp' }}" type="img/webp">
-        <source media="(min-width: 768px)" srcset="{{ glide:img preset='xl-webp' }}" type="img/webp">
-        <source srcset="{{ glide:img preset='lg-webp' }}" type="img/webp">
-        <source media="(min-width: 768px)" srcset="{{ glide:img preset='xl' }}" type="img/jpeg">
+        <source media="(min-width: 1024px)" srcset="{{ glide:img preset='2xl-webp' }}" type="image/webp">
+        <source media="(min-width: 768px)" srcset="{{ glide:img preset='xl-webp' }}" type="image/webp">
+        <source srcset="{{ glide:img preset='lg-webp' }}" type="image/webp">
+        <source media="(min-width: 768px)" srcset="{{ glide:img preset='xl' }}" type="image/jpeg">
         <img
           src="{{ glide:img preset='lg' }}"
           alt="{{ alt }}"
