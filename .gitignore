@@ -4,6 +4,7 @@
 /public/storage
 /public/vendor/statamic
 public/img/containers
+public/.user.ini
 /storage/*.key
 /vendor
 .env
