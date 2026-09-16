@@ -47,7 +47,7 @@ tabs:
               toolbar_mode: floating
               display: Teaser
               localizable: true
-              instructions: 'Teaser text for masonry.'
+              instructions: 'Kurze Projektbeschreibung / short project description for the Masonry overview: approximately 45–90 characters, without the Nightnurse service, direct address or CTA.'
           -
             handle: summary
             field:
@@ -61,6 +61,7 @@ tabs:
               toolbar_mode: floating
               display: Summary
               localizable: true
+              instructions: 'Kompakter Projekttext / concise project copy with context, central challenge, concrete Nightnurse contribution and effect.'
           -
             handle: services
             field:
@@ -74,6 +75,7 @@ tabs:
               toolbar_mode: floating
               display: Services
               localizable: true
+              instructions: 'Konsistente Leistungsbegriffe / consistent service terms according to docs/project-content-standard-de.md; list competition results separately.'
           -
             handle: cta
             field:
