@@ -96,3 +96,4 @@ php artisan test
 - Custom font family configuration for Meta Pro typography
 - Video and image handling modules are integrated
 - Forms use Statamic's built-in form handling with reCAPTCHA integration
+- For all Project Notes, follow the repository-wide workflow in `AGENTS.md` and the editorial standard in `docs/project-content-standard-de.md`.
