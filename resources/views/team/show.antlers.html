@@ -1,3 +1,24 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "url": "{{ permalink }}",
+  "name": "{{ title }} | Nightnurse Images",
+  {{ if portrait }}"primaryImageOfPage": "{{ config.client.base_url }}{{ portrait:url }}",{{ /if }}
+  "mainEntity": {
+    "@type": "Person",
+    "name": "{{ title }}",
+    "url": "{{ permalink }}",
+    {{ if portrait }}"image": "{{ config.client.base_url }}{{ portrait:url }}",{{ /if }}
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Nightnurse Images",
+      "url": "{{ config.client.base_url }}"
+    }
+  }
+}
+</script>
+
 <section data-section data-section-theme="light" class="pt-90 sm:pt-120 lg:pt-150">
   {{ partial:layout/container }}
     <div class="md:grid md:grid-cols-12 md:gap-x-20 lg:gap-x-30 xl:gap-x-50">
