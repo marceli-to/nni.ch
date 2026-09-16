@@ -17,8 +17,8 @@
   class="relative w-full border-b border-black">
   <button
     type="button"
-    id="accordion-button-{{ index }}"
-    aria-controls="accordion-panel-{{ index }}"
+    id="accordion-button-{{ accordion_id ?? index }}"
+    aria-controls="accordion-panel-{{ accordion_id ?? index }}"
     :aria-expanded="open ? 'true' : 'false'"
     class="w-full block hover:bg-white transition-colors duration-300 ease-in-out group"
     @click="toggle()">
@@ -45,9 +45,9 @@
   </button>
   <div
     x-ref="container"
-    id="accordion-panel-{{ index }}"
+    id="accordion-panel-{{ accordion_id ?? index }}"
     role="region"
-    aria-labelledby="accordion-button-{{ index }}"
+    aria-labelledby="accordion-button-{{ accordion_id ?? index }}"
     :aria-hidden="open ? 'false' : 'true'"
     class="relative bg-transparent overflow-hidden max-h-0 transition-all duration-300 ease-in-out"
     :class="{ 'bg-white': open }"

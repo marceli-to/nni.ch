@@ -10,7 +10,7 @@
       <div class="col-span-full mt-30 md:mt-60 lg:mt-0 lg:col-span-8 lg:col-start-6">
           {{ partial:ui/accordion/wrapper }}
             {{ items }}
-              {{ partial:ui/accordion/item index="{{ index }}" button="{{ question }}" }}
+              {{ partial:ui/accordion/item index="{{ index }}" button="{{ question }}" accordion_id="{{ id }}" }}
                 {{ answer }}
               {{ /partial:ui/accordion/item }}
             {{ /items }}
