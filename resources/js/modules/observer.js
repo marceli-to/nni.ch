@@ -16,10 +16,12 @@ const selectors = {
   logoByline: '[data-logo-byline]',
   header: '#header',
   video: 'video',
+  motionVideo: '[data-motion-video]',
   themeSection: 'section[data-section-theme]',
 };
 
 let currentSection = null;
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 // Cache DOM elements.
 const sections = document.querySelectorAll(selectors.sectionObserve);
@@ -34,6 +36,12 @@ const setTheme = (theme) => {
 };
 
 const playVideo = async (video, section) => {
+  if (video.matches(selectors.motionVideo) && reducedMotion.matches) {
+    section.classList.add('is-playing');
+    header?.classList.add('is-playing');
+    return;
+  }
+
   try {
     await video.play();
     section.classList.add('is-playing');

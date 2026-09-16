@@ -4,6 +4,7 @@
  */
 
 const selector = '[data-video-lazy]';
+const motionSelector = '[data-motion-video]';
 
 const loadVideo = (video) => {
   for (const source of video.children) {
@@ -13,8 +14,8 @@ const loadVideo = (video) => {
   }
 
   video.load();
-  // Remove the marker so the video is never re-loaded.
-  video.removeAttribute('data-video-lazy');
+  // Remove the lazy-load marker so the video is never re-loaded.
+  if (video.matches(selector)) video.removeAttribute('data-video-lazy');
 };
 
 if ('IntersectionObserver' in window) {
@@ -28,3 +29,23 @@ if ('IntersectionObserver' in window) {
 
   document.querySelectorAll(selector).forEach((video) => observer.observe(video));
 }
+
+const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+const motionVideos = document.querySelectorAll(motionSelector);
+
+const syncMotionVideo = (video) => {
+  if (motionPreference.matches) {
+    video.pause();
+    return;
+  }
+
+  loadVideo(video);
+  video.play().catch(() => {
+    // The responsive poster remains visible if autoplay is unavailable.
+  });
+};
+
+motionVideos.forEach(syncMotionVideo);
+motionPreference.addEventListener?.('change', () => {
+  motionVideos.forEach(syncMotionVideo);
+});

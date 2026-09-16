@@ -26,4 +26,9 @@
     opacity: 1 !important;
     transform: none !important;
   }
+
+  /* Keep the responsive poster visible instead of loading decorative hero video. */
+  [data-motion-video] {
+    display: none !important;
+  }
 }
