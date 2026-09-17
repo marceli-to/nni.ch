@@ -1,6 +1,8 @@
 title: 'Logo Marquee'
 fields:
   -
+    import: title
+  -
     handle: marquee_logos
     field:
       collapse: true

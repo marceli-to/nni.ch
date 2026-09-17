@@ -1,21 +1,51 @@
 {{# Logos are managed on this element via the "marquee_logos" field. #}}
 {{ if marquee_logos }}
-  {{ partial:layout/section section_theme="light" class="pt-90 lg:pt-150" }}
+  {{ partial:layout/section section_theme="light" class="py-90 lg:py-150" }}
 
-  <div
+    {{ if title }}
+      {{ partial:layout/container class="mb-60 lg:mb-100 xl:mb-120" }}
+        {{ partial:ui/heading/h2 class="[&_strong]:font-meta-medium text-pretty" }}
+          {{ title }}
+        {{ /partial:ui/heading/h2 }}
+      {{ /partial:layout/container }}
+    {{ /if }}
+
+    {{#
+      Two rows. The logos alternate between them by their position, so both rows
+      stay evenly filled whatever the total is. The lower row runs backwards and
+      takes longer for the same distance, which keeps the two from reading as one
+      block sliding sideways. Each track holds two identical copies of its half,
+      so translating by -50% lands on a visually identical position — no jump.
+    #}}
+    <div
       class="marquee w-full overflow-hidden"
-      style="--marquee-duration: {{ marquee_logos | length | multiply:4 }}s;">
+      style="--marquee-duration: {{ marquee_logos | length | multiply:2 }}s;">
 
-      {{# Track holds two identical copies so the loop reads as seamless. #}}
       <div class="marquee__track flex w-max items-center">
         {{ marquee_logos }}
-          {{ partial:fieldsets/marquee/item }}
+          {{ if index % 2 == 1 }}{{ partial:fieldsets/marquee/item }}{{ /if }}
         {{ /marquee_logos }}
         {{ marquee_logos }}
-          {{ partial:fieldsets/marquee/item aria_hidden="true" }}
+          {{ if index % 2 == 1 }}{{ partial:fieldsets/marquee/item aria_hidden="true" }}{{ /if }}
         {{ /marquee_logos }}
       </div>
 
     </div>
+
+    <div
+      class="marquee w-full overflow-hidden mt-30 lg:mt-45"
+      style="--marquee-duration: {{ marquee_logos | length | multiply:3 }}s;">
+
+      <div class="marquee__track flex w-max items-center" style="animation-direction: reverse;">
+        {{ marquee_logos }}
+          {{ if index % 2 == 0 }}{{ partial:fieldsets/marquee/item }}{{ /if }}
+        {{ /marquee_logos }}
+        {{ marquee_logos }}
+          {{ if index % 2 == 0 }}{{ partial:fieldsets/marquee/item aria_hidden="true" }}{{ /if }}
+        {{ /marquee_logos }}
+      </div>
+
+    </div>
+
   {{ /partial:layout/section }}
 {{ /if }}
