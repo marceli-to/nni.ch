@@ -120,6 +120,24 @@ Redaktionsstandard in `docs/project-content-standard-de.md` lesen und befolgen.
 Er ist verbindlich für Recherche, Bilder, Veröffentlichbarkeit, Inhalte,
 Metadaten, Tags und Lokalisierungen.
 
+## FTP upload packages
+
+Some changes still reach production by manual FTP upload. Prepare such an upload as a
+**plain folder, never a zip archive**, under the git-ignored top-level directory
+`ftp-uploads/`. Name the folder with the date first, then a short description, for example
+`2026-09-17_wochenupdate`. Put the files to transfer into a subfolder `upload/`, mirroring
+the paths they have on the server.
+
+Keep these packages spare, and build them with as few tokens as possible: no file
+inventories, no change logs, no step-by-step instructions, no accompanying documents. A
+folder of files is what is wanted. At most add one short `readme.txt` saying that the
+*contents* of `upload/` go into the root directory of `production.nightnurse.ch` on the FTP
+server, keeping the folder structure and replacing existing files. If something operational
+cannot be derived from the files themselves — for example stale files that have to be
+deleted on the server afterwards — put those few lines in that same `readme.txt`.
+
+Do not invent other locations or formats such as `upload-packages/` or a zip archive.
+
 ## Documentation
 
 - `docs/developer-todos.md` — the living briefing: implemented changes, known bugs and open items
