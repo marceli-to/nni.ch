@@ -68,10 +68,46 @@ Wichtig: Die Schlüssel in `lang/en.json` mussten zusammen mit den deutschen Aus
 
 Der Frontend-Build wurde nach den Template-Anpassungen neu erstellt. Die aktuelle Manifest-Datei verweist insbesondere auf:
 
-- `public/build/assets/app-28a9c2de.css`
-- `public/build/assets/app-aef0eed8.js`
+- `public/build/assets/app-b78a33d3.css` (aus `resources/css/app.css`, enthält Tailwind)
+- `public/build/assets/app-dbd11412.js` (aus `resources/js/app.js`, mit `app-816446ca.css`)
+
+Die früher hier genannten Dateien `app-28a9c2de.css` und `app-aef0eed8.js` sind durch die beiden späteren Rebuild-Commits überholt. Die Angaben oben entsprechen dem Stand vom 17. September 2026.
 
 `manifest.json` und der komplette mitgelieferte Ordner `public/build/assets` müssen gemeinsam deployt werden. Alte Dateien mit Hash-Namen können auf dem Server bestehen bleiben; sie werden vom aktuellen Manifest nicht mehr referenziert.
+
+### Korrekturen vom 17. September 2026 ohne Frontend-Build
+
+Die folgenden Änderungen sind lokal umgesetzt und auf dem lokalen Entwicklungssystem
+über alle Projekt-, Team-, Blog- und Seitentypen in beiden Sprachen geprüft
+(64 Seiten, alle HTTP 200). Sie halten bewusst eine Bedingung ein: **keine neue
+CSS-Klasse und kein neues Feld.** Deshalb ist kein `npm run build` nötig und
+`public/build` bleibt unverändert. Nachgewiesen wurde das, indem die Klassen-Tokens
+jeder geänderten Datei gegen den Stand in Git und gegen das kompilierte CSS
+verglichen wurden; neu hinzugekommen ist keines.
+
+- `resources/views/project/show.antlers.html` — Tippfehler behoben (siehe unten).
+- `resources/views/partials/content/project/elements/image_text.antlers.html` — Entweder-oder-Ausgabe und Formatentscheidung.
+- `resources/views/partials/ui/media/image/image_carousel.antlers.html` — Rahmen ohne Bild überspringen.
+- `resources/views/partials/content/team/media/portrait.antlers.html` — Schutz gegen fehlendes Portrait.
+- `resources/views/partials/fieldsets/teaser/post/item.antlers.html` — Datum im Blog-Teaser entfernt.
+- `resources/views/partials/menu/wrapper.antlers.html`, `resources/views/partials/layout/footer.antlers.html`, `lang/en.json` — Haupt-CTA vereinheitlicht.
+- `resources/fieldsets/image_carousel.yaml`, `resources/fieldsets/image_slideshow.yaml`, `resources/blueprints/collections/projects/project.yaml`, `resources/blueprints/collections/posts/post.yaml` — Feldbeschriftungen im Control Panel.
+
+Die Einzelheiten stehen jeweils bei der ursprünglichen Fehlerbeschreibung weiter
+unten. Sichtungsbedarf besteht vor allem bei der Formatentscheidung im Baustein
+`image_text`, weil sich dort das Layout auf vielen Projektseiten sichtbar ändert.
+
+### Verirrtes Anführungszeichen in den Projektseiten
+
+- `resources/views/project/show.antlers.html`, Zeile 107
+  - Im Klassen-String einer Section stand ein zusätzliches Anführungszeichen:
+    `class="{{ is_fullpage ? '"min-h-screen flex flex-col justify-center' : … }}"`.
+  - Auf Projektseiten mit `is_fullpage: true` schloss dieses Zeichen das
+    `class`-Attribut vorzeitig. Die Section erhielt dadurch keine ihrer Klassen,
+    `min-h-screen flex flex-col justify-center` wurde stattdessen als ungültiges
+    Attribut ausgegeben.
+  - Der Fehler war bisher nicht dokumentiert und fiel beim Nachzählen der elf
+    `is_fullpage`-Bedingungen auf.
 
 ### Nur lokal, nicht deployen
 
@@ -92,7 +128,9 @@ Unter Windows erscheinen bei `artisan`, `please` sowie mehreren `.gitignore`-Dat
 
 - [ ] **Fix ist noch unvollständig:** Die Bedingung steht weiterhin an elf Stellen in `resources/views/project/show.antlers.html` sowie in `resources/views/project/_related.antlers.html`. Projektdetailseiten mit `is_fullpage: false` zeigen den Fehler deshalb weiterhin. Vor einer Änderung dort im Browser prüfen, da jede zusätzlich beobachtete Section auch Videos startet und die Logo-Byline ausblendet. Der Intro-Baustein (`partials/fieldsets/intro/wrapper.antlers.html`) ist zu Recht an `is_fullpage` gebunden, weil dort zusätzlich das Scroll-Snapping hängt.
 
-Betroffen z. B.: `/animation-und-film` (Elemente „Title - Text" und „Teaser Project" / Portfolio-Masonry).
+Betroffen z. B.: `/angebot/animation-und-film` (Elemente „Title - Text" und „Teaser Project" / Portfolio-Masonry).
+
+Hinweis zur URL: Die Seite lag in diesem Briefing bisher als `/animation-und-film` vor. Diese Adresse liefert HTTP 404. Der Eintrag hängt im Seitenbaum unter «Angebot», die gültige deutsche URL ist `/angebot/animation-und-film` (lokal am 17. September 2026 mit HTTP 200 geprüft).
 
 **Symptom:** Einzelne Seitenabschnitte erscheinen komplett leer, obwohl ihr Inhalt (Text, Bilder) korrekt im CMS gepflegt ist und im HTML ausgegeben wird. Betroffen sind bisher konkret die Elemente `title_text` (Titel + Fliesstext) und `teaser_project` (Portfolio-Masonry-Kachel).
 
@@ -104,11 +142,44 @@ Betroffen z. B.: `/animation-und-film` (Elemente „Title - Text" und „Teaser 
 
 Ist `is_fullpage: false` (z. B. weil eine Seite bewusst kompakt/ohne Fullpage-Intro gestaltet ist), wird die Section nie beobachtet, `.is-active` nie gesetzt – der Inhalt bleibt dauerhaft unsichtbar, nicht nur verzögert. Die CTA-Sektion (`cta_expertise`) ist zufällig **nicht** betroffen, weil `resources/views/partials/fieldsets/cta/wrapper.antlers.html` `data-section-observe` unabhängig von `is_fullpage` immer setzt, sobald `fullpage="true"` übergeben wird – das ist das Vorbild für die Lösung.
 
-**Nicht als Fix geeignet:** Auf der betroffenen Seite einfach `is_fullpage: true` setzen. Das behebt zwar die Sichtbarkeit, weil dann *jede* Section auf der Seite beobachtet wird – aber jedes Element-Template übergibt an `layout/section` auch einen `fullpage`-Klassenparameter mit `min-h-screen ...`, wodurch **jede** Section der Seite auf mindestens Bildschirmhöhe aufgeblasen wird. Im Test wurde die Gesamthöhe von `/animation-und-film` dadurch von ca. 6858px auf ca. 9599px vergrössert (+40 %), mit grossen leeren Weissräumen um Titel, Services-Liste und Portfolio-Kachel. Das widerspricht dem für diese Seite bewusst kompakt/nüchtern angelegten Layout und ist keine allgemeingültige Lösung.
+**Nicht als Fix geeignet:** Auf der betroffenen Seite einfach `is_fullpage: true` setzen. Das behebt zwar die Sichtbarkeit, weil dann *jede* Section auf der Seite beobachtet wird – aber jedes Element-Template übergibt an `layout/section` auch einen `fullpage`-Klassenparameter mit `min-h-screen ...`, wodurch **jede** Section der Seite auf mindestens Bildschirmhöhe aufgeblasen wird. Im Test wurde die Gesamthöhe von `/angebot/animation-und-film` dadurch von ca. 6858px auf ca. 9599px vergrössert (+40 %), mit grossen leeren Weissräumen um Titel, Services-Liste und Portfolio-Kachel. Das widerspricht dem für diese Seite bewusst kompakt/nüchtern angelegten Layout und ist keine allgemeingültige Lösung.
 
 **Empfohlener Fix:** `data-section-observe` in `resources/views/partials/layout/section.antlers.html` unabhängig von `is_fullpage` immer setzen (analog zum CTA-Wrapper). Für bestehende Fullpage-Seiten ändert sich dadurch nichts; nicht-Fullpage-Seiten profitieren zusätzlich von funktionierenden Scroll-Animationen, ohne dass sich ihr Layout ändert.
 
 ## Offene Punkte
+
+### Versionierung: die Regel `content` in `.gitignore` greift zu breit
+
+Aufgefallen beim Committen am 17. September 2026. Zeile 32 von `.gitignore` enthält
+das Muster `content` ohne Pfadangabe. Git wendet ein solches Muster auf **jedes**
+Verzeichnis dieses Namens an, unabhängig von der Ebene.
+
+Zwei verschiedene Wirkungen sind zu unterscheiden:
+
+- Das CMS-Verzeichnis `content/` ist damit vollständig von der Versionierung
+  ausgenommen. Das ist offensichtlich so gewollt und in sich stimmig: Es ist keine
+  einzige Datei daraus versioniert. Redaktionelle Inhalte gelangen also nicht über
+  Git auf Staging und Produktion, sondern auf einem anderen Weg. Das sollte bei
+  jeder Aussage über den Deployment-Weg mitgedacht werden.
+- **Unbeabsichtigt** trifft dasselbe Muster aber auch
+  `resources/views/partials/content/`, also Template-Partials. Dort liegen aktuell
+  26 versionierte Dateien; sie bleiben erfasst, weil bereits versionierte Dateien
+  von `.gitignore` nicht mehr berührt werden. Eine **neue** Datei in diesem Ordner
+  würde jedoch stillschweigend ignoriert und bei einem `git add .` schlicht
+  fehlen. Beim Hinzufügen einzeln benannter Pfade warnt Git zwar und liefert einen
+  Fehlercode, fügt bereits versionierte Dateien aber trotzdem hinzu — die Warnung
+  lässt sich also leicht übersehen.
+
+- [ ] Muster verengen, damit nur das CMS-Verzeichnis gemeint ist: `/content` statt
+  `content` trifft ausschliesslich das Verzeichnis im Projektstamm. Anschliessend
+  mit `git check-ignore -v resources/views/partials/content/team/media/portrait.antlers.html`
+  und `git check-ignore -v content/collections/projects/de/beliebig.md` überprüfen,
+  dass die Template-Partials frei sind und `content/` weiterhin ignoriert bleibt.
+- [ ] Dieselbe Prüfung lohnt sich für die ebenfalls pfadlosen Muster `users` (Zeile 31)
+  und `INSTALL.txt`. `users` trifft neben `resources/users` auch jedes andere
+  gleichnamige Verzeichnis.
+- [ ] Danach kontrollieren, ob unter `resources/views/partials/content/` bereits
+  Dateien fehlen, die eigentlich versioniert sein sollten.
 
 ### SEO und Zugänglichkeit: Seiten ganz ohne H1
 
@@ -127,7 +198,7 @@ Zur Einordnung: Vor dieser Änderung wurde das Hochformat auf keinem Gerät ausg
 
 ### Teambilder: fehlendes Portrait bricht die Übersichtskarte
 
-- [ ] `resources/views/partials/content/team/media/portrait.antlers.html` gibt `<img src="{{ glide:portrait … }}">` ohne Bedingung aus. Fehlt das Portrait, entsteht eine leere Bildadresse und die Übersichtskarte zeigt ein kaputtes Bild.
+- [x] **Lokal behoben am 17. September 2026.** `resources/views/partials/content/team/media/portrait.antlers.html` gab `<img src="{{ glide:portrait … }}">` ohne Bedingung aus. Fehlte das Portrait, entstand eine leere Bildadresse und die Übersichtskarte zeigte ein kaputtes Bild. Die Ausgabe ist jetzt in `{{ if portrait }}` gefasst; ohne Portrait entfällt die Figur vollständig. Gewählt wurde bewusst das Auslassen statt eines Platzhalterbildes, weil dafür kein Asset vorhanden ist. Auf der Teamübersicht bleibt dadurch eine leere Rasterzelle, falls ein veröffentlichter Eintrag kein Portrait hat — sichtbar als Lücke, nicht mehr als kaputtes Bild.
   - Das Portrait ist im Blueprint inzwischen ein Pflichtfeld, das deckt aber nur das Control Panel ab. Über FTP eingespielte oder von Hand bearbeitete Content-Dateien umgehen die Prüfung.
   - Sinnvoll wäre ein Rückfall auf ein Platzhalterbild oder das Auslassen der Karte, statt ein leeres `src` auszugeben. Betroffen sind die Teamübersicht und die Detailseite ohne Bildkarussell.
   - Sieben unveröffentlichte Einträge haben derzeit kein Portrait, teils aber ein gefülltes Bildkarussell. Vor dem Veröffentlichen ein Portrait ergänzen.
@@ -201,11 +272,11 @@ Referenz: https://developers.google.com/search/docs/crawling-indexing/canonicali
 ### Seiten-Baukasten: neuer Editorial-/Artikel-Baustein
 
 - [ ] Neuen `page_elements`-Baustein für Seiten schaffen, der optisch dem Blog-Artikel-Layout entspricht (durchgehender Fliesstext statt einzelner Module).
-  - Anlass: Rückmeldung zu `/animation-und-film` (Christoph) – das bestehende Baukasten-Layout (einzelne Module wie „Title - Text", Services, Portfolio-Teaser) wirkt für diese Seite weniger gut als das Editorial-Layout der Blogartikel (`resources/views/blog/show.antlers.html`).
+  - Anlass: Rückmeldung zu `/angebot/animation-und-film` (Christoph) – das bestehende Baukasten-Layout (einzelne Module wie „Title - Text", Services, Portfolio-Teaser) wirkt für diese Seite weniger gut als das Editorial-Layout der Blogartikel (`resources/views/blog/show.antlers.html`).
   - Das Blog-Layout ist strukturell einfach: optionales Titelbild (`content/post/media/feature`), `h1`, optionaler Teaser, dann **ein** Bard-Feld `content` mit eingebetteten Sets `text`/`image`/`video`/`image_slideshow` (Blueprint: `resources/blueprints/collections/posts/post.yaml`), zum Schluss Tags und ein posts-spezifischer „Ähnliche Beiträge"-Block (`resources/views/blog/_related.antlers.html`).
   - Direktes Umbiegen einer Seite auf `template: blog/show` (wie es `kontakt.md`/`datenschutz.md`/`impressum.md` bereits für ihre Spezial-Templates tun) ist **kein** brauchbarer Weg: Der `page`-Blueprint hat kein Äquivalent zum durchgehenden `content`-Bard-Feld (Artikeltext bliebe leer), und `blog/_related.antlers.html` fragt hart verdrahtet die `posts`-Collection nach Kategorie ab und verlinkt eine feste Blog-Übersichts-Entry-ID – auf einer Leistungsseite erschienen dort themenfremde Blogteaser und ein unpassender „Zur Blog-Übersicht"-Link.
   - Sauberer Ansatz stattdessen: eigener Baustein-Typ (Arbeitstitel `article_body` o. ä.) analog zu den bestehenden Fieldsets unter `resources/fieldsets/` bzw. `resources/views/partials/fieldsets/`, registriert im `page`-Blueprint (`resources/blueprints/collections/pages/page.yaml`) und in `resources/views/partials/dispatcher.antlers.html`. Enthält optionales Kopfbild + ein Bard-Feld mit denselben Sets wie bei Posts (`text`/`image`/`video`/`image_slideshow`, ggf. dieselben Sub-Partials aus `content/post/media/*` wiederverwenden), aber ohne Tags und ohne den „Ähnliche Beiträge"-Block.
-  - Damit bleibt der Baustein frei mit den übrigen Modulen kombinierbar (z. B. Artikeltext + anschliessender Portfolio-Teaser + CTA, wie aktuell auf `/animation-und-film` verwendet) und es entsteht keine Abhängigkeit von blogspezifischer Query-Logik.
+  - Damit bleibt der Baustein frei mit den übrigen Modulen kombinierbar (z. B. Artikeltext + anschliessender Portfolio-Teaser + CTA, wie aktuell auf `/angebot/animation-und-film` verwendet) und es entsteht keine Abhängigkeit von blogspezifischer Query-Logik.
   - Priorität/Umfang mit Christoph abstimmen, bevor Aufwand geschätzt wird – bisher nur als Wunsch geäussert, nicht als Auftrag freigegeben.
 
 ### Bild-Bausteine: Karussell, Slideshow und Einzelbild
@@ -227,12 +298,103 @@ Aktuelle Verbreitung, über beide Sprachfassungen gezählt: in den Projekten 254
 
 **Zwei konkrete Mängel, die bei dieser Gelegenheit zu beheben sind:**
 
-- [ ] Im Baustein `image_text` schliessen sich Einzelbild und Karussell technisch nicht aus. `resources/views/partials/content/project/elements/image_text.antlers.html` prüft `{{ if image }}` und `{{ if image_carousel }}` unabhängig voneinander. Sind beide Felder gefüllt, erscheint das Einzelbild über dem Karussell. Betroffen sind heute sechs Sets in drei Projekten: «Hochwasserrückhalteraum Hegmatten», «Umfahrung Uznach» und «Grosshofbrücken in Kriens». In vier dieser Fälle enthält das Karussell zudem je einen aktiven Rahmen ohne Bild, was wie beim Teamportrait eine leere Bildadresse erzeugt. Vorbild für die Lösung ist `resources/views/team/show.antlers.html`: Dort sorgt `{{ if image_carousel }} … {{ else }} … {{ /if }}` für eine saubere Entweder-oder-Ausgabe. Zusätzlich im Karussell-Partial leere Rahmen überspringen.
-- [ ] Im selben Baustein steuert der Vergleich `image:width > image:height` die Spaltenaufteilung. Wird nur das Karussell gefüllt – so ist es in 66 der 254 `image_text`-Sets tatsächlich gepflegt –, bleibt der Vergleich leer und der Block landet immer im Hochformat-Zweig (`md:col-span-7 xl:col-span-6`), auch bei querformatigen Karussellbildern. Die Formatentscheidung stattdessen aus dem ersten belegten Karussellbild ableiten.
+- [x] **Lokal behoben am 17. September 2026.** Im Baustein `image_text` schlossen sich Einzelbild und Karussell technisch nicht aus: `resources/views/partials/content/project/elements/image_text.antlers.html` prüfte `{{ if image }}` und `{{ if image_carousel }}` unabhängig voneinander.
+  - **Der Befund war ungenauer als hier ursprünglich beschrieben.** Eine erneute Auswertung aller Projektinhalte über beide Sprachfassungen ergab vier betroffene Sets, nicht sechs, und nur in zwei Projekten: «Umfahrung Uznach» (je einmal Deutsch und Englisch) und «Grosshofbrücken in Kriens» (zweimal Englisch). «Hochwasserrückhalteraum Hegmatten» ist nicht betroffen. Gezählt wurden 252 aktive `image_text`-Sets, davon 181 nur mit Einzelbild, 66 nur mit Karussell.
+  - In allen vier Fällen enthielt das Karussell **ausschliesslich** Rahmen ohne Bild. Es erschien also kein doppeltes Bild, sondern unter dem Einzelbild eine zusätzliche graue Figur mit einem kaputten Bild. Im gerenderten HTML war das `src="/"` — kein leerer Wert, sondern die Startseite selbst, die der Browser als Bild zu laden versuchte.
+  - Gelöst über zwei Stellen: `resources/views/partials/ui/media/image/image_carousel.antlers.html` filtert Rahmen ohne Bild vor der Schleife heraus (`{{ frames = image_carousel | where('image', '!=', '') }}`) und gibt die Figur gar nicht erst aus, wenn nichts übrig bleibt. Das Filtern **vor** der Schleife ist wesentlich, weil `resources/js/modules/carousel.js` die Animation immer bei Bild 0 startet und die Markierung `first` daher den ersten tatsächlich ausgegebenen Rahmen meinen muss.
+  - In `image_text.antlers.html` entscheidet jetzt `{{ if frame_count > 0 }} … {{ elseif image }} … {{ /if }}`. Das Karussell hat Vorrang — wie im Vorbild `resources/views/team/show.antlers.html` —, gilt aber nur als gefüllt, wenn es mindestens einen belegten Rahmen hat. Dadurch erscheint in den vier betroffenen Sets korrekt das Einzelbild.
+  - Geprüft über alle 49 erreichbaren deutschen Projektseiten: keine einzige leere Bildadresse mehr (vorher eine), Gesamtzahl der `<img>`-Elemente 705 auf 704.
+- [x] **Lokal behoben am 17. September 2026.** Im selben Baustein steuerte der Vergleich `image:width > image:height` die Spaltenaufteilung. War nur das Karussell gefüllt — in 66 der 252 aktiven `image_text`-Sets —, blieb der Vergleich leer und der Block landete immer im Hochformat-Zweig (`md:col-span-7 xl:col-span-6`), auch bei querformatigen Karussellbildern.
+  - Die Formatentscheidung steht jetzt einmal pro Set als `is_landscape` oben im Template und stammt vom tatsächlich ausgegebenen Bild: beim Karussell vom ersten belegten Rahmen, sonst vom Einzelbild. Damit entfällt zugleich die vierfache Wiederholung desselben Vergleichs im Template.
+  - **Diese Korrektur verändert das Layout sichtbar, und zwar breiter als zunächst angenommen.** Von den 66 reinen Karussell-Sets wechseln **48** vom Hochformat- in den Querformat-Zweig, verteilt über beide Sprachfassungen: 24 deutsche und 24 englische Sets in je rund 16 Projekten. Die übrigen 18 Sets führen hoch- oder quadratformatige Bilder und bleiben unverändert.
+  - Gemessen an den gerenderten Seiten: über die 49 erreichbaren deutschen Projektseiten wechseln 20 Blöcke (Hochformat 56 auf 36, Querformat 60 auf 80). Die Differenz zu den 24 deutschen Sets erklärt sich durch «Stöcklin Küchen», das unveröffentlicht ist und allein vier betroffene Sets enthält.
+  - Betroffen sind unter anderem «Ensemble Hardturm» (zwei Sets: «Koordination komplexer Beiträge» mit 4500×2432 und «Kontinuität über Projektphasen» mit 4954×3344), «Uraniastrasse Zürich» (drei Sets), «Stöcklin Küchen» (vier Sets), «Denzler Haus» und «Steinacker Kloten» (je zwei Sets) sowie je ein Set in «AS Grenchen Bypass», «Appenzeller Huus», «Dorfplatz Rorbas», «Historisches Museum Bern», «Hochparterre Themenheft», «Hegmatten Winterthur», «Le Chevreuil», «Lebendige Limmat», «MACH Koch-Areal», «Neue Festhalle Bern» und «Umfahrung Uznach».
+  - Zwei Fälle verdienen beim Sichten besondere Aufmerksamkeit, weil das Bild in der breiteren Spalte stärker hochskaliert wird: «Hegmatten Winterthur» führt als erstes Karussellbild eine Datei mit nur 719×458 Pixeln, «MACH Koch-Areal» eine mit 1223×1137 Pixeln. Letztere ist zudem fast quadratisch und fällt nur knapp in den Querformat-Zweig — das entspricht dem Verhalten, das Einzelbilder mit demselben Seitenverhältnis schon immer hatten.
+  - Quadratische Bilder gelten unverändert als Hochformat, weil der Vergleich weiterhin streng `>` ist.
+
+**Höhensprünge innerhalb eines Karussells (Frage vom 17. September 2026):**
+
+Weil `carousel.js` die Rahmen über die Klasse `hidden` ein- und ausblendet und die
+Bilder mit `w-full h-auto` in der normalen Dokumentflusshöhe stehen, richtet sich
+die Höhe der Figur immer nach dem gerade sichtbaren Bild. Haben die Rahmen eines
+Karussells unterschiedliche Seitenverhältnisse, springt die Höhe bei jedem
+Bildwechsel. Das ist unabhängig von der oben behobenen Formatentscheidung, die nur
+die Spaltenbreite bestimmt.
+
+Auswertung aller 94 Karussells mit mindestens einem Bild (Projekte und Teamprofile,
+beide Sprachen):
+
+| Seitenverhältnisse im selben Karussell | Anzahl |
+| --- | --- |
+| nur ein Bild, kein Wechsel | 34 |
+| identisch (Abweichung unter 0,5 %) | 54 |
+| fast gleich (unter 5 %) | 4 |
+| merklich (5 bis 20 %) | 2 |
+| stark (über 20 %) | 0 |
+
+Praktisch betrifft das heute also **ein einziges Set**, «Vom Produkt zur Marke» im
+Projekt «Stöcklin Küchen», dort in beiden Sprachfassungen: acht Bilder mit
+Seitenverhältnissen zwischen 1,40 und 1,50, was rund 7 % Höhenunterschied ergibt.
+Alle übrigen Karussells liegen unter 1,5 %.
+
+**Behoben am 17. September 2026.** Christoph hat entschieden, dass auch die
+kleinen Sprünge stören, und die technische Absicherung freigegeben.
+
+- [x] `resources/views/partials/ui/media/image/image_carousel.antlers.html` gibt der
+  Figur jetzt ein festes Seitenverhältnis aus dem ersten belegten Rahmen und legt die
+  Bilder mit `absolute inset-0 w-full h-full object-cover` darin übereinander. Die Höhe
+  steht damit von Anfang an fest und ändert sich beim Bildwechsel nicht mehr.
+  - Das Seitenverhältnis steht als `style="aspect-ratio: B / H"`, weil es aus dem Inhalt
+    stammt und deshalb keine Tailwind-Klasse sein kann. Genau dadurch war die Änderung
+    **ohne Frontend-Build** möglich: Die vier neu verwendeten Klassen `absolute`,
+    `inset-0`, `h-full` und `object-cover` sind im kompilierten CSS bereits enthalten,
+    weil andere Templates sie verwenden. Nachgeprüft gegen `app-b78a33d3.css`.
+  - Gewählt wurde `object-cover`, nicht `object-contain`: Bei den gemessenen Abweichungen
+    von höchstens 7 % wird ein abweichendes Bild um wenige Prozent beschnitten, was bei
+    Visualisierungen unauffälliger ist als schmale graue Ränder. **Nebenwirkung, die zu
+    beachten ist:** Enthielte ein Karussell künftig Bilder mit stark unterschiedlichem
+    Format — etwa Hoch- und Querformat gemischt —, würde kräftig beschnitten. Die
+    redaktionelle Regel «ein Seitenverhältnis pro Karussell» bleibt deshalb bestehen.
+  - Fehlen die Bildmasse in den Asset-Metadaten, greift der bisherige Fluss mit
+    `w-full h-auto`: Dann springt die Höhe wie zuvor, aber es verschwindet nichts.
+    Aktuell haben alle 302 Karussellrahmen mit Bild vollständige Masse.
+  - Die Figur erhielt zusätzlich `w-full`. Das ist für die Teamprofile nötig, wo das
+    Karussell in einem Flex-Container sitzt: Ohne im Fluss stehendes Bild hätte die Figur
+    dort keine Breite mehr. Alle 28 Karussellbilder der Teamprofile sind 1984 bis 2533 px
+    breit und damit ohnehin breiter als die Spalte, weshalb sich optisch nichts ändert.
+  - Der Parameter `class="w-full h-auto"` wurde an den beiden Aufrufstellen in
+    `image_text.antlers.html` entfernt, weil er mit `h-full` kollidiert wäre. Er war
+    ohnehin wirkungslos doppelt, da das Partial dieselben Klassen fest gesetzt hatte.
+  - Geprüft: 82 Seiten mit HTTP 200 über Projekte, Teamprofile, Blog und Seiten in beiden
+    Sprachen; alle 48 gerenderten Karussell-Figuren tragen ein festes Seitenverhältnis,
+    keine leeren Bildadressen.
+
+**Latente Stelle auf den Teamprofilen (Hinweis zur Änderung vom 17. September 2026):**
+
+`resources/views/team/show.antlers.html` wählt mit `{{ if image_carousel }} … {{ else }}
+… {{ /if }}` zwischen Karussell und Portrait. Seit das Karussell-Partial Rahmen ohne
+Bild überspringt, gilt: Enthält ein Profil ein Karussell, dessen Rahmen alle leer sind,
+ist die Bedingung weiterhin wahr, das Partial gibt aber nichts aus — und der
+Portrait-Rückfall greift nicht. Die Spalte bliebe leer. Vor der Änderung erschien an
+dieser Stelle ein kaputtes Bild; beides ist unerwünscht.
+
+- [x] **Behoben am 17. September 2026.** `resources/views/team/show.antlers.html` prüft
+  jetzt `{{ if image_carousel | where('image', '!=', '') | length }}` statt `{{ if image_carousel }}`
+  und wendet damit dieselbe Regel an wie das Partial. Enthält ein Profil ein Karussell
+  ohne belegten Rahmen, greift wieder der Portrait-Rückfall.
+  - Gegengeprüft mit einem Testinhalt: Wurde die Bildangabe im Karussell eines Profils
+    entfernt, erschien das Portrait und keine leere Bildadresse. Der Testinhalt wurde
+    anschliessend zurückgesetzt.
+  - Betroffen war ohnehin kein Eintrag: Von 56 Teameinträgen hat keiner ein Karussell
+    ohne belegten Rahmen. Die sieben Einträge ohne Portrait sind unveröffentlicht und
+    führen je ein Karussellbild.
 
 **Empfehlung für eine Vereinheitlichung, falls sie gewünscht wird:**
 
-- [ ] Zuerst die Felder im Control Panel so benennen, dass der Unterschied ohne Erklärung erkennbar ist, zum Beispiel «Bildwechsel-Animation» statt «Image Carousel» und «Slideshow (blätterbar)» statt «Slideshow». Das löst den grössten Teil der Verwirrung ohne Eingriff in die Ausgabe.
+- [x] **Lokal umgesetzt am 17. September 2026.** Die Felder im Control Panel heissen jetzt «Image Animation» statt «Image Carousel» und «Slideshow (browsable)» statt «Image Slideshow» beziehungsweise «Slideshow». Geändert in `resources/fieldsets/image_carousel.yaml`, `resources/fieldsets/image_slideshow.yaml` sowie in den Set-Beschriftungen von `resources/blueprints/collections/projects/project.yaml` und `resources/blueprints/collections/posts/post.yaml`.
+  - Zusätzlich erklärt je ein Hilfetext den Unterschied: «Fades the images in and out automatically, one after another. This is an animation, not a gallery: visitors have no controls.» gegenüber «Browsable gallery with previous and next arrows.»
+  - Dieses Briefing hatte deutsche Bezeichnungen vorgeschlagen («Bildwechsel-Animation», «Slideshow (blätterbar)»). Christoph hat sich dagegen entschieden: Da alle übrigen Feldbeschriftungen des Control Panels englisch sind («Image», «Duration», «Sequence»), bleiben auch diese englisch. Die Absicht der Umbenennung bleibt davon unberührt.
+  - Betroffen sind ausschliesslich Anzeigetexte des Control Panels. Weder die Feld-Handles noch die Inhalte oder die Ausgabe ändern sich.
 - [ ] Erst danach entscheiden, ob «Bild» und «Slideshow» in Projekten und Blogbeiträgen zu einem Baustein mit einem bis mehreren Bildern verschmelzen. Voraussetzung ist, dass die Slideshow-Ausgabe zuvor an das Einzelbild angeglichen wird: volle Breite, `loading="lazy"`, Scroll-Animation und ausgeblendete Navigation bei nur einem Bild. Ohne diese Angleichung entsteht keine Vereinfachung, sondern eine sichtbare Layoutänderung auf allen bestehenden Seiten.
 - [ ] Das Image Carousel bleibt davon unberührt und wird nicht mit der Slideshow zusammengelegt. Es bleibt der Baustein für die Bildwechsel-Animation auf Teamprofilen und in `image_text`.
 - [ ] Umfang und Priorität mit Christoph abstimmen. Bisher ist dies eine Frage, kein freigegebener Auftrag.
@@ -268,8 +430,11 @@ Hinweis zur Content-Übergabe: Zur Übergabe gehört auch die korrigierte Metada
 - [ ] Hauptaktion im Header als visuell abgesetzten Button «Sprechstunde» / «Consultation» ausgeben und den bisherigen Header-Menüpunkt «Kontakt» entsprechend ersetzen.
   - Reguläre Kontaktlinks im Footer und in der Navigation können bestehen bleiben. Das Ziel ist eine deutlich erkennbare Hauptaktion.
   - Betroffen: `resources/views/partials/layout/header.antlers.html`, Hauptnavigation und die verwendeten Button-Partials.
-- [ ] Haupt-CTAs in Menü und Footer auf «Sprechstunde vereinbaren» / «Book a consultation» vereinheitlichen.
-  - Aktuell enthält `resources/views/partials/menu/wrapper.antlers.html` noch «Offerte anfragen» und `resources/views/partials/layout/footer.antlers.html` noch «Kontakt aufnehmen» als CTA.
+- [x] **Lokal umgesetzt am 17. September 2026.** Die Haupt-CTAs in Menü und Footer lauten jetzt einheitlich «Sprechstunde vereinbaren» / «Book a consultation».
+  - Geändert: `resources/views/partials/menu/wrapper.antlers.html` (vorher «Offerte anfragen») und `resources/views/partials/layout/footer.antlers.html` (vorher «Kontakt aufnehmen»). Beide übergeben den Text nur als Parameter an dasselbe Button-Partial; am Erscheinungsbild ändert sich nichts.
+  - In `lang/en.json` ist der Schlüssel «Sprechstunde vereinbaren» mit «Book a consultation» ergänzt. Die bisherigen Schlüssel «Offerte anfragen» und «Kontakt aufnehmen» bleiben erhalten, weil «Offerte anfragen» laut diesem Briefing für einen künftigen projektspezifischen Anfrageweg vorgesehen ist.
+  - Das Linkziel ist unverändert die Kontaktseite. Ein Buchungslink existiert weiterhin nicht.
+  - Noch offen bleibt der Header-Punkt darüber: Ein visuell abgesetzter Button braucht neues Styling und damit einen Frontend-Build.
   - «Offerte anfragen» / «Request a quote» nur für einen tatsächlich projektspezifischen Anfrageweg verwenden.
   - Übersetzungsschlüssel und englische Werte in `lang/en.json` gleichzeitig ergänzen. Kein globales Ersetzen aller Kontaktlinks.
   - Das aktuelle Ziel der Sprechstunden-Buttons ist die Kontaktseite. Falls eine direkte Terminbuchung gewünscht ist, muss deren Ziel noch festgelegt werden; aktuell gibt es keinen belegten Buchungslink.
@@ -308,8 +473,10 @@ Hinweis zur Content-Übergabe: Zur Übergabe gehört auch die korrigierte Metada
 
 ### Blog-Teaser
 
-- [ ] Datumsangaben in den Blog-Teasern entfernen, sodass Bild und Titel bleiben.
-  - Betroffen: `resources/views/partials/fieldsets/teaser/post/item.antlers.html`, verwendet für Desktop und mobilen Slider.
+- [x] **Lokal umgesetzt am 17. September 2026.** Die Datumsangaben in den Blog-Teasern sind entfernt; Bild und Titel bleiben.
+  - Geändert: `resources/views/partials/fieldsets/teaser/post/item.antlers.html`, verwendet für Desktop und mobilen Slider.
+  - Der Baustein heisst im Baukasten `teaser_blog` und ist auf der Startseite, «Über uns», «Kompetenzen», den drei Segmentseiten und «Vielen Dank» gepflegt, je deutsch und englisch. Auf der Startseite gingen die sichtbaren Datumsangaben dadurch von sieben auf null zurück.
+  - Nicht betroffen ist die Blogübersicht `/blog`: Deren Artikelliste läuft über ein anderes Template und zeigt die Daten weiterhin an. Falls sie auch dort verschwinden sollen, ist das ein eigener Entscheid.
   - Veröffentlichungsdaten, chronologische Sortierung und Artikel-URLs erhalten. Es geht um die sichtbaren Teaser, nicht um das Löschen von Datumswerten im CMS.
   - Der Beitragstitel «Erfahre das Geheimnis hinter unseren Visualisierungen» war deutsch bereits korrekt; Englisch wurde im Content auf «Discover the secret behind our visualizations» angeglichen. Dafür ist keine Template-Änderung erforderlich.
 
