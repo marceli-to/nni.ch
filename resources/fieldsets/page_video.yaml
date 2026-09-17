@@ -17,7 +17,7 @@ fields:
       max_files: 1
       mode: list
       display: Vorschaubild
-      instructions: 'Wird vor dem Abspielen der MP4-Datei angezeigt.'
+      instructions: 'Wird vor dem Abspielen der MP4-Datei angezeigt. Am besten im Seitenverhältnis 16:9, andere Formate werden auf den Rahmen beschnitten.'
       localizable: true
       validate:
         - 'mimes:jpg,jpeg,png,webp'

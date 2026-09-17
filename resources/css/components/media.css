@@ -28,6 +28,12 @@
   @apply w-full h-full object-contain
 }
 
+/* The poster is editorial artwork and rarely 16:9, so it has to fill the frame
+   instead of sitting letterboxed inside it. */
+.media-container video[data-manual-video] {
+  @apply object-cover
+}
+
 .dim-0 { @apply bg-opacity-0; }
 .dim-10 { @apply bg-opacity-10; }
 .dim-20 { @apply bg-opacity-20; }

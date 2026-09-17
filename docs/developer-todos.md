@@ -117,12 +117,13 @@ Ist `is_fullpage: false` (z. B. weil eine Seite bewusst kompakt/ohne Fullpage-In
   - Ein redaktioneller Schalter am `title_text`-Baustein wurde geprüft und verworfen: Er wirkt nur auf Seiten mit Baukasten-Inhalten und damit gerade nicht auf den betroffenen Seiten. Zudem rendern diese Templates keine `page_elements`.
   - Vor der Umsetzung gestalterisch entscheiden, ob die Überschrift sichtbar sein soll oder nur für Suchmaschinen und Screenreader zugänglich. Danach je Template den Eintragstitel als H1 ausgeben und dafür das vorhandene Partial `resources/views/partials/ui/heading/h1.antlers.html` verwenden, statt die Tags von Hand zu schreiben.
 
-### Video: Auswahl zwischen Hoch- und Querformat im Browser prüfen
+### Video: Auswahl zwischen Hoch- und Querformat
 
-- [ ] Die Quellenauswahl in `resources/views/partials/ui/media/video/fullscreen-wrapper.antlers.html` erfolgt über `media`-Attribute an den `<source>`-Elementen. Zuverlässig ausgewertet wird dieses Attribut nur in `<picture>`; bei `<video>` berücksichtigen es Chrome und Firefox nach bisherigem Kenntnisstand nicht, WebKit dagegen schon.
-  - Folge im ungünstigen Fall: Der Browser nimmt die erste abspielbare Quelle, also das Hochformat, und zeigt es auch auf dem Desktop bildschirmfüllend beschnitten.
-  - Prüfung: Hero-Seite in Chrome auf dem Desktop öffnen, DevTools → Netzwerk, geladene MP4-Datei kontrollieren. Anschliessend dasselbe in Safari und auf einem Telefon im Hochformat.
-  - Falls das Hochformat überall geladen wird, die Auswahl per `matchMedia` im JavaScript setzen, statt sie dem Browser zu überlassen. Das Attribut `data-video-source` verfolgte ursprünglich genau diese Absicht, wurde vom JavaScript aber nie ausgewertet, weshalb bis dahin immer nur das Querformat ausgeliefert wurde.
+**In Chrome geprüft und in Ordnung.** Die Quellenauswahl in `resources/views/partials/ui/media/video/fullscreen-wrapper.antlers.html` erfolgt über `media`-Attribute an den `<source>`-Elementen. Chrome wertet sie aus: Ein breites Fenster lädt das Querformat, ein schmales das Hochformat.
+
+Die Auswahl findet einmalig beim Laden der Seite statt und wird beim Verändern der Fenstergrösse nicht wiederholt. Das entspricht dem Verhalten von Medienelementen und ist kein Fehler. Praktisch relevant ist davon nur das Drehen eines Telefons nach dem Laden: Die bereits gewählte Datei bleibt und wird skaliert. Ein Nachladen bei Orientierungswechsel würde das Video neu starten und wäre störender als der jetzige Zustand.
+
+Zur Einordnung: Vor dieser Änderung wurde das Hochformat auf keinem Gerät ausgeliefert. Das frühere Attribut `data-video-source` verfolgte diese Absicht, wurde vom JavaScript aber nie ausgewertet.
 
 ### Teambilder: fehlendes Portrait bricht die Übersichtskarte
 
