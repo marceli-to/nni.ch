@@ -118,7 +118,7 @@ tabs:
                         -
                           import: video
                     image_slideshow:
-                      display: Slideshow
+                      display: 'Slideshow (browsable)'
                       instructions: 'Add an slideshow of images'
                       icon: media-image-picture-gallery
                       fields:

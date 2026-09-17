@@ -1,4 +1,4 @@
-title: 'Image Carousel'
+title: 'Image Animation'
 fields:
   -
     handle: image_carousel
@@ -37,7 +37,8 @@ fields:
                     replicator_preview: true
                     hide_display: false
       type: replicator
-      display: 'Image Carousel'
+      display: 'Image Animation'
+      instructions: 'Fades the images in and out automatically, one after another. This is an animation, not a gallery: visitors have no controls.'
       icon: replicator
       localizable: false
       listable: hidden
