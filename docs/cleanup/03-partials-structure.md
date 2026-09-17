@@ -1,5 +1,12 @@
 # Concern #3 — Partials/components structure
 
+> **Status (2026-09-17): historical record — this reorganization has been carried out.**
+> Paths in this document are deliberately **not** rewritten: the document describes the
+> move away from `partials/components/`, so updating its "before" paths would make it
+> unreadable. The resulting tree is `partials/` → `content/` · `fieldsets/` · `layout/` · `menu/` · `ui/`.
+> One later drift to note: the dispatcher called `_dispatch.antlers.html` below is named
+> `dispatcher.antlers.html` today.
+
 **Date:** 2026-07-06
 **Scope:** `resources/views/partials/**`.
 

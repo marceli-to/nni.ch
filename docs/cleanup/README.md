@@ -1,5 +1,12 @@
 # Frontend Cleanup Audit
 
+> **Status (2026-09-17): historical record — this work has been carried out.** The
+> **Nature** line below ("no code changed yet") describes the audit at the moment it was
+> written; the recommendations were executed on 2026-07-07, and each doc carries its own
+> execution-status block. Partial paths in docs 01, 02, 04 and 05 were rewritten on
+> 2026-09-17 to match the tree as it exists today (`partials/` is now `content/` · `fieldsets/` · `layout/` · `menu/` · `ui/`);
+> doc 03 keeps its original paths because it documents that very rename.
+
 **Date:** 2026-07-06
 **Scope:** `resources/css/**`, `resources/views/**` (Antlers templates & partials).
 **Nature:** Read-only audit — findings only, **no code changed yet**. Each concern has

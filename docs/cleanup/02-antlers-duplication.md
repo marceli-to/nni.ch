@@ -1,11 +1,20 @@
 # Concern #2 — Antlers template duplication
 
+> **Status (2026-09-17): historical record — this work has been carried out.** Kept for
+> context, not as a to-do list; see the execution-status blocks below for what was done.
+> Partial paths in this document were rewritten on 2026-09-17 to match the tree as it
+> exists today (`partials/` is now `content/` · `fieldsets/` · `layout/` · `menu/` · `ui/`); the `partials/components/`
+> folder this audit was written against no longer exists. Deliberately left untouched:
+> files under `resources/css/components/`, which are still there, and the deleted
+> partials listed in [`05-additional-findings.md`](./05-additional-findings.md), which
+> are gone from the tree altogether.
+
 **Date:** 2026-07-06
 **Scope:** all ~145 `.antlers.html` files under `resources/views/`.
 
 This is the **highest-leverage** area. Below, findings are ranked by how much duplication
 each removes. Two things that turned out *fine*: there are **no inline SVGs** outside
-`components/icons/`, and Alpine `x-data` usage is minimal and all distinct.
+`ui/icon/`, and Alpine `x-data` usage is minimal and all distinct.
 
 ---
 
@@ -16,7 +25,7 @@ Several items in this doc turned out to be based on an **oversimplified premise*
 code has drifted since the 2026-07-06 audit, so "near-identical" is often no longer true.
 
 **DONE (verified render-neutral via before/after HTML diff on live pages):**
-- **#3 contact-links** — extracted `components/misc/contact-links`. Real callers were **3,
+- **#3 contact-links** — extracted `ui/contact-links`. Real callers were **3,
   not 6**: footer is a different design (phone-first, `target=_blank`, `hover:text-graphite`)
   and was excluded; `contact.antlers.html`/`team/show` no longer carry the pair.
 - **#7 post/elements/card-inner** — clean in-file extraction.
@@ -33,8 +42,8 @@ code has drifted since the 2026-07-06 audit, so "near-identical" is often no lon
   and webp `<source>`s mislabeled `type="image/jpeg"` in `project/media/feature:4` and
   `project/elements/fullscreen_image:6`.
 - **#2 / #2b arrow-CTA reuse** — NOT safe reuse. The `cta/*` anchors differ from
-  `buttons/contact` in text-size ramp, tracking, icon hover-distance, and icon breakpoint
-  (reuse would change rendering); **#2b can't use `buttons/more` at all** — the competencies
+  `ui/button/contact` in text-size ramp, tracking, icon hover-distance, and icon breakpoint
+  (reuse would change rendering); **#2b can't use `ui/button/more` at all** — the competencies
   variant is a `<span>` nested inside the card's outer `<a>`, so the partial (itself an `<a>`)
   would produce an invalid nested anchor.
 - **#4 cta/project ≈ cta/expertise merge** — deferred per earlier decision (needs a human eye).
@@ -64,22 +73,22 @@ The same 5-source `<picture>` construct (webp + jpeg at 3 breakpoints, then `<im
 field name, breakpoints, and img `class`.
 
 Occurrences:
-- `components/media/image/image.antlers.html:2–16`
-- `components/media/image/teaser.antlers.html:1–14`
-- `components/media/image/fullscreen.antlers.html:2–16` *(byte-identical to `image.antlers.html` minus the `<figcaption>` — merge immediately)*
-- `components/media/image/image_carousel.antlers.html:5–16`
-- `components/post/media/preview.antlers.html:2–14`
-- `components/post/media/feature.antlers.html:2–16`
-- `components/post/media/image.antlers.html:2–18`
-- `components/project/media/feature.antlers.html:3–18`
-- `components/project/media/preview.antlers.html:23–37`
-- `components/project/elements/image.antlers.html:2–18`
-- `components/project/elements/fullscreen_image.antlers.html:2–16`
-- `components/project/elements/slideshow.antlers.html:6–19`
-- `components/project/elements/image_comparison.antlers.html:8–22` **and** `24–39` (twice)
+- `ui/media/image/image.antlers.html:2–16`
+- `ui/media/image/teaser.antlers.html:1–14`
+- `ui/media/image/fullscreen.antlers.html:2–16` *(byte-identical to `image.antlers.html` minus the `<figcaption>` — merge immediately)*
+- `ui/media/image/image_carousel.antlers.html:5–16`
+- `content/post/media/preview.antlers.html:2–14`
+- `content/post/media/feature.antlers.html:2–16`
+- `content/post/media/image.antlers.html:2–18`
+- `content/project/media/feature.antlers.html:3–18`
+- `content/project/media/preview.antlers.html:23–37`
+- `content/project/elements/image.antlers.html:2–18`
+- `content/project/elements/fullscreen_image.antlers.html:2–16`
+- `content/project/elements/slideshow.antlers.html:6–19`
+- `content/project/elements/image_comparison.antlers.html:8–22` **and** `24–39` (twice)
 - `fieldsets/teaser/portfolio/item.antlers.html:9–22`
 
-**Recommendation:** one canonical `components/media/picture.antlers.html` parameterized by
+**Recommendation:** one canonical `ui/media/picture.antlers.html` parameterized by
 the glide field, a preset/breakpoint profile, `class`, and optional `loading`.
 
 > **Constraint:** Antlers can't easily interpolate a *dynamic tag variable name*, and the
@@ -92,19 +101,19 @@ the glide field, a preset/breakpoint profile, `class`, and optional `loading`.
 
 The uppercase-text + `arrow-right-long` anchor (`flex items-center gap-x-10 group`, hover
 translate) is hand-written in 5 places, and a **component for it already exists**
-(`components/buttons/contact.antlers.html`):
+(`ui/button/contact.antlers.html`):
 
-- `components/misc/cta.antlers.html:6–12`
+- `ui/cta.antlers.html:6–12`
 - `fieldsets/cta/expertise.antlers.html:34–40`
 - `fieldsets/cta/project.antlers.html:43–49` *(arrow is placed **first** here — needs an icon-order param)*
 - `fieldsets/teaser/competencies/item.antlers.html:16`
 
-**Recommendation:** replace the inline anchors with `{{ partial:components/buttons/contact }}`,
+**Recommendation:** replace the inline anchors with `{{ partial:ui/button/contact }}`,
 adding an `icon-before`/`icon-after` param. Pure reuse — no new abstraction.
 
-**2b. Short-arrow variant:** `components/buttons/more.antlers.html` is the canonical
+**2b. Short-arrow variant:** `ui/button/more.antlers.html` is the canonical
 version, but `fieldsets/teaser/competencies/item.antlers.html:33–39` reproduces it verbatim
-with a hard-coded `"Mehr erfahren"`. Replace with the partial. (`buttons/back` is a third
+with a hard-coded `"Mehr erfahren"`. Replace with the partial. (`ui/button/back` is a third
 near-duplicate — same structure, rotated arrow.)
 
 ### 3. `mailto:` / `tel:` contact-link pair — 6 files
@@ -112,12 +121,12 @@ near-duplicate — same structure, rotated arrow.)
 The same anchor pair (`href="mailto:…"` + `href="tel:…"`, `title="{{ "E-Mail"|trans }} …"`,
 `no-underline hover:underline hover:underline-offset-8 hover:decoration-1`) appears in:
 
-- `components/team/media/portrait.antlers.html:32–47` *(class order drifts here)*
+- `content/team/media/portrait.antlers.html:32–47` *(class order drifts here)*
 - `fieldsets/cta/expertise.antlers.html:15–30`
 - `fieldsets/cta/project.antlers.html:24–40`
 - `contact.antlers.html`, `team/show.antlers.html`, `layout/footer.antlers.html`
 
-**Recommendation:** extract `components/misc/contact-links.antlers.html` (`email`, `phone`,
+**Recommendation:** extract `ui/contact-links.antlers.html` (`email`, `phone`,
 `title` params). Removes 5 copies and fixes the class drift.
 
 ### 4. `cta/project` ≈ `cta/expertise` (~85% identical)
@@ -137,23 +146,23 @@ they render slightly differently; see [03](./03-partials-structure.md) for the c
 The absolute-positioned white caption over an image (`flex flex-col justify-end items-start
 text-white … group-hover:opacity-0` + `<h3 class="font-meta-medium mb-2">`):
 
-- `components/project/media/preview.antlers.html:12–19` **and** `38–45`
+- `content/project/media/preview.antlers.html:12–19` **and** `38–45`
 - `fieldsets/teaser/portfolio/item.antlers.html:24–30`
-- `components/team/media/portrait.antlers.html:25–31` *(padding variant)*
+- `content/team/media/portrait.antlers.html:25–31` *(padding variant)*
 
-**Recommendation:** `components/media/overlay-caption.antlers.html` (`title` + optional
+**Recommendation:** `ui/media/overlay-caption.antlers.html` (`title` + optional
 `subtitle`). Unifies the padding drift.
 
 ### 6. Teaser card (image + h3 title)
 
-`components/project/elements/card.antlers.html:1–9` and
+`content/project/elements/card.antlers.html:1–9` and
 `fieldsets/teaser/post/item.antlers.html:1–8` are the same card; the heading class string
 `mt-15 text-md xl:text-2xl !leading-[1.25]` is copy-pasted in both. Extract a shared
 `teaser-card`, or fold that class into an h3 variant (see [04](./04-headings.md)).
 
 ### 7. Post-card row repeated 4× in one file
 
-`components/post/elements/card.antlers.html` repeats the same `date + anchor + preview +
+`content/post/elements/card.antlers.html` repeats the same `date + anchor + preview +
 heading` block four times (lines `3–6`, `12–15`, `20–23`, `28–32`), varying only
 `ratio`/`class`. Extract `post/elements/card-inner.antlers.html`.
 
@@ -167,14 +176,14 @@ differ only in the title variable and the animation-attr prefix (`data-video-ani
 
 The section shell (`<section data-section data-section-theme="…" … class="relative …">`) is
 repeated across ~10 fieldset wrappers (`teaser/portfolio`, `teaser/post`, `teaser/image`,
-`teaser/image_text`, `teaser/video`, `teaser/competencies`, `intro`, `misc/title_text`,
-`misc/faq`, `misc/jobs`, `slideshow/team`). Extract `components/section.antlers.html`
+`teaser/image_text`, `teaser/video`, `teaser/competencies`, `intro`, `fieldsets/title_text`,
+`fieldsets/faq`, `fieldsets/jobs`, `slideshow/team`). Extract `layout/section.antlers.html`
 (`theme`, `is_fullpage`, `class` + slot).
 
 ### 10. 12-col grid string
 
 `grid-cols-12 gap-x-20 lg:gap-x-30 xl:gap-x-50` is hand-repeated in ~10 files. Either a
-`components/grid.antlers.html` slot wrapper or a Tailwind `@apply` utility class.
+`ui/grid.antlers.html` slot wrapper or a Tailwind `@apply` utility class.
 
 ---
 
@@ -193,7 +202,7 @@ the title/CTA block. Roughly halves the file.
 
 10 partials verified to have zero references → see [`05-additional-findings.md`](./05-additional-findings.md).
 
-> Note: `components/project/media/preview.antlers.html` is **NOT** dead — it's used 6× in
+> Note: `content/project/media/preview.antlers.html` is **NOT** dead — it's used 6× in
 > `project/index.antlers.html` (via a redundant `partial:partials/…` path, which is why a
 > naive grep misses it). See [05](./05-additional-findings.md).
 
@@ -202,7 +211,7 @@ the title/CTA block. Roughly halves the file.
 ## Highest-leverage actions, in order
 
 1. Consolidate the 15 `<picture>` blocks into 3–4 media partials (#1).
-2. Reuse `buttons/contact` + `buttons/more` for the inline arrow-CTAs (#2, #2b) — pure reuse.
+2. Reuse `ui/button/contact` + `ui/button/more` for the inline arrow-CTAs (#2, #2b) — pure reuse.
 3. Extract `contact-links` (#3), `overlay-caption` (#5), `section` (#9).
 4. Merge the twin `cta/*` (#4) and twin `teaser/*/content` (#8) partials.
 5. Refactor `teaser/portfolio/wrapper` (#11).

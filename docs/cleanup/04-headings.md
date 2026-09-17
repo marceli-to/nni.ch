@@ -1,7 +1,16 @@
 # Concern #4 — Heading components (h1 / h2 / h3)
 
+> **Status (2026-09-17): historical record — this work has been carried out.** Kept for
+> context, not as a to-do list; see the execution-status blocks below for what was done.
+> Partial paths in this document were rewritten on 2026-09-17 to match the tree as it
+> exists today (`partials/` is now `content/` · `fieldsets/` · `layout/` · `menu/` · `ui/`); the `partials/components/`
+> folder this audit was written against no longer exists. Deliberately left untouched:
+> files under `resources/css/components/`, which are still there, and the deleted
+> partials listed in [`05-additional-findings.md`](./05-additional-findings.md), which
+> are gone from the tree altogether.
+
 **Date:** 2026-07-06
-**Scope:** `resources/views/partials/components/headings/{h1,h2,h3}.antlers.html` and every
+**Scope:** `resources/views/partials/ui/heading/{h1,h2,h3}.antlers.html` and every
 caller; plus `resources/css/components/headings.css`.
 
 > **Execution status (2026-07-07): recs #1–#3 DONE (`602abf8`).** Replaced the boolean-flag
@@ -62,7 +71,7 @@ templates bypass it entirely** with raw `<h1>/<h2>/<h3>` tags.
 
 **25 partial invocations:** 2× h1, 21× h2, 2× h3.
 **Variants defined: 5. Actually reachable: 4** — the h2 `is_teaser` branch is effectively
-dead: `elements.antlers.html:20` passes `is_teaser="true"` to the *portfolio wrapper*
+dead: `dispatcher.antlers.html:20` passes `is_teaser="true"` to the *portfolio wrapper*
 partial, but that flag is never forwarded to the h2 inside it. (So it's "flag set but not
 threaded through," not simply unused code.)
 
@@ -78,7 +87,7 @@ threaded through," not simply unused code.)
    - h1: `blog/_listing:2`, `blog/show:18`, `team/show:12`, `jobs/show:4`
      *(re-hardcodes the `is_project` classes verbatim — should be `is_project="true"`)*,
      `fieldsets/intro/content:3`.
-   - h2: `components/post/elements/heading:1` *(a rival ad-hoc heading component)*,
+   - h2: `content/post/elements/heading:1` *(a rival ad-hoc heading component)*,
      `fieldsets/teaser/expertise/item:4`.
    - h3: `accordion/item:28`, `project/media/preview:13` & `:39`, `team/media/portrait:26`,
      `misc/jobs/item:5`, `teaser/portfolio/item:26`.

@@ -1,10 +1,10 @@
 # Entwickler-Briefing: technische Änderungen und offene Punkte
 
-Stand: 7. September 2026
+Stand: 17. September 2026
 
 ## Bereits umgesetzt: Änderungen ausserhalb der redaktionellen Inhalte
 
-Die folgenden Anpassungen liegen **nicht** unter `content` oder `public/assets`. Sie sind für die korrekte Darstellung und Funktion der aktualisierten Inhalte erforderlich und deshalb – mit Ausnahme der ausdrücklich als lokal gekennzeichneten Datei – im FTP-Paket `ftp-upload-2026-08-31` enthalten.
+Die folgenden Anpassungen liegen **nicht** unter `content` oder `public/assets`. Sie sind für die korrekte Darstellung und Funktion der aktualisierten Inhalte erforderlich. Sie sind – mit Ausnahme der ausdrücklich als lokal gekennzeichneten Datei – im Repository enthalten und werden über Git ausgeliefert; die früheren manuellen FTP-Pakete entfallen.
 
 ### Responsive Videos
 
@@ -104,7 +104,7 @@ Betroffen z. B.: `/animation-und-film` (Elemente „Title - Text" und „Teaser 
 
 Ist `is_fullpage: false` (z. B. weil eine Seite bewusst kompakt/ohne Fullpage-Intro gestaltet ist), wird die Section nie beobachtet, `.is-active` nie gesetzt – der Inhalt bleibt dauerhaft unsichtbar, nicht nur verzögert. Die CTA-Sektion (`cta_expertise`) ist zufällig **nicht** betroffen, weil `resources/views/partials/fieldsets/cta/wrapper.antlers.html` `data-section-observe` unabhängig von `is_fullpage` immer setzt, sobald `fullpage="true"` übergeben wird – das ist das Vorbild für die Lösung.
 
-**Nicht als Fix geeignet:** Auf der betroffenen Seite einfach `is_fullpage: true` setzen. Das behebt zwar die Sichtbarkeit, weil dann *jede* Section auf der Seite beobachtet wird – aber jedes Element-Template übergibt an `layout/section` auch einen `fullpage`-Klassenparameter mit `min-h-screen ...`, wodurch **jede** Section der Seite auf mindestens Bildschirmhöhe aufgeblasen wird. Im Test wurde die Gesamthöhe von `/animation-und-film` dadurch von ca. 6858px auf ca. 9599px vergrössert (+40 %), mit grossen leeren Weissräumen um Titel, Services-Liste und Portfolio-Kachel. Das widerspricht dem für diese Seite bewusst kompakt/nüchtern angelegten Layout (siehe `docs/entwurf-landingpage-animation.md`) und ist keine allgemeingültige Lösung.
+**Nicht als Fix geeignet:** Auf der betroffenen Seite einfach `is_fullpage: true` setzen. Das behebt zwar die Sichtbarkeit, weil dann *jede* Section auf der Seite beobachtet wird – aber jedes Element-Template übergibt an `layout/section` auch einen `fullpage`-Klassenparameter mit `min-h-screen ...`, wodurch **jede** Section der Seite auf mindestens Bildschirmhöhe aufgeblasen wird. Im Test wurde die Gesamthöhe von `/animation-und-film` dadurch von ca. 6858px auf ca. 9599px vergrössert (+40 %), mit grossen leeren Weissräumen um Titel, Services-Liste und Portfolio-Kachel. Das widerspricht dem für diese Seite bewusst kompakt/nüchtern angelegten Layout und ist keine allgemeingültige Lösung.
 
 **Empfohlener Fix:** `data-section-observe` in `resources/views/partials/layout/section.antlers.html` unabhängig von `is_fullpage` immer setzen (analog zum CTA-Wrapper). Für bestehende Fullpage-Seiten ändert sich dadurch nichts; nicht-Fullpage-Seiten profitieren zusätzlich von funktionierenden Scroll-Animationen, ohne dass sich ihr Layout ändert.
 
@@ -208,13 +208,58 @@ Referenz: https://developers.google.com/search/docs/crawling-indexing/canonicali
   - Damit bleibt der Baustein frei mit den übrigen Modulen kombinierbar (z. B. Artikeltext + anschliessender Portfolio-Teaser + CTA, wie aktuell auf `/animation-und-film` verwendet) und es entsteht keine Abhängigkeit von blogspezifischer Query-Logik.
   - Priorität/Umfang mit Christoph abstimmen, bevor Aufwand geschätzt wird – bisher nur als Wunsch geäussert, nicht als Auftrag freigegeben.
 
+### Bild-Bausteine: Karussell, Slideshow und Einzelbild
+
+Frage aus der Redaktion: Bei einigen Bausteinen lässt sich zwischen einem Bildkarussell und einem Einzelbild wählen. Könnte man nicht immer das Karussell verwenden und dort einfach nur ein Bild einfügen, wenn nur ein Bild gewünscht ist?
+
+**Ausgangslage:** Im CMS gibt es drei Bildmechanismen, die trotz ähnlicher Bezeichnungen technisch und gestalterisch verschiedene Dinge sind.
+
+- **Einzelbild** (`resources/fieldsets/image.yaml`, `image_fullscreen.yaml`): Ausgabe über `resources/views/partials/content/project/elements/image.antlers.html` in voller Containerbreite, mit `2xl`-Presets auf dem Desktop, `loading="lazy"` und der Scroll-Animation `fadeIn`.
+- **Slideshow** (`resources/fieldsets/image_slideshow.yaml`): eine von Hand blätterbare Galerie auf Basis von Swiper. Ausgabe über `resources/views/partials/content/project/elements/slideshow.antlers.html` mit Vor-/Zurück-Navigation, seitlichem Abstand (`sm:px-80 xl:px-100`), Höhenbegrenzung `max-h-[700px]`, ohne `loading="lazy"` und ohne Scroll-Animation. Die Navigationspfeile werden immer ausgegeben, auch bei einem einzigen Bild; die Swiper-Instanz für diese Galerien registriert das Navigations-Modul bewusst nicht, sondern verdrahtet die Pfeile von Hand (`resources/js/modules/swiper/index.js`).
+- **Image Carousel** (`resources/fieldsets/image_carousel.yaml`): **keine** Galerie, sondern eine Bildwechsel-Animation. `resources/js/modules/carousel.js` blendet die hinterlegten Bilder per `setInterval` nacheinander ein und aus, sobald alle geladen sind. Die Dauer kommt aus dem Feld `intervall_duration` (Vorgabe 150 ms, im Content zum Beispiel 800 ms). Es gibt keine Bedienelemente und keine Benutzersteuerung.
+
+Aktuelle Verbreitung, über beide Sprachfassungen gezählt: in den Projekten 254 `image_text`, 137 `fullscreen_image`, 96 `image`, 22 `image_comparison` und 18 `image_slideshow`; in den Blogbeiträgen 252 Bild-Sets und 40 Slideshow-Sets; bei den Teamprofilen 28 deutsche Einträge, alle mit `image_carousel`, davon 21 zusätzlich mit Portrait.
+
+**Antwort auf die Frage:** «Immer das Karussell» ist keine Vereinfachung, weil die drei Mechanismen nicht dasselbe leisten.
+
+- Das Image Carousel mit nur einem Bild ergibt zwar ein stehendes Bild, lässt aber einen wirkungslosen `setInterval` laufen und verzichtet auf die responsiven Bildquellen, auf `loading="lazy"` und auf die Scroll-Animation des Einzelbild-Bausteins. Es ist als Animation gedacht, nicht als Behälter für beliebig viele Bilder.
+- Eine Slideshow mit nur einem Bild sieht sichtbar anders aus als ein Einzelbild: schmaler wegen des seitlichen Abstands, auf 700 px Höhe begrenzt, mit ausgegebenen Navigationspfeilen ohne Funktion und ohne verzögertes Laden. Ein Zusammenlegen verändert also das Erscheinungsbild von 96 Projekt- und 252 Blogbildern. Das ist eine gestalterische Entscheidung, keine reine Aufräumarbeit.
+
+**Zwei konkrete Mängel, die bei dieser Gelegenheit zu beheben sind:**
+
+- [ ] Im Baustein `image_text` schliessen sich Einzelbild und Karussell technisch nicht aus. `resources/views/partials/content/project/elements/image_text.antlers.html` prüft `{{ if image }}` und `{{ if image_carousel }}` unabhängig voneinander. Sind beide Felder gefüllt, erscheint das Einzelbild über dem Karussell. Betroffen sind heute sechs Sets in drei Projekten: «Hochwasserrückhalteraum Hegmatten», «Umfahrung Uznach» und «Grosshofbrücken in Kriens». In vier dieser Fälle enthält das Karussell zudem je einen aktiven Rahmen ohne Bild, was wie beim Teamportrait eine leere Bildadresse erzeugt. Vorbild für die Lösung ist `resources/views/team/show.antlers.html`: Dort sorgt `{{ if image_carousel }} … {{ else }} … {{ /if }}` für eine saubere Entweder-oder-Ausgabe. Zusätzlich im Karussell-Partial leere Rahmen überspringen.
+- [ ] Im selben Baustein steuert der Vergleich `image:width > image:height` die Spaltenaufteilung. Wird nur das Karussell gefüllt – so ist es in 66 der 254 `image_text`-Sets tatsächlich gepflegt –, bleibt der Vergleich leer und der Block landet immer im Hochformat-Zweig (`md:col-span-7 xl:col-span-6`), auch bei querformatigen Karussellbildern. Die Formatentscheidung stattdessen aus dem ersten belegten Karussellbild ableiten.
+
+**Empfehlung für eine Vereinheitlichung, falls sie gewünscht wird:**
+
+- [ ] Zuerst die Felder im Control Panel so benennen, dass der Unterschied ohne Erklärung erkennbar ist, zum Beispiel «Bildwechsel-Animation» statt «Image Carousel» und «Slideshow (blätterbar)» statt «Slideshow». Das löst den grössten Teil der Verwirrung ohne Eingriff in die Ausgabe.
+- [ ] Erst danach entscheiden, ob «Bild» und «Slideshow» in Projekten und Blogbeiträgen zu einem Baustein mit einem bis mehreren Bildern verschmelzen. Voraussetzung ist, dass die Slideshow-Ausgabe zuvor an das Einzelbild angeglichen wird: volle Breite, `loading="lazy"`, Scroll-Animation und ausgeblendete Navigation bei nur einem Bild. Ohne diese Angleichung entsteht keine Vereinfachung, sondern eine sichtbare Layoutänderung auf allen bestehenden Seiten.
+- [ ] Das Image Carousel bleibt davon unberührt und wird nicht mit der Slideshow zusammengelegt. Es bleibt der Baustein für die Bildwechsel-Animation auf Teamprofilen und in `image_text`.
+- [ ] Umfang und Priorität mit Christoph abstimmen. Bisher ist dies eine Frage, kein freigegebener Auftrag.
+
+### Frontend-Abhängigkeiten: ungenutzte npm-Pakete
+
+Befund vom 17. September 2026, zur Beurteilung durch die Entwicklung. Bewusst nicht umgesetzt: Änderungen an `package.json` und am Build liegen in der Zuständigkeit der Entwicklung.
+
+Aus den gebauten Einstiegspunkten `resources/css/app.css`, `resources/js/app.js`, `resources/js/map.js` und `resources/js/gdpr.js` werden aus `node_modules` nur `alpinejs` und `swiper` geladen. Die folgenden Pakete sind in `package.json` deklariert, aber nirgends importiert oder registriert:
+
+- `@tailwindcss/forms` – installiert, in `tailwind.config.js` jedoch nicht unter `plugins` eingetragen; dort steht nur `@tailwindcss/typography`. Das Paket ist damit wirkungslos.
+- `axios`, `vue-axios` und `nprogress` – kein Vorkommen in `resources/`.
+- `fullpage.js` – kein Vorkommen in `resources/`. Scheinbare Treffer betreffen durchwegs das CMS-Feld `is_fullpage`, nicht die Bibliothek. Das Paket ist GPL-3.0 lizenziert; da es nicht eingebunden wird, gelangt nichts davon in `public/build`.
+
+Gesondert zu beurteilen ist `@vitejs/plugin-vue`. Es gehört zum stillgelegten Control-Panel-Gerüst: `resources/js/cp.js`, `resources/css/cp.css`, `resources/js/components/fieldtypes/ExampleFieldtype.vue` sowie die auskommentierten Zeilen in `vite.config.js`. Alles davon ist konsistent auskommentiert, auch der Vue-Import innerhalb von `cp.js`. Das Plugin wird wieder benötigt, sobald ein eigener Fieldtype für das Control Panel entsteht. Nur das Paket zu entfernen und das Gerüst stehen zu lassen wäre die ungünstigste Variante: Wer später die beiden Zeilen in `vite.config.js` aktiviert, erhält einen schwer deutbaren Build-Fehler.
+
+- [ ] Entscheiden, ob die fünf ungenutzten Pakete entfernt werden. Anschliessend `package-lock.json` erneuern; alle Build-Umgebungen müssen einmal `npm install` ausführen.
+- [ ] Zur Absicherung nach dem Entfernen `npm run build` ausführen und `public/build` mit dem Stand in Git vergleichen. Bleibt das Ergebnis unverändert, hing nichts an diesen Paketen.
+- [ ] Über `@vitejs/plugin-vue` gemeinsam mit dem Control-Panel-Gerüst entscheiden: entweder beides behalten oder beides entfernen.
+
 ## Ergänzungen aus «Website-Feedback Hannes – Umsetzung» vom 7. September 2026
 
 Quelle: [Website-Feedback Hannes – Umsetzung](https://app.notion.com/p/3cf0be17ef8381149247f0699c0e33f0).
 
 Die redaktionellen Änderungen sind lokal in Deutsch und Englisch eingepflegt. Die folgenden Aufgaben bleiben technisch offen. Bestehende Änderungen und offene Punkte weiter oben gelten weiterhin. Die Logo-Erweiterung wurde oben ergänzt, statt sie nochmals als eigene Aufgabe anzulegen.
 
-Hinweis zur Content-Übergabe: Das Paket `ftp-upload-content-hannes-2026-09-07` enthält auch die korrigierte Metadatendatei von Christoph Deiters’ Übersichtsfoto.
+Hinweis zur Content-Übergabe: Zur Übergabe gehört auch die korrigierte Metadatendatei von Christoph Deiters’ Übersichtsfoto.
 
 Überholt: Die ursprünglich hier vermerkte Anweisung, nach dem Upload den Asset-Metadaten-Cache zu erneuern (`php artisan statamic:assets:clear-cache`), ist für den Alternativtext nicht mehr nötig. Die Alternativtexte der Teambilder stammen inzwischen aus dem Eintragstitel, also dem Namen der Person, und nicht mehr aus den Asset-Metadaten. Betroffen sind `resources/views/partials/content/team/media/portrait.antlers.html` und das Bildkarussell auf den Teamprofilen. Die gepflegten Alt-Texte in den Asset-Metadaten erscheinen damit nicht mehr auf den Teamseiten.
 
@@ -276,7 +321,7 @@ Hinweis zur Content-Übergabe: Das Paket `ftp-upload-content-hannes-2026-09-07` 
   - Englisch: «Our network brings together different perspectives on space, design and communication. Depending on the task, we bring in additional expertise to help develop your project beyond visualization.»
   - Den ursprünglichen Entwurf mit «Lichtplanung, Bewegtbild und Szenografie» nicht unverändert übernehmen: Er beschreibt nicht alle verlinkten Organisationen. Die konkrete Zusammenarbeit und das Versprechen eines einzigen Ansprechpartners müssen intern bestätigt werden.
   - Quellenprüfung: [Christian Ammann – Fotografie und Film](https://photographer.ch/about), [Lightsphere – Lichtplanung](https://lightsphere.ch/en/portfolio/services/), [Team Ensemble – gesellschaftliche Zusammenarbeit](https://team-ensemble.ch/), [SHIFT – Stadt- und Siedlungsentwicklung](https://shift.immo/). SHIFT wurde anhand des Logos und der Anschrift eindeutig zugeordnet.
-  - Die fehlerhaften Netzwerk-Links sind im deutschen und englischen Content sowie im Upload-Paket `ftp-upload-content-hannes-2026-09-07/` korrigiert: Christian Ammann auf `https://photographer.ch/`, SHIFT auf `https://shift.immo/`. Noch nicht veröffentlicht; die Live-Seite verlinkt am 7. September 2026 weiterhin `https://www.christian-amman.ch` und `https://shift.ch`. Originale Bilddateinamen bleiben erhalten.
+  - Die fehlerhaften Netzwerk-Links sind im deutschen und englischen Content korrigiert: Christian Ammann auf `https://photographer.ch/`, SHIFT auf `https://shift.immo/`. Noch nicht veröffentlicht; die Live-Seite verlinkt am 7. September 2026 weiterhin `https://www.christian-amman.ch` und `https://shift.ch`. Originale Bilddateinamen bleiben erhalten.
 
 ### Entscheidungen und spätere technische Aufgaben
 

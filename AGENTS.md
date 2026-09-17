@@ -1,6 +1,131 @@
-# Project Notes
+# AGENTS.md
+
+This file provides guidance to coding agents (Claude Code, Codex, Cursor and
+others) when working with code in this repository. `CLAUDE.md` points here; keep
+this file as the single source of truth.
+
+## Project Overview
+
+This is a **Statamic CMS** website built on **Laravel 11** for Nightnurse Images, a Swiss architectural visualization company. The site is **multilingual** (German as default, English as secondary) and features a portfolio, blog, team pages, and job listings.
+
+## Key Technologies & Architecture
+
+- **Backend**: PHP ^8.2, Laravel 11 with Statamic 5 (flat-file CMS)
+- **Frontend**: Tailwind CSS, Alpine.js, Antlers templating engine
+- **Build**: Vite for asset compilation
+- **Content**: Flat-file based content management in `content/` directory
+- **Multilingual**: German (default) and English locales configured
+
+## Development Commands
+
+### Build & Development
+```bash
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Laravel artisan commands
+php artisan [command]
+```
+
+### Testing
+No project-specific tests exist yet — `tests/` holds only the default Laravel
+examples, and `package.json` defines no test script. Use Laravel's built-in testing:
+```bash
+php artisan test
+```
+
+## Environments
+
+Changes flow local → staging → production:
+
+- **Local**: `nightnurse.test`
+- **Staging**: `staging.nightnurse.ch`
+- **Production**: `nightnurse.ch`
+
+## Project Structure
+
+### Content Management
+- `content/collections/` - Blog posts, projects, team members, jobs
+- `content/globals/` - Site-wide settings and contact information
+- `content/navigation/` - Menu structures
+- `content/taxonomies/` - Categories and tags
+- `content/trees/` - Content organization per locale (de/en)
+
+Note: `content/`, `public/assets/`, `public/img/` and `users/` are **git-ignored**
+— they live on the server, not in this repository.
+
+### Frontend Templates
+- `resources/views/` - Antlers templates (.antlers.html)
+- `resources/views/layout/` - Base layout templates
+- `resources/views/partials/` - Reusable partials, organised as `content/` (content-model
+  specific), `fieldsets/` (page-builder blocks), `layout/`, `menu/` and `ui/` (generic reusable)
+- `resources/css/` - Tailwind CSS styling
+- `resources/js/` - Vanilla ES modules (sliders, observers, video, carousel); Alpine.js is
+  started in `app.js` and used declaratively via `x-data` in the templates
+
+### Configuration
+- `config/statamic/` - Statamic-specific configurations
+- `config/statamic/sites.php` - Multilingual site setup
+- `tailwind.config.js` - Custom Tailwind configuration with extended spacing, typography, and colors
+
+## Key Features & Components
+
+### Multilingual Setup
+- German (default): `/` 
+- English: `/en/`
+- Content structure mirrors in `content/collections/[collection]/de/` and `content/collections/[collection]/en/`
+
+### Content Types
+- **Posts**: Blog entries with categories and tags
+- **Projects**: Portfolio items with project categories
+- **Team**: Team member profiles with categories
+- **Jobs**: Job listings
+- **Pages**: Static pages (about, contact, etc.)
+
+### Frontend Architecture
+- **Antlers Templates**: Statamic's templating engine
+- **Alpine.js**: For interactive components
+- **Tailwind CSS**: Utility-first CSS framework with extensive custom spacing scale
+- **Swiper**: For carousels and sliders
+- **Custom Components**: Modular partial system in `resources/views/partials/`
+
+### Asset Management
+- **Vite**: Modern build tool for CSS/JS compilation
+- **Custom Fonts**: Meta Pro font family
+- **Images**: Stored in `public/assets/` (git-ignored) and resized on request through Statamic's Glide presets
+
+## Development Workflow
+
+1. **Content changes**: Edit markdown files in `content/` directory
+2. **Template changes**: Modify `.antlers.html` files in `resources/views/`
+3. **Styling**: Update Tailwind classes or add custom CSS in `resources/css/`
+4. **JavaScript**: Modify the modules in `resources/js/`
+5. **Build**: Run `npm run dev` for development or `npm run build` for production
+
+## Important Notes
+
+- Content is stored as flat files, not in a database
+- The site uses extensive custom Tailwind spacing (numbered 1-300)
+- Custom font family configuration for Meta Pro typography
+- Video and image handling modules are integrated
+- Forms use Statamic's built-in form handling with reCAPTCHA integration
+
+## Project Notes
 
 Vor jeder Erstellung oder Überarbeitung einer Project Note den vollständigen
 Redaktionsstandard in `docs/project-content-standard-de.md` lesen und befolgen.
 Er ist verbindlich für Recherche, Bilder, Veröffentlichbarkeit, Inhalte,
 Metadaten, Tags und Lokalisierungen.
+
+## Documentation
+
+- `docs/developer-todos.md` — the living briefing: implemented changes, known bugs and open items
+- `docs/project-content-standard-de.md` — binding editorial standard for Project Notes
+- `docs/seo-gsc-canonical-audit-2026-09-07.md` — open Search Console finding
+- `docs/cleanup/`, `docs/frontend-refactor.md`, `docs/scroll-animation-optimization.md`,
+  `docs/accessibility-aria.md`, `docs/htaccess-caching-review.md`, `docs/seo-investigation.md` —
+  records of completed work, kept for history
+- `docs/website-textarchiv-2026-08-31/` — archived website texts from before the relaunch

@@ -1,5 +1,14 @@
 # Concern #1 — CSS → Tailwind
 
+> **Status (2026-09-17): historical record — this work has been carried out.** Kept for
+> context, not as a to-do list; see the execution-status blocks below for what was done.
+> Partial paths in this document were rewritten on 2026-09-17 to match the tree as it
+> exists today (`partials/` is now `content/` · `fieldsets/` · `layout/` · `menu/` · `ui/`); the `partials/components/`
+> folder this audit was written against no longer exists. Deliberately left untouched:
+> files under `resources/css/components/`, which are still there, and the deleted
+> partials listed in [`05-additional-findings.md`](./05-additional-findings.md), which
+> are gone from the tree altogether.
+
 **Date:** 2026-07-06
 **Scope:** every file under `resources/css/` (excl. `fonts/*.woff*`, `.DS_Store`).
 

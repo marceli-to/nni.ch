@@ -1,5 +1,12 @@
 # Additional findings (beyond the original four)
 
+> **Status (2026-09-17): historical record — this work has been carried out.** Kept for
+> context, not as a to-do list. Partial paths were rewritten on 2026-09-17 to match the
+> tree as it exists today (`partials/` is now `content/` · `fieldsets/` · `layout/` · `menu/` · `ui/`); the
+> `partials/components/` folder this audit was written against no longer exists. The ten
+> paths in the dead-partial list below are left verbatim on purpose — those files were
+> deleted, so they have no present-day equivalent.
+
 **Date:** 2026-07-06
 These surfaced during the audit and are each independently actionable. All verified by grep.
 
@@ -36,7 +43,7 @@ resources/views/partials/fieldsets/teaser/expertise/nav.antlers.html
 so it's the "correct" version of the raw-tag `intro/content:3`; consider using it rather than
 deleting).
 
-> ⚠️ **NOT dead — do not delete:** `components/project/media/preview.antlers.html`. An earlier
+> ⚠️ **NOT dead — do not delete:** `content/project/media/preview.antlers.html`. An earlier
 > pass flagged it, but it's used **6×** in `project/index.antlers.html` via the redundant
 > `partial:partials/…` path (finding #3 below), which is why a naive grep missed it.
 
@@ -53,7 +60,7 @@ rendered result is currently correct — it's a trap for the next editor.
 ## 3. Redundant `partial:partials/…` path prefix
 
 `resources/views/project/index.antlers.html` — 6 includes (lines 25, 33, 41, 63, 71, 79) use
-`{{ partial:partials/components/project/media/preview … }}` where the rest of the codebase
+`{{ partial:partials/content/project/media/preview … }}` where the rest of the codebase
 uses `{{ partial:components/… }}`. Statamic tolerates both, but:
 - it hid a "dead partial" false-positive (finding #1);
 - it will break a naive find-and-replace during the [03](./03-partials-structure.md) reorg.
@@ -62,7 +69,7 @@ uses `{{ partial:components/… }}`. Statamic tolerates both, but:
 
 ## 4. h1 `is_project` branch silently drops `{{ class }}`
 
-`resources/views/partials/components/headings/h1.antlers.html:2` — the `is_project` `<h1>`
+`resources/views/partials/ui/heading/h1.antlers.html:2` — the `is_project` `<h1>`
 has no `{{ class }}` interpolation, so a class override in project mode is discarded. Its
 one current caller (`project/elements/title:1`) happens not to pass a class, so it's latent,
 not yet biting. Fix while taming the headings ([04](./04-headings.md)).
@@ -79,6 +86,6 @@ eyeball while in the neighborhood; may just be an Antlers-tolerated line wrap.
 
 - **`.DS_Store` files** (13 under `resources/`) are **not tracked in git** — no repo impact.
   Cosmetic on disk only; a `find . -name .DS_Store -delete` if it bothers you.
-- **Inline SVGs:** none outside `components/icons/`. Good.
+- **Inline SVGs:** none outside `ui/icon/`. Good.
 - **Alpine `x-data`:** 6 files, all distinct/legitimate. No copy-paste.
 - **JS / build:** already refactored — see [`../frontend-refactor.md`](../frontend-refactor.md).
