@@ -1,20 +1,37 @@
 {{ partial:layout/container }}
+  {{#
+    Rahmen ohne Bild zählen nicht als gefülltes Karussell. Erst dadurch greift
+    die Entweder-oder-Ausgabe unten richtig, wenn ein Set sowohl ein Einzelbild
+    als auch ein (leeres) Karussell enthält — vorher erschien das Einzelbild
+    über dem Karussell.
+    `is_landscape` beschreibt das Format des tatsächlich ausgegebenen Bildes:
+    beim Karussell das des ersten belegten Rahmens, sonst das des Einzelbildes.
+    Vorher blieb der Vergleich bei reinen Karussell-Sets leer, wodurch sie
+    unabhängig vom Bildformat immer im Hochformat-Zweig landeten.
+  #}}
+  {{ carousel_frames = image_carousel | where('image', '!=', '') }}
+  {{ frame_count = carousel_frames | length }}
+  {{ if frame_count > 0 }}
+    {{ is_landscape = carousel_frames:0:image:width > carousel_frames:0:image:height }}
+  {{ else }}
+    {{ is_landscape = image:width > image:height }}
+  {{ /if }}
+
   <div class="md:grid md:grid-cols-12 md:gap-x-20 lg:gap-x-30 xl:gap-x-50">
 
     {{ if sequence == 'image_text' }}
       <div 
-        class="{{ image:width > image:height ? 'md:col-span-full lg:col-span-8 md:mb-30 lg:mb-0' : 'md:col-span-7 xl:col-span-6' }} md:order-1 mb-30 md:mb-0"
+        class="{{ is_landscape ? 'md:col-span-full lg:col-span-8 md:mb-30 lg:mb-0' : 'md:col-span-7 xl:col-span-6' }} md:order-1 mb-30 md:mb-0"
         data-animation="fadeIn"
         data-animation-duration="slow">
-        {{ if image }}
-          {{ partial:ui/media/image/image class="w-full h-auto" }}
-        {{ /if }}
-        {{ if image_carousel }}
+        {{ if frame_count > 0 }}
           {{ partial:ui/media/image/image_carousel class="w-full h-auto" }}
+        {{ elseif image }}
+          {{ partial:ui/media/image/image class="w-full h-auto" }}
         {{ /if }}
       </div>
       <div 
-        class="md:flex md:flex-col md:justify-center md:order-2 xl:text-sm 3xl:text-lg {{ image:width > image:height ? 'md:col-span-full lg:col-span-4' : 'md:col-span-5 xl:col-span-6' }}"
+        class="md:flex md:flex-col md:justify-center md:order-2 xl:text-sm 3xl:text-lg {{ is_landscape ? 'md:col-span-full lg:col-span-4' : 'md:col-span-5 xl:col-span-6' }}"
         data-animation="fadeIn_slideUp">
         {{ partial:ui/heading/h2 size="none" class="text-md lg:text-xl xl:text-3xl 3xl:text-4xl leading-[1.2] text-pretty font-meta-medium mb-15 xl:mb-30" }}
           {{ title }}
@@ -30,18 +47,17 @@
 
     {{ if sequence == 'text_image' }}
       <div 
-        class="{{ image:width > image:height ? 'md:col-span-full lg:col-span-8 md:mb-30 lg:mb-0' : 'md:col-span-7 xl:col-span-6' }} md:order-2 mb-30 md:mb-0"
+        class="{{ is_landscape ? 'md:col-span-full lg:col-span-8 md:mb-30 lg:mb-0' : 'md:col-span-7 xl:col-span-6' }} md:order-2 mb-30 md:mb-0"
         data-animation="fadeIn"
         data-animation-duration="slow">
-        {{ if image }}
-          {{ partial:ui/media/image/image class="w-full h-auto" }}
-        {{ /if }}
-        {{ if image_carousel }}
+        {{ if frame_count > 0 }}
           {{ partial:ui/media/image/image_carousel class="w-full h-auto" }}
+        {{ elseif image }}
+          {{ partial:ui/media/image/image class="w-full h-auto" }}
         {{ /if }}
       </div>
       <div 
-        class="md:flex md:flex-col md:justify-center md:order-1 xl:text-sm 3xl:text-lg {{ image:width > image:height ? 'md:col-span-full lg:col-span-4' : 'md:col-span-5 xl:col-span-6' }}"
+        class="md:flex md:flex-col md:justify-center md:order-1 xl:text-sm 3xl:text-lg {{ is_landscape ? 'md:col-span-full lg:col-span-4' : 'md:col-span-5 xl:col-span-6' }}"
         data-animation="fadeIn_slideUp">
         {{ partial:ui/heading/h2 size="none" class="text-md lg:text-xl xl:text-3xl 3xl:text-4xl leading-[1.2] text-pretty font-meta-medium mb-15 xl:mb-30" }}
           {{ title }}
