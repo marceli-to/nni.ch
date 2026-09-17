@@ -1,3 +1,7 @@
+{{# Ohne Portrait nichts ausgeben: ein leeres `portrait` erzeugt sonst
+    `src="/"`, wodurch der Browser die Seite selbst als Bild lädt und ein
+    kaputtes Bild anzeigt. #}}
+{{ if portrait }}
 <figure 
   class="bg-silver relative group"
   data-touch>
@@ -33,3 +37,4 @@
     </figcaption>
   {{ /if }}
 </figure>
+{{ /if }}

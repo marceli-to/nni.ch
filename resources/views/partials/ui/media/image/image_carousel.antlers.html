@@ -1,7 +1,17 @@
+{{#
+  Rahmen ohne Bild überspringen: ein leeres `image` erzeugt sonst `src="/"`,
+  worauf der Browser die Seite selbst als Bild lädt und ein kaputtes Bild zeigt.
+  Gefiltert wird vor der Schleife, damit `first` den ersten tatsächlich
+  ausgegebenen Rahmen meint — carousel.js startet die Animation immer bei Bild 0.
+  Bleibt kein Rahmen übrig, entfällt die ganze Figur statt als leere Fläche zu
+  erscheinen.
+#}}
+{{ frames = image_carousel | where('image', '!=', '') }}
+{{ if frames | length }}
 <figure 
   class="bg-silver relative group"
   data-carousel="{{ '' | uuid }}">
-  {{ image_carousel }}
+  {{ frames }}
     <picture>
       <source srcset="{{ glide:image preset='lg-webp' }}" type="image/webp">
       <img 
@@ -14,5 +24,6 @@
         data-carousel-duration="{{ intervall_duration ?? 150 }}"
         class="w-full h-auto {{ class }} {{ !first ? 'hidden' : '' }}">
     </picture>
-  {{ /image_carousel }}
+  {{ /frames }}
 </figure>
+{{ /if }}
