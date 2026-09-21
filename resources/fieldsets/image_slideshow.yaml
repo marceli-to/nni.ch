@@ -1,4 +1,4 @@
-title: 'Image Slideshow'
+title: 'Slideshow (browsable)'
 fields:
   -
     handle: slideshow_images
@@ -11,6 +11,7 @@ fields:
       show_set_alt: true
       type: assets
       display: Images
+      instructions: 'Browsable gallery with previous and next arrows.'
       icon: assets
       localizable: false
       listable: hidden

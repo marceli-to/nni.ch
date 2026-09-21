@@ -1,342 +1,299 @@
-# Entwickler-Briefing: technische Änderungen und offene Punkte
+# Entwickler-Briefing: offene Punkte und Entscheidungen
 
 Stand: 17. September 2026
 
-## Bereits umgesetzt: Änderungen ausserhalb der redaktionellen Inhalte
-
-Die folgenden Anpassungen liegen **nicht** unter `content` oder `public/assets`. Sie sind für die korrekte Darstellung und Funktion der aktualisierten Inhalte erforderlich. Sie sind – mit Ausnahme der ausdrücklich als lokal gekennzeichneten Datei – im Repository enthalten und werden über Git ausgeliefert; die früheren manuellen FTP-Pakete entfallen.
-
-### Responsive Videos
-
-- `resources/views/partials/ui/media/video/fullscreen-wrapper.antlers.html`
-  - Hoch- und Querformatvideos werden jetzt als getrennte `<source>`-Elemente ausgegeben.
-  - Das Hochformat wird nur auf kleinen Geräten im Portrait-Modus verwendet; ansonsten greift das Querformat.
-  - Dasselbe Verhalten wurde für direkt geladene und lazy-geladene Videos umgesetzt.
-  - Die bisherige Übergabe über `data-video-source` wurde entfernt. Die bestehende Lazy-Loading-Logik kann die Quelle direkt aus `data-src` lesen.
-
-### Projektseiten und Typografie
-
-- `resources/views/partials/content/project/elements/image_text.antlers.html`
-  - Überschriften und Fliesstext der Bild-/Text-Elemente erhielten responsive Schriftgrössen.
-  - Ziel ist eine besser lesbare Darstellung auf grossen und sehr grossen Bildschirmen.
-- `resources/views/project/show.antlers.html`
-  - Vollseitige Bild-/Text-Abschnitte werden erst ab dem `3xl`-Breakpoint vertikal zentriert.
-  - Damit werden Inhalte bei niedrigeren Viewport-Höhen nicht mehr ungünstig abgeschnitten.
-
-### Portfolio, Team und Accordion
-
-- `resources/views/partials/fieldsets/teaser/portfolio/item.antlers.html`
-  - Falsche MIME-Types `img/webp` und `img/jpeg` wurden zu `image/webp` und `image/jpeg` korrigiert.
-- `resources/views/team/index.antlers.html`
-  - Die Teamübersicht fordert die Sortierung `order` neu ausdrücklich an. Damit folgt die Ausgabe der von Hand gepflegten Reihenfolge aus `content/trees/collections/*/team.yaml` und hängt nicht mehr vom Standardverhalten des Tags ab. Diese manuelle Reihenfolge ist gewollt; alphabetisch nach Vornamen soll ausdrücklich nicht sortiert werden.
-- `resources/views/partials/ui/accordion/item.antlers.html`
-  - Die Element-IDs des Accordions stammen neu aus der ID des jeweiligen FAQ-Items statt aus dem Schleifenindex. Der Index beginnt in jedem FAQ-Block wieder bei 1, wodurch Seiten mit mehreren Blöcken doppelte IDs und falsche `aria-controls`-Verweise erzeugten.
-  - Links innerhalb aufgeklappter Accordion-Texte werden sichtbar hervorgehoben: mittlere Schriftstärke, Unterstreichung und Hover-Zustand.
-
-### Ansprache, Kontaktformular und Cookie-Hinweis
-
-Die fest im Template hinterlegten deutschen Texte wurden von der formellen Sie-Ansprache auf die Du-Ansprache umgestellt:
-
-- `resources/views/contact.antlers.html`
-- `resources/views/partials/layout/footer.antlers.html`
-- `resources/views/partials/fieldsets/cta/project.antlers.html`
-- `resources/views/partials/ui/form/contact.antlers.html`
-- `resources/views/partials/ui/form/elements/errors.antlers.html`
-- `resources/views/partials/ui/gdpr.antlers.html`
-- `lang/en.json`
-
-Wichtig: Die Schlüssel in `lang/en.json` mussten zusammen mit den deutschen Ausgangstexten geändert werden, damit die englischen Übersetzungen weiterhin gefunden werden.
-
-### Social-Media- und Open-Graph-Metadaten
-
-- `resources/views/partials/layout/head.antlers.html`
-  - `og:description` verwendet konsistent das Attribut `property`.
-  - `twitter:image` verwendet das Attribut `name` und gibt bei einem Statamic-Asset dessen URL (`open_graph_image:url`) aus.
-  - Dadurch wird nicht mehr das Asset-Objekt beziehungsweise dessen interner Wert als Bildadresse ausgegeben.
-
-### Projekt-Blueprint im Control Panel
-
-- `resources/blueprints/collections/projects/project.yaml`
-  - Hilfetexte für `teaser`, `summary` und `services` ergänzt.
-  - Sie beschreiben Länge und Zweck der Felder sowie die gewünschte konsistente Benennung der Leistungen.
-  - Die redaktionelle Referenz dazu liegt in `docs/project-content-standard-de.md`.
-
-### Kompilierter Frontend-Build
-
-- `public/build/manifest.json`
-- `public/build/assets/*`
-
-Der Frontend-Build wurde nach den Template-Anpassungen neu erstellt. Die aktuelle Manifest-Datei verweist insbesondere auf:
-
-- `public/build/assets/app-28a9c2de.css`
-- `public/build/assets/app-aef0eed8.js`
-
-`manifest.json` und der komplette mitgelieferte Ordner `public/build/assets` müssen gemeinsam deployt werden. Alte Dateien mit Hash-Namen können auf dem Server bestehen bleiben; sie werden vom aktuellen Manifest nicht mehr referenziert.
-
-### Nur lokal, nicht deployen
-
-- `public/.user.ini`
-  - Für die lokale Statamic-/PHP-Umgebung wurden Upload-, Speicher- und Zeitlimits erhöht, damit grosse Video-Uploads im Control Panel getestet werden konnten.
-  - Diese Datei ist bewusst **nicht** im FTP-Paket enthalten, weil die passenden Werte von der PHP-/Webserver-Konfiguration des Zielservers abhängen.
-  - Falls grosse Uploads auf Produktion benötigt werden, sollen die Limits kontrolliert in der dortigen Hosting-Konfiguration gesetzt werden.
-
-### Keine fachlichen Änderungen
-
-Unter Windows erscheinen bei `artisan`, `please` sowie mehreren `.gitignore`-Dateien Änderungen am Unix-Dateimodus (`100755` zu `100644`). Der Dateiinhalt wurde nicht verändert. Diese Modusänderungen gehören nicht zum Deployment und sind nicht im FTP-Paket enthalten.
-
-## Bekannte Bugs
-
-### Scroll-Animationen bleiben unsichtbar, wenn `is_fullpage` auf einer Seite `false` ist
-
-**Lokal behoben am 7. September 2026:** `layout/section` setzt `data-section-observe` jetzt unabhängig von `is_fullpage`. Die Animationsseite verwendet wieder `is_fullpage: false`; der Seiteninhalt wird sichtbar, ohne bildschirmhohe Abschnitte zu erzwingen. Im Browser auf der Animationsseite (Desktop/Mobil) und auf der bestehenden Kompetenzseite geprüft. Noch nicht auf Produktion übertragen. Die folgende Fehlerbeschreibung dokumentiert den vorherigen Zustand.
-
-- [ ] **Fix ist noch unvollständig:** Die Bedingung steht weiterhin an elf Stellen in `resources/views/project/show.antlers.html` sowie in `resources/views/project/_related.antlers.html`. Projektdetailseiten mit `is_fullpage: false` zeigen den Fehler deshalb weiterhin. Vor einer Änderung dort im Browser prüfen, da jede zusätzlich beobachtete Section auch Videos startet und die Logo-Byline ausblendet. Der Intro-Baustein (`partials/fieldsets/intro/wrapper.antlers.html`) ist zu Recht an `is_fullpage` gebunden, weil dort zusätzlich das Scroll-Snapping hängt.
-
-Betroffen z. B.: `/animation-und-film` (Elemente „Title - Text" und „Teaser Project" / Portfolio-Masonry).
-
-**Symptom:** Einzelne Seitenabschnitte erscheinen komplett leer, obwohl ihr Inhalt (Text, Bilder) korrekt im CMS gepflegt ist und im HTML ausgegeben wird. Betroffen sind bisher konkret die Elemente `title_text` (Titel + Fliesstext) und `teaser_project` (Portfolio-Masonry-Kachel).
-
-**Ursache:** Diese Elemente animieren ihre Kinder über `[data-animation="..."]`-Attribute ein (siehe `resources/css/animations/*.css`); der Ausgangszustand ist `opacity: 0`, sichtbar wird der Inhalt erst, wenn ein Vorfahre die Klasse `.is-active` erhält. Diese Klasse setzt ausschliesslich der IntersectionObserver in `resources/js/modules/observer.js`, und zwar nur für Sections mit dem Attribut `data-section-observe`. Dieses Attribut wird in `resources/views/partials/layout/section.antlers.html` aber nur gesetzt, wenn das seitenweite Feld `is_fullpage` auf `true` steht:
-
-```
-{{ is_fullpage ? 'data-section-observe' : '' }}
-```
-
-Ist `is_fullpage: false` (z. B. weil eine Seite bewusst kompakt/ohne Fullpage-Intro gestaltet ist), wird die Section nie beobachtet, `.is-active` nie gesetzt – der Inhalt bleibt dauerhaft unsichtbar, nicht nur verzögert. Die CTA-Sektion (`cta_expertise`) ist zufällig **nicht** betroffen, weil `resources/views/partials/fieldsets/cta/wrapper.antlers.html` `data-section-observe` unabhängig von `is_fullpage` immer setzt, sobald `fullpage="true"` übergeben wird – das ist das Vorbild für die Lösung.
-
-**Nicht als Fix geeignet:** Auf der betroffenen Seite einfach `is_fullpage: true` setzen. Das behebt zwar die Sichtbarkeit, weil dann *jede* Section auf der Seite beobachtet wird – aber jedes Element-Template übergibt an `layout/section` auch einen `fullpage`-Klassenparameter mit `min-h-screen ...`, wodurch **jede** Section der Seite auf mindestens Bildschirmhöhe aufgeblasen wird. Im Test wurde die Gesamthöhe von `/animation-und-film` dadurch von ca. 6858px auf ca. 9599px vergrössert (+40 %), mit grossen leeren Weissräumen um Titel, Services-Liste und Portfolio-Kachel. Das widerspricht dem für diese Seite bewusst kompakt/nüchtern angelegten Layout und ist keine allgemeingültige Lösung.
-
-**Empfohlener Fix:** `data-section-observe` in `resources/views/partials/layout/section.antlers.html` unabhängig von `is_fullpage` immer setzen (analog zum CTA-Wrapper). Für bestehende Fullpage-Seiten ändert sich dadurch nichts; nicht-Fullpage-Seiten profitieren zusätzlich von funktionierenden Scroll-Animationen, ohne dass sich ihr Layout ändert.
-
-## Offene Punkte
-
-### Portfolio-Übersicht: Feld `teaser` ist fast überall leer
-
-- [ ] Die neue Portfolio-Übersicht zeigt unter jedem Projekttitel eine kurze Zeile aus dem Feld `teaser`. Gepflegt ist dieses Feld zurzeit in genau einem von 43 deutschen Einträgen (`content/collections/projects/de/riva-arbon.md`); im Englischen sieht es entsprechend aus.
-  - Solange das so ist, greift in `resources/views/partials/content/project/elements/teaser.antlers.html` ein Notbehelf: Fehlt `teaser`, wird der Anfang von `summary` auf 90 Zeichen gekürzt und mit Auslassungszeichen ausgegeben. Das ist lesbar, aber es ist der Projekttext und keine Teaserzeile — die Sätze brechen mitten im Gedanken ab.
-  - Redaktionelle Aufgabe: `teaser` für alle Projekte in `de` und `en` füllen. Die Vorgabe steht im Blueprint (`resources/blueprints/collections/projects/project.yaml`): etwa 45–90 Zeichen, ohne Nightnurse-Leistung, ohne direkte Ansprache, ohne Handlungsaufforderung. Der verbindliche Massstab dafür ist `docs/project-content-standard-de.md`.
-  - Sobald das Feld überall gepflegt ist, kann der Notbehelf im Partial ersatzlos entfallen.
-
-### SEO und Zugänglichkeit: Seiten ganz ohne H1
-
-- [ ] Mehreren Seiten fehlt eine H1 vollständig: `/team`, `/portfolio` und `/kontakt` sowie `/datenschutz`, `/impressum` und `/vielen-dank`.
-  - Ursache: Bei Seiten stammt die einzige H1 aus dem Intro-Baustein (`resources/views/partials/fieldsets/intro/content.antlers.html`). Die genannten Seiten laufen über eigene Templates wie `resources/views/team/index.antlers.html`, `resources/views/project/index.antlers.html` und `resources/views/contact.antlers.html`. Diese enthalten überhaupt keine Überschrift, weder H1 noch H2.
-  - Ein redaktioneller Schalter am `title_text`-Baustein wurde geprüft und verworfen: Er wirkt nur auf Seiten mit Baukasten-Inhalten und damit gerade nicht auf den betroffenen Seiten. Zudem rendern diese Templates keine `page_elements`.
-  - Vor der Umsetzung gestalterisch entscheiden, ob die Überschrift sichtbar sein soll oder nur für Suchmaschinen und Screenreader zugänglich. Danach je Template den Eintragstitel als H1 ausgeben und dafür das vorhandene Partial `resources/views/partials/ui/heading/h1.antlers.html` verwenden, statt die Tags von Hand zu schreiben.
-
-### Video: Auswahl zwischen Hoch- und Querformat
-
-**In Chrome geprüft und in Ordnung.** Die Quellenauswahl in `resources/views/partials/ui/media/video/fullscreen-wrapper.antlers.html` erfolgt über `media`-Attribute an den `<source>`-Elementen. Chrome wertet sie aus: Ein breites Fenster lädt das Querformat, ein schmales das Hochformat.
-
-Die Auswahl findet einmalig beim Laden der Seite statt und wird beim Verändern der Fenstergrösse nicht wiederholt. Das entspricht dem Verhalten von Medienelementen und ist kein Fehler. Praktisch relevant ist davon nur das Drehen eines Telefons nach dem Laden: Die bereits gewählte Datei bleibt und wird skaliert. Ein Nachladen bei Orientierungswechsel würde das Video neu starten und wäre störender als der jetzige Zustand.
-
-Zur Einordnung: Vor dieser Änderung wurde das Hochformat auf keinem Gerät ausgeliefert. Das frühere Attribut `data-video-source` verfolgte diese Absicht, wurde vom JavaScript aber nie ausgewertet.
-
-### Teambilder: fehlendes Portrait bricht die Übersichtskarte
-
-- [ ] `resources/views/partials/content/team/media/portrait.antlers.html` gibt `<img src="{{ glide:portrait … }}">` ohne Bedingung aus. Fehlt das Portrait, entsteht eine leere Bildadresse und die Übersichtskarte zeigt ein kaputtes Bild.
-  - Das Portrait ist im Blueprint inzwischen ein Pflichtfeld, das deckt aber nur das Control Panel ab. Über FTP eingespielte oder von Hand bearbeitete Content-Dateien umgehen die Prüfung.
-  - Sinnvoll wäre ein Rückfall auf ein Platzhalterbild oder das Auslassen der Karte, statt ein leeres `src` auszugeben. Betroffen sind die Teamübersicht und die Detailseite ohne Bildkarussell.
-  - Sieben unveröffentlichte Einträge haben derzeit kein Portrait, teils aber ein gefülltes Bildkarussell. Vor dem Veröffentlichen ein Portrait ergänzen.
-
-### SEO: automatisch erzeugte Tag-, Filter- und Parameterseiten
-
-- [ ] Prüfen, ob die SEO-Behandlung dieser URL-Typen im CMS bewusst so vorgesehen ist und welche Seiten eigenständig bei Google ranken sollen.
-  - Beispiele aus dem Hinweis vom 7. September 2026: `/en/portfolio?r=73`, `/en/services?pp=1`, `/en/blog/category/our-work?page=1`, `/en/blog/tag/...` und `/en/portfolio/tag/...`.
-  - Zunächst je URL-Typ klären, welche Inhalte und Funktionen die Parameter beziehungsweise Tags steuern und ob eigenständige Inhalte, Duplikate, Filter oder paginierte Archive entstehen. Aktuelle Canonicals, Robots-Metadaten und interne Verlinkung prüfen; entsprechende deutsche URLs mitberücksichtigen.
-  - Für Seiten ohne eigenes Ranking-Ziel je nach tatsächlichem CMS-Verhalten eine passende Behandlung festlegen: Canonical auf die entsprechende Hauptseite bei inhaltlich gleichen Varianten, `noindex` für reine Filter-/Archivseiten oder unnötige crawlbare Links auf Parameter-Varianten vermeiden.
-  - Die genannten Möglichkeiten sind Prüfoptionen, keine pauschale Umsetzungsvorgabe. Eigenständige Tag-Seiten und Folgeseiten mit anderen Inhalten gesondert beurteilen.
-  - Ergebnis und gewählte Regeln je URL-Typ dokumentieren und anhand repräsentativer URLs überprüfen.
-
-### SEO: Canonicals regulärer englischer Portfolio-Seiten
-
-- [ ] Reguläre englische Projektseiten genauer prüfen, insbesondere `/en/portfolio/hotel-complex-in-tirana` und `/en/portfolio/gruenauring` sowie weitere vergleichbare URLs.
-  - Anlass ist der gemeldete Search-Console-Status «Duplicate without user-selected canonical» (Hinweis vom 7. September 2026; noch nicht technisch verifiziert).
-  - Je URL zunächst feststellen, ob sie weiterhin eine reguläre englische Projektseite ist und indexiert werden soll oder inzwischen umgeleitet beziehungsweise entfernt wurde.
-  - Für weiterhin bestehende, zur Indexierung vorgesehene Projektseiten einen sauberen Self-Canonical auf die eigene bevorzugte englische URL prüfen und bei Bedarf korrigieren. Die tatsächlich ausgegebene Canonical-Angabe und die von Google erfasste beziehungsweise ausgewählte kanonische URL vergleichen.
-  - Bei inzwischen umgeleiteten oder entfernten URLs prüfen, ob die Search-Console-Meldung lediglich Altbestand ist; aktuellen HTTP-Status, allfälliges Weiterleitungsziel und Zeitpunkt des letzten Google-Crawls dokumentieren.
-  - Befund und erforderliche Massnahmen je URL festhalten.
-
-### SEO: englische Kompetenzseite und Team – Live-Prüfung vom 7. September 2026
-
-**Nachtrag mit Search-Console-Belegen:** Der anschliessend gelieferte Export und Screenshot bestätigen ein aktuelles Indexierungsproblem trotz vorhandener Canonicals. Vollständige Auswertung und priorisierte Diagnose: [Search-Console-Auswertung vom 7. September 2026](seo-gsc-canonical-audit-2026-09-07.md). Die bisherige Live-Prüfung entkräftet dieses Problem nicht. Für Christoph ist der letzte Crawl am 5. September und die Auswahl der deutschen URL belegt; Google kennt dessen englische Sitemap bereits. Die unten noch als ungeprüft bezeichneten Angaben zum Anstieg von 0 auf 14 sind nun durch den Export bestätigt. Der Einreichungsstatus der Sitemap bleibt unbekannt, ihre Entdeckung durch Google ist belegt.
-
-**Befund:** Die im gemeldeten Verlauf vermuteten fehlenden Sprachverweise beziehungsweise automatischen Sprachweiterleitungen sind aktuell in den geprüften Fällen nicht reproduzierbar.
-
-- `/team/christoph-deiters`, `/en/team/christoph-deiters`, `/team`, `/en/team`, `/kompetenzen` und `/en/expertise` liefern jeweils HTTP 200, einen Self-Canonical auf die eigene absolute HTTPS-/www-URL sowie `index, follow`. Die jeweiligen DE-/EN-Paare verweisen gegenseitig per `hreflang` aufeinander; `x-default` zeigt auf Deutsch.
-- Alle sieben geprüften URLs einschliesslich `/expertise` liefern mit deutschem und englischem `Accept-Language` denselben Status und dieselben Canonical-/Sprachsignale. `/expertise` liefert in beiden Fällen HTTP 301 auf `/kompetenzen`: Dies ist die aktuelle deutsche Haupt-URL, entsprechend der lokalen `.htaccess`.
-- Zusätzliche Abrufe beider Christoph-Profile und von `/en/expertise` mit Googlebot-User-Agent ohne Sprachheader liefern ebenfalls HTTP 200 und die korrekten Canonical-/Sprachverweise. Dies simuliert nur die Kennung, keinen echten Google-Crawl oder dessen IP-Adresse.
-- Ein deutscher Profilaufruf nach Besuch des englischen Profils mit übernommenen Sitzungscookies und englischem Sprachheader bleibt HTTP 200 ohne Weiterleitung.
-- Der englische Hauptinhalt ist auf dem Christoph-Profil und der Kompetenzseite im ausgelieferten HTML vorhanden. Die Sprachzuordnungen sind lokal über `origin` hinterlegt; das gemeinsame Head-Template erzeugt die Canonical-/hreflang-Angaben aus diesen Zuordnungen.
-- `robots.txt` sperrt das Crawling nicht. Die deutsche Sitemap `/sitemap.xml` und die englische `/en/sitemap.xml` enthalten die jeweils aktuellen Kompetenz-, Team- und Christoph-Profil-URLs. In `robots.txt` sind keine Sitemaps angegeben.
-
-**Historie:** `docs/seo-investigation.md` dokumentiert ein früheres Problem mit `reachweb/locale-lander`. Git-Commit `6f2bc1a` vom 4. Juli 2026 entfernt dieses Add-on und dessen Konfiguration; Commit `af1a3c6` vom selben Tag ergänzt die SEO-Tags. Das Paket ist aktuell nicht in `composer.json`/`composer.lock` enthalten. Der tatsächliche damalige Produktions-Uploadtermin ist damit nicht belegt. Die alte Dokumentation behauptet pauschal, Googlebot sende `Accept-Language: en`; das darf nicht als gesicherte Grundlage der Ursachenanalyse übernommen werden. Google beschreibt reguläre Googlebot-Aufrufe ohne `Accept-Language`: https://developers.google.com/search/docs/specialty/international/locale-adaptive-pages.
-
-- [ ] Priorität: In der Search Console für `/en/expertise` den letzten Crawl, die von Google gewählte kanonische URL und das damals gecrawlte HTML mit einem aktuellen Live-Test vergleichen. Anschliessend beide Christoph-Profile und die Teamübersichten ebenso prüfen. Zugriff auf diese Search-Console-Daten lag bei der jetzigen Prüfung nicht vor.
-- [ ] Prüfen, ob auch `/en/sitemap.xml` in der Search Console eingereicht ist; beide Sitemaps in `robots.txt` auffindbar machen oder über einen Sitemap-Index zusammenführen.
-- [ ] Den gemeldeten Anstieg von 0 auf 14 Fälle zwischen 28. und 29. August mit Search-Console-Export, Crawlzeitpunkten und tatsächlichen Deployments abgleichen. Eine Ursache oder ein aktueller Fehler ist durch diese zeitliche Nähe allein nicht belegt.
-- [ ] Falls der Live-Test korrekte aktuelle Angaben bestätigt, für die wichtige englische Kompetenzseite erneute Indexierung beantragen und die nächste Verarbeitung beobachten. Falls dort abweichendes HTML oder Weiterleitungen auftauchen, Server-/CDN-Regeln und Logs anhand dieses konkreten Abrufs untersuchen.
-
-Referenz: https://developers.google.com/search/docs/crawling-indexing/canonicalization – Canonical ist ein Hinweis; übersetzter Hauptinhalt wird normalerweise nicht als sprachübergreifendes Duplikat behandelt. Die aktuelle Prüfung erklärt noch nicht, weshalb Google die berichtete Canonical-Auswahl getroffen hat. Andere IP-Standorte, sämtliche Cookies und alle weiteren Personenprofile wurden nicht getestet.
-
-### Startseite
-
-- [ ] Alte Sprungnavigation technisch bereinigen.
-  - Die vier nicht mehr verwendeten Sprungziele wurden aus den Inhalten der deutschen Startseite entfernt.
-  - Vor einer projektweiten Entfernung prüfen, ob andere Seiten die alten `anchors`-Inhalte noch benötigen. Solche Daten sind unter anderem noch auf «Über uns», «Kompetenzen» und englischen Seiten vorhanden.
-  - Wenn die Funktion nirgends mehr gebraucht wird, das alte Feldset `resources/fieldsets/anchors.yaml` sowie allfällige zugehörige Frontend-Logik entfernen.
-  - Die einzelnen `anchor`-Felder an Inhaltsabschnitten sind davon getrennt zu beurteilen: Sie könnten weiterhin für direkte Abschnittslinks verwendet werden.
-
-- [ ] Optionalen Einleitungstext vor dem Logo-Marquee ermöglichen.
-  - Den Baustein «Logo Marquee» um einen optionalen, lokalisierbaren Titel und einen optionalen kurzen Text erweitern.
-  - Titel und Text oberhalb der Logos ausgeben und an die bestehenden Abstände und die Typografie der Startseite anpassen.
-  - Wenn beide Felder leer sind, soll das heutige Layout unverändert bleiben.
-  - Aktueller Text aus Hannes’ Feedback: «Unsere Partner. Viele seit über zehn Jahren.»
-  - Englisch: «Our partners. Many have been with us for over ten years.»
-  - Kunden werden gemäss Christoph ebenfalls «Partner» genannt. Die Aussage zur Dauer der Zusammenarbeit vor Verwendung redaktionell bestätigen.
-  - Ergänzung aus dem Feedback: Logos dichter und präsenter anordnen; Abstände und Grössen auf Mobilgeräten und Desktop prüfen, ohne die Logos zu verzerren.
-
-### Kompetenzen
-
-- [ ] Bilder der Kompetenz-Kacheln als Mouse-over-Animationen umsetzen.
-  - Betrifft die Kacheln auf der Kompetenzen-Seite, zum Beispiel «Architektur», «Immobilienvermarktung» sowie «Öffentliche und politische Projekte».
-  - Im Ruhezustand wie bisher ein statisches Vorschaubild anzeigen.
-  - Beim Darüberfahren mit der Maus soll das zur jeweiligen Kachel hinterlegte Video automatisch und ohne Ton abgespielt werden, sodass das Bild lebendig wird.
-  - Verlässt der Mauszeiger die Kachel, soll wieder das statische Vorschaubild erscheinen.
-  - Auf Geräten ohne Mouse-over weiterhin das statische Vorschaubild verwenden.
-
-### Seiten-Baukasten: neuer Editorial-/Artikel-Baustein
-
-- [ ] Neuen `page_elements`-Baustein für Seiten schaffen, der optisch dem Blog-Artikel-Layout entspricht (durchgehender Fliesstext statt einzelner Module).
-  - Anlass: Rückmeldung zu `/animation-und-film` (Christoph) – das bestehende Baukasten-Layout (einzelne Module wie „Title - Text", Services, Portfolio-Teaser) wirkt für diese Seite weniger gut als das Editorial-Layout der Blogartikel (`resources/views/blog/show.antlers.html`).
-  - Das Blog-Layout ist strukturell einfach: optionales Titelbild (`content/post/media/feature`), `h1`, optionaler Teaser, dann **ein** Bard-Feld `content` mit eingebetteten Sets `text`/`image`/`video`/`image_slideshow` (Blueprint: `resources/blueprints/collections/posts/post.yaml`), zum Schluss Tags und ein posts-spezifischer „Ähnliche Beiträge"-Block (`resources/views/blog/_related.antlers.html`).
-  - Direktes Umbiegen einer Seite auf `template: blog/show` (wie es `kontakt.md`/`datenschutz.md`/`impressum.md` bereits für ihre Spezial-Templates tun) ist **kein** brauchbarer Weg: Der `page`-Blueprint hat kein Äquivalent zum durchgehenden `content`-Bard-Feld (Artikeltext bliebe leer), und `blog/_related.antlers.html` fragt hart verdrahtet die `posts`-Collection nach Kategorie ab und verlinkt eine feste Blog-Übersichts-Entry-ID – auf einer Leistungsseite erschienen dort themenfremde Blogteaser und ein unpassender „Zur Blog-Übersicht"-Link.
-  - Sauberer Ansatz stattdessen: eigener Baustein-Typ (Arbeitstitel `article_body` o. ä.) analog zu den bestehenden Fieldsets unter `resources/fieldsets/` bzw. `resources/views/partials/fieldsets/`, registriert im `page`-Blueprint (`resources/blueprints/collections/pages/page.yaml`) und in `resources/views/partials/dispatcher.antlers.html`. Enthält optionales Kopfbild + ein Bard-Feld mit denselben Sets wie bei Posts (`text`/`image`/`video`/`image_slideshow`, ggf. dieselben Sub-Partials aus `content/post/media/*` wiederverwenden), aber ohne Tags und ohne den „Ähnliche Beiträge"-Block.
-  - Damit bleibt der Baustein frei mit den übrigen Modulen kombinierbar (z. B. Artikeltext + anschliessender Portfolio-Teaser + CTA, wie aktuell auf `/animation-und-film` verwendet) und es entsteht keine Abhängigkeit von blogspezifischer Query-Logik.
-  - Priorität/Umfang mit Christoph abstimmen, bevor Aufwand geschätzt wird – bisher nur als Wunsch geäussert, nicht als Auftrag freigegeben.
-
-### Bild-Bausteine: Karussell, Slideshow und Einzelbild
-
-Frage aus der Redaktion: Bei einigen Bausteinen lässt sich zwischen einem Bildkarussell und einem Einzelbild wählen. Könnte man nicht immer das Karussell verwenden und dort einfach nur ein Bild einfügen, wenn nur ein Bild gewünscht ist?
-
-**Ausgangslage:** Im CMS gibt es drei Bildmechanismen, die trotz ähnlicher Bezeichnungen technisch und gestalterisch verschiedene Dinge sind.
-
-- **Einzelbild** (`resources/fieldsets/image.yaml`, `image_fullscreen.yaml`): Ausgabe über `resources/views/partials/content/project/elements/image.antlers.html` in voller Containerbreite, mit `2xl`-Presets auf dem Desktop, `loading="lazy"` und der Scroll-Animation `fadeIn`.
-- **Slideshow** (`resources/fieldsets/image_slideshow.yaml`): eine von Hand blätterbare Galerie auf Basis von Swiper. Ausgabe über `resources/views/partials/content/project/elements/slideshow.antlers.html` mit Vor-/Zurück-Navigation, seitlichem Abstand (`sm:px-80 xl:px-100`), Höhenbegrenzung `max-h-[700px]`, ohne `loading="lazy"` und ohne Scroll-Animation. Die Navigationspfeile werden immer ausgegeben, auch bei einem einzigen Bild; die Swiper-Instanz für diese Galerien registriert das Navigations-Modul bewusst nicht, sondern verdrahtet die Pfeile von Hand (`resources/js/modules/swiper/index.js`).
-- **Image Carousel** (`resources/fieldsets/image_carousel.yaml`): **keine** Galerie, sondern eine Bildwechsel-Animation. `resources/js/modules/carousel.js` blendet die hinterlegten Bilder per `setInterval` nacheinander ein und aus, sobald alle geladen sind. Die Dauer kommt aus dem Feld `intervall_duration` (Vorgabe 150 ms, im Content zum Beispiel 800 ms). Es gibt keine Bedienelemente und keine Benutzersteuerung.
-
-Aktuelle Verbreitung, über beide Sprachfassungen gezählt: in den Projekten 254 `image_text`, 137 `fullscreen_image`, 96 `image`, 22 `image_comparison` und 18 `image_slideshow`; in den Blogbeiträgen 252 Bild-Sets und 40 Slideshow-Sets; bei den Teamprofilen 28 deutsche Einträge, alle mit `image_carousel`, davon 21 zusätzlich mit Portrait.
-
-**Antwort auf die Frage:** «Immer das Karussell» ist keine Vereinfachung, weil die drei Mechanismen nicht dasselbe leisten.
-
-- Das Image Carousel mit nur einem Bild ergibt zwar ein stehendes Bild, lässt aber einen wirkungslosen `setInterval` laufen und verzichtet auf die responsiven Bildquellen, auf `loading="lazy"` und auf die Scroll-Animation des Einzelbild-Bausteins. Es ist als Animation gedacht, nicht als Behälter für beliebig viele Bilder.
-- Eine Slideshow mit nur einem Bild sieht sichtbar anders aus als ein Einzelbild: schmaler wegen des seitlichen Abstands, auf 700 px Höhe begrenzt, mit ausgegebenen Navigationspfeilen ohne Funktion und ohne verzögertes Laden. Ein Zusammenlegen verändert also das Erscheinungsbild von 96 Projekt- und 252 Blogbildern. Das ist eine gestalterische Entscheidung, keine reine Aufräumarbeit.
-
-**Zwei konkrete Mängel, die bei dieser Gelegenheit zu beheben sind:**
-
-- [ ] Im Baustein `image_text` schliessen sich Einzelbild und Karussell technisch nicht aus. `resources/views/partials/content/project/elements/image_text.antlers.html` prüft `{{ if image }}` und `{{ if image_carousel }}` unabhängig voneinander. Sind beide Felder gefüllt, erscheint das Einzelbild über dem Karussell. Betroffen sind heute sechs Sets in drei Projekten: «Hochwasserrückhalteraum Hegmatten», «Umfahrung Uznach» und «Grosshofbrücken in Kriens». In vier dieser Fälle enthält das Karussell zudem je einen aktiven Rahmen ohne Bild, was wie beim Teamportrait eine leere Bildadresse erzeugt. Vorbild für die Lösung ist `resources/views/team/show.antlers.html`: Dort sorgt `{{ if image_carousel }} … {{ else }} … {{ /if }}` für eine saubere Entweder-oder-Ausgabe. Zusätzlich im Karussell-Partial leere Rahmen überspringen.
-- [ ] Im selben Baustein steuert der Vergleich `image:width > image:height` die Spaltenaufteilung. Wird nur das Karussell gefüllt – so ist es in 66 der 254 `image_text`-Sets tatsächlich gepflegt –, bleibt der Vergleich leer und der Block landet immer im Hochformat-Zweig (`md:col-span-7 xl:col-span-6`), auch bei querformatigen Karussellbildern. Die Formatentscheidung stattdessen aus dem ersten belegten Karussellbild ableiten.
-
-**Empfehlung für eine Vereinheitlichung, falls sie gewünscht wird:**
-
-- [ ] Zuerst die Felder im Control Panel so benennen, dass der Unterschied ohne Erklärung erkennbar ist, zum Beispiel «Bildwechsel-Animation» statt «Image Carousel» und «Slideshow (blätterbar)» statt «Slideshow». Das löst den grössten Teil der Verwirrung ohne Eingriff in die Ausgabe.
-- [ ] Erst danach entscheiden, ob «Bild» und «Slideshow» in Projekten und Blogbeiträgen zu einem Baustein mit einem bis mehreren Bildern verschmelzen. Voraussetzung ist, dass die Slideshow-Ausgabe zuvor an das Einzelbild angeglichen wird: volle Breite, `loading="lazy"`, Scroll-Animation und ausgeblendete Navigation bei nur einem Bild. Ohne diese Angleichung entsteht keine Vereinfachung, sondern eine sichtbare Layoutänderung auf allen bestehenden Seiten.
-- [ ] Das Image Carousel bleibt davon unberührt und wird nicht mit der Slideshow zusammengelegt. Es bleibt der Baustein für die Bildwechsel-Animation auf Teamprofilen und in `image_text`.
-- [ ] Umfang und Priorität mit Christoph abstimmen. Bisher ist dies eine Frage, kein freigegebener Auftrag.
-
-### Frontend-Abhängigkeiten: ungenutzte npm-Pakete
-
-Befund vom 17. September 2026, zur Beurteilung durch die Entwicklung. Bewusst nicht umgesetzt: Änderungen an `package.json` und am Build liegen in der Zuständigkeit der Entwicklung.
-
-Aus den gebauten Einstiegspunkten `resources/css/app.css`, `resources/js/app.js`, `resources/js/map.js` und `resources/js/gdpr.js` werden aus `node_modules` nur `alpinejs` und `swiper` geladen. Die folgenden Pakete sind in `package.json` deklariert, aber nirgends importiert oder registriert:
-
-- `@tailwindcss/forms` – installiert, in `tailwind.config.js` jedoch nicht unter `plugins` eingetragen; dort steht nur `@tailwindcss/typography`. Das Paket ist damit wirkungslos.
-- `axios`, `vue-axios` und `nprogress` – kein Vorkommen in `resources/`.
-- `fullpage.js` – kein Vorkommen in `resources/`. Scheinbare Treffer betreffen durchwegs das CMS-Feld `is_fullpage`, nicht die Bibliothek. Das Paket ist GPL-3.0 lizenziert; da es nicht eingebunden wird, gelangt nichts davon in `public/build`.
-
-Gesondert zu beurteilen ist `@vitejs/plugin-vue`. Es gehört zum stillgelegten Control-Panel-Gerüst: `resources/js/cp.js`, `resources/css/cp.css`, `resources/js/components/fieldtypes/ExampleFieldtype.vue` sowie die auskommentierten Zeilen in `vite.config.js`. Alles davon ist konsistent auskommentiert, auch der Vue-Import innerhalb von `cp.js`. Das Plugin wird wieder benötigt, sobald ein eigener Fieldtype für das Control Panel entsteht. Nur das Paket zu entfernen und das Gerüst stehen zu lassen wäre die ungünstigste Variante: Wer später die beiden Zeilen in `vite.config.js` aktiviert, erhält einen schwer deutbaren Build-Fehler.
-
-- [ ] Entscheiden, ob die fünf ungenutzten Pakete entfernt werden. Anschliessend `package-lock.json` erneuern; alle Build-Umgebungen müssen einmal `npm install` ausführen.
-- [ ] Zur Absicherung nach dem Entfernen `npm run build` ausführen und `public/build` mit dem Stand in Git vergleichen. Bleibt das Ergebnis unverändert, hing nichts an diesen Paketen.
-- [ ] Über `@vitejs/plugin-vue` gemeinsam mit dem Control-Panel-Gerüst entscheiden: entweder beides behalten oder beides entfernen.
-
-## Ergänzungen aus «Website-Feedback Hannes – Umsetzung» vom 7. September 2026
-
-Quelle: [Website-Feedback Hannes – Umsetzung](https://app.notion.com/p/3cf0be17ef8381149247f0699c0e33f0).
-
-Die redaktionellen Änderungen sind lokal in Deutsch und Englisch eingepflegt. Die folgenden Aufgaben bleiben technisch offen. Bestehende Änderungen und offene Punkte weiter oben gelten weiterhin. Die Logo-Erweiterung wurde oben ergänzt, statt sie nochmals als eigene Aufgabe anzulegen.
-
-Hinweis zur Content-Übergabe: Zur Übergabe gehört auch die korrigierte Metadatendatei von Christoph Deiters’ Übersichtsfoto.
-
-Überholt: Die ursprünglich hier vermerkte Anweisung, nach dem Upload den Asset-Metadaten-Cache zu erneuern (`php artisan statamic:assets:clear-cache`), ist für den Alternativtext nicht mehr nötig. Die Alternativtexte der Teambilder stammen inzwischen aus dem Eintragstitel, also dem Namen der Person, und nicht mehr aus den Asset-Metadaten. Betroffen sind `resources/views/partials/content/team/media/portrait.antlers.html` und das Bildkarussell auf den Teamprofilen. Die gepflegten Alt-Texte in den Asset-Metadaten erscheinen damit nicht mehr auf den Teamseiten.
-
-### CTA-System, Header und Footer
-
-- [ ] Hauptaktion im Header als visuell abgesetzten Button «Sprechstunde» / «Consultation» ausgeben und den bisherigen Header-Menüpunkt «Kontakt» entsprechend ersetzen.
-  - Reguläre Kontaktlinks im Footer und in der Navigation können bestehen bleiben. Das Ziel ist eine deutlich erkennbare Hauptaktion.
-  - Betroffen: `resources/views/partials/layout/header.antlers.html`, Hauptnavigation und die verwendeten Button-Partials.
-- [ ] Haupt-CTAs in Menü und Footer auf «Sprechstunde vereinbaren» / «Book a consultation» vereinheitlichen.
-  - Aktuell enthält `resources/views/partials/menu/wrapper.antlers.html` noch «Offerte anfragen» und `resources/views/partials/layout/footer.antlers.html` noch «Kontakt aufnehmen» als CTA.
-  - «Offerte anfragen» / «Request a quote» nur für einen tatsächlich projektspezifischen Anfrageweg verwenden.
-  - Übersetzungsschlüssel und englische Werte in `lang/en.json` gleichzeitig ergänzen. Kein globales Ersetzen aller Kontaktlinks.
-  - Das aktuelle Ziel der Sprechstunden-Buttons ist die Kontaktseite. Falls eine direkte Terminbuchung gewünscht ist, muss deren Ziel noch festgelegt werden; aktuell gibt es keinen belegten Buchungslink.
-- [ ] Auch am Ende der Portfolioübersicht die Hauptaktion prüfen und korrigieren.
-  - Dort wird gegenwärtig der allgemeine Footer mit «Kontakt aufnehmen» ausgegeben. Der bereits abgehakte Notion-Punkt ist damit lokal noch nicht vollständig erfüllt.
-
-### Startseite und Kompetenz-Kacheln
-
-- [ ] Die drei Segment-Kacheln um ein optionales, lokalisierbares Beschreibungsfeld erweitern.
-  - Feldset: `resources/fieldsets/teaser_competencies.yaml`; Ausgabe: `resources/views/partials/fieldsets/teaser/competencies/item.antlers.html`.
-  - Architektur: «Wettbewerbe, Studien, Projektentwicklung.» / «Competitions, studies, project development.»
-  - Immobilienvermarktung: «Schlüsselbilder, die verkaufen und vermieten.» / «Key images for sales and leasing.»
-  - Öffentliche und politische Projekte: «Bilder, die Mehrheiten schaffen.» / «Images that build public support.»
-  - Beschreibung unter der jeweiligen Überschrift darstellen; sowohl Kacheln mit Bild als auch reine Textkacheln berücksichtigen.
-- [ ] Im Hero einen optionalen, lokalisierbaren Erklärungstext unterhalb der Headline ermöglichen.
-  - Das aktuelle Intro besitzt nur ein Titel-Feld. Die freigegebene Headline ist bereits im Content umgesetzt; Erfahrung und Leistungsbreite stehen im anschliessenden Einleitungsblock.
-  - Gewünschte Ergänzung direkt im Hero: «Seit 16 Jahren aus Zürich – für Wettbewerbe, Immobilienvermarktung und öffentliche Kommunikation.»
-  - Englisch: «Based in Zurich for 16 years – for competitions, real estate marketing and public communication.»
-  - Den Erklärungstext kleiner als die Hauptüberschrift ausgeben, statt ihn als weitere H1-Zeile anzuhängen. Das vorhandene Layout ohne Erklärungstext beibehalten.
+Dieses Dokument listet, was noch zu entscheiden und zu tun ist. Bereits Umgesetztes
+steht nur dann hier, wenn es Folgen für die weitere Arbeit hat — alles Übrige ist in
+der Git-Historie nachvollziehbar, wo jede Änderung mit Begründung in einem eigenen
+Commit liegt.
+
+Der Code wird über Git ausgeliefert; die früheren manuellen FTP-Pakete entfallen.
+Redaktionelle Inhalte unter `content/` sind **nicht** versioniert und gelangen auf
+einem anderen Weg auf Staging und Produktion.
+
+## Was bereits umgesetzt ist und Folgen hat
+
+### Karussell: feste Höhe, ein Seitenverhältnis pro Karussell
+
+Die Figur trägt jetzt ein festes Seitenverhältnis aus dem ersten belegten Rahmen,
+die Bilder liegen mit `object-cover` darin übereinander. Vorher richtete sich die
+Höhe nach dem gerade sichtbaren Bild und sprang bei jedem Wechsel.
+
+### Kein Frontend-Build nötig
+
+Keine Änderung vom 17. September führt eine **neue CSS-Klasse** ein. `public/build`
+ist deshalb in keinem dieser Commits enthalten und muss nicht neu erzeugt werden.
+Geprüft wurde das, indem die Klassen-Tokens jeder geänderten Datei gegen den Stand in
+Git und gegen das kompilierte CSS verglichen wurden.
+
+Die anfangs ebenfalls eingehaltene Bedingung «kein neues Feld» gilt dagegen nicht
+mehr uneingeschränkt. Zwei Felder sind nach Rücksprache mit Christoph dazugekommen,
+beide unten beschrieben. Auf den Build wirkt sich das nicht aus, wohl aber auf die
+Inhalte: die Felder sind auf Produktion noch leer und müssen dort gefüllt werden.
+
+Der aktuelle Build verweist auf `public/build/assets/app-b78a33d3.css` und
+`app-dbd11412.js`. `manifest.json` und der Ordner `public/build/assets` müssen
+gemeinsam deployt werden; alte Hash-Dateien können auf dem Server bleiben.
+
+### Logo-Marquee: Titel, zwei Reihen, Abstand nach unten
+
+Der Baustein hat ein neues, lokalisierbares Titelfeld. Es ist als `import: title` in
+`resources/fieldsets/marquee.yaml` eingebunden, also dasselbe Bard-Feld, das der
+Netzwerk-Baustein schon nutzt; die Auszeichnung im Template ist von dort gespiegelt.
+
+Die Logos laufen jetzt in zwei Reihen. Sie verteilen sich abwechselnd nach ihrer
+Position, damit beide Reihen unabhängig von der Gesamtzahl gleichmässig gefüllt
+bleiben. Die untere Reihe läuft rückwärts und braucht für dieselbe Strecke länger.
+Die Dauer wird weiterhin aus der Anzahl Logos berechnet, jetzt pro Reihe.
+
+Die Gegenrichtung steht als Inline-Style am Track und nicht als Klasse. Das war
+allein der Bedingung geschuldet, keinen Frontend-Build auszulösen — siehe die
+Aufräum-Aufgabe weiter unten.
+
+Der Abschnitt trägt ausserdem `py-90 lg:py-150` statt `pt-90 lg:pt-150`. Vorher hatte
+er überhaupt kein Bottom-Padding und stiess unten direkt an den vollflächigen
+Video-Baustein.
+
+### Segment-Kacheln: Unterzeile, Pfeil, Spacing
+
+`resources/fieldsets/teaser_competencies.yaml` hat ein lokalisierbares Feld
+`subtitle`. Ausgegeben wird es nur in der kompakten Variante ohne Bild, also auf den
+beiden Startseiten; die Bildvariante auf Kompetenzen, Angebot, Expertise und Services
+bleibt unverändert. In derselben Variante steht der Pfeil jetzt vor dem Titel und
+«Mehr erfahren» ist entfallen — verlinkt war und ist die ganze Kachel.
+
+Die kompakte Variante bringt kein Top-Padding mehr mit. Vor dem Baustein steht auf
+allen sechs Seiten ein `statement`, dessen Bottom-Padding sich vorher mit dem eigenen
+auf rund die doppelte Höhe addierte, während unten nichts blieb. Der Fullpage-Zweig
+ist davon nicht betroffen, dort füllt der Abschnitt ohnehin den Viewport.
+
+Allgemeiner betrifft das drei Bausteine, die aus der Konvention `py-90 lg:py-150`
+ausscheren und nur ein `pt-` setzen: Marquee und Segment-Kacheln sind bereinigt,
+`teaser_blog` (`pt-90 md:pt-150`) steht noch aus. Dort greift es nur auf den
+Nicht-Fullpage-Seiten.
+
+## Zuerst mit Christoph zu klären
+
+Diese Punkte sind noch keine freigegebenen Aufträge.
+
+- [ ] **Bild und Slideshow zusammenlegen?** Die Frage kam aus der Redaktion. Sinnvoll
+  wäre das nur, wenn die Slideshow-Ausgabe zuvor an das Einzelbild angeglichen wird:
+  volle Breite, `loading="lazy"`, Scroll-Animation und ausgeblendete Navigation bei
+  nur einem Bild. Ohne diese Angleichung entsteht keine Vereinfachung, sondern eine
+  sichtbare Layoutänderung auf allen bestehenden Seiten. Die Bildwechsel-Animation
+  bleibt davon unberührt und wird nicht mit der Slideshow zusammengelegt.
+- [ ] **H1 auf Seiten ohne Überschrift** (`/team`, `/portfolio`, `/kontakt`,
+  `/datenschutz`, `/impressum`, `/vielen-dank`). Christoph sieht vorerst keinen
+  dringenden Bedarf; der Nutzen wäre vor allem SEO, und diese Seiten sind dafür nicht
+  zentral. Falls doch: zuerst entscheiden, ob die Überschrift sichtbar sein soll. Eine
+  unsichtbare Variante bräuchte `sr-only`, das nicht im kompilierten CSS enthalten ist
+  und damit einen Build auslöst; eine sichtbare über das vorhandene Partial
+  `partials/ui/heading/h1.antlers.html` nicht.
+
+
+## Fehler
+
+- [ ] **Scroll-Animationen auf Projektdetailseiten mit `is_fullpage: false`.**
+  Abschnitte bleiben dauerhaft leer, weil ihre Kinder über `[data-animation]` mit
+  `opacity: 0` starten und erst sichtbar werden, wenn ein Vorfahre `.is-active`
+  erhält. Diese Klasse setzt nur der IntersectionObserver
+  (`resources/js/modules/observer.js`) und nur für Sections mit
+  `data-section-observe`.
+  - In `partials/layout/section.antlers.html` ist das bereits behoben: Das Attribut
+    wird unabhängig von `is_fullpage` gesetzt, Vorbild war
+    `partials/fieldsets/cta/wrapper.antlers.html`.
+  - **Offen** steht die alte Bedingung noch an elf Stellen in
+    `resources/views/project/show.antlers.html` und in
+    `resources/views/project/_related.antlers.html`.
+  - Vor der Änderung im Browser prüfen: Jede zusätzlich beobachtete Section startet
+    auch Videos und blendet die Logo-Byline aus.
+  - `is_fullpage: true` auf der Seite zu setzen ist **kein** Ersatz. Jedes
+    Element-Template übergibt dann auch einen `fullpage`-Klassenparameter mit
+    `min-h-screen`, wodurch jede Section auf Bildschirmhöhe aufgeblasen wird. Im Test
+    wuchs `/angebot/animation-und-film` dadurch von rund 6858 auf 9599 Pixel.
+  - Der Intro-Baustein (`partials/fieldsets/intro/wrapper.antlers.html`) ist zu Recht
+    an `is_fullpage` gebunden, weil dort das Scroll-Snapping hängt.
+
+- [ ] **Die Regel `content` in `.gitignore` greift zu breit.** Zeile 32 enthält das
+  Muster ohne Pfadangabe, wodurch Git es auf jedes gleichnamige Verzeichnis anwendet.
+  Für `content/` ist das gewollt und stimmig — keine einzige Datei daraus ist
+  versioniert. Unbeabsichtigt trifft es aber auch `resources/views/partials/content/`
+  mit seinen 26 Template-Partials. Die bestehenden Dateien bleiben erfasst, weil
+  bereits versionierte Dateien von `.gitignore` nicht mehr berührt werden; eine
+  **neue** Datei dort würde jedoch stillschweigend fehlen.
+  - `/content` statt `content` trifft nur das Verzeichnis im Projektstamm.
+    Anschliessend mit `git check-ignore -v` gegen je einen Pfad aus beiden
+    Verzeichnissen prüfen.
+  - Dieselbe Prüfung lohnt sich für das ebenfalls pfadlose `users` (Zeile 31).
+  - Danach kontrollieren, ob unter `resources/views/partials/content/` bereits Dateien
+    fehlen, die versioniert sein sollten.
+
+## Aufgaben für die Entwicklung
+
+### CTA-System
+
+- [ ] Hauptaktion im Header als visuell abgesetzten Button «Sprechstunde» /
+  «Consultation» ausgeben und den Menüpunkt «Kontakt» ersetzen. Betrifft
+  `partials/layout/header.antlers.html`, die Hauptnavigation und die Button-Partials.
+  Braucht neues Styling und damit einen Frontend-Build.
+- [ ] Am Ende der Portfolioübersicht erscheint weiterhin der allgemeine Footer mit
+  «Kontakt aufnehmen». Dort die Hauptaktion angleichen.
+- [ ] «Offerte anfragen» / «Request a quote» künftig nur für einen tatsächlich
+  projektspezifischen Anfrageweg verwenden; der Schlüssel ist in `lang/en.json`
+  erhalten geblieben. Das Ziel der Sprechstunden-Buttons ist derzeit die Kontaktseite,
+  für eine echte Terminbuchung fehlt ein Buchungslink.
+
+### Neue optionale Felder
+
+Die beiden übrigen sollen lokalisierbar sein und das heutige Layout unverändert
+lassen, wenn sie leer bleiben. Logo-Marquee und Segment-Kacheln sind umgesetzt und
+oben beschrieben; die dort notierten Entwurfstexte weichen leicht von dem ab, was
+tatsächlich eingetragen wurde.
+
+- [ ] **Hero**: Erklärungstext unterhalb der Headline, kleiner gesetzt als die
+  Hauptüberschrift und nicht als weitere H1-Zeile. «Seit 16 Jahren aus Zürich – für
+  Wettbewerbe, Immobilienvermarktung und öffentliche Kommunikation.» / «Based in
+  Zurich for 16 years – for competitions, real estate marketing and public
+  communication.»
+- [ ] **Netzwerk-Baustein**: Einleitungstext vor den Partnern. Feldset
+  `resources/fieldsets/network.yaml`, Ausgabe
+  `partials/fieldsets/network/wrapper.antlers.html`. Entwurf: «Unser Netzwerk
+  verbindet unterschiedliche Perspektiven auf Raum, Gestaltung und Kommunikation. Je
+  nach Aufgabe kommen zusätzliche Kompetenzen dazu. So lässt sich dein Projekt über
+  die Visualisierung hinaus weiterdenken.» / «Our network brings together different
+  perspectives on space, design and communication. Depending on the task, we bring in
+  additional expertise to help develop your project beyond visualization.» Der
+  ursprüngliche Entwurf mit «Lichtplanung, Bewegtbild und Szenografie» beschreibt
+  nicht alle verlinkten Organisationen und ist nicht zu übernehmen.
 
 ### Projekte und Portfolio
 
-- [ ] «Zum Projekt» auf den Startseiten-Projektkacheln durch einen eindeutigen Pfeil-Button ersetzen.
-  - Bestehendes Linkziel erhalten; einen zugänglichen Namen wie «Projekt [Titel] ansehen» / «View project [title]» vergeben.
-  - Betroffen: `resources/views/partials/fieldsets/teaser/portfolio/item.antlers.html`.
-- [ ] Beim Hover auf Projektkacheln Titel und Teaser sichtbar stehen lassen; nur ein zusätzliches Hover-Element einblenden.
-  - Touch- und Tastaturbedienung mitprüfen. Die Information muss auch ohne Hover zugänglich sein.
-- [ ] Auf Projektdetailseiten deutlich sichtbare Pfeile für vorheriges und nächstes Projekt ergänzen.
-  - Veröffentlichungsstatus und aktive Sprache berücksichtigen; keine Links auf unveröffentlichte Projekte erzeugen.
-- [ ] Vorher-Nachher-Slider als prominenten Startseiten-Baustein nutzbar machen.
-  - Bisher ist auf der Startseite kein entsprechender Baustein gepflegt. Wiederverwendung der bestehenden Projekt-Komponenten und deren Freigabe für Seiten prüfen.
-  - Platzierung im Projektbereich der Startseite vorsehen. Das konkrete Bildpaar und die finale Position müssen redaktionell ausgewählt werden.
-- [ ] Auftraggeber in den Portfolio-Kacheln visuell stärker hervorheben.
-  - Vorhandenes Feld `client` verwenden; keine Umbenennung von Projektbeteiligten oder Änderung der Projektdaten nötig.
-  - Die Bezeichnung «Partner» ist auch für Auftraggeber gewünscht. Typografische Gewichtung auf Desktop und Mobilgeräten abstimmen.
+- [ ] «Zum Projekt» auf den Startseiten-Projektkacheln durch einen eindeutigen
+  Pfeil-Button ersetzen. Linkziel erhalten, zugänglichen Namen wie «Projekt [Titel]
+  ansehen» / «View project [title]» vergeben. Betrifft
+  `partials/fieldsets/teaser/portfolio/item.antlers.html`.
+- [ ] Beim Hover auf Projektkacheln Titel und Teaser stehen lassen und nur ein
+  zusätzliches Element einblenden. Touch- und Tastaturbedienung mitprüfen; die
+  Information muss auch ohne Hover zugänglich sein.
+- [ ] Auf Projektdetailseiten sichtbare Pfeile für vorheriges und nächstes Projekt
+  ergänzen. Veröffentlichungsstatus und aktive Sprache berücksichtigen, keine Links
+  auf unveröffentlichte Projekte.
+- [ ] Vorher-Nachher-Slider als Startseiten-Baustein nutzbar machen. Bestehende
+  Projekt-Komponenten wiederverwenden und für Seiten freigeben; Platzierung im
+  Projektbereich. Bildpaar und Position wählt die Redaktion.
+- [ ] Auftraggeber in den Portfolio-Kacheln stärker hervorheben. Vorhandenes Feld
+  `client` verwenden; «Partner» ist auch für Auftraggeber gewünscht.
 
-### Blog-Teaser
+### Kompetenz-Kacheln
 
-- [ ] Datumsangaben in den Blog-Teasern entfernen, sodass Bild und Titel bleiben.
-  - Betroffen: `resources/views/partials/fieldsets/teaser/post/item.antlers.html`, verwendet für Desktop und mobilen Slider.
-  - Veröffentlichungsdaten, chronologische Sortierung und Artikel-URLs erhalten. Es geht um die sichtbaren Teaser, nicht um das Löschen von Datumswerten im CMS.
-  - Der Beitragstitel «Erfahre das Geheimnis hinter unseren Visualisierungen» war deutsch bereits korrekt; Englisch wurde im Content auf «Discover the secret behind our visualizations» angeglichen. Dafür ist keine Template-Änderung erforderlich.
+- [ ] Vorschaubilder als Mouse-over-Animation: im Ruhezustand das statische Bild, beim
+  Darüberfahren das hinterlegte Video automatisch und ohne Ton, beim Verlassen zurück
+  zum Standbild. Auf Geräten ohne Hover bleibt das Standbild.
 
-### Nightnurse-Netzwerk
+### Aufräumen
 
-- [ ] Einen optionalen, lokalisierbaren Einleitungstext im Netzwerk-Baustein ergänzen und vor den Partnern ausgeben.
-  - Feldset: `resources/fieldsets/network.yaml`; Ausgabe: `resources/views/partials/fieldsets/network/wrapper.antlers.html`.
-  - Angepasster deutscher Entwurf: «Unser Netzwerk verbindet unterschiedliche Perspektiven auf Raum, Gestaltung und Kommunikation. Je nach Aufgabe kommen zusätzliche Kompetenzen dazu. So lässt sich dein Projekt über die Visualisierung hinaus weiterdenken.»
-  - Englisch: «Our network brings together different perspectives on space, design and communication. Depending on the task, we bring in additional expertise to help develop your project beyond visualization.»
-  - Den ursprünglichen Entwurf mit «Lichtplanung, Bewegtbild und Szenografie» nicht unverändert übernehmen: Er beschreibt nicht alle verlinkten Organisationen. Die konkrete Zusammenarbeit und das Versprechen eines einzigen Ansprechpartners müssen intern bestätigt werden.
-  - Quellenprüfung: [Christian Ammann – Fotografie und Film](https://photographer.ch/about), [Lightsphere – Lichtplanung](https://lightsphere.ch/en/portfolio/services/), [Team Ensemble – gesellschaftliche Zusammenarbeit](https://team-ensemble.ch/), [SHIFT – Stadt- und Siedlungsentwicklung](https://shift.immo/). SHIFT wurde anhand des Logos und der Anschrift eindeutig zugeordnet.
-  - Die fehlerhaften Netzwerk-Links sind im deutschen und englischen Content korrigiert: Christian Ammann auf `https://photographer.ch/`, SHIFT auf `https://shift.immo/`. Noch nicht veröffentlicht; die Live-Seite verlinkt am 7. September 2026 weiterhin `https://www.christian-amman.ch` und `https://shift.ch`. Originale Bilddateinamen bleiben erhalten.
+- [ ] **Laufrichtung der zweiten Logoreihe als Klasse.** Sie steht derzeit als
+  `style="animation-direction: reverse;"` am Track in
+  `partials/fieldsets/marquee/wrapper.antlers.html`. Gewählt wurde das nur, um keinen
+  Frontend-Build auslösen zu müssen. Sobald ohnehin gebaut wird: eine
+  Modifier-Klasse in `resources/css/animations/marquee.css` ergänzen und den
+  Inline-Style entfernen. Danach prüfen, dass beide Reihen weiterhin gegenläufig
+  laufen und `prefers-reduced-motion` sie weiterhin anhält.
+- [ ] **Alte Sprungnavigation.** Die vier nicht mehr verwendeten Sprungziele sind aus
+  der deutschen Startseite entfernt. Vor einer projektweiten Entfernung prüfen, ob
+  andere Seiten die alten `anchors`-Inhalte noch brauchen — vorhanden sind sie unter
+  anderem auf «Über uns», «Kompetenzen» und englischen Seiten. Wird die Funktion
+  nirgends mehr gebraucht, `resources/fieldsets/anchors.yaml` und zugehörige
+  Frontend-Logik entfernen. Die einzelnen `anchor`-Felder an Inhaltsabschnitten sind
+  davon getrennt zu beurteilen.
+- [ ] **Ungenutzte npm-Pakete.** Aus den gebauten Einstiegspunkten werden nur
+  `alpinejs` und `swiper` geladen. Nirgends importiert sind `axios`, `vue-axios`,
+  `nprogress` und `fullpage.js`; `@tailwindcss/forms` ist installiert, aber nicht in
+  `tailwind.config.js` unter `plugins` eingetragen und damit wirkungslos.
+  - Nach dem Entfernen `package-lock.json` erneuern; alle Build-Umgebungen müssen
+    einmal `npm install` ausführen.
+  - Zur Absicherung `npm run build` ausführen und `public/build` mit dem Stand in Git
+    vergleichen. Bleibt das Ergebnis gleich, hing nichts an diesen Paketen.
+  - `@vitejs/plugin-vue` gesondert beurteilen: Es gehört zum stillgelegten
+    Control-Panel-Gerüst (`resources/js/cp.js`, `resources/css/cp.css`,
+    `ExampleFieldtype.vue`, auskommentierte Zeilen in `vite.config.js`) und wird wieder
+    gebraucht, sobald ein eigener Fieldtype entsteht. Entweder beides behalten oder
+    beides entfernen — nur das Paket zu entfernen ergäbe später einen schwer deutbaren
+    Build-Fehler.
 
-### Entscheidungen und spätere technische Aufgaben
+### Technische Vorüberlegung zum Editorial-Baustein
 
-Diese Punkte sind weiterhin offen und sollen nicht als freigegebene Umsetzung behandelt werden:
+Falls der Baustein freigegeben wird: Eine Seite einfach auf `template: blog/show`
+umzubiegen funktioniert **nicht**. Der `page`-Blueprint hat kein Äquivalent zum
+durchgehenden `content`-Bard-Feld, und `blog/_related.antlers.html` fragt hart
+verdrahtet die `posts`-Collection ab und verlinkt eine feste
+Blog-Übersichts-Entry-ID.
 
-- [ ] Instagram-Feed statt Blog: redaktionelle Entscheidung einholen; erst danach Integration, Ladeverhalten und Datenschutz prüfen.
-- [ ] «Imagine tomorrow»: Entscheidung über Beibehaltung oder kleinere Platzierung beim Logo. Der Claim bleibt vorerst im vorhandenen Einleitungsblock.
-- [ ] Animiertes Logo-Element und Burger-Menü-Effekt: als späteren Schritt planen.
-- [ ] Farbe im Corporate Design: separates Gestaltungsthema, noch kein Auftrag zur Anpassung der bestehenden Farben.
+Sauberer wäre ein eigener Baustein-Typ analog zu den bestehenden Fieldsets,
+registriert im `page`-Blueprint und in `partials/dispatcher.antlers.html`: ein
+optionales Kopfbild und ein Bard-Feld mit denselben Sets wie bei Posts
+(`text`/`image`/`video`/`image_slideshow`, gegebenenfalls dieselben Sub-Partials aus
+`content/post/media/*`), aber ohne Tags und ohne «Ähnliche Beiträge». So bleibt er
+frei mit den übrigen Modulen kombinierbar.
 
-Video-Neuschnitt (Denzler Haus und Brücke), Teamfotos, Mitarbeiterinterviews und ein Hero-Film mit Menschen sind Produktionsaufgaben. Die Entscheidung über Stellenanzeigen und eine spätere KI-Seite bleibt redaktionell. Diese Punkte sind in der ursprünglichen Notion-Liste weiterhin offen.
+## Redaktionelle Restarbeiten
+
+- [ ] Das Feld `teaser` der Projekte ist fast überall leer: gepflegt ist es in einem
+  von 43 deutschen Einträgen (`content/collections/projects/de/riva-arbon.md`) und in
+  keinem der 39 englischen. Die neue Portfolio-Übersicht zeigt diese Zeile unter jedem
+  Projekttitel. Die Vorgabe steht im Blueprint
+  `resources/blueprints/collections/projects/project.yaml`: etwa 45–90 Zeichen, ohne
+  Nightnurse-Leistung, ohne direkte Ansprache, ohne Handlungsaufforderung. Der
+  verbindliche Massstab ist
+  [project-content-standard-de.md](project-content-standard-de.md).
+  - Solange das Feld leer bleibt, greift in
+    `partials/content/project/elements/teaser.antlers.html` ein Notbehelf: der Anfang
+    von `summary`, auf 90 Zeichen gekürzt. Das ist lesbar, aber es ist der Projekttext
+    und keine Teaserzeile — die Sätze brechen mitten im Gedanken ab.
+  - Sobald `teaser` überall gepflegt ist, kann der Notbehelf ersatzlos entfallen.
+- [ ] Sieben unveröffentlichte Teameinträge haben kein Portrait. Vor dem
+  Veröffentlichen ergänzen, sonst bleibt ihre Karte in der Übersicht leer.
+- [ ] Die korrigierten Netzwerk-Links sind lokal eingepflegt, aber noch nicht
+  veröffentlicht: Christian Ammann auf `https://photographer.ch/`, SHIFT auf
+  `https://shift.immo/`. Die Live-Seite verlinkte am 7. September 2026 weiterhin
+  `https://www.christian-amman.ch` und `https://shift.ch`.
+- [ ] Zur Content-Übergabe gehört die korrigierte Metadatendatei von Christoph
+  Deiters' Übersichtsfoto.
+
+## SEO
+
+Diese Punkte behandelt Christoph separat. Die ausführliche Auswertung steht in
+[Search-Console-Auswertung vom 7. September 2026](seo-gsc-canonical-audit-2026-09-07.md),
+die Vorgeschichte in [seo-investigation.md](seo-investigation.md). Dort steht auch
+der priorisierte Diagnoseablauf, einschliesslich des Abgleichs mit den
+Produktionsänderungen um den 28./29. August und der erneuten Indexierung nach einem
+Fix.
+
+- [ ] Englische Kompetenzseite und Teamprofile: In der Search Console letzten Crawl,
+  gewählte kanonische URL und das gecrawlte HTML mit einem Live-Test vergleichen. Eine
+  lokale Prüfung am 7. September ergab für alle betroffenen URLs HTTP 200,
+  Self-Canonical und `index, follow`, auch mit Googlebot-Kennung — das erklärt die
+  gemeldete Canonical-Auswahl also noch nicht.
+- [ ] Prüfen, ob `/en/sitemap.xml` in der Search Console eingereicht ist. Beide
+  Sitemaps in `robots.txt` auffindbar machen oder über einen Sitemap-Index
+  zusammenführen; derzeit ist dort keine eingetragen. **Das ist Hygiene, keine
+  Lösung:** Die englische Sitemap ist Google für das Christoph-Profil bereits
+  bekannt, eine erneute Einreichung behebt die belegte Fehlzuordnung also nicht.
+- [ ] Automatisch erzeugte Tag-, Filter- und Parameterseiten beurteilen, etwa
+  `/en/portfolio?r=73`, `/en/services?pp=1`, `/en/blog/category/…?page=1`. Je URL-Typ
+  klären, ob eigenständige Inhalte, Duplikate oder paginierte Archive entstehen, und
+  danach Canonical, `noindex` oder weniger crawlbare Links festlegen. Die deutschen
+  Entsprechungen mitberücksichtigen.
+- [ ] Canonicals regulärer englischer Projektseiten prüfen, insbesondere
+  `/en/portfolio/hotel-complex-in-tirana` und `/en/portfolio/gruenauring`. Je URL
+  feststellen, ob sie noch indexiert werden soll, und den Self-Canonical mit der von
+  Google gewählten URL vergleichen.
+
+## Geprüft, keine Aufgabe mehr
+
+Die Quellenauswahl zwischen Hoch- und Querformatvideo funktioniert. Sie erfolgt über
+`media`-Attribute an den `<source>`-Elementen und wurde in Chrome bestätigt. Dass die
+Auswahl nur beim Laden stattfindet und ein Drehen des Telefons sie nicht wiederholt,
+entspricht dem Verhalten von Medienelementen; ein Nachladen würde das Video neu
+starten und wäre störender. Vor dieser Änderung wurde das Hochformat auf keinem Gerät
+ausgeliefert.

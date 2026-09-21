@@ -1,4 +1,10 @@
-{{ partial:layout/section section_theme="light" no_relative="true" fullpage="min-h-screen flex flex-col justify-center pt-90 lg:pt-150" spacing="pt-90 lg:pt-150" }}
+{{#
+  No top padding on purpose: on every page this block follows the statement
+  block, which already brings its own bottom padding. Setting one here too
+  stacks the two into roughly twice the whitespace above as below.
+  The fullpage variant is unaffected — there the section fills the viewport.
+#}}
+{{ partial:layout/section section_theme="light" no_relative="true" fullpage="min-h-screen flex flex-col justify-center pt-90 lg:pt-150" spacing="" }}
 
   {{ partial:layout/container }}
 

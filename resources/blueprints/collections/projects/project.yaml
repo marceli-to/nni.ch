@@ -117,7 +117,7 @@ tabs:
                         -
                           import: image
                     image_slideshow:
-                      display: 'Image Slideshow'
+                      display: 'Slideshow (browsable)'
                       icon: media-image-picture-gallery
                       fields:
                         -

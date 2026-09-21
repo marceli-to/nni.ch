@@ -21,6 +21,13 @@ fields:
                 -
                   import: title
                 -
+                  handle: subtitle
+                  field:
+                    type: text
+                    display: Subtitle
+                    instructions: 'Optional. A short line below the title. Only shown in the compact layout, i.e. when no image is set.'
+                    localizable: true
+                -
                   handle: link
                   field:
                     type: entries
@@ -40,5 +47,5 @@ fields:
                     container: assets
                     type: assets
                     display: Bild
-                    instructions: 'Optional. With an image the item shows a portrait; without one it shows the compact title + “Mehr erfahren” layout.'
+                    instructions: 'Optional. With an image the item shows a portrait; without one it shows the compact layout with an arrow in front of the title.'
                     localizable: false

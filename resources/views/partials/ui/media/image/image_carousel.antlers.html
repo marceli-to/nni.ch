@@ -1,7 +1,29 @@
+{{#
+  Rahmen ohne Bild überspringen: ein leeres `image` erzeugt sonst `src="/"`,
+  worauf der Browser die Seite selbst als Bild lädt und ein kaputtes Bild zeigt.
+  Gefiltert wird vor der Schleife, damit `first` den ersten tatsächlich
+  ausgegebenen Rahmen meint — carousel.js startet die Animation immer bei Bild 0.
+  Bleibt kein Rahmen übrig, entfällt die ganze Figur.
+
+  Die Figur erhält ein festes Seitenverhältnis aus dem ersten Rahmen, die Bilder
+  liegen darin übereinander. Sonst richtet sich die Höhe nach dem gerade
+  sichtbaren Bild und springt bei jedem Wechsel, sobald die Rahmen nicht exakt
+  dasselbe Seitenverhältnis haben. Das Seitenverhältnis steht als `style`, weil
+  es aus dem Inhalt kommt und daher keine Tailwind-Klasse sein kann.
+
+  Fehlen die Bildmasse in den Asset-Metadaten, greift der bisherige Fluss mit
+  `w-full h-auto`: dann springt die Höhe wie zuvor, aber nichts verschwindet.
+#}}
+{{ frames = image_carousel | where('image', '!=', '') }}
+{{ if frames | length }}
+  {{ ratio_w = frames:0:image:width }}
+  {{ ratio_h = frames:0:image:height }}
+  {{ has_ratio = ratio_w && ratio_h }}
 <figure 
-  class="bg-silver relative group"
+  class="bg-silver relative group w-full"
+  {{ if has_ratio }}style="aspect-ratio: {{ ratio_w }} / {{ ratio_h }}"{{ /if }}
   data-carousel="{{ '' | uuid }}">
-  {{ image_carousel }}
+  {{ frames }}
     <picture>
       <source srcset="{{ glide:image preset='lg-webp' }}" type="image/webp">
       <img 
@@ -12,7 +34,8 @@
         width="{{ image:width }}"
         data-carousel-image
         data-carousel-duration="{{ intervall_duration ?? 150 }}"
-        class="w-full h-auto {{ class }} {{ !first ? 'hidden' : '' }}">
+        class="{{ has_ratio ? 'absolute inset-0 w-full h-full object-cover' : 'w-full h-auto' }} {{ class }} {{ !first ? 'hidden' : '' }}">
     </picture>
-  {{ /image_carousel }}
+  {{ /frames }}
 </figure>
+{{ /if }}
