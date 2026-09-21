@@ -31,9 +31,13 @@ mehr uneingeschränkt. Zwei Felder sind nach Rücksprache mit Christoph dazugeko
 beide unten beschrieben. Auf den Build wirkt sich das nicht aus, wohl aber auf die
 Inhalte: die Felder sind auf Produktion noch leer und müssen dort gefüllt werden.
 
-Der aktuelle Build verweist auf `public/build/assets/app-b78a33d3.css` und
-`app-dbd11412.js`. `manifest.json` und der Ordner `public/build/assets` müssen
+Der aktuelle Build verweist auf `public/build/assets/app-a3e676e8.css` und
+`app-1adc73f0.js`. `manifest.json` und der Ordner `public/build/assets` müssen
 gemeinsam deployt werden; alte Hash-Dateien können auf dem Server bleiben.
+
+Der Build vom 21. September enthält keine neue Regel, sondern zwei weniger:
+`.truncate` und `.lg\:gap-y-30` werden nirgends mehr verwendet. Die Übersicht wäre
+also auch mit dem alten Bundle richtig dargestellt worden.
 
 ### Logo-Marquee: Titel, zwei Reihen, Abstand nach unten
 
@@ -89,6 +93,18 @@ Diese Punkte sind noch keine freigegebenen Aufträge.
   unsichtbare Variante bräuchte `sr-only`, das nicht im kompilierten CSS enthalten ist
   und damit einen Build auslöst; eine sichtbare über das vorhandene Partial
   `partials/ui/heading/h1.antlers.html` nicht.
+- [ ] **Teaserzeile in der Portfolio-Übersicht?** Der Entwurf sieht unter dem
+  Projekttitel eine kurze Teaserzeile vor. Sie ist vorerst ausgeblendet; dort steht
+  stattdessen `client`, wie auf der Live-Seite. Gepflegt ist `teaser` in einem von 43
+  deutschen Einträgen (`content/collections/projects/de/riva-arbon.md`) und in keinem
+  der 39 englischen — die Zeile einzuschalten ist also zuerst eine redaktionelle
+  Aufgabe. Die Vorgabe steht im Blueprint
+  `resources/blueprints/collections/projects/project.yaml`: etwa 45–90 Zeichen, ohne
+  Nightnurse-Leistung, ohne direkte Ansprache, ohne Handlungsaufforderung;
+  verbindlicher Massstab ist
+  [project-content-standard-de.md](project-content-standard-de.md). Im Template ist es
+  danach eine Zeile in `partials/content/project/elements/teaser.antlers.html`. Ob
+  Teaser und Auftraggeber nebeneinander stehen sollen, ist mitzuentscheiden.
 
 
 ## Fehler
@@ -169,9 +185,14 @@ tatsächlich eingetragen wurde.
 ### Projekte und Portfolio
 
 - [ ] «Zum Projekt» auf den Startseiten-Projektkacheln durch einen eindeutigen
-  Pfeil-Button ersetzen. Linkziel erhalten, zugänglichen Namen wie «Projekt [Titel]
-  ansehen» / «View project [title]» vergeben. Betrifft
-  `partials/fieldsets/teaser/portfolio/item.antlers.html`.
+  Pfeil ersetzen. Linkziel erhalten. Betrifft
+  `partials/fieldsets/teaser/portfolio/item.antlers.html`. In der Portfolio-Übersicht
+  ist das am 21. September geschehen und lässt sich von dort übernehmen: In
+  `partials/content/project/elements/teaser.antlers.html` umschliesst **ein** Link die
+  ganze Kachel — so, wie es die Kompetenz-Kacheln schon halten. Der Pfeil steht als
+  blosses Icon rechts neben dem Auftraggeber, nicht als eigener Link. Vorher führten
+  Bild, Titel und Button je einzeln zum selben Ziel und standen dreimal in der
+  Tab-Reihenfolge.
 - [ ] Beim Hover auf Projektkacheln Titel und Teaser stehen lassen und nur ein
   zusätzliches Element einblenden. Touch- und Tastaturbedienung mitprüfen; die
   Information muss auch ohne Hover zugänglich sein.
@@ -238,19 +259,10 @@ frei mit den übrigen Modulen kombinierbar.
 
 ## Redaktionelle Restarbeiten
 
-- [ ] Das Feld `teaser` der Projekte ist fast überall leer: gepflegt ist es in einem
-  von 43 deutschen Einträgen (`content/collections/projects/de/riva-arbon.md`) und in
-  keinem der 39 englischen. Die neue Portfolio-Übersicht zeigt diese Zeile unter jedem
-  Projekttitel. Die Vorgabe steht im Blueprint
-  `resources/blueprints/collections/projects/project.yaml`: etwa 45–90 Zeichen, ohne
-  Nightnurse-Leistung, ohne direkte Ansprache, ohne Handlungsaufforderung. Der
-  verbindliche Massstab ist
-  [project-content-standard-de.md](project-content-standard-de.md).
-  - Solange das Feld leer bleibt, greift in
-    `partials/content/project/elements/teaser.antlers.html` ein Notbehelf: der Anfang
-    von `summary`, auf 90 Zeichen gekürzt. Das ist lesbar, aber es ist der Projekttext
-    und keine Teaserzeile — die Sätze brechen mitten im Gedanken ab.
-  - Sobald `teaser` überall gepflegt ist, kann der Notbehelf ersatzlos entfallen.
+- [ ] Das Feld `client` fehlt in 30 der 39 englischen Projekte; deutsch ist es in 42
+  von 43 gepflegt. Seit dem 21. September steht es als einzige Zeile unter dem Titel
+  der Portfolio-Übersicht, wie auf der Live-Seite. Fehlt es, bleibt unter dem Titel
+  nichts stehen — die Kachel bricht nicht, wirkt aber unfertig. Englisch nachtragen.
 - [ ] Sieben unveröffentlichte Teameinträge haben kein Portrait. Vor dem
   Veröffentlichen ergänzen, sonst bleibt ihre Karte in der Übersicht leer.
 - [ ] Die korrigierten Netzwerk-Links sind lokal eingepflegt, aber noch nicht
