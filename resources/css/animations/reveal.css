@@ -1,0 +1,37 @@
+/**
+ * Per-element scroll reveal.
+ *
+ * The rest of the site reveals a whole section at once: observer.js puts
+ * `is-active` on the section and the animation modules key off
+ * `.is-active [data-animation="…"]`. A long listing like the portfolio is a
+ * single section, so that would fire every teaser at the same moment and
+ * everything below the fold would already be revealed by the time it is
+ * reached. reveal.js observes each `[data-reveal]` on its own instead.
+ *
+ * `fadeIn` comes from animations/fadeIn.css. Reduced motion is handled by
+ * animations/reduced-motion.css, which resets any `[data-animation]` element to
+ * its end state — hence the attribute rather than a class.
+ */
+
+@keyframes revealUp {
+  0% {
+    transform: translateY(10%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* initial state */
+[data-animation="revealUp"] {
+  transform: translateY(10%);
+  opacity: 0;
+}
+
+/* active state */
+[data-animation="revealUp"].is-revealed {
+  animation-fill-mode: forwards;
+  animation-name: revealUp, fadeIn;
+  animation-duration: .75s, 1.25s;
+  animation-iteration-count: 1;
+}

@@ -1,0 +1,70 @@
+{{#
+  content/project/elements/teaser — a single teaser on the portfolio listing.
+
+  Rendered inside a {{ projects }} loop, so `title`, `url`, `teaser` and
+  `summary` are read straight from the entry. Only the layout of the frame is
+  passed in; the placement on the grid is the caller's job.
+
+  Params:
+    image  (required unless video)  asset shown in the frame
+    video  (optional)               teaser video (mp4), takes precedence
+    ratio  (required)               responsive aspect-ratio classes for the frame
+    frame  (optional)               extra classes for the frame, e.g. a bleed
+
+  Only the frame bleeds past the container — the caption stays on its column,
+  the way the design keeps the Kriens teaser's text at the left margin while
+  its image runs off the page.
+
+  The lead line under the title falls back to the opening of `summary` while
+  the `teaser` field is still empty on most entries — see docs/developer-todos.md.
+#}}
+<figure class="group">
+  <a
+    href="{{ url }}"
+    title="{{ title }}"
+    class="block overflow-hidden {{ ratio }} {{ frame ?? '' }}">
+    {{ if video }}
+      <video
+        poster=""
+        preload="none"
+        muted
+        autoplay
+        playsinline
+        loop
+        class="block w-full h-full object-cover group-hover:opacity-80 transition-opacity duration-500">
+        <source src="{{ video }}" type="video/mp4">
+      </video>
+    {{ else }}
+      <picture>
+        <source media="(min-width: 1024px)" srcset="{{ glide:image preset='2xl-webp' }}" type="image/webp">
+        <source media="(min-width: 768px)" srcset="{{ glide:image preset='xl-webp' }}" type="image/webp">
+        <source srcset="{{ glide:image preset='lg-webp' }}" type="image/webp">
+        <source media="(min-width: 1024px)" srcset="{{ glide:image preset='2xl' }}" type="image/jpeg">
+        <source media="(min-width: 768px)" srcset="{{ glide:image preset='xl' }}" type="image/jpeg">
+        <img
+          src="{{ glide:image preset='lg' }}"
+          alt="{{ image:alt }}"
+          title="{{ image:alt }}"
+          height="{{ image:height }}"
+          width="{{ image:width }}"
+          class="block w-full h-full object-cover group-hover:opacity-80 transition-opacity duration-500"
+          loading="lazy">
+      </picture>
+    {{ /if }}
+  </a>
+  <figcaption class="pt-15 xl:pt-20">
+    <h2 class="font-meta-medium text-md xl:text-lg leading-[1.25]">
+      <a href="{{ url }}" title="{{ title }}" class="hover:text-steel transition-colors">{{ title }}</a>
+    </h2>
+    <div class="text-md xl:text-lg font-meta-light leading-[1.35] mt-8 xl:mt-10">
+      {{ if teaser }}
+        {{ teaser }}
+      {{ elseif summary }}
+        <p>{{ summary | replace('</p>', '</p> ') | strip_tags | truncate(90, '…') }}</p>
+      {{ /if }}
+    </div>
+    <div class="mt-15 xl:mt-25">
+      {{ partial:ui/button/more title="{{ "Zum Projekt" | trans }}" url="{{ url }}" }}
+    </div>
+  </figcaption>
+</figure>

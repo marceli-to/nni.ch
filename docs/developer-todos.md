@@ -110,6 +110,13 @@ Ist `is_fullpage: false` (z. B. weil eine Seite bewusst kompakt/ohne Fullpage-In
 
 ## Offene Punkte
 
+### Portfolio-Übersicht: Feld `teaser` ist fast überall leer
+
+- [ ] Die neue Portfolio-Übersicht zeigt unter jedem Projekttitel eine kurze Zeile aus dem Feld `teaser`. Gepflegt ist dieses Feld zurzeit in genau einem von 43 deutschen Einträgen (`content/collections/projects/de/riva-arbon.md`); im Englischen sieht es entsprechend aus.
+  - Solange das so ist, greift in `resources/views/partials/content/project/elements/teaser.antlers.html` ein Notbehelf: Fehlt `teaser`, wird der Anfang von `summary` auf 90 Zeichen gekürzt und mit Auslassungszeichen ausgegeben. Das ist lesbar, aber es ist der Projekttext und keine Teaserzeile — die Sätze brechen mitten im Gedanken ab.
+  - Redaktionelle Aufgabe: `teaser` für alle Projekte in `de` und `en` füllen. Die Vorgabe steht im Blueprint (`resources/blueprints/collections/projects/project.yaml`): etwa 45–90 Zeichen, ohne Nightnurse-Leistung, ohne direkte Ansprache, ohne Handlungsaufforderung. Der verbindliche Massstab dafür ist `docs/project-content-standard-de.md`.
+  - Sobald das Feld überall gepflegt ist, kann der Notbehelf im Partial ersatzlos entfallen.
+
 ### SEO und Zugänglichkeit: Seiten ganz ohne H1
 
 - [ ] Mehreren Seiten fehlt eine H1 vollständig: `/team`, `/portfolio` und `/kontakt` sowie `/datenschutz`, `/impressum` und `/vielen-dank`.

@@ -1,0 +1,64 @@
+/**
+ * Portfolio listing grid.
+ *
+ * Three things Tailwind cannot express on its own:
+ *
+ * 1. Explicit rows from xl up. Two of the eight slots share a row with the
+ *    slot before them, and in one of the pairs the left-hand teaser comes
+ *    second in source order — grid auto-placement always pushes that one onto
+ *    a new row. Each item therefore carries its row as `--row-xl`
+ *    (see partials/content/project/elements/teaser-slot.antlers.html). Below xl
+ *    the variable is ignored and auto-placement does the work.
+ *
+ * 2. The vertical stagger. A percentage margin on a grid item resolves against
+ *    that item's grid area, so the same percentage would mean something
+ *    different for a four-column slot and a nine-column one. `--gw` is the
+ *    grid's own content width, and each slot gives its offset as a fraction of
+ *    it (`--mt-md`, `--mt-xl`, `--mb-xl`), taken from the design's gaps over
+ *    its 1630px of content.
+ *
+ * 3. The full-bleed teasers. `--bleed` is the distance from the container's
+ *    content edge to the viewport edge: half of whatever the viewport has over
+ *    max-w-site (1630px, border-box), plus the container padding. A negative
+ *    margin on a stretched grid item moves that edge outwards without touching
+ *    the column it starts in. `100vw` includes the scrollbar, so the section
+ *    clips on the x axis (`overflow-x-clip` in project/index.antlers.html).
+ */
+
+[data-portfolio-grid] {
+  --pad: 2.1875rem; /* px-35 */
+  --gw: calc(min(1630px, 100vw) - 2 * var(--pad));
+  --bleed: calc(max(0px, (100vw - 1630px) / 2) + var(--pad));
+}
+
+@media (min-width: 640px) {
+  [data-portfolio-grid] {
+    --pad: 5rem; /* sm:px-80 */
+  }
+}
+
+@media (min-width: 768px) {
+  [data-portfolio-grid] > * {
+    margin-top: calc(var(--gw) * var(--mt-md, 0));
+  }
+}
+
+@media (min-width: 1280px) {
+  [data-portfolio-grid] {
+    --pad: 6.25rem; /* xl:px-100 */
+  }
+
+  [data-portfolio-grid] > [style*="--row-xl"] {
+    grid-row: var(--row-xl);
+    margin-top: calc(var(--gw) * var(--mt-xl, 0));
+    margin-bottom: calc(var(--gw) * var(--mb-xl, 0));
+  }
+}
+
+.bleed-left {
+  margin-left: calc(-1 * var(--bleed));
+}
+
+.bleed-right {
+  margin-right: calc(-1 * var(--bleed));
+}

@@ -1,11 +1,13 @@
-<section data-section-theme="light" class="pt-90 lg:pt-150">
+<section data-section-theme="light" class="overflow-x-clip pt-90 lg:pt-150">
   {{ partial:layout/container }}
 
   {{ partial:ui/filter/wrapper class="hidden lg:flex lg:mb-20" }}
     {{ partial:ui/filter/portfolio }}
   {{ /partial:ui/filter/wrapper }}
 
-    <div class="grid grid-cols-12 gap-15">
+    <div
+      data-portfolio-grid
+      class="grid grid-cols-12 gap-x-20 lg:gap-x-30 xl:gap-x-50 gap-y-45 md:gap-y-75 xl:gap-y-0">
 
       {{ if category }}
 
@@ -15,32 +17,10 @@
                 {{ if no_results }}
                   <p class="col-span-full">{{ "Oh, es gibt leider noch keine Projekte. Schau doch zu einem späteren Zeitpunkt noch einmal vorbei." | trans }}</p>
                 {{ else }}
-                  {{ projects }}  
-                    {{ if count | mod(3) == 0 }}
-                      <a 
-                        href="{{ url }}"
-                        title="{{ title }}"
-                        class="block col-span-full image-overlay after:bg-opacity-20 group"
-                        data-touch>
-                        {{ partial:content/project/media/preview video="{{ teaser_video }}" image="{{ teaser_image_landscape ?? teaser_image_portrait }}" title="{{ title }}" client="{{ client }}" class="aspect-[16/8]" }}
-                      </a>
-                    {{ elseif count | mod(2) == 0 }}
-                      <a 
-                        href="{{ url }}"
-                        title="{{ title }}"
-                        class="block col-span-full md:col-span-8 image-overlay after:bg-opacity-20 group"
-                        data-touch>
-                        {{ partial:content/project/media/preview video="{{ teaser_video }}" image="{{ teaser_image_landscape ?? teaser_image_portrait }}" title="{{ title }}" client="{{ client }}" class="aspect-[3/2]" }}
-                      </a>
-                    {{ else }}
-                      <a 
-                        href="{{ url }}"
-                        title="{{ title }}"
-                        class="block col-span-full md:col-span-4 image-overlay after:bg-opacity-20 group"
-                        data-touch>
-                        {{ partial:content/project/media/preview video="{{ teaser_video }}" image="{{ teaser_image_portrait ?? teaser_image_landscape }}" title="{{ title }}" client="{{ client }}" class="aspect-[3/4]" }}
-                      </a>
-                    {{ /if }}
+                  {{ projects }}
+                    {{ partial:content/project/elements/teaser-slot
+                      :pos="count | subtract(1) | mod(8)"
+                      :cycle="count | subtract(1) | divide(8) | floor" }}
                   {{ /projects }}
                 {{ /if }}
               {{ /collection }}
@@ -49,43 +29,21 @@
 
       {{ else }}
 
-        {{ collection from="projects" as="projects" sort="order" taxonomy:project_categories="{{ category }}" taxonomy:tags="{{ tag }}" }}
+        {{ collection from="projects" as="projects" sort="order" taxonomy:tags="{{ tag }}" }}
           {{ if no_results }}
             <p class="col-span-full">{{ "Oh, es gibt leider noch keine Projekte. Schau doch zu einem späteren Zeitpunkt noch einmal vorbei." | trans }}</p>
           {{ else }}
-            {{ projects }}  
-              {{ if count | mod(3) == 0 }}
-                <a 
-                  href="{{ url }}"
-                  title="{{ title }}"
-                  class="block col-span-full image-overlay after:bg-opacity-20 group"
-                  data-touch>
-                  {{ partial:content/project/media/preview video="{{ teaser_video }}" image="{{ teaser_image_landscape ?? teaser_image_portrait }}" title="{{ title }}" client="{{ client }}" class="aspect-[16/8]" }}
-                </a>
-              {{ elseif count | mod(2) == 0 }}
-                <a 
-                  href="{{ url }}"
-                  title="{{ title }}"
-                  class="block col-span-full md:col-span-8 image-overlay after:bg-opacity-20 group"
-                  data-touch>
-                  {{ partial:content/project/media/preview video="{{ teaser_video }}" image="{{ teaser_image_landscape ?? teaser_image_portrait }}" title="{{ title }}" client="{{ client }}" class="aspect-[3/2]" }}
-                </a>
-              {{ else }}
-                <a 
-                  href="{{ url }}"
-                  title="{{ title }}"
-                  class="block col-span-full md:col-span-4 image-overlay after:bg-opacity-20 group"
-                  data-touch>
-                  {{ partial:content/project/media/preview video="{{ teaser_video }}" image="{{ teaser_image_portrait ?? teaser_image_landscape }}" title="{{ title }}" client="{{ client }}" class="aspect-[3/4]" }}
-                </a>
-              {{ /if }}
+            {{ projects }}
+              {{ partial:content/project/elements/teaser-slot
+                :pos="count | subtract(1) | mod(8)"
+                :cycle="count | subtract(1) | divide(8) | floor" }}
             {{ /projects }}
           {{ /if }}
         {{ /collection }}
 
       {{ /if }}
-      
+
     </div>
-    
+
   {{ /partial:layout/container }}
 </section>

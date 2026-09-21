@@ -13,6 +13,7 @@
 @import "animations/menu.css";
 @import "animations/slides.css";
 @import "animations/marquee.css";
+@import "animations/reveal.css";
 @import "animations/reduced-motion.css";
 
 @import "components/headings.css";
@@ -21,6 +22,7 @@
 @import "components/swiper.css";
 @import "components/theme.css";
 @import "components/media.css";
+@import "components/portfolio-grid.css";
 
 @import "utils.css";
 

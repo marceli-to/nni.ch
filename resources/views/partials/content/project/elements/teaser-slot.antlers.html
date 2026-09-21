@@ -1,0 +1,147 @@
+{{#
+  content/project/elements/teaser-slot — places one project teaser on the
+  portfolio grid.
+
+  The listing repeats a pattern of eight slots taken from the XD design
+  (artboard 1920 wide, 12 columns of 90px with a 50px gutter and 145px margins,
+  i.e. 1630px of content). Every width below is therefore expressed in columns
+  rather than pixels, so the composition survives the site container being
+  narrower (max-w-site is 1630px *including* its padding).
+
+  Desktop slots (xl and up, `#n` = the project's position in the design):
+
+    #1  cols 2–5                    #2  cols 7–12, 208px lower
+    #3  cols 1–8, bleeds left
+    #4  cols 7–12, bleeds right
+    #5  cols 3–11
+    #6  cols 7–12, bleeds right
+    #7  cols 1–4, rides up beside #6   #8  cols 6–9
+
+  #1+#2 and #7+#8 share a grid row, and in both pairs the second teaser would be
+  pushed onto a row of its own by auto-placement — each slot therefore carries
+  an explicit row (`--row-xl`). Six rows per cycle of eight projects.
+
+  The design interlocks #7 and #8 with the row above; #7 is paired with #6 there
+  and #8 rides up into #7. Reproduced literally that puts #8's offset at the
+  mercy of how tall #6's caption happens to be, and a long lead line makes the
+  two collide. Pairing #7 with #8 instead gives the same picture — #7 still
+  climbs up alongside #6 — but both offsets are now measured from #6's bottom,
+  and neither slot can ever overlap something in its own columns.
+
+  The vertical offsets are fractions of the grid width rather than Tailwind
+  margins: a percentage margin on a grid item resolves against its own grid
+  area, so it would shrink and grow with the slot's column span. `--mt-xl` and
+  friends are multiplied by `--gw` in components/portfolio-grid.css, which is
+  where the row and the margins are actually applied. The fractions are the
+  design's pixel gaps over its 1630px of content (208 → .128, −552 → −.339, and a
+  standard row gap of 150 → .092).
+
+  Below xl the pairs are dropped and auto-placement takes over: a two-up
+  staggered rhythm from md, a single gently offset column below that. The
+  aspect ratios relax towards 3:2 / square / 3:4 so the crops stay sane on a
+  phone.
+
+  Params:
+    pos    (required)  0–7, the position within the cycle
+    cycle  (required)  0-based cycle index, used for the explicit row
+#}}
+
+{{ if pos == 0 }}
+  <div
+    data-reveal
+    data-animation="revealUp"
+    style="--row-xl: {{ cycle | multiply(6) | add(1) }}"
+    class="col-start-1 col-span-11 md:col-start-1 md:col-span-6 xl:col-start-2 xl:col-span-4">
+    {{ partial:content/project/elements/teaser
+      video="{{ teaser_video }}"
+      image="{{ teaser_image_landscape ?? teaser_image_portrait }}"
+      ratio="aspect-square md:aspect-[510/483]" }}
+  </div>
+
+{{ elseif pos == 1 }}
+  <div
+    data-reveal
+    data-animation="revealUp"
+    style="--row-xl: {{ cycle | multiply(6) | add(1) }}; --mt-md: .06; --mt-xl: .128"
+    class="col-start-2 col-span-11 md:col-start-8 md:col-span-5 xl:col-start-7 xl:col-span-6">
+    {{ partial:content/project/elements/teaser
+      video="{{ teaser_video }}"
+      image="{{ teaser_image_landscape ?? teaser_image_portrait }}"
+      ratio="aspect-square md:aspect-[790/693]" }}
+  </div>
+
+{{ elseif pos == 2 }}
+  <div
+    data-reveal
+    data-animation="revealUp"
+    style="--row-xl: {{ cycle | multiply(6) | add(2) }}; --mt-xl: .062"
+    class="col-start-1 col-span-11 md:col-start-1 md:col-span-9 xl:col-start-1 xl:col-span-8">
+    {{ partial:content/project/elements/teaser
+      video="{{ teaser_video }}"
+      image="{{ teaser_image_landscape ?? teaser_image_portrait }}"
+      ratio="aspect-[3/2] md:aspect-[1215/810]"
+      frame="bleed-left" }}
+  </div>
+
+{{ elseif pos == 3 }}
+  <div
+    data-reveal
+    data-animation="revealUp"
+    style="--row-xl: {{ cycle | multiply(6) | add(3) }}; --mt-xl: .092"
+    class="col-start-2 col-span-11 md:col-start-6 md:col-span-7 xl:col-start-7 xl:col-span-6">
+    {{ partial:content/project/elements/teaser
+      video="{{ teaser_video }}"
+      image="{{ teaser_image_landscape ?? teaser_image_portrait }}"
+      ratio="aspect-square md:aspect-[935/737]"
+      frame="bleed-right" }}
+  </div>
+
+{{ elseif pos == 4 }}
+  <div
+    data-reveal
+    data-animation="revealUp"
+    style="--row-xl: {{ cycle | multiply(6) | add(4) }}; --mt-xl: .125"
+    class="col-start-1 col-span-12 md:col-start-2 md:col-span-10 xl:col-start-3 xl:col-span-9">
+    {{ partial:content/project/elements/teaser
+      video="{{ teaser_video }}"
+      image="{{ teaser_image_landscape ?? teaser_image_portrait }}"
+      ratio="aspect-[3/2] md:aspect-[1210/726]" }}
+  </div>
+
+{{ elseif pos == 5 }}
+  <div
+    data-reveal
+    data-animation="revealUp"
+    style="--row-xl: {{ cycle | multiply(6) | add(5) }}; --mt-xl: .1"
+    class="col-start-2 col-span-11 md:col-start-5 md:col-span-8 xl:col-start-7 xl:col-span-6">
+    {{ partial:content/project/elements/teaser
+      video="{{ teaser_video }}"
+      image="{{ teaser_image_portrait ?? teaser_image_landscape }}"
+      ratio="aspect-square md:aspect-[935/1023]"
+      frame="bleed-right" }}
+  </div>
+
+{{ elseif pos == 6 }}
+  <div
+    data-reveal
+    data-animation="revealUp"
+    style="--row-xl: {{ cycle | multiply(6) | add(6) }}; --mt-xl: -.339"
+    class="col-start-1 col-span-9 md:col-start-1 md:col-span-5 xl:col-start-1 xl:col-span-4">
+    {{ partial:content/project/elements/teaser
+      video="{{ teaser_video }}"
+      image="{{ teaser_image_portrait ?? teaser_image_landscape }}"
+      ratio="aspect-[3/4] md:aspect-[536/879]" }}
+  </div>
+
+{{ else }}
+  <div
+    data-reveal
+    data-animation="revealUp"
+    style="--row-xl: {{ cycle | multiply(6) | add(6) }}; --mt-xl: .091; --mb-xl: .092"
+    class="col-start-3 col-span-10 md:col-start-4 md:col-span-7 xl:col-start-6 xl:col-span-4">
+    {{ partial:content/project/elements/teaser
+      video="{{ teaser_video }}"
+      image="{{ teaser_image_landscape ?? teaser_image_portrait }}"
+      ratio="aspect-square md:aspect-[510/483]" }}
+  </div>
+{{ /if }}

@@ -43,3 +43,5 @@ import './modules/quickmenu.js';
 
 import './modules/observer.js';
 
+
+import './modules/reveal.js';
