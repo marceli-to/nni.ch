@@ -1,9 +1,9 @@
 {{#
   content/project/elements/teaser — a single teaser on the portfolio listing.
 
-  Rendered inside a {{ projects }} loop, so `title`, `url` and `client` are read
-  straight from the entry. Only the layout of the frame is passed in; the
-  placement on the grid is the caller's job.
+  Rendered inside a {{ projects }} loop, so `title`, `url`, `client` and
+  `teaser` are read straight from the entry. Only the layout of the frame is passed
+  in; the placement on the grid is the caller's job.
 
   Params:
     image  (required unless video)  asset shown in the frame
@@ -21,8 +21,14 @@
   the way the design keeps the Kriens teaser's text at the left margin while
   its image runs off the page.
 
-  The `teaser` field is deliberately not shown: it is empty on nearly every entry,
-  and showing it is postponed until the copy exists — see docs/developer-todos.md.
+  The caption reads client, then title, then the teaser line. The client sits above
+  the title as a small eyebrow; the teaser below it carries the type the client line
+  used to have.
+
+  PLACEHOLDER: `teaser` is filled on one of 43 German entries and none of the 39
+  English ones, so almost every tile falls back to a generic line held in the
+  template (and in lang/en.json for English). It is there to show the layout, not
+  to ship — see docs/developer-todos.md.
 #}}
 <a
   href="{{ url }}"
@@ -60,12 +66,19 @@
       {{ /if }}
     </div>
     <figcaption class="pt-15 xl:pt-20">
-      <h2 class="font-meta-medium text-md xl:text-lg leading-[1.25]">{{ title }}</h2>
-      <div class="flex items-center justify-between gap-x-20 mt-8 xl:mt-10">
+      <div class="text-xs xl:text-sm font-meta-light leading-[1.35]">{{ client }}</div>
+      <h2 class="font-meta-medium text-md xl:text-lg leading-[1.25] mt-8 xl:mt-10">{{ title }}</h2>
+      <div class="flex items-end justify-between gap-x-20 mt-4">
         <div class="text-md xl:text-lg font-meta-light leading-[1.35]">
-          {{ client }}
+          {{ if teaser }}
+            {{ teaser }}
+          {{ else }}
+            <p>{{ "Ein Ort, der Massstab, Material und Atmosphäre zusammenbringt." | trans }}</p>
+          {{ /if }}
         </div>
-        {{ partial:ui/icon/arrow-right-short class="shrink-0 w-18 xl:w-20 h-auto group-hover:translate-x-4 transition-transform" }}
+        <div class="shrink-0 text-md xl:text-lg leading-[1.35]">
+          {{ partial:ui/icon/arrow-right-short class="inline-block w-18 xl:w-20 h-auto group-hover:translate-x-4 transition-transform" }}
+        </div>
       </div>
     </figcaption>
   </figure>

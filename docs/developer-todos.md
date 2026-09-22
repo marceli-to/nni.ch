@@ -39,6 +39,9 @@ Der Build vom 21. September enthält keine neue Regel, sondern zwei weniger:
 `.truncate` und `.lg\:gap-y-30` werden nirgends mehr verwendet. Die Übersicht wäre
 also auch mit dem alten Bundle richtig dargestellt worden.
 
+Die Umstellung der Bildunterschrift vom 22. September führt ebenfalls keine neue Klasse
+ein: `npm run build` liefert danach dieselben Hashes, `public/build` bleibt unverändert.
+
 ### Logo-Marquee: Titel, zwei Reihen, Abstand nach unten
 
 Der Baustein hat ein neues, lokalisierbares Titelfeld. Es ist als `import: title` in
@@ -76,6 +79,25 @@ ausscheren und nur ein `pt-` setzen: Marquee und Segment-Kacheln sind bereinigt,
 `teaser_blog` (`pt-90 md:pt-150`) steht noch aus. Dort greift es nur auf den
 Nicht-Fullpage-Seiten.
 
+### Portfolio-Übersicht: Bildunterschrift in drei Zeilen
+
+Die Unterschrift steht in der Reihenfolge Auftraggeber, Projekttitel, Teaserzeile.
+`client` sitzt als kleine Zeile über dem Titel (`text-xs xl:text-sm`), der Titel bleibt
+halbfett in `text-md xl:text-lg`, und die Teaserzeile darunter übernimmt den Schriftgrad,
+den vorher der Auftraggeber hatte. Der Auftraggeber steht mit `mt-8 xl:mt-10` etwas
+abgesetzt darüber, Titel und Teaserzeile rücken mit `mt-4` zu einem Block zusammen.
+
+Der Pfeil steht rechts und immer auf der **letzten** Zeile, auch wenn der Teaser
+umbricht — auf den schmalen Spalten der Paare tut er das regelmässig. Dafür sitzt er in
+einem Wrapper, der die Schriftgrösse und Zeilenhöhe der Teaserzeile trägt und damit
+genau eine Zeile hoch ist; `items-end` legt diese Zeile auf die letzte Textzeile, und
+das Icon steht als `inline-block` auf deren Grundlinie, also optisch auf Mittelhöhe.
+Ein Versatz über `mb-*` wäre einfacher gewesen, bräuchte aber eine Klasse, die nicht im
+kompilierten CSS steht.
+
+Solange `teaser` leer ist, gibt das Template einen Platzhaltersatz aus. Der ist
+ausdrücklich nicht veröffentlichbar — siehe «Zuerst mit Christoph zu klären».
+
 ## Zuerst mit Christoph zu klären
 
 Diese Punkte sind noch keine freigegebenen Aufträge.
@@ -93,18 +115,21 @@ Diese Punkte sind noch keine freigegebenen Aufträge.
   unsichtbare Variante bräuchte `sr-only`, das nicht im kompilierten CSS enthalten ist
   und damit einen Build auslöst; eine sichtbare über das vorhandene Partial
   `partials/ui/heading/h1.antlers.html` nicht.
-- [ ] **Teaserzeile in der Portfolio-Übersicht?** Der Entwurf sieht unter dem
-  Projekttitel eine kurze Teaserzeile vor. Sie ist vorerst ausgeblendet; dort steht
-  stattdessen `client`, wie auf der Live-Seite. Gepflegt ist `teaser` in einem von 43
-  deutschen Einträgen (`content/collections/projects/de/riva-arbon.md`) und in keinem
-  der 39 englischen — die Zeile einzuschalten ist also zuerst eine redaktionelle
-  Aufgabe. Die Vorgabe steht im Blueprint
+- [ ] **Platzhaltertext in der Portfolio-Übersicht.** Die Bildunterschrift steht seit
+  dem 22. September in der Reihenfolge Auftraggeber (klein), Projekttitel, Teaserzeile.
+  Gepflegt ist `teaser` aber in einem von 43 deutschen Einträgen
+  (`content/collections/projects/de/riva-arbon.md`) und in keinem der 39 englischen.
+  Auf allen übrigen Kacheln steht deshalb **ein Platzhaltersatz aus dem Template** —
+  «Ein Ort, der Massstab, Material und Atmosphäre zusammenbringt.», englisch über
+  `lang/en.json`. Er zeigt das Layout und darf so nicht live gehen: entweder `teaser`
+  redaktionell füllen oder die Zeile wieder ausschalten. Der eine gepflegte Eintrag
+  zeigt ausserdem, dass `teaser` als lokalisierbares Feld auf die deutsche Fassung
+  zurückfällt: `/en/portfolio` gibt für Riva Arbon den deutschen Satz aus. Die Vorgabe steht im Blueprint
   `resources/blueprints/collections/projects/project.yaml`: etwa 45–90 Zeichen, ohne
   Nightnurse-Leistung, ohne direkte Ansprache, ohne Handlungsaufforderung;
   verbindlicher Massstab ist
-  [project-content-standard-de.md](project-content-standard-de.md). Im Template ist es
-  danach eine Zeile in `partials/content/project/elements/teaser.antlers.html`. Ob
-  Teaser und Auftraggeber nebeneinander stehen sollen, ist mitzuentscheiden.
+  [project-content-standard-de.md](project-content-standard-de.md). Beides steht in
+  `partials/content/project/elements/teaser.antlers.html`.
 
 
 ## Fehler
@@ -260,9 +285,10 @@ frei mit den übrigen Modulen kombinierbar.
 ## Redaktionelle Restarbeiten
 
 - [ ] Das Feld `client` fehlt in 30 der 39 englischen Projekte; deutsch ist es in 42
-  von 43 gepflegt. Seit dem 21. September steht es als einzige Zeile unter dem Titel
-  der Portfolio-Übersicht, wie auf der Live-Seite. Fehlt es, bleibt unter dem Titel
-  nichts stehen — die Kachel bricht nicht, wirkt aber unfertig. Englisch nachtragen.
+  von 43 gepflegt. In der Portfolio-Übersicht steht es seit dem 22. September als kleine
+  Zeile **über** dem Titel. Fehlt es, rückt der Titel nach oben — die Kachel bricht
+  nicht, wirkt aber unfertig und sitzt eine Zeile höher als ihre Nachbarn. Englisch
+  nachtragen.
 - [ ] Sieben unveröffentlichte Teameinträge haben kein Portrait. Vor dem
   Veröffentlichen ergänzen, sonst bleibt ihre Karte in der Übersicht leer.
 - [ ] Die korrigierten Netzwerk-Links sind lokal eingepflegt, aber noch nicht
