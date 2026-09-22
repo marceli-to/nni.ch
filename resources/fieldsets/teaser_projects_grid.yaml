@@ -27,9 +27,8 @@ fields:
       type: entries
       collections:
         - projects
-      max_items: 7
       display: Projects
-      instructions: 'The projects shown in the grid, in this order. Seven fill the pattern exactly, because the title sits where the first one would. Fewer is fine — the empty rows close up.'
+      instructions: 'The projects shown in the grid, in this order. The pattern runs in cycles of eight: seven projects fill the first one exactly, because the title sits where the eighth would be, and the next seven or eight repeat it. Any number works — 7 and 15 end on a full row.'
       localizable: false
       validate:
         - required

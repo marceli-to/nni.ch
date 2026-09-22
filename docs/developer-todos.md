@@ -113,7 +113,10 @@ selbst steht keine einzige dieser Zahlen noch einmal.
 Der Titel steht an der Stelle des ersten Slots — gleiche Reihe wie Slot #2, aber bündig
 am linken Rand. Die Projekte beginnen den Zyklus deshalb bei #2, was `count` (1-basiert)
 direkt liefert: Projekt 1 landet auf `pos 1`, Projekt 7 auf `pos 7`. Sieben Projekte
-füllen das Muster genau, das Feld ist entsprechend auf sieben begrenzt.
+füllen den ersten Zyklus genau; das achte beginnt auf Reihe 7 einen zweiten, und zwar
+in dem Slot, in dem oben der Titel stand. Die Anzahl ist deshalb nicht begrenzt.
+Vollständig aufgehen 7 und 15 — eine Auswahl, die mitten im Zyklus endet, lässt ihren
+letzten Slot ohne die Kachel, neben der er im Entwurf steht. Mit 15 Projekten geprüft.
 
 Der CTA steht **ausserhalb** des Rasters unter dem Baustein. Die letzten beiden Slots
 tragen einen negativen oberen und einen unteren Aussenabstand; eine eigene Rasterreihe
