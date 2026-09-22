@@ -127,6 +127,31 @@ Betrieb. Der neue muss im Control Panel auf der Seite gesetzt werden — die Inh
 liegen in `content/` und werden hier nicht angefasst. Der alte wird entfernt, sobald
 der neue live ist; die Liste dazu steht unter «Aufräumen».
 
+### Portfolio-Übersicht: eigener Titel (H1)
+
+Die Seite hatte keine eigene Überschrift. Sie trägt jetzt eine H1 **über** dem Raster,
+linksbündig mit dem ersten Projekt; Filter und Slot-Muster bleiben unangetastet. Der
+Titel steht bewusst ausserhalb von `[data-portfolio-grid]`: Die Slots tragen ab xl feste
+Reihen (`--row-xl`), Reihe 1 gehört dem ersten Projekt, und davor gibt es keine Reihe.
+Im Raster — wie beim Baustein «Portfolio (Grid)», der den freien ersten Slot dafür
+benutzt — würde jedes Projekt um einen Slot weiterrücken und die Auftaktkachel nach
+rechts wandern. Das ist verworfen.
+
+Der Text kommt aus dem neuen Feld `portfolio_title` im Seiten-Blueprint. Es ist das Feld
+des gemeinsamen Fieldsets `title`, per Referenz eingebunden statt kopiert
+(`field: title.title` mit `config:`), also derselbe formatierbare Bard wie in den
+Bausteinen; überschrieben sind nur die Instruktionen und eine Bedingung, die das Feld
+nur auf der Portfolio-Übersicht zeigt. Leer greift der Seitentitel — eine H1 gibt es
+also in jedem Fall.
+
+`/portfolio/kategorie/…` und `/portfolio/tag/…` sind Routen-Views ohne Eintrag
+(`routes/web.php`), ein Feld erreicht sie nicht. Sie nehmen die Überschrift vom Begriff,
+nach dem gefiltert wird — dort ohnehin die bessere H1. Weil das in der Term-Schleife
+aufgelöst wird, gibt ein unbekannter Slug gar keine Überschrift aus, so wie er auch
+keine Projekte ausgibt.
+
+`ui/heading/h1` hat dafür die Grösse `none` bekommen, die `h2` schon hatte.
+
 ### CTA-Link: `title` statt Seitentitel
 
 `partials/ui/cta.antlers.html` gab `ui/link/arrow` kein `title` mit. Das Partial fällt
@@ -369,6 +394,9 @@ frei mit den übrigen Modulen kombinierbar.
   Zeile **über** dem Titel. Fehlt es, rückt der Titel nach oben — die Kachel bricht
   nicht, wirkt aber unfertig und sitzt eine Zeile höher als ihre Nachbarn. Englisch
   nachtragen.
+- [ ] Der Titel der Portfolio-Übersicht (`portfolio_title`) ist übersetzbar, fällt aber
+  auf die deutsche Fassung zurück. `/en/portfolio` zeigt bis zur englischen Eingabe den
+  deutschen Titel.
 - [ ] Sieben unveröffentlichte Teameinträge haben kein Portrait. Vor dem
   Veröffentlichen ergänzen, sonst bleibt ihre Karte in der Übersicht leer.
 - [ ] Die korrigierten Netzwerk-Links sind lokal eingepflegt, aber noch nicht
