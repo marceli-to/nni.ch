@@ -1,0 +1,32 @@
+{{#
+  content/project/elements/listing-heading — the portfolio listing's h1.
+
+  It sits in a row of its own above `[data-portfolio-grid]`, not in the grid:
+  the pattern's slots carry explicit rows from xl up (`--row-xl`, see
+  teaser-slot), row 1 is the first project's, and a grid row cannot come before
+  it. Outside the grid the heading needs no row at all and the pattern below is
+  untouched — the listing still starts at slot 0, with project #1 on the left.
+
+  It borrows the grid's columns so it lines up with that first project: #1
+  starts at column 2 from xl up and takes half the width on md, and the heading
+  does the same.
+
+  The heading is an h1 at the h2 default's size steps, so it reads like the
+  headings the page-builder blocks set but carries the page's one real heading
+  level. Bold set in the field stays visible because the weight is inherited.
+
+  The text comes from the caller, because the listing is rendered from four
+  places and only one of them has an entry behind it — see project/index.
+
+  Slot: the heading text.
+#}}
+<div class="grid grid-cols-12 gap-x-20 lg:gap-x-30 xl:gap-x-50 mb-30 xl:mb-60">
+  <div
+    data-reveal
+    data-animation="revealUp"
+    class="col-span-full md:col-span-7 xl:col-start-2 xl:col-span-5">
+    {{ partial:ui/heading/h1 size="none" class="text-3xl md:text-5xl xl:text-7xl leading-[1.2] text-pretty hyphens-auto" }}
+      {{ slot }}
+    {{ /partial:ui/heading/h1 }}
+  </div>
+</div>

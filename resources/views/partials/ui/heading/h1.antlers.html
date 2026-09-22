@@ -1,5 +1,10 @@
+{{# size = text-size step only (weight/treatment go in `class`). See docs/cleanup/04-headings.md #}}
 {{ if size == 'lg' }}
 <h1 class="font-meta-medium text-4xl xl:text-7xl leading-[1.2] {{ class }}">
+  {{ slot }}
+</h1>
+{{ elseif size == 'none' }}
+<h1 class="{{ class }}">
   {{ slot }}
 </h1>
 {{ else }}

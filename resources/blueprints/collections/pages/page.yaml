@@ -16,6 +16,13 @@ tabs:
               display: Titel
               localizable: true
           -
+            handle: portfolio_title
+            field: title.title
+            config:
+              instructions: 'Add a styleable title. It is shown top left in the portfolio grid; leave it empty to fall back to the page title.'
+              if:
+                template: 'equals project/index'
+          -
             handle: page_elements
             field:
               collapse: true

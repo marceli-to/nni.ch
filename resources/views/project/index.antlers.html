@@ -1,6 +1,30 @@
 <section data-section-theme="light" class="overflow-x-clip pt-90 lg:pt-150">
   {{ partial:layout/container }}
 
+    {{#
+      The category and tag URLs are route views (routes/web.php) with no entry
+      behind them, so they take their heading from the term they are filtered
+      by rather than from a field. Resolving it inside the term loop also means
+      an unknown slug renders no heading at all, the way it renders no projects.
+    #}}
+    {{ if category }}
+      {{ taxonomy:project_categories }}
+        {{ if slug == category }}
+          {{ partial:content/project/elements/listing-heading }}{{ title }}{{ /partial:content/project/elements/listing-heading }}
+        {{ /if }}
+      {{ /taxonomy:project_categories }}
+    {{ elseif tag }}
+      {{ taxonomy:tags }}
+        {{ if slug == tag }}
+          {{ partial:content/project/elements/listing-heading }}{{ title }}{{ /partial:content/project/elements/listing-heading }}
+        {{ /if }}
+      {{ /taxonomy:tags }}
+    {{ elseif portfolio_title }}
+      {{ partial:content/project/elements/listing-heading }}{{ portfolio_title }}{{ /partial:content/project/elements/listing-heading }}
+    {{ else }}
+      {{ partial:content/project/elements/listing-heading }}{{ title }}{{ /partial:content/project/elements/listing-heading }}
+    {{ /if }}
+
   {{ partial:ui/filter/wrapper class="hidden lg:flex lg:mb-20" }}
     {{ partial:ui/filter/portfolio }}
   {{ /partial:ui/filter/wrapper }}
