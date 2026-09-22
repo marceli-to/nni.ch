@@ -45,6 +45,11 @@ Changes flow local → staging → production:
 - **Staging**: `staging.nightnurse.ch`
 - **Production**: `nightnurse.ch`
 
+Deployment is a `git pull` on the server. Compiled assets are **built locally and
+committed** — `public/build/` is versioned, so the server never runs `npm run build`.
+Building there writes new hashed bundles and rewrites `manifest.json`, which then
+blocks the next pull with local modifications that look like someone's work.
+
 ## Project Structure
 
 ### Content Management
