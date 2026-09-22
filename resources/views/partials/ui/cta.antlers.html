@@ -3,5 +3,7 @@
   <div class="text-xxs md:text-md xl:text-xl">
     {{ cta_text }}
   </div>
-  {{ partial:ui/link/arrow url="{{ cta_link }}" label="{{ cta_button_text }}" class="flex mt-15 xl:mt-30 text-sm md:text-lg xl:text-xl" }}
+  {{# `title` is passed explicitly: ui/link/arrow falls back to the ambient `title`,
+     which inside a page builder block is the page's own title, not the label. #}}
+  {{ partial:ui/link/arrow url="{{ cta_link }}" label="{{ cta_button_text }}" title="{{ cta_button_text }}" class="flex mt-15 xl:mt-30 text-sm md:text-lg xl:text-xl" }}
 </div>

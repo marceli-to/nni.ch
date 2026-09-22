@@ -1,0 +1,81 @@
+{{#
+  fieldsets/teaser/projects-grid — a picked selection of projects in the same
+  staggered grid as the portfolio listing, with an intro above and a CTA below.
+
+  The grid, the slot pattern and the teaser markup are the listing's, reused
+  as they are: `content/project/elements/teaser-slot` places each project and
+  `components/portfolio-grid.css` does the rows, the stagger and the bleeds,
+  both keyed off `[data-portfolio-grid]`. Nothing here repeats those numbers.
+
+  The intro takes the place of the pattern's first slot. The listing's #1 sits
+  on columns 2–5 of row 1 next to #2; the intro sits on the same row but flush
+  to the left margin, where a heading belongs. The projects therefore start the
+  cycle at #2, which is what `count` (1-based) gives straight away: project 1
+  lands on `pos 1`, project 7 on `pos 7`, and only the eighth project would
+  come back round to `pos 0` — in the next cycle, six rows further down, where
+  nothing collides with the intro.
+
+  Seven projects fill the pattern exactly, which is what the field is capped at.
+  Fewer leave their rows empty and the grid closes up. The cycle arithmetic
+  keeps working past seven should the cap ever be lifted.
+
+  The CTA sits outside the grid rather than in a row of its own. The pattern's
+  last two slots carry a negative top margin and a bottom margin, so a grid row
+  after them would have to account for both; below the grid it just follows the
+  content.
+
+  Revealing is per element (`data-reveal`), not per section — see
+  css/animations/reveal.css. The section-level `is-active` used elsewhere would
+  fire the whole selection at once.
+#}}
+{{ partial:layout/section spacing="py-90 xl:py-150" fullpage="py-90 xl:py-150" class="overflow-x-clip" }}
+  {{ partial:layout/container }}
+
+    <div
+      data-portfolio-grid
+      class="grid grid-cols-12 gap-x-20 lg:gap-x-30 xl:gap-x-50 gap-y-45 md:gap-y-75 xl:gap-y-0">
+
+      <div
+        data-reveal
+        data-animation="revealUp"
+        style="--row-xl: 1"
+        class="col-span-full md:col-span-7 xl:col-start-1 xl:col-span-4">
+        {{ partial:ui/heading/h2 class="text-pretty hyphens-auto" }}
+          {{ projects_grid_title }}
+        {{ /partial:ui/heading/h2 }}
+        <div class="mt-20 xl:mt-30">
+          {{ if main_link }}
+            {{ if main_link_title }}
+              {{ partial:ui/button/more title="{{ main_link_title }}" url="{{ main_link }}" }}
+            {{ else }}
+              {{ partial:ui/button/more title="{{ "Projekt anfragen" | trans }}" url="{{ main_link }}" }}
+            {{ /if }}
+          {{ else }}
+            {{ partial:ui/button/more
+              title="{{ "Zum Portfolio" | trans }}"
+              url="{{ link id="6dc5a5ba-4450-45c6-9684-53b3a8bb4261" }}" }}
+          {{ /if }}
+        </div>
+      </div>
+
+      {{ projects }}
+        {{ partial:content/project/elements/teaser-slot
+          :pos="count | mod(8)"
+          :cycle="count | divide(8) | floor" }}
+      {{ /projects }}
+
+    </div>
+
+    {{ if cta_text && cta_link }}
+      <div class="grid grid-cols-12 gap-x-20 lg:gap-x-30 xl:gap-x-50">
+        <div
+          data-reveal
+          data-animation="revealUp"
+          class="col-span-full md:col-span-7 xl:col-start-1 xl:col-span-5 mt-60 lg:mt-90 xl:mt-150">
+          {{ partial:ui/cta }}
+        </div>
+      </div>
+    {{ /if }}
+
+  {{ /partial:layout/container }}
+{{ /partial:layout/section }}

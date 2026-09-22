@@ -107,6 +107,13 @@ tabs:
                       fields:
                         -
                           import: teaser_project
+                    teaser_projects_grid:
+                      display: 'Portfolio (Grid)'
+                      instructions: 'A picked selection of projects in the portfolio grid, with a title and a CTA.'
+                      icon: layout-display-split-quarters
+                      fields:
+                        -
+                          import: teaser_projects_grid
                     teaser_competencies:
                       display: 'Teaser Competencies'
                       instructions: '3-column competencies teaser, with or without images.'

@@ -42,6 +42,9 @@ also auch mit dem alten Bundle richtig dargestellt worden.
 Die Umstellung der Bildunterschrift vom 22. September führt ebenfalls keine neue Klasse
 ein: `npm run build` liefert danach dieselben Hashes, `public/build` bleibt unverändert.
 
+Auch der neue Baustein «Portfolio (Grid)» kommt ohne neue Klasse aus — er benutzt
+durchweg die des Rasters und der bestehenden UI-Partials.
+
 ### Logo-Marquee: Titel, zwei Reihen, Abstand nach unten
 
 Der Baustein hat ein neues, lokalisierbares Titelfeld. Es ist als `import: title` in
@@ -98,6 +101,36 @@ kompilierten CSS steht.
 Solange `teaser` leer ist, gibt das Template einen Platzhaltersatz aus. Der ist
 ausdrücklich nicht veröffentlichbar — siehe «Zuerst mit Christoph zu klären».
 
+### Neuer Baustein «Portfolio (Grid)»
+
+Ein zweiter Portfolio-Baustein für den Seitenbaukasten, `teaser_projects_grid`,
+zeigt eine handverlesene Auswahl von Projekten im selben gestaffelten Raster wie die
+Portfolio-Übersicht. Raster, Slot-Muster und Kachel sind unverändert übernommen:
+`content/project/elements/teaser-slot` setzt die Projekte, `components/portfolio-grid.css`
+macht Reihen, Versatz und Anschnitte, beide über `[data-portfolio-grid]`. Im Baustein
+selbst steht keine einzige dieser Zahlen noch einmal.
+
+Der Titel steht an der Stelle des ersten Slots — gleiche Reihe wie Slot #2, aber bündig
+am linken Rand. Die Projekte beginnen den Zyklus deshalb bei #2, was `count` (1-basiert)
+direkt liefert: Projekt 1 landet auf `pos 1`, Projekt 7 auf `pos 7`. Sieben Projekte
+füllen das Muster genau, das Feld ist entsprechend auf sieben begrenzt.
+
+Der CTA steht **ausserhalb** des Rasters unter dem Baustein. Die letzten beiden Slots
+tragen einen negativen oberen und einen unteren Aussenabstand; eine eigene Rasterreihe
+darunter müsste beide verrechnen.
+
+Der alte Baustein `teaser_project` («Portfolio (Masonry)») bleibt unverändert und in
+Betrieb. Der neue muss im Control Panel auf der Seite gesetzt werden — die Inhalte
+liegen in `content/` und werden hier nicht angefasst. Der alte wird entfernt, sobald
+der neue live ist; die Liste dazu steht unter «Aufräumen».
+
+### CTA-Link: `title` statt Seitentitel
+
+`partials/ui/cta.antlers.html` gab `ui/link/arrow` kein `title` mit. Das Partial fällt
+dann auf das umgebende `title` zurück, also im Seitenbaukasten auf den Titel der Seite:
+Der CTA auf der Startseite hiess im `title`-Attribut «Startseite». Jetzt steht dort der
+Button-Text. Betrifft auch den bestehenden Masonry-Baustein.
+
 ## Zuerst mit Christoph zu klären
 
 Diese Punkte sind noch keine freigegebenen Aufträge.
@@ -115,6 +148,16 @@ Diese Punkte sind noch keine freigegebenen Aufträge.
   unsichtbare Variante bräuchte `sr-only`, das nicht im kompilierten CSS enthalten ist
   und damit einen Build auslöst; eine sichtbare über das vorhandene Partial
   `partials/ui/heading/h1.antlers.html` nicht.
+- [ ] **Der neue Baustein «Portfolio (Grid)» ist noch nirgends gesetzt.** Er steht im
+  Seitenbaukasten unter «Special Elements» bereit, die Startseite zeigt aber weiterhin
+  «Portfolio (Masonry)». Das Umstellen ist eine Redaktionsaufgabe im Control Panel:
+  Baustein tauschen, Titel und Hauptlink übernehmen, die sieben Projekte auswählen,
+  CTA-Text und -Link übernehmen. Zu beachten: `teaser_project` steht auf vier Seiten,
+  nicht nur auf der deutschen Startseite — auch «Architektur», «Willkommen Deutschland»
+  und die englische Startseite. Achtung ausserdem: die Kacheln zeigen dieselbe
+  Teaserzeile wie die Übersicht, also bei ungepflegtem `teaser` den Platzhaltersatz aus
+  dem nächsten Punkt. Dass der alte Baustein danach entfernt wird, ist beschlossen und
+  unter «Aufräumen» aufgeschrieben.
 - [ ] **Platzhaltertext in der Portfolio-Übersicht.** Die Bildunterschrift steht seit
   dem 22. September in der Reihenfolge Auftraggeber (klein), Projekttitel, Teaserzeile.
   Gepflegt ist `teaser` aber in einem von 43 deutschen Einträgen
@@ -237,6 +280,40 @@ tatsächlich eingetragen wurde.
   zum Standbild. Auf Geräten ohne Hover bleibt das Standbild.
 
 ### Aufräumen
+
+- [ ] **Alten Portfolio-Baustein «Portfolio (Masonry)» entfernen.** Beschlossen, aber
+  **erst nachdem der neue Baustein «Portfolio (Grid)» live ist** — wann das sein wird,
+  steht noch nicht fest. Bis dahin bleiben beide nebeneinander bestehen; der alte ist
+  der, der ausgeliefert wird.
+
+  Voraussetzung: `teaser_project` steht derzeit auf vier Seiten — `de/startseite.md`,
+  `de/architektur.md`, `de/hallodeutschland.md` und `en/home.md`. **Alle vier** müssen
+  umgestellt sein, nicht nur die deutsche Startseite, sonst verschwinden die Bausteine
+  auf den übrigen Seiten ersatzlos. Das Umstellen ist Redaktionsarbeit im Control
+  Panel und geschieht in `content/`, gehört also nicht in dieses Repository.
+
+  Danach entfernbar, und nur dann:
+
+  - `resources/fieldsets/teaser_project.yaml` und `resources/fieldsets/teaser_project_item.yaml`
+    — letzteres wird ausschliesslich vom ersteren importiert.
+  - `resources/views/partials/fieldsets/teaser/portfolio/` (`wrapper` und `item`).
+  - Der Zweig `teaser_project` in `partials/dispatcher.antlers.html` und der Satz
+    `teaser_project` in `resources/blueprints/collections/pages/page.yaml`.
+  - `resources/css/animations/masonry.css` samt `@import` in `app.css`. Die vier
+    Animationen `masonryTitle`, `masonryCta`, `masonrySlideInTopRight` und
+    `masonrySlideInBottom` kommen ausschliesslich im alten Wrapper vor — geprüft am
+    22. September 2026, vor dem Entfernen erneut prüfen. Das löst einen Frontend-Build
+    aus; siehe «Kein Frontend-Build nötig».
+
+  Nicht entfernen, obwohl der alte Baustein sie benutzt:
+
+  - `resources/js/modules/touch.js` und das Attribut `data-touch` — auch von
+    `partials/content/team/media/portrait.antlers.html` gebraucht.
+  - `partials/ui/cta.antlers.html`, `partials/ui/button/more.antlers.html` und die
+    Fieldsets `cta`, `cta_text`, `cta_section_header` — der neue Baustein und andere
+    Bausteine benutzen sie weiter.
+  - Die Übersetzungen «Zum Projekt», «Projekt anfragen» und «Zum Portfolio» in
+    `lang/en.json` — sie stehen auch im neuen Baustein und in der Projektübersicht.
 
 - [ ] **Laufrichtung der zweiten Logoreihe als Klasse.** Sie steht derzeit als
   `style="animation-direction: reverse;"` am Track in

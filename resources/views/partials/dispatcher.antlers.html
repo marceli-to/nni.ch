@@ -30,6 +30,10 @@
   {{ partial:fieldsets/teaser/portfolio/wrapper }}
 {{ /if }}
 
+{{ if type == 'teaser_projects_grid' }}
+  {{ partial:fieldsets/teaser/projects-grid/wrapper }}
+{{ /if }}
+
 {{ if type == 'teaser_competencies' }}
   {{ partial:fieldsets/teaser/competencies/wrapper }}
 {{ /if }}
