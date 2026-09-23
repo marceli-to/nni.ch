@@ -147,7 +147,7 @@ tabs:
                       icon: media-webcam-video
                       fields:
                         -
-                          import: video
+                          import: page_video
                     feedbacks:
                       display: Feedbacks
                       instructions: 'Add a set of feedback quotes.'

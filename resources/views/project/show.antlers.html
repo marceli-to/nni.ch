@@ -72,31 +72,29 @@
   {{ /if }}
 
   {{ if type == 'video' }}
-
-    {{ if video_file }}
+    {{ if (video_source == 'file' && video_file) || (video_source == 'code' && video_code) }}
       <section 
         data-section 
         data-section-theme="light" 
         {{ is_fullpage ? 'data-section-observe' : '' }} 
         class="{{ is_fullpage ? 'min-h-screen flex flex-col justify-center' : 'py-30 xl:py-60' }}">
-        {{ partial:layout/container }}
-          {{ partial:ui/media/video/video }}
-        {{ /partial:layout/container }}
+        <div class="{{ is_fullpage ? 'py-90 lg:py-150' : '' }} w-full">
+          {{ partial:layout/container }}
+            {{ partial:ui/media/video/video manual_playback="true" }}
+            {{ if video_title || content }}
+              <article class="posts max-w-content mx-auto mt-30 md:mt-45">
+                {{ if video_title }}
+                  {{ partial:ui/heading/h2 size="xs" class="font-meta-medium mb-15" }}
+                    {{ video_title }}
+                  {{ /partial:ui/heading/h2 }}
+                {{ /if }}
+                {{ content }}
+              </article>
+            {{ /if }}
+          {{ /partial:layout/container }}
+        </div>
       </section>
     {{ /if }}
-    
-    {{ if video_code }}
-      <section 
-        data-section 
-        data-section-theme="light" 
-        {{ is_fullpage ? 'data-section-observe' : '' }} 
-        class="{{ is_fullpage ? 'min-h-screen flex flex-col justify-center' : 'py-30 xl:py-60' }}">
-        {{ partial:layout/container class="min-h-screen flex flex-col justify-center" }}
-          {{ partial:ui/media/video/video }}
-        {{ /partial:layout/container }}
-      </section>
-    {{ /if}}
-
   {{ /if }}
 
   {{ if type == 'iframe' }}
