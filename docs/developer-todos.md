@@ -1,6 +1,6 @@
 # Entwickler-Briefing: offene Punkte und Entscheidungen
 
-Stand: 17. September 2026
+Stand: 23. September 2026
 
 Dieses Dokument listet, was noch zu entscheiden und zu tun ist. Bereits Umgesetztes
 steht nur dann hier, wenn es Folgen für die weitere Arbeit hat — alles Übrige ist in
@@ -242,6 +242,22 @@ Diese Punkte sind noch keine freigegebenen Aufträge.
 
 ## Aufgaben für die Entwicklung
 
+### Cookie-Hinweis und Tracking
+
+- [ ] **Der Hinweis steuert die Tags nicht.** `resources/js/gdpr.js` und
+  `partials/ui/gdpr.antlers.html` setzen lediglich `global_consent` im Local Storage und
+  blenden den Hinweis aus. Die Tags im Container `GTM-MTN383N` — GA4,
+  Google-Ads-Remarketing, Meta-Pixel und LinkedIn Insight — sind für das
+  Seitenladeereignis konfiguriert und laufen davon unabhängig. Eingebunden ist der
+  Hinweis über `partials/layout/footer.antlers.html` und
+  `partials/layout/body.antlers.html`.
+
+  Gewünscht ist eine möglichst kleine Lösung mit einer Auswahl, die tatsächlich auf die
+  Tag-Auslösung wirkt und später änderbar bleibt. Die Werbe-Tags werden weiterhin
+  benötigt, es geht nicht um deren Abschaffung. Zu prüfen wären danach das Verhalten vor
+  einer Auswahl, nach einer Ablehnung, bei Teilauswahl und bei Widerruf im Browser,
+  ausserdem Maps, YouTube/Vimeo und reCAPTCHA.
+
 ### CTA-System
 
 - [ ] Hauptaktion im Header als visuell abgesetzten Button «Sprechstunde» /
@@ -308,6 +324,13 @@ tatsächlich eingetragen wurde.
   zum Standbild. Auf Geräten ohne Hover bleibt das Standbild.
 
 ### Aufräumen
+
+- [ ] **Wird der Branch `staging` noch gebraucht?** Sein letzter Commit ist
+  `1cd9bba "wip"` vom 10. Juli 2025, und er enthält keinen Commit, der nicht schon in
+  `master` steht. Der Name führt regelmässig zu Verwechslungen mit der Umgebung
+  staging.nightnurse.ch — zuletzt wurde das neue Portfolio-Layout dort vermutet,
+  obwohl es auf `master` liegt. Falls die Auslieferung nach staging.nightnurse.ch
+  nicht an diesem Branch hängt, könnte er lokal und auf `origin` gelöscht werden.
 
 - [ ] **Alten Portfolio-Baustein «Portfolio (Masonry)» entfernen.** Beschlossen, aber
   **erst nachdem der neue Baustein «Portfolio (Grid)» live ist** — wann das sein wird,
