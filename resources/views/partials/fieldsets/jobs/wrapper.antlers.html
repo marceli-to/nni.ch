@@ -10,7 +10,7 @@
       <div class="col-span-full mt-30 md:mt-60 lg:mt-0 lg:col-span-8 lg:col-start-6">
         {{ collection from="jobs" as="jobs" }}
           {{ if no_results }}
-            <p>{{ "Aktuell sind alle unsere Stellen besetzt." | trans }}</p>
+            <p>{{ "Aktuell sind alle unsere Stellen besetzt. Gute Initiativbewerbungen sind jedoch immer erwünscht." | trans }}</p>
           {{ else }}
             <div class="border-t border-t-black">
               {{ jobs }}
