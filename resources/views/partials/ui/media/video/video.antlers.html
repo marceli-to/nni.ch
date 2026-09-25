@@ -6,7 +6,7 @@
     {{ if video_source == 'code' && video_code }}
       {{ video_code }}
     {{ elseif video_source == 'file' && video_file }}
-      <video data-manual-video {{ if video_title }}aria-label="{{ video_title | entities }}"{{ /if }} {{ if video_poster }}poster="{{ video_poster:url }}"{{ /if }} preload="none" playsinline controls>
+      <video data-manual-video {{ if video_title }}aria-label="{{ video_title | entities }}"{{ /if }} {{ if video_poster }}poster="{{ glide:video_poster preset='2xl-webp' }}"{{ /if }} preload="none" playsinline controls>
         <source src="{{ video_file }}" type="video/mp4">
       </video>
     {{ /if }}
