@@ -2,7 +2,7 @@
   {{ partial:layout/container }}
     
     {{ if feature_image }}
-      {{ partial:content/post/media/feature image="{{ feature_image }}" }}
+      {{ partial:content/post/media/feature :image="feature_image" }}
     {{ /if }}
 
     <header class="flex justify-between mt-15 mb-60 xl:mb-120">

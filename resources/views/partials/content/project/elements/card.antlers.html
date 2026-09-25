@@ -2,7 +2,7 @@
   href="{{ url }}" 
   title="{{ title }}"
   class="group">
-  {{ partial:ui/media/image/image image="{{ feature_image ?? teaser_image_portrait }}" class="w-full h-full object-cover aspect-square group-hover:opacity-80 transition-opacity" }}
+  {{ partial:ui/media/image/image :image="feature_image ?? teaser_image_portrait" class="w-full h-full object-cover aspect-square group-hover:opacity-80 transition-opacity" }}
   {{ partial:ui/heading/h3 size="2xs" class="mt-15 !leading-[1.25]" }}
     {{ title }}
   {{ /partial:ui/heading/h3 }}

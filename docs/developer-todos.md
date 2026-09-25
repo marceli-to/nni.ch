@@ -103,6 +103,41 @@ sich `project.index` mit der Übersicht selbst, eine Prüfung dort berührt also
 Hauptseite — Entscheidung des Entwicklers. Die Blog-Tags gehören zur offenen
 Beurteilung der Tag- und Filterseiten unter «Indexierung und Canonicals».
 
+### Bilder: Asset statt Pfad an die Bild-Partials übergeben
+
+18 Aufrufe übergaben das Bild als Text, etwa
+`{{ partial:ui/media/image/image image="{{ image }}" … }}`. Die Interpolation machte
+aus dem Asset einen Pfad. Glide fand das Bild darüber weiterhin, aber `image:alt`,
+`image:width` und `image:height` blieben leer, das `<img>` hatte also `alt=""` und
+keine Masse, obwohl das Asset einen Alt-Text hat. Das betraf unter anderem alle
+Teaser der Portfolio-Übersicht, die Kompetenz-Teaser, Intro-Bilder, CTAs, die
+Workflow-Phasen, virtuelle Rundgänge, das Titelbild der Blogbeiträge und die
+404-Seite.
+
+Jetzt wird das Objekt gebunden: `:image="image"` bzw.
+`:image="teaser_image_landscape ?? teaser_image_portrait"`. Geändert sind
+`blog/show.antlers.html`, `errors/404.antlers.html`,
+`partials/content/project/elements/card.antlers.html`,
+`partials/content/project/elements/teaser-slot.antlers.html` (8×),
+`partials/fieldsets/cta/expertise.antlers.html`,
+`partials/fieldsets/cta/project.antlers.html`,
+`partials/fieldsets/intro/wrapper.antlers.html`,
+`partials/fieldsets/teaser/competencies/item.antlers.html`,
+`partials/fieldsets/teaser/image/wrapper.antlers.html`,
+`partials/fieldsets/virtual_tour.antlers.html` und
+`partials/fieldsets/workflow/phase.antlers.html`. Keine neue Klasse, kein Build.
+
+**Folge:** Diese Bilder tragen jetzt erstmals `width` und `height`. Die Darstellung
+ändert sich dadurch nicht: Das Preflight von Tailwind setzt `height: auto`, und alle
+Aufrufe haben `w-full` mit `h-auto`, `h-full` oder `aspect-*`. Die Masse reservieren
+nur den Platz vor dem Laden. Lokal geprüft auf allen 295 Sitemap-Seiten und der
+404-Seite: gleiche Bildanzahl, gleiche Quellen und Klassen, Seiten ausserhalb der
+`<img>`-Tags unverändert (die Teamseiten mischen ihre Reihenfolge ohnehin bei jedem
+Aufruf); 976 `alt`- und 878 `width`/`height`-Angaben sind neu gefüllt.
+
+Offen zur Entscheidung: Die Bild-Partials setzen `title="{{ image:alt }}"`, der
+Alt-Text erscheint also auch als Tooltip.
+
 ### Karussell: feste Höhe, ein Seitenverhältnis pro Karussell
 
 Die Figur trägt jetzt ein festes Seitenverhältnis aus dem ersten belegten Rahmen,

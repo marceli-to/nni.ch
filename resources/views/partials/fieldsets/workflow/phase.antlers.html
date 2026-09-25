@@ -67,7 +67,7 @@
       :class="{ 'opacity-100': open, 'opacity-0': !open }">
 
       {{ if image }}
-        {{ partial:ui/media/image/image image="{{ image }}" class="w-full h-auto mb-20 xl:mb-30" }}
+        {{ partial:ui/media/image/image :image="image" class="w-full h-auto mb-20 xl:mb-30" }}
       {{ /if }}
 
       {{ if text }}

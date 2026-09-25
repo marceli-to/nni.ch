@@ -5,7 +5,7 @@
       {{ partial:layout/container class="pt-90 md:pt-150" }}
         {{ if error_page_404:image }}
           <div class="mb-40 xl:mb-80">
-            {{ partial:ui/media/image/fullscreen image="{{ error_page_404:image }}" }}
+            {{ partial:ui/media/image/fullscreen :image="error_page_404:image" }}
           </div>
         {{ /if}}
         <section class="grid grid-cols-12 gap-20 lg:gap-30 xl:gap-50">
