@@ -145,6 +145,15 @@ Do not invent other locations or formats such as `upload-packages/` or a zip arc
 
 ## Documentation
 
+### Local experiments and prototypes
+
+Use the git-ignored top-level directory `scratch/` for temporary experiments,
+standalone prototypes and test outputs. Group them by topic and date, for example
+`scratch/startseite-2026-09-23/`. Keep durable project documentation in `docs/`;
+FTP upload packages still belong in `ftp-uploads/`.
+
+### Project documentation
+
 - `docs/developer-todos.md` — the living briefing: implemented changes, known bugs and open items
 - `docs/project-content-standard-de.md` — binding editorial standard for Project Notes
 - `docs/seo-gsc-canonical-audit-2026-09-07.md` — open Search Console finding
