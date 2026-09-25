@@ -7,8 +7,9 @@ steht nur dann hier, wenn es Folgen für die weitere Arbeit hat — alles Übrig
 der Git-Historie nachvollziehbar, wo jede Änderung mit Begründung in einem eigenen
 Commit liegt.
 
-Der Code wird über Git ausgeliefert; die früheren manuellen FTP-Pakete entfallen.
-Redaktionelle Inhalte unter `content/` sind **nicht** versioniert und gelangen auf
+Der Code wird über Git ausgeliefert. Einzelne Änderungen gelangen daneben weiterhin
+per FTP-Paket direkt auf Produktion; was das für den nächsten `git pull` bedeutet,
+steht unter «Kein Frontend-Build nötig». Redaktionelle Inhalte unter `content/` sind **nicht** versioniert und gelangen auf
 einem anderen Weg auf Staging und Produktion.
 
 ## Was bereits umgesetzt ist und Folgen hat
@@ -69,9 +70,22 @@ mehr uneingeschränkt. Zwei Felder sind nach Rücksprache mit Christoph dazugeko
 beide unten beschrieben. Auf den Build wirkt sich das nicht aus, wohl aber auf die
 Inhalte: die Felder sind auf Produktion noch leer und müssen dort gefüllt werden.
 
-Der aktuelle Build verweist auf `public/build/assets/app-a3e676e8.css` und
+Der aktuelle Build in Git verweist auf `public/build/assets/app-a3e676e8.css` und
 `app-1adc73f0.js`. `manifest.json` und der Ordner `public/build/assets` müssen
 gemeinsam deployt werden; alte Hash-Dateien können auf dem Server bleiben.
+
+Auf Produktion läuft seit dem FTP-Paket vom 23. September stattdessen
+`app-fecf76e5.js`. Der Quellcode ist derselbe: Das lokale `node_modules` war mit pnpm
+installiert, das `package-lock.json` nicht beachtet, und hat Alpine.js 3.16.3 statt
+3.14.9 gebündelt. `app-1adc73f0.js` wurde laut Paket auf dem Server gelöscht. Ein Build
+nach `npm ci` ergibt wieder genau den Stand in Git; mit dem nächsten gesammelten
+Deployment kommen `manifest.json` und `app-1adc73f0.js` wieder hinauf.
+
+**Vor dem nächsten `git pull` auf Produktion `git status` prüfen.** Die FTP-Pakete vom
+21. und 23. September haben rund 30 versionierte Dateien direkt eingespielt:
+Templates, Blueprints, Fieldsets, `lang/en.json` und den Build. Im Arbeitsverzeichnis
+des Servers erscheinen sie als lokale Änderungen, an denen ein Pull abbricht, sobald
+er dieselben Dateien ändert. Vor dem Verwerfen mit dem Stand in Git abgleichen.
 
 Der Build vom 21. September enthält keine neue Regel, sondern zwei weniger:
 `.truncate` und `.lg\:gap-y-30` werden nirgends mehr verwendet. Die Übersicht wäre
