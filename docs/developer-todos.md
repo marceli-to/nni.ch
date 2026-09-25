@@ -648,6 +648,26 @@ frei mit den übrigen Modulen kombinierbar.
   - Nicht beeinflussbar: Die 189 KiB «Cache-Verweildauer» betreffen nur Facebook- und
     LinkedIn-Skripte.
 
+### Blog: Suchseiten und Vorschaubilder
+
+- [ ] **Interne Suche auf `noindex`.** `/blog/suche` und `/en/blog/search` liefern
+  `index, follow`. Der Kopf in `partials/layout/head.antlers.html` gibt
+  `noindex, follow` aus, sobald `noindex` gesetzt ist, und Routendaten erreichen ihn —
+  `title` aus denselben Routen erscheint dort bereits. Vorschlag: `'noindex' => true`
+  in den beiden Suchrouten in `routes/web.php`. Prüfen: beide Suchseiten mit und ohne
+  `?q=` liefern `noindex, follow`, die Blogübersicht weiter `index, follow`.
+- [ ] **Vorschaubild für Beiträge.** `og:image` und `twitter:image` zeigen das
+  Original von `open_graph_image`, sonst `/opengraph.jpg`. Bei Beiträgen ist das Feld
+  fast überall leer, sie teilen also alle dasselbe allgemeine Bild. Das Titelbild
+  einzeln als Vorschaubild einzutragen hilft nicht: 34 der 113 Titelbilder sind über
+  5 MB, 18 über 8 MB (bis 16 MB, darunter GIF und PNG), LinkedIn nimmt höchstens 5 MB,
+  Facebook 8 MB. Optionen: im Kopf `open_graph_image ?? feature_image` verwenden und
+  über Glide ausliefern (etwa 1200 px breit, JPEG, absolute URL), oder nur die
+  Rückfallregel für Beiträge ergänzen und die Originale belassen. Betrifft jede Seite
+  mit Vorschaubild, deshalb Entscheidung des Entwicklers. Prüfen: Vorschau im
+  LinkedIn Post Inspector und im Facebook Sharing Debugger für einen alten Beitrag mit
+  grossem Titelbild und eine Seite mit eigenem `open_graph_image`.
+
 ### Indexierung und Canonicals
 
 Diese Punkte behandelt Christoph separat. Die ausführliche Auswertung steht in
