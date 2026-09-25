@@ -303,6 +303,11 @@ Diese Punkte sind noch keine freigegebenen Aufträge.
   einer Auswahl, nach einer Ablehnung, bei Teilauswahl und bei Widerruf im Browser,
   ausserdem Maps, YouTube/Vimeo und reCAPTCHA.
 
+  Für die Ladezeit zählt die neue Lösung doppelt. Vor einer Auswahl entfallen rund
+  2,3 MiB Tag-Skripte, und der Hinweistext ist auf dem Handy das LCP-Element der
+  Startseite. Heute wird er erst sichtbar, wenn `gdpr.js` als letztes Modul-Skript
+  läuft; der neue Hinweis sollte ohne diesen Umweg erscheinen.
+
 ### CTA-System
 
 - [ ] Hauptaktion im Header als visuell abgesetzten Button «Sprechstunde» /
@@ -493,19 +498,31 @@ frei mit den übrigen Modulen kombinierbar.
   `/portfolio/le-chevreuil` 60, 8,4 s, 9,5 MiB; `/angebot/animation-und-film` 68 bei
   24,0 MiB, mit einem auffälligen LCP von 81,7 s, der vor einem Vergleich neu zu
   messen ist. Die 28-Tage-Felddaten gelten für die ganze Origin: mobil LCP 2,7 s,
-  TTFB 1,9 s, CLS 0. Konkret belegt sind drei Ursachen; nach ihrer Behebung unter
-  vergleichbaren Bedingungen erneut messen und Datenmenge und Ladeverhalten vorher und
-  nachher festhalten:
-  - Auf `/angebot/animation-und-film` laden drei Originalposter mit zusammen rund
-    15,5 MiB (Le Chevreuil 7,0, E-Bike City 4,9, Denzler Haus 3,7 MiB), 3657 bis
-    4500 Pixel breit bei etwa 342 Pixel mobiler Anzeigebreite. Passende komprimierte
-    Varianten verwenden.
-  - Auf der Startseite lud der mobile Test Hoch- und Querformat beider Videos,
-    zusammen rund 22,5 MiB. Das widerspricht dem Eintrag zur Quellenauswahl unter
-    «Geprüft, keine Aufgabe mehr» und ist nachzuprüfen. Ziel: pro Gerät nur die
-    benötigte Quelle, Videos weiter unten erst bei Annäherung laden.
-  - Google-Tags belegen rund 600 ms Hauptthread, Facebook rund 300 ms. Tags, Trigger
-    und Ladezeitpunkte auf das Nötige prüfen.
+  TTFB 1,9 s, CLS 0. Stand der drei damals belegten Ursachen, nachgeprüft am
+  25. September in einer Handy-Emulation (412 × 823 px, Cache aus):
+  - **Poster der Filmseite: lokal behoben.** Der Videoplayer gab die Originale aus,
+    drei Renderings mit 7,0, 4,9 und 3,7 MiB bei etwa 342 Pixel mobiler
+    Anzeigebreite. Er holt das Poster jetzt über Glide im Preset `2xl-webp`, 414 bis
+    540 KB je Bild; die Seite sinkt mobil von 20,1 auf 5,9 MiB. Live mit dem nächsten
+    gesammelten Deployment.
+  - **Doppelte Videos: nicht mehr nachvollziehbar.** Live lädt die Startseite auf dem
+    Handy nur die beiden Mobilvarianten (3,06 und 1,89 MiB), am Desktop nur die beiden
+    grossen (11,78 und 5,68 MiB). Genau diese vier Dateien lud der Test vom
+    24. September gemeinsam, an dem Tag, an dem der veraltete Cache noch älteres HTML
+    und JavaScript auslieferte. Der Eintrag zur Quellenauswahl unter «Geprüft, keine
+    Aufgabe mehr» gilt weiter. Offen ist, dass das Timeline-Video weiter unten sofort
+    lädt, weil die Startseite `is_fullpage` ist; ein späteres Laden berührt dort
+    Autoplay und Scroll-Snapping.
+  - **Tracking-Skripte: unverändert.** Auf dem Handy 2,27 der 2,40 MiB Skripte, dazu
+    rund 900 ms Hauptthread für Google-Tags und Facebook. Das hängt an «Cookie-Hinweis
+    und Tracking»: Laden die Tags erst nach einer Einwilligung, entfallen sie vor der
+    Auswahl.
+
+  LCP-Element der Startseite ist heute der Text des Cookie-Hinweises. Gedrosselt wie
+  Lighthouse (vierfache CPU-Bremse, langsames 4G) erscheint er nach rund 1,6 s; die
+  10,4 s vom 24. September gingen vermutlich auf die vier parallel ladenden Videos
+  zurück. PageSpeed Insights für die vier Seiten neu messen, bevor weitere Schritte
+  geplant werden.
 
 ### Indexierung und Canonicals
 
