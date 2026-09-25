@@ -571,4 +571,6 @@ Die Quellenauswahl zwischen Hoch- und Querformatvideo funktioniert. Sie erfolgt 
 Auswahl nur beim Laden stattfindet und ein Drehen des Telefons sie nicht wiederholt,
 entspricht dem Verhalten von Medienelementen; ein Nachladen würde das Video neu
 starten und wäre störender. Vor dieser Änderung wurde das Hochformat auf keinem Gerät
-ausgeliefert.
+ausgeliefert. Kann ein Browser die Hochformat-Datei nicht abspielen, lädt er zusätzlich
+die nächste Quelle, also das Querformat; das und die Folgen für das Intro stehen unter
+«Mobile PageSpeed weiterhin offen».
