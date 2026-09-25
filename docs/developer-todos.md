@@ -43,14 +43,35 @@ war veraltet; zusätzliche Template-, Inhalts- oder CSS-Änderungen sind dort ni
 nötig. Die Bestätigungsseiten liegen unter `/kontakt/vielen-dank` und
 `/en/contact/thank-you` und behalten ihr `noindex, follow`.
 
-### Sprungmarke `#jobs` auf der Über-uns-Seite
+### SEO-02: Weiterleitungen, Bloglinks und Jobs-Sprungmarke
 
 `partials/layout/section.antlers.html` nimmt einen optionalen Parameter `section_id`
 entgegen, und der Jobs-Block setzt damit `id="jobs"`. `/ueber-uns#jobs` und
-`/en/about-us#jobs` sind so verlässliche Ziele für eine künftige Weiterleitung von
-`/jobs`, das heute 404 liefert, obwohl Jobmaps es als Karriereseite verlinkt, und für
-den JOBS-Link auf Linktree. Eine Weiterleitung ist noch nicht eingerichtet. Das im
-Inhalt gespeicherte `anchor: jobs` hätte das nicht geleistet, siehe «Aufräumen».
+`/en/about-us#jobs` sind damit direkte Einstiege in den Bewerbungsbereich. Der
+Scroll-Observer respektiert Anker und richtet den Einstieg einmal nach Laden der
+Seite und der Schriften aus. DE/EN im Browser geprüft: Die Überschrift liegt unter
+dem Header. Das im Inhalt gespeicherte `anchor: jobs` allein hätte nicht genügt.
+
+In der git-ignorierten `public/.htaccess` steht ein kommentierter SEO-02-Block vor
+der Host-/HTTPS-Normalisierung: `/de`, alte Leistungs-, Team-, Übersichts- und
+Kontaktadressen führen mit 301 auf passende Nachfolger. `/jobs` und `/en/jobs`
+führen zum jeweiligen `#jobs`-Bereich; einzelne abgelaufene Stellen bleiben unberührt.
+52 Pfad-/Slash-Zuordnungen und acht bewusst nicht passende Pfade statisch geprüft.
+Ein tatsächlicher Apache-/Live-Test steht nach Auslieferung noch aus.
+
+Acht englische Blogdateien sind lokal bereinigt: 13 defekte Verweise korrigiert oder
+entfernt, darunter die zwölf bekannten Fehlerziele und ein weiterer gleicher
+Quote-Link. Rukiye-Profil und zwei alte Sammlungen bleiben als Text ohne Link;
+der entfallene Senn-Konfigurator-Verweis wurde entfernt. Hardturm verlinkt die heutige
+Projektseite. YAML gültig, elf lokale Seiten/Ziele mit HTTP 200 geprüft.
+
+Pinterest, Linktree und Facebook sind laut Christoph erledigt, JOBS aus Linktree
+entfernt, Instagram verweist auf Linktree. Der LinkedIn-Screenshot zeigt einen
+korrekten Website-Button; der frühere Abruf bezog sich auf das separate Website-Feld.
+Keine weitere Profilpflege und keine lückenlose Reparatur alter Internetspuren nötig.
+
+Build erfolgreich. Upload-Ordner: `ftp-uploads/2026-09-25_seo-02-links/`.
+Noch offen: ausliefern, Online-Cache leeren und die Weiterleitungen live prüfen.
 
 ### Karussell: feste Höhe, ein Seitenverhältnis pro Karussell
 
@@ -78,8 +99,10 @@ Auf Produktion läuft seit dem FTP-Paket vom 23. September stattdessen
 `app-fecf76e5.js`. Der Quellcode ist derselbe: Das lokale `node_modules` war mit pnpm
 installiert, das `package-lock.json` nicht beachtet, und hat Alpine.js 3.16.3 statt
 3.14.9 gebündelt. `app-1adc73f0.js` wurde laut Paket auf dem Server gelöscht. Ein Build
-nach `npm ci` ergibt wieder genau den Stand in Git; mit dem nächsten gesammelten
-Deployment kommen `manifest.json` und `app-1adc73f0.js` wieder hinauf.
+nach `npm ci` ergab wieder genau den damaligen Stand in Git. Für SEO-02 wurde am
+25. September wegen der Ankerkorrektur und `scroll-mt-30` erneut gebaut: aktueller
+lokaler Stand `app-a1043728.js` und `app-b5c57cd4.css` mit passendem Manifest. Diese
+Dateien sind im SEO-02-Upload enthalten und ersetzen die frühere Build-Empfehlung.
 
 **Vor dem nächsten `git pull` auf Produktion `git status` prüfen.** Die FTP-Pakete vom
 21. und 23. September haben rund 30 versionierte Dateien direkt eingespielt:

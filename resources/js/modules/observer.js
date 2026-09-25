@@ -91,7 +91,10 @@ const initIntersectionObserver = () => {
         pauseVideo(currentSection);
       }
 
-      if (entry.target !== currentSection && entry.target.hasAttribute('data-section-snap')) {
+      // An explicit section link (e.g. About us #jobs) takes precedence over
+      // snapping, which would otherwise pull visitors to an intervening section.
+      const anchorTarget = document.getElementById(window.location.hash.slice(1));
+      if (!anchorTarget && entry.target !== currentSection && entry.target.hasAttribute('data-section-snap')) {
         entry.target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
 
@@ -157,6 +160,17 @@ const handleOnLoad = () => {
 };
 
 handleOnLoad();
+
+// Images and slider setup can move a section after the browser's first hash
+// jump. Align once after load; subsequent scrolling remains under user control.
+if (window.location.hash) {
+  window.addEventListener('load', () => {
+    document.fonts.ready.then(() => requestAnimationFrame(() => {
+      const target = document.getElementById(window.location.hash.slice(1));
+      target?.scrollIntoView({ behavior: 'instant', block: 'start' });
+    }));
+  }, { once: true });
+}
 
 if (sections.length > 0) {
   initIntersectionObserver();
