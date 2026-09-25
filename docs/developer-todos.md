@@ -308,6 +308,22 @@ Diese Punkte sind noch keine freigegebenen Aufträge.
   Startseite. Heute wird er erst sichtbar, wenn `gdpr.js` als letztes Modul-Skript
   läuft; der neue Hinweis sollte ohne diesen Umweg erscheinen.
 
+- [ ] **Werbe-Tags erst nach dem Laden auslösen.** Meta-Pixel, LinkedIn Insight und
+  Google-Ads-Remarketing laufen heute direkt beim Seitenaufruf und konkurrieren mit
+  dem Seitenaufbau. Im PageSpeed-Bericht vom 25. September brauchen die Tags den
+  grössten Teil der Rechenzeit: mobil Google Tag Manager 454 ms, Facebook 253 ms und
+  LinkedIn 21 ms gegenüber 158 ms für die eigenen Skripte, am Desktop 614, 299 und
+  30 ms gegenüber 165 ms. Am Desktop drückt allein die Total Blocking Time (590 ms)
+  den Wert auf 76; FCP und LCP sind dort gut.
+
+  Die Auslöser der Werbe-Tags auf «Fenster geladen» (Window Loaded) zu legen, entlastet
+  den Seitenaufbau; der Preis ist etwas weniger Tracking bei sehr kurzen Besuchen. GA4
+  kann beim Seitenaufruf bleiben, damit keine Besuche fehlen. Das ist eine Einstellung
+  im Tag Manager, kein Code, und lässt sich über die Container-Versionen zurücknehmen.
+  Christoph hat dort vermutlich keinen Zugriff. Da die Einwilligungslösung die Auslöser
+  ohnehin neu verdrahtet, lässt sich beides in einem Schritt erledigen. LinkedIn ist
+  nicht doppelt eingebunden; `insight.min.js` lädt `insight.old.min.js` nach.
+
 ### CTA-System
 
 - [ ] Hauptaktion im Header als visuell abgesetzten Button «Sprechstunde» /
@@ -519,6 +535,10 @@ frei mit den übrigen Modulen kombinierbar.
     einzige Element, und er erscheint erst, wenn `gdpr.js` als letztes Modul läuft.
     Der Labor-LCP besteht deshalb fast ganz aus Render-Verzögerung. Siehe «Cookie-Hinweis
     und Tracking».
+  - **Tracking-Skripte.** Auf dem Handy 2,27 der 2,40 MiB Skripte und gut 700 ms
+    Rechenzeit; sie verursachen den Grossteil der Total Blocking Time, mobil wie am
+    Desktop. Siehe «Werbe-Tags erst nach dem Laden auslösen» unter «Cookie-Hinweis und
+    Tracking».
   - **Render-blockierendes CSS, geschätzt 880 ms.** Neben dem Haupt-CSS im `<head>`
     (9,7 KiB, 192 ms) erzeugt Vite aus `import 'swiper/css'` in
     `resources/js/modules/swiper/index.js` eine zweite Datei (3,1 KiB). Sie steht mit
