@@ -1,3 +1,15 @@
+{{ if category }}
+  {{ category_exists = false }}
+  {{ taxonomy:post_categories }}
+    {{ if slug == category }}
+      {{ category_exists = true }}
+    {{ /if }}
+  {{ /taxonomy:post_categories }}
+  {{ unless category_exists }}
+    {{ 404 }}
+  {{ /unless }}
+{{ /if }}
+
 <section data-section-theme="light" class="pt-90 lg:pt-150 posts">
   {{ partial:layout/container }}
     {{ partial:blog/listing term="true" }}

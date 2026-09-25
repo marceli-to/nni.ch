@@ -8,9 +8,11 @@
     <header class="flex justify-between mt-15 mb-60 xl:mb-120">
       {{ partial:content/post/elements/date }}
       <div>
-        {{ post_categories }}
-          {{ partial:content/post/elements/category }}
-        {{ /post_categories }}
+        {{ if post_categories }}
+          {{ post_categories }}
+            {{ partial:content/post/elements/category }}
+          {{ /post_categories }}
+        {{ /if }}
       </div>
     </header>
 

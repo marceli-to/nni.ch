@@ -73,6 +73,36 @@ Keine weitere Profilpflege und keine lückenlose Reparatur alter Internetspuren 
 Build erfolgreich. Upload-Ordner: `ftp-uploads/2026-09-25_seo-02-links/`.
 Noch offen: ausliefern, Online-Cache leeren und die Weiterleitungen live prüfen.
 
+### Blog: keine Kategorieseiten für erfundene Slugs
+
+Die Search Console meldet fünf Blog-Kategorie-URLs als Soft 404. Nur eine davon ist
+eine echte Kategorie. Die anderen vier entstanden auf Beitragsseiten ohne Kategorie:
+Die Schleife `{{ post_categories }}` in `blog/show.antlers.html` lief bei fehlendem
+Feld einmal im Kontext des Beitrags und gab dessen Slug und Titel als Kategorie-Link
+aus, etwa `/en/blog/category/new-visual-workflow` mit dem Text «New Visual Workflow».
+Das betraf acht englische Beiträge, sechs davon veröffentlicht. Die Kategorie-Routen
+in `routes/web.php` nehmen jeden Slug an und lieferten dafür eine leere Übersicht mit
+HTTP 200.
+
+Die Schleife steht jetzt in `{{ if post_categories }}`. `blog/categories/index.antlers.html`
+löst für einen Slug ohne passende Kategorie mit `{{ 404 }}` die normale Fehlerseite
+aus; `/blog/kategorie` und `/en/blog/category` ohne Slug zeigen weiter alle Beiträge.
+Keine neue Klasse, kein Build. Lokal geprüft: alle fünf gemeldeten URLs 404, alle
+bestehenden Kategorien in beiden Sprachen 200, Paginierung unverändert.
+
+Die echte Kategorie ist `2025`. Nur ein deutscher Beitrag verwendete sie, der
+Jahrgang steht dort bereits als Tag, und die englische Übersicht war leer. Die
+Kategorie ist gelöscht; live mit dem FTP-Paket vom 25. September, danach liefert
+auch `/en/blog/category/2025` 404. Mit demselben Paket erhalten die acht Beiträge
+ohne Kategorie eine, alle Beiträge einen Jahres-Tag und alle veröffentlichten
+Beitragsseiten eine eigene Meta-Beschreibung.
+
+Dasselbe Muster besteht weiter bei `/blog/tag/{tag}` sowie bei Kategorie- und
+Tag-URLs des Portfolios: Jeder erfundene Slug liefert 200. Die Portfolio-Routen teilen
+sich `project.index` mit der Übersicht selbst, eine Prüfung dort berührt also die
+Hauptseite — Entscheidung des Entwicklers. Die Blog-Tags gehören zur offenen
+Beurteilung der Tag- und Filterseiten unter «Indexierung und Canonicals».
+
 ### Karussell: feste Höhe, ein Seitenverhältnis pro Karussell
 
 Die Figur trägt jetzt ein festes Seitenverhältnis aus dem ersten belegten Rahmen,
