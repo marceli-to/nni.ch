@@ -490,39 +490,50 @@ frei mit den übrigen Modulen kombinierbar.
 
 ### Mobile PageSpeed weiterhin offen
 
-- [ ] **Mobile Performance gezielt verbessern.** Laut Christoph bestehen die
-  PageSpeed-Probleme weiterhin. Christoph führt die Aufgabe; technische Unterstützung
-  nur für entsprechend abgegrenzte Änderungen. Am 24. September wurden vier
-  Seitentypen mobil gemessen (Lighthouse 13.5, langsames 4G, Einzeltests): Startseite
-  Score 53, LCP 10,4 s, 24,1 MiB; `/kompetenzen/architektur` 93, 1,8 s, 10,9 MiB;
-  `/portfolio/le-chevreuil` 60, 8,4 s, 9,5 MiB; `/angebot/animation-und-film` 68 bei
-  24,0 MiB, mit einem auffälligen LCP von 81,7 s, der vor einem Vergleich neu zu
-  messen ist. Die 28-Tage-Felddaten gelten für die ganze Origin: mobil LCP 2,7 s,
-  TTFB 1,9 s, CLS 0. Stand der drei damals belegten Ursachen, nachgeprüft am
-  25. September in einer Handy-Emulation (412 × 823 px, Cache aus):
-  - **Poster der Filmseite: lokal behoben.** Der Videoplayer gab die Originale aus,
-    drei Renderings mit 7,0, 4,9 und 3,7 MiB bei etwa 342 Pixel mobiler
-    Anzeigebreite. Er holt das Poster jetzt über Glide im Preset `2xl-webp`, 414 bis
-    540 KB je Bild; die Seite sinkt mobil von 20,1 auf 5,9 MiB. Live mit dem nächsten
-    gesammelten Deployment.
-  - **Doppelte Videos: nicht mehr nachvollziehbar.** Live lädt die Startseite auf dem
-    Handy nur die beiden Mobilvarianten (3,06 und 1,89 MiB), am Desktop nur die beiden
-    grossen (11,78 und 5,68 MiB). Genau diese vier Dateien lud der Test vom
-    24. September gemeinsam, an dem Tag, an dem der veraltete Cache noch älteres HTML
-    und JavaScript auslieferte. Der Eintrag zur Quellenauswahl unter «Geprüft, keine
-    Aufgabe mehr» gilt weiter. Offen ist, dass das Timeline-Video weiter unten sofort
-    lädt, weil die Startseite `is_fullpage` ist; ein späteres Laden berührt dort
-    Autoplay und Scroll-Snapping.
-  - **Tracking-Skripte: unverändert.** Auf dem Handy 2,27 der 2,40 MiB Skripte, dazu
-    rund 900 ms Hauptthread für Google-Tags und Facebook. Das hängt an «Cookie-Hinweis
-    und Tracking»: Laden die Tags erst nach einer Einwilligung, entfallen sie vor der
-    Auswahl.
-
-  LCP-Element der Startseite ist heute der Text des Cookie-Hinweises. Gedrosselt wie
-  Lighthouse (vierfache CPU-Bremse, langsames 4G) erscheint er nach rund 1,6 s; die
-  10,4 s vom 24. September gingen vermutlich auf die vier parallel ladenden Videos
-  zurück. PageSpeed Insights für die vier Seiten neu messen, bevor weitere Schritte
-  geplant werden.
+- [ ] **Mobile Performance gezielt verbessern.** Christoph führt die Aufgabe;
+  technische Unterstützung nur für abgegrenzte Änderungen. Für das Ranking zählen die
+  Felddaten echter Besucher, nicht der Lighthouse-Wert. PageSpeed Insights für die
+  Startseite am 25. September: Core Web Vitals mobil «nicht bestanden», weil der LCP
+  der Besucher knapp über 2,5 s liegt; ihre Serverantwort (TTFB) beträgt 1,9 s. Im
+  Labor Score 63, FCP 1,8 s, LCP 8,2 s, 24,1 MiB. Die Punkte nach Gewicht:
+  - **Serverantwort.** Gecachte Seiten antworten in rund 80 ms, dieselbe URL mit
+    neuem Query-Parameter beim ersten Aufruf in 1,09 s. In
+    `config/statamic/static_caching.php` steht `ignore_query_strings` auf `false`,
+    jede Parametervariante ist also ein eigener Cache-Eintrag. Besuche aus Google Ads,
+    Facebook oder Newslettern bringen eigene Parameter wie `gclid`, `fbclid` oder
+    `utm_*` mit und verfehlen den Cache damit jedes Mal; das erklärt vermutlich einen
+    grossen Teil der 1,9 s. In den Server-Logs den Anteil solcher Aufrufe prüfen und
+    die Parameter vom Cache-Schlüssel ausnehmen, ohne Pagination und Filter zu
+    brechen; welche Einstellungen die installierte Statamic-Version dafür bietet,
+    vorher in der Dokumentation bestätigen.
+  - **Intro der Startseite.** Header, Menü, Titel und Logo-Unterzeile starten mit
+    `opacity: 0` und erscheinen erst mit `is-playing`, das `observer.js` nur setzt,
+    wenn `video.play()` gelingt. Scheitert das Abspielen, bleibt die Seite schwarz: bei
+    PageSpeed jedes Mal, weil dessen Testbrowser das Video nicht abspielt, bei echten
+    Besuchern etwa auf iPhones im Stromsparmodus, der Autoplay blockiert. Der Browser
+    springt dann auch auf die nächste `<source>` und lädt die Desktop-Datei, daher die
+    24 MiB im Labor; in normalen Browsern laden nur die Mobilvarianten. Vorschlag:
+    auch beim Scheitern einblenden. Ein Poster zeigt immerhin ein Bild statt Schwarz,
+    zählt als bildschirmfüllendes Bild aber nicht als LCP-Element (lokal geprüft).
+  - **Cookie-Hinweis als LCP-Element.** Auf der schwarzen Seite ist sein Text das
+    einzige Element, und er erscheint erst, wenn `gdpr.js` als letztes Modul läuft.
+    Der Labor-LCP besteht deshalb fast ganz aus Render-Verzögerung. Siehe «Cookie-Hinweis
+    und Tracking».
+  - **Render-blockierendes CSS, geschätzt 880 ms.** Neben dem Haupt-CSS im `<head>`
+    (9,7 KiB, 192 ms) erzeugt Vite aus `import 'swiper/css'` in
+    `resources/js/modules/swiper/index.js` eine zweite Datei (3,1 KiB). Sie steht mit
+    `app.js` ganz am Ende des HTML und wird deshalb spät entdeckt (571 ms). Das
+    Swiper-CSS ins Haupt-CSS zu übernehmen spart diese Anfrage; das löst einen Build
+    aus.
+  - **Bilder.** Die drei Projektbilder der Startseite kommen mobil als `lg-webp`
+    (1280 px) bei rund 600 physischen Pixeln Anzeigebreite; Lighthouse schätzt
+    557 KiB Einsparung.
+  - **Poster der Filmseite: lokal behoben.** Glide statt Originale, die Seite sinkt
+    mobil von 20,1 auf 5,9 MiB. Live mit dem nächsten gesammelten Deployment.
+  - Das Timeline-Video weiter unten lädt wegen `is_fullpage` sofort mit; ein späteres
+    Laden berührt Autoplay und Scroll-Snapping.
+  - Nicht beeinflussbar: Die 189 KiB «Cache-Verweildauer» betreffen nur Facebook- und
+    LinkedIn-Skripte.
 
 ### Indexierung und Canonicals
 
