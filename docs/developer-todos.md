@@ -1,6 +1,6 @@
 # Entwickler-Briefing: offene Punkte und Entscheidungen
 
-Stand: 23. September 2026
+Stand: 25. September 2026
 
 Dieses Dokument listet, was noch zu entscheiden und zu tun ist. Bereits Umgesetztes
 steht nur dann hier, wenn es Folgen für die weitere Arbeit hat — alles Übrige ist in
@@ -12,6 +12,44 @@ Redaktionelle Inhalte unter `content/` sind **nicht** versioniert und gelangen a
 einem anderen Weg auf Staging und Produktion.
 
 ## Was bereits umgesetzt ist und Folgen hat
+
+### SEO-01: Team-H1 und Cache-Nachprüfung
+
+Die Teamübersicht hat lokal eine sichtbare H1 oberhalb der Filter und Karten, im Stil
+der Portfolioüberschrift. `team_title` im Seiten-Blueprint ist formatierbar und
+lokalisierbar; ohne eigenen Inhalt wird der Seitentitel ausgegeben. Alle verwendeten
+CSS-Klassen sind im vorhandenen Build enthalten, deshalb kein neuer Frontend-Build
+nötig.
+
+Portfolio und Kontakt haben live bereits in DE und EN genau eine H1. Am 24. September
+lieferten normale URLs teils einen älteren HTML- und Asset-Stand als dieselben URLs
+mit Diagnoseparameter, etwa `/en/portfolio` ohne H1 und mit deutschen
+Kontaktbeschriftungen. Nach Christophs Cache-Löschung liefern die zehn geprüften
+Seiten mit und ohne Diagnoseparameter den gleichen Stand. Welche Cache-Schicht
+betroffen war, ist nicht bestätigt. Bis das geklärt ist, gehört das Cache-Leeren zu
+jedem Deployment, denn weder ein `git pull` noch ein FTP-Upload löst in Statamic eine
+Invalidierung aus.
+
+Die lokale Staging-robots.txt wurde gelöscht; die Live-Datei erlaubt Crawling und
+enthält seit dem 25. September beide Sitemap-Verweise. Die Ergänzung wurde direkt
+veröffentlicht und per HTTP geprüft. Christoph übernimmt die übrige Veröffentlichung
+gesammelt nach Abschluss der Anpassungen und leert dabei den Online-Cache.
+
+Auch Datenschutz, Impressum und die Kontakt-Bestätigungsseite wurden am 25. September
+auf Christophs Auftrag lokal und live in beiden Sprachen geprüft: Die sichtbaren
+Seitentitel sind bereits jeweils genau eine echte H1. Der frühere offene H1-Punkt
+war veraltet; zusätzliche Template-, Inhalts- oder CSS-Änderungen sind dort nicht
+nötig. Die Bestätigungsseiten liegen unter `/kontakt/vielen-dank` und
+`/en/contact/thank-you` und behalten ihr `noindex, follow`.
+
+### Sprungmarke `#jobs` auf der Über-uns-Seite
+
+`partials/layout/section.antlers.html` nimmt einen optionalen Parameter `section_id`
+entgegen, und der Jobs-Block setzt damit `id="jobs"`. `/ueber-uns#jobs` und
+`/en/about-us#jobs` sind so verlässliche Ziele für eine künftige Weiterleitung von
+`/jobs`, das heute 404 liefert, obwohl Jobmaps es als Karriereseite verlinkt, und für
+den JOBS-Link auf Linktree. Eine Weiterleitung ist noch nicht eingerichtet. Das im
+Inhalt gespeicherte `anchor: jobs` hätte das nicht geleistet, siehe «Aufräumen».
 
 ### Karussell: feste Höhe, ein Seitenverhältnis pro Karussell
 
@@ -169,13 +207,6 @@ Diese Punkte sind noch keine freigegebenen Aufträge.
   nur einem Bild. Ohne diese Angleichung entsteht keine Vereinfachung, sondern eine
   sichtbare Layoutänderung auf allen bestehenden Seiten. Die Bildwechsel-Animation
   bleibt davon unberührt und wird nicht mit der Slideshow zusammengelegt.
-- [ ] **H1 auf Seiten ohne Überschrift** (`/team`, `/portfolio`, `/kontakt`,
-  `/datenschutz`, `/impressum`, `/vielen-dank`). Christoph sieht vorerst keinen
-  dringenden Bedarf; der Nutzen wäre vor allem SEO, und diese Seiten sind dafür nicht
-  zentral. Falls doch: zuerst entscheiden, ob die Überschrift sichtbar sein soll. Eine
-  unsichtbare Variante bräuchte `sr-only`, das nicht im kompilierten CSS enthalten ist
-  und damit einen Build auslöst; eine sichtbare über das vorhandene Partial
-  `partials/ui/heading/h1.antlers.html` nicht.
 - [ ] **Der neue Baustein «Portfolio (Grid)» ist noch nirgends gesetzt.** Er steht im
   Seitenbaukasten unter «Special Elements» bereit, die Startseite zeigt aber weiterhin
   «Portfolio (Masonry)». Das Umstellen ist eine Redaktionsaufgabe im Control Panel:
@@ -380,6 +411,13 @@ tatsächlich eingetragen wurde.
   nirgends mehr gebraucht, `resources/fieldsets/anchors.yaml` und zugehörige
   Frontend-Logik entfernen. Die einzelnen `anchor`-Felder an Inhaltsabschnitten sind
   davon getrennt zu beurteilen.
+- [ ] **Die einzelnen `anchor`-Felder werden nirgends ausgegeben.** Rund ein Dutzend
+  Fieldsets und mehrere Blueprints bieten das Feld an, aber kein Template rendert es;
+  der zugehörige Partial `components/misc/anchor` war schon unbenutzt, als ihn Cleanup
+  #5.1 entfernte. Lokal sind 14 Werte in fünf Inhaltsdateien gesetzt, etwa `ueberuns`,
+  `arbeiten` und `team`, und bleiben wirkungslos. Entscheiden, ob das Feld wieder
+  ausgegeben wird, etwa über den neuen Parameter `section_id` von
+  `partials/layout/section.antlers.html`, oder aus den Fieldsets verschwindet.
 - [ ] **Ungenutzte npm-Pakete.** Aus den gebauten Einstiegspunkten werden nur
   `alpinejs` und `swiper` geladen. Nirgends importiert sind `axios`, `vue-axios`,
   `nprogress` und `fullpage.js`; `@tailwindcss/forms` ist installiert, aber nicht in
@@ -431,6 +469,32 @@ frei mit den übrigen Modulen kombinierbar.
 
 ## SEO
 
+### Mobile PageSpeed weiterhin offen
+
+- [ ] **Mobile Performance gezielt verbessern.** Laut Christoph bestehen die
+  PageSpeed-Probleme weiterhin. Christoph führt die Aufgabe; technische Unterstützung
+  nur für entsprechend abgegrenzte Änderungen. Am 24. September wurden vier
+  Seitentypen mobil gemessen (Lighthouse 13.5, langsames 4G, Einzeltests): Startseite
+  Score 53, LCP 10,4 s, 24,1 MiB; `/kompetenzen/architektur` 93, 1,8 s, 10,9 MiB;
+  `/portfolio/le-chevreuil` 60, 8,4 s, 9,5 MiB; `/angebot/animation-und-film` 68 bei
+  24,0 MiB, mit einem auffälligen LCP von 81,7 s, der vor einem Vergleich neu zu
+  messen ist. Die 28-Tage-Felddaten gelten für die ganze Origin: mobil LCP 2,7 s,
+  TTFB 1,9 s, CLS 0. Konkret belegt sind drei Ursachen; nach ihrer Behebung unter
+  vergleichbaren Bedingungen erneut messen und Datenmenge und Ladeverhalten vorher und
+  nachher festhalten:
+  - Auf `/angebot/animation-und-film` laden drei Originalposter mit zusammen rund
+    15,5 MiB (Le Chevreuil 7,0, E-Bike City 4,9, Denzler Haus 3,7 MiB), 3657 bis
+    4500 Pixel breit bei etwa 342 Pixel mobiler Anzeigebreite. Passende komprimierte
+    Varianten verwenden.
+  - Auf der Startseite lud der mobile Test Hoch- und Querformat beider Videos,
+    zusammen rund 22,5 MiB. Das widerspricht dem Eintrag zur Quellenauswahl unter
+    «Geprüft, keine Aufgabe mehr» und ist nachzuprüfen. Ziel: pro Gerät nur die
+    benötigte Quelle, Videos weiter unten erst bei Annäherung laden.
+  - Google-Tags belegen rund 600 ms Hauptthread, Facebook rund 300 ms. Tags, Trigger
+    und Ladezeitpunkte auf das Nötige prüfen.
+
+### Indexierung und Canonicals
+
 Diese Punkte behandelt Christoph separat. Die ausführliche Auswertung steht in
 [Search-Console-Auswertung vom 7. September 2026](seo-gsc-canonical-audit-2026-09-07.md),
 die Vorgeschichte in [seo-investigation.md](seo-investigation.md). Dort steht auch
@@ -444,10 +508,10 @@ Fix.
   Self-Canonical und `index, follow`, auch mit Googlebot-Kennung — das erklärt die
   gemeldete Canonical-Auswahl also noch nicht.
 - [ ] Prüfen, ob `/en/sitemap.xml` in der Search Console eingereicht ist. Beide
-  Sitemaps in `robots.txt` auffindbar machen oder über einen Sitemap-Index
-  zusammenführen; derzeit ist dort keine eingetragen. **Das ist Hygiene, keine
-  Lösung:** Die englische Sitemap ist Google für das Christoph-Profil bereits
-  bekannt, eine erneute Einreichung behebt die belegte Fehlzuordnung also nicht.
+  Sitemaps sind seit dem 25. September in der Live-robots.txt eingetragen und geprüft.
+  **Das ist Hygiene, keine Lösung:** Die englische Sitemap ist Google für das
+  Christoph-Profil bereits bekannt, eine erneute Einreichung behebt die belegte
+  Fehlzuordnung also nicht.
 - [ ] Automatisch erzeugte Tag-, Filter- und Parameterseiten beurteilen, etwa
   `/en/portfolio?r=73`, `/en/services?pp=1`, `/en/blog/category/…?page=1`. Je URL-Typ
   klären, ob eigenständige Inhalte, Duplikate oder paginierte Archive entstehen, und
