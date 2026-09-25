@@ -6,9 +6,11 @@
     fullpage      — class(es) used when the page is is_fullpage
     spacing       — class(es) used when NOT is_fullpage
     class         — extra classes (optional)
+    section_id    — optional HTML id for direct links to this section
   is_fullpage is a page-level field, read from cascade.
 #}}
 <section
+  {{ if section_id }}id="{{ section_id | entities }}"{{ /if }}
   data-section
   data-section-theme="{{ section_theme ?? 'light' }}"
   data-section-observe
