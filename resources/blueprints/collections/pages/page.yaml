@@ -23,6 +23,13 @@ tabs:
               if:
                 template: 'equals project/index'
           -
+            handle: team_title
+            field: title.title
+            config:
+              instructions: 'Add a styleable title above the team listing; leave it empty to fall back to the page title.'
+              if:
+                template: 'equals team/index'
+          -
             handle: page_elements
             field:
               collapse: true

@@ -4,6 +4,17 @@
   class="pt-90 lg:pt-150">
   {{ partial:layout/container }}
 
+  <div class="grid grid-cols-12 gap-x-20 lg:gap-x-30 xl:gap-x-50 mb-30 xl:mb-60">
+    <div
+      data-reveal
+      data-animation="revealUp"
+      class="col-span-full md:col-span-7 xl:col-span-5">
+      {{ partial:ui/heading/h1 size="none" class="text-3xl md:text-5xl xl:text-7xl leading-[1.2] text-pretty hyphens-auto" }}
+        {{ team_title ?? title }}
+      {{ /partial:ui/heading/h1 }}
+    </div>
+  </div>
+
   {{ partial:ui/filter/wrapper class="hidden lg:flex lg:mb-20" }}
     {{ partial:ui/filter/team }}
   {{ /partial:ui/filter/wrapper }}
