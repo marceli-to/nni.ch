@@ -20,6 +20,9 @@ This is a **Statamic CMS** website built on **Laravel 11** for Nightnurse Images
 
 ### Build & Development
 ```bash
+# Install exactly the versions pinned in package-lock.json
+npm ci
+
 # Start development server
 npm run dev
 
@@ -29,6 +32,13 @@ npm run build
 # Laravel artisan commands
 php artisan [command]
 ```
+
+Install the frontend dependencies with `npm ci`, not with pnpm or yarn. The lock file
+is `package-lock.json`; the other tools ignore it and take the newest versions the
+ranges in `package.json` allow, so a build from such an installation no longer matches
+the committed one. In September 2026 a pnpm installation bundled Alpine.js 3.16.3
+instead of the locked 3.14.9 and produced a new script hash without any change to the
+source.
 
 ### Testing
 No project-specific tests exist yet — `tests/` holds only the default Laravel
