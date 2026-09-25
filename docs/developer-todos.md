@@ -525,9 +525,14 @@ frei mit den übrigen Modulen kombinierbar.
     `app.js` ganz am Ende des HTML und wird deshalb spät entdeckt (571 ms). Das
     Swiper-CSS ins Haupt-CSS zu übernehmen spart diese Anfrage; das löst einen Build
     aus.
-  - **Bilder.** Die drei Projektbilder der Startseite kommen mobil als `lg-webp`
-    (1280 px) bei rund 600 physischen Pixeln Anzeigebreite; Lighthouse schätzt
-    557 KiB Einsparung.
+  - **Bilder.** Die drei Projektbilder des Bausteins «Portfolio (Masonry)» auf der
+    Startseite kommen mobil als `lg-webp`. Lighthouse begründet die geschätzten
+    557 KiB überwiegend mit der Kompression, die Glide-Presets arbeiten mit Qualität
+    90; bei einem Bild zusätzlich mit der Grösse, 1052 × 864 px geliefert für
+    727 × 491 px Anzeige. «Portfolio (Grid)» nutzt in `content/project/elements/teaser`
+    dieselbe Voreinstellung, die Umstellung allein ändert daran nichts. Abhilfe wären
+    `srcset` mit Breitenangaben und `sizes` oder eine niedrigere Qualität; beides
+    betrifft viele Bilder.
   - **Poster der Filmseite: lokal behoben.** Glide statt Originale, die Seite sinkt
     mobil von 20,1 auf 5,9 MiB. Live mit dem nächsten gesammelten Deployment.
   - Das Timeline-Video weiter unten lädt wegen `is_fullpage` sofort mit; ein späteres
