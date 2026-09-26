@@ -3,11 +3,11 @@
   "@context": "https://schema.org",
   "@type": "ProfilePage",
   "url": "{{ permalink }}",
-  "name": "{{ title }} | Nightnurse Images",
+  "name": {{ (title + ' | Nightnurse Images') | to_json }},
   {{ if portrait }}"primaryImageOfPage": "{{ config.client.base_url }}{{ portrait:url }}",{{ /if }}
   "mainEntity": {
     "@type": "Person",
-    "name": "{{ title }}",
+    "name": {{ title | to_json }},
     "url": "{{ permalink }}",
     {{ if portrait }}"image": "{{ config.client.base_url }}{{ portrait:url }}",{{ /if }}
     "worksFor": {

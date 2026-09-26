@@ -87,8 +87,7 @@ einem eigenen Commit liegt.
   ein `BreadcrumbList` aus derselben `nav:breadcrumbs`-Schleife aus, also auf Projekt-
   und Teamseiten, auch dort, wo die Brotkrumen mobil ausgeblendet sind.
   `team/show.antlers.html` verweist in `worksFor` per `@id` auf den Organization-Block.
-- Texte laufen durch `to_json`; der ältere ProfilePage-Block in `team/show` gibt
-  `title` noch ungefiltert aus.
+- Texte laufen durch `to_json`, auch im älteren ProfilePage-Block in `team/show`.
 
 ### Bilder: Asset statt Pfad an die Bild-Partials
 
