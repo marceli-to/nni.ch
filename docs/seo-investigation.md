@@ -1,5 +1,12 @@
 # SEO Investigation — nightnurse.ch
 
+> **Status (2026-09-26): historical record.** Kept for context, not as a to-do list. One
+> assumption in §1a does not hold: regular Googlebot requests carry no `Accept-Language`
+> header ([Google](https://developers.google.com/search/docs/specialty/international/locale-adaptive-pages)),
+> so the redirect path described there is an assumption, not an observation. The Search
+> Console figures in §2 and the open items in §6 reflect July 2026 and were followed up
+> in September.
+
 **Date:** 2026-07-04
 **Context:** Declining SEO results reported via Google Search Console (GSC) and an
 external SEO agency analysis. Two symptoms: (1) German pages indexed with English
