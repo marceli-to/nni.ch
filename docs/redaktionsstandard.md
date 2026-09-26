@@ -79,6 +79,8 @@ Nur tatsächlich erbrachte Leistungen aufführen. Zusammengesetzte Bezeichnungen
 - Klar, präzise, selbstbewusst und ohne Werbeübertreibung.
 - Nightnurse erscheint als denkender, gestaltender und koordinierender Partner.
 - Wo eine direkte Ansprache nötig ist (z.\_B. im CTA), wird die Du-Form verwendet, wie auf der übrigen Website.
+- Auftraggeber heissen wie auf der ganzen Website «Partner», nicht «Kunden», auf Englisch «partners». Rollenbezeichnungen von Personen und Eigennamen bleiben unverändert.
+- Keine eigenen Ausrufezeichen. In Zitaten und Eigennamen bleiben sie erhalten.
 - Schweizer Rechtschreibung und einheitliche Typografie verwenden.
 
 ## Zwischenüberschriften auf Detailseiten
