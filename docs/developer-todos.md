@@ -275,9 +275,6 @@ Ranking zählen die Felddaten, nicht der Lighthouse-Wert. Die Punkte nach Gewich
   weil kein Build ausgelöst werden sollte. Beim nächsten Build eine Modifier-Klasse in
   `resources/css/animations/marquee.css` ergänzen und prüfen, dass beide Reihen
   gegenläufig laufen und `prefers-reduced-motion` sie anhält.
-- [ ] **Unteres Padding von `teaser_blog`.** `partials/fieldsets/teaser/post/wrapper.antlers.html`
-  setzt nur `pt-90 md:pt-150` statt der Konvention `py-90 lg:py-150`; Marquee und
-  Segment-Kacheln sind bereits angeglichen. Wirkt nur auf Nicht-Fullpage-Seiten.
 - [ ] **Sprungnavigation und `anchor`-Felder.** `resources/fieldsets/anchors.yaml` ist in
   keinem Blueprint mehr eingebunden. Die einzelnen `anchor`-Felder bieten rund ein
   Dutzend Fieldsets an, aber kein Template gibt sie aus. In beiden Fällen enthalten
