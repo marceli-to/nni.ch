@@ -164,7 +164,11 @@ FTP upload packages still belong in `ftp-uploads/`.
 
 ### Project documentation
 
-- `docs/developer-todos.md` — the living briefing: implemented changes, known bugs and open items
+- `docs/developer-todos.md` — the living briefing for the external developer: implemented
+  changes with consequences, known bugs and open development tasks. It is forwarded once
+  Christoph's own work is done, so it contains neither his to-dos (uploads, live checks,
+  re-checks, open questions to him) nor editorial content details; those belong in the
+  internal lists under `docs/intern/`
 - `docs/project-content-standard-de.md` — binding editorial standard for Project Notes
 - `docs/seo-gsc-canonical-audit-2026-09-07.md` — open Search Console finding
 - `docs/cleanup/`, `docs/frontend-refactor.md`, `docs/scroll-animation-optimization.md`,
