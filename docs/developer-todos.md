@@ -273,12 +273,6 @@ Ranking zählen die Felddaten, nicht der Lighthouse-Wert. Die Punkte nach Gewich
   die Fieldsets `cta`, `cta_text`, `cta_section_header` sowie «Projekt anfragen» und
   «Zum Portfolio» in `lang/en.json` — der neue Baustein benutzt sie weiter.
 
-- [ ] **Platzhalter der Portfolio-Kacheln.** `content/project/elements/teaser.antlers.html`
-  gibt bei leerem `teaser` den Satz «Ein Ort, der Massstab, Material und Atmosphäre
-  zusammenbringt.» aus (englisch über `lang/en.json`). Er war nur als Layout-Platzhalter
-  gedacht und darf nicht live erscheinen. Vorschlag: den `else`-Zweig und den Schlüssel
-  entfernen, dann bleibt die Zeile bei leerem Feld leer. Der Kommentar im Kopf der Datei
-  (Z. 28–31) ist veraltet.
 - [ ] **Laufrichtung der zweiten Logoreihe als Klasse.** Sie steht nur deshalb als
   `style="animation-direction: reverse;"` in `partials/fieldsets/marquee/wrapper.antlers.html`,
   weil kein Build ausgelöst werden sollte. Beim nächsten Build eine Modifier-Klasse in

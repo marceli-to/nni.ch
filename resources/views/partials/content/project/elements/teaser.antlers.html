@@ -25,10 +25,8 @@
   the title as a small eyebrow; the teaser below it carries the type the client line
   used to have.
 
-  PLACEHOLDER: `teaser` is filled on one of 43 German entries and none of the 39
-  English ones, so almost every tile falls back to a generic line held in the
-  template (and in lang/en.json for English). It is there to show the layout, not
-  to ship — see docs/developer-todos.md.
+  Every project entry carries its own teaser (docs/project-content-standard-de.md).
+  If one is empty, the line stays empty; there is no stock sentence to fall back on.
 #}}
 <a
   href="{{ url }}"
@@ -72,8 +70,6 @@
         <div class="text-md xl:text-lg font-meta-light leading-[1.35]">
           {{ if teaser }}
             {{ teaser }}
-          {{ else }}
-            <p>{{ "Ein Ort, der Massstab, Material und Atmosphäre zusammenbringt." | trans }}</p>
           {{ /if }}
         </div>
         <div class="shrink-0 text-md xl:text-lg leading-[1.35]">
