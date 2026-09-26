@@ -2,6 +2,14 @@
 
 Stand: 7. September 2026. Status: aktuelles Indexierungsproblem bestätigt; technische Ursache noch offen.
 
+**Nachtrag 25. September 2026:** Der neue Export enthält 12 statt 14 URLs; sechs der
+ursprünglichen Fälle sind erledigt, darunter `/en/team/christoph-deiters`,
+`/en/expertise` und `/portfolio`. Alle 12 liefern live HTTP 200, Self-Canonical,
+`index, follow` und englischen Haupttext. Die letzten Crawls lagen vor der
+Cache-Löschung vom 25. September, als normale URLs nachweislich einen veralteten Stand
+auslieferten. Keine Code-Änderung nötig; Nachkontrolle am 9. Oktober. Der
+Diagnoseablauf unten ist damit Vorgeschichte.
+
 ## Quellen und gesicherter Befund
 
 - Benutzerexport `D:\Downloads\nightnurse.ch-Coverage-Drilldown-2026-09-07.zip`: `Chart.csv`, `Table.csv`, `Metadata.csv`.

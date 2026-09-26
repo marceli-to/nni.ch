@@ -170,7 +170,8 @@ FTP upload packages still belong in `ftp-uploads/`.
   re-checks, open questions to him) nor editorial content details; those belong in the
   internal lists under `docs/intern/`
 - `docs/project-content-standard-de.md` — binding editorial standard for Project Notes
-- `docs/seo-gsc-canonical-audit-2026-09-07.md` — open Search Console finding
+- `docs/seo-gsc-canonical-audit-2026-09-07.md` — Search Console canonical finding; checked
+  again on 25 September, no code change needed, re-check pending
 - `docs/cleanup/`, `docs/frontend-refactor.md`, `docs/scroll-animation-optimization.md`,
   `docs/accessibility-aria.md`, `docs/htaccess-caching-review.md`, `docs/seo-investigation.md` —
   records of completed work, kept for history
