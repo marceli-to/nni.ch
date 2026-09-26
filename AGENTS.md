@@ -131,7 +131,7 @@ Note: `content/`, `public/assets/`, `public/img/` and `users/` are **git-ignored
 ## Project Notes
 
 Vor jeder Erstellung oder Überarbeitung einer Project Note den vollständigen
-Redaktionsstandard in `docs/project-content-standard-de.md` lesen und befolgen.
+Redaktionsstandard in `docs/redaktionsstandard.md` lesen und befolgen.
 Er ist verbindlich für Recherche, Bilder, Veröffentlichbarkeit, Inhalte,
 Metadaten, Tags und Lokalisierungen.
 
@@ -169,7 +169,7 @@ FTP upload packages still belong in `ftp-uploads/`.
   Christoph's own work is done, so it contains neither his to-dos (uploads, live checks,
   re-checks, open questions to him) nor editorial content details; those belong in the
   internal lists under `docs/intern/`
-- `docs/project-content-standard-de.md` — binding editorial standard for Project Notes
+- `docs/redaktionsstandard.md` — binding editorial standard for Project Notes
 - `docs/cleanup/`, `docs/frontend-refactor.md`, `docs/scroll-animation-optimization.md`,
   `docs/accessibility-aria.md`, `docs/htaccess-caching-review.md`, `docs/seo-investigation.md` —
   records of completed work, kept for history

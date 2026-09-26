@@ -75,7 +75,7 @@ tabs:
               toolbar_mode: floating
               display: Services
               localizable: true
-              instructions: 'Konsistente Leistungsbegriffe / consistent service terms according to docs/project-content-standard-de.md; list competition results separately.'
+              instructions: 'Konsistente Leistungsbegriffe gemäss Redaktionsstandard / consistent service terms as defined in the editorial standard; list competition results separately.'
           -
             handle: cta
             field:
