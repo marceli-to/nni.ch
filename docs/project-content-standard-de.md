@@ -32,8 +32,9 @@ Kleine Projekte benötigen keine künstliche Länge. Eine Zusammenfassung mit ru
 
 Zu vermeiden sind generische Aussagen wie «Wir durften das Projekt unterstützen», reine Architekturbeschreibungen und wiederholte Formeln wie «sichtbar und erlebbar machen», wenn nicht erläutert wird, was konkret sichtbar oder entscheidbar wurde.
 
-## Masonry-Teaser
+## Teaser
 
+- Pflichtfeld: Jedes Projekt erhält beim Anlegen einen Teaser, in jeder Sprachfassung einen eigenen und auch bei unveröffentlichten Entwürfen. Er erscheint als Zeile unter dem Titel auf den Kacheln der Portfolio-Übersicht und der Portfolio-Bausteine. Fehlt er, zeigt die Kachel einen Platzhaltersatz; fehlt nur die englische Fassung, erscheint der deutsche Text.
 - Eine kurze Projektbeschreibung mit ungefähr 45 bis 90 Zeichen.
 - Ordnet Typologie, Ort, Nutzung oder zentrale Besonderheit des Projekts ein.
 - Beschreibt nicht die Leistung von Nightnurse; diese folgt auf der Detailseite.
