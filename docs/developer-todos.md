@@ -94,9 +94,6 @@ Commit `15a07b1`). **Folge:** Diese Bilder tragen erstmals `width` und `height`.
 Darstellung ändert sich nicht — das Preflight von Tailwind setzt `height: auto`, und
 alle Aufrufe haben `w-full` mit `h-auto`, `h-full` oder `aspect-*`.
 
-Offen zur Entscheidung: Neun Bild-Partials setzen `title="{{ image:alt }}"`, der
-Alt-Text erscheint also auch als Tooltip.
-
 ## Fehler
 
 - [ ] **Scroll-Animationen auf Projektdetailseiten mit `is_fullpage: false`.**
