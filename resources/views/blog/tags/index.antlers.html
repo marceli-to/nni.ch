@@ -1,3 +1,13 @@
+{{ tag_has_posts = false }}
+{{ collection:posts taxonomy:tags="{{ tag }}" limit="1" }}
+  {{ unless no_results }}
+    {{ tag_has_posts = true }}
+  {{ /unless }}
+{{ /collection:posts }}
+{{ unless tag_has_posts }}
+  {{ 404 }}
+{{ /unless }}
+
 <section data-section-theme="light" class="pt-90 lg:pt-150 posts">
   {{ partial:layout/container }}
     {{ partial:blog/listing term="true" }}
