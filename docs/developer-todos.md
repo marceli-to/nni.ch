@@ -154,12 +154,6 @@ alle Aufrufe haben `w-full` mit `h-auto`, `h-full` oder `aspect-*`.
   «Consultation» ausgeben und den Menüpunkt «Kontakt» ersetzen. Betrifft
   `partials/layout/header.antlers.html`, die Hauptnavigation und die Button-Partials.
   Braucht neues Styling und damit einen Frontend-Build.
-- [ ] Am Ende der Portfolioübersicht erscheint weiterhin der allgemeine Footer mit
-  «Kontakt aufnehmen». Dort die Hauptaktion angleichen.
-- [ ] «Offerte anfragen» / «Request a quote» nur für einen tatsächlich
-  projektspezifischen Anfrageweg verwenden; der Schlüssel ist in `lang/en.json`
-  erhalten. Die Sprechstunden-Buttons führen derzeit auf die Kontaktseite, für eine
-  echte Terminbuchung fehlt ein Buchungslink.
 
 ### Neue optionale Felder
 
@@ -272,12 +266,6 @@ Ranking zählen die Felddaten, nicht der Lighthouse-Wert. Die Punkte nach Gewich
   weil kein Build ausgelöst werden sollte. Beim nächsten Build eine Modifier-Klasse in
   `resources/css/animations/marquee.css` ergänzen und prüfen, dass beide Reihen
   gegenläufig laufen und `prefers-reduced-motion` sie anhält.
-- [ ] **Sprungnavigation und `anchor`-Felder.** `resources/fieldsets/anchors.yaml` ist in
-  keinem Blueprint mehr eingebunden. Die einzelnen `anchor`-Felder bieten rund ein
-  Dutzend Fieldsets an, aber kein Template gibt sie aus. In beiden Fällen enthalten
-  Inhaltsdateien noch Werte, die wirkungslos bleiben. Entscheiden, ob das Feld über den
-  Parameter `section_id` von `partials/layout/section.antlers.html` ausgegeben wird oder
-  aus den Fieldsets verschwindet.
 - [ ] **Ungenutzte npm-Pakete.** Aus den gebauten Einstiegspunkten werden nur
   `alpinejs` und `swiper` geladen. Nirgends importiert sind `axios`, `vue-axios`,
   `nprogress` und `fullpage.js`; `@tailwindcss/forms` ist installiert, aber nicht unter
