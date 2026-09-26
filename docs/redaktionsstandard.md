@@ -1,6 +1,6 @@
-# Redaktionsstandard für Project Notes
+# Redaktionsstandard für Project Notes und Blogbeiträge
 
-Dieser Standard gilt für deutschsprachige Project Notes und ihre englischen Lokalisierungen. Er hält die Texte knapp, projektspezifisch und auf die erweiterte Rolle von Nightnurse ausgerichtet.
+Dieser Standard gilt für deutschsprachige Project Notes und ihre englischen Lokalisierungen. Er hält die Texte knapp, projektspezifisch und auf die erweiterte Rolle von Nightnurse ausgerichtet. Kategorien, Tags und Metadaten der Blogbeiträge regelt der letzte Abschnitt.
 
 ## Recherche, Bilder und Veröffentlichbarkeit
 
@@ -96,3 +96,55 @@ Nur tatsächlich erbrachte Leistungen aufführen. Zusammengesetzte Bezeichnungen
 - Inhalt, Struktur und Gewichtung übernehmen, aber idiomatisch und nicht Satz für Satz oder wörtlich übersetzen.
 - Für die englischen Texte wird durchgehend «visualization» mit `z` verwendet.
 - Bevorzugte englische Leistungsbegriffe sind unter anderem: `Competition visualizations`, `Marketing visualizations`, `Public-space visualizations`, `Public-communication visualizations`, `Image strategy and concept development`, `Consulting and process facilitation`, `Coordination of specialist planners`, `Photography and drone imagery`, `Mood boards and interior concepts`, `Animation and film` und `360° virtual tours`.
+
+## Blogbeiträge
+
+Jeder Blogbeitrag erhält genau eine Kategorie, den Tag seines Erscheinungsjahrs, null bis zwei Themen-Tags und in jeder veröffentlichten Sprache eigene Metadaten. Tags und Kategorien sind nicht lokalisierbar und werden deshalb nur am Originaleintrag gesetzt.
+
+### Kategorien
+
+Die Slugs sind englisch und für beide Sprachen gleich; die Titel sind in den Term-Dateien unter `content/taxonomies/post_categories/` übersetzt.
+
+| Slug | Deutsch | Englisch | Was hineingehört |
+| --- | --- | --- | --- |
+| `projects` | Projekte | Projects | Eigene Projekte und Bilder: Showcases, Wettbewerbserfolge, Bild des Monats, Vorher/Nachher, Projektdokumentationen |
+| `know-how` | Wissen | Know-how | Wie Bilder entstehen und wie wir arbeiten: Tutorials, Workflow, Werkzeuge, VR-Angebote, Fachbeiträge, Interviews und Gastbeiträge |
+| `studio` | Studio | Studio | Das Unternehmen und das Team: Geschichte, Organisation (Holacracy), Eigentum, Büro, Teamausflüge, Bewerbungen, Feiertagsgrüsse |
+| `events` | Events | Events | Anlässe mit Datum: Sommerpartys, Konferenzen, Messen, Kurse und Seminare, Ausstellungs- und Veranstaltungstipps |
+
+Jahre gehören in die Tags, nie in eine Kategorie. Die bis September 2026 verwendeten Kategorien wie `articles`, `tutorials` oder `things-we-like` sind entfernt; ihre URLs liefern bewusst 404.
+
+### Tags
+
+Der Jahres-Tag (`2019` … `2026`; für ein neues Jahr den Term unter `content/taxonomies/tags/` anlegen) und höchstens zwei Themen-Tags aus diesem Wortschatz:
+
+| Slug | Deutsch | Englisch |
+| --- | --- | --- |
+| `image-of-the-month` | Bild des Monats | Image of the Month |
+| `competitions` | Wettbewerbe | Competitions |
+| `before-and-after` | Vorher und nachher | Before and After |
+| `image-making` | Bildgestaltung | Image-making |
+| `workflow` | Arbeitsweise | How We Work |
+| `software-and-tech` | Software und Technik | Software and Tech |
+| `virtual-reality` | Virtual Reality | Virtual Reality |
+| `holacracy` | Holacracy | Holacracy |
+| `engagement` | Engagement | Social Commitment |
+| `summerparty` | Sommerparty | Summer Party |
+| `team-trips` | Teamausflüge | Team Trips |
+| `conferences` | Konferenzen und Messen | Conferences and Fairs |
+| `exhibitions` | Ausstellungen | Exhibitions |
+| `teaching` | Lehre und Kurse | Teaching and Courses |
+| `interviews` | Interviews und Gastbeiträge | Interviews and Guest Posts |
+| `interior-design` | Innenarchitektur | Interior Design |
+| `press` | Presse | Press |
+| `milestones` | Meilensteine | Milestones |
+| `jobs` | Jobs | Jobs |
+
+- Einen neuen Themen-Tag nur anlegen, wenn er mehrere Beiträge über Kategorien hinweg verbindet, und ihm einen deutschen und einen englischen Titel geben.
+- Keine Hashtag-Tags und keine Tags ohne Aussage wie `highlights`, `news` oder `nightnurseimages`.
+- Die Projekte teilen sich die Taxonomie mit ihren Auftraggeber- und Büro-Tags (siehe oben); diese bleiben davon unberührt. `sbb` bleibt am SBB-Beitrag, weil derselbe Tag ein Portfolio-Projekt kennzeichnet.
+
+### Metadaten
+
+- Jede veröffentlichte Sprachfassung erhält eine eigene `open_graph_description`. Ein leeres Feld in einer Lokalisierung fällt auf das Original zurück und zeigt dann die andere Sprache.
+- Die Regeln unter «SEO-Metadaten» gelten sinngemäss. `open_graph_title` nur setzen, wenn der sichtbare Titel dafür ungeeignet ist.
