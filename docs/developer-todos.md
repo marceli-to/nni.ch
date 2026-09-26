@@ -233,6 +233,39 @@ Ranking zählen die Felddaten, nicht der Lighthouse-Wert. Die Punkte nach Gewich
   Prüfen im LinkedIn Post Inspector und im Facebook Sharing Debugger mit einem alten
   Beitrag mit grossem Titelbild und einer Seite mit eigenem `open_graph_image`.
 
+### Barrierefreiheit
+
+Beide Punkte stehen schon unter «Known follow-ups» in `docs/accessibility-aria.md` und
+sind weiterhin offen.
+
+- [ ] **Kontaktformular ohne Beschriftungen.** `partials/ui/form/contact.antlers.html`
+  benennt Name, E-Mail, Telefon und Nachricht nur über `placeholder`, auch das
+  Sternchen für Pflichtfelder steht nur dort. Sobald ein Feld ausgefüllt ist, sieht
+  man nicht mehr, was es verlangt (WCAG 3.3.2). Sichtbare `<label>` brauchen Styling und
+  damit einen Build.
+- [ ] **`<a href="javascript:;">` als Buttons.** Acht Stück: `partials/layout/header`
+  (Menü), `ui/filter/wrapper`, `ui/filter/team` (zwei), `ui/form/elements/errors`,
+  `ui/gdpr` und `ui/swiper/track` (zwei). Auch mit `role="button"` lösen sie per
+  Leertaste nicht aus; in `ui/filter/team` und `ui/form/elements/errors` fehlt die Rolle,
+  dort kündigen Screenreader sie zudem als Link an. `<button type="button">` behebt
+  beides; das Aussehen danach im Browser prüfen.
+
+### Sicherheits-Header
+
+- [ ] **Die Website sendet fast keine Sicherheits-Header.** Die Startseite lieferte am
+  26. September live nur `Permissions-Policy: interest-cohort=()`. Es fehlen
+  `Strict-Transport-Security`, `X-Content-Type-Options`, `Referrer-Policy`,
+  `X-Frame-Options` beziehungsweise `frame-ancestors` und eine
+  `Content-Security-Policy`. Die lokale `public/.htaccess` setzt keinen davon, auch
+  nicht die vorhandene `Permissions-Policy`; Produktionsdatei oder Hoster weichen also
+  ab, vor einer Änderung dort abgleichen.
+  - Die ersten vier sind wenig riskant. HSTS zunächst ohne `includeSubDomains`, solange
+    nicht geprüft ist, dass alle Subdomains HTTPS liefern.
+  - Eine CSP muss Tag Manager, Google Ads, Meta, LinkedIn, Google Maps, reCAPTCHA,
+    YouTube und Vimeo zulassen und sollte zuerst als
+    `Content-Security-Policy-Report-Only` laufen.
+  - Offen seit den «Follow-ups» in `docs/htaccess-caching-review.md`.
+
 ### Aufräumen
 
 - [ ] **Wird der Branch `staging` noch gebraucht?** Sein letzter Commit ist
