@@ -50,7 +50,7 @@ einem eigenen Commit liegt.
   der Jobs-Block setzt damit `id="jobs"`, und der Scroll-Observer respektiert einen
   Anker beim Laden.
 
-### Kategorie- und Tag-Seiten: 404 und `noindex`
+### Kategorie-, Tag- und Suchseiten: 404 und `noindex`
 
 - `blog/show.antlers.html`: Die Kategorie-Schleife steht in `{{ if post_categories }}`.
   Ohne das Feld lief sie im Kontext des Beitrags und gab dessen eigenen Slug als
@@ -63,8 +63,12 @@ einem eigenen Commit liegt.
 - Tag-Seiten in Blog und Portfolio sind `noindex, follow`, ausser den Jahres-Tags des
   Blogs (`/blog/tag/2024` usw.), die als Jahresarchive dienen:
   `partials/layout/head.antlers.html` prüft
-  `{{ if noindex || (tag && !(tag | is_numeric)) }}`. `tag` gibt es nur als
-  Routenparameter der vier Tag-Routen, kein Blueprint hat ein Feld dieses Namens.
+  `{{ if noindex || (tag && !(tag | is_numeric)) || current_uri == '/blog/suche' || current_uri == '/en/blog/search' }}`.
+  `tag` gibt es nur als Routenparameter der vier Tag-Routen, kein Blueprint hat ein
+  Feld dieses Namens.
+- Die internen Suchseiten `/blog/suche` und `/en/blog/search` sind aus derselben Zeile
+  `noindex, follow`, mit und ohne `?q=`. Die Pfade stehen dort fest: Ändert sich eine
+  der beiden Suchrouten in `routes/web.php`, muss die Zeile mitgeändert werden.
 - **Offen, Entscheidung des Entwicklers:** Im Portfolio liefert weiterhin jeder
   erfundene Slug 200, bei Tag-URLs mit `noindex`, bei Kategorie-URLs indexierbar. Die
   Routen teilen sich `project.index` mit der Übersicht, eine 404-Prüfung dort berührt
@@ -223,14 +227,8 @@ Ranking zählen die Felddaten, nicht der Lighthouse-Wert. Die Punkte nach Gewich
 - Nicht beeinflussbar: Die 189 KiB «Cache-Verweildauer» betreffen nur Facebook- und
   LinkedIn-Skripte.
 
-### Blog: Suchseiten und Vorschaubilder
+### Blog: Vorschaubilder
 
-- [ ] **Interne Suche auf `noindex`.** `/blog/suche` und `/en/blog/search` liefern
-  `index, follow`. `partials/layout/head.antlers.html` gibt `noindex, follow` aus,
-  sobald `noindex` gesetzt ist, und Routendaten erreichen den Kopf — `title` aus
-  denselben Routen erscheint dort bereits. Vorschlag: `'noindex' => true` in den beiden
-  Suchrouten in `routes/web.php`. Prüfen: beide Suchseiten mit und ohne `?q=` liefern
-  `noindex, follow`, die Blogübersicht weiter `index, follow`.
 - [ ] **Vorschaubild für Beiträge.** `og:image` und `twitter:image` zeigen das Original
   von `open_graph_image`, sonst `/opengraph.jpg`. Bei Beiträgen ist das Feld fast überall
   leer, sie teilen also alle dasselbe allgemeine Bild. Das Titelbild direkt zu verwenden
