@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {{ if  open_graph_description }}<meta name="description" content="{{ open_graph_description }}">{{ else }}<meta name="description" content="{{ config.client.meta_description }}">{{ /if}}
-{{ if noindex }}<meta name="robots" content="noindex, follow">{{ else }}<meta name="robots" content="index, follow">{{ /if }}
+{{ if noindex || (tag && !(tag | is_numeric)) }}<meta name="robots" content="noindex, follow">{{ else }}<meta name="robots" content="index, follow">{{ /if }}
 <link rel="canonical" href="{{ permalink ?? current_url }}">
 {{ locales }}
 <link rel="alternate" hreflang="{{ locale:short_locale }}" href="{{ permalink }}">
