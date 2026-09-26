@@ -128,13 +128,14 @@ Note: `content/`, `public/assets/`, `public/img/` and `users/` are **git-ignored
 - Video and image handling modules are integrated
 - Forms use Statamic's built-in form handling with reCAPTCHA integration
 
-## Project Notes und Blogbeiträge
+## Texte der Website
 
-Vor jeder Erstellung oder Überarbeitung einer Project Note oder eines Blogbeitrags den
-vollständigen Redaktionsstandard in `docs/redaktionsstandard.md` lesen und
-befolgen. Er ist verbindlich für Recherche, Bilder, Veröffentlichbarkeit, Inhalte,
-Metadaten, Tags und Lokalisierungen; für Blogbeiträge legt er Kategorien, Tag-Wortschatz
-und Metadaten fest.
+Vor jeder Erstellung oder Überarbeitung von Texten der Website den vollständigen
+Redaktionsstandard in `docs/redaktionsstandard.md` lesen und befolgen. Er ist
+verbindlich für alle Seiten, Project Notes und Blogbeiträge in beiden Sprachen: Der
+allgemeine Teil regelt Tonalität, englische Fassungen und SEO-Metadaten. Für Project Notes
+kommen Recherche, Bilder, Veröffentlichbarkeit, Teaser und Leistungsbegriffe hinzu, für
+Blogbeiträge Kategorien, Tag-Wortschatz und Metadaten.
 
 ## FTP upload packages
 
@@ -170,8 +171,8 @@ FTP upload packages still belong in `ftp-uploads/`.
   Christoph's own work is done, so it contains neither his to-dos (uploads, live checks,
   re-checks, open questions to him) nor editorial content details; those belong in the
   internal lists under `docs/intern/`
-- `docs/redaktionsstandard.md` — binding editorial standard for Project Notes and
-  blog posts (categories, tag vocabulary, metadata)
+- `docs/redaktionsstandard.md` — binding editorial standard for all website texts,
+  with additional rules for Project Notes and blog posts (categories, tag vocabulary, metadata)
 - `docs/cleanup/`, `docs/frontend-refactor.md`, `docs/scroll-animation-optimization.md`,
   `docs/accessibility-aria.md`, `docs/htaccess-caching-review.md`, `docs/seo-investigation.md` —
   records of completed work, kept for history
