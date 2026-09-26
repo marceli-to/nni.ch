@@ -12,6 +12,7 @@
     {{ if portrait }}"image": "{{ config.client.base_url }}{{ portrait:url }}",{{ /if }}
     "worksFor": {
       "@type": "Organization",
+      "@id": "{{ config.client.base_url }}/#organization",
       "name": "Nightnurse Images",
       "url": "{{ config.client.base_url }}"
     }

@@ -1,0 +1,34 @@
+{{#
+  layout/organization-schema — Organization JSON-LD, included by layout/head on
+  the homepage of each locale.
+
+  Address and profile links come from the globals «Contact info» and «Social
+  Media», so edits in the Control Panel carry over. The address is expected as two
+  lines: street, then postal code and town. Team profiles point to the same
+  `@id` via `worksFor`.
+#}}
+{{ address_lines = contact_info:address | explode("\n") }}
+{{ locality = address_lines.1 | explode(" ") }}
+{{ same_as = arr(social_media_accounts:linkedin, social_media_accounts:instagram, social_media_accounts:facebook, social_media_accounts:pinterest) }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "{{ config.client.base_url }}/#organization",
+  "name": "Nightnurse Images",
+  "legalName": {{ contact_info:name | to_json }},
+  "url": "{{ config.client.base_url }}",
+  "logo": "{{ config.client.base_url }}/android-chrome-512x512.png",
+  {{ if open_graph_description }}"description": {{ open_graph_description | to_json }},{{ /if }}
+  "email": {{ contact_info:email | to_json }},
+  "telephone": {{ contact_info:phone | to_json }},
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": {{ address_lines.0 | trim | to_json }},
+    "postalCode": {{ locality.0 | trim | to_json }},
+    "addressLocality": {{ locality.1 | trim | to_json }},
+    "addressCountry": "CH"
+  },
+  "sameAs": {{ same_as | filter_empty | values | to_json }}
+}
+</script>

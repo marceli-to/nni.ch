@@ -22,6 +22,7 @@
 <meta name="twitter:title" content="{{ open_graph_title ?? title }} | Nightnurse Images">
 {{ if open_graph_image }}<meta name="twitter:image" content="{{ config.client.base_url }}{{ open_graph_image:url }}">{{ else }}<meta name="twitter:image" content="{{ config.client.base_url }}/opengraph.jpg">{{ /if }}
 <meta name="csrf-token" content="{{ csrf_token }}">
+{{ if is_homepage }}{{ partial:layout/organization-schema }}{{ /if }}
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-light.png" media="(prefers-color-scheme: light)">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32-light.png" media="(prefers-color-scheme: light)">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16-light.png" media="(prefers-color-scheme: light)">
