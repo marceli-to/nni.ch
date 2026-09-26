@@ -1,7 +1,7 @@
 {{ if type == 'image' }}
   <figure class="bg-silver relative aspect-square {{ layout == 'landscape' ? 'md:aspect-[16/9]' : 'lg:aspect-[3/4]' }}">
     <picture>
-      <source media="(min-width: 1280px)" srcset="{{ glide:feature_image preset='2xl-webp' }}" type="image/jpeg">
+      <source media="(min-width: 1280px)" srcset="{{ glide:feature_image preset='2xl-webp' }}" type="image/webp">
       <source srcset="{{ glide:feature_image preset='xl-webp' }}" type="image/webp">
       <source media="(min-width: 1280px)" srcset="{{ glide:feature_image preset='2xl' }}" type="image/jpeg">
       <img 
