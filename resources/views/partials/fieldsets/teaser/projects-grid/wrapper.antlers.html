@@ -22,6 +22,9 @@
   stops mid-cycle simply leaves its last slot without the partner it is drawn
   next to in the design.
 
+  The block's own title is the h2, so the project titles come out as h3
+  (`heading_level`, handed on through the slot to the teaser).
+
   The CTA sits outside the grid rather than in a row of its own. The pattern's
   last two slots carry a negative top margin and a bottom margin, so a grid row
   after them would have to account for both; below the grid it just follows the
@@ -64,7 +67,8 @@
       {{ projects }}
         {{ partial:content/project/elements/teaser-slot
           :pos="count | mod(8)"
-          :cycle="count | divide(8) | floor" }}
+          :cycle="count | divide(8) | floor"
+          heading_level="h3" }}
       {{ /projects }}
 
     </div>

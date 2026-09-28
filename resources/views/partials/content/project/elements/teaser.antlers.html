@@ -6,10 +6,16 @@
   in; the placement on the grid is the caller's job.
 
   Params:
-    image  (required unless video)  asset shown in the frame
-    video  (optional)               teaser video (mp4), takes precedence
-    ratio  (required)               responsive aspect-ratio classes for the frame
-    frame  (optional)               extra classes for the frame, e.g. a bleed
+    image          (required unless video)  asset shown in the frame
+    video          (optional)               teaser video (mp4), takes precedence
+    ratio          (required)               responsive aspect-ratio classes for the frame
+    frame          (optional)               extra classes for the frame, e.g. a bleed
+    heading_level  (optional)               `h3` where the surrounding block already
+                                            has the h2, as the grid block does; the
+                                            listing keeps the default h2
+
+  The global `h3` rule in components/headings.css adds a bottom margin; `mb-0`
+  takes it off again, so both levels look the same.
 
   One link wraps the whole tile, the way the competency tiles do it
   (`partials/fieldsets/teaser/competencies/item.antlers.html`). Frame, title,
@@ -64,7 +70,11 @@
     </div>
     <figcaption class="pt-15 xl:pt-20">
       <div class="text-xs xl:text-sm font-meta-light leading-[1.35]">{{ client }}</div>
-      <h2 class="font-meta-medium text-md xl:text-lg leading-[1.25] mt-8 xl:mt-10">{{ title }}</h2>
+      {{ if heading_level == 'h3' }}
+        <h3 class="font-meta-medium text-md xl:text-lg leading-[1.25] mt-8 xl:mt-10 mb-0">{{ title }}</h3>
+      {{ else }}
+        <h2 class="font-meta-medium text-md xl:text-lg leading-[1.25] mt-8 xl:mt-10">{{ title }}</h2>
+      {{ /if }}
       <div class="flex items-end justify-between gap-x-20 mt-4">
         <div class="text-md xl:text-lg font-meta-light leading-[1.35]">
           {{ if teaser }}
