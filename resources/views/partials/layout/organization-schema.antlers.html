@@ -1,11 +1,23 @@
 {{#
-  layout/organization-schema — Organization JSON-LD, included by layout/head on
-  the homepage of each locale.
+  layout/organization-schema — company JSON-LD, included by layout/head on the
+  homepage of each locale.
+
+  The type is `LocalBusiness`, a subtype of Organization: the studio has an office
+  people can visit, and every Organization property stays valid.
 
   Address and profile links come from the globals «Contact info» and «Social
   Media», so edits in the Control Panel carry over. The address is expected as two
   lines: street, then postal code and town. Team profiles point to the same
   `@id` via `worksFor`.
+
+  Fixed here because no global carries them: the founding year, the coordinates
+  (the same point as the map pin in resources/js/map.js) and the countries served,
+  as ISO codes like `addressCountry` — Switzerland, and Germany with its own
+  landing page.
+
+  A second block describes the website itself; Google takes the site name shown
+  in search results from it. It is one site in two languages, so both homepages
+  carry the same block, and its publisher is the company above.
 #}}
 {{ address_lines = contact_info:address | explode("\n") }}
 {{ locality = address_lines.1 | explode(" ") }}
@@ -13,13 +25,14 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": "LocalBusiness",
   "@id": "{{ config.client.base_url }}/#organization",
   "name": "Nightnurse Images",
   "legalName": {{ contact_info:name | to_json }},
   "url": "{{ config.client.base_url }}",
   "logo": "{{ config.client.base_url }}/android-chrome-512x512.png",
   {{ if open_graph_description }}"description": {{ open_graph_description | to_json }},{{ /if }}
+  "foundingDate": "2010",
   "email": {{ contact_info:email | to_json }},
   "telephone": {{ contact_info:phone | to_json }},
   "address": {
@@ -29,6 +42,27 @@
     "addressLocality": {{ locality.1 | trim | to_json }},
     "addressCountry": "CH"
   },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 47.389296,
+    "longitude": 8.524557
+  },
+  "areaServed": [
+    { "@type": "Country", "name": "CH" },
+    { "@type": "Country", "name": "DE" }
+  ],
   "sameAs": {{ same_as | filter_empty | values | to_json }}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "{{ config.client.base_url }}/#website",
+  "name": "Nightnurse Images",
+  "alternateName": "Nightnurse",
+  "url": "{{ config.client.base_url }}",
+  "inLanguage": ["de", "en"],
+  "publisher": { "@id": "{{ config.client.base_url }}/#organization" }
 }
 </script>
