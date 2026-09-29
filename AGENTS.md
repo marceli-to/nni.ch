@@ -133,9 +133,10 @@ Note: `content/`, `public/assets/`, `public/img/` and `users/` are **git-ignored
 Vor jeder Erstellung oder Überarbeitung von Texten der Website den vollständigen
 Redaktionsstandard in `docs/redaktionsstandard.md` lesen und befolgen. Er ist
 verbindlich für alle Seiten, Project Notes und Blogbeiträge in beiden Sprachen: Der
-allgemeine Teil regelt Tonalität, englische Fassungen und SEO-Metadaten. Für Project Notes
-kommen Recherche, Bilder, Veröffentlichbarkeit, Teaser und Leistungsbegriffe hinzu, für
-Blogbeiträge Kategorien, Tag-Wortschatz und Metadaten.
+allgemeine Teil regelt Tonalität, englische Fassungen, SEO-Metadaten, Alt-Texte und das
+Anlegen neuer Einträge. Für Project Notes kommen Recherche, Bilder, Jahres- und Partner-Tags,
+Veröffentlichbarkeit, Teaser und Leistungsbegriffe hinzu, für Blogbeiträge Kategorien,
+Tag-Wortschatz und Metadaten.
 
 ## FTP upload packages
 

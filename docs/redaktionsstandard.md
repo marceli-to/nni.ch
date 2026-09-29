@@ -11,10 +11,12 @@ Dieser Standard gilt für alle Texte der Website, auf Deutsch und in der englisc
 - Wo ein Text direkt anspricht, etwa im CTA, verwendet er die Du-Form.
 - Auftraggeber heissen «Partner», nicht «Kunden», auf Englisch «partners». Rollenbezeichnungen von Personen und Eigennamen bleiben unverändert.
 - Keine eigenen Ausrufezeichen. In Zitaten und Eigennamen bleiben sie erhalten.
+- Gedankenstriche sparsam einsetzen. Meist trägt ein Komma, ein Doppelpunkt, eine Klammer oder ein neuer Satz den Gedanken besser. Der Trennstrich im SEO-Titel «Projekt – Kunde» ist davon nicht betroffen.
 - Schweizer Rechtschreibung und einheitliche Typografie verwenden.
 
 ### Englische Fassungen
 
+- Neue Inhalte zuerst nur auf Deutsch anlegen. Die englische Fassung folgt, wenn der Benutzer sie verlangt; beide Fassungen zusammen nur, wenn er das ausdrücklich sagt.
 - Alle Regeln dieses Standards gelten sinngemäss auch für die englische Fassung.
 - Inhalt, Struktur und Gewichtung übernehmen, aber idiomatisch und nicht Satz für Satz oder wörtlich übersetzen.
 - Für die englischen Texte wird durchgehend «visualization» mit `z` verwendet.
@@ -28,6 +30,24 @@ Dieser Standard gilt für alle Texte der Website, auf Deutsch und in der englisc
 - Interner Richtwert für die Beschreibung: ungefähr 130 bis 170 Zeichen.
 - Keine Keyword-Listen, keine austauschbaren Einstiege wie «Entdecken Sie unsere hochwertige 3D-Visualisierung».
 
+### Alt-Texte
+
+- Jedes neu hochgeladene Bild erhält gleich beim Anlegen einen Alt-Text im Feld «Alt Text» des Assets.
+- Das Feld gilt für beide Sprachfassungen. Alt-Texte deshalb auf Deutsch verfassen.
+- Der Alt-Text beschreibt konkret, was zu sehen ist: die Bildart, wenn sie für das Verständnis zählt (Visualisierung, Foto, Luftbild), das Projekt oder den Ort und die wesentlichen Bildinhalte wie Perspektive, Nutzung, Personen oder Stimmung.
+- Richtwert: ungefähr 80 bis 150 Zeichen, als Satz oder Wortgruppe ohne Schlusspunkt.
+- Nicht mit «Bild von» beginnen, keine Keyword-Listen und keine wörtliche Wiederholung von Bildlegende oder Fliesstext.
+
+### Neue Einträge anlegen
+
+Für neue Project Notes und Blogbeiträge:
+
+- Zuerst nur die deutsche Fassung anlegen (siehe «Englische Fassungen»).
+- Den Eintrag im lokalen, internen CMS direkt als veröffentlicht anlegen, sofern nicht ausdrücklich ein Entwurf gewünscht ist. Für Project Notes gilt die Ausnahme bei Bildern, die nicht öffentlich auffindbar sind (siehe «Recherche, Bilder und Veröffentlichbarkeit»).
+- Den neuen Eintrag zuoberst in der Reihenfolge der Collection erfassen. Die englische Fassung kommt später an dieselbe Stelle, also zwischen dieselben Nachbarn wie die deutsche.
+- Nach dem Anlegen prüfen, dass der Eintrag im CMS sichtbar ist; bei veraltetem Inhalts-Cache diesen aktualisieren (`php please stache:refresh`).
+- Die Veröffentlichung auf der öffentlichen Website ist ein separater Schritt.
+
 ## Project Notes
 
 ### Recherche, Bilder und Veröffentlichbarkeit
@@ -38,7 +58,10 @@ Dieser Standard gilt für alle Texte der Website, auf Deutsch und in der englisc
 - Bilder mit ihren originalen Dateinamen übernehmen. Gross-/Kleinschreibung, Leerzeichen, Satzzeichen und Projektnummern bleiben unverändert.
 - Für jedes Projekt einen eigenen Ordner unter `public/assets/projects/` verwenden und in der Project Note für jedes Bild den vollständigen relativen Asset-Pfad angeben.
 - Ein Projekt kann Bilder aus mehreren internen Projektnummern und Phasen umfassen. Die Bilder korrekt zuordnen, Projektnummern und interne Phasen im öffentlichen Text aber nur auf ausdrücklichen Wunsch erwähnen.
-- Als Tags primär jene Projektbeteiligten erfassen, mit denen Nightnurse direkt gearbeitet hat: in der Regel Architektur- und Landschaftsarchitekturbüros, fallweise Bauherrschaften oder Vermarktungsfirmen. Bei unklarer Auswahl nachfragen. Dafür die öffentlich verwendete Kurzbezeichnung ohne Rechtsformzusätze wie AG oder GmbH verwenden.
+- Als Partner-Tags primär jene Projektbeteiligten erfassen, mit denen Nightnurse direkt gearbeitet hat: in der Regel Architektur- und Landschaftsarchitekturbüros, fallweise Bauherrschaften oder Vermarktungsfirmen. Bei unklarer Auswahl nachfragen. Dafür die öffentlich verwendete Kurzbezeichnung ohne Rechtsformzusätze wie AG oder GmbH verwenden.
+- Zusätzlich erhält jede Project Note den Tag des Jahres, in dem Nightnurse das Projekt abgeschlossen hat. Das Jahr steht üblicherweise im Timestamp der Bild-Dateinamen, etwa `_240913` für 2024 oder `2024_10_02_` bei Fotos. Stammen die gezeigten Bilder aus mehreren Jahren, erhält der Eintrag mehrere Jahres-Tags.
+- Kein Timestamp sind die Projektnummer am Anfang des Dateinamens (`24d95`) und die zehnstellige Zahl, die Statamic beim Hochladen gleichnamiger Dateien anhängt (`-1720725654`). Fehlt ein Timestamp, weil die Bilder umbenannt wurden, die Originale unter `\\nas-02\nni_works\IMAGES` heranziehen.
+- Tags sind nicht lokalisierbar und werden am Originaleintrag gesetzt. Die Jahres-Tags stehen wie bei den Blogbeiträgen zuerst; für ein neues Jahr den Term unter `content/taxonomies/tags/` anlegen. Auf der Detailseite erscheinen sie nicht in der Partnerliste, unter `/portfolio/tag/2025` listet das Portfolio alle Projekte eines Jahres.
 - Vor der Veröffentlichung prüfen, ob die verwendeten Bilder öffentlich online auffindbar sind. Ein visueller Motivabgleich genügt; die Online-Dateinamen müssen nicht übereinstimmen.
 - Sind Bilder nicht öffentlich auffindbar, den Benutzer darauf hinweisen und den Eintrag unveröffentlicht lassen, bis die Freigabe nach Rücksprache mit dem Kunden bestätigt ist.
 
@@ -62,7 +85,7 @@ Zu vermeiden sind generische Aussagen wie «Wir durften das Projekt unterstütze
 
 ### Teaser
 
-- Pflichtfeld: Jedes Projekt erhält beim Anlegen einen Teaser, in jeder Sprachfassung einen eigenen und auch bei unveröffentlichten Entwürfen. Er erscheint als Zeile unter dem Titel auf den Kacheln der Portfolio-Übersicht und der Portfolio-Bausteine. Fehlt er, bleibt die Zeile leer; fehlt nur die englische Fassung, erscheint der deutsche Text.
+- Pflichtfeld: Jedes Projekt erhält beim Anlegen einen Teaser, in jeder angelegten Sprachfassung einen eigenen und auch bei unveröffentlichten Entwürfen. Er erscheint als Zeile unter dem Titel auf den Kacheln der Portfolio-Übersicht und der Portfolio-Bausteine. Fehlt er, bleibt die Zeile leer; fehlt nur die englische Fassung, erscheint der deutsche Text.
 - Eine kurze Projektbeschreibung mit ungefähr 45 bis 90 Zeichen.
 - Ordnet Typologie, Ort, Nutzung oder zentrale Besonderheit des Projekts ein.
 - Beschreibt nicht die Leistung von Nightnurse; diese folgt auf der Detailseite.
@@ -110,7 +133,9 @@ Bevorzugte englische Leistungsbegriffe sind unter anderem: `Competition visualiz
 
 ## Blogbeiträge
 
-Jeder Blogbeitrag erhält genau eine Kategorie, den Tag seines Erscheinungsjahrs, null bis zwei Themen-Tags und in jeder veröffentlichten Sprache eigene Metadaten. Tags und Kategorien sind nicht lokalisierbar und werden deshalb nur am Originaleintrag gesetzt.
+Jeder Blogbeitrag erhält genau eine Kategorie, den Tag seines Erscheinungsjahrs, null bis zwei Themen-Tags, bei Bedarf Partner-Tags und in jeder veröffentlichten Sprache eigene Metadaten. Tags und Kategorien sind nicht lokalisierbar und werden deshalb nur am Originaleintrag gesetzt.
+
+Für das Anlegen und Einordnen neuer Beiträge gilt «Neue Einträge anlegen» im allgemeinen Teil.
 
 ### Kategorien
 
@@ -153,7 +178,8 @@ Der Jahres-Tag (`2019` … `2026`; für ein neues Jahr den Term unter `content/t
 
 - Einen neuen Themen-Tag nur anlegen, wenn er mehrere Beiträge über Kategorien hinweg verbindet, und ihm einen deutschen und einen englischen Titel geben.
 - Keine Hashtag-Tags und keine Tags ohne Aussage wie `highlights`, `news` oder `nightnurseimages`.
-- Die Projekte teilen sich die Taxonomie mit ihren Auftraggeber- und Büro-Tags (siehe «Recherche, Bilder und Veröffentlichbarkeit» bei den Project Notes); diese bleiben davon unberührt. `sbb` bleibt am SBB-Beitrag, weil derselbe Tag ein Portfolio-Projekt kennzeichnet.
+- Blog und Portfolio verwenden dieselbe Taxonomie `tags`. Jahres- und Partner-Tags sind für beide dieselben Terms; der Blog verlinkt sie auf `/blog/tag/…`, das Portfolio auf `/portfolio/tag/…`.
+- Nennt ein Beitrag Partner, mit denen Nightnurse direkt gearbeitet hat, etwa das Architekturbüro eines Wettbewerbsprojekts oder eine Bauherrschaft, erhält er zusätzlich deren Partner-Tags nach denselben Regeln wie die Project Notes (siehe «Recherche, Bilder und Veröffentlichbarkeit»). Den bestehenden Term verwenden und keinen zweiten für dieselbe Firma anlegen. Partner-Tags zählen nicht zu den höchstens zwei Themen-Tags. Beispiel: `sbb` am Beitrag über den Vertrag mit der SBB.
 
 ### Metadaten
 
