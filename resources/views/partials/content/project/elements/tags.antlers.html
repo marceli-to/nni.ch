@@ -1,19 +1,24 @@
-{{ if tags }}
+{{#
+  The year tags (2014, 2025 …) share the taxonomy with the partner tags but
+  name no partner, so the list leaves out every tag whose slug is a number.
+#}}
+{{ partners = tags where (tag => !(tag:slug | is_numeric)) }}
+{{ if partners }}
   {{ partial:ui/heading/h2 size="none" class="font-meta-medium mb-2 xl:mb-4" }}
     {{ "Partner" | trans }}
   {{ /partial:ui/heading/h2 }}
   <div>
-    {{ tags }}
-      <a 
-        {{ if site:locale == 'de' }} 
-          href="/portfolio/tag/{{ slug }}" 
-        {{ else }} 
-          href="/en/portfolio/tag/{{ slug }}" 
+    {{ partners }}
+      <a
+        {{ if site:locale == 'de' }}
+          href="/portfolio/tag/{{ slug }}"
+        {{ else }}
+          href="/en/portfolio/tag/{{ slug }}"
         {{ /if }}
         title="{{ title }}"
         class="inline-block mr-2 md:mr-5 last-of-type:mr-0 underline decoration-1 underline-offset-4 xl:underline-offset-8 hover:no-underline">
         {{ title }}
       </a>
-    {{ /tags }}
+    {{ /partners }}
   </div>
 {{ /if }}
