@@ -179,7 +179,7 @@ Der Jahres-Tag (`2019` … `2026`; für ein neues Jahr den Term unter `content/t
 - Einen neuen Themen-Tag nur anlegen, wenn er mehrere Beiträge über Kategorien hinweg verbindet, und ihm einen deutschen und einen englischen Titel geben.
 - Keine Hashtag-Tags und keine Tags ohne Aussage wie `highlights`, `news` oder `nightnurseimages`.
 - Blog und Portfolio verwenden dieselbe Taxonomie `tags`. Jahres- und Partner-Tags sind für beide dieselben Terms; der Blog verlinkt sie auf `/blog/tag/…`, das Portfolio auf `/portfolio/tag/…`.
-- Nennt ein Beitrag Partner, mit denen Nightnurse direkt gearbeitet hat, etwa das Architekturbüro eines Wettbewerbsprojekts oder eine Bauherrschaft, erhält er zusätzlich deren Partner-Tags nach denselben Regeln wie die Project Notes (siehe «Recherche, Bilder und Veröffentlichbarkeit»). Den bestehenden Term verwenden und keinen zweiten für dieselbe Firma anlegen. Partner-Tags zählen nicht zu den höchstens zwei Themen-Tags. Beispiel: `sbb` am Beitrag über den Vertrag mit der SBB.
+- Nennt ein Beitrag Partner, mit denen Nightnurse direkt gearbeitet hat, etwa das Architekturbüro eines Wettbewerbsprojekts oder eine Bauherrschaft, erhält er zusätzlich deren Partner-Tags nach denselben Regeln wie die Project Notes (siehe «Recherche, Bilder und Veröffentlichbarkeit»). Den bestehenden Term verwenden und keinen zweiten für dieselbe Firma anlegen. Partner-Tags zählen nicht zu den höchstens zwei Themen-Tags. Beispiel: `sbb` am Beitrag über den Vertrag mit der SBB. Sammelbeiträge, die nur Bilder aus vielen Partnerprojekten zeigen, etwa die Weihnachtskarten, erhalten keine Partner-Tags.
 
 ### Metadaten
 
