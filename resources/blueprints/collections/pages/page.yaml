@@ -114,13 +114,6 @@ tabs:
                       fields:
                         -
                           import: cta_expertise
-                    teaser_project:
-                      display: 'Portfolio (Masonry)'
-                      instructions: 'Add a set of images, a text and a link.'
-                      icon: text-formatting-image-left
-                      fields:
-                        -
-                          import: teaser_project
                     teaser_projects_grid:
                       display: 'Portfolio (Grid)'
                       instructions: 'A picked selection of projects in the portfolio grid, with a title and a CTA.'
