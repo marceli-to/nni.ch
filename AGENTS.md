@@ -6,11 +6,11 @@ this file as the single source of truth.
 
 ## Project Overview
 
-This is a **Statamic CMS** website built on **Laravel 11** for Nightnurse Images, a Swiss architectural visualization company. The site is **multilingual** (German as default, English as secondary) and features a portfolio, blog, team pages, and job listings.
+This is a **Statamic CMS** website built on **Laravel 12** for Nightnurse Images, a Swiss architectural visualization company. The site is **multilingual** (German as default, English as secondary) and features a portfolio, blog, team pages, and job listings.
 
 ## Key Technologies & Architecture
 
-- **Backend**: PHP ^8.2, Laravel 11 with Statamic 5 (flat-file CMS)
+- **Backend**: PHP ^8.2 (production runs 8.3), Laravel 12 with Statamic 5 (flat-file CMS)
 - **Frontend**: Tailwind CSS, Alpine.js, Antlers templating engine
 - **Build**: Vite for asset compilation
 - **Content**: Flat-file based content management in `content/` directory
@@ -59,6 +59,18 @@ Deployment is a `git pull` on the server. Compiled assets are **built locally an
 committed** — `public/build/` is versioned, so the server never runs `npm run build`.
 Building there writes new hashed bundles and rewrites `manifest.json`, which then
 blocks the next pull with local modifications that look like someone's work.
+
+`vendor/` is not versioned either. Whenever a pull changes `composer.lock`, run
+`composer install --no-dev --optimize-autoloader` on the server right after it, then clear
+the caches (`php artisan optimize:clear`, `php please stache:refresh`,
+`php please static:clear`). Wrap the three steps in `php artisan down` / `php artisan up`:
+between pull and install the code and `vendor/` do not match.
+
+Before pulling, check `git status` on the server. Files uploaded by FTP show up as
+modifications or untracked files and block the pull; compare them with Git before
+discarding anything, since a change may exist only on the server. Anything uploaded into
+`public/` is publicly reachable — templates, blueprints or content placed there by mistake
+must be moved out of the web root at once.
 
 ## Project Structure
 
