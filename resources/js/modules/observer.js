@@ -36,20 +36,27 @@ const setTheme = (theme) => {
   }
 };
 
+// `is-playing` reveals the content layered over a video (intro header, menu,
+// title). It is applied whether or not the video actually plays: autoplay can
+// be refused (iOS Low Power Mode, Lighthouse), and the content must not stay
+// hidden over a black section just because the background did not start.
+const revealSection = (section) => {
+  section.classList.add('is-playing');
+  header?.classList.add('is-playing');
+};
+
 const playVideo = async (video, section) => {
   if (video.matches(selectors.motionVideo) && reducedMotion.matches) {
-    section.classList.add('is-playing');
-    header?.classList.add('is-playing');
+    revealSection(section);
     return;
   }
 
   try {
     await video.play();
-    section.classList.add('is-playing');
-    header?.classList.add('is-playing');
   } catch (error) {
     console.error('Error playing video:', error);
   }
+  revealSection(section);
 };
 
 const pauseVideo = (section) => {
@@ -75,8 +82,7 @@ const handleActiveSection = (section) => {
     // Image intro: there is no video to trigger the reveal, so apply the
     // `is-playing` class directly. This drives the same intro fade-in
     // animations (header, menu, title) that playVideo() would.
-    section.classList.add('is-playing');
-    header?.classList.add('is-playing');
+    revealSection(section);
   }
 };
 
