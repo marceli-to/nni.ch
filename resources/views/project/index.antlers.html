@@ -1,3 +1,26 @@
+{{#
+  The category and tag routes accept any slug. One that matches no published
+  project in the current language would render an empty page with HTTP 200,
+  so it gets a 404 instead. The overview has neither parameter and is never
+  checked. Tags are shared with the blog, hence a project lookup rather than a
+  term lookup; empty categories get the same treatment.
+#}}
+{{ if category || tag }}
+  {{ has_projects = false }}
+  {{ if category }}
+    {{ collection:projects taxonomy:project_categories="{{ category }}" limit="1" }}
+      {{ unless no_results }}{{ has_projects = true }}{{ /unless }}
+    {{ /collection:projects }}
+  {{ else }}
+    {{ collection:projects taxonomy:tags="{{ tag }}" limit="1" }}
+      {{ unless no_results }}{{ has_projects = true }}{{ /unless }}
+    {{ /collection:projects }}
+  {{ /if }}
+  {{ unless has_projects }}
+    {{ 404 }}
+  {{ /unless }}
+{{ /if }}
+
 <section data-section-theme="light" class="overflow-x-clip pt-90 lg:pt-150">
   {{ partial:layout/container }}
 
