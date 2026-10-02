@@ -1,6 +1,14 @@
 title: Title/Text
 fields:
   -
+    handle: is_page_title
+    field:
+      type: toggle
+      default: false
+      display: 'Als Seitentitel (H1) verwenden'
+      instructions: 'Nur für die Hauptüberschrift der Seite aktivieren. Die Gestaltung bleibt gleich.'
+      localizable: true
+  -
     handle: title_items
     field:
       collapse: true
