@@ -1,5 +1,4 @@
 import Swiper from 'swiper';
-import 'swiper/css';
 import debounce from '../debounce.js';
 
 /**

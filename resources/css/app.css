@@ -19,6 +19,10 @@
 @import "components/headings.css";
 @import "components/forms.css";
 @import "components/image.css";
+/* Swiper's base styles, ahead of our overrides. Imported here rather than from
+   the swiper module so they land in this file instead of a separate stylesheet
+   that is only discovered at the end of the HTML and blocks rendering. */
+@import "swiper/css";
 @import "components/swiper.css";
 @import "components/theme.css";
 @import "components/media.css";
