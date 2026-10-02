@@ -21,6 +21,12 @@
   animation: marquee var(--marquee-duration, 30s) linear infinite;
 }
 
+/* Runs the other way; used for the second row. Must follow the shorthand above,
+   which resets animation-direction. */
+.marquee__track--reverse {
+  animation-direction: reverse;
+}
+
 /* Pause while the visitor is reading / about to click a logo. */
 .marquee:hover .marquee__track {
   animation-play-state: paused;

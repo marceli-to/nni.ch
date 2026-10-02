@@ -36,7 +36,7 @@
       class="marquee w-full overflow-hidden mt-30 lg:mt-45"
       style="--marquee-duration: {{ marquee_logos | length | multiply:3 }}s;">
 
-      <div class="marquee__track flex w-max items-center" style="animation-direction: reverse;">
+      <div class="marquee__track marquee__track--reverse flex w-max items-center">
         {{ marquee_logos }}
           {{ if index % 2 == 0 }}{{ partial:fieldsets/marquee/item }}{{ /if }}
         {{ /marquee_logos }}
