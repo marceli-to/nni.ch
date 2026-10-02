@@ -38,9 +38,8 @@
         </nav>
       </div>
     
-      <a
-        href="javascript:;"
-        role="button"
+      <button
+        type="button"
         x-on:click="menu = ! menu"
         title="{{ "Menü anzeigen" | trans }}"
         aria-label="{{ "Menü anzeigen" | trans }}"
@@ -49,7 +48,7 @@
         :class="{ 'is-active': menu === true }"
         class="group">
         {{ partial:ui/icon/burger class="w-28 xl:w-32 h-auto" }}
-      </a>
+      </button>
     </div>
 
 

@@ -1,7 +1,7 @@
-<a href="javascript:;" x-on:click="isVisible = false"
+<button type="button" x-on:click="isVisible = false"
   x-data="{ isVisible: true }" 
   x-show="isVisible" 
   x-init="setTimeout(() => { isVisible = false }, 5000)"
-  class="text-red-600 transition-colors !no-underline leading-[1.2] w-full block mb-15">
+  class="text-red-600 transition-colors !no-underline leading-[1.2] w-full block text-left mb-15">
   {{ "Bitte überprüfe deine Eingaben" | trans }}
-</a>
+</button>
