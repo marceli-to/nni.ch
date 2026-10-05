@@ -43,11 +43,14 @@
 
   Each slot also tells the teaser how to cut and size its image: `crop` and
   `crop_md` are the two aspect ratios above as numbers (width / height), and
-  `sizes` is the frame's rendered width per breakpoint. That width is the
-  slot's span of the grid, n/12 of the grid width minus (12 − n)/12 of a gap,
-  plus `--bleed` for a bleeding frame: the grid width is 100vw minus the
-  container padding (35 / 80 / 100px) and fixed at 1430px from 1630px up, the
-  gap 20 / 30 / 50px. Change a span or a ratio and these follow by hand.
+  `sizes` is roughly how wide the frame is drawn, so the browser can pick a
+  width from srcset. Rough is enough: the candidates are 20–50% apart. Each
+  value is the frame's real width (container padding, gaps and bleed
+  included) as a share of the viewport, measured at a typical width per range:
+  390px for phones, 1024px from md, 1440px from xl. From 1630px the container
+  stops growing, so the value turns into px there; a bleeding frame keeps
+  growing with the viewport and needs no cap. Change a span or a ratio and
+  these follow by hand.
 
   Params:
     pos            (required)  0–7, the position within the cycle
@@ -67,7 +70,7 @@
       ratio="aspect-square md:aspect-[510/483]"
       crop="1"
       crop_md="1.056"
-      sizes="(min-width: 1630px) 443px, (min-width: 1280px) calc(33.33vw - 100px), (min-width: 1024px) calc(50vw - 95px), (min-width: 768px) calc(50vw - 90px), (min-width: 640px) calc(91.67vw - 148px), calc(91.67vw - 66px)" }}
+      sizes="(min-width: 1630px) 443px, (min-width: 1280px) 26vw, (min-width: 768px) 41vw, 75vw" }}
   </div>
 
 {{ elseif pos == 1 }}
@@ -82,7 +85,7 @@
       ratio="aspect-square md:aspect-[790/693]"
       crop="1"
       crop_md="1.14"
-      sizes="(min-width: 1630px) 690px, (min-width: 1280px) calc(50vw - 125px), (min-width: 1024px) calc(41.67vw - 84px), (min-width: 768px) calc(41.67vw - 78px), (min-width: 640px) calc(91.67vw - 148px), calc(91.67vw - 66px)" }}
+      sizes="(min-width: 1630px) 690px, (min-width: 1280px) 41vw, (min-width: 768px) 33vw, 75vw" }}
   </div>
 
 {{ elseif pos == 2 }}
@@ -97,7 +100,7 @@
       ratio="aspect-[3/2] md:aspect-[1215/810]"
       crop="1.5"
       crop_md="1.5"
-      sizes="(min-width: 1630px) calc(50vw + 222px), (min-width: 1280px) calc(66.67vw - 50px), (min-width: 1024px) calc(75vw - 48px), (min-width: 768px) calc(75vw - 45px), (min-width: 640px) calc(91.67vw - 68px), calc(91.67vw - 31px)"
+      sizes="(min-width: 1280px) 63vw, (min-width: 768px) 70vw, 84vw"
       frame="bleed-left" }}
   </div>
 
@@ -113,7 +116,7 @@
       ratio="aspect-square md:aspect-[935/737]"
       crop="1"
       crop_md="1.269"
-      sizes="(min-width: 1280px) calc(50vw - 25px), (min-width: 1024px) calc(58.33vw - 26px), (min-width: 768px) calc(58.33vw - 22px), (min-width: 640px) calc(91.67vw - 68px), calc(91.67vw - 31px)"
+      sizes="(min-width: 1280px) 48vw, (min-width: 768px) 56vw, 84vw"
       frame="bleed-right" }}
   </div>
 
@@ -129,7 +132,7 @@
       ratio="aspect-[3/2] md:aspect-[1210/726]"
       crop="1.5"
       crop_md="1.667"
-      sizes="(min-width: 1630px) 1060px, (min-width: 1280px) calc(75vw - 162px), (min-width: 1024px) calc(83.33vw - 138px), (min-width: 768px) calc(83.33vw - 137px), (min-width: 640px) calc(100vw - 160px), calc(100vw - 70px)" }}
+      sizes="(min-width: 1630px) 1060px, (min-width: 1280px) 64vw, (min-width: 768px) 70vw, 82vw" }}
   </div>
 
 {{ elseif pos == 5 }}
@@ -144,7 +147,7 @@
       ratio="aspect-square md:aspect-[935/1023]"
       crop="1"
       crop_md="0.914"
-      sizes="(min-width: 1280px) calc(50vw - 25px), (min-width: 1024px) calc(66.67vw - 37px), (min-width: 768px) calc(66.67vw - 33px), (min-width: 640px) calc(91.67vw - 68px), calc(91.67vw - 31px)"
+      sizes="(min-width: 1280px) 48vw, (min-width: 768px) 63vw, 84vw"
       frame="bleed-right" }}
   </div>
 
@@ -160,7 +163,7 @@
       ratio="aspect-[3/4] md:aspect-[536/879]"
       crop="0.75"
       crop_md="0.61"
-      sizes="(min-width: 1630px) 443px, (min-width: 1280px) calc(33.33vw - 100px), (min-width: 1024px) calc(41.67vw - 84px), (min-width: 768px) calc(41.67vw - 78px), (min-width: 640px) calc(75vw - 125px), calc(75vw - 58px)" }}
+      sizes="(min-width: 1630px) 443px, (min-width: 1280px) 26vw, (min-width: 768px) 33vw, 60vw" }}
   </div>
 
 {{ else }}
@@ -175,6 +178,6 @@
       ratio="aspect-square md:aspect-[510/483]"
       crop="1"
       crop_md="1.056"
-      sizes="(min-width: 1630px) 443px, (min-width: 1280px) calc(33.33vw - 100px), (min-width: 1024px) calc(58.33vw - 106px), (min-width: 768px) calc(58.33vw - 102px), (min-width: 640px) calc(83.33vw - 137px), calc(83.33vw - 62px)" }}
+      sizes="(min-width: 1630px) 443px, (min-width: 1280px) 26vw, (min-width: 768px) 48vw, 68vw" }}
   </div>
 {{ /if }}
