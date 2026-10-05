@@ -130,6 +130,28 @@ return [
     'ignore_query_strings' => false,
 
     /*
+    | Ad and campaign parameters stay in the browser address for attribution
+    | but share one cache entry with the plain URL. Search, pagination and
+    | filters are still cached separately. App\Http\Middleware\IgnoreTracking-
+    | Parameters hides the same list from templates.
+    */
+
+    'disallowed_query_strings' => [
+        'gclid',
+        'gbraid',
+        'wbraid',
+        'fbclid',
+        'msclkid',
+        'li_fat_id',
+        'utm_source',
+        'utm_medium',
+        'utm_campaign',
+        'utm_term',
+        'utm_content',
+        'utm_id',
+    ],
+
+    /*
     |--------------------------------------------------------------------------
     | Replacers
     |--------------------------------------------------------------------------
