@@ -56,8 +56,16 @@ if ('IntersectionObserver' in window) {
   const observer = new IntersectionObserver((entries) => {
     for (const entry of entries) {
       if (!entry.isIntersecting) continue;
-      loadVideo(entry.target);
-      observer.unobserve(entry.target);
+      const video = entry.target;
+      observer.unobserve(video);
+
+      // An autoplay video is started here rather than by the attribute, so a
+      // refusal stops its download (see playVideo).
+      if (video.autoplay) {
+        playVideo(video).catch(() => {});
+      } else {
+        loadVideo(video);
+      }
     }
   }, { rootMargin: '100% 0px' });
 

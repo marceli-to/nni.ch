@@ -44,6 +44,10 @@
   generated until a browser asks for it (Glide's cache is off), so unused widths
   cost nothing. Older browsers without WebP get one JPEG.
 
+  A teaser video only gets its source about a screen before it scrolls into
+  view (data-video-lazy, modules/video.js). `autoplay` alone would ignore
+  `preload="none"` and download every teaser video on arrival.
+
   Every project entry carries its own teaser (docs/redaktionsstandard.md).
   If one is empty, the line stays empty; there is no stock sentence to fall back on.
 #}}
@@ -61,8 +65,9 @@
           autoplay
           playsinline
           loop
+          data-video-lazy
           class="block w-full h-full object-cover group-hover:opacity-80 transition-opacity duration-500">
-          <source src="{{ video }}" type="video/mp4">
+          <source data-src="{{ video }}" type="video/mp4">
         </video>
       {{ else }}
         {{ widths = [400, 600, 800, 1000, 1200, 1600, 2000, 2400] }}
