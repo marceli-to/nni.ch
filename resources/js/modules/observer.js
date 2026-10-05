@@ -9,6 +9,8 @@
  * reflow / layout-thrashing hotspot).
  */
 
+import { playVideo as startVideo } from './video.js';
+
 const selectors = {
   sectionObserve: '[data-section-observe]',
   sectionSnap: '[data-section-snap]',
@@ -52,7 +54,9 @@ const playVideo = async (video, section) => {
   }
 
   try {
-    await video.play();
+    // Loads a lazy video first if its section is reached before the lazy
+    // loader got to it, and aborts the download if playback is refused.
+    await startVideo(video);
   } catch (error) {
     console.error('Error playing video:', error);
   }
