@@ -30,7 +30,8 @@ fields:
       buttons:
         - bold
         - removeformat
-      inline: break
+      inline: true
+      inline_hard_breaks: true
       fullscreen: false
       allow_source: false
       remove_empty_nodes: true

@@ -10,7 +10,7 @@ This is a **Statamic CMS** website built on **Laravel 12** for Nightnurse Images
 
 ## Key Technologies & Architecture
 
-- **Backend**: PHP ^8.2 (production runs 8.3), Laravel 12 with Statamic 5 (flat-file CMS)
+- **Backend**: PHP 8.3+ (production runs 8.3), Laravel 12 with Statamic 6 (flat-file CMS)
 - **Frontend**: Tailwind CSS, Alpine.js, Antlers templating engine
 - **Build**: Vite for asset compilation
 - **Content**: Flat-file based content management in `content/` directory

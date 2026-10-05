@@ -100,19 +100,19 @@ tabs:
               sets:
                 main_elements:
                   display: 'Main Elements'
-                  icon: addon-boxes-stack
+                  icon: layout-grid
                   sets:
                     fullscreen_image:
                       display: 'Fullscreen Image'
                       instructions: 'Add a fullscreen image'
-                      icon: align-object-center
+                      icon: hero-image-screen-panoramic
                       fields:
                         -
                           import: image_fullscreen
                     image:
                       display: Image
                       instructions: 'Add an image'
-                      icon: media-image-picture-orientation
+                      icon: orientation-image-picture-horizontal-landscape
                       fields:
                         -
                           import: image
@@ -124,7 +124,7 @@ tabs:
                           import: image_slideshow
                     image_comparison:
                       display: 'Image Comparison'
-                      icon: media-image-picture-gallery
+                      icon: edit-design-compare-ab-testing
                       fields:
                         -
                           import: image_comparison
@@ -144,24 +144,24 @@ tabs:
                     video:
                       display: Video
                       instructions: 'Add a video from file (mp4) or embed code (Youtube, Vimeo)'
-                      icon: media-webcam-video
+                      icon: movie-video-clip
                       fields:
                         -
                           import: page_video
                     feedbacks:
                       display: Feedbacks
                       instructions: 'Add a set of feedback quotes.'
-                      icon: text-formatting-quotation
+                      icon: quote
                       fields:
                         -
                           import: feedbacks
                 graphical_elements:
                   display: 'Graphical Elements'
-                  icon: addon-boxes-stack
+                  icon: hr
                   sets:
                     horizontal_ruler:
                       display: 'Horizontal Ruler'
-                      icon: align-object-bottom
+                      icon: hr
                       fields:
                         -
                           import: horizontal_ruler
@@ -256,15 +256,6 @@ tabs:
               type: slug
               localizable: true
               validate: 'max:200'
-          -
-            handle: parent
-            field:
-              type: entries
-              collections:
-                - projects
-              max_items: 1
-              listable: false
-              localizable: true
           -
             handle: related
             field:

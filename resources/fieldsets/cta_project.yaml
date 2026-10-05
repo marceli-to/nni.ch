@@ -27,7 +27,8 @@ fields:
       buttons:
         - bold
         - removeformat
-      inline: break
+      inline: true
+      inline_hard_breaks: true
       toolbar_mode: floating
       fullscreen: false
       allow_source: false
