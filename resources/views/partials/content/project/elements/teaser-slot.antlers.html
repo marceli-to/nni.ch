@@ -41,6 +41,14 @@
   aspect ratios relax towards 3:2 / square / 3:4 so the crops stay sane on a
   phone.
 
+  Each slot also tells the teaser how to cut and size its image: `crop` and
+  `crop_md` are the two aspect ratios above as numbers (width / height), and
+  `sizes` is the frame's rendered width per breakpoint. That width is the
+  slot's span of the grid, n/12 of the grid width minus (12 − n)/12 of a gap,
+  plus `--bleed` for a bleeding frame: the grid width is 100vw minus the
+  container padding (35 / 80 / 100px) and fixed at 1430px from 1630px up, the
+  gap 20 / 30 / 50px. Change a span or a ratio and these follow by hand.
+
   Params:
     pos            (required)  0–7, the position within the cycle
     cycle          (required)  0-based cycle index, used for the explicit row
@@ -56,7 +64,10 @@
     {{ partial:content/project/elements/teaser
       video="{{ teaser_video }}"
       :image="teaser_image_landscape ?? teaser_image_portrait"
-      ratio="aspect-square md:aspect-[510/483]" }}
+      ratio="aspect-square md:aspect-[510/483]"
+      crop="1"
+      crop_md="1.056"
+      sizes="(min-width: 1630px) 443px, (min-width: 1280px) calc(33.33vw - 100px), (min-width: 1024px) calc(50vw - 95px), (min-width: 768px) calc(50vw - 90px), (min-width: 640px) calc(91.67vw - 148px), calc(91.67vw - 66px)" }}
   </div>
 
 {{ elseif pos == 1 }}
@@ -68,7 +79,10 @@
     {{ partial:content/project/elements/teaser
       video="{{ teaser_video }}"
       :image="teaser_image_landscape ?? teaser_image_portrait"
-      ratio="aspect-square md:aspect-[790/693]" }}
+      ratio="aspect-square md:aspect-[790/693]"
+      crop="1"
+      crop_md="1.14"
+      sizes="(min-width: 1630px) 690px, (min-width: 1280px) calc(50vw - 125px), (min-width: 1024px) calc(41.67vw - 84px), (min-width: 768px) calc(41.67vw - 78px), (min-width: 640px) calc(91.67vw - 148px), calc(91.67vw - 66px)" }}
   </div>
 
 {{ elseif pos == 2 }}
@@ -81,6 +95,9 @@
       video="{{ teaser_video }}"
       :image="teaser_image_landscape ?? teaser_image_portrait"
       ratio="aspect-[3/2] md:aspect-[1215/810]"
+      crop="1.5"
+      crop_md="1.5"
+      sizes="(min-width: 1630px) calc(50vw + 222px), (min-width: 1280px) calc(66.67vw - 50px), (min-width: 1024px) calc(75vw - 48px), (min-width: 768px) calc(75vw - 45px), (min-width: 640px) calc(91.67vw - 68px), calc(91.67vw - 31px)"
       frame="bleed-left" }}
   </div>
 
@@ -94,6 +111,9 @@
       video="{{ teaser_video }}"
       :image="teaser_image_landscape ?? teaser_image_portrait"
       ratio="aspect-square md:aspect-[935/737]"
+      crop="1"
+      crop_md="1.269"
+      sizes="(min-width: 1280px) calc(50vw - 25px), (min-width: 1024px) calc(58.33vw - 26px), (min-width: 768px) calc(58.33vw - 22px), (min-width: 640px) calc(91.67vw - 68px), calc(91.67vw - 31px)"
       frame="bleed-right" }}
   </div>
 
@@ -106,7 +126,10 @@
     {{ partial:content/project/elements/teaser
       video="{{ teaser_video }}"
       :image="teaser_image_landscape ?? teaser_image_portrait"
-      ratio="aspect-[3/2] md:aspect-[1210/726]" }}
+      ratio="aspect-[3/2] md:aspect-[1210/726]"
+      crop="1.5"
+      crop_md="1.667"
+      sizes="(min-width: 1630px) 1060px, (min-width: 1280px) calc(75vw - 162px), (min-width: 1024px) calc(83.33vw - 138px), (min-width: 768px) calc(83.33vw - 137px), (min-width: 640px) calc(100vw - 160px), calc(100vw - 70px)" }}
   </div>
 
 {{ elseif pos == 5 }}
@@ -119,6 +142,9 @@
       video="{{ teaser_video }}"
       :image="teaser_image_portrait ?? teaser_image_landscape"
       ratio="aspect-square md:aspect-[935/1023]"
+      crop="1"
+      crop_md="0.914"
+      sizes="(min-width: 1280px) calc(50vw - 25px), (min-width: 1024px) calc(66.67vw - 37px), (min-width: 768px) calc(66.67vw - 33px), (min-width: 640px) calc(91.67vw - 68px), calc(91.67vw - 31px)"
       frame="bleed-right" }}
   </div>
 
@@ -131,7 +157,10 @@
     {{ partial:content/project/elements/teaser
       video="{{ teaser_video }}"
       :image="teaser_image_portrait ?? teaser_image_landscape"
-      ratio="aspect-[3/4] md:aspect-[536/879]" }}
+      ratio="aspect-[3/4] md:aspect-[536/879]"
+      crop="0.75"
+      crop_md="0.61"
+      sizes="(min-width: 1630px) 443px, (min-width: 1280px) calc(33.33vw - 100px), (min-width: 1024px) calc(41.67vw - 84px), (min-width: 768px) calc(41.67vw - 78px), (min-width: 640px) calc(75vw - 125px), calc(75vw - 58px)" }}
   </div>
 
 {{ else }}
@@ -143,6 +172,9 @@
     {{ partial:content/project/elements/teaser
       video="{{ teaser_video }}"
       :image="teaser_image_landscape ?? teaser_image_portrait"
-      ratio="aspect-square md:aspect-[510/483]" }}
+      ratio="aspect-square md:aspect-[510/483]"
+      crop="1"
+      crop_md="1.056"
+      sizes="(min-width: 1630px) 443px, (min-width: 1280px) calc(33.33vw - 100px), (min-width: 1024px) calc(58.33vw - 106px), (min-width: 768px) calc(58.33vw - 102px), (min-width: 640px) calc(83.33vw - 137px), calc(83.33vw - 62px)" }}
   </div>
 {{ /if }}

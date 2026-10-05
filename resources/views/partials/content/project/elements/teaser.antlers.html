@@ -9,6 +9,10 @@
     image          (required unless video)  asset shown in the frame
     video          (optional)               teaser video (mp4), takes precedence
     ratio          (required)               responsive aspect-ratio classes for the frame
+    crop           (required unless video)  the frame's width/height below md, as a number
+    crop_md        (required unless video)  the same from md up
+    sizes          (required unless video)  the frame's rendered width, for the browser
+                                            to pick a candidate from srcset
     frame          (optional)               extra classes for the frame, e.g. a bleed
     heading_level  (optional)               `h3` where the surrounding block already
                                             has the h2, as the grid block does; the
@@ -31,6 +35,15 @@
   the title as a small eyebrow; the teaser below it carries the type the client line
   used to have.
 
+  The image is cut to the frame's proportions by Glide (`crop_focal`, so a focal
+  point set on the asset decides the crop) rather than by `object-cover` in the
+  browser. Otherwise a phone would download a whole 3:2 image to show a square
+  out of it. `crop` and `crop_md` repeat the two ratios in `ratio` as numbers,
+  because Glide cannot read a Tailwind class. Each ratio comes in several widths;
+  the browser picks one from `sizes` and the screen's pixel density. Nothing is
+  generated until a browser asks for it (Glide's cache is off), so unused widths
+  cost nothing. Older browsers without WebP get one JPEG.
+
   Every project entry carries its own teaser (docs/redaktionsstandard.md).
   If one is empty, the line stays empty; there is no stock sentence to fall back on.
 #}}
@@ -52,17 +65,22 @@
           <source src="{{ video }}" type="video/mp4">
         </video>
       {{ else }}
+        {{ widths = [400, 600, 800, 1000, 1200, 1600, 2000, 2400] }}
         <picture>
-          <source media="(min-width: 1024px)" srcset="{{ glide:image preset='2xl-webp' }}" type="image/webp">
-          <source media="(min-width: 768px)" srcset="{{ glide:image preset='xl-webp' }}" type="image/webp">
-          <source srcset="{{ glide:image preset='lg-webp' }}" type="image/webp">
-          <source media="(min-width: 1024px)" srcset="{{ glide:image preset='2xl' }}" type="image/jpeg">
-          <source media="(min-width: 768px)" srcset="{{ glide:image preset='xl' }}" type="image/jpeg">
+          <source
+            media="(min-width: 768px)"
+            srcset="{{ widths }}{{ glide:image width="{value}" height="{{ value | divide(crop_md) | round }}" fit="crop_focal" format="webp" quality="75" }} {{ value }}w{{ unless last }}, {{ /unless }}{{ /widths }}"
+            sizes="{{ sizes }}"
+            type="image/webp">
+          <source
+            srcset="{{ widths }}{{ glide:image width="{value}" height="{{ value | divide(crop) | round }}" fit="crop_focal" format="webp" quality="75" }} {{ value }}w{{ unless last }}, {{ /unless }}{{ /widths }}"
+            sizes="{{ sizes }}"
+            type="image/webp">
           <img
-            src="{{ glide:image preset='lg' }}"
+            src="{{ glide:image width="1000" height="{{ 1000 | divide(crop) | round }}" fit="crop_focal" format="jpg" quality="75" }}"
             alt="{{ image:alt }}"
-            height="{{ image:height }}"
-            width="{{ image:width }}"
+            width="1000"
+            height="{{ 1000 | divide(crop) | round }}"
             class="block w-full h-full object-cover group-hover:opacity-80 transition-opacity duration-500"
             loading="lazy">
         </picture>
