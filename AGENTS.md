@@ -183,10 +183,11 @@ FTP upload packages still belong in `ftp-uploads/`.
   changes with consequences, known bugs and open development tasks. It is forwarded once
   Christoph's own work is done, so it contains neither his to-dos (uploads, live checks,
   re-checks, open questions to him) nor editorial content details; those belong in the
-  internal lists under `docs/intern/`. The file lives only in the local working copy and is
-  excluded through `.git/info/exclude`: this repository is public, and the briefing lists
-  open weaknesses of the live site. Do not commit it; the lasting explanation of a code
-  change belongs in its commit message.
+  internal lists under `docs/intern/`. Open items are numbered as in the version sent to
+  the client; finished sections move under «Erledigt» and keep their number. The file lives
+  only in the local working copy and is excluded through `.git/info/exclude`: this
+  repository is public, and the briefing lists open weaknesses of the live site. Do not
+  commit it; the lasting explanation of a code change belongs in its commit message.
 - `docs/redaktionsstandard.md` — binding editorial standard for all website texts,
   with additional rules for Project Notes and blog posts (categories, tag vocabulary, metadata)
 - `docs/cleanup/`, `docs/frontend-refactor.md`, `docs/scroll-animation-optimization.md`,
