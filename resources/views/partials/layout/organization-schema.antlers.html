@@ -11,9 +11,8 @@
   `@id` via `worksFor`.
 
   Fixed here because no global carries them: the founding year, the coordinates
-  (the same point as the map pin in resources/js/map.js) and the countries served,
-  as ISO codes like `addressCountry` — Switzerland, and Germany with its own
-  landing page.
+  (the same point as the map pin in resources/js/map.js) and the country served,
+  as an ISO code like `addressCountry` — Switzerland.
 
   A second block describes the website itself; Google takes the site name shown
   in search results from it. It is one site in two languages, so both homepages
@@ -48,8 +47,7 @@
     "longitude": 8.524557
   },
   "areaServed": [
-    { "@type": "Country", "name": "CH" },
-    { "@type": "Country", "name": "DE" }
+    { "@type": "Country", "name": "CH" }
   ],
   "sameAs": {{ same_as | filter_empty | values | to_json }}
 }
