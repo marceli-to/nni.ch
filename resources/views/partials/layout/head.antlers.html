@@ -8,10 +8,10 @@
 {{ if  open_graph_description }}<meta name="description" content="{{ open_graph_description }}">{{ else }}<meta name="description" content="{{ config.client.meta_description }}">{{ /if}}
 {{ if noindex || (tag && !(tag | is_numeric)) || current_uri == '/blog/suche' || current_uri == '/en/blog/search' }}<meta name="robots" content="noindex, follow">{{ else }}<meta name="robots" content="index, follow">{{ /if }}
 <link rel="canonical" href="{{ permalink ?? current_url }}">
-{{ locales }}
+{{ seo_locales }}
 <link rel="alternate" hreflang="{{ locale:short_locale }}" href="{{ permalink }}">
 {{ if locale:handle == 'de' }}<link rel="alternate" hreflang="x-default" href="{{ permalink }}">{{ /if }}
-{{ /locales }}
+{{ /seo_locales }}
 <meta property="og:title" content="{{ open_graph_title ?? title }} | Nightnurse Images">
 {{ if  open_graph_description }}<meta property="og:description" content="{{ open_graph_description }}">{{ else }}<meta property="og:description" content="{{ config.client.meta_description }}">{{ /if }}
 {{#

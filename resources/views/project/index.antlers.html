@@ -8,9 +8,13 @@
 {{ if category || tag }}
   {{ has_projects = false }}
   {{ if category }}
-    {{ collection:projects taxonomy:project_categories="{{ category }}" limit="1" }}
-      {{ unless no_results }}{{ has_projects = true }}{{ /unless }}
-    {{ /collection:projects }}
+    {{ taxonomy:project_categories slug:is="{{ category }}" limit="1" }}
+      {{ unless no_results }}
+        {{ collection:projects taxonomy:project_categories="{{ id }}" limit="1" }}
+          {{ unless no_results }}{{ has_projects = true }}{{ /unless }}
+        {{ /collection:projects }}
+      {{ /unless }}
+    {{ /taxonomy:project_categories }}
   {{ else }}
     {{ collection:projects taxonomy:tags="{{ tag }}" limit="1" }}
       {{ unless no_results }}{{ has_projects = true }}{{ /unless }}
