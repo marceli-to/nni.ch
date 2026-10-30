@@ -9,6 +9,8 @@ const ui = fs.readFileSync(path.join(root, 'resources/js/gdpr.js'), 'utf8');
 
 function environment(saved = null, options = {}) {
   const scripts = [], listeners = {}, clicks = [], requests = [];
+  const timers = new Map(), idle = new Map();
+  let taskId = 0;
   const storage = new Map([['nightnurse_consent_v1', saved], ['global_consent', 'true']]);
   let reloads = 0;
   class Element {}
@@ -31,9 +33,15 @@ function environment(saved = null, options = {}) {
     },
     location: { pathname: options.pathname || '/', reload: () => reloads++ },
     addEventListener: (name, cb) => (listeners[name] ||= []).push(cb),
+    removeEventListener: (name, cb) => { listeners[name] = (listeners[name] || []).filter(fn => fn !== cb); },
+    setTimeout: (cb, delay) => { const id = ++taskId; timers.set(id, { cb, delay }); return id; },
+    clearTimeout: id => timers.delete(id),
+    requestIdleCallback: options.noIdle ? undefined : (cb, init) => { const id = ++taskId; idle.set(id, { cb, ...init }); return id; },
+    cancelIdleCallback: id => idle.delete(id),
     dispatchEvent: event => (listeners[event.type] || []).forEach(cb => cb(event)),
   };
   const document = {
+    readyState: options.readyState || 'loading',
     head: { appendChild: script => scripts.push(script) },
     createElement: () => ({}), querySelector: () => banner, querySelectorAll: () => [],
     documentElement: { lang: options.lang || 'de' },
@@ -52,7 +60,10 @@ function environment(saved = null, options = {}) {
     target.focus = () => {};
     clicks.forEach(cb => cb({ target }));
   };
-  return { window, scripts, requests, storage, Element, clicks, click, banner, categories, summary, settings, get reloads() { return reloads; } };
+  const fire = type => window.dispatchEvent({ type });
+  const runTasks = tasks => { const pending = [...tasks.values()]; tasks.clear(); pending.forEach(task => task.cb()); };
+  return { window, scripts, requests, storage, Element, clicks, click, banner, categories, summary, settings,
+    fire, timers, idle, runTimers: () => runTasks(timers), runIdle: () => runTasks(idle), get reloads() { return reloads; } };
 }
 const stored = (value, at = Date.now()) => JSON.stringify({ version: 1, at, analytics: false, marketing: false, external: false, ...value });
 const events = env => env.window.dataLayer.filter(item => item.event).map(item => item.event);
@@ -114,6 +125,10 @@ test('reject all remains functional with storage blocked', () => {
 
 test('saved partial consent precedes GTM load and keeps advertising denied', () => {
   const env = environment(stored({ analytics: true }));
+  assert.equal(env.scripts.length, 0);
+  env.fire('load');
+  assert.equal(env.scripts.length, 0);
+  env.runIdle();
   assert.equal(env.scripts.length, 1);
   assert.equal(env.window.dataLayer[1][1], 'update');
   assert.equal(env.window.dataLayer[1][2].ad_storage, 'denied');
@@ -129,6 +144,88 @@ test('marketing-only then analytics grants fire distinct category events once', 
   env.window.NightnurseConsent.save({ marketing: true, analytics: true });
   assert.equal(env.scripts.length, 1);
   assert.equal(events(env).filter(name => name === 'nn_analytics_consent').length, 1);
+});
+
+test('saved consent waits for page load and idle time, with a bounded fallback', () => {
+  const env = environment(stored({ analytics: true }));
+  assert.equal(env.scripts.length, 0);
+  assert.equal([...env.timers.values()][0].delay, 4000);
+  env.fire('load');
+  assert.equal([...env.idle.values()][0].timeout, 1000);
+  env.runIdle();
+  env.runTimers();
+  env.fire('pointerdown');
+  assert.equal(env.scripts.length, 1);
+  assert.equal(events(env).filter(name => name === 'gtm.js').length, 1);
+  assert.equal(env.timers.size, 0);
+});
+
+test('a slow page and browsers without idle callbacks still start GTM', () => {
+  const slow = environment(stored({ marketing: true }));
+  slow.runTimers();
+  assert.equal(slow.scripts.length, 1);
+  assert.ok(!events(slow).includes('nn_analytics_consent'));
+  for (const readyState of ['loading', 'complete']) {
+    const env = environment(stored({ analytics: true }), { noIdle: true, readyState });
+    if (readyState === 'loading') env.fire('load');
+    env.runTimers();
+    assert.equal(env.scripts.length, 1);
+  }
+});
+
+test('early pointer, keyboard and scroll interactions start GTM only with consent', () => {
+  for (const type of ['pointerdown', 'keydown', 'scroll']) {
+    const env = environment(stored({ analytics: true }));
+    env.fire(type);
+    assert.equal(env.scripts.length, 1);
+    env.fire('load');
+    env.runIdle();
+    env.runTimers();
+    assert.equal(env.scripts.length, 1);
+    const denied = environment();
+    denied.fire(type);
+    denied.fire('load');
+    denied.runTimers();
+    assert.equal(denied.scripts.length, 0);
+  }
+});
+
+test('revocation during the delay prevents pending callbacks from loading GTM', () => {
+  const env = environment(stored({ analytics: true }));
+  env.fire('load');
+  env.window.NightnurseConsent.save({});
+  env.runIdle();
+  env.runTimers();
+  env.fire('pointerdown');
+  assert.equal(env.scripts.length, 0);
+  assert.equal(env.reloads, 1);
+});
+
+test('explicit consent and both thank-you pages bypass the loading delay', () => {
+  const explicit = environment();
+  explicit.window.NightnurseConsent.save({ analytics: true });
+  assert.equal(explicit.scripts.length, 1);
+  for (const pathname of ['/kontakt/vielen-dank', '/en/contact/thank-you/']) {
+    const env = environment(stored({ analytics: true }), { pathname });
+    assert.equal(env.scripts.length, 1);
+    assert.equal(env.timers.size, 0);
+  }
+});
+
+test('early contact signals remain queued once while GTM is deferred', () => {
+  const env = environment(stored({ analytics: true }), { ui: true });
+  for (const href of ['mailto:test@example.com', 'tel:+41440000000']) {
+    const target = new env.Element();
+    target.closest = selector => selector === 'a' ? { getAttribute: () => href, matches: () => false } : null;
+    env.clicks.forEach(cb => cb({ target }));
+  }
+  assert.equal(env.scripts.length, 0);
+  env.fire('load');
+  env.runIdle();
+  for (const name of ['nn_email_click', 'nn_phone_click']) {
+    assert.equal(events(env).filter(event => event === name).length, 1);
+  }
+  assert.equal(env.scripts.length, 1);
 });
 
 test('revocation updates consent before reloading to unload third parties', () => {

@@ -26,18 +26,45 @@
     }
   } catch (error) { /* Without storage, consent lasts for this page only. */ }
   // The old global_consent value dismissed a notice; it grants no consent.
-  function announce(previous) {
+  var loadTimer, idleTask;
+  var interactions = ['pointerdown', 'keydown', 'scroll'];
+  function loadGtm() {
+    w.clearTimeout(loadTimer);
+    if (idleTask !== undefined && w.cancelIdleCallback) w.cancelIdleCallback(idleTask);
+    w.removeEventListener('load', afterLoad);
+    interactions.forEach(function (name) { w.removeEventListener(name, loadGtm, true); });
+    if (loaded || !(choice.analytics || choice.marketing)) return;
+    loaded = true;
+    w.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+    var script = d.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-MTN383N' + previewQuery;
+    d.head.appendChild(script);
+  }
+  function afterLoad() {
+    if (w.requestIdleCallback) idleTask = w.requestIdleCallback(loadGtm, { timeout: 1000 });
+    else w.setTimeout(loadGtm, 0);
+  }
+  function deferGtm() {
+    // Confirmed leads must not wait for images or the idle callback.
+    if (/^\/(kontakt\/vielen-dank|en\/contact\/thank-you)\/?$/.test(w.location.pathname)) {
+      loadGtm();
+      return;
+    }
+    // Avoid competing with initial rendering, but retain early engaged visits.
+    interactions.forEach(function (name) { w.addEventListener(name, loadGtm, { capture: true, passive: true }); });
+    loadTimer = w.setTimeout(loadGtm, 4000);
+    if (d.readyState === 'complete') afterLoad();
+    else w.addEventListener('load', afterLoad, { once: true });
+  }
+  function announce(previous, defer) {
     w.gtag('consent', 'update', googleState(choice));
     w.dataLayer.push({ event: 'nn_consent_update', nn_analytics: choice.analytics, nn_marketing: choice.marketing });
     if (choice.analytics && !previous.analytics) w.dataLayer.push({ event: 'nn_analytics_consent' });
     if (choice.marketing && !previous.marketing) w.dataLayer.push({ event: 'nn_marketing_consent' });
     if (!loaded && (choice.analytics || choice.marketing)) {
-      loaded = true;
-      w.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
-      var script = d.createElement('script');
-      script.async = true;
-      script.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-MTN383N' + previewQuery;
-      d.head.appendChild(script);
+      if (defer) deferGtm();
+      else loadGtm();
     }
   }
   w.NightnurseConsent = {
@@ -57,6 +84,6 @@
       }
     }
   };
-  if (decided) announce({ analytics: false, marketing: false, external: false });
+  if (decided) announce({ analytics: false, marketing: false, external: false }, true);
 })(window, document);
 </script>
