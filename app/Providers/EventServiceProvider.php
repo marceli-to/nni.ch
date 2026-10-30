@@ -25,7 +25,12 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Event::listen(\Statamic\Events\SubmissionCreated::class, function ($event) {
+            $request = request();
+            if ($request->isMethod('POST') && $request->is('!/forms/contact_form') && $event->submission->form()->handle() === 'contact_form') {
+                $request->attributes->set('nn_contact_created', true);
+            }
+        });
     }
 
     /**

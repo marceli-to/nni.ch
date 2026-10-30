@@ -1,0 +1,62 @@
+<script data-gtm-preview="{{ config:tracking:preview_query }}">
+// Synchronous: consent defaults precede every optional script.
+(function (w, d) {
+  var previewQuery = d.currentScript?.getAttribute('data-gtm-preview') || '';
+  var key = 'nightnurse_consent_v1', maxAge = 180 * 86400000;
+  var choice = { analytics: false, marketing: false, external: false };
+  var decided = false, loaded = false;
+  w.dataLayer = w.dataLayer || [];
+  w.gtag = w.gtag || function () { w.dataLayer.push(arguments); };
+  function googleState(value) {
+    return {
+      analytics_storage: value.analytics ? 'granted' : 'denied',
+      ad_storage: value.marketing ? 'granted' : 'denied',
+      ad_user_data: value.marketing ? 'granted' : 'denied',
+      ad_personalization: value.marketing ? 'granted' : 'denied',
+      personalization_storage: 'denied', functionality_storage: 'granted', security_storage: 'granted'
+    };
+  }
+  w.gtag('consent', 'default', googleState(choice));
+  try {
+    var saved = JSON.parse(w.localStorage.getItem(key));
+    if (saved && saved.version === 1 && saved.at <= Date.now() && Date.now() - saved.at < maxAge &&
+        ['analytics', 'marketing', 'external'].every(function (name) { return typeof saved[name] === 'boolean'; })) {
+      choice = { analytics: saved.analytics, marketing: saved.marketing, external: saved.external };
+      decided = true;
+    }
+  } catch (error) { /* Without storage, consent lasts for this page only. */ }
+  // The old global_consent value dismissed a notice; it grants no consent.
+  function announce(previous) {
+    w.gtag('consent', 'update', googleState(choice));
+    w.dataLayer.push({ event: 'nn_consent_update', nn_analytics: choice.analytics, nn_marketing: choice.marketing });
+    if (choice.analytics && !previous.analytics) w.dataLayer.push({ event: 'nn_analytics_consent' });
+    if (choice.marketing && !previous.marketing) w.dataLayer.push({ event: 'nn_marketing_consent' });
+    if (!loaded && (choice.analytics || choice.marketing)) {
+      loaded = true;
+      w.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+      var script = d.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-MTN383N' + previewQuery;
+      d.head.appendChild(script);
+    }
+  }
+  w.NightnurseConsent = {
+    get: function () { return Object.assign({}, choice); },
+    decided: function () { return decided; },
+    save: function (next) {
+      var previous = choice;
+      choice = { analytics: next.analytics === true, marketing: next.marketing === true, external: next.external === true };
+      decided = true;
+      try { w.localStorage.setItem(key, JSON.stringify(Object.assign({ version: 1, at: Date.now() }, choice))); } catch (error) {}
+      announce(previous);
+      w.dispatchEvent(new CustomEvent('nn:consent', { detail: this.get() }));
+      // Reload to unload libraries that have no revoke API.
+      if (Object.keys(choice).some(function (name) { return previous[name] && !choice[name]; })) {
+        if (w.fbq) w.fbq('consent', 'revoke');
+        w.location.reload();
+      }
+    }
+  };
+  if (decided) announce({ analytics: false, marketing: false, external: false });
+})(window, document);
+</script>

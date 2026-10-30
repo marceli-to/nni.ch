@@ -8,7 +8,9 @@
   </section>
   <section class="grid grid-cols-12 gap-20 lg:gap-30 xl:gap-50 mt-45 md:mt-60 xl:mt-120">
     <div class="col-span-full xl:col-span-4 order-3 md:order-3 xl:order-1  xl mt-45 xl:mt-0">
-      <div class="min-h-[320px] xl:min-h-[400px]" id="map"></div>
+      <div class="min-h-[320px] xl:min-h-[400px]" id="map">
+        <button type="button" data-consent-open class="underline">{{ "Karte in der Cookie-Auswahl erlauben" | trans }}</button>
+      </div>
     </div>
     <div class="col-span-full md:col-span-4 xl:col-span-3 order-1 md:order-1 xl:ml-0">
       <div>
@@ -50,6 +52,5 @@
     </div>
   </section>
 {{ /partial:layout/container }}
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLu-JOyUzNdkWgV0S__QqWHow0mqFV-KE"></script>
 {{ recaptcha }}
 {{ vite src="resources/js/map.js" }}

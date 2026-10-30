@@ -2,6 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 
+// Session-specific flags must never be embedded in statically cached pages.
+Route::get('/tracking/contact-success', function (\Illuminate\Http\Request $request) {
+  abort_unless($request->ajax(), 404);
+  $pending = $request->session()->pull('nn_contact_success');
+  $confirmed = is_array($pending) && isset($pending['at']) && $pending['at'] <= time() && $pending['at'] >= time() - 300;
+
+  return response()->json(['confirmed' => $confirmed])
+    ->header('Cache-Control', 'private, no-store, max-age=0')
+    ->header('Vary', 'Cookie');
+})->block(5, 5);
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -62,4 +73,3 @@ Route::statamic('/portfolio/tag/{tag?}', 'project.index', [
   'layout' => 'layout.default',
   'title' => 'Portfolio',
 ]);
-

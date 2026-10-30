@@ -10,6 +10,7 @@
     reverse    (optional)  when truthy, the arrow renders before the label
 #}}
 <a
+  {{ if tracking }}data-tracking="{{ tracking }}"{{ /if }}
   href="{{ url }}"
   title="{{ title ?? label }}"
   class="group items-center gap-x-10 font-meta-medium uppercase tracking-wide {{ class }}">

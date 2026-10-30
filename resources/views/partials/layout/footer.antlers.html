@@ -39,6 +39,7 @@
     <div class="flex justify-between items-start md:items-center md:grid md:grid-cols-12 md:gap-x-20 mt-40 0">
       <div class="md:col-span-4 flex flex-col text-mini xl:text-xs font-meta-medium">
           &copy; {{ current_date | format('Y') }} {{ config:app:name }}
+          <button type="button" data-consent-open class="text-left underline mt-5">{{ "Cookie-Auswahl" | trans }}</button>
           <div class="md:hidden mt-5">
             {{ partial:menu/privacy/wrapper }}
           </div>
@@ -58,10 +59,3 @@
   {{ vite src="resources/js/observe.js" }}
 {{ /if }} #}}
 {{ vite src="resources/js/gdpr.js" }}
-<script>
-  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-MTN383N');
-</script>

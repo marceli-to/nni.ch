@@ -1,7 +1,6 @@
 /**
  * Renders the styled Google Map with the office marker on the contact page.
- * Relies on the Google Maps script being loaded before this module runs
- * (see contact.antlers.html).
+ * Loads Google Maps only after external-content consent has been granted.
  */
 
 const coords = { lat: 47.389296, lng: 8.524557 };
@@ -33,6 +32,15 @@ const initMap = (container) => {
 };
 
 const container = document.querySelector('#map');
-if (container) {
-  initMap(container);
-}
+let loading = false;
+const loadMap = () => {
+  if (!container || loading || !window.NightnurseConsent?.get().external) return;
+  loading = true;
+  window.nightnurseInitMap = () => { if (window.NightnurseConsent.get().external) initMap(container); };
+  const script = document.createElement('script');
+  script.async = true;
+  script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBLu-JOyUzNdkWgV0S__QqWHow0mqFV-KE&callback=nightnurseInitMap';
+  document.head.appendChild(script);
+};
+window.addEventListener('nn:consent', loadMap);
+loadMap();
