@@ -1,24 +1,25 @@
 <section hidden role="region" aria-label="{{ 'Cookie-Auswahl' | trans }}" tabindex="-1" data-consent-banner
   class="bg-black text-white fixed bottom-20 left-10 right-10 xs:left-20 xs:right-20 z-50 max-w-[460px] max-h-[85vh] overflow-y-auto p-10 xs:p-15 lg:p-20 text-xs lg:text-sm">
   <div data-consent-summary>
-    <p>{{ "Mit Cookies verbessern wir unsere Website und zeigen dir passende Inhalte und personalisierte Werbung. Du entscheidest, was du zulässt." | trans }}</p>
-    <div class="flex items-center justify-between gap-4 mt-15 font-meta-medium text-[clamp(12px,3.33vw,16px)] whitespace-nowrap">
-      <a href="{{ link id="bf8f1926-8ce7-4ea2-80e5-c3d099672f49" }}" class="underline">{{ "Mehr zum Datenschutz" | trans }}</a>
-      <button type="button" class="border border-white py-5 px-4 xs:px-9" aria-expanded="false" aria-controls="consent-settings" data-consent-settings-open>{{ "Einstellen" | trans }}</button>
-      <button type="button" class="bg-white text-black border border-white py-5 px-4 xs:px-9" data-consent-accept>{{ "Akzeptieren" | trans }}</button>
+    <p>{{ "Mit Cookies verbessern wir unsere Webseite und ihre Funktionalität und stimmen Werbung auf deine Interessen ab. Du entscheidest, was du zulässt." | trans }}</p>
+    <div class="flex items-center justify-between gap-10 mt-15 whitespace-nowrap">
+      <a href="{{ link id="bf8f1926-8ce7-4ea2-80e5-c3d099672f49" }}" class="underline font-meta-regular text-mini">{{ "Mehr zum Datenschutz" | trans }}</a>
+      <div class="flex items-center gap-5 shrink-0 font-meta-medium text-[clamp(12px,3.33vw,16px)] leading-[20px]">
+        <button type="button" class="border border-white py-5 px-4 xs:px-9" aria-expanded="false" aria-controls="consent-settings" data-consent-settings-open>{{ "Einstellen" | trans }}</button>
+        <button type="button" class="bg-white text-black border border-white py-5 px-4 xs:px-9" data-consent-accept>{{ "Akzeptieren" | trans }}</button>
+      </div>
     </div>
   </div>
   <div hidden id="consent-settings" data-consent-settings>
-    <h2 class="font-meta-medium mb-10">{{ "Deine Cookie-Auswahl" | trans }}</h2>
-    <p>{{ "Notwendige Funktionen bleiben aktiv. Alles Weitere ist freiwillig." | trans }}</p>
+    <p>{{ "Passe die Cookies an deine Präferenzen an. Notwendige Funktionen bleiben aktiv, alles Weitere ist freiwillig:" | trans }}</p>
     <div class="flex flex-col gap-10 my-20">
-      <label class="flex items-center gap-10"><input type="checkbox" class="accent-white" data-consent-category="analytics"> {{ "Statistik" | trans }}</label>
+      <label class="flex items-center gap-10"><input type="checkbox" class="accent-white" data-consent-category="analytics"> {{ "Webseiten Statistik" | trans }}</label>
       <label class="flex items-center gap-10"><input type="checkbox" class="accent-white" data-consent-category="marketing"> {{ "Marketing" | trans }}</label>
       <label class="flex items-center gap-10"><input type="checkbox" class="accent-white" data-consent-category="external"> {{ "Externe Inhalte (Karten und Einbettungen)" | trans }}</label>
     </div>
-    <div class="flex items-center justify-between gap-10 font-meta-medium">
-      <a href="{{ link id="bf8f1926-8ce7-4ea2-80e5-c3d099672f49" }}" class="underline text-mini">{{ "Mehr zum Datenschutz" | trans }}</a>
-      <button type="button" class="bg-white text-black border border-white py-5 px-9" data-consent-save>{{ "Auswahl speichern" | trans }}</button>
+    <div class="flex items-center justify-between gap-10">
+      <a href="{{ link id="bf8f1926-8ce7-4ea2-80e5-c3d099672f49" }}" class="underline font-meta-regular text-mini">{{ "Mehr zum Datenschutz" | trans }}</a>
+      <button type="button" class="bg-white text-black border border-white py-5 px-9 font-meta-medium text-[clamp(12px,3.33vw,16px)] leading-[20px]" data-consent-save>{{ "Auswahl speichern" | trans }}</button>
     </div>
   </div>
 </section>

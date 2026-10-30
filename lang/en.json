@@ -58,13 +58,15 @@
   "Alle ablehnen": "Reject all",
   "Cookie-Auswahl": "Cookie settings",
   "Statistik": "Analytics",
+  "Webseiten Statistik": "Website analytics",
   "Externe Inhalte in der Cookie-Auswahl erlauben": "Allow external content in cookie settings",
   "Marketing": "Marketing",
   "Deine Cookie-Auswahl": "Your cookie settings",
-  "Mit Cookies verbessern wir unsere Website und zeigen dir passende Inhalte und personalisierte Werbung. Du entscheidest, was du zulässt.": "We use cookies to improve our website and show you relevant content and personalized advertising. You choose what to allow.",
+  "Mit Cookies verbessern wir unsere Webseite und ihre Funktionalität und stimmen Werbung auf deine Interessen ab. Du entscheidest, was du zulässt.": "We use cookies to improve our website and its functionality and tailor advertising to your interests. You choose what to allow.",
   "Mehr zum Datenschutz": "More about privacy",
   "Googles Datennutzung": "How Google uses data",
   "Einstellen": "Settings",
   "Akzeptieren": "Accept",
-  "Notwendige Funktionen bleiben aktiv. Alles Weitere ist freiwillig.": "Essential functions stay active. Everything else is optional."
+  "Notwendige Funktionen bleiben aktiv. Alles Weitere ist freiwillig.": "Essential functions stay active. Everything else is optional.",
+  "Passe die Cookies an deine Präferenzen an. Notwendige Funktionen bleiben aktiv, alles Weitere ist freiwillig:": "Adjust cookies to your preferences. Essential functions stay active; everything else is optional:"
 }
