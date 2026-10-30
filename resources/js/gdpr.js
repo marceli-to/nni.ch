@@ -54,6 +54,7 @@ const activateEmbeds = () => {
 window.addEventListener('nn:consent', activateEmbeds);
 activateEmbeds();
 
+// Capture contact intent before link handlers (for example dialler extensions) stop bubbling.
 // Delegate from the link, including SVG paths and translated text. No form fields.
 document.addEventListener('click', event => {
   if (!consent?.get().analytics) return;
@@ -64,7 +65,7 @@ document.addEventListener('click', event => {
   const name = link.matches('[data-tracking="consultation"]') ? 'nn_consultation_click'
     : href.startsWith('mailto:') ? 'nn_email_click' : href.startsWith('tel:') ? 'nn_phone_click' : null;
   if (name) window.dataLayer.push({ event: name });
-});
+}, true);
 
 let checking = false;
 const confirmContact = async () => {

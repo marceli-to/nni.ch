@@ -42,7 +42,7 @@
     "src": "resources/js/app.js"
   },
   "resources/js/gdpr.js": {
-    "file": "assets/gdpr-57024e4b.js",
+    "file": "assets/gdpr-cb3ff70e.js",
     "isEntry": true,
     "src": "resources/js/gdpr.js"
   },
