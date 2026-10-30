@@ -7,7 +7,7 @@
     {{ partial:ui/swiper/track class="js-swiper-posts" }}
       {{ collection from="posts" as="posts" sort="date:desc" limit="3" }}
         {{ posts }}
-          {{ partial:ui/swiper/slide class="swiper-slide--mute-inactive" }}
+          {{ partial:ui/swiper/slide class="swiper-slide--mute-inactive swiper-slide--muted-caption" }}
             {{ partial:fieldsets/teaser/post/item }}
           {{ /partial:ui/swiper/slide }}
         {{ /posts }}

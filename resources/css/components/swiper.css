@@ -9,3 +9,20 @@
 .swiper-slide-active.swiper-slide--mute-inactive {
   @apply opacity-100;
 }
+
+/* Keep teaser captions readable while the neighbouring image stays muted. */
+.swiper-slide.swiper-slide--muted-caption {
+  @apply opacity-100 text-[#666666] transition-colors sm:text-black;
+}
+
+.swiper-slide--muted-caption figure {
+  @apply opacity-40 transition-opacity sm:opacity-100;
+}
+
+.swiper-slide-active.swiper-slide--muted-caption {
+  @apply text-black;
+}
+
+.swiper-slide-active.swiper-slide--muted-caption figure {
+  @apply opacity-100;
+}
