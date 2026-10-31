@@ -6,7 +6,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {{ partial:layout/consent }}
-{{ if  open_graph_description }}<meta name="description" content="{{ open_graph_description }}">{{ else }}<meta name="description" content="{{ config.client.meta_description }}">{{ /if}}
+{{# Without a text of its own a page leaves the description tags out: an empty one tells search engines and link previews nothing. #}}
+{{ if open_graph_description }}{{ meta_description = open_graph_description }}{{ else }}{{ meta_description = config.client.meta_description }}{{ /if }}
+{{ if meta_description }}<meta name="description" content="{{ meta_description }}">{{ /if }}
 {{ if noindex || (tag && !(tag | is_numeric)) || current_uri == '/blog/suche' || current_uri == '/en/blog/search' }}<meta name="robots" content="noindex, follow">{{ else }}<meta name="robots" content="index, follow">{{ /if }}
 <link rel="canonical" href="{{ permalink ?? current_url }}">
 {{ seo_locales }}
@@ -14,7 +16,7 @@
 {{ if locale:handle == 'de' }}<link rel="alternate" hreflang="x-default" href="{{ permalink }}">{{ /if }}
 {{ /seo_locales }}
 <meta property="og:title" content="{{ open_graph_title ?? title }} | Nightnurse Images">
-{{ if  open_graph_description }}<meta property="og:description" content="{{ open_graph_description }}">{{ else }}<meta property="og:description" content="{{ config.client.meta_description }}">{{ /if }}
+{{ if meta_description }}<meta property="og:description" content="{{ meta_description }}">{{ /if }}
 {{#
   Preview image: the page's own open_graph_image, else the post or project
   feature image, else the site default. Served through Glide, because many
@@ -26,7 +28,7 @@
 <meta property="og:url" content="{{ current_url }}">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
-{{ if  open_graph_description }}<meta name="twitter:description" content="{{ open_graph_description }}">{{ else }}<meta name="twitter:description" content="{{ config.client.meta_description }}">{{ /if }}
+{{ if meta_description }}<meta name="twitter:description" content="{{ meta_description }}">{{ /if }}
 <meta name="twitter:title" content="{{ open_graph_title ?? title }} | Nightnurse Images">
 {{ if og_image }}<meta name="twitter:image" content="{{ config.client.base_url }}{{ glide :src="og_image" width="1200" height="630" fit="crop_focal" format="jpg" quality="82" bg="ffffff" }}">{{ else }}<meta name="twitter:image" content="{{ config.client.base_url }}/opengraph.jpg">{{ /if }}
 <meta name="csrf-token" content="{{ csrf_token }}">

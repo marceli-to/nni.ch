@@ -39,14 +39,48 @@ Route::statamic('/blog/kategorie/{category?}', 'blog.categories.index', [
   'title' => 'Blog',
 ]);
 
-Route::statamic('/en/blog/tag/{tag}', 'blog.tags.index', [
-  'layout' => 'layout.default',
-  'title' => 'Blog',
-]); 
-Route::statamic('/blog/tag/{tag}', 'blog.tags.index', [
-  'layout' => 'layout.default',
-  'title' => 'Blog',
-]); 
+// Tag listings would all share their route's title and have no description,
+// so each tag gets its own. Years are indexed (see layout/head) and worded as
+// such; other tags are noindex and get a plain line. German strings are the
+// translation keys in lang/en.json. An unknown tag keeps the plain data and is
+// turned away by the view.
+$tagListingData = static function (string $title, array $year, array $other) {
+  return static function () use ($title, $year, $other) {
+    $data = ['layout' => 'layout.default', 'title' => $title];
+
+    if (! $tag = request()->route('tag')) {
+      return $data;
+    }
+
+    $term = Term::query()
+      ->where('taxonomy', 'tags')
+      ->where('site', Site::current()->handle())
+      ->where('slug', $tag)
+      ->first();
+
+    if (! $term) {
+      return $data;
+    }
+
+    [$heading, $description] = is_numeric($tag) ? $year : $other;
+
+    return array_merge($data, [
+      'open_graph_title' => __($heading, ['name' => $term->title()]),
+      'open_graph_description' => __($description, ['name' => $term->title()]),
+    ]);
+  };
+};
+
+$blogTagData = $tagListingData('Blog', [
+  'Blogbeiträge aus dem Jahr :name',
+  'Beiträge aus dem Jahr :name im Blog von Nightnurse Images: Projekte, Wissen rund um Visualisierung, Einblicke ins Studio und Events.',
+], [
+  'Blog: :name',
+  'Beiträge im Blog von Nightnurse Images zum Stichwort «:name».',
+]);
+
+Route::statamic('/en/blog/tag/{tag}', 'blog.tags.index', $blogTagData);
+Route::statamic('/blog/tag/{tag}', 'blog.tags.index', $blogTagData);
 
 Route::statamic('/en/blog/search', 'blog.search', [
   'layout' => 'layout.default',
@@ -87,11 +121,13 @@ $portfolioCategoryData = static function () {
 Route::statamic('/en/portfolio/category/{category?}', 'project.index', $portfolioCategoryData);
 Route::statamic('/portfolio/kategorie/{category?}', 'project.index', $portfolioCategoryData);
 
-Route::statamic('/en/portfolio/tag/{tag?}', 'project.index', [
-  'layout' => 'layout.default',
-  'title' => 'Portfolio',
-]); 
-Route::statamic('/portfolio/tag/{tag?}', 'project.index', [
-  'layout' => 'layout.default',
-  'title' => 'Portfolio',
+$portfolioTagData = $tagListingData('Portfolio', [
+  'Projekte aus dem Jahr :name',
+  'Visualisierungen und Filme von Nightnurse Images aus dem Jahr :name: Projekte für Wettbewerbe, Immobilienvermarktung und öffentliche Planung.',
+], [
+  'Projekte: :name',
+  'Ausgewählte Projekte von Nightnurse Images zum Stichwort «:name».',
 ]);
+
+Route::statamic('/en/portfolio/tag/{tag?}', 'project.index', $portfolioTagData);
+Route::statamic('/portfolio/tag/{tag?}', 'project.index', $portfolioTagData);
