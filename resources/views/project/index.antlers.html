@@ -29,7 +29,7 @@
       localized fields. Tags continue to use the term's title.
     #}}
     {{ if category }}
-      {{ partial:content/project/elements/listing-heading }}{{ portfolio_title | entities }}{{ /partial:content/project/elements/listing-heading }}
+      {{ partial:content/project/elements/listing-heading :intro="portfolio_intro" }}{{ portfolio_title | entities }}{{ /partial:content/project/elements/listing-heading }}
     {{ elseif tag }}
       {{ taxonomy:tags }}
         {{ if slug == tag }}
@@ -37,17 +37,9 @@
         {{ /if }}
       {{ /taxonomy:tags }}
     {{ elseif portfolio_title }}
-      {{ partial:content/project/elements/listing-heading }}{{ portfolio_title }}{{ /partial:content/project/elements/listing-heading }}
+      {{ partial:content/project/elements/listing-heading :intro="portfolio_intro" }}{{ portfolio_title }}{{ /partial:content/project/elements/listing-heading }}
     {{ else }}
-      {{ partial:content/project/elements/listing-heading }}{{ title }}{{ /partial:content/project/elements/listing-heading }}
-    {{ /if }}
-
-    {{ if portfolio_intro }}
-      <div class="grid grid-cols-12 gap-x-20 lg:gap-x-30 xl:gap-x-50 mb-30 xl:mb-60">
-        <div class="col-span-full md:col-span-7 xl:col-start-2 xl:col-span-6 text-md md:text-xl lg:text-2xl leading-[1.5] text-pretty">
-          <p>{{ portfolio_intro | entities | nl2br }}</p>
-        </div>
-      </div>
+      {{ partial:content/project/elements/listing-heading :intro="portfolio_intro" }}{{ title }}{{ /partial:content/project/elements/listing-heading }}
     {{ /if }}
 
   {{ partial:ui/filter/wrapper class="hidden lg:flex lg:mb-20" }}

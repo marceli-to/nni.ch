@@ -18,9 +18,20 @@
   The text comes from the caller, because the listing is rendered from four
   places and only one of them has an entry behind it — see project/index.
 
+  An intro stands below the heading on small screens. From lg up it moves to
+  the right, so the listing begins without an extra block of height. On lg it
+  starts in project #2's column; from xl up one column later, because a long
+  single-word heading at 55px ("Immobilienvermarktung") overruns its five
+  columns and would otherwise run into the intro. Its first line sits on the
+  heading's first baseline: the heading keeps its place at the top whatever the
+  intro's length, and the smaller text starts just below the heading's top.
+
   Slot: the heading text.
+
+  Params:
+    intro  (optional)  plain text, line breaks kept
 #}}
-<div class="grid grid-cols-12 gap-x-20 lg:gap-x-30 xl:gap-x-50 mb-30 xl:mb-60">
+<div class="grid grid-cols-12 gap-x-20 lg:gap-x-30 xl:gap-x-50 lg:items-baseline mb-30 xl:mb-60">
   <div
     data-reveal
     data-animation="revealUp"
@@ -29,4 +40,12 @@
       {{ slot }}
     {{ /partial:ui/heading/h1 }}
   </div>
+  {{ if intro }}
+    <div
+      data-reveal
+      data-animation="revealUp"
+      class="col-span-full md:col-span-7 lg:col-start-8 lg:col-span-5 mt-15 md:mt-20 lg:mt-0 text-sm md:text-md xl:text-lg leading-[1.5] text-pretty">
+      <p>{{ intro | entities | nl2br }}</p>
+    </div>
+  {{ /if }}
 </div>
