@@ -29,4 +29,29 @@ tabs:
               generate: true
               show_regenerate: true
               hide_display: false
+          -
+            handle: portfolio_title
+            field:
+              type: text
+              display: Überschrift
+              instructions: 'Optionale H1 der Portfolioseite. Ohne Eingabe wird der Kategoriename verwendet.'
+              localizable: true
+          -
+            handle: portfolio_intro
+            field:
+              type: textarea
+              display: Einführung
+              instructions: 'Kurzer Text vor den Projekten, ein bis zwei Sätze.'
+              localizable: true
+  seo:
+    display: SEO
+    sections:
+      -
+        fields:
+          -
+            handle: open_graph_title
+            field: seo.open_graph_title
+          -
+            handle: open_graph_description
+            field: seo.open_graph_description
 title: 'Project category'
