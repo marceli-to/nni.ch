@@ -44,7 +44,7 @@ Für neue Project Notes und Blogbeiträge:
 
 - Zuerst nur die deutsche Fassung anlegen (siehe «Englische Fassungen»).
 - Den Eintrag im lokalen, internen CMS direkt als veröffentlicht anlegen, sofern nicht ausdrücklich ein Entwurf gewünscht ist. Für Project Notes gilt die Ausnahme bei Bildern, die nicht öffentlich auffindbar sind (siehe «Recherche, Bilder und Veröffentlichbarkeit»).
-- Den neuen Eintrag zuoberst in der Reihenfolge der Collection erfassen. Die englische Fassung kommt später an dieselbe Stelle, also zwischen dieselben Nachbarn wie die deutsche.
+- Den neuen Eintrag standardmässig zuoberst in der Reihenfolge der Collection erfassen. Eine ausdrücklich gewünschte redaktionelle Gewichtung oder andere Platzierung berücksichtigen. Die englische Fassung kommt später an dieselbe Stelle, also zwischen dieselben Nachbarn wie die deutsche.
 - Nach dem Anlegen prüfen, dass der Eintrag im CMS sichtbar ist; bei veraltetem Inhalts-Cache diesen aktualisieren (`php please stache:refresh`).
 - Die Veröffentlichung auf der öffentlichen Website ist ein separater Schritt.
 
@@ -74,6 +74,12 @@ Für neue Project Notes und Blogbeiträge:
 - Fullscreen-Bilder für starke, weitgehend selbsterklärende Motive verwenden; Bild/Text-Elemente für Bilder, die einen konkreten Gedanken oder Prozess erläutern.
 - Slideshows für zusammengehörige Bildserien oder Varianten und Bildvergleiche nur für direkt vergleichbare Zustände verwenden.
 - Die Bildfolge folgt einer nachvollziehbaren Dramaturgie, meist vom Überblick über Details oder Prozess zum Resultat. Wiederholungen vermeiden; Titel- und Teaserbilder dürfen identisch sein, wenn das Motiv in beiden Formaten funktioniert.
+
+### Ähnliche Projekte
+
+- Jede Project Note erhält im Feld «Ähnliche Projekte» (`related`) genau drei unterschiedliche, veröffentlichte Projekte. Den Eintrag selbst nicht auswählen.
+- Die Referenzen nach inhaltlicher Nähe auswählen, etwa nach Nutzung, Aufgabenstellung, Projektphase, Bildsprache oder gemeinsamer Partnerschaft. Nicht allein nach Aktualität auswählen.
+- Nach dem Anlegen prüfen, dass auf der Detailseite alle drei Referenzen mit Bild, Titel und Link erscheinen.
 
 ### Projekttext
 

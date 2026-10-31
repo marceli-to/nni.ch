@@ -49,7 +49,8 @@ php artisan test
 
 ## Environments
 
-Changes flow local → staging → production:
+Changes flow local → production. Christoph tests locally before deployment; staging is
+not a required intermediate step (decision of 2 October 2026).
 
 - **Local**: `nightnurse.test`
 - **Staging**: `staging.nightnurse.ch`
@@ -59,6 +60,21 @@ Deployment is a `git pull` on the server. Compiled assets are **built locally an
 committed** — `public/build/` is versioned, so the server never runs `npm run build`.
 Building there writes new hashed bundles and rewrites `manifest.json`, which then
 blocks the next pull with local modifications that look like someone's work.
+
+For code changes, update the local checkout first, test locally, commit and push, then
+deploy directly to production over SSH. Templates, blueprints, fieldsets, translations,
+configuration and compiled assets belong to this Git workflow, not to FTP packages.
+
+Content continues to be uploaded by Christoph or an agent over FTP, or edited in the
+CMS. `content/` belongs in the project root, outside `public/`; original assets and their
+metadata belong in `public/assets/`. `resources/views/partials/content/` contains
+templates and is code, despite the directory name. There is no blanket content sync or
+live comparison unless requested.
+
+`public/.htaccess` is git-ignored and is the manual configuration exception: when it
+actually needs changing, back up the current production file, amend the relevant rules,
+upload it to the same path over FTP/SSH and check the affected URLs. Preserve existing
+hoster, redirect and cache rules. Do not include it in ordinary content uploads.
 
 `vendor/` is not versioned either. Whenever a pull changes `composer.lock`, run
 `composer install --no-dev --optimize-autoloader` on the server right after it, then clear
@@ -158,6 +174,11 @@ Some changes still reach production by manual FTP upload. Prepare such an upload
 `2026-09-17_wochenupdate`. Put the files to transfer into a subfolder `upload/`, mirroring
 the paths they have on the server.
 
+Use these packages for git-ignored content and assets, and for explicitly changed
+`public/.htaccess`; deploy versioned code through Git/SSH. The FTP target is the project
+root of `production.nightnurse.ch`, not its public web root. In particular, `content/`
+must never land under `public/content/`, nor `resources/` under `public/resources/`.
+
 Keep these packages spare, and build them with as few tokens as possible: no file
 inventories, no change logs, no step-by-step instructions, no accompanying documents. A
 folder of files is what is wanted. At most add one short `readme.txt` saying that the
@@ -179,15 +200,23 @@ FTP upload packages still belong in `ftp-uploads/`.
 
 ### Project documentation
 
-- `docs/developer-todos.md` — the living briefing for the external developer: implemented
-  changes with consequences, known bugs and open development tasks. It is forwarded once
-  Christoph's own work is done, so it contains neither his to-dos (uploads, live checks,
-  re-checks, open questions to him) nor editorial content details; those belong in the
-  internal lists under `docs/intern/`. Open items are numbered as in the version sent to
-  the client; finished sections move under «Erledigt» and keep their number. The file lives
-  only in the local working copy and is excluded through `.git/info/exclude`: this
-  repository is public, and the briefing lists open weaknesses of the live site. Do not
-  commit it; the lasting explanation of a code change belongs in its commit message.
+- `docs/intern/README.md` — entry point for current website planning. Keep SEO/GEO
+  in `seo-geo.md`, practical content improvements in `website-verbesserungen.md`,
+  and longer-term structure and product decisions in `website-weiterentwicklung.md`.
+  Keep each task in one current list and link across topics. Completed work, dated
+  audits and superseded plans belong in `docs/intern/archiv/`, not in active lists.
+  These internal documents are local and excluded through `.git/info/exclude`.
+- `docs/developer-todos.md` — the single current list of open technical points, including
+  responsibilities, conditional tasks and outstanding verification. Keep only work that
+  remains to be done: remove completed or deliberately declined items entirely. Open items
+  keep the number they had in the version sent to the client. Do not add
+  sections such as "Umgesetzt, mit Folgen", implementation histories or routine deployment
+  instructions; those belong in Git history, `AGENTS.md` or internal operating notes.
+  Editorial content details belong in the internal lists under `docs/intern/`.
+  The file lives only in the local working copy and is
+  excluded through `.git/info/exclude`: this repository is public, and the briefing lists
+  open weaknesses of the live site. Do not commit it; the lasting explanation of a code
+  change belongs in its commit message.
 - `docs/redaktionsstandard.md` — binding editorial standard for all website texts,
   with additional rules for Project Notes and blog posts (categories, tag vocabulary, metadata)
 - `docs/cleanup/`, `docs/frontend-refactor.md`, `docs/scroll-animation-optimization.md`,

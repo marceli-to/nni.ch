@@ -23,6 +23,15 @@ tabs:
               if:
                 template: 'equals project/index'
           -
+            handle: portfolio_intro
+            field:
+              type: textarea
+              display: Einführung
+              instructions: 'Kurzer Text vor den Projekten, ein bis zwei Sätze.'
+              localizable: true
+              if:
+                template: 'equals project/index'
+          -
             handle: team_title
             field: title.title
             config:
