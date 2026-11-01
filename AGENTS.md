@@ -224,6 +224,6 @@ FTP upload packages still belong in `ftp-uploads/`.
 - `docs/redaktionsstandard.md` — binding editorial standard for all website texts,
   with additional rules for Project Notes and blog posts (categories, tag vocabulary, metadata)
 - `docs/cleanup/`, `docs/frontend-refactor.md`, `docs/scroll-animation-optimization.md`,
-  `docs/accessibility-aria.md`, `docs/htaccess-caching-review.md`, `docs/seo-investigation.md` —
+  `docs/accessibility-aria.md`, `docs/seo-investigation.md` —
   records of completed work, kept for history
 - `docs/website-textarchiv-2026-08-31/` — archived website texts from before the relaunch
