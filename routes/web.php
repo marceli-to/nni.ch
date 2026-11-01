@@ -30,14 +30,31 @@ Route::get('/tracking/contact-success', function (\Illuminate\Http\Request $requ
 //    'title' => 'Example'
 // ]);
 
-Route::statamic('/en/blog/category/{category?}', 'blog.categories.index', [
-  'layout' => 'layout.default',
-  'title' => 'Blog',
-]); 
-Route::statamic('/blog/kategorie/{category?}', 'blog.categories.index', [
-  'layout' => 'layout.default',
-  'title' => 'Blog',
-]);
+// Category data must be available before the layout renders its metadata.
+// Untranslated categories keep a title of their own and no description.
+$blogCategoryData = static function () {
+  $data = ['layout' => 'layout.default', 'title' => 'Blog'];
+
+  if (! $category = request()->route('category')) {
+    return $data;
+  }
+
+  $term = Term::query()
+    ->where('taxonomy', 'post_categories')
+    ->where('site', Site::current()->handle())
+    ->where('slug', $category)
+    ->first();
+
+  abort_unless($term, 404);
+
+  return array_merge($data, [
+    'open_graph_title' => $term->get('open_graph_title') ?: __('Blog: :name', ['name' => $term->title()]),
+    'open_graph_description' => $term->get('open_graph_description'),
+  ]);
+};
+
+Route::statamic('/en/blog/category/{category?}', 'blog.categories.index', $blogCategoryData);
+Route::statamic('/blog/kategorie/{category?}', 'blog.categories.index', $blogCategoryData);
 
 // Tag listings would all share their route's title and have no description,
 // so each tag gets its own. Years are indexed (see layout/head) and worded as

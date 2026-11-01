@@ -29,4 +29,15 @@ tabs:
               generate: true
               show_regenerate: true
               hide_display: false
+  seo:
+    display: SEO
+    sections:
+      -
+        fields:
+          -
+            handle: open_graph_title
+            field: seo.open_graph_title
+          -
+            handle: open_graph_description
+            field: seo.open_graph_description
 title: Category
