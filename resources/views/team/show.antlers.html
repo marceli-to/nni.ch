@@ -10,6 +10,7 @@
     "name": {{ title | to_json }},
     "url": "{{ permalink }}",
     {{ if portrait }}"image": "{{ config.client.base_url }}{{ portrait:url }}",{{ /if }}
+    {{ if position }}"jobTitle": {{ position | to_json }},{{ /if }}
     "worksFor": {
       "@type": "Organization",
       "@id": "{{ config.client.base_url }}/#organization",
