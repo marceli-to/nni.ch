@@ -100,13 +100,13 @@ return [
         'presets' => [
 
           // Standard images
-          'md-webp' => ['w' => 768, 'h' => 10000, 'q' => 90, 'fit' => 'contain', 'fm' => 'webp'],
-          'lg-webp' => ['w' => 1280, 'h' => 10000, 'q' => 90, 'fit' => 'contain', 'fm' => 'webp'],
-          'xl-webp' => ['w' => 1440, 'h' => 10000, 'q' => 90, 'fit' => 'contain', 'fm' => 'webp'],
-          '2xl-webp' => ['w' => 1680, 'h' => 10000, 'q' => 90, 'fit' => 'contain', 'fm' => 'webp'],
-          '3xl-webp' => ['w' => 2000, 'h' => 10000, 'q' => 90, 'fit' => 'contain', 'fm' => 'webp'],
-          '4xl-webp' => ['w' => 2400, 'h' => 10000, 'q' => 90, 'fit' => 'contain', 'fm' => 'webp'],
-          '5xl-webp' => ['w' => 3600, 'h' => 10000, 'q' => 90, 'fit' => 'contain', 'fm' => 'webp'],
+          'md-webp' => ['w' => 768, 'h' => 10000, 'q' => 80, 'fit' => 'contain', 'fm' => 'webp'],
+          'lg-webp' => ['w' => 1280, 'h' => 10000, 'q' => 80, 'fit' => 'contain', 'fm' => 'webp'],
+          'xl-webp' => ['w' => 1440, 'h' => 10000, 'q' => 80, 'fit' => 'contain', 'fm' => 'webp'],
+          '2xl-webp' => ['w' => 1680, 'h' => 10000, 'q' => 80, 'fit' => 'contain', 'fm' => 'webp'],
+          '3xl-webp' => ['w' => 2000, 'h' => 10000, 'q' => 80, 'fit' => 'contain', 'fm' => 'webp'],
+          '4xl-webp' => ['w' => 2400, 'h' => 10000, 'q' => 80, 'fit' => 'contain', 'fm' => 'webp'],
+          '5xl-webp' => ['w' => 3600, 'h' => 10000, 'q' => 80, 'fit' => 'contain', 'fm' => 'webp'],
 
           'md' => ['w' => 768, 'h' => 10000, 'q' => 90, 'fit' => 'contain'],
           'lg' => ['w' => 1280, 'h' => 10000, 'q' => 90, 'fit' => 'contain'],
