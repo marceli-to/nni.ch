@@ -1,6 +1,13 @@
 {{ nocache }} 
   {{ form:contact_form class="contact-form" }}
 
+    {{# Placeholders for the reCAPTCHA fields. The reCAPTCHA script appends the real
+      ones on submit and PHP keeps the last value. Without its script (blocked or
+      not yet loaded) the addon would get null and fail with a server error; with
+      these it rejects the submission and the error message below appears. #}}
+    <input type="hidden" name="captcha_token" value="none">
+    <input type="hidden" name="captcha_action" value="none">
+
     {{ if errors }}
       {{ partial:ui/form/elements/errors }}
     {{ /if }}
@@ -15,10 +22,12 @@
 
     <div class="space-y-30 xl:space-y-45">
       <div class="">
-        <input type="text" name="name" value="{{ old:name }}" placeholder="{{ "Name" | trans }}*">
+        <input type="text" name="name" value="{{ old:name }}" placeholder="{{ "Name" | trans }}*" required{{ if error:name }} aria-invalid="true" aria-describedby="contact-name-error"{{ /if }}>
+        {{ if error:name }}<p id="contact-name-error" class="text-red-600 mt-5">{{ "Bitte gib deinen Namen an." | trans }}</p>{{ /if }}
       </div>
       <div class="">
-        <input type="email" name="email" value="{{ old:email }}" placeholder="{{ "E-Mail" | trans }}*">
+        <input type="email" name="email" value="{{ old:email }}" placeholder="{{ "E-Mail" | trans }}*" required{{ if error:email }} aria-invalid="true" aria-describedby="contact-email-error"{{ /if }}>
+        {{ if error:email }}<p id="contact-email-error" class="text-red-600 mt-5">{{ "Bitte gib eine gültige E-Mail-Adresse an." | trans }}</p>{{ /if }}
       </div>
       <div class="">
         <input type="tel" name="phone" value="{{ old:phone }}" placeholder="{{ "Telefon" | trans }}">

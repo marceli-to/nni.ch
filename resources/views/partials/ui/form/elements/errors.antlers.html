@@ -1,7 +1,15 @@
-<button type="button" x-on:click="isVisible = false"
-  x-data="{ isVisible: true }" 
-  x-show="isVisible" 
-  x-init="setTimeout(() => { isVisible = false }, 5000)"
-  class="text-red-600 transition-colors !no-underline leading-[1.2] w-full block text-left mb-15">
-  {{ "Bitte überprüfe deine Eingaben" | trans }}
-</button>
+{{#
+  ui/form/elements/errors — message above the contact form after a rejected
+  submission. Field errors are also shown under their fields. Without one, the
+  submission failed elsewhere, in practice in reCAPTCHA (low score, or its script
+  blocked in the browser); trying again may not help, so the e-mail address is
+  offered instead.
+#}}
+<p role="alert" class="text-red-600 leading-[1.2] mb-15">
+  {{ if error:name || error:email }}
+    {{ "Bitte überprüfe deine Eingaben" | trans }}
+  {{ else }}
+    {{ "Deine Nachricht konnte nicht gesendet werden. Versuche es bitte noch einmal oder schreib uns an" | trans }}
+    <a href="mailto:{{ contact_info:email }}" class="underline">{{ contact_info:email }}</a>.
+  {{ /if }}
+</p>
