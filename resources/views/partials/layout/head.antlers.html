@@ -27,7 +27,9 @@
 {{ if og_image }}<meta property="og:image" content="{{ config.client.base_url }}{{ glide :src="og_image" width="1200" height="630" fit="crop_focal" format="jpg" quality="82" bg="ffffff" }}">{{ else }}<meta property="og:image" content="{{ config.client.base_url }}/opengraph.jpg">{{ /if }}
 <meta property="og:url" content="{{ current_url }}">
 <meta property="og:type" content="website">
-<meta name="twitter:card" content="summary">
+<meta property="og:site_name" content="Nightnurse Images">
+<meta property="og:locale" content="{{ site:handle == 'de' ? 'de_CH' : 'en_US' }}">
+<meta name="twitter:card" content="summary_large_image">
 {{ if meta_description }}<meta name="twitter:description" content="{{ meta_description }}">{{ /if }}
 <meta name="twitter:title" content="{{ open_graph_title ?? title }} | Nightnurse Images">
 {{ if og_image }}<meta name="twitter:image" content="{{ config.client.base_url }}{{ glide :src="og_image" width="1200" height="630" fit="crop_focal" format="jpg" quality="82" bg="ffffff" }}">{{ else }}<meta name="twitter:image" content="{{ config.client.base_url }}/opengraph.jpg">{{ /if }}
