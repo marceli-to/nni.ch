@@ -1,0 +1,55 @@
+# Nightnurse Images
+
+> Architectural visualization studio in Zurich, Switzerland. Since 2010, Nightnurse Images has created visualizations, animations, films and virtual tours for architectural competitions, real estate marketing and public projects, in Switzerland and abroad.
+
+Nightnurse Images AG, Limmatstrasse 291, 8005 Zurich, Switzerland. Phone +41 44 533 68 00, email beeper@nightnurse.ch.
+
+The website is bilingual. German is the main language at https://www.nightnurse.ch, English is at https://www.nightnurse.ch/en. The German pages are listed in their own section below.
+
+## Expertise
+
+- [Visualization for Every Project Phase](https://www.nightnurse.ch/en/expertise): overview of the three fields of work: architecture, real estate marketing and public projects
+- [Architectural Visualization for Architects](https://www.nightnurse.ch/en/expertise/architecture): images for competitions, studies and planning that convey design intent, atmosphere and spatial qualities
+- [Real Estate Visualization for Sales and Lettings](https://www.nightnurse.ch/en/expertise/real-estate-marketing): marketing visualizations, animations and virtual tours for properties before completion
+- [Visualization for Public Projects](https://www.nightnurse.ch/en/expertise/public-and-political-projects): images that make complex planning clear to authorities, specialists and residents
+
+## Services
+
+- [Architectural Visualization Services](https://www.nightnurse.ch/en/services): formats from still images to virtual tours and what each one is suited for
+- [Competition Visualizations](https://www.nightnurse.ch/en/services/architectural-competitions): image concept and visualizations for architectural competitions, delivered on time
+- [Animation and Film](https://www.nightnurse.ch/en/services/animation-and-film): architectural animations and real estate films, from cinemagraphs to promotional films
+- [Virtual 360° Tours](https://www.nightnurse.ch/en/services/virtual-tours): interactive tours of planned spaces in the browser and on mobile devices
+- [Visual Workflow](https://www.nightnurse.ch/en/services/visual-workflow): the process from briefing to final image, with clear decision points
+
+## Portfolio
+
+- [Selected Projects](https://www.nightnurse.ch/en/portfolio): projects from Switzerland and abroad, each with the task, the contribution of Nightnurse and the images
+- [Visualizations for Architectural Competitions](https://www.nightnurse.ch/en/portfolio/category/competition)
+- [Visualizations for Real Estate Marketing](https://www.nightnurse.ch/en/portfolio/category/real-estate)
+- [Visualizations for Public Projects](https://www.nightnurse.ch/en/portfolio/category/public-projects)
+- [Landscape and Open Space Visualizations](https://www.nightnurse.ch/en/portfolio/category/landscape-design)
+- [Architectural Animations and Films](https://www.nightnurse.ch/en/portfolio/category/animation)
+- [Visualizations for Special Assignments](https://www.nightnurse.ch/en/portfolio/category/special)
+
+## Studio
+
+- [About Our Studio](https://www.nightnurse.ch/en/about-us): approach, way of working and collaboration with partners
+- [Our Team](https://www.nightnurse.ch/en/team): the people behind the images, with individual profiles
+- [Blog](https://www.nightnurse.ch/en/blog): projects, visualization know-how, a look inside the studio and events
+- [Contact](https://www.nightnurse.ch/en/contact): project enquiries
+
+## German pages
+
+- [Startseite](https://www.nightnurse.ch/): home page
+- [Kompetenzen](https://www.nightnurse.ch/kompetenzen): expertise
+- [Angebot](https://www.nightnurse.ch/angebot): services
+- [Ausgewählte Projekte](https://www.nightnurse.ch/portfolio): portfolio
+- [Über unser Studio](https://www.nightnurse.ch/ueber-uns): about the studio
+- [Unser Team](https://www.nightnurse.ch/team): team
+- [Blog](https://www.nightnurse.ch/blog): blog
+- [Kontakt](https://www.nightnurse.ch/kontakt): contact
+
+## Optional
+
+- [Imprint](https://www.nightnurse.ch/en/imprint)
+- [Privacy Policy](https://www.nightnurse.ch/en/data-protection)

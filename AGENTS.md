@@ -100,6 +100,10 @@ must be moved out of the web root at once.
 Note: `content/`, `public/assets/`, `public/img/` and `users/` are **git-ignored**
 — they live on the server, not in this repository.
 
+`public/llms.txt` is a hand-written, versioned overview of the main pages for AI tools.
+Update it when a main page, service page or portfolio category is added, renamed or
+removed.
+
 ### Frontend Templates
 - `resources/views/` - Antlers templates (.antlers.html)
 - `resources/views/layout/` - Base layout templates
