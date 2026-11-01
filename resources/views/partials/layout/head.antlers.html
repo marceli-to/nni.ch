@@ -10,7 +10,7 @@
 {{ if open_graph_description }}{{ meta_description = open_graph_description }}{{ else }}{{ meta_description = config.client.meta_description }}{{ /if }}
 {{ if meta_description }}<meta name="description" content="{{ meta_description }}">{{ /if }}
 {{ if noindex || (tag && !(tag | is_numeric)) || current_uri == '/blog/suche' || current_uri == '/en/blog/search' }}<meta name="robots" content="noindex, follow">{{ else }}<meta name="robots" content="index, follow">{{ /if }}
-<link rel="canonical" href="{{ permalink ?? current_url }}">
+<link rel="canonical" href="{{ seo_locales:canonical }}">
 {{ seo_locales }}
 <link rel="alternate" hreflang="{{ locale:short_locale }}" href="{{ permalink }}">
 {{ if locale:handle == 'de' }}<link rel="alternate" hreflang="x-default" href="{{ permalink }}">{{ /if }}

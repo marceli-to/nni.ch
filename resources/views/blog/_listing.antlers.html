@@ -31,9 +31,10 @@
         <div class="col-span-full">
           <div class="max-w-lg mx-auto flex justify-center space-x-20 lg:space-x-45 text-sm">
             {{ paginate }}
+              {{# Page 1 is the listing's own URL, not a ?page=1 duplicate of it. #}}
               <div>
                 <a 
-                  href="{{ prev_page }}" 
+                  href="{{ if current_page == 2 }}{{ current_url }}{{ else }}{{ prev_page }}{{ /if }}" 
                   class="block no-underline hover:underline-offset-8 hover:decoration-1 hover:underline">
                   Previous
                 </a>

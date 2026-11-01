@@ -12,16 +12,7 @@ class SeoLocales extends Locales
 {
     public function index()
     {
-        // These listing routes have no entry for the native locales tag to resolve.
-        $listing = match (request()->route()?->uri()) {
-            'blog/kategorie/{category?}', 'en/blog/category/{category?}' => ['posts', 'post_categories', 'category', ['de' => 'blog/kategorie', 'en' => 'blog/category']],
-            'portfolio/kategorie/{category?}', 'en/portfolio/category/{category?}' => ['projects', 'project_categories', 'category', ['de' => 'portfolio/kategorie', 'en' => 'portfolio/category']],
-            'blog/tag/{tag}', 'en/blog/tag/{tag}' => ['posts', 'tags', 'tag', ['de' => 'blog/tag', 'en' => 'blog/tag']],
-            'portfolio/tag/{tag?}', 'en/portfolio/tag/{tag?}' => ['projects', 'tags', 'tag', ['de' => 'portfolio/tag', 'en' => 'portfolio/tag']],
-            default => null,
-        };
-
-        if (! $listing) {
+        if (! $listing = $this->listing()) {
             return parent::index();
         }
 
@@ -31,7 +22,7 @@ class SeoLocales extends Locales
         }
 
         [$collection, $taxonomy, $parameter, $paths] = $listing;
-        $slug = request()->route($parameter);
+        $slug = $parameter ? request()->route($parameter) : null;
         $term = $slug ? Term::query()
             ->where('taxonomy', $taxonomy)
             ->where('site', Site::current()->handle())
@@ -43,9 +34,7 @@ class SeoLocales extends Locales
         }
 
         // Blog listings use 18 posts per page; never point at a missing target page.
-        $page = $collection === 'posts'
-            ? (filter_var(request()->query('page', 1), FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]]) ?: 1)
-            : 1;
+        $page = $collection === 'posts' ? $this->pageNumber() : 1;
         $locales = [];
 
         foreach (Site::all() as $handle => $site) {
@@ -83,5 +72,36 @@ class SeoLocales extends Locales
         // An empty Antlers array still renders the loop body once; return a string.
         return collect($locales)->contains(fn ($locale) => $locale['locale']['handle'] === Site::current()->handle())
             ? $locales : '';
+    }
+
+    // Later pages of a blog listing are pages of their own: their canonical URL
+    // keeps the page number, matching their own hreflang entry.
+    public function canonical()
+    {
+        $url = $this->context->value('permalink') ?? request()->url();
+
+        return ($this->listing()[0] ?? null) === 'posts' && $this->pageNumber() > 1 && ! request()->filled('q')
+            ? $url.'?page='.$this->pageNumber()
+            : $url;
+    }
+
+    // These listing routes have no entry for the native locales tag to resolve.
+    // The blog page is an entry, but its later pages need their number kept.
+    private function listing(): ?array
+    {
+        return match (request()->route()?->uri()) {
+            'blog/kategorie/{category?}', 'en/blog/category/{category?}' => ['posts', 'post_categories', 'category', ['de' => 'blog/kategorie', 'en' => 'blog/category']],
+            'portfolio/kategorie/{category?}', 'en/portfolio/category/{category?}' => ['projects', 'project_categories', 'category', ['de' => 'portfolio/kategorie', 'en' => 'portfolio/category']],
+            'blog/tag/{tag}', 'en/blog/tag/{tag}' => ['posts', 'tags', 'tag', ['de' => 'blog/tag', 'en' => 'blog/tag']],
+            'portfolio/tag/{tag?}', 'en/portfolio/tag/{tag?}' => ['projects', 'tags', 'tag', ['de' => 'portfolio/tag', 'en' => 'portfolio/tag']],
+            default => $this->pageNumber() > 1 && in_array(request()->path(), ['blog', 'en/blog'], true)
+                ? ['posts', null, null, ['de' => 'blog', 'en' => 'blog']]
+                : null,
+        };
+    }
+
+    private function pageNumber(): int
+    {
+        return filter_var(request()->query('page', 1), FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]]) ?: 1;
     }
 }
