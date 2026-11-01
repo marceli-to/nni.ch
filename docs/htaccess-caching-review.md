@@ -68,5 +68,8 @@ two redundant expires blocks + the duplicate compression/ETag blocks. Then:
   on-the-fly Brotli.
 - If images ever move behind a fingerprinted/CDN pipeline, they can also become
   `immutable` with a 1-year TTL.
-- Security headers (CSP, X-Content-Type-Options, Referrer-Policy) are out of
-  scope here but worth a separate pass.
+- Security headers: done on 2026-10-30 (`Strict-Transport-Security`,
+  `X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options`). A Content
+  Security Policy was dropped on 2026-11-01: with Tag Manager and Alpine.js it
+  would need `unsafe-inline` and `unsafe-eval`, and the site shows no visitor
+  input, so it would add upkeep without real protection.
