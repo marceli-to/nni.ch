@@ -32,7 +32,7 @@
           data-quick-menu>
           <ul class="flex space-x-15 lg:space-x-30 {{ theme == 'dark' ? 'text-white' : 'text-black' }} m-0 p-0 list-none">
             {{ nav:main }}
-              {{ partial:menu/main/item class="text-right !font-meta-light no-underline hover:underline underline-offset-4 decoration-1" }}
+              {{ partial:menu/main/item inactive_class="font-meta-light" class="text-right no-underline hover:underline underline-offset-4 decoration-1" }}
             {{ /nav:main }}
           </ul>
         </nav>
@@ -41,8 +41,11 @@
       <button
         type="button"
         x-on:click="menu = ! menu"
+        x-on:keydown.escape.window="if (menu) { menu = false; $el.focus() }"
         title="{{ "Menü anzeigen" | trans }}"
         aria-label="{{ "Menü anzeigen" | trans }}"
+        :title="menu ? '{{ "Menü schliessen" | trans }}' : '{{ "Menü anzeigen" | trans }}'"
+        :aria-label="menu ? '{{ "Menü schliessen" | trans }}' : '{{ "Menü anzeigen" | trans }}'"
         aria-controls="main-menu"
         :aria-expanded="menu === true ? 'true' : 'false'"
         :class="{ 'is-active': menu === true }"

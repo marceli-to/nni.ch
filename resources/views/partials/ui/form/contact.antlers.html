@@ -22,15 +22,15 @@
 
     <div class="space-y-30 xl:space-y-45">
       <div class="">
-        <input type="text" name="name" value="{{ old:name }}" placeholder="{{ "Name" | trans }}*" required{{ if error:name }} aria-invalid="true" aria-describedby="contact-name-error"{{ /if }}>
+        <input type="text" name="name" value="{{ old:name }}" placeholder="{{ "Name" | trans }}*" autocomplete="name" required{{ if error:name }} aria-invalid="true" aria-describedby="contact-name-error"{{ /if }}>
         {{ if error:name }}<p id="contact-name-error" class="text-red-600 mt-5">{{ "Bitte gib deinen Namen an." | trans }}</p>{{ /if }}
       </div>
       <div class="">
-        <input type="email" name="email" value="{{ old:email }}" placeholder="{{ "E-Mail" | trans }}*" required{{ if error:email }} aria-invalid="true" aria-describedby="contact-email-error"{{ /if }}>
+        <input type="email" name="email" value="{{ old:email }}" placeholder="{{ "E-Mail" | trans }}*" autocomplete="email" required{{ if error:email }} aria-invalid="true" aria-describedby="contact-email-error"{{ /if }}>
         {{ if error:email }}<p id="contact-email-error" class="text-red-600 mt-5">{{ "Bitte gib eine gültige E-Mail-Adresse an." | trans }}</p>{{ /if }}
       </div>
       <div class="">
-        <input type="tel" name="phone" value="{{ old:phone }}" placeholder="{{ "Telefon" | trans }}">
+        <input type="tel" name="phone" value="{{ old:phone }}" placeholder="{{ "Telefon" | trans }}" autocomplete="tel">
       </div>
       <div class="mt-15 xl:mt-30">
         <textarea name="message" rows="5" placeholder="{{ "Deine Nachricht" | trans }}">{{ old:message }}</textarea>

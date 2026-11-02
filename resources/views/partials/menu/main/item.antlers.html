@@ -1,7 +1,8 @@
 <li>
   <a 
     href="{{ url }}" 
-    class="block w-full {{ is_current || is_parent ? 'font-meta-medium' : '' }} {{ class }}"
+    class="block w-full {{ is_current || is_parent ? 'font-meta-medium' : inactive_class }} {{ class }}"
+    {{ if is_current }}aria-current="page"{{ elseif is_parent }}aria-current="true"{{ /if }}
     target="{{ is_external ? '_blank' : '_self' }}"
     title="{{ title }}">
     {{ title }}
