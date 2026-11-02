@@ -63,17 +63,20 @@ blocks the next pull with local modifications that look like someone's work.
 
 For code changes, update the local checkout first, test locally, commit and push, then
 deploy directly to production over SSH. Templates, blueprints, fieldsets, translations,
-configuration and compiled assets belong to this Git workflow, not to FTP packages.
+configuration and compiled assets belong to this Git workflow, never to a direct upload.
 
-Content continues to be uploaded by Christoph or an agent over FTP, or edited in the
-CMS. `content/` belongs in the project root, outside `public/`; original assets and their
-metadata belong in `public/assets/`. `resources/views/partials/content/` contains
+Git-ignored content is edited in the CMS or uploaded directly over SSH (`scp` with the
+deployment key): only the changed files, each to the same path below the server's project
+root. There are no upload packages and no FTP. `content/` belongs in the project root,
+outside `public/`; original assets and their `.meta` files belong in `public/assets/`.
+After an upload, run `php please stache:refresh` and `php please static:clear` on the
+server and check the affected pages. `resources/views/partials/content/` contains
 templates and is code, despite the directory name. There is no blanket content sync or
 live comparison unless requested.
 
 `public/.htaccess` is git-ignored and is the manual configuration exception: when it
 actually needs changing, back up the current production file, amend the relevant rules,
-upload it to the same path over FTP/SSH and check the affected URLs. Preserve existing
+upload it to the same path over SSH and check the affected URLs. Preserve existing
 hoster, redirect and cache rules. Do not include it in ordinary content uploads.
 
 `vendor/` is not versioned either. Whenever a pull changes `composer.lock`, run
@@ -88,8 +91,8 @@ on the server right after it, or the old files keep being served. Every image is
 generated again on its first request, so request the pages and their images once
 afterwards, before visitors do.
 
-Before pulling, check `git status` on the server. Files uploaded by FTP show up as
-modifications or untracked files and block the pull; compare them with Git before
+Before pulling, check `git status` on the server. Versioned files changed directly on the
+server show up as modifications or untracked files and block the pull; compare them with Git before
 discarding anything, since a change may exist only on the server. Anything uploaded into
 `public/` is publicly reachable — templates, blueprints or content placed there by mistake
 must be moved out of the web root at once.
@@ -124,80 +127,26 @@ removed.
 - `config/statamic/sites.php` - Multilingual site setup
 - `tailwind.config.js` - Custom Tailwind configuration with extended spacing, typography, and colors
 
-## Key Features & Components
+## Key Features
 
-### Multilingual Setup
-- German (default): `/` 
-- English: `/en/`
-- Content structure mirrors in `content/collections/[collection]/de/` and `content/collections/[collection]/en/`
-
-### Content Types
-- **Posts**: Blog entries with categories and tags
-- **Projects**: Portfolio items with project categories
-- **Team**: Team member profiles with categories
-- **Jobs**: Job listings
-- **Pages**: Static pages (about, contact, etc.)
-
-### Frontend Architecture
-- **Antlers Templates**: Statamic's templating engine
-- **Alpine.js**: For interactive components
-- **Tailwind CSS**: Utility-first CSS framework with extensive custom spacing scale
-- **Swiper**: For carousels and sliders
-- **Custom Components**: Modular partial system in `resources/views/partials/`
-
-### Asset Management
-- **Vite**: Modern build tool for CSS/JS compilation
-- **Custom Fonts**: Meta Pro font family
-- **Images**: Stored in `public/assets/` (git-ignored) and resized on request through Statamic's Glide presets
-
-## Development Workflow
-
-1. **Content changes**: Edit markdown files in `content/` directory
-2. **Template changes**: Modify `.antlers.html` files in `resources/views/`
-3. **Styling**: Update Tailwind classes or add custom CSS in `resources/css/`
-4. **JavaScript**: Modify the modules in `resources/js/`
-5. **Build**: Run `npm run dev` for development or `npm run build` for production
-
-## Important Notes
-
-- Content is stored as flat files, not in a database
-- The site uses extensive custom Tailwind spacing (numbered 1-300)
-- Custom font family configuration for Meta Pro typography
-- Video and image handling modules are integrated
-- Forms use Statamic's built-in form handling with reCAPTCHA integration
+- **Multilingual**: German (default) under `/`, English under `/en/`; entries mirror in
+  `content/collections/<collection>/de/` and `…/en/`.
+- **Frontend**: Swiper for carousels and sliders, Meta Pro as the house font, Tailwind with
+  a custom spacing scale numbered 1–300.
+- **Images**: originals in `public/assets/` (git-ignored), resized on request through
+  Statamic's Glide presets.
+- **Forms**: Statamic's form handling with reCAPTCHA.
 
 ## Texte der Website
 
-Vor jeder Erstellung oder Überarbeitung von Texten der Website den vollständigen
-Redaktionsstandard in `docs/redaktionsstandard.md` lesen und befolgen. Er ist
-verbindlich für alle Seiten, Project Notes und Blogbeiträge in beiden Sprachen: Der
-allgemeine Teil regelt Tonalität, englische Fassungen, SEO-Metadaten, Alt-Texte und das
-Anlegen neuer Einträge. Für Project Notes kommen Recherche, Bilder, Jahres- und Partner-Tags,
-Veröffentlichbarkeit, Teaser und Leistungsbegriffe hinzu, für Blogbeiträge Kategorien,
-Tag-Wortschatz und Metadaten.
-
-## FTP upload packages
-
-Some changes still reach production by manual FTP upload. Prepare such an upload as a
-**plain folder, never a zip archive**, under the git-ignored top-level directory
-`ftp-uploads/`. Name the folder with the date first, then a short description, for example
-`2026-09-17_wochenupdate`. Put the files to transfer into a subfolder `upload/`, mirroring
-the paths they have on the server.
-
-Use these packages for git-ignored content and assets, and for explicitly changed
-`public/.htaccess`; deploy versioned code through Git/SSH. The FTP target is the project
-root of `production.nightnurse.ch`, not its public web root. In particular, `content/`
-must never land under `public/content/`, nor `resources/` under `public/resources/`.
-
-Keep these packages spare, and build them with as few tokens as possible: no file
-inventories, no change logs, no step-by-step instructions, no accompanying documents. A
-folder of files is what is wanted. At most add one short `readme.txt` saying that the
-*contents* of `upload/` go into the root directory of `production.nightnurse.ch` on the FTP
-server, keeping the folder structure and replacing existing files. If something operational
-cannot be derived from the files themselves — for example stale files that have to be
-deleted on the server afterwards — put those few lines in that same `readme.txt`.
-
-Do not invent other locations or formats such as `upload-packages/` or a zip archive.
+Vor jeder Erstellung oder Überarbeitung von Texten der Website den Redaktionsstandard
+anwenden: den Skill `nightnurse-marketing:website-content` und die Referenz «Sprache» von
+`nightnurse-brand:corporate-identity`. Beide liegen im privaten Repository
+`Nightnurse-Images/nightnurse-skills`; ohne installierte Plugins dort unter
+`plugins/nightnurse-marketing/skills/website-content/` und
+`plugins/nightnurse-brand/skills/corporate-identity/references/sprache.md` lesen. Sie sind
+verbindlich für alle Seiten, Project Notes und Blogbeiträge in beiden Sprachen. Neue
+redaktionelle Regeln gehören dorthin, nicht in dieses Repository.
 
 ## Documentation
 
@@ -205,8 +154,7 @@ Do not invent other locations or formats such as `upload-packages/` or a zip arc
 
 Use the git-ignored top-level directory `scratch/` for temporary experiments,
 standalone prototypes and test outputs. Group them by topic and date, for example
-`scratch/startseite-2026-09-23/`. Keep durable project documentation in `docs/`;
-FTP upload packages still belong in `ftp-uploads/`.
+`scratch/startseite-2026-09-23/`. Keep durable project documentation in `docs/`.
 
 ### Project documentation
 
@@ -229,9 +177,4 @@ FTP upload packages still belong in `ftp-uploads/`.
   excluded through `.git/info/exclude`: this repository is public, and the briefing lists
   open weaknesses of the live site. Do not commit it; the lasting explanation of a code
   change belongs in its commit message.
-- `docs/redaktionsstandard.md` — binding editorial standard for all website texts,
-  with additional rules for Project Notes and blog posts (categories, tag vocabulary, metadata)
-- `docs/cleanup/`, `docs/frontend-refactor.md`, `docs/scroll-animation-optimization.md`,
-  `docs/accessibility-aria.md`, `docs/seo-investigation.md` —
-  records of completed work, kept for history
 - `docs/website-textarchiv-2026-08-31/` — archived website texts from before the relaunch
