@@ -82,6 +82,12 @@ the caches (`php artisan optimize:clear`, `php please stache:refresh`,
 `php please static:clear`). Wrap the three steps in `php artisan down` / `php artisan up`:
 between pull and install the code and `vendor/` do not match.
 
+Statamic caches each Glide image under the preset name, not under the preset's settings.
+When a pull changes the presets in `config/statamic/assets.php`, run `php please glide:clear`
+on the server right after it, or the old files keep being served. Every image is then
+generated again on its first request, so request the pages and their images once
+afterwards, before visitors do.
+
 Before pulling, check `git status` on the server. Files uploaded by FTP show up as
 modifications or untracked files and block the pull; compare them with Git before
 discarding anything, since a change may exist only on the server. Anything uploaded into
@@ -211,7 +217,9 @@ FTP upload packages still belong in `ftp-uploads/`.
   audits and superseded plans belong in `docs/intern/archiv/`, not in active lists.
   These internal documents are local and excluded through `.git/info/exclude`.
 - `docs/developer-todos.md` — the single current list of open technical points, including
-  responsibilities, conditional tasks and outstanding verification. Keep only work that
+  responsibilities, conditional tasks and outstanding verification. It exists only while
+  such points are open: delete it once the last item is done and create it again for the
+  next one, so links to it from `docs/intern/` may point nowhere for a while. Keep only work that
   remains to be done: remove completed or deliberately declined items entirely. Open items
   keep the number they had in the version sent to the client. Do not add
   sections such as "Umgesetzt, mit Folgen", implementation histories or routine deployment
