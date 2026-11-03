@@ -3,20 +3,19 @@ honeypot: webs1te
 email:
   -
     id: lptkqymo
-    include_origin: true
     to: beeper@nightnurse.ch
-    from: beeper@nightnurse.ch
-    reply_to: beeper@nightnurse.ch
-    subject: 'Kontaktformular nightnurse.ch – {{ email }}'
+    from: 'Nightnurse Images <beeper@nightnurse.ch>'
+    reply_to: '{{ email }}'
+    subject: 'Kontaktanfrage nightnurse.ch: {{ email }}'
     html: email/html/contact
     text: email/text/contact
     mailer: mailgun
   -
     id: lycrfqn6
     to: '{{ email }}'
-    from: beeper@nightnurse.ch
+    from: 'Nightnurse Images <beeper@nightnurse.ch>'
     reply_to: beeper@nightnurse.ch
-    subject: 'Kontaktformular nightnurse.ch'
-    html: email/html/contact
-    text: email/text/contact
+    subject: 'Ihre Nachricht an Nightnurse Images'
+    html: email/html/contact-confirmation
+    text: email/text/contact-confirmation
     mailer: mailgun

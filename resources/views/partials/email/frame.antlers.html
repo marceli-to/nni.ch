@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="{{ language }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nightnurse Images</title>
+</head>
+<body style="margin:0;padding:0;background:#ffffff;color:#000000;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+    <tr>
+      <td align="center" style="padding:32px 20px;">
+        <!--[if mso]><table role="presentation" width="600" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;table-layout:fixed;border-collapse:collapse;">
+          <tr>
+            <td align="left" style="text-align:left;font-family:'Fira Sans',Arial,sans-serif;font-size:16px;line-height:1.6;overflow-wrap:anywhere;word-break:break-word;">
+              <p style="margin:0 0 28px;font-size:18px;font-weight:500;">Nightnurse Images</p>
+              {{ slot }}
+              <p style="margin:32px 0 0;padding-top:16px;border-top:1px solid #000000;font-size:13px;line-height:1.6;">
+                Nightnurse Images AG<br>
+                Limmatstrasse 291, {{ if language == 'en' }}CH-8005 Zurich{{ else }}CH-8005 Zürich{{ /if }}<br>
+                <a href="tel:+41445336800" style="color:#000000;">+41 44 533 68 00</a><br>
+                <a href="mailto:beeper@nightnurse.ch" style="color:#000000;">beeper@nightnurse.ch</a> · <a href="https://nightnurse.ch{{ if language == 'en' }}/en/{{ /if }}" style="color:#000000;">nightnurse.ch</a>
+              </p>
+            </td>
+          </tr>
+        </table>
+        <!--[if mso]></td></tr></table><![endif]-->
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

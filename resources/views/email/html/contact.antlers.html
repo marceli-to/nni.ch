@@ -1,24 +1,21 @@
-<style>
-body {
-  font-family: sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
-  color: #333;
-}
+{{ partial:email/frame language="de" }}
+  <h1 style="margin:0 0 24px;font-size:28px;line-height:1.25;font-weight:500;">Neue Kontaktanfrage</h1>
+  {{ partial:email/details language="de" }}
 
-</style>
-<div style="padding: 10px 5px">
-  <p>Folgende Daten wurden über das Kontaktformular übermittelt:</p>
-  {{ fields }}
-    {{ if email_config:include_origin || handle == 'name' || handle == 'email' || handle == 'phone' || handle == 'message' }}
-    <p style="padding-bottom: 20px;">
-      <strong>{{ display }}</strong><br>
-      {{ if value }}
-        {{ value | entities | nl2br }}
-      {{ else }}
-        '–'
-      {{ /if }}
-    </p>
+  <div style="margin-top:32px;padding-top:20px;border-top:1px solid #000000;">
+    <h2 style="margin:0 0 8px;font-size:18px;font-weight:500;">Herkunft der Anfrage</h2>
+    <p style="margin:0 0 20px;font-size:13px;">Browserangaben ab Analyse-Einwilligung. Es können Angaben fehlen.</p>
+    {{ if origin_landing || origin_referrer || origin_campaign || origin_path }}
+      {{ fields }}
+        {{ if (handle == 'origin_landing' || handle == 'origin_referrer' || handle == 'origin_campaign' || handle == 'origin_path') && value }}
+          <p style="margin:0 0 16px;font-size:14px;">
+            <span style="font-weight:500;">{{ if handle == 'origin_landing' }}Einstiegsseite{{ elseif handle == 'origin_referrer' }}Verweisende Website{{ elseif handle == 'origin_campaign' }}Kampagne (UTM){{ else }}Seitenweg (letzte 20 Seiten){{ /if }}</span><br>
+            {{ value | entities | nl2br }}
+          </p>
+        {{ /if }}
+      {{ /fields }}
+    {{ else }}
+      <p style="margin:0;font-size:14px;">Keine Herkunftsinformationen übermittelt.</p>
     {{ /if }}
-  {{ /fields }}
-</div>
+  </div>
+{{ /partial:email/frame }}

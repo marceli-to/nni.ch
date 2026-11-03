@@ -20,9 +20,13 @@ Erfassung nur auf der aktuellen Seite. Es gibt keine Besucher-ID und keinen
 zusätzlichen Tracking-Endpunkt. Die Werte werden erst mit dem Formular übermittelt
 und wie die übrigen Anfragefelder in Statamic gespeichert.
 
-Die interne Mail aktiviert `include_origin` in
-`resources/forms/contact_form.yaml`. Die Bestätigung an den Absender enthält nur
-die vier bisherigen Formularfelder. HTML-Mails maskieren die Werte; die
+`resources/forms/contact_form.yaml` verwendet getrennte Vorlagen für die interne
+Anfrage (`email/*/contact`) und die Bestätigung (`email/*/contact-confirmation`).
+Intern stehen Kontaktdaten und Nachricht zuerst, Herkunftsinformationen darunter.
+Die interne Antwortadresse ist die Formularadresse. Die Bestätigung verwendet
+Deutsch oder Englisch gemäss Formularseite und enthält nur die vier bisherigen
+Formularfelder; Antworten gehen an beeper@nightnurse.ch.
+HTML-Mails maskieren die Werte; die
 Herkunftsfelder sind im Blueprint optional und in Typ und Länge begrenzt.
 Die Angaben stammen aus dem Browser und können fehlen oder verändert sein.
 

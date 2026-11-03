@@ -1,6 +1,19 @@
-Folgende Daten wurden über das Kontaktformular übermittelt:
-{{ fields }}
-{{ if email_config:include_origin || handle == 'name' || handle == 'email' || handle == 'phone' || handle == 'message' }}
-{{ display }}: {{ value ?? '–' }}
-{{ /if }}
-{{ /fields }}
+Neue Kontaktanfrage über nightnurse.ch
+
+Name: {{ name }}
+E-Mail: {{ email }}
+{{ if phone }}Telefon: {{ phone }}{{ /if }}
+
+Nachricht
+{{ fields }}{{ if handle == 'message' }}{{ value ?? 'Keine Nachricht angegeben.' }}{{ /if }}{{ /fields }}
+
+--------------------
+Herkunft der Anfrage
+Browserangaben ab Analyse-Einwilligung. Es können Angaben fehlen.
+{{ if origin_landing || origin_referrer || origin_campaign || origin_path }}
+{{ if origin_landing }}Einstiegsseite: {{ origin_landing }}{{ /if }}
+{{ if origin_referrer }}Verweisende Website: {{ origin_referrer }}{{ /if }}
+{{ if origin_campaign }}Kampagne (UTM): {{ origin_campaign }}{{ /if }}
+{{ if origin_path }}Seitenweg (letzte 20 Seiten):
+{{ origin_path }}{{ /if }}
+{{ else }}Keine Herkunftsinformationen übermittelt.{{ /if }}

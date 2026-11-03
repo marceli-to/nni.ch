@@ -1,0 +1,13 @@
+{{ fields }}
+  {{ if (handle == 'name' || handle == 'email' || handle == 'phone') && value }}
+    <p style="margin:0 0 12px;">
+      <span style="font-size:13px;font-weight:500;">{{ if handle == 'name' }}Name{{ elseif handle == 'email' }}{{ if language == 'en' }}Email{{ else }}E-Mail{{ /if }}{{ else }}{{ if language == 'en' }}Phone{{ else }}Telefon{{ /if }}{{ /if }}</span><br>
+      {{ value | entities | nl2br }}
+    </p>
+  {{ /if }}
+{{ /fields }}
+<h2 style="margin:24px 0 12px;font-size:18px;font-weight:500;">{{ if language == 'en' }}Your message{{ else }}{{ if confirmation }}Ihre Nachricht{{ else }}Nachricht{{ /if }}{{ /if }}</h2>
+{{# Laravel reserves the top-level message variable for its mail object. #}}
+{{ fields }}{{ if handle == 'message' }}
+  <p style="margin:0;">{{ if value }}{{ value | entities | nl2br }}{{ else }}{{ if language == 'en' }}No message provided.{{ else }}Keine Nachricht angegeben.{{ /if }}{{ /if }}</p>
+{{ /if }}{{ /fields }}
