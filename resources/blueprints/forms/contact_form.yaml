@@ -64,3 +64,48 @@ tabs:
               replicator_preview: true
               hide_display: false
               localizable: false
+  origin:
+    display: Herkunft
+    sections:
+      -
+        fields:
+          -
+            handle: origin_landing
+            field:
+              type: text
+              antlers: false
+              display: 'Einstiegsseite (ab Analyse-Einwilligung)'
+              validate:
+                - nullable
+                - string
+                - 'max:500'
+          -
+            handle: origin_referrer
+            field:
+              type: text
+              antlers: false
+              display: 'Verweisende Website (Domain)'
+              validate:
+                - nullable
+                - string
+                - 'max:253'
+          -
+            handle: origin_campaign
+            field:
+              type: text
+              antlers: false
+              display: 'Kampagne (erste UTM-Kennung im Besuch)'
+              validate:
+                - nullable
+                - string
+                - 'max:6000'
+          -
+            handle: origin_path
+            field:
+              type: textarea
+              antlers: false
+              display: 'Weg zur Anfrage (letzte 20 Seiten ab Analyse-Einwilligung)'
+              validate:
+                - nullable
+                - string
+                - 'max:12000'

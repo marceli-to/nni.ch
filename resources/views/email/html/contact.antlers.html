@@ -10,13 +10,15 @@ body {
 <div style="padding: 10px 5px">
   <p>Folgende Daten wurden über das Kontaktformular übermittelt:</p>
   {{ fields }}
+    {{ if email_config:include_origin || handle == 'name' || handle == 'email' || handle == 'phone' || handle == 'message' }}
     <p style="padding-bottom: 20px;">
       <strong>{{ display }}</strong><br>
       {{ if value }}
-        {{ value | nl2br }}
+        {{ value | entities | nl2br }}
       {{ else }}
         '–'
       {{ /if }}
     </p>
+    {{ /if }}
   {{ /fields }}
 </div>

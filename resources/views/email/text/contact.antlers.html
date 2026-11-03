@@ -1,4 +1,6 @@
 Folgende Daten wurden über das Kontaktformular übermittelt:
 {{ fields }}
+{{ if email_config:include_origin || handle == 'name' || handle == 'email' || handle == 'phone' || handle == 'message' }}
 {{ display }}: {{ value ?? '–' }}
+{{ /if }}
 {{ /fields }}

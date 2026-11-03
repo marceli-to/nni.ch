@@ -8,6 +8,12 @@
     <input type="hidden" name="captcha_token" value="none">
     <input type="hidden" name="captcha_action" value="none">
 
+    {{# Filled only with analytics consent; never render visitor data into the shared page cache. #}}
+    <input type="hidden" name="origin_landing" value="">
+    <input type="hidden" name="origin_referrer" value="">
+    <input type="hidden" name="origin_campaign" value="">
+    <input type="hidden" name="origin_path" value="">
+
     {{ if errors }}
       {{ partial:ui/form/elements/errors }}
     {{ /if }}

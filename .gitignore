@@ -27,7 +27,8 @@ INSTALL.txt
 public/assets
 public/img
 resources/users
-resources/forms
+resources/forms/*
+!resources/forms/contact_form.yaml
 users
 /content
 storage/forms/contact_form
