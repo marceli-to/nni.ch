@@ -80,9 +80,22 @@ class SeoLocales extends Locales
     {
         $url = $this->context->value('permalink') ?? request()->url();
 
+        return $this->laterPage() ? $url.'?page='.$this->laterPage() : $url;
+    }
+
+    // Being pages of their own, later pages need their number in title and
+    // description, or they repeat those of page 1 in search results.
+    public function pageLabel(): string
+    {
+        return $this->laterPage() ? __('Seite').' '.$this->laterPage() : '';
+    }
+
+    // The number of a later blog listing page, 0 on page 1 and everywhere else.
+    private function laterPage(): int
+    {
         return ($this->listing()[0] ?? null) === 'posts' && $this->pageNumber() > 1 && ! request()->filled('q')
-            ? $url.'?page='.$this->pageNumber()
-            : $url;
+            ? $this->pageNumber()
+            : 0;
     }
 
     // These listing routes have no entry for the native locales tag to resolve.
