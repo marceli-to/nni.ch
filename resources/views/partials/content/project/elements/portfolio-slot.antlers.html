@@ -1,0 +1,11 @@
+{{ if is_testimonial }}
+  <div id="portfolio-testimonial-{{ count }}"
+    style="--row-xl: {{ slot_row }}; --mt-xl: .091; --mb-xl: .092"
+    class="col-span-10 col-start-2 md:col-span-6 {{ if slot_pos == 1 || slot_pos == 3 || slot_pos == 5 }}md:col-start-7{{ else }}md:col-start-2{{ /if }} {{ if slot_pos == 0 }}xl:col-start-2 xl:col-span-4{{ elseif slot_pos == 1 || slot_pos == 3 || slot_pos == 5 }}xl:col-start-7 xl:col-span-6{{ elseif slot_pos == 6 }}xl:col-start-1 xl:col-span-4{{ else }}xl:col-start-6 xl:col-span-4{{ /if }}">
+    {{ partial:ui/testimonial }}
+  </div>
+{{ else }}
+  {{ partial:content/project/elements/teaser-slot
+    :pos="slot_pos"
+    :cycle="slot_cycle" }}
+{{ /if }}

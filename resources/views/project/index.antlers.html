@@ -74,11 +74,17 @@
           {{ if no_results }}
             <p class="col-span-full">{{ "Oh, es gibt leider noch keine Projekte. Schau doch zu einem späteren Zeitpunkt noch einmal vorbei." | trans }}</p>
           {{ else }}
-            {{ projects }}
-              {{ partial:content/project/elements/teaser-slot
-                :pos="count | subtract(1) | mod(8)"
-                :cycle="count | subtract(1) | divide(8) | floor" }}
-            {{ /projects }}
+            {{ if tag }}
+              {{ projects }}
+                {{ partial:content/project/elements/teaser-slot
+                  :pos="count | subtract(1) | mod(8)"
+                  :cycle="count | subtract(1) | divide(8) | floor" }}
+              {{ /projects }}
+            {{ else }}
+              {{ portfolio_items :projects="projects" :testimonials="portfolio_testimonial" }}
+                {{ partial:content/project/elements/portfolio-slot }}
+              {{ /portfolio_items }}
+            {{ /if }}
           {{ /if }}
         {{ /collection }}
 

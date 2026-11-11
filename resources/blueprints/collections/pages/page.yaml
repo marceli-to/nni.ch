@@ -39,6 +39,40 @@ tabs:
               if:
                 template: 'equals team/index'
           -
+            handle: portfolio_testimonial
+            field:
+              type: grid
+              display: 'Testimonials im Portfolio'
+              instructions: 'Jedes Zitat erscheint nach dem ausgewählten Projekt in der Portfolio-Übersicht. Mehrere Zitate am selben Projekt folgen der Reihenfolge dieser Liste. Fehlt das Projekt in der Übersicht, erscheint auch das Zitat nicht.'
+              localizable: true
+              if:
+                template: 'equals project/index'
+              fields:
+                - handle: after_project
+                  field:
+                    type: entries
+                    display: 'Nach diesem Projekt anzeigen'
+                    collections:
+                      - projects
+                    max_items: 1
+                    mode: select
+                    create: false
+                    validate: required
+                - handle: quote
+                  field:
+                    type: textarea
+                    display: Zitat
+                    validate: required
+                - handle: author
+                  field:
+                    type: text
+                    display: Name
+                    validate: required
+                - handle: company
+                  field:
+                    type: text
+                    display: 'Funktion / Unternehmen'
+          -
             handle: page_elements
             field:
               collapse: true

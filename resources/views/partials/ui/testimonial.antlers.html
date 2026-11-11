@@ -1,0 +1,9 @@
+<figure class="testimonial {{ testimonial_class }}">
+  <blockquote class="testimonial__quote">
+    <p>«{{ quote | entities }}»</p>
+  </blockquote>
+  <figcaption class="testimonial__credit">
+    <strong>{{ author | entities }}</strong>
+    {{ if company }}<span>{{ company | entities }}</span>{{ /if }}
+  </figcaption>
+</figure>

@@ -155,7 +155,7 @@
   <div
     data-reveal
     data-animation="revealUp"
-    style="--row-xl: {{ cycle | multiply(6) | add(6) }}; --mt-xl: -.339"
+    style="--row-xl: {{ cycle | multiply(6) | add(6) }}; --mt-xl: {{ disable_interlock ? '0' : '-.339' }}"
     class="col-start-1 col-span-9 md:col-start-1 md:col-span-5 xl:col-start-1 xl:col-span-4">
     {{ partial:content/project/elements/teaser
       video="{{ teaser_video }}"

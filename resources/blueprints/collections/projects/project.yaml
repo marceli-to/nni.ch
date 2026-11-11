@@ -155,6 +155,11 @@ tabs:
                       fields:
                         -
                           import: feedbacks
+                    testimonial:
+                      display: Testimonial
+                      icon: quote
+                      fields:
+                        - import: testimonial
                 graphical_elements:
                   display: 'Graphical Elements'
                   icon: hr

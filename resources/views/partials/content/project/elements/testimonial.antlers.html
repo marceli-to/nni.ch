@@ -1,0 +1,10 @@
+{{ partial:layout/container }}
+  {{ if testimonial_layout == 'image' && image }}
+    <div class="testimonial-pair">
+      <div>{{ partial:ui/media/image/image class="w-full h-auto" }}</div>
+      {{ partial:ui/testimonial testimonial_class="testimonial--beside" }}
+    </div>
+  {{ else }}
+    {{ partial:ui/testimonial testimonial_class="testimonial--standalone" }}
+  {{ /if }}
+{{ /partial:layout/container }}

@@ -16,6 +16,13 @@
  
 {{ elements }}
 
+  {{ if type == 'testimonial' }}
+    <section id="testimonial-{{ id }}" data-section data-section-theme="light" data-section-observe
+      class="py-60 md:py-90 xl:py-120">
+      {{ partial:content/project/elements/testimonial }}
+    </section>
+  {{ /if }}
+
   {{ if type == 'image_text' }}
     <section 
       data-section 

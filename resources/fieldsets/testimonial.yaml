@@ -1,0 +1,39 @@
+title: Testimonial
+fields:
+  - handle: quote
+    field:
+      type: textarea
+      display: Zitat
+      localizable: true
+      validate:
+        - required
+  - handle: author
+    field:
+      type: text
+      display: Name
+      localizable: true
+      validate:
+        - required
+  - handle: company
+    field:
+      type: text
+      display: 'Funktion / Unternehmen'
+      localizable: true
+  - handle: testimonial_layout
+    field:
+      type: select
+      display: Darstellung
+      default: image
+      options:
+        standalone: 'Zwischen Bildern'
+        image: 'Neben einem Bild'
+      localizable: true
+  - handle: image
+    field:
+      type: assets
+      container: assets
+      max_files: 1
+      display: Bild
+      localizable: true
+      if:
+        testimonial_layout: 'equals image'
