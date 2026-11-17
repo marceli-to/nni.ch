@@ -36,6 +36,7 @@ class MigrateProjectServices extends Command
         'fotografie-und-drohnenaufnahmen' => ['Fotografie und Drohnenaufnahmen', 'Photography and drone imagery', null],
         'innenraumkonzepte-und-styling' => ['Innenraumkonzepte und Styling', 'Interior concepts and styling', null],
         'entwurfsbegleitung' => ['Entwurfsbegleitung', 'Design support', null],
+        'produktvisualisierungen' => ['Produktvisualisierungen', 'Product visualizations', null],
     ];
 
     /** Old wording (German and English) => slug; null drops the line. */
@@ -90,7 +91,8 @@ class MigrateProjectServices extends Command
         'inhalts- und nutzungskonzepte' => 'beratung-und-prozessbegleitung',
         'content and use concepts' => 'beratung-und-prozessbegleitung',
         'bildretusche und compositing' => null,
-        'technische produktvisualisierungen' => null,
+        'technische produktvisualisierungen' => 'produktvisualisierungen',
+        'technical product visualizations' => 'produktvisualisierungen',
         '3d-modellierung' => null,
         '3d modeling' => null,
         'bildretusche' => null,
