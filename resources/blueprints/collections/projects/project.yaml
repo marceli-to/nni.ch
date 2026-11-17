@@ -65,17 +65,15 @@ tabs:
           -
             handle: services
             field:
-              buttons:
-                - bold
-                - unorderedlist
-                - removeformat
-                - anchor
-              remove_empty_nodes: true
-              type: bard
-              toolbar_mode: floating
+              type: terms
+              taxonomies:
+                - project_services
+              mode: select
+              create: false
+              max_items: 5
               display: Services
-              localizable: true
-              instructions: 'Konsistente Leistungsbegriffe gemäss Redaktionsstandard / consistent service terms as defined in the editorial standard; list competition results separately.'
+              localizable: false
+              instructions: 'Usually three to four services, most important first. Shared by both languages; names, translations and links to service pages are kept in the Project Services taxonomy. Competition results do not belong here.'
           -
             handle: cta
             field:

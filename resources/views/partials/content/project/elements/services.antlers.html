@@ -1,6 +1,21 @@
+{{#
+  Services come from the project_services taxonomy, in the order chosen in the
+  entry. A service with a service page links to it in the current language;
+  the others stay plain text.
+#}}
 {{ partial:ui/heading/h2 size="none" class="font-meta-medium mb-2 xl:mb-4" }}
   {{ "Leistungen" | trans }}
 {{ /partial:ui/heading/h2 }}
 <div class="border-t border-b border-black mt-8 xl:mt-12 py-15 xl:py-20">
-  {{ services }}
+  <ul>
+    {{ services }}
+      <li>
+        {{ if page:url }}
+          <a href="{{ page:url }}" class="underline decoration-1 underline-offset-4 xl:underline-offset-8 hover:no-underline">{{ title }}</a>
+        {{ else }}
+          {{ title }}
+        {{ /if }}
+      </li>
+    {{ /services }}
+  </ul>
 </div>
