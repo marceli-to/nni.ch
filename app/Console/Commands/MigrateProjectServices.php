@@ -27,7 +27,7 @@ class MigrateProjectServices extends Command
     /** slug => [German title, English title, German URI of the service page or null] */
     private const SERVICES = [
         'wettbewerbsvisualisierungen' => ['Wettbewerbsvisualisierungen', 'Competition visualizations', '/angebot/wettbewerbsvisualisierungen'],
-        'vermarktungsvisualisierungen' => ['Vermarktungsvisualisierungen', 'Marketing visualizations', '/kompetenzen/immobilienvermarktung'],
+        'vermarktungsvisualisierungen' => ['Vermarktungsvisualisierungen', 'Real estate visualizations', '/kompetenzen/immobilienvermarktung'],
         'visualisierungen-fuer-oeffentliche-projekte' => ['Visualisierungen für öffentliche Projekte', 'Visualizations for public projects', '/kompetenzen/oeffentliche-und-politische-projekte'],
         'animation-und-film' => ['Animation und Film', 'Animation and film', '/angebot/animation-und-film'],
         'virtuelle-rundgaenge' => ['Virtuelle Rundgänge', 'Virtual tours', '/angebot/virtuelle-rundgaenge'],
